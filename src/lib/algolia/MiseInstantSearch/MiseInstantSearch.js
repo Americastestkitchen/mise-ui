@@ -36,7 +36,6 @@ const HitImage = styled.img`
 `;
 
 const Hit = ({ hit, hit: { title, search_cloudinary_id } }) => {
-  console.log(hit)
   return (
   <HitWrapper>
     <HitTitle>

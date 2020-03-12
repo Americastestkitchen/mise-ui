@@ -1,4 +1,5 @@
 import BreadcrumbArrow from './BreadcrumbArrow';
+import Checkmark from './Checkmark';
 import Close from './Close';
 import Collection from './Collection';
 import Cookbook from './Cookbook';
@@ -10,6 +11,7 @@ import VideoPlay from './VideoPlay';
 
 export {
   BreadcrumbArrow,
+  Checkmark,
   Close,
   Collection,
   Cookbook,

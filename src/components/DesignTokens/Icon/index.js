@@ -23,6 +23,7 @@ export const BreadcrumbArrow = props => (
   </Icon>
 )
 
+
 export const Close = props => (
   <Icon>
     <Icons.Close
@@ -83,9 +84,17 @@ export const SearchIcon = props => (
   </Icon>
 )
 
-export const Plus= props => (
+export const Plus = props => (
   <Icon>
     <Icons.Plus
+      fill={props.fill}
+    />
+  </Icon>
+)
+
+export const Checkmark = props => (
+  <Icon>
+    <Icons.Checkmark
       fill={props.fill}
     />
   </Icon>

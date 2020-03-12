@@ -2,12 +2,18 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { Button } from '../Button';
 import { Plus } from '../DesignTokens/Icon/svgs/';
-import { color, font, fontSize, letterSpacing } from '../../styles';
+import { font, fontSize, letterSpacing } from '../../styles';
 
-const ShowHideWrapper = styled.div`
+const ShowHideDivWrapper = styled.div`
   max-width: 20rem;
+`;
+
+const ShowHideFieldsetWrapper = styled.fieldset`
+  border: 0;
+  margin: 0;
+  max-width: 20rem;
+  padding: 0;
 `;
 
 const ShowHideButton = styled.button`
@@ -54,17 +60,26 @@ const ShowHideContent = styled.div`
   display: ${({ hidden }) => (hidden ? 'none' : 'block')};
 `;
 
-export function ShowHide({ children, label, isHidden }) {
+export function ShowHide({ children, isFieldset, isHidden, label }) {
   const [hidden, toggleHidden] = useState(isHidden);
+  const ShowHideWrapper = isFieldset ? ShowHideFieldsetWrapper : ShowHideDivWrapper;
   return (
     <ShowHideWrapper>
-      <ShowHideButton onClick={() => { toggleHidden(!hidden) }}>
-        {label}
+      <ShowHideButton
+        aria-controls={`show-hide--${label.split(' ').join('')}`}
+        aria-expanded={!hidden}
+        onClick={() => { toggleHidden(!hidden) }}
+      >
+        {
+          isFieldset ? (
+            <legend>{label}</legend>
+          ) : label
+        }
         <ShowHideSvgWrapper isExpanded={!hidden}>
           <Plus />
         </ShowHideSvgWrapper>
       </ShowHideButton>
-      <ShowHideContent hidden={hidden}>
+      <ShowHideContent id={`show-hide--${label.split(' ').join('')}`} hidden={hidden ? true : null}>
         {children}
       </ShowHideContent>
     </ShowHideWrapper>
@@ -77,6 +92,8 @@ ShowHide.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]).isRequired,
+  /** For accessability we need a fieldset version of this component. */
+  isFieldset: PropTypes.bool,
   /** Sets initial state of the hidden content. */
   isHidden: PropTypes.bool,
   /** Clickable text that appears in button next to plus/minus icon. */
@@ -84,6 +101,7 @@ ShowHide.propTypes = {
 };
 
 ShowHide.defaultProps = {
+  isFieldset: false,
   isHidden: false,
 };
 
