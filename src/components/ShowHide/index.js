@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { Button } from '../Button';
 import { Plus } from '../DesignTokens/Icon/svgs/';
-import { color, font, fontSize, letterSpacing } from '../../styles';
+import { font, fontSize, letterSpacing } from '../../styles';
 
 const ShowHideWrapper = styled.div`
   max-width: 20rem;

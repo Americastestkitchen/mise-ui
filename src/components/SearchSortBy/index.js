@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { connectSortBy } from 'react-instantsearch-dom';
 
-import { ShowHide } from '../ShowHide';
 import { color, font, fontSize } from '../../styles';
 
 const SearchSortByList = styled.ul`
@@ -68,25 +66,14 @@ const SortBy = ({ items, refine }) => (
   </SearchSortByList>
 );
 
-const CustomSortBy = connectSortBy(SortBy);
-
-const SearchSortBy = ({ defaultRefinement, items }) => (
-  <ShowHide label="Sort By">
-    <CustomSortBy
-      defaultRefinement={defaultRefinement}
-      items={items}
-    />
-  </ShowHide>
-);
-
-SearchSortBy.propTypes = {
+SortBy.propTypes = {
   /** Name of algolia index that should be selected on initial page render. */
   defaultRefinement: PropTypes.string,
   /** List of 'hits' returned by algolia. */
   items: PropTypes.array,
 };
 
-SearchSortBy.defaultProps = {
+SortBy.defaultProps = {
   defaultRefinement: 'everest_search_development',
   items: [
     { 'value': 'everest_search_development', label: 'Relevance' },
@@ -95,4 +82,4 @@ SearchSortBy.defaultProps = {
   ],
 };
 
-export default SearchSortBy;
+export default SortBy;

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { color } from '../../../../styles';
 
 const StyledFavoriteRibbon = styled.svg`
   cursor: pointer;

@@ -1,7 +1,6 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import styled from 'styled-components';
-import { connectSearchBox } from 'react-instantsearch-dom';
 
 import { color, font, fontSize } from '../../styles';
 import { SearchIcon, Close } from '../DesignTokens/Icon';
@@ -81,20 +80,12 @@ const StyledSearchBox = ({ currentRefinement, refine, placeholder }) => (
   </StyledSearch>
 )
 
-const SearchBox = connectSearchBox(StyledSearchBox);
-
-const SearchInput = ({ placeholder }) => (
-  <SearchBox
-    placeholder={placeholder}
-  />
-);
-
-SearchInput.propTypes = {
+StyledSearchBox.propTypes = {
   placeholder: PropTypes.string,
 }
 
-SearchInput.defaultProps = {
+StyledSearchBox.defaultProps = {
   placeholder: 'What are you curious about?'
 }
 
-export default SearchInput;
+export default StyledSearchBox;
