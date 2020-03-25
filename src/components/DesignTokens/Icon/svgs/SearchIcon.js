@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { color } from '../../../../styles';
 
 const SearchIcon = ({fill}) => {
   return (
@@ -19,7 +20,7 @@ SearchIcon.propTypes = {
 };
 
 SearchIcon.defaultProps = {
-  fill: '#6ba6aa',
+  fill: `${color.eclipse}`,
 };
 
 export default SearchIcon;

@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { color } from '../../../../styles';
 
-const Cookbook = ({ className }) => {
+const Cookbook = ({ className, fill }) => {
   return (
     <svg className={className} aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 12">
       <defs>
@@ -19,6 +20,14 @@ const Cookbook = ({ className }) => {
       </g>
     </svg>
   )
+};
+
+Cookbook.propTypes = {
+  fill: PropTypes.string,
+};
+
+Cookbook.defaultProps = {
+  fill: `${color.eclipse}`,
 };
 
 export default Cookbook;

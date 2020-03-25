@@ -1,41 +1,68 @@
 import * as Icons from '../Icon';
-import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
+import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta title="Design Tokens|Icons" component={Icons}/>
 
 # Icons
-enter description of icons here
-<Preview>
+<div style={{
+  display: 'flex',
+  flexWrap: 'wrap',
+  alignItems: 'center',
+  marginTop: '4rem',
+}}>
   {
-      Object.keys(Icons).map((icon) => (
-        <div key={icon} style={{maxWidth:'40px'}}>
-          <h2 style={{fontSize: '14px'}}>{icon}</h2>
-          <style>{`
-            svg {
-              max-height:35px;
-              max-width:35px;
-            }
-          `}
-          </style>
-          {React.createElement(Icons[icon])}
-        </div>
-      ))
-    }
-</Preview>
+    Object.keys(Icons).map((icon) => (
+      <div
+        key={icon}
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          width:'6rem',
+          height: '5rem',
+          marginRight: '3rem',
+          marginBottom: '4rem',
+        }}
+      >
+        <style>{`
+          svg {
+            max-height:35px;
+            max-width:35px;
+            margin-bottom: 10px;
+          }
+        `}
+        </style>
+        {React.createElement(Icons[icon])}
+        <h2
+          style={{
+            fontSize: '10px',
+            borderBottom: '0',
+            paddingTop: '10px',
+            marginTop: 'auto'
+          }}
+        >
+          {icon}
+        </h2>
+      </div>
+    ))
+  }
+</div>
 
 ## SVG Guidelines
-SVGs can contain a ton of junk that bloats the file size and slows down rendering. Here are a few things you should do before adding the SVG to the repo:
+SVGs often have extra unnecessary code (usually from a design program export process) that bloats the file size and can slow down rendering. Here are a few things you should do before adding the SVG to the repo:
 
 1. Run the SVG through an SVG Optimizer (https://jakearchibald.github.io/svgomg/).
 
 2. Remove any inline width and height attributes on the SVG. Instead replace with `viewBox="0 0 width height"`. This allows the SVG to scale better.
 
-3. We want to be a11y friendly! Don't forget to make sure your SVG contains the following attributes:
+3. A11y: In order to reach our goal of compliance with the Web Content Accessibility Guidelines 2.1, please include the following attributes on the `svg` element:
     - `role="img"`
     - `aria-label="description of the overall image"`
     - `aria-hidden="true"` (if purely decorative)
     - `focusable="false"` (if purely decorative)
 
 4. Always name-space auto-generated clip path, id, and class names to make sure they are unique and don't conflict with other svgs.
+
+5. To keep our icon library looking tidy and feeling easy to use, please use a `fill` prop and set the default value to `${color.eclipse}`
 
 Note: Since the background of our Storybook is white it may be difficult to view your SVG; if so, you will need to change any fill/stroke attributes that are white or transparent.

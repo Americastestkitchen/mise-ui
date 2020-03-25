@@ -22,7 +22,7 @@ Collection.propType = {
 }
 
 Collection.defaultProps = {
-  fill: `${color.black}`,
+  fill: `${color.eclipse}`,
 }
 
 export default Collection;

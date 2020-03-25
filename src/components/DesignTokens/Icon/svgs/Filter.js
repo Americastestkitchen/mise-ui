@@ -2,28 +2,28 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { color } from '../../../../styles';
 
-const Close = ({ariaLabel, fill}) => {
+const Filter = ({ ariaLabel, fill }) => {
   return (
     <svg
       aria-label={ariaLabel}
       className="close"
       role="img"
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 12.828 12.828"
+      viewBox="0 0 12 12"
     >
-      <g fill="none" stroke={fill} strokeLinecap="round" strokeWidth="2"><path d="M1.414 1.414l10 10"/><path d="M11.414 1.414l-10 10"/></g>
+      <rect x="0" y="0" width="17" height="2" fill={fill} />
     </svg>
   );
 };
 
-Close.propTypes = {
+Filter.propTypes = {
   ariaLabel: PropTypes.string,
   fill: PropTypes.string,
 };
 
-Close.defaultProps = {
+Filter.defaultProps = {
   ariaLabel: 'close',
   fill: `${color.eclipse}`,
 };
 
-export default Close;
+export default Filter;

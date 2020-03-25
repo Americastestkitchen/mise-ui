@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { color } from '../../../../styles';
 
 const Plus = () => (
   <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
@@ -13,7 +14,7 @@ Plus.propTypes = {
 };
 
 Plus.defaultProps = {
-  fill: '#3d3d3d',
+  fill: `${color.eclipse}`,
 };
 
 export default Plus;

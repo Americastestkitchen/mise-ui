@@ -26,7 +26,7 @@ Lock.propType = {
 }
 
 Lock.defaultProps = {
-  fill: `${color.black}`,
+  fill: `${color.eclipse}`,
 }
 
 export default Lock;
