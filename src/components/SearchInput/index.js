@@ -1,20 +1,27 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { connectSearchBox } from 'react-instantsearch-dom';
+import { connectCurrentRefinements, connectSearchBox } from 'react-instantsearch-dom';
 
 import { color, font, fontSize, spacing, } from '../../styles';
 import { SearchIcon, Close } from '../DesignTokens/Icon';
 
+const StyledSearchInputContainer = styled.div`
+  background-color: ${color.white};
+  border: 1px solid ${color.silver};
+  position: relative;
+  width: 100%;
+`;
 
 const StyledSearch = styled.form`
-  height: 5rem;
   position: relative;
+  height: 5rem;
+  width: 100%;
 
   input[type="search"] {
-    border: 1px solid ${color.silver};
-    height: 100%;
+    border: 0;
     font: ${fontSize.lg} ${font.mwr};
+    height: 100%;
     padding-left: 5rem;
     width: 100%;
 
@@ -26,18 +33,8 @@ const StyledSearch = styled.form`
     }
 
     &::-webkit-search-cancel-button {
-      -webkit-appearance:none;
+      -webkit-appearance: none;
     }
-  }
-
-  button[type="reset"] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto ${spacing.sm};
-    width: 1rem;
-    height: 1rem;
   }
 
   svg {
@@ -53,13 +50,6 @@ const StyledSearch = styled.form`
       transform: translateY(-50%);
       width: 2rem;
     }
-
-    &.close {
-      left: 0;
-      height: 100%;
-      top: 0;
-      width: 100%;
-    }
   }
 `;
 
@@ -73,32 +63,29 @@ class StyledSearchBox extends Component {
     this.input = input;
   }
 
-  onChangeDebounced = (event) => {
-    const { refine, delay } = this.props;
-    const value = event.currentTarget.value;
-
+  onChangeDebounced = (evt) => {
     clearTimeout(this.timerId);
+    const { refine, delay } = this.props;
+    const value = evt.currentTarget.value;
     this.timerId = setTimeout(() => refine(value), delay);
   };
 
-  onReset = () => {
-    const { refine } = this.props;
-    refine('');
-    this.input.value = '';
-    this.input.focus();
-  }
-
-  onSubmit = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
+  onSubmit = (evt) => {
+    evt.preventDefault();
+    evt.stopPropagation();
+    clearTimeout(this.timerId);
     this.input.blur();
     const { refine } = this.props;
     refine(this.input.value);
-    return false;
   }
 
   render() {
-    const { currentRefinement, refine, placeholder } = this.props;
+    const {
+      currentRefinement,
+      refine,
+      placeholder,
+    } = this.props;
+
     return (
       <StyledSearch
         noValidate
@@ -117,9 +104,6 @@ class StyledSearchBox extends Component {
           onChange={this.onChangeDebounced}
           placeholder={placeholder}
         />
-        <button type="reset" onClick={() => refine('')} hidden={!currentRefinement}>
-          <Close ariaLabel="clear search input" fill={color.regentGray} />
-        </button>
       </StyledSearch>
     );
   }
@@ -128,19 +112,61 @@ class StyledSearchBox extends Component {
 StyledSearchBox.propTypes = {
   currentRefinement: PropTypes.string.isRequired,
   delay: PropTypes.number,
+  onReset: PropTypes.func,
   refine: PropTypes.func.isRequired,
 };
 
 StyledSearchBox.defaultProps = {
-  delay: 250,
+  delay: 150,
+  onReset: null,
 };
 
 const SearchBox = connectSearchBox(StyledSearchBox);
 
+const StyledResetButton = styled.button`
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto ${spacing.sm};
+  height: 1rem;
+  width: 1rem;
+
+  svg {
+    fill: ${color.regentGray};
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+  }
+`;
+
+const ResetButton = connectCurrentRefinements(({ items, refine }) => (
+  <StyledResetButton
+    type="reset"
+    onClick={() => refine(items)}
+    hidden={!items || !items.length}
+  >
+    <Close
+      ariaLabel="clear search input"
+      fill={color.regentGray}
+    />
+  </StyledResetButton>
+));
+
 const SearchInput = ({ placeholder }) => (
-  <SearchBox
-    placeholder={placeholder}
-  />
+  <StyledSearchInputContainer
+    className="search-input-container"
+  >
+    <SearchBox
+      placeholder={placeholder}
+    />
+    <ResetButton
+      clearsQuery
+    />
+  </StyledSearchInputContainer>
 );
 
 SearchInput.propTypes = {

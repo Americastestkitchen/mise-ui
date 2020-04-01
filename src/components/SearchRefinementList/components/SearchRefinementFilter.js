@@ -66,7 +66,7 @@ const SearchRefinementFilter = ({
 }) => (
   <SearchRefinementFilterLabel
     altFill={altFill}
-    htmlFor={`${attribute}--${value}`}
+    htmlFor={`${attribute}--${label}`}
     onClick={(e) => { e.preventDefault(); refine(value); }}
   >
     {
@@ -106,7 +106,7 @@ SearchRefinementFilter.propTypes = {
   /** Algolia attribute used to filter results. */
   attribute: PropTypes.string.isRequired,
   /** Number of hits for this filter value. */
-  count: PropTypes.number.isRequired,
+  count: PropTypes.number,
   includeCount: PropTypes.bool,
   /** Is this filter selected? */
   isRefined: PropTypes.bool.isRequired,
@@ -115,11 +115,12 @@ SearchRefinementFilter.propTypes = {
   /** Call this with the value of a filter to refine results based on filter. */
   refine: PropTypes.func.isRequired,
   /** Value of filter to be used for refining results. */
-  value: PropTypes.array.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.array]).isRequired,
 };
 
 SearchRefinementFilter.defaultProps = {
   altFill: null,
+  count: null,
   includeCount: false,
 }
 

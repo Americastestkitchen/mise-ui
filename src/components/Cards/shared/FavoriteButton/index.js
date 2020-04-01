@@ -27,7 +27,7 @@ const StyledFavoriteButton = styled.button`
     stroke: ${color.white};
   }
 
-  &.is-favorited {
+  &.favorited {
     [class*="ribbon"] {
       fill: ${color.eclipse};
     }

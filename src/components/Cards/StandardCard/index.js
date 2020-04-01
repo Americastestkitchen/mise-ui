@@ -24,7 +24,6 @@ const StyledStandardCard = styled.article`
 
 const ImageWrapper = styled.div`
   position: relative;
-  margin-bottom: ${spacing.xsm};
   width: 100%;
 
   .no-image & {
@@ -105,6 +104,7 @@ export function StandardCard({
   className,
   commentCount,
   contentType,
+  contentTypeFormatted,
   ctaText,
   ctaUrl,
   displayCommentCount,
@@ -167,7 +167,7 @@ export function StandardCard({
       </a>
       <Attributions
         commentCount={commentCount}
-        contentType={contentType}
+        contentType={contentTypeFormatted || contentType}
         displayLockIcon={displayLockIcon}
         displayCommentCount={displayCommentCount}
       />
@@ -179,6 +179,7 @@ export function StandardCard({
 StandardCard.propTypes = {
   displayFavoritesButton: PropTypes.bool,
   contentType: PropTypes.string.isRequired,
+  contentTypeFormatted: PropTypes.string,
   commentCount: PropTypes.number,
   ctaText: PropTypes.string,
   ctaUrl: PropTypes.string,
@@ -198,6 +199,7 @@ StandardCard.propTypes = {
 
 StandardCard.defaultProps = {
   commentCount: null,
+  contentTypeFormatted: null,
   ctaText: '',
   ctaUrl: '',
   displayCommentCount: false,
