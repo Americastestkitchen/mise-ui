@@ -1,5 +1,6 @@
 import { css } from 'styled-components';
-export const fonts = css`
+
+const fonts = css`
 
 /* NOTE: Merriweather, Good Dog New, and Chippewa Falls are loaded through ./storybook/preview-head.html */
 
@@ -20,3 +21,5 @@ export const fonts = css`
   font-display: swap;
 }
 `;
+
+export default fonts;

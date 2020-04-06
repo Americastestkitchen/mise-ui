@@ -1,6 +1,7 @@
 import React from 'react';
-import Sticker from '../Sticker';
-import { withKnobs, text, select } from "@storybook/addon-knobs";
+import { withKnobs, text, select } from '@storybook/addon-knobs';
+
+import Sticker from './index';
 
 export default {
   title: 'Components|Cards/shared/Sticker',
@@ -11,20 +12,20 @@ export default {
 export const Basic = () => (
   <Sticker
     contentType={select('Content type', {
-      'collection': 'collection',
+      collection: 'collection',
       'cooking school course': 'cooking school course',
-      'episode': 'episode',
-      'video': 'video',
-      'none': null },
+      episode: 'episode',
+      video: 'video',
+      none: null },
     'collection')}
-    type='editorial'
-    text={text("Basic sticker text", "Editor’s pick")}
+    type="editorial"
+    text={text('Basic sticker text', 'Editor’s pick')}
   />
 );
 
 export const Priority = () => (
   <Sticker
-    type='priority'
-    text={text("Priority sticker text", "New")}
+    type="priority"
+    text={text('Priority sticker text', 'New')}
   />
 );

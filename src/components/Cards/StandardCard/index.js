@@ -100,7 +100,7 @@ const StyledBadge = styled(Badge)`
   `}
 `;
 
-export function StandardCard({
+function StandardCard({
   className,
   commentCount,
   contentType,
@@ -136,7 +136,7 @@ export function StandardCard({
             className={className}
             type={siteKey}
           />
-          { stickers ?
+          { stickers ? (
             <StickerGroup>
               {stickers.map(({ text, type }) => (
                 <StyledSticker
@@ -147,7 +147,7 @@ export function StandardCard({
                 />
               ))}
             </StickerGroup>
-          : null }
+          ) : null }
         </ImageWrapper>
         <TitleWrapper>
           <StyledTitle className={className} title={title} />
@@ -173,11 +173,12 @@ export function StandardCard({
       />
       { ctaUrl ? <CtaLink ctaText={ctaText} ctaUrl={ctaUrl} /> : null }
     </StyledStandardCard>
-  )
+  );
 }
 
 StandardCard.propTypes = {
   displayFavoritesButton: PropTypes.bool,
+  className: PropTypes.string,
   contentType: PropTypes.string.isRequired,
   contentTypeFormatted: PropTypes.string,
   commentCount: PropTypes.number,
@@ -198,6 +199,7 @@ StandardCard.propTypes = {
 };
 
 StandardCard.defaultProps = {
+  className: null,
   commentCount: null,
   contentTypeFormatted: null,
   ctaText: '',
@@ -209,10 +211,11 @@ StandardCard.defaultProps = {
   imageUrl: '',
   isFavorited: false,
   onClick: null,
+  siteKeyFavorites: null,
   stickers: [],
 };
 
 export default React.memo(StandardCard, (prevProps, nextProps) => (
-  prevProps.objectId === nextProps.objectId &&
-  prevProps.siteKey === nextProps.siteKey
+  prevProps.objectId === nextProps.objectId
+  && prevProps.siteKey === nextProps.siteKey
 ));

@@ -1,4 +1,13 @@
 {
+  "globals": {
+    "describe": true,
+    "document": true,
+    "expect": true,
+    "fetch": true,
+    "it": true,
+    "navigator": true,
+    "window": true
+  },
   "parser": "babel-eslint",
   "rules": {
     // Soft some rules.
@@ -39,8 +48,12 @@
     "react/jsx-fragments": 0,
     "import/no-cycle": 0
   },
+  "extends" : ["airbnb"],
   "plugins": [
     "import",
     "react"
-  ]
+  ],
+  "settings": {
+    "import/parser": "babel-eslint",
+  }
 }

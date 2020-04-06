@@ -11,14 +11,14 @@ const Import = styled.code`
   padding: ${spacing.sm};
 `;
 
-const ImportCode = ({children}) => (
+const ImportCode = ({ children }) => (
   <Import>
     {children}
   </Import>
 );
 
-ImportCode.propType = {
+ImportCode.propTypes = {
   children: PropTypes.node.isRequired,
-}
+};
 
 export default ImportCode;

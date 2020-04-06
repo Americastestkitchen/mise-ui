@@ -50,14 +50,15 @@ const StyledFavoriteButton = styled.button`
 `;
 
 const FavoriteButton = ({
+  isFavorited,
   objectId,
   onClick,
   siteKey,
   title,
 }) => (
   <StyledFavoriteButton
-    ariaLabel={'Save to favorites'}
-    className="favorite-action"
+    ariaLabel="Save to favorites"
+    className={`favorite-action${isFavorited ? ' favorited' : ''}`}
     data-document-title={title}
     data-favoritable-id={objectId}
     data-origin-site={siteKey}
@@ -71,6 +72,7 @@ const FavoriteButton = ({
 );
 
 FavoriteButton.propTypes = {
+  isFavorited: PropTypes.bool,
   objectId: PropTypes.string.isRequired,
   onClick: PropTypes.func,
   siteKey: PropTypes.string.isRequired,
@@ -78,6 +80,7 @@ FavoriteButton.propTypes = {
 };
 
 FavoriteButton.defaultProps = {
+  isFavorited: false,
   onClick: null,
 };
 

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 import { connectStats } from 'react-instantsearch-dom';
@@ -11,9 +12,13 @@ const StatsWrapper = styled.p`
 
 const Stats = ({ nbHits }) => (
   <StatsWrapper>
-    {`${nbHits.toLocaleString()} Results`}
+    {`${nbHits.toLocaleString()} Result${nbHits !== 1 ? 's' : ''}`}
   </StatsWrapper>
 );
+
+Stats.propTypes = {
+  nbHits: PropTypes.number.isRequired,
+};
 
 const CustomStats = connectStats(Stats);
 

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 import { connectCurrentRefinements } from 'react-instantsearch-dom';
@@ -47,7 +48,7 @@ const CurrentRefinements = ({ items, refine }) => (
   <RefinementsList>
     {
       items.map(category => (
-        category.items.map(({ attribute, label, value }) => (
+        category.items.map(({ label, value }) => (
           <RefinementListItem key={`clear-refinement--${label}`}>
             <Refinement>
               <RefinementLabel>
@@ -63,6 +64,11 @@ const CurrentRefinements = ({ items, refine }) => (
     }
   </RefinementsList>
 );
+
+CurrentRefinements.propTypes = {
+  items: PropTypes.array.isRequired,
+  refine: PropTypes.func.isRequired,
+};
 
 const CustomCurrentRefinements = connectCurrentRefinements(CurrentRefinements);
 

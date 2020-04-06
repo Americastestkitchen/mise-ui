@@ -30,15 +30,15 @@ const TokenTableEl = styled.table`
   }
 `;
 
-const TokenTable = ({tokens}) => (
+const TokenTable = ({ tokens }) => (
   <TokenTableEl>
     <thead>
-    <tr>
-      <th>Token</th>
-      <th>Value</th>
-      <th>Example</th>
-      <th>Notes</th>
-    </tr>
+      <tr>
+        <th>Token</th>
+        <th>Value</th>
+        <th>Example</th>
+        <th>Notes</th>
+      </tr>
     </thead>
     <tbody>
       {tokens.map((el, i) => (
@@ -49,11 +49,16 @@ const TokenTable = ({tokens}) => (
 );
 
 /**
- * Basic Table Component that helps visually organizes design tokens into four categories: Token(Name), Value, Example and Notes
+ * Basic Table Component that helps visually organizes design tokens
+ * into four categories: Token(Name), Value, Example and Notes
  */
 
 TokenTable.propTypes = {
   tokens: PropTypes.array,
-}
+};
+
+TokenTable.defaultProps = {
+  tokens: null,
+};
 
 export default TokenTable;

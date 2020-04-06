@@ -1,5 +1,5 @@
 import ATKBrandIcon from './ATKBrandIcon';
-import CIOBrandIcon from './CIOBrandIcon'
+import CIOBrandIcon from './CIOBrandIcon';
 import CCOBrandIcon from './CCOBrandIcon';
 import KidsBrandIcon from './KidsBrandIcon';
 import SchoolBrandIcon from './SchoolBrandIcon';

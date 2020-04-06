@@ -10,10 +10,10 @@ const BreadcrumbArrow = ({ fill }) => (
 
 BreadcrumbArrow.propTypes = {
   fill: PropTypes.string,
-}
+};
 
 BreadcrumbArrow.defaultProps = {
   fill: `${color.eclipse}`,
-}
+};
 
 export default BreadcrumbArrow;

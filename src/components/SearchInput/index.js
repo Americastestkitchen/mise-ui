@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connectCurrentRefinements, connectSearchBox } from 'react-instantsearch-dom';
 
-import { color, font, fontSize, spacing, } from '../../styles';
+import { color, font, fontSize, spacing } from '../../styles';
 import { SearchIcon, Close } from '../DesignTokens/Icon';
 
 const StyledSearchInputContainer = styled.div`
@@ -82,7 +82,6 @@ class StyledSearchBox extends Component {
   render() {
     const {
       currentRefinement,
-      refine,
       placeholder,
     } = this.props;
 
@@ -107,18 +106,17 @@ class StyledSearchBox extends Component {
       </StyledSearch>
     );
   }
-};
+}
 
 StyledSearchBox.propTypes = {
   currentRefinement: PropTypes.string.isRequired,
   delay: PropTypes.number,
-  onReset: PropTypes.func,
+  placeholder: PropTypes.string.isRequired,
   refine: PropTypes.func.isRequired,
 };
 
 StyledSearchBox.defaultProps = {
   delay: 200,
-  onReset: null,
 };
 
 const SearchBox = connectSearchBox(StyledSearchBox);
@@ -171,10 +169,10 @@ const SearchInput = ({ placeholder }) => (
 
 SearchInput.propTypes = {
   placeholder: PropTypes.string,
-}
+};
 
 SearchInput.defaultProps = {
-  placeholder: 'What are you curious about?'
-}
+  placeholder: 'What are you curious about?',
+};
 
 export default SearchInput;

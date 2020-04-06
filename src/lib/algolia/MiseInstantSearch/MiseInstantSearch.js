@@ -4,7 +4,7 @@ import algoliasearch from 'algoliasearch/lite';
 import { InstantSearch, Hits } from 'react-instantsearch-dom';
 import styled from 'styled-components';
 
-import LabelFrame from '../../../../src/components/LabelFrame';
+import LabelFrame from '../../../components/LabelFrame';
 
 const searchClient = algoliasearch(
   'Y1FNZXUI30',
@@ -36,21 +36,28 @@ const HitImage = styled.img`
   display: block;
 `;
 
-const Hit = ({ hit, hit: { title, search_cloudinary_id } }) => {
-  return (
+const Hit = ({
+  hit: {
+    title,
+    search_cloudinary_id: cloudinaryId,
+  },
+}) => (
   <HitWrapper>
     <HitTitle>
       {title}
     </HitTitle>
     {
-      search_cloudinary_id ? (
+      cloudinaryId ? (
         <HitImage
-          src={`https://res.cloudinary.com/hksqkdlah/image/upload/c_fill,dpr_auto,f_auto,fl_lossy,q_auto,w_268,h_268/${search_cloudinary_id}`}
+          src={`https://res.cloudinary.com/hksqkdlah/image/upload/c_fill,dpr_auto,f_auto,fl_lossy,q_auto,w_268,h_268/${cloudinaryId}`}
         />
       ) : null
     }
   </HitWrapper>
-  );
+);
+
+Hit.propTypes = {
+  hit: PropTypes.object.isRequired,
 };
 
 const MiseInstantSearch = ({ children }) => (

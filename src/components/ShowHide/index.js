@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { Plus } from '../DesignTokens/Icon/svgs/';
-import { font, fontSize, letterSpacing, spacing, } from '../../styles';
+import { Plus } from '../DesignTokens/Icon/svgs';
+import { font, fontSize, letterSpacing, spacing } from '../../styles';
 
 const ShowHideDivWrapper = styled.div``;
 const ShowHideFieldsetWrapper = styled.fieldset``;
@@ -52,7 +52,7 @@ const ShowHideContent = styled.div`
   display: ${({ hidden }) => (hidden ? 'none' : 'block')};
 `;
 
-export function ShowHide({ children, isFieldset, isHidden, label }) {
+function ShowHide({ children, isFieldset, isHidden, label }) {
   const [hidden, toggleHidden] = useState(isHidden);
   const ShowHideWrapper = isFieldset ? ShowHideFieldsetWrapper : ShowHideDivWrapper;
   return (
@@ -60,7 +60,7 @@ export function ShowHide({ children, isFieldset, isHidden, label }) {
       <ShowHideButton
         aria-controls={`show-hide--${label.split(' ').join('')}`}
         aria-expanded={!hidden}
-        onClick={() => { toggleHidden(!hidden) }}
+        onClick={() => toggleHidden(!hidden)}
       >
         {
           isFieldset ? (

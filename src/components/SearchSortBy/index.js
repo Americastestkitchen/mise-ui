@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connectSortBy } from 'react-instantsearch-dom';
 
-import { ShowHide } from '../ShowHide';
-import { color, font, fontSize, spacing, } from '../../styles';
+import ShowHide from '../ShowHide';
+import { color, font, fontSize, spacing } from '../../styles';
 
 const SearchSortByList = styled.ul``;
 
@@ -62,6 +62,11 @@ const SortBy = ({ items, refine }) => (
   </SearchSortByList>
 );
 
+SortBy.propTypes = {
+  items: PropTypes.array.isRequired,
+  refine: PropTypes.func.isRequired,
+};
+
 const CustomSortBy = connectSortBy(SortBy);
 
 const SearchSortBy = ({ defaultRefinement, items }) => (
@@ -86,9 +91,9 @@ SearchSortBy.propTypes = {
 SearchSortBy.defaultProps = {
   defaultRefinement: 'everest_search_development',
   items: [
-    { 'value': 'everest_search_development', label: 'Relevance' },
-    { 'value': 'everest_search_popularity_desc_development', label: 'Popularity' },
-    { 'value': 'everest_search_published_date_desc_development', label: 'Publish Date' },
+    { value: 'everest_search_development', label: 'Relevance' },
+    { value: 'everest_search_popularity_desc_development', label: 'Popularity' },
+    { value: 'everest_search_published_date_desc_development', label: 'Publish Date' },
   ],
 };
 

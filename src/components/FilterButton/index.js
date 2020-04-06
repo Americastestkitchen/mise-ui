@@ -26,10 +26,12 @@ const FilterButton = ({ className, onClick }) => (
 );
 
 FilterButton.propTypes = {
+  className: PropTypes.string,
   onClick: PropTypes.func,
-}
+};
 
 FilterButton.defaultProps = {
+  className: null,
   onClick: null,
 };
 

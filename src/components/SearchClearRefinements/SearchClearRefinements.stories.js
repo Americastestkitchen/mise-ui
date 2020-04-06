@@ -3,9 +3,8 @@ import styled from 'styled-components';
 
 import LabelFrame from '../LabelFrame';
 import SearchCurrentRefinements from '../SearchCurrentRefinements';
-import SearchClearRefinements from '../SearchClearRefinements';
+import SearchClearRefinements from './index';
 import SearchRefinementList from '../SearchRefinementList';
-
 import MiseInstantSearch from '../../lib/algolia/MiseInstantSearch/MiseInstantSearch';
 
 export default {
@@ -31,6 +30,6 @@ export const Default = () => (
         operator="and"
         showHideLabel="CUISINE"
       />
-     </LabelFrame>
+    </LabelFrame>
   </MiseInstantSearch>
 );

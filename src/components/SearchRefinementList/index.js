@@ -5,8 +5,8 @@ import styled from 'styled-components';
 
 import ShowMoreLess from '../ShowMoreLess';
 import SearchRefinementFilter from './components/SearchRefinementFilter';
-import { ShowHide } from '../ShowHide';
-import { color, font, fontSize } from '../../styles';
+import ShowHide from '../ShowHide';
+import { color } from '../../styles';
 
 const SearchRefinementListRefinements = styled.div`
   border: none;
@@ -44,7 +44,7 @@ const siteMap = [
     altFill: color.tomato,
     value: 'shop',
     label: 'ATK Shop',
-  }
+  },
 ];
 
 const RefinementList = ({ attribute, currentRefinement, items, refine }) => (
@@ -86,6 +86,17 @@ const RefinementList = ({ attribute, currentRefinement, items, refine }) => (
   </SearchRefinementListRefinements>
 );
 
+RefinementList.propTypes = {
+  attribute: PropTypes.string.isRequired,
+  currentRefinement: PropTypes.array.isRequired,
+  items: PropTypes.array,
+  refine: PropTypes.func.isRequired,
+};
+
+RefinementList.defaultProps = {
+  items: null,
+};
+
 const SearchRefinementList = ({ showHideLabel, operator, items, ...restProps }) => (
   items.length > 0 && (
     <ShowHide isFieldset label={showHideLabel}>
@@ -101,6 +112,7 @@ const SearchRefinementList = ({ showHideLabel, operator, items, ...restProps }) 
 SearchRefinementList.propTypes = {
   /** Algolia attribute that is used to pull refinement values. */
   attribute: PropTypes.string.isRequired,
+  items: PropTypes.array.isRequired,
   operator: PropTypes.oneOf(['and', 'or']),
   /** 'Title' of the list that will be put into clickable show/hide button */
   showHideLabel: PropTypes.string.isRequired,

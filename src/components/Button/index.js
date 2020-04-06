@@ -30,7 +30,7 @@ const StyledButton = styled.button`
   }
 `;
 
-export function Button({
+function Button({
   className,
   children,
   onClick,
@@ -49,7 +49,7 @@ export function Button({
 
 Button.propTypes = {
   className: PropTypes.string,
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
   onClick: PropTypes.func,
   type: PropTypes.oneOf(['submit', 'reset', 'button']),
 };

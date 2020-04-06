@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 const ATKBrandIcon = ({ fill }) => (
@@ -7,5 +8,8 @@ const ATKBrandIcon = ({ fill }) => (
   </>
 );
 
+ATKBrandIcon.propTypes = {
+  fill: PropTypes.string.isRequired,
+};
 
 export default ATKBrandIcon;

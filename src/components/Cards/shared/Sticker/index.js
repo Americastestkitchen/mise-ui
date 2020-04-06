@@ -15,7 +15,7 @@ const StyledSticker = styled.span`
   padding-right: ${spacing.xsm};
   height: ${stickerHeight};
   border-radius: 0.6rem;
-  background-color: ${({ type }) => type === 'priority' ? color.tomato : color.transparentBlack};
+  background-color: ${({ type }) => (type === 'priority' ? color.tomato : color.transparentBlack)};
   color: ${color.white};
   font: ${fontSize.xsm}/${stickerHeight} ${font.pnb};
   letter-spacing: ${letterSpacing.sm};
@@ -32,14 +32,14 @@ const StyledSticker = styled.span`
 
 const determineIconType = (contentType) => {
   const contentTypes = {
-    "collection": Collection,
-    "episode": VideoPlay,
-    "video": VideoPlay,
-    "cooking school course": VideoPlay,
+    collection: Collection,
+    episode: VideoPlay,
+    video: VideoPlay,
+    'cooking school course': VideoPlay,
   };
   const El = contentTypes[contentType];
   return El ? <El fill={`${color.white}`} /> : null;
-}
+};
 
 
 /**
@@ -58,7 +58,9 @@ const determineIconType = (contentType) => {
 
 Stickers are not interactive, only informative, so there is no hover state.
 
-There are two types of stickers, priority and basic. Basic stickers have a `transparentBlack` background. Priority stickers are reserved for messages like “new” or “price drop”, and have a red (`tomato`) background.
+There are two types of stickers, priority and basic. Basic stickers have
+a `transparentBlack` background. Priority stickers are reserved for
+messages like “new” or “price drop”, and have a red (`tomato`) background.
 
 It can have or not have an icon (collections icon, video icon).
 
@@ -66,9 +68,11 @@ A desktop card can have two stickers, max; one sticker max on mobile
 
 Text does not wrap
 
-Line height of the text and the height of pill should both be set to `1.5rem` to vertically center text.
+Line height of the text and the height of pill should both be set to `1.5rem`
+to vertically center text.
 
-Stickers scale down to a smaller size (`height: 1.2rem;` `font-size: 0.8rem;`) for mobile for most types of cards.
+Stickers scale down to a smaller size (`height: 1.2rem;` `font-size: 0.8rem;`)
+for mobile for most types of cards.
 
 <br>
 

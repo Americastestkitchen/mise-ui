@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 import { color, font, fontSize, grid, lineHeight, spacing } from '../../../styles';
@@ -22,10 +23,9 @@ export default function Layout({
   notes,
   tokenGroup,
 }) {
-
-  let tokenGroups = {
-    'grid': grid,
-    'spacing': spacing,
+  const tokenGroups = {
+    grid,
+    spacing,
   };
 
   const tokensArray = [];
@@ -33,7 +33,7 @@ export default function Layout({
 
   Object.keys(tokens).forEach((token) => {
     const tokenValue = tokens[token];
-    
+
     if (tokenValue) {
       tokensArray.push(
         <>
@@ -44,17 +44,22 @@ export default function Layout({
               width: `${tokenValue}`,
               display: 'inline-block',
               backgroundColor: `${color.silver}`,
-              height: 1 + 'rem'}}
-            ></span>
+              height: '1rem' }}
+            />
           </td>
           <td>{notes}</td>
-        </>
+        </>,
       );
     }
   });
   return (
     <TokenGroup>
-      <TokenTable tokens={tokensArray}/>
+      <TokenTable tokens={tokensArray} />
     </TokenGroup>
   );
+}
+
+Layout.propTypes = {
+  notes: PropTypes.string.isRequired,
+  tokenGroup: PropTypes.object.isRequired,
 };

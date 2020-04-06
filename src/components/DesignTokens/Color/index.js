@@ -31,7 +31,6 @@ export default function Color({
   notes,
   tokenGroup,
 }) {
-
   const atkColor = [
     'tomato',
     'rust',
@@ -87,13 +86,13 @@ export default function Color({
     'twitterHover',
   ];
 
-  let tokenGroups = {
-    'globalColor': globalColor,
-    'atkColor': atkColor,
-    'ccoColor': ccoColor,
-    'cioColor': cioColor,
-    'socialColor': socialColor,
-  }
+  const tokenGroups = {
+    globalColor,
+    atkColor,
+    ccoColor,
+    cioColor,
+    socialColor,
+  };
 
   const tokensArray = [];
   const tokens = tokenGroups[tokenGroup];
@@ -108,8 +107,8 @@ export default function Color({
           <ColorSwatch style={{ backgroundColor: tokenValue }} />
         </td>
         <td>{notes}</td>
-      </>
-    )
+      </>,
+    );
     return tokensArray;
   });
 
@@ -127,4 +126,11 @@ Color.propTypes = {
   heading: PropTypes.string,
   notes: PropTypes.string,
   tokenGroup: PropTypes.string,
+};
+
+Color.defaultProps = {
+  description: null,
+  heading: null,
+  notes: null,
+  tokenGroup: null,
 };

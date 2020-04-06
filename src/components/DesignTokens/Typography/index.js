@@ -26,7 +26,6 @@ export default function Typography({
   notes,
   tokenGroup,
 }) {
-
   const atkFonts = [
     'pnb',
     'pnr',
@@ -53,22 +52,22 @@ export default function Typography({
     'pnb',
   ];
 
-  let brands = {
-    'atkFonts': atkFonts,
-    'ccoFonts': ccoFonts,
-    'cioFonts': cioFonts,
-    'kidsFonts': kidsFonts,
-  }
-
-  let tokenGroups = {
-    'fontSize': fontSize,
-    'font': font,
-    'lineHeight': lineHeight,
-    'letterSpacing': letterSpacing,
+  const brands = {
+    atkFonts,
+    ccoFonts,
+    cioFonts,
+    kidsFonts,
   };
 
-  //TODO: add documentation for line-height and letter-spacing usage guidelines
-  //when it's available
+  const tokenGroups = {
+    fontSize,
+    font,
+    lineHeight,
+    letterSpacing,
+  };
+
+  // TODO: add documentation for line-height and letter-spacing usage guidelines
+  // when it's available
 
   const tokensArray = [];
 
@@ -83,8 +82,8 @@ export default function Typography({
           <td>{tokenValue}</td>
           <td style={{ fontFamily: `${tokenValue}` }}>{tokenValue}</td>
           <td>{notes}</td>
-        </>
-      )
+        </>,
+      );
       return tokensArray;
     });
   } else {
@@ -97,9 +96,9 @@ export default function Typography({
           <>
             <td>{`${tokenGroup}.${token}`}</td>
             <td>{tokenValue}</td>
-            <td style={{[tokenGroup]: tokenValue}}>{token}</td>
+            <td style={{ [tokenGroup]: tokenValue }}>{token}</td>
             <td>{notes}</td>
-          </>
+          </>,
         );
       }
     });
@@ -119,4 +118,12 @@ Typography.propTypes = {
   heading: PropTypes.string,
   notes: PropTypes.string,
   tokenGroup: PropTypes.string,
+};
+
+Typography.defaultProps = {
+  brand: null,
+  description: null,
+  heading: null,
+  notes: null,
+  tokenGroup: null,
 };

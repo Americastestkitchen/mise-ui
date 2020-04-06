@@ -52,7 +52,7 @@ const Attributions = ({
   <StyledAttributions>
     <div className="attributions__content-type-wrapper">
       { displayLockIcon ? <StyledLock className="lock-icon" fill={`${color.nobel}`} /> : null }
-      { contentType === "Cookbook Collection" ? (
+      { contentType === 'Cookbook Collection' ? (
         <StyledCookbook
           className={className}
         />
@@ -73,11 +73,13 @@ Attributions.propTypes = {
   commentCount: PropTypes.number,
   contentType: PropTypes.string.isRequired,
   displayLockIcon: PropTypes.bool,
+  displayCommentCount: PropTypes.bool,
 };
 
 Attributions.defaultProps = {
   className: '',
   commentCount: null,
+  displayCommentCount: false,
   displayLockIcon: false,
 };
 

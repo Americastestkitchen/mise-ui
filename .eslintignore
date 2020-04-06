@@ -1,1 +1,4 @@
 node_modules
+dist
+src/serviceWorker.js
+src/setupTests.js

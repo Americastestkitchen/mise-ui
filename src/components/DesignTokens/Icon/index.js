@@ -2,13 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import * as Icons from './svgs';
 
-function Icon(props) {
-  const { children } = props;
-  return (
-    <>
-      {children}
-    </>
-  );
+function Icon({ children }) {
+  return children;
 }
 
 Icon.propTypes = {
@@ -16,94 +11,152 @@ Icon.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export const BreadcrumbArrow = props => (
+export const BreadcrumbArrow = () => (
   <Icon>
-    <Icons.BreadcrumbArrow
-    />
+    <Icons.BreadcrumbArrow />
   </Icon>
-)
+);
 
-
-export const Close = props => (
+export const Close = ({ ariaLabel, fill }) => (
   <Icon>
     <Icons.Close
-      ariaLabel={props.ariaLabel}
-      fill={props.fill}
+      ariaLabel={ariaLabel}
+      fill={fill}
     />
   </Icon>
-)
+);
 
-export const Collection = props => (
+Close.propTypes = {
+  ariaLabel: PropTypes.string.isRequired,
+  fill: PropTypes.string.isRequired,
+};
+
+export const Collection = ({ fill }) => (
   <Icon>
     <Icons.Collection
-      fill={props.fill}
+      fill={fill}
     />
   </Icon>
-)
+);
 
-export const Cookbook = props => (
+Collection.propTypes = {
+  fill: PropTypes.string.isRequired,
+};
+
+export const Cookbook = ({ className }) => (
   <Icon>
     <Icons.Cookbook
-      className={props.className}
+      className={className}
     />
   </Icon>
-)
+);
 
-export const FavoriteRibbon = props => (
+Cookbook.propTypes = {
+  className: PropTypes.string,
+};
+
+Cookbook.defaultProps = {
+  className: null,
+};
+
+export const FavoriteRibbon = ({ ariaHidden, ariaLabel, className }) => (
   <Icon>
     <Icons.FavoriteRibbon
-      className={props.className}
-      ariaLabel={props.ariaLabel}
-      ariaHidden={props.ariaHidden}
+      className={className}
+      ariaHidden={ariaHidden}
+      ariaLabel={ariaLabel}
     />
   </Icon>
-)
+);
 
-export const Filter = props => (
+FavoriteRibbon.propTypes = {
+  ariaHidden: PropTypes.bool.isRequired,
+  ariaLabel: PropTypes.bool.isRequired,
+  className: PropTypes.string,
+};
+
+FavoriteRibbon.defaultProps = {
+  className: null,
+};
+
+export const Filter = ({ className }) => (
   <Icon>
     <Icons.Filter
-      className={props.className}
+      className={className}
     />
   </Icon>
-)
+);
 
-export const Lock = props => (
+Filter.propTypes = {
+  className: PropTypes.string,
+};
+
+Filter.defaultProps = {
+  className: null,
+};
+
+export const Lock = ({ className, fill }) => (
   <Icon>
     <Icons.Lock
-      className={props.className}
-      fill={props.fill}
+      className={className}
+      fill={fill}
     />
   </Icon>
-)
+);
 
-export const VideoPlay = props => (
+Lock.propTypes = {
+  className: PropTypes.string,
+  fill: PropTypes.string.isRequired,
+};
+
+Lock.defaultProps = {
+  className: null,
+};
+
+export const VideoPlay = ({ fill }) => (
   <Icon>
     <Icons.VideoPlay
-      fill={props.fill}
+      fill={fill}
     />
   </Icon>
-)
+);
 
-export const SearchIcon = props => (
+VideoPlay.propTypes = {
+  fill: PropTypes.string.isRequired,
+};
+
+export const SearchIcon = ({ fill }) => (
   <Icon>
     <Icons.SearchIcon
-      fill={props.fill}
+      fill={fill}
     />
   </Icon>
-)
+);
 
-export const Plus = props => (
+SearchIcon.propTypes = {
+  fill: PropTypes.string.isRequired,
+};
+
+export const Plus = ({ fill }) => (
   <Icon>
     <Icons.Plus
-      fill={props.fill}
+      fill={fill}
     />
   </Icon>
-)
+);
 
-export const Checkmark = props => (
+Plus.propTypes = {
+  fill: PropTypes.string.isRequired,
+};
+
+export const Checkmark = ({ fill }) => (
   <Icon>
     <Icons.Checkmark
-      fill={props.fill}
+      fill={fill}
     />
   </Icon>
-)
+);
+
+Checkmark.propTypes = {
+  fill: PropTypes.string.isRequired,
+};

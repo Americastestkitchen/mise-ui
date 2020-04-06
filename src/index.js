@@ -10,7 +10,7 @@ import SearchResultsCount from './components/SearchResultsCount';
 import SearchSortBy from './components/SearchSortBy';
 import ShowHide from './components/ShowHide';
 import ShowMoreLess from './components/ShowMoreLess';
-import { fonts } from './styles/fonts';
+import fonts from './styles/fonts';
 import { GlobalStyle } from './styles/global';
 
 export {

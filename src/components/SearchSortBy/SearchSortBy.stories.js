@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import LabelFrame from '../LabelFrame';
-import SearchSortBy from '../SearchSortBy';
+import SearchSortBy from './index';
 
 import MiseInstantSearch from '../../lib/algolia/MiseInstantSearch/MiseInstantSearch';
 

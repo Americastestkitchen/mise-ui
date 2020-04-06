@@ -1,8 +1,8 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, text } from '@storybook/addon-knobs/react';
-import { Button } from '../Button';
 
+import Button from './index';
 
 export default {
   title: 'Components|Button',
@@ -12,6 +12,6 @@ export default {
 
 export const DefaultTextButton = () => (
   <Button onClick={action('click button')}>
-    {text("Text", "Done")}
+    {text('Text', 'Done')}
   </Button>
 );

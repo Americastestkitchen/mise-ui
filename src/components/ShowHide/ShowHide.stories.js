@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ShowHide } from '../ShowHide';
-import { withKnobs } from "@storybook/addon-knobs";
+import { withKnobs } from '@storybook/addon-knobs';
+
+import ShowHide from './index';
 
 export default {
   title: 'Components|ShowHide',

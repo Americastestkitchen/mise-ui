@@ -1,5 +1,5 @@
 import React from 'react';
-import CtaLink from '../CtaLink';
+import CtaLink from './index';
 
 export default {
   title: 'Components|Cards/shared/CtaLink',

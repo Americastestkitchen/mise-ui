@@ -21,5 +21,5 @@ export default () => (
     translations={{
       reset: 'Clear filters',
     }}
- />
+  />
 );

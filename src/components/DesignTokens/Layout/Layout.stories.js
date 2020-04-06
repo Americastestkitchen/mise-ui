@@ -1,19 +1,15 @@
 import React from 'react';
-import Layout from '../Layout';
+import Layout from './index';
 
 export default {
   title: 'Design Tokens|Layout',
   component: Layout,
 };
 
-export const Grid = () => {
-  return (
-    <Layout tokenGroup="grid" notes="" />
-  );
-};
+export const Grid = () => (
+  <Layout tokenGroup="grid" notes="" />
+);
 
-export const Spacing = () => {
-  return (
-    <Layout tokenGroup="spacing" notes="" />
-  );
-};
+export const Spacing = () => (
+  <Layout tokenGroup="spacing" notes="" />
+);

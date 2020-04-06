@@ -18,4 +18,4 @@ const grid = {
 export {
   grid,
   spacing,
-}
+};

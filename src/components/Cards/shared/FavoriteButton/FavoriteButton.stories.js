@@ -1,6 +1,8 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { action } from '@storybook/addon-actions';
-import FavoriteButton from '../FavoriteButton';
+
+import FavoriteButton from './index';
 
 export default {
   title: 'Components|Cards/shared/FavoriteButton',
@@ -19,14 +21,22 @@ export const Default = ({ ariaLabel }) => (
   />
 );
 
+Default.propTypes = {
+  ariaLabel: PropTypes.string.isRequired,
+};
+
 export const Favorited = ({ ariaLabel }) => (
   <FavoriteButton
     ariaLabel={ariaLabel}
     className="favorite-ribbon"
-    isFavorited={true}
+    isFavorited
     objectId="123"
     onClick={action('click-button')}
     siteKey="atk"
     title=""
   />
 );
+
+Favorited.propTypes = {
+  ariaLabel: PropTypes.string.isRequired,
+};

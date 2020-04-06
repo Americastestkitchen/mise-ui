@@ -27,7 +27,7 @@ Title.propTypes = {
 };
 
 Title.defaultProps = {
-  className: "",
+  className: null,
 };
 
 export default Title;

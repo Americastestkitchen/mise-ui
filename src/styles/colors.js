@@ -1,4 +1,4 @@
-export const color = {
+const color = {
   white: '#ffffff',
   black: '#000000',
   transparentBlack: 'rgba(0, 0, 0, 0.7)',
@@ -34,3 +34,5 @@ export const color = {
   twitterHover: '#557d93',
   miseUiGrayBorder: '#efefef', // only for stories, not components
 };
+
+export default color;
