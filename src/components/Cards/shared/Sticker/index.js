@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import breakpoint from 'styled-components-breakpoint';
 import styled from 'styled-components';
 import { color, font, fontSize, letterSpacing, spacing } from '../../../../styles';
 import { Collection, VideoPlay } from '../../../DesignTokens/Icon';
@@ -28,6 +29,12 @@ const StyledSticker = styled.span`
     height: 1rem;
     max-height: 60%;
   }
+
+  ${breakpoint('xs', 'lg')`
+    &:not(:first-of-type) {
+      display: none;
+    }
+  `}
 `;
 
 const determineIconType = (contentType) => {

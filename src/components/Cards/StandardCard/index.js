@@ -29,6 +29,7 @@ const ImageWrapper = styled.div`
   width: 100%;
 
   .no-image & {
+    background-color: transparent;
     display: flex;
     align-items: center;
     margin-bottom: ${spacing.xxsm};
