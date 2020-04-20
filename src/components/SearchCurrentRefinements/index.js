@@ -101,16 +101,21 @@ CurrentRefinements.defaultProps = {
 
 const CustomCurrentRefinements = connectCurrentRefinements(CurrentRefinements);
 
-const SearchCurrentRefinements = ({ handleClick }) => (
-  <CustomCurrentRefinements handleClick={handleClick} />
+const SearchCurrentRefinements = ({ handleClick, transformItems }) => (
+  <CustomCurrentRefinements
+    handleClick={handleClick}
+    transformItems={transformItems}
+  />
 );
 
 SearchCurrentRefinements.propTypes = {
   handleClick: PropTypes.func,
+  transformItems: PropTypes.func,
 };
 
 SearchCurrentRefinements.defaultProps = {
   handleClick: null,
+  transformItems: null,
 };
 
 export default SearchCurrentRefinements;

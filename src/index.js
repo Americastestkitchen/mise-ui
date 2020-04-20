@@ -5,6 +5,7 @@ import Button from './components/Button';
 import FilterButton from './components/FilterButton';
 import * as Icons from './components/DesignTokens/Icon';
 import StandardCard from './components/Cards/StandardCard';
+import SearchBanner from './components/SearchBanner';
 import SearchClearRefinements from './components/SearchClearRefinements';
 import SearchCurrentRefinements from './components/SearchCurrentRefinements';
 import SearchInput from './components/SearchInput';
@@ -24,6 +25,7 @@ export {
   fonts,
   Icons,
   GlobalStyle,
+  SearchBanner,
   SearchClearRefinements,
   SearchCurrentRefinements,
   SearchInput,

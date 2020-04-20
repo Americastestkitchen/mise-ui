@@ -14,6 +14,10 @@ const SearchBannerSection = styled.section`
 
   &:hover {
     background-color: ${color.darkerMint};
+
+    a {
+      color: ${color.white};
+    }
   }
 `;
 

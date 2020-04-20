@@ -109,6 +109,7 @@ function StandardCard({
   contentTypeFormatted,
   ctaText,
   ctaUrl,
+  displayCookbook,
   displayCommentCount,
   displayFavoritesButton,
   displayLockIcon,
@@ -118,6 +119,7 @@ function StandardCard({
   isFavorited,
   objectId,
   onClick,
+  shopPrices,
   siteKey,
   siteKeyFavorites,
   title,
@@ -173,8 +175,10 @@ function StandardCard({
       <Attributions
         commentCount={commentCount}
         contentType={contentTypeFormatted || contentType}
+        displayCookbook={displayCookbook}
         displayLockIcon={displayLockIcon}
         displayCommentCount={displayCommentCount}
+        shopPrices={shopPrices}
       />
       {
         ctaUrl && (
@@ -197,6 +201,7 @@ StandardCard.propTypes = {
   commentCount: PropTypes.number,
   ctaText: PropTypes.string,
   ctaUrl: PropTypes.string,
+  displayCookbook: PropTypes.bool,
   displayCommentCount: PropTypes.bool,
   displayLockIcon: PropTypes.bool,
   href: PropTypes.string.isRequired,
@@ -205,6 +210,7 @@ StandardCard.propTypes = {
   isFavorited: PropTypes.bool,
   objectId: PropTypes.string.isRequired,
   onClick: PropTypes.func,
+  shopPrices: PropTypes.object,
   siteKey: PropTypes.oneOf(['atk', 'cco', 'cio', 'kids', 'school', 'shop']).isRequired,
   siteKeyFavorites: PropTypes.oneOf(['atk', 'cco', 'cio']),
   stickers: PropTypes.array,
@@ -217,6 +223,7 @@ StandardCard.defaultProps = {
   contentTypeFormatted: null,
   ctaText: '',
   ctaUrl: '',
+  displayCookbook: false,
   displayCommentCount: false,
   displayFavoritesButton: false,
   displayLockIcon: false,
@@ -224,6 +231,7 @@ StandardCard.defaultProps = {
   imageUrl: '',
   isFavorited: false,
   onClick: null,
+  shopPrices: null,
   siteKeyFavorites: null,
   stickers: [],
 };

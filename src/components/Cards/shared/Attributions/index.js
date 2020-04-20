@@ -45,19 +45,37 @@ const StyledCookbook = styled(Cookbook)`
 const Attributions = ({
   className,
   contentType,
+  displayCookbook,
   displayLockIcon,
   commentCount,
   displayCommentCount,
+  shopPrices,
 }) => (
   <StyledAttributions>
     <div className="attributions__content-type-wrapper">
       { displayLockIcon ? <StyledLock className="lock-icon" fill={`${color.nobel}`} /> : null }
-      { contentType === 'Cookbook Collection' ? (
+      { contentType === 'Cookbook Collection' || displayCookbook ? (
         <StyledCookbook
           className={className}
         />
       ) : null }
-      <span>{contentType}</span>
+      {!shopPrices ? <span>{contentType}</span> : null}
+      {
+        shopPrices ? (
+          <span>
+            {
+              shopPrices.salePrice ? (
+                <span>
+                  {`$${shopPrices.salePrice} `}
+                  <del>
+                    {`$${shopPrices.price}`}
+                  </del>
+                </span>
+              ) : `$${shopPrices.price}`
+            }
+          </span>
+        ) : null
+      }
     </div>
     { displayCommentCount && commentCount > 0 ? (
       <>
@@ -74,13 +92,17 @@ Attributions.propTypes = {
   contentType: PropTypes.string.isRequired,
   displayLockIcon: PropTypes.bool,
   displayCommentCount: PropTypes.bool,
+  displayCookbook: PropTypes.bool,
+  shopPrices: PropTypes.object,
 };
 
 Attributions.defaultProps = {
   className: '',
   commentCount: null,
   displayCommentCount: false,
+  displayCookbook: false,
   displayLockIcon: false,
+  shopPrices: null,
 };
 
 export default Attributions;
