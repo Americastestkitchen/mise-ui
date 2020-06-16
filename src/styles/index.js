@@ -10,6 +10,11 @@ const withThemes = (siteTheme, namedTheme) => (
   css`${() => siteTheme.default || ''};${props => siteTheme[props.theme.siteKey]};${props => siteTheme[props.theme.mode]}${() => namedTheme || ''}`
 );
 
+const themeValue = (prop, val) => props => (props.theme[prop] && props.theme[prop][val]) || val;
+const withThemes = (siteTheme, namedTheme) => (
+  css`${() => siteTheme.default || ''};${props => siteTheme[props.theme.siteKey]};${props => siteTheme[props.theme.mode]}${() => namedTheme || ''}`
+);
+
 export {
   breakpoints,
   color,
