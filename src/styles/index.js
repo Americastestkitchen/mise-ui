@@ -3,6 +3,7 @@ import breakpoints from './breakpoints';
 import color from './colors';
 import { fontSize, font, lineHeight, letterSpacing } from './typography';
 import { grid, spacing } from './layout';
+import mixins from './mixins';
 
 const themeValue = (prop, val) => props => (props.theme[prop] && props.theme[prop][val]) || val;
 const withThemes = (siteTheme, namedTheme) => (
@@ -17,6 +18,7 @@ export {
   grid,
   lineHeight,
   letterSpacing,
+  mixins,
   spacing,
   themeValue,
   withThemes,
