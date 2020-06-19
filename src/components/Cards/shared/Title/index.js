@@ -1,16 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import breakpoint from 'styled-components-breakpoint';
-import { font, fontSize, lineHeight, spacing } from '../../../../styles';
+import { color, font, fontSize, lineHeight } from '../../../../styles';
 
 const StyledTitle = styled.h3`
-  margin-bottom: ${spacing.xsm};
-  font: ${fontSize.md}/${lineHeight.sm} ${font.pnb};
+  font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb};
+  transition: color 0.2s ease;
 
-  ${breakpoint('lg')`
-    font-size: ${fontSize.xl};
-  `}
+  @media(hover: hover) {
+    &:hover {
+      color: ${color.mint};
+    }
+  }
 `;
 
 const Title = ({ className, title }) => (
