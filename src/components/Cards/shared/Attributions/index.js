@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import breakpoint from 'styled-components-breakpoint';
 import { color, font, fontSize, lineHeight, spacing } from '../../../../styles';
 import { Cookbook, Lock } from '../../../DesignTokens/Icon';
 
@@ -17,18 +16,6 @@ const StyledAttributions = styled.div`
   .attributions__content-type-wrapper {
     display: inline-block;
   }
-
-  ${breakpoint('xs', 'lg')`
-    font-size: 1.2rem;
-
-    & > span {
-      display: block;
-    }
-
-    .attributions__bullet {
-      display: none;
-    }
-  `}
 `;
 
 const StyledLock = styled(Lock)`
