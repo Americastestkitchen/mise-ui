@@ -53,18 +53,18 @@ const TitleWrapper = styled.div`
 `;
 
 export const StyledTitle = styled(Title)`
-  transition: color 0.2s ease;
+  font-size: ${fontSize.md};
+  margin-bottom: ${spacing.xsm};
 
-  @media(hover: hover) {
-    &:hover {
-      color: ${color.mint};
-    }
-  }
+  ${breakpoint('lg')`
+    font-size: ${fontSize.xl};
+  `}
 `;
 
 export const StyledFavoriteButton = styled(FavoriteButton)`
   flex-shrink: 0;
-  margin-top: ${spacing.xxsm};
+  margin-top: -${spacing.xxsm};
+  padding: ${spacing.xsm} 0 0 ${spacing.xsm};
 `;
 
 export const StickerGroup = styled.div`
@@ -79,6 +79,21 @@ export const StickerGroup = styled.div`
       margin-bottom: 0;
     }
   }
+`;
+
+const StyledAttributions = styled(Attributions)`
+
+  ${breakpoint('xs', 'lg')`
+    font-size: 1.2rem;
+
+    & > span {
+      display: block;
+    }
+
+    .attributions__bullet {
+      display: none;
+    }
+  `}
 `;
 
 const stickerHeightMobile = '1.2rem';
@@ -181,7 +196,7 @@ function StandardCard({
           ) : null }
         </TitleWrapper>
       </a>
-      <Attributions
+      <StyledAttributions
         commentCount={commentCount}
         contentType={contentTypeFormatted || contentType}
         displayCookbook={displayCookbook}

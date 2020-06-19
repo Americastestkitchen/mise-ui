@@ -6,16 +6,22 @@ const StyledImage = styled.img`
   max-width: 100%;
 `;
 
-const Image = ({ imageAlt, imageUrl }) => (
+const Image = ({ className, imageAlt, imageUrl }) => (
   <StyledImage
     alt={imageAlt}
+    className={className}
     src={imageUrl}
   />
 );
 
 Image.propTypes = {
+  className: PropTypes.string,
   imageAlt: PropTypes.string.isRequired,
   imageUrl: PropTypes.string.isRequired,
+};
+
+Image.defaultProps = {
+  className: '',
 };
 
 export default Image;

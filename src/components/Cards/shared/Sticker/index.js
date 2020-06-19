@@ -40,6 +40,7 @@ const StyledSticker = styled.span`
 const determineIconType = (contentType) => {
   const contentTypes = {
     collection: Collection,
+    clip: VideoPlay,
     episode: VideoPlay,
     video: VideoPlay,
     'cooking school course': VideoPlay,
@@ -108,9 +109,8 @@ Sticker.propTypes = {
   className: PropTypes.string,
   /** The type of content that the card represents */
   contentType: PropTypes.string,
-  /** The text inside the sticker. Must be less than N characters. */
+  /** The text inside the sticker. */
   text: PropTypes.string.isRequired,
-  /** True if it is a priority sticker, false if it is a basic sticker */
   type: PropTypes.oneOf(['editorial', 'priority']).isRequired,
 };
 

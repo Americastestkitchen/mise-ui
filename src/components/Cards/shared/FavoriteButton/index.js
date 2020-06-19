@@ -1,13 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { color, spacing } from '../../../../styles';
+import { color } from '../../../../styles';
 import { FavoriteRibbon } from '../../../DesignTokens/Icon';
 
 const StyledFavoriteButton = styled.button`
-  flex-shrink: 0;
-  margin-top: -${spacing.xxsm};
-  padding: ${spacing.xsm} 0 0 ${spacing.xsm};
 
   [class*="ribbon"] {
     fill: transparent;
@@ -22,7 +19,7 @@ const StyledFavoriteButton = styled.button`
   @media(hover: hover) {
     &:hover {
       [class*="ribbon"] {
-        fill: ${color.eclipse};
+        fill: ${props => props.fill};
         transition: 0.1s all ease-in-out;
       }
     }
@@ -30,12 +27,12 @@ const StyledFavoriteButton = styled.button`
 
   &.favorited {
     [class*="ribbon"] {
-      fill: ${color.eclipse};
+      fill: ${props => props.fill};
     }
 
     [class*="vertical-line"],
     [class*="horizontal-line"] {
-      stroke: ${color.eclipse};
+      stroke: ${props => props.fill};
       transition: 0.1s all ease-in-out;
     }
 
@@ -47,7 +44,7 @@ const StyledFavoriteButton = styled.button`
         }
 
         [class*="vertical-line"] {
-          stroke: ${color.eclipse};
+          stroke: ${props => props.fill};
         }
       }
     }
@@ -55,6 +52,8 @@ const StyledFavoriteButton = styled.button`
 `;
 
 const FavoriteButton = ({
+  className,
+  fill,
   isFavorited,
   objectId,
   siteKey,
@@ -62,20 +61,25 @@ const FavoriteButton = ({
 }) => (
   <StyledFavoriteButton
     ariaLabel={isFavorited ? `Remove ${title} from favorites` : `Save ${title} to favorites`}
-    className={`favorite-action ${isFavorited ? 'favorited' : ''}`}
+    className={`${className} favorite-action ${isFavorited ? 'favorited' : ''}`}
     data-document-title={title}
     data-favoritable-id={objectId}
     data-origin-site={siteKey}
+    data-testid="favorite-button"
+    fill={fill}
   >
     <FavoriteRibbon
       ariaHidden
-      ariaLabel=""
+      ariaLabel=" "
       className="favorite-ribbon"
+      fill={fill}
     />
   </StyledFavoriteButton>
 );
 
 FavoriteButton.propTypes = {
+  className: PropTypes.string,
+  fill: PropTypes.string,
   isFavorited: PropTypes.bool,
   objectId: PropTypes.string.isRequired,
   siteKey: PropTypes.string.isRequired,
@@ -83,6 +87,8 @@ FavoriteButton.propTypes = {
 };
 
 FavoriteButton.defaultProps = {
+  className: '',
+  fill: `${color.eclipse}`,
   isFavorited: false,
 };
 
