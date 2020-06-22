@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import breakpoint from 'styled-components-breakpoint';
 import { color, font, fontSize, grid, lineHeight, spacing } from '../../../styles';
 import Badge from '../../Badge';
 import FavoriteButton from '../shared/FavoriteButton';
@@ -10,14 +11,14 @@ import Title from '../shared/Title';
 
 const featureCardWidth = grid.columnWidth;
 const featureCardWideWidth = `${parseFloat(grid.columnWidth) * 2 + parseFloat(grid.gutterWidth)}rem`;
+const featureCardWideHeight = '40rem';
 
 const StyledFeatureCard = styled.article`
   box-shadow: 0 0 0 ${color.black};
-  height: 40rem;
+  height: ${({ isWide }) => (isWide ? '33rem' : featureCardWideHeight)};
   position: relative;
   transition: all .3s ease;
-  width: ${({ isWide }) => (isWide ? featureCardWideWidth : featureCardWidth)};
-
+  width: ${({ isWide }) => (isWide ? '34rem' : featureCardWidth)};
 
   .feature-card__gradient-overlay {
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), ${color.black});
@@ -43,6 +44,11 @@ const StyledFeatureCard = styled.article`
       box-shadow: 0 7px 8px -2px ${color.black};
     }
   }
+
+  ${breakpoint('md')`
+    height: ${featureCardWideHeight};
+    width: ${({ isWide }) => (isWide ? featureCardWideWidth : featureCardWidth)};
+  `}
 `;
 
 const StyledImage = styled(Image)`

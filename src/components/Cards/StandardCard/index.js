@@ -103,6 +103,10 @@ export const StyledSticker = styled(Sticker)`
     line-height: ${stickerHeightMobile};
     height: ${stickerHeightMobile};
     font-size: ${fontSize.xxsm};
+
+    &:not(:first-of-type) {
+      display: none;
+    }
   `}
 `;
 
