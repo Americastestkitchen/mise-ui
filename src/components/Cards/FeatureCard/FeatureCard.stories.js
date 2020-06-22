@@ -43,3 +43,21 @@ export const Article = () => (
     href="https://www.americastestkitchen.com/equipment_reviews/1879-plastic-food-storage-containers?ref=new_search_experience_2"
   />
 );
+
+export const FeatureCardWide = () => (
+  <FeatureCard
+    attributions="Episode • America's Test Kitchen"
+    contentType="episode"
+    displayFavoritesButton
+    href="https://www.americastestkitchen.com/episode/658-savory-and-sweet-italian"
+    imageAlt={text('Image alt text', 'Hosts Bridget and Dan on set at ATK')}
+    imageUrl={text('Image url', 'https://res.cloudinary.com/hksqkdlah/image/upload/v1592840035/mise-play/feature-card-wide.jpg')}
+    isWide
+    siteKey="atk"
+    siteKeyFavorites="atk"
+    stickers={[{ type: 'priority', text: 'New' }, { type: 'editorial', text: '23:23'}]}
+    objectId=""
+    onClick={action('result-click')}
+    title={text('Title', 'Savory and Sweet Italian')}
+  />
+);
