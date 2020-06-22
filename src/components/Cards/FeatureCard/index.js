@@ -8,12 +8,16 @@ import Image from '../shared/Image';
 import Sticker from '../shared/Sticker';
 import Title from '../shared/Title';
 
+const featureCardWidth = grid.columnWidth;
+const featureCardWideWidth = `${parseFloat(grid.columnWidth) * 2 + parseFloat(grid.gutterWidth)}rem`;
+
 const StyledFeatureCard = styled.article`
   box-shadow: 0 0 0 ${color.black};
   height: 40rem;
   position: relative;
   transition: all .3s ease;
-  width: ${grid.columnWidth};
+  width: ${({ isWide }) => (isWide ? featureCardWideWidth : featureCardWidth)};
+
 
   .feature-card__gradient-overlay {
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), ${color.black});
@@ -89,6 +93,7 @@ function FeatureCard({
   imageAlt,
   imageUrl,
   isFavorited,
+  isWide,
   objectId,
   onClick,
   siteKey,
@@ -102,6 +107,7 @@ function FeatureCard({
       className={imageUrl ? '' : 'no-image'}
       contentType={contentType}
       data-testid="feature-card"
+      isWide={isWide}
     >
       <a
         href={href}
@@ -166,6 +172,7 @@ FeatureCard.propTypes = {
   imageAlt: PropTypes.string,
   imageUrl: PropTypes.string.isRequired,
   isFavorited: PropTypes.bool,
+  isWide: PropTypes.bool,
   objectId: PropTypes.string.isRequired,
   onClick: PropTypes.func,
   siteKey: PropTypes.oneOf(['atk', 'cco', 'cio', 'kids', 'school', 'shop']).isRequired,
@@ -181,6 +188,7 @@ FeatureCard.defaultProps = {
   displayFavoritesButton: true,
   imageAlt: ' ',
   isFavorited: false,
+  isWide: false,
   onClick: null,
   siteKeyFavorites: null,
   stickers: [],
