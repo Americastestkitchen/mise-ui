@@ -4,6 +4,7 @@ import { color } from '../../../../styles';
 
 const VideoPlay = ({ fill }) => (
   <svg
+    data-testid="video-play-svg"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 89 89"
     role="img"
