@@ -34,6 +34,7 @@ const color = {
   twitterHover: '#557d93',
   miseUiGrayBorder: '#efefef', // only for stories, not components
   smokeyQuartz: '#2A2A2A',
+  asphalt: '#191919',
 };
 
 export default color;
