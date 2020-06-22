@@ -21,7 +21,7 @@ describe('PersonHeadShot component should', () => {
 
   it('render an image with correct dimensions', () => {
     renderComponent();
-    const headShot = screen.getByAltText('test-head-shot');
+    const headShot = screen.getByTestId('person-head-shot');
     expect(headShot);
     expect(headShot).toHaveStyle('border-radius: 10rem;');
     expect(headShot).toHaveStyle('height: 10rem;');
