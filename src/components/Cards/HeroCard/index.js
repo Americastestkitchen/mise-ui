@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 
-import PersonHeadShot from '../../Person/PersonHeadShot';
+import PersonHeadShot from '../shared/PersonHeadShot';
 import Sticker from '../shared/Sticker';
 import { color, font, fontSize, lineHeight, spacing } from '../../../styles';
 import { keyToLogo } from '../../DesignTokens/Logo';
