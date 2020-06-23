@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
-import { color, font, fontSize, grid, lineHeight, spacing } from '../../../styles';
+import { color, font, fontSize, grid, lineHeight, mixins, spacing } from '../../../styles';
 import Badge from '../../Badge';
 import FavoriteButton from '../shared/FavoriteButton';
 import Image from '../shared/Image';
@@ -38,6 +38,10 @@ const StyledFeatureCard = styled.article`
     color: ${color.white};
   }
 
+  &.has-cta .feature-card__subcomponents-wrapper {
+    bottom: ${spacing.md};
+  }
+
   @media(hover: hover) {
     &:hover {
       transform: translateY(-${spacing.xsm});
@@ -52,10 +56,9 @@ const StyledFeatureCard = styled.article`
 `;
 
 const StyledImage = styled(Image)`
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 `;
 
 const StyledBadge = styled(Badge)`
@@ -90,10 +93,20 @@ const Attributions = styled.p`
   font: ${fontSize.md}/${lineHeight.md} ${font.pnb};
 `;
 
+const CtaLink = styled.a`
+  ${mixins.styledLink(color.tomato, color.rust, color.white)};
+  bottom: ${spacing.sm};
+  font: ${fontSize.md}/${lineHeight.sm} ${font.pnb};
+  left: ${spacing.xsm};
+  position: absolute;
+`;
+
 function FeatureCard({
   attributions,
   className,
   contentType,
+  ctaText,
+  ctaUrl,
   displayFavoritesButton,
   href,
   imageAlt,
@@ -110,7 +123,7 @@ function FeatureCard({
 }) {
   return (
     <StyledFeatureCard
-      className={imageUrl ? '' : 'no-image'}
+      className={ctaUrl ? 'has-cta' : ''}
       contentType={contentType}
       data-testid="feature-card"
       isWide={isWide}
@@ -165,6 +178,11 @@ function FeatureCard({
           ) : null }
         </div>
       </a>
+      { ctaUrl && (
+        <CtaLink ctaUrl={ctaUrl}>
+          { ctaText }
+        </CtaLink>
+      )}
     </StyledFeatureCard>
   );
 }
@@ -173,6 +191,8 @@ FeatureCard.propTypes = {
   attributions: PropTypes.string,
   className: PropTypes.string,
   contentType: PropTypes.string.isRequired,
+  ctaText: PropTypes.string,
+  ctaUrl: PropTypes.string,
   displayFavoritesButton: PropTypes.bool,
   href: PropTypes.string.isRequired,
   imageAlt: PropTypes.string,
@@ -191,6 +211,8 @@ FeatureCard.propTypes = {
 FeatureCard.defaultProps = {
   attributions: '',
   className: null,
+  ctaText: '',
+  ctaUrl: '',
   displayFavoritesButton: true,
   imageAlt: ' ',
   isFavorited: false,

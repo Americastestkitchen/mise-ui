@@ -1,20 +1,22 @@
 export default {
-  styledLink(underlineColor, backgroundColor) {
+  styledLink(underlineColor, backgroundColor, textColor = 'inherit') {
     return `
       background-image: linear-gradient(transparent 91%, ${underlineColor} 91%);
       border: none;
-      color: inherit;
+      color: ${textColor};
       cursor: pointer;
       text-decoration: none;
       transition: background .2s ease-in-out;
 
       &:focus,
       &:active {
-        color: inherit;
+        color: ${textColor};
       }
 
-      &:hover {
-        background-color: ${backgroundColor};
+      @media(hover: hover) {
+        &:hover {
+          background-color: ${backgroundColor};
+        }
       }
 
       @media print {
