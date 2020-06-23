@@ -5,7 +5,7 @@ import '@testing-library/jest-dom/extend-expect';
 import 'jest-styled-components';
 
 import PersonHeadShot from '../index';
-import breakpoints from '../../../../styles/breakpoints';
+import breakpoints from '../../../../../styles/breakpoints';
 
 describe('PersonHeadShot component should', () => {
   const renderComponent = () => (
