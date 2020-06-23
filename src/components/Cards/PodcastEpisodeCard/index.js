@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import { color, font, fontSize, spacing, lineHeight, letterSpacing, mixins } from '../../../styles';
@@ -17,6 +17,7 @@ const PodcastEpisodeCardWrapper = styled.div`
 
   > div {
     display: flex;
+    overflow: hidden;
   }
 
   p {
@@ -44,15 +45,15 @@ const PodcastEpisodeCardWrapper = styled.div`
 
 const ImageWrapper = styled.div`
   position: relative;
-  flex-basis: 41%;
+  flex-basis: 65%;
   max-height: 10rem;
   max-width: 10rem;
   margin-right: ${spacing.sm};
 
-  
   ${breakpoint('md')`
+    margin-right: 0;
+    max-height: none;
     max-width: 23rem;
-    max-height: 20rem;
   `}
 `;
 
@@ -84,6 +85,10 @@ export const StyledSticker = styled(Sticker)`
 const TextWrapper = styled.div`
   flex-basis: 59%;
 
+  button {
+    text-align: left;
+  }
+
   h4 {
     font: 1.2rem/${lineHeight.sm} ${font.pnb};
     color: ${color.silver};
@@ -107,7 +112,7 @@ const TextWrapper = styled.div`
   h3 {
     font: ${fontSize.md} ${font.pnb};
     margin-top: ${spacing.xsm};
-    margin-bottom: ${spacing.sm};
+    margin-bottom: ${spacing.sm}; 
     line-height: ${lineHeight.md};
   }
 
@@ -142,7 +147,7 @@ const TextWrapper = styled.div`
       display: flex;
       font-size: ${fontSize.xl};
       margin-top: ${spacing.sm};
-      margin-bottom: ${spacing.md};
+      margin-bottom: 0;
 
       svg {
         margin-right: ${spacing.xsm};
@@ -151,70 +156,106 @@ const TextWrapper = styled.div`
 
     p {
       display: block;
+      margin-top: ${spacing.md};
       margin-bottom: ${spacing.sm};
     }
   `}
 `;
 
-const PodcastEpisodeCard = ({
-  episode,
-  title,
-  description,
-  href,
-  imageAlt,
-  imageUrl,
-  siteKey,
-  stickers,
-}) => (
-  <PodcastEpisodeCardWrapper>
-    <div>
-      <ImageWrapper>
-        <Image
-          aria-hidden="true"
-          imageAlt={imageAlt}
-          imageUrl={imageUrl}
-        />
-        <StyledBadge
-          type={siteKey}
-        />
-        {stickers.map(({ text, type }) => (
-          <StyledSticker
-            key={text}
-            contentType="episode"
-            type={type}
-            text={text}
-          />
-        ))}
-      </ImageWrapper>
-      <TextWrapper>
-        <h4>Episode {episode} </h4>
-        <>
-          <VideoPlay fill={color.white} />
-          <h3>{title}</h3>
-        </>
+class PodcastEpisodeCard extends Component {
+  setEpisode = (episode) => {
+    const { setEpisode } = this.props;
+    setEpisode(episode); // call method
+  };
+
+  render() {
+    const {
+      episode,
+      title,
+      description,
+      href,
+      id,
+      imageAlt,
+      imageUrl,
+      siteKey,
+      stickers,
+    } = this.props;
+
+    return (
+      <PodcastEpisodeCardWrapper
+        className="podcast-episode-card"
+      >
+        <div>
+          <ImageWrapper>
+            <Image
+              aria-hidden="true"
+              imageAlt={imageAlt}
+              imageUrl={imageUrl}
+            />
+            <StyledBadge
+              type={siteKey}
+            />
+            {stickers.map(({ text, type }) => (
+              <StyledSticker
+                key={text}
+                contentType="episode"
+                type={type}
+                text={text}
+              />
+            ))}
+          </ImageWrapper>
+          <TextWrapper>
+            <button
+              type="button"
+              onClick={this.setEpisode.bind(this, {
+                episode,
+                title,
+                description,
+                href,
+                id,
+                imageAlt,
+                imageUrl,
+                siteKey,
+                stickers,
+              })}
+            >
+              <h4>Episode {episode} </h4>
+              <VideoPlay fill={color.white} />
+              <h3>{title}</h3>
+            </button>
+            <p>{description} </p>
+            <span>•••</span><a href={href}>More From This Episode</a>
+          </TextWrapper>
+        </div>
         <p>{description} </p>
-        <span>•••</span><a href={href}>More From This Episode</a>
-      </TextWrapper>
-    </div>
-    <p>{description} </p>
-  </PodcastEpisodeCardWrapper>
-);
+      </PodcastEpisodeCardWrapper>
+    );
+  }
+}
 
 PodcastEpisodeCard.propTypes = {
-  episode: PropTypes.number.isRequired,
+  /** title of the episode */
   title: PropTypes.string.isRequired,
+  /** short description of episode */
   description: PropTypes.string.isRequired,
+  /** episode number */
+  episode: PropTypes.number.isRequired,
+  /** link of episode detail page */
   href: PropTypes.string.isRequired,
+  /** episode id */
+  id: PropTypes.string.isRequired,
   imageAlt: PropTypes.string,
   imageUrl: PropTypes.string,
   siteKey: PropTypes.string.isRequired,
   stickers: PropTypes.array,
+  setEpisode: PropTypes.func,
 };
 
 PodcastEpisodeCard.defaultProps = {
   imageAlt: ' ',
   imageUrl: '',
   stickers: [],
+  setEpisode: null,
 };
 
 export default PodcastEpisodeCard;
