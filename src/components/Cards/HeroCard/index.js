@@ -127,7 +127,13 @@ const HeroCard = ({
         {
           personHeadShot && (
             <HeroCardHeadshot>
-              <PersonHeadShot {...personHeadShot} />
+              <PersonHeadShot
+                {...personHeadShot}
+                size={{
+                  sm: '5',
+                  md: '8',
+                }}
+              />
             </HeroCardHeadshot>
           )
         }
