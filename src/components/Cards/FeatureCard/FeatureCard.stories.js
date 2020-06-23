@@ -12,7 +12,7 @@ export default {
 
 export const Default = () => (
   <FeatureCard
-    attributions="Episode • Cook's Country"
+    attributions="Episode • Cook’s Country"
     contentType="episode"
     displayFavoritesButton
     imageAlt={text('Image alt text', '')}
@@ -29,7 +29,7 @@ export const Default = () => (
 
 export const Wide = () => (
   <FeatureCard
-    attributions="Episode • America's Test Kitchen"
+    attributions="Episode • America’s Test Kitchen"
     contentType="episode"
     displayFavoritesButton
     href="https://www.americastestkitchen.com/episode/658-savory-and-sweet-italian"
@@ -42,5 +42,25 @@ export const Wide = () => (
     objectId=""
     onClick={action('result-click')}
     title={text('Title', 'Savory and Sweet Italian')}
+  />
+);
+
+export const WideWithCTA = () => (
+  <FeatureCard
+    attributions="Popular • America’s Test Kitchen"
+    contentType="review"
+    ctaText="Buy the Winner"
+    ctaUrl="http://google.com"
+    displayFavoritesButton
+    href="http://google.com"
+    imageAlt={text('Image alt text', 'Lorem ipsum')}
+    imageUrl={text('Image url', 'https://res.cloudinary.com/hksqkdlah/image/upload/v1592916093/mise-play/feature-card-wide-cta.jpg')}
+    isWide
+    siteKey="atk"
+    siteKeyFavorites="atk"
+    stickers={[{ type: 'editorial', text: 'Popular'}]}
+    objectId=""
+    onClick={action('result-click')}
+    title={text('Title', '12-Inch Stainless-Steel Skillets')}
   />
 );
