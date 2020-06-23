@@ -56,10 +56,9 @@ const StyledFeatureCard = styled.article`
 `;
 
 const StyledImage = styled(Image)`
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 `;
 
 const StyledBadge = styled(Badge)`
