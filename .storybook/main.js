@@ -8,5 +8,6 @@ module.exports = {
     '@storybook/addon-knobs/register',
     '@storybook/addon-viewport/register',
     '@whitespace/storybook-addon-html/register',
+    '@storybook/addon-notes/register',
   ],
 };

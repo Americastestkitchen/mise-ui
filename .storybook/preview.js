@@ -4,11 +4,12 @@ import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import { withHTML } from '@whitespace/storybook-addon-html/react';
 import { breakpoints } from '../src/styles';
+import carousel from '../src/styles/carousel';
 import globalStyles from '../src/styles/global';
 
 const theme = { breakpoints };
 
-const GlobalStyle = createGlobalStyle`${globalStyles}`;
+const GlobalStyle = createGlobalStyle`${globalStyles}${carousel}`;
 
 addDecorator(
   withHTML({
