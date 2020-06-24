@@ -12,7 +12,7 @@ const StyledProgressBar = styled.div`
     position: relative;
     height: 6px;
     width: 16.5rem;
-    
+
     &::before {
       background-color: ${color.white};
       content: '';
@@ -36,11 +36,12 @@ const ProgressBar = ({
 
 ProgressBar.propTypes = {
   progress: PropTypes.number,
-  videoId: PropTypes.string.isRequired,
+  videoId: PropTypes.string,
 };
 
 ProgressBar.defaultProps = {
   progress: 0,
+  videoId: undefined,
 };
 
 export default ProgressBar;
