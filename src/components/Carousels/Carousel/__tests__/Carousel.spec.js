@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import 'jest-styled-components';
 
-import breakpoints from '../../../styles/breakpoints';
+import breakpoints from '../../../../styles/breakpoints';
 import Carousel from '../index';
 
 const images = new Array(5)

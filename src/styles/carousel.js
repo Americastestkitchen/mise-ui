@@ -1,20 +1,6 @@
 import { css } from 'styled-components';
 
 export default css`
-  /* START - CUSTOM ATK GLOBAL STYLES */
-  .flickity-button {
-    background: none;
-
-    &:hover {
-      background: none;
-    }
-  }
-
-  .flickity-page-dots {
-    bottom: -15px;
-  }
-  /* end - CUSTOM ATK GLOBAL STYLES */
-
   /*! Flickity v2.2.1
   https://flickity.metafizzy.co
   ---------------------------------------------- */
@@ -26,7 +12,7 @@ export default css`
   .flickity-enabled:focus { outline: none; }
 
   .flickity-viewport {
-    overflow: hidden;
+    overflow-x: hidden;
     position: relative;
     height: 100%;
   }
@@ -152,5 +138,4 @@ export default css`
   .flickity-page-dots .dot.is-selected {
     opacity: 1;
   }
-
 `;

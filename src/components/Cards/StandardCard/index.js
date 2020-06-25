@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
-import { color, fontSize, spacing } from '../../../styles';
+import { cards, color, fontSize, spacing } from '../../../styles';
 import Badge from '../../Badge';
 import Attributions from '../shared/Attributions';
 import CtaLink from '../shared/CtaLink';
@@ -14,7 +14,7 @@ import Title from '../shared/Title';
 const StyledStandardCard = styled.article`
   position: relative;
   padding-bottom: ${spacing.md};
-  width: 16.2rem;
+  width: ${cards.standard.width.base};
   color: ${color.eclipse};
 
   a.standard-card__anchor:hover {
@@ -23,7 +23,7 @@ const StyledStandardCard = styled.article`
 
   ${breakpoint('lg')`
     padding-bottom: ${spacing.lg};
-    width: 27.2rem;
+    width: ${cards.standard.width.lg};
   `}
 `;
 
@@ -152,7 +152,9 @@ function StandardCard({
   href,
 }) {
   return (
-    <StyledStandardCard className={imageUrl ? '' : 'no-image'}>
+    <StyledStandardCard
+      className={`standard-card${imageUrl ? '' : ' no-image'}`}
+    >
       <a
         className="standard-card__anchor"
         href={href}

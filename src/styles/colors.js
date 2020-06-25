@@ -1,5 +1,6 @@
 const color = {
   white: '#ffffff',
+  transparentWhite: 'rgba(255, 255, 255, 0.5)',
   black: '#000000',
   transparentBlack: 'rgba(0, 0, 0, 0.7)',
   tomato: '#d73a15',
@@ -13,6 +14,8 @@ const color = {
   seaSalt: '#d1fcff',
   regentGray: '#767f81',
   silver: '#c2c2c2',
+  nero: '#262626',
+  transparentNero: 'rgba(38, 38, 38, 0.5)',
   nobel: '#999999',
   denim: '#416490',
   malibu: '#69a0e1',

@@ -54,6 +54,6 @@
     "react"
   ],
   "settings": {
-    "import/parser": "babel-eslint",
+    "import/parser": "babel-eslint"
   }
 }
