@@ -1,21 +1,53 @@
+import breakpoint from 'styled-components-breakpoint';
 import PropTypes from 'prop-types';
 import React, { useEffect, useRef } from 'react';
 import styled, { css } from 'styled-components';
 
-import { withThemes } from '../../styles';
+import { color, spacing, withThemes } from '../../../styles';
 
 const CarouselTheme = {
   default: css`
+    padding-top: ${spacing.md};
     width: 100%;
+
+    .flickity-button {
+      background: none;
+      color: ${color.black};
+      display: none;
+      z-index: 1;
+
+      &:hover {
+        background: none;
+      }
+
+      &.next {
+        right: -1rem;
+      }
+
+      &.prev {
+        left: -1rem;
+      }
+    }
+
+    .flickity-page-dots {
+      bottom: auto;
+      top: 0;
+      right: ${spacing.sm};
+      text-align: right;
+
+      .dot {
+        height: 1.2rem;
+        margin: 0 ${spacing.xxsm};
+        width: 1.2rem;
+
+        &:last-of-type {
+          margin-right: 0;
+        }
+      }
+    }
 
     img {
       display: block;
-    }
-
-    &.flickity-enabled {
-      .carousel-cell:not(.is-selected) {
-        opacity: 0.3;
-      }
     }
 
     &:not(.flickity-enabled) {
@@ -25,6 +57,40 @@ const CarouselTheme = {
         .carousel-cell {
           display: flex;
           margin: 0 auto;
+        }
+      }
+    }
+
+    ${breakpoint('lg')`
+      .flickity-page-dots {
+        right: ${spacing.lg};
+      }
+
+      .flickity-button {
+        display: block;
+      }
+    `}
+
+    ${breakpoint('xlg')`
+      padding-top: 2.8rem;
+      width: 118rem;
+
+      .flickity-page-dots {
+        right: ${spacing.xxlg};
+      }
+    `}
+  `,
+  dark: css`
+    .flickity-button {
+      color: ${color.white};
+    }
+
+    .flickity-page-dots {
+      .dot {
+        background-color: ${color.white};
+
+        :not(.is-selected) {
+          opacity: 0.5;
         }
       }
     }
@@ -102,12 +168,12 @@ function getFlickityInstance(el, options) {
 }
 
 const defaultOptions = {
-  arrowShape: { x0: 10, x1: 60, y1: 50, x2: 60, y2: 40, x3: 60 },
-  cellAlign: 'center',
+  arrowShape: 'M54.48828 88.55859c2.59375 4.00782 7.78516 5.15235 11.82031 2.86329 4.03907-2.57422 5.19141-7.72657 2.88672-11.73047l-20.1875-32.04688 20.1875-32.04687c2.59375-4.00782 1.44141-9.44532-2.88672-11.73438-1.4414-.85547-2.88281-1.42969-4.61328-1.42969-2.88281 0-5.76562 1.42969-7.20703 4.00782L28.53516 47.64453l25.95312 40.91406zm0 0',
+  cellAlign: 'left',
   navigationArrows: true,
   navigationDots: true,
   slideshow: false,
-  wrapAround: false,
+  wrapAround: true,
 };
 
 const Carousel = ({ className, items, options, renderItem }) => {
@@ -123,14 +189,11 @@ const Carousel = ({ className, items, options, renderItem }) => {
       if (flkty.slides.length === 1) flkty.destroy();
       else flktyRef.current = flkty;
     }
-    return () => flktyRef.current?.destroy();
-  }, [
-    items,
-    opts.cellAlign,
-    opts.navigationDots,
-    opts.slideshow,
-    opts.wrapAround,
-  ]);
+    return () => {
+      try { if (flktyRef.current) flktyRef.current.destroy(); } // eslint-disable-line
+      catch (err) {}; // eslint-disable-line
+    };
+  }, [items, opts]);
 
   return (
     <CarouselWrapper
@@ -172,6 +235,7 @@ Carousel.propTypes = {
     /** Enables infinite scrolling in carousel */
     wrapAround: PropTypes.bool,
   }),
+  /** Callback for rendering each carousel item */
   renderItem: PropTypes.func.isRequired,
 };
 
