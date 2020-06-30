@@ -16,7 +16,7 @@ describe('MediaObjectCard component should', () => {
           ctaUrl="https://www.americastestkitchen.com"
           description="This is a test description."
           personHeadShot={{
-            imgSrc: 'https://res.cloudinary.com/hksqkdlah/image/upload/v1591822137/mise-play/Image_21_3x.png',
+            imgCloudinaryId: 'mise-play/Image_21_3x.png',
           }}
           personName="Bridget Lancaster"
           personTitle="On-screen Instructor"

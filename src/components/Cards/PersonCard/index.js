@@ -36,11 +36,11 @@ const PersonCardDescription = styled.p`
   text-align: center;
 `;
 
-const PersonCard = ({ description, imgAlt, imgSrc, name }) => (
+const PersonCard = ({ description, imgAlt, imgCloudinaryId, name }) => (
   <PersonCardWrapper data-testid="person-card">
     <PersonHeadShot
       imgAlt={imgAlt}
-      imgSrc={imgSrc}
+      imgCloudinaryId={imgCloudinaryId}
     />
     <PersonCardName>
       {name}
@@ -54,7 +54,7 @@ const PersonCard = ({ description, imgAlt, imgSrc, name }) => (
 PersonCard.propTypes = {
   description: PropTypes.string.isRequired,
   imgAlt: PropTypes.string,
-  imgSrc: PropTypes.string.isRequired,
+  imgCloudinaryId: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
 };
 

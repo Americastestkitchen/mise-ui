@@ -14,7 +14,7 @@ describe('PersonCard component should', () => {
         <PersonCard
           description="Test PersonCard description."
           imgAlt="test-head-shot"
-          imgSrc="https://res.cloudinary.com/hksqkdlah/image/upload/v1591822137/mise-play/Image_21_3x.png"
+          imgCloudinaryId="mise-play/Image_21_3x.png"
           name="Test Person"
         />
       </ThemeProvider>,
