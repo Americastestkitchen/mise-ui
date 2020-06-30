@@ -17,7 +17,7 @@ describe('HeroCard component should', () => {
   );
 
   const watchCardProps = {
-    backgroundImg: 'https://res.cloudinary.com/hksqkdlah/image/upload/b_rgb:000000,bo_1px_solid_rgb:000000,co_rgb:000000,e_gradient_fade:8,y_-0.5/a_0/v1592424066/mise-play/Image_3x.png',
+    backgroundCloudinaryId: 'mise-play/Image_3x.png',
     description: 'Test watch description.',
     ctaUrl: 'www.americastestkitchen.com',
     ctaText: 'Watch The Latest Episode',
@@ -25,13 +25,13 @@ describe('HeroCard component should', () => {
   };
 
   const learnCardProps = {
-    backgroundImg: 'https://res.cloudinary.com/hksqkdlah/image/upload/b_rgb:000000,bo_1px_solid_rgb:000000,co_rgb:000000,e_gradient_fade:8,y_-0.5/a_0/v1592424066/mise-play/Image_3x.png',
+    backgroundCloudinaryId: 'mise-play/Image_3x.png',
     description: 'Test learn description.',
     ctaUrl: 'www.americastestkitchen.com',
     ctaText: 'Start Learning',
     personHeadShot: {
       imgAlt: 'test-alt-text',
-      imgSrc: 'https://res.cloudinary.com/hksqkdlah/image/upload/v1591822137/mise-play/Image_21_3x.png',
+      imgCloudinaryId: 'mise-play/Image_21_3x.png',
     },
     sticker: {
       contentType: 'video',

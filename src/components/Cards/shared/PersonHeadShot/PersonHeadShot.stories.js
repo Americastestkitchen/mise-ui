@@ -9,6 +9,6 @@ export default {
 
 export const Default = () => (
   <PersonHeadShot
-    imgSrc="https://res.cloudinary.com/hksqkdlah/image/upload/v1591822137/mise-play/Image_21_3x.png"
+    imgCloudinaryId="mise-play/Image_21_3x.png"
   />
 );

@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 
+import { getImageUrl } from '../../../../lib/cloudinary';
+
 const PersonHeadShotWrapper = styled.div`
   ${({ size: { sm, md, lg } }) => `
     border-radius: 50%;
@@ -28,7 +30,7 @@ const PersonHeadShotImg = styled.img`
   width: 100%;
 `;
 
-const PersonHeadShot = ({ imgAlt, imgSrc, size }) => (
+const PersonHeadShot = ({ imgAlt, imgCloudinaryId, size }) => (
   <PersonHeadShotWrapper
     className="person-head-shot"
     data-testid="person-head-shot"
@@ -36,7 +38,7 @@ const PersonHeadShot = ({ imgAlt, imgSrc, size }) => (
   >
     <PersonHeadShotImg
       alt={imgAlt}
-      src={imgSrc}
+      src={getImageUrl(imgCloudinaryId, { height: 100, width: 100 })}
     />
   </PersonHeadShotWrapper>
 );
@@ -45,7 +47,7 @@ PersonHeadShot.propTypes = {
   /** Optional: Alt text for img */
   imgAlt: PropTypes.string,
   /** Source url for img */
-  imgSrc: PropTypes.string.isRequired,
+  imgCloudinaryId: PropTypes.string.isRequired,
   /** Optional: REM value for breakpoints. 'sm' used as fallback for 'md' and
    * 'lg'. 'md' used as fallback for 'lg'. */
   size: PropTypes.shape({

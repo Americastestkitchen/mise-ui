@@ -6,6 +6,7 @@ import breakpoint from 'styled-components-breakpoint';
 import PersonHeadShot from '../shared/PersonHeadShot';
 import Sticker from '../shared/Sticker';
 import { color, font, fontSize, lineHeight, spacing } from '../../../styles';
+import { getImageUrl } from '../../../lib/cloudinary';
 import { keyToLogo } from '../../DesignTokens/Logo';
 import { VideoPlay } from '../../DesignTokens/Icon/svgs';
 
@@ -111,9 +112,10 @@ const HeroCardCtaText = styled.span`
 `;
 
 const HeroCard = ({
-  backgroundImg, ctaUrl, ctaText, description, iconKey, personHeadShot, sticker,
+  backgroundCloudinaryId, ctaUrl, ctaText, description, iconKey, personHeadShot, sticker,
 }) => {
   const Logo = keyToLogo(iconKey);
+  const backgroundImg = getImageUrl(backgroundCloudinaryId, 'heroCard');
   return (
     <HeroCardWrapper backgroundImg={backgroundImg}>
       <div>
@@ -162,7 +164,7 @@ const HeroCard = ({
 
 HeroCard.propTypes = {
   /** Image rendered as background for card. */
-  backgroundImg: PropTypes.string.isRequired,
+  backgroundCloudinaryId: PropTypes.string.isRequired,
   /** href for card CTA */
   ctaUrl: PropTypes.string.isRequired,
   /** text for card CTA */
