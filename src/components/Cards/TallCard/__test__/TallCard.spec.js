@@ -55,8 +55,8 @@ describe('TallCard component should', () => {
   // width and height are fixed for these cards
   it('have correct width and height', () => {
     renderComponent();
-    const featureCard = screen.getByTestId('tall-card');
-    expect(featureCard).toHaveStyle('width: 27.2rem');
-    expect(featureCard).toHaveStyle('height: 60rem');
+    const tallCard = screen.getByTestId('tall-card');
+    expect(tallCard).toHaveStyle('width: 27.2rem');
+    expect(tallCard).toHaveStyle('height: 60rem');
   });
 });
