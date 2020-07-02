@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
-import { cards, color, fontSize, spacing } from '../../../styles';
+import { cards, color, fontSize, spacing, withThemes } from '../../../styles';
 import Badge from '../../Badge';
 import Attributions from '../shared/Attributions';
 import CtaLink from '../shared/CtaLink';
@@ -11,15 +11,34 @@ import Image from '../shared/Image';
 import Sticker from '../shared/Sticker';
 import Title from '../shared/Title';
 
+const StandardCardTheme = {
+  default: css`
+    color: ${color.eclipse};
+
+    // This hover state is necessary for a specificity issue related to SERP
+    @media(hover: hover) {
+      a.standard-card__anchor:hover {
+        color: ${color.eclipse};
+      }
+    }
+  `,
+  dark: css`
+    color: ${color.white};
+
+    // This hover state is necessary for a specificity issue related to SERP
+    @media(hover: hover) {
+      a.standard-card__anchor:hover {
+        color: ${color.white};
+      }
+    }
+  `,
+};
+
 const StyledStandardCard = styled.article`
+  ${withThemes(StandardCardTheme)}
   position: relative;
   padding-bottom: ${spacing.md};
   width: ${cards.standard.width.base};
-  color: ${color.eclipse};
-
-  a.standard-card__anchor:hover {
-    color: ${color.eclipse};
-  }
 
   ${breakpoint('lg')`
     padding-bottom: ${spacing.lg};

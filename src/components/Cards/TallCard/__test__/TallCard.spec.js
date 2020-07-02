@@ -6,6 +6,7 @@ import 'jest-styled-components';
 
 import TallCard from '../index';
 import breakpoints from '../../../../styles/breakpoints';
+import { cards } from '../../../../styles';
 
 describe('TallCard component should', () => {
   const renderComponent = () => (
@@ -56,7 +57,7 @@ describe('TallCard component should', () => {
   it('have correct width and height', () => {
     renderComponent();
     const tallCard = screen.getByTestId('tall-card');
-    expect(tallCard).toHaveStyle('width: 27.2rem');
+    expect(tallCard).toHaveStyle(`width: ${cards.standard.width.lg}`);
     expect(tallCard).toHaveStyle('height: 60rem');
   });
 });
