@@ -55,6 +55,28 @@ const AccordionButtonTheme = {
       width: 100%;
     `}
   `,
+  play: css`
+    background-color: ${color.white};
+    border-radius: 2rem;
+    font-size: ${fontSize.lg};
+    height: 4rem;
+    letter-spacing: normal;
+    max-width: 73.7rem;
+    padding: 0 1.6rem;
+    text-transform: capitalize;
+    width: 100%;
+
+    svg {
+      rect {
+        fill: ${color.mint};
+        stroke: ${color.mint};
+      }
+    }
+
+    ${breakpoint('xlg')`
+      width: 100%;
+    `}
+  `,
   light: css`
   `,
 };
@@ -74,6 +96,7 @@ const AccordionLabelWrapperTheme = {
         display: inline-block;
         margin-right: ${spacing.xsm};
         max-width: 11.25rem;
+        text-align: left;
       }
     ` : ''
   )}
@@ -109,27 +132,39 @@ const AccordionLabelWrapper = styled.div`
   ${withThemes(AccordionLabelWrapperTheme)}
 `;
 
-const AccordionSvgWrapper = styled.div`
-  height: 2rem;
-  max-height: 2rem;
-  max-width: 2rem;
-  width: 2rem;
+const AccordionSvgWrapperTheme = {
+  default: css`
+    height: 2rem;
+    max-height: 2rem;
+    max-width: 2rem;
+    width: 2rem;
 
-  svg {
-    height: 100%;
-    transition: all 0.2s ease;
-    width: 100%;
+    svg {
+      height: 100%;
+      transition: all 0.2s ease;
+      width: 100%;
 
-    ${({ isExpanded }) => (isExpanded ? `
-      transform: rotate(90deg);
+      ${({ isExpanded }) => (isExpanded ? `
+        transform: rotate(90deg);
 
-      rect {
-        &:first-child {
-          opacity: 0;
+        rect {
+          &:first-child {
+            opacity: 0;
+          }
         }
-      }
-    ` : '')}
-  }
+      ` : '')}
+    }
+  `,
+  play: css`
+    height: 3rem;
+    max-height: 3rem;
+    max-width: 3rem;
+    width: 3rem;
+  `,
+};
+
+const AccordionSvgWrapper = styled.div`
+  ${withThemes(AccordionSvgWrapperTheme)}
 `;
 
 const AccordionContent = styled.div`

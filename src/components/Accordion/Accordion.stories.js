@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import { ThemeProvider } from 'styled-components';
 import { withKnobs } from '@storybook/addon-knobs';
 
 import Accordion from './index';
+import { color } from '../../styles';
 
 export default {
   title: 'Components|Accordion',
@@ -11,12 +13,59 @@ export default {
 };
 
 const AccordionWrapper = styled.div`
-  max-width: 30rem;
+  ${({ backgroundColor, maxWidth, padding }) => (`
+    ${backgroundColor ? `background-color: ${backgroundColor}; border-radius: 2rem;` : ''}
+    ${maxWidth ? `max-width: ${maxWidth}rem;` : ''}
+    ${padding ? `padding: ${padding};` : ''}
+  `)}
 `;
 
-export const Default = () => (
-  <AccordionWrapper>
-    <Accordion label="button">
+export const KidsSearch = () => (
+  <ThemeProvider theme={{ siteKey: 'kidsSearch' }}>
+    <AccordionWrapper maxWidth="30">
+      <Accordion
+        icon="sort"
+        isFieldset
+        label="sort by"
+      >
+        <p>Hidden Content</p>
+      </Accordion>
+    </AccordionWrapper>
+  </ThemeProvider>
+);
+
+export const Play = () => (
+  <ThemeProvider theme={{ siteKey: 'play' }}>
+    <AccordionWrapper
+      backgroundColor={color.whiteSmoke}
+      maxWidth="73.7"
+      padding="2rem 2rem"
+    >
+      <Accordion label="button">
+        <p>Hidden Content</p>
+      </Accordion>
+    </AccordionWrapper>
+  </ThemeProvider>
+);
+
+export const SearchWithoutIcon = () => (
+  <AccordionWrapper maxWidth="30">
+    <Accordion
+      isFieldset
+      label="button"
+    >
+      <p>Hidden Content</p>
+    </Accordion>
+  </AccordionWrapper>
+);
+
+export const SearchWithIcon = () => (
+  <AccordionWrapper maxWidth="30">
+    <Accordion
+      icon="cookbook"
+      isFieldset
+      label="cookbook collection"
+    >
       <p>Hidden Content</p>
     </Accordion>
   </AccordionWrapper>
