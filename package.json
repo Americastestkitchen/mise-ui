@@ -5,6 +5,7 @@
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "algoliasearch": "^4.0.3",
     "cloudinary-core": "^2.9.0",
+    "cross-fetch": "^3.0.5",
     "flickity": "^2.2.1",
     "lodash.memoize": "^4.1.2",
     "lodash.orderby": "^4.6.0",

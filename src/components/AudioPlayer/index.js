@@ -242,7 +242,8 @@ const AudioPlayer = ({
 };
 
 AudioPlayer.propTypes = {
-  id: PropTypes.string,
+  /** id of the episode */
+  id: PropTypes.string.isRequired,
   /** title of the episode */
   title: PropTypes.string.isRequired,
   /** episode number */
@@ -254,7 +255,6 @@ AudioPlayer.propTypes = {
 };
 
 AudioPlayer.defaultProps = {
-  id: '',
   href: '',
   imageAlt: ' ',
   imageUrl: '',
