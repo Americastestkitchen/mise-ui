@@ -58,6 +58,7 @@ const ThemedComponent = ({
           displayCommentCount={displayCommentCount}
           displayFavoritesButton={displayFavoritesButton}
           displayLockIcon={displayLockIcon}
+          favoriteRibbonColor={color.white}
           imageAlt={imageAlt}
           imageUrl={imageUrl}
           isFavorited={isFavorited}
@@ -142,6 +143,7 @@ export const DarkTheme = () => (
     displayCommentCount
     displayFavoritesButton
     displayLockIcon={false}
+    favoriteRibbonColor={color.white}
     imageAlt={text('Image alt text', '')}
     imageUrl={text('Image url', 'https://res.cloudinary.com/hksqkdlah/image/upload/s--bab2_EML--/c_scale,dpr_2.0,f_auto,h_172,q_auto:low,w_172/40784_sil-food-storage-containers-rubbermaid-brilliance-food-storage-container-large-96-cup-1991158')}
     isFavorited={false}
