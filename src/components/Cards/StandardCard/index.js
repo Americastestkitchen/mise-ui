@@ -157,6 +157,7 @@ function StandardCard({
   displayCommentCount,
   displayFavoritesButton,
   displayLockIcon,
+  favoriteRibbonColor,
   stickers,
   imageAlt,
   imageUrl,
@@ -212,6 +213,7 @@ function StandardCard({
           { displayFavoritesButton ? (
             <StyledFavoriteButton
               className={className}
+              fill={favoriteRibbonColor}
               role="button"
               isFavorited={isFavorited}
               objectId={objectId}
@@ -253,6 +255,7 @@ StandardCard.propTypes = {
   displayCookbook: PropTypes.bool,
   displayCommentCount: PropTypes.bool,
   displayLockIcon: PropTypes.bool,
+  favoriteRibbonColor: PropTypes.string,
   href: PropTypes.string.isRequired,
   imageAlt: PropTypes.string,
   imageUrl: PropTypes.string,
@@ -277,6 +280,7 @@ StandardCard.defaultProps = {
   displayCommentCount: false,
   displayFavoritesButton: false,
   displayLockIcon: false,
+  favoriteRibbonColor: color.eclipse,
   imageAlt: '',
   imageUrl: '',
   isFavorited: false,
