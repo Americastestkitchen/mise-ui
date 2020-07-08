@@ -9,13 +9,14 @@ import data from './data';
 import DocumentListCarousel from '../index';
 
 describe('DocumentListCarousel component should', () => {
-  const renderComponent = ({ intro, subtitle, title, type }) => (
+  const renderComponent = ({ ctaText, ctaUrl, intro, title, type }) => (
     render(
       <ThemeProvider theme={{ breakpoints }}>
         <DocumentListCarousel
+          ctaText={ctaText}
+          ctaUrl={ctaUrl}
           intro={intro}
           items={data.standardItems}
-          subtitle={subtitle}
           title={title}
           type={type}
         />
@@ -25,13 +26,14 @@ describe('DocumentListCarousel component should', () => {
 
   it('render all text components', () => {
     renderComponent({
+      ctaUrl: 'https://www.americastestkitchen.com',
+      ctaText: 'Something less interesting',
       intro: 'Something even less interesting',
-      subtitle: 'Something less interesting',
       title: 'Something interesting',
       type: 'standard',
     });
     expect(screen.getByText('Something interesting'));
-    expect(screen.getByText('Something less interesting'));
+    expect(screen.getByText('Something less interesting', { exact: false }));
     expect(screen.getByText('Something even less interesting'));
     expect(screen.getByTestId('card-carousel--standard'));
   });
