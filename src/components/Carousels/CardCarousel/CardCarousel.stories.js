@@ -1,10 +1,11 @@
 import React from 'react';
 import styled, { css, ThemeProvider } from 'styled-components';
-import { withKnobs, select } from '@storybook/addon-knobs/react';
+import { action } from '@storybook/addon-actions';
+import { withKnobs, select , text } from '@storybook/addon-knobs/react';
 
 import CardCarousel from './index';
 import CardCarouselNotes from './CardCarousel.md';
-import { breakpoints, color, withThemes } from '../../../styles'
+import { breakpoints, color, spacing, withThemes } from '../../../styles'
 
 export default {
   title: 'Components|Carousels/CardCarousel',
@@ -116,6 +117,87 @@ const items = [
   },
 ];
 
+const tallItems = [
+  {
+    contentType: 'episode',
+    dek: 'New episodes weekly',
+    href: 'https://www.google.com',
+    logoKey: 'atk',
+    imageAlt: text('Image alt text', ''),
+    imageUrl: text('Image url', 'https://res.cloudinary.com/hksqkdlah/image/upload/v1592937037/mise-play/tall-card.jpg'),
+    overlayColor: '#a53015',
+    siteKey: 'cco',
+    siteKeyFavorites: 'cco',
+    stickers: [{ type: 'priority', text: 'Popular' }],
+    onClick: action('result-click'),
+  },
+  {
+    contentType: 'episode',
+    dek: 'New episodes weekly',
+    href: 'https://www.google.com',
+    logoKey: 'atk',
+    imageAlt: text('Image alt text', ''),
+    imageUrl: text('Image url', 'https://res.cloudinary.com/hksqkdlah/image/upload/v1592937037/mise-play/tall-card.jpg'),
+    overlayColor: '#a53015',
+    siteKey: 'cco',
+    siteKeyFavorites: 'cco',
+    stickers: [{ type: 'priority', text: 'new' }, { type: 'editorial', text: '38:28' }],
+    onClick: action('result-click'),
+  },
+  {
+    contentType: 'episode',
+    dek: 'New episodes weekly',
+    href: 'https://www.google.com',
+    logoKey: 'atk',
+    imageAlt: text('Image alt text', ''),
+    imageUrl: text('Image url', 'https://res.cloudinary.com/hksqkdlah/image/upload/v1592937037/mise-play/tall-card.jpg'),
+    overlayColor: '#a53015',
+    siteKey: 'cco',
+    siteKeyFavorites: 'cco',
+    stickers: [{ type: 'editorial', text: '38:28' }],
+    onClick: action('result-click'),
+  },
+  {
+    contentType: 'episode',
+    dek: 'New episodes weekly',
+    href: 'https://www.google.com',
+    logoKey: 'atk',
+    imageAlt: text('Image alt text', ''),
+    imageUrl: text('Image url', 'https://res.cloudinary.com/hksqkdlah/image/upload/v1592937037/mise-play/tall-card.jpg'),
+    overlayColor: '#a53015',
+    siteKey: 'cco',
+    siteKeyFavorites: 'cco',
+    stickers: [{ type: 'editorial', text: '38:28' }],
+    onClick: action('result-click'),
+  },
+  {
+    contentType: 'episode',
+    dek: 'New episodes weekly',
+    href: 'https://www.google.com',
+    logoKey: 'atk',
+    imageAlt: text('Image alt text', ''),
+    imageUrl: text('Image url', 'https://res.cloudinary.com/hksqkdlah/image/upload/v1592937037/mise-play/tall-card.jpg'),
+    overlayColor: '#a53015',
+    siteKey: 'cco',
+    siteKeyFavorites: 'cco',
+    stickers: [{ type: 'editorial', text: '38:28' }],
+    onClick: action('result-click'),
+  },
+  {
+    contentType: 'episode',
+    dek: 'New episodes weekly',
+    href: 'https://www.google.com',
+    logoKey: 'atk',
+    imageAlt: text('Image alt text', ''),
+    imageUrl: text('Image url', 'https://res.cloudinary.com/hksqkdlah/image/upload/v1592937037/mise-play/tall-card.jpg'),
+    overlayColor: '#a53015',
+    siteKey: 'cco',
+    siteKeyFavorites: 'cco',
+    stickers: [{ type: 'editorial', text: '38:28' }],
+    onClick: action('result-click'),
+  },
+];
+
 const StoryWrapperTheme = {
   default: css`
     padding: 2rem;
@@ -137,7 +219,22 @@ export const Default = () => (
     <StoryWrapper>
       <CardCarousel
         items={items}
-        type={select('Card Type', ['standard', 'feature'], 'standard')}
+        type={select('Card Type', ['standard', 'feature', 'tall'], 'standard')}
+      />
+    </StoryWrapper>
+  </ThemeProvider>
+);
+
+export const TallCard = () => (
+  <ThemeProvider theme={{
+    breakpoints,
+    mode: 'dark',
+  }}>
+    <StoryWrapper>
+      <CardCarousel
+        dotPosition={{ sm: { bottom: `-${spacing.xxsm}`, right: '50%'  } }}
+        items={tallItems}
+        type={select('Card Type', ['standard', 'feature', 'tall'], 'tall')}
       />
     </StoryWrapper>
   </ThemeProvider>
