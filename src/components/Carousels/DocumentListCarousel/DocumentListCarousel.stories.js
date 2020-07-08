@@ -25,7 +25,7 @@ const StoryWrapper = styled.div`
   ${withThemes(StoryWrapperTheme)}
 `;
 
-const ThemedComponent = ({ mode, intro, subtitle, title, type }) => {
+const ThemedComponent = ({ ctaText, ctaUrl, mode, intro, title, type }) => {
   return (
     <ThemeProvider theme={{
       breakpoints,
@@ -33,9 +33,10 @@ const ThemedComponent = ({ mode, intro, subtitle, title, type }) => {
     }}>
       <StoryWrapper className="story-wrapper">
         <DocumentListCarousel
+          ctaText={ctaText}
+          ctaUrl={ctaUrl}
           intro={intro}
           items={type === 'standard' ? data.standardItems : data.featureItems}
-          subtitle={subtitle}
           title={title}
           type={type}
         />
@@ -48,8 +49,9 @@ export const Default = () => (
   <ThemedComponent
     mode={select('Theme', ['default', 'dark'], 'dark')}
     intro={text('Intro', 'For folks who always want to know why?')}
-    subtitle={text('Subtitle', 'Explore 20 Seasons')}
-    title={text('Title', 'Americas Test Kitchen')}
+    ctaText={text('CTA Text', 'Explore 20 Seasons')}
+    ctaUrl={text('CTA URL', 'https://www.americastestkitchen.com')}
+    title="America's Test Kitchen"
     type={select('Card Type', ['standard', 'feature'], 'feature')}
   />
 );
