@@ -1,4 +1,6 @@
 import React from 'react';
+import Loadable from 'react-loadable';
+
 import styled, { css, ThemeProvider } from 'styled-components';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, text } from '@storybook/addon-knobs';
@@ -74,6 +76,37 @@ const ThemedComponent = ({
     </ThemeProvider>
   )
 }
+
+const LoadableComponent = Loadable({
+  loader: () =>
+    new Promise((resolve, reject) => {
+      setTimeout(() => resolve(import("./index")), 2000);
+    }),
+  loading: ({ pastDelay }) => (pastDelay ? <div>Loading...</div> : null),
+  delay: 50
+});
+
+export const LoadingCard = () => (
+  <LoadableComponent
+    contentType="review"
+    commentCount={5}
+    ctaText={text('CTA text', 'Buy the Winner')}
+    ctaUrl="https://www.amazon.com/dp/B01JCNEJSO/?tag=ciosearchresult-20"
+    displayCommentCount
+    displayFavoritesButton
+    displayLockIcon={false}
+    imageAlt={text('Image alt text', '')}
+    imageUrl={text('Image url', 'https://res.cloudinary.com/hksqkdlah/image/upload/s--bab2_EML--/c_scale,dpr_2.0,f_auto,h_172,q_auto:low,w_172/40784_sil-food-storage-containers-rubbermaid-brilliance-food-storage-container-large-96-cup-1991158')}
+    isFavorited={false}
+    siteKey="atk"
+    siteKeyFavorites="atk"
+    stickers={[{ type: 'priority', text: 'New' }, { type: 'editorial', text: 'Trending' }]}
+    objectId=""
+    onClick={action('result-click')}
+    title={text('Title', 'Plastic Food Storage Containers')}
+    href="https://www.americastestkitchen.com/equipment_reviews/1879-plastic-food-storage-containers?ref=new_search_experience_2"
+  />
+);
 
 export const LoggedIn = () => (
   <StandardCard
