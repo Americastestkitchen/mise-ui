@@ -7,6 +7,7 @@ import Carousel from '../Carousel';
 import FeatureCard from '../../Cards/FeatureCard';
 import LinearGradient from '../../DesignTokens/LinearGradient';
 import StandardCard from '../../Cards/StandardCard';
+import TallCard from '../../Cards/TallCard';
 import { cards, spacing, withThemes } from '../../../styles';
 
 const CardCarouselTheme = {
@@ -18,8 +19,11 @@ const CardCarouselTheme = {
       display: none;
     }
 
+    .carousel {
+      ${({ type }) => (type === 'tall' ? 'padding-top: 0; height: 62.8rem;' : '')}
+    }
     .carousel-cell {
-      height: 40rem;
+      height: ${({ type }) => (type === 'tall' ? '60rem' : '40rem')};
       margin-right: ${spacing.sm};
       width: ${cards.standard.width.lg};
     }
@@ -63,9 +67,10 @@ const CardCarouselWrapper = styled.div`
 const typeMap = {
   feature: FeatureCard,
   standard: StandardCard,
+  tall: TallCard,
 };
 
-const CardCarousel = ({ className, items, renderItem, type }) => {
+const CardCarousel = ({ className, dotPosition, items, renderItem, type }) => {
   const El = typeMap[type] || StandardCard;
   const defaultRender = item => <El key={item.objectId} {...item} />;
   const doRenderItem = renderItem || defaultRender;
@@ -74,9 +79,11 @@ const CardCarousel = ({ className, items, renderItem, type }) => {
     <CardCarouselWrapper
       className={`card-carousel card-carousel--${type}`}
       data-testid={`card-carousel--${type}`}
+      type={type}
     >
       <Carousel
         className={className}
+        dotPosition={dotPosition}
         items={items}
         renderItem={doRenderItem}
       />
@@ -90,16 +97,34 @@ const CardCarousel = ({ className, items, renderItem, type }) => {
 CardCarousel.propTypes = {
   /** Additional classname */
   className: PropTypes.string,
+  dotPosition: PropTypes.shape({
+    bottom: PropTypes.string,
+    left: PropTypes.string,
+    right: PropTypes.string,
+    top: PropTypes.string,
+  }),
   /** List of items for the carousel */
   items: PropTypes.array.isRequired,
   /** Callback for rendering each carousel item */
   renderItem: PropTypes.func,
   /** Sets the carousel-item styles for a particular card style */
-  type: PropTypes.oneOf(['standard', 'feature']).isRequired,
+  type: PropTypes.oneOf(['standard', 'feature', 'tall']).isRequired,
 };
 
 CardCarousel.defaultProps = {
   className: undefined,
+  dotPosition: {
+    sm: {
+      right: spacing.sm,
+      top: '0',
+    },
+    lg: {
+      right: spacing.lg,
+    },
+    xlg: {
+      right: spacing.xxlg,
+    },
+  },
   renderItem: undefined,
 };
 

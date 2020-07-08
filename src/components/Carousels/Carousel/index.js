@@ -5,6 +5,13 @@ import styled, { css } from 'styled-components';
 
 import { color, spacing, withThemes } from '../../../styles';
 
+const generatePositionStyles = (positions, breakpoint) => {
+  const breakpointPositions = positions[breakpoint];
+  return breakpointPositions && (
+    Object.keys(breakpointPositions).map(p => `${p}: ${breakpointPositions[p]};`).join('')
+  );
+};
+
 const CarouselTheme = {
   default: css`
     padding-top: ${spacing.md};
@@ -30,14 +37,11 @@ const CarouselTheme = {
     }
 
     .flickity-page-dots {
-      bottom: auto;
-      top: 0;
-      right: ${spacing.sm};
       text-align: right;
 
       .dot {
         height: 1.2rem;
-        margin: 0 ${spacing.xxsm};
+        margin: 0 ${spacing.xsm} 0 0;
         width: 1.2rem;
 
         &:last-of-type {
@@ -61,23 +65,41 @@ const CarouselTheme = {
       }
     }
 
-    ${breakpoint('lg')`
+    ${({ dotPosition }) => (dotPosition ? `
       .flickity-page-dots {
-        right: ${spacing.lg};
+        ${generatePositionStyles(dotPosition, 'sm')}
       }
+    ` : '')}
 
+    ${breakpoint('md')`
+      ${({ dotPosition }) => (dotPosition ? `
+        .flickity-page-dots {
+          ${generatePositionStyles(dotPosition, 'md')}
+        }
+      ` : '')}
+    `}
+
+    ${breakpoint('lg')`
       .flickity-button {
         display: block;
       }
+
+      ${({ dotPosition }) => (dotPosition ? `
+        .flickity-page-dots {
+          ${generatePositionStyles(dotPosition, 'lg')}
+        }
+      ` : '')}
     `}
 
     ${breakpoint('xlg')`
       padding-top: 2.8rem;
       width: 118rem;
 
-      .flickity-page-dots {
-        right: ${spacing.xxlg};
-      }
+      ${({ dotPosition }) => (dotPosition ? `
+        .flickity-page-dots {
+          ${generatePositionStyles(dotPosition, 'xlg')}
+        }
+      ` : '')}
     `}
   `,
   dark: css`
@@ -176,7 +198,7 @@ const defaultOptions = {
   wrapAround: true,
 };
 
-const Carousel = ({ className, items, options, renderItem }) => {
+const Carousel = ({ className, dotPosition, items, options, renderItem }) => {
   const elRef = useRef(null);
   const flktyRef = useRef();
   const opts = { ...defaultOptions, ...options };
@@ -201,6 +223,7 @@ const Carousel = ({ className, items, options, renderItem }) => {
     >
       <CarouselEl
         className={className}
+        dotPosition={dotPosition}
         ref={elRef}
       >
         {items.map((item, idx) => (
@@ -221,6 +244,12 @@ Carousel.propTypes = {
   className: PropTypes.string,
   /** List of items for the carousel */
   items: PropTypes.array.isRequired,
+  dotPosition: PropTypes.shape({
+    bottom: PropTypes.string,
+    left: PropTypes.string,
+    right: PropTypes.string,
+    top: PropTypes.string,
+  }),
   options: PropTypes.shape({
     /** Change shape of arrows on carousel */
     arrowShape: PropTypes.object,
@@ -241,6 +270,18 @@ Carousel.propTypes = {
 
 Carousel.defaultProps = {
   className: undefined,
+  dotPosition: {
+    sm: {
+      right: spacing.sm,
+      top: '0',
+    },
+    lg: {
+      right: spacing.lg,
+    },
+    xlg: {
+      right: spacing.xxlg,
+    },
+  },
   options: {},
 };
 
