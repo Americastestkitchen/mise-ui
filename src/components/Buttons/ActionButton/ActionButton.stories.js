@@ -10,8 +10,11 @@ export default {
   decorators: [withKnobs],
 };
 
-export const DefaultTextActionButton = () => (
-  <ActionButton onClick={action('click button')}>
+export const FavoriteActionButton = () => (
+  <ActionButton
+    actionType="favorite"
+    onClick={action('click button')}
+  >
     {text('Text', 'Done')}
   </ActionButton>
 );
