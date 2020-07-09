@@ -8,7 +8,7 @@ import {
   letterSpacing,
   lineHeight,
   spacing,
-} from '../../styles';
+} from '../../../styles';
 
 const StyledButton = styled.button`
   background-color: ${color.eclipse};
