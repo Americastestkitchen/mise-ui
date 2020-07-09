@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Button from '../Button';
 import { color, letterSpacing, font, fontSize, spacing } from '../../../styles';
-import { FavoriteRibbon } from '../../DesignTokens/Icon/svgs';
+import { ChevronThinDown, FavoriteRibbon, Folder } from '../../DesignTokens/Icon/svgs';
 
 const StyledButton = styled(Button)`
   align-items: center;
@@ -21,9 +21,10 @@ const StyledFavoriteRibbon = styled(FavoriteRibbon)`
   margin-right: ${spacing.xxsm};
   margin-top: 0.125rem;
 
-  [class*="outer-stroke"] {
+  .outer-stroke {
     stroke: ${color.white};
   }
+
   [class*="ribbon"] {
     fill: transparent;
     transition: 0.1s all ease-in-out;
@@ -36,29 +37,46 @@ const StyledFavoriteRibbon = styled(FavoriteRibbon)`
 `;
 
 function ActionButton({
+  actionType,
   className,
+  hasActioned,
+  onClick,
   text,
 }) {
   return (
-    <StyledButton>
+    <StyledButton
+      actionType={actionType}
+      hasActioned={hasActioned}
+    >
       <StyledFavoriteRibbon
-        fill={color.eclipse}
+        ariaHidden=""
+        ariaLabel=""
         className={className}
+        fill={color.white}
+        onClick={onClick}
       />
-      {text}
+      { text && hasActioned ? `${text}d` : text }
+      { hasActioned && (
+        <div>
+          <Folder fill={color.white} />
+          <ChevronThinDown fill={color.white} />
+        </div>
+      )}
     </StyledButton>
   );
 }
 
 ActionButton.propTypes = {
-  actionType: PropTypes.oneOf(['print', 'save']).isRequired,
+  actionType: PropTypes.oneOf(['print', 'favorite']).isRequired,
   className: PropTypes.string,
+  hasActioned: PropTypes.bool,
   text: PropTypes.string,
   onClick: PropTypes.func,
 };
 
 ActionButton.defaultProps = {
   className: '',
+  hasActioned: true,
   onClick: () => {},
   text: 'Save',
 };

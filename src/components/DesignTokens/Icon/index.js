@@ -27,6 +27,16 @@ export const Checkmark = ({ fill }) => (
 
 Checkmark.propTypes = Icons.Checkmark.propTypes;
 
+export const ChevronThinDown = ({ ariaLabel, fill }) => (
+  <Icon>
+    <Icons.ChevronThinDown
+      ariaLabel={ariaLabel}
+      fill={fill}
+    />
+  </Icon>
+);
+ChevronThinDown.propTypes = Icons.ChevronThinDown.propTypes;
+
 export const Close = ({ ariaLabel, fill }) => (
   <Icon>
     <Icons.Close
@@ -70,6 +80,17 @@ export const FavoriteRibbon = ({ ariaHidden, ariaLabel, className, fill }) => (
 );
 
 FavoriteRibbon.propTypes = Icons.FavoriteRibbon.propTypes;
+
+export const Folder = ({ fill }) => (
+  <Icon>
+    <Icons.Folder
+      fill={fill}
+    />
+  </Icon>
+);
+
+Folder.propTypes = Icons.Folder.propTypes;
+
 
 export const Filter = ({ className, fill }) => (
   <Icon>
