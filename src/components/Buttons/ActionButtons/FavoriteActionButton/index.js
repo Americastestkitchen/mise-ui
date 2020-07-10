@@ -5,24 +5,7 @@ import Button from '../../Button';
 import { color, letterSpacing, font, fontSize, spacing } from '../../../../styles';
 import { ChevronThinDown, FavoriteRibbon, Folder } from '../../../DesignTokens/Icon/svgs';
 
-const StyledFavoriteRibbon = styled(FavoriteRibbon)`
-  height: 1.67rem;
-  margin-right: ${spacing.xxsm};
-  margin-top: 0.125rem;
-
-  .outer-stroke {
-    stroke: ${color.white};
-  }
-
-  [class*="ribbon"] {
-    transition: 0.1s all ease-in-out;
-  }
-
-  [class*="vertical-line"],
-  [class*="horizontal-line"] {
-    stroke: transparent;
-  }
-`;
+const StyledFavoriteRibbon = styled(FavoriteRibbon)``;
 
 const StyledButton = styled(Button)`
   align-items: center;
@@ -54,7 +37,19 @@ const StyledButton = styled(Button)`
   }
 
   ${StyledFavoriteRibbon} {
-    fill: ${({ isFavorited }) => (isFavorited ? color.white : 'transparent')};
+    height: 1.67rem;
+    fill: ${({ isFavorited }) => (isFavorited ? 'white' : 'transparent')};
+    margin-right: ${spacing.xxsm};
+    margin-top: 0.125rem;
+
+    [class*="vertical-line"],
+    [class*="horizontal-line"] {
+      stroke: ${({ isFavorited }) => (isFavorited ? 'white' : 'transparent')};
+    }
+
+    .outer-stroke {
+      stroke: ${color.white};
+    }
   }
 `;
 
