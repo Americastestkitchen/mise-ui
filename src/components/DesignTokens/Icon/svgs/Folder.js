@@ -2,12 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { color } from '../../../../styles';
 
-const Folder = ({ fill }) => (
+const Folder = ({ className, fill }) => (
   <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="20"
+    className={className}
     height="18"
     viewBox="0 0 20 18"
+    width="20"
+    xmlns="http://www.w3.org/2000/svg"
   >
     <g
       fill={fill}
@@ -23,10 +24,12 @@ const Folder = ({ fill }) => (
 );
 
 Folder.propTypes = {
+  className: PropTypes.string,
   fill: PropTypes.string,
 };
 
 Folder.defaultProps = {
+  className: '',
   fill: color.eclipse,
 };
 
