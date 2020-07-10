@@ -2,8 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { color } from '../../../../styles';
 
-const Folder = ({ className, fill }) => (
+const Folder = ({ ariaHidden, ariaLabel, className, fill }) => (
   <svg
+    aria-hidden={ariaHidden}
+    aria-label={ariaLabel}
     className={className}
     height="18"
     viewBox="0 0 20 18"
@@ -24,11 +26,15 @@ const Folder = ({ className, fill }) => (
 );
 
 Folder.propTypes = {
+  ariaHidden: PropTypes.bool,
+  ariaLabel: PropTypes.string,
   className: PropTypes.string,
   fill: PropTypes.string,
 };
 
 Folder.defaultProps = {
+  ariaHidden: true,
+  ariaLabel: 'Add to collection',
   className: '',
   fill: color.eclipse,
 };

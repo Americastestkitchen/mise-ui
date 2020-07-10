@@ -63,28 +63,35 @@ function FavoriteActionButton({
   onClick,
 }) {
   return (
-    <StyledButton
-      isFavorited={isFavorited}
-    >
-      <div className="left-wrapper">
-        <StyledFavoriteRibbon
-          ariaHidden="true"
-          className={className}
-          fill={color.white}
-          onClick={onClick}
-        />
-        { isFavorited ? 'Saved' : 'Save' }
-      </div>
-      { isFavorited && (
-        <div className="right-wrapper">
-          <StyledFolder
+    <>
+      <StyledButton
+        isFavorited={isFavorited}
+      >
+        <div className="left-wrapper">
+          <StyledFavoriteRibbon
+            ariaHidden
+            ariaLabel=""
             className={className}
             fill={color.white}
+            onClick={onClick}
           />
-          <ChevronThinDown fill={color.white} />
+          { isFavorited ? 'Saved' : 'Save' }
         </div>
-      )}
-    </StyledButton>
+        { isFavorited && (
+          <div className="right-wrapper">
+            <StyledFolder
+              ariaLabel=""
+              className={className}
+              fill={color.white}
+            />
+            <ChevronThinDown
+              ariaLabel="Add to custom collection"
+              fill={color.white}
+            />
+          </div>
+        )}
+      </StyledButton>
+    </>
   );
 }
 

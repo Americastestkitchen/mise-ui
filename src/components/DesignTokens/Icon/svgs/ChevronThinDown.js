@@ -36,7 +36,7 @@ ChevronThinDown.propTypes = {
 
 ChevronThinDown.defaultProps = {
   ariaHidden: 'true',
-  ariaLabel: '',
+  ariaLabel: 'menu',
   className: '',
   fill: color.eclipse,
 };
