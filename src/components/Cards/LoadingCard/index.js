@@ -117,7 +117,7 @@ const StyledLoadingCard = styled.div`
 `;
 
 const LoadingCard = ({ type }) => (
-  <StyledLoadingCard className={`${type}-card`}>
+  <StyledLoadingCard className={`${type}-card card`}>
     {
       (type === 'standard' || type === 'queue') && (
         <>
