@@ -3,9 +3,16 @@ import styled, { css, ThemeProvider } from 'styled-components';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, select , text } from '@storybook/addon-knobs/react';
 
-import CardCarousel from './index';
 import CardCarouselNotes from './CardCarousel.md';
+import LoadingCarousel from '../LoadingCarousel';
 import { breakpoints, color, spacing, withThemes } from '../../../styles'
+import LoadableVisibility from "react-loadable-visibility/react-loadable";
+
+const CardCarousel = LoadableVisibility({
+  loader: () => import("./index"),
+  loading: () => (<LoadingCarousel type="standard" />),
+  delay: 50,
+});
 
 export default {
   title: 'Components|Carousels/CardCarousel',
