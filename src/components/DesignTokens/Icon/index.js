@@ -124,6 +124,16 @@ export const Plus = ({ fill }) => (
 
 Plus.propTypes = Icons.Plus.propTypes;
 
+export const Print = ({ fill }) => (
+  <Icon>
+    <Icons.Print
+      fill={fill}
+    />
+  </Icon>
+);
+
+Plus.propTypes = Icons.Plus.propTypes;
+
 export const QuestionMark = ({ fill }) => (
   <Icon>
     <Icons.QuestionMark

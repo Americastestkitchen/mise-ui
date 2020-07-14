@@ -5,35 +5,40 @@ import Button from '../../Button';
 import { color, letterSpacing, font, fontSize, spacing } from '../../../../styles';
 import { ChevronThinDown, FavoriteRibbon, Folder } from '../../../DesignTokens/Icon/svgs';
 
+const ButtonWrapper = styled.div`
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  padding: 0;
+  text-transform: uppercase;
+  width: 16.3rem;
+`;
+
 const StyledFavoriteRibbon = styled(FavoriteRibbon)``;
 
 const StyledButton = styled(Button)`
   align-items: center;
-  display: flex;
-  height: 35px;
+  display: inline-flex;
   font: ${fontSize.sm}/${fontSize.sm} ${font.pnb};
-  letter-spacing: ${letterSpacing.md};
+  height: 3.5rem;
   justify-content: center;
-  min-width: 16.3rem;
-  padding: 0;
-  text-transform: uppercase;
+  letter-spacing: ${letterSpacing.md};
 
-  .left-wrapper,
-  .right-wrapper {
+  &.favorite-action,
+  &.favorite-manage {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0;
   }
 
-  .left-wrapper {
+  &.favorite-action {
     flex: 1;
-    padding: 0 ${spacing.md};
   }
 
-  .right-wrapper {
+  &.favorite-manage {
     background: ${color.mint};
-    height: 100%;
-    padding: 0 ${spacing.sm};
+    flex-basis: 6rem;
   }
 
   ${StyledFavoriteRibbon} {
@@ -63,35 +68,36 @@ function FavoriteActionButton({
   onClick,
 }) {
   return (
-    <>
+    <ButtonWrapper>
       <StyledButton
+        className="favorite-action"
         isFavorited={isFavorited}
       >
-        <div className="left-wrapper">
-          <StyledFavoriteRibbon
-            ariaHidden
+        <StyledFavoriteRibbon
+          ariaHidden
+          ariaLabel=""
+          className={className}
+          fill={color.white}
+          onClick={onClick}
+        />
+        { isFavorited ? 'Saved' : 'Save' }
+      </StyledButton>
+      { isFavorited && (
+        <StyledButton
+          className="favorite-manage"
+        >
+          <StyledFolder
             ariaLabel=""
             className={className}
             fill={color.white}
-            onClick={onClick}
           />
-          { isFavorited ? 'Saved' : 'Save' }
-        </div>
-        { isFavorited && (
-          <div className="right-wrapper">
-            <StyledFolder
-              ariaLabel=""
-              className={className}
-              fill={color.white}
-            />
-            <ChevronThinDown
-              ariaLabel="Add to custom collection"
-              fill={color.white}
-            />
-          </div>
-        )}
-      </StyledButton>
-    </>
+          <ChevronThinDown
+            ariaLabel="Add to custom collection"
+            fill={color.white}
+          />
+        </StyledButton>
+      )}
+    </ButtonWrapper>
   );
 }
 

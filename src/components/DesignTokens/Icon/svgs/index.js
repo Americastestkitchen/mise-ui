@@ -12,6 +12,7 @@ import Filter from './Filter';
 import Knife from './Knife';
 import Lock from './Lock';
 import Plus from './Plus';
+import Print from './Print';
 import QuestionMark from './QuestionMark';
 import SearchIcon from './SearchIcon';
 import Sort from './Sort';
@@ -33,6 +34,7 @@ export {
   Knife,
   Lock,
   Plus,
+  Print,
   QuestionMark,
   SearchIcon,
   Sort,

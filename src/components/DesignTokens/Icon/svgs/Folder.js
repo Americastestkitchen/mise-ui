@@ -7,9 +7,8 @@ const Folder = ({ ariaHidden, ariaLabel, className, fill }) => (
     aria-hidden={ariaHidden}
     aria-label={ariaLabel}
     className={className}
-    height="18"
     viewBox="0 0 20 18"
-    width="20"
+    width="17"
     xmlns="http://www.w3.org/2000/svg"
   >
     <g
