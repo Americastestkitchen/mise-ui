@@ -2,7 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { color } from '../../../../styles';
 
-const Print = ({ ariaHidden, ariaLabel, className, fill }) => (
+const Print = ({
+  ariaHidden,
+  ariaLabel,
+  className,
+  fill,
+}) => (
   <svg
     aria-hidden={ariaHidden}
     aria-label={ariaLabel}

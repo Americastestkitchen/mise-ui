@@ -124,15 +124,23 @@ export const Plus = ({ fill }) => (
 
 Plus.propTypes = Icons.Plus.propTypes;
 
-export const Print = ({ fill }) => (
+export const Print = ({
+  ariaHidden,
+  ariaLabel,
+  className,
+  fill,
+}) => (
   <Icon>
     <Icons.Print
+      ariaHidden={ariaHidden}
+      ariaLabel={ariaLabel}
+      className={className}
       fill={fill}
     />
   </Icon>
 );
 
-Plus.propTypes = Icons.Plus.propTypes;
+Print.propTypes = Icons.Print.propTypes;
 
 export const QuestionMark = ({ fill }) => (
   <Icon>
