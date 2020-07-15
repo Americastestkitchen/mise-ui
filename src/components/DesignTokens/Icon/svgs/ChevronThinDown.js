@@ -12,6 +12,7 @@ const ChevronThinDown = ({
     aria-hidden={ariaHidden}
     aria-label={ariaLabel}
     className={className}
+    data-testid="chevron-icon"
     focusable="false"
     role="img"
     viewBox="0 0 264.7 150.8"

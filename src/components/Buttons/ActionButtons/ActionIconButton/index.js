@@ -13,26 +13,9 @@ const StyledActionButton = styled(Button)`
   justify-content: center;
   letter-spacing: ${letterSpacing.md};
 
-  &.favorite-action,
-  &.favorite-manage {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-  }
-
-  &.favorite-action {
-    flex: 1;
-  }
-
-  &.favorite-manage {
-    background: ${color.mint};
-    flex-basis: 6rem;
-  }
-
   svg {
     height: 1.67rem;
-    margin-right: ${spacing.xxsm};
+    margin-right: ${spacing.xsm};
     margin-top: 0.125rem;
   }
 `;
@@ -42,10 +25,10 @@ const determineIconType = (actionType) => {
     print: Print,
   };
   const El = actionTypes[actionType];
-  return El ? <El fill={`${color.white}`} /> : null;
+  return El && <El fill={color.white} />;
 };
 
-function PrintActionButton({
+function ActionIconButton({
   actionType,
   onClick,
   text,
@@ -55,22 +38,20 @@ function PrintActionButton({
       actionType={actionType}
       onClick={onClick}
     >
-      { determineIconType(actionType) }
+      { actionType && determineIconType(actionType) }
       <span>{text}</span>
     </StyledActionButton>
   );
 }
 
-PrintActionButton.propTypes = {
-  actionType: PropTypes.string,
+ActionIconButton.propTypes = {
+  actionType: PropTypes.string.isRequired,
   onClick: PropTypes.func,
-  text: PropTypes.string,
+  text: PropTypes.string.isRequired,
 };
 
-PrintActionButton.defaultProps = {
-  actionType: 'print',
+ActionIconButton.defaultProps = {
   onClick: () => {},
-  text: 'Print',
 };
 
-export default PrintActionButton;
+export default ActionIconButton;

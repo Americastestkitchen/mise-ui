@@ -9,14 +9,15 @@ const FavoriteRibbon = ({
   fill,
 }) => (
   <svg
-    viewBox="0 0 17 24"
-    width="17"
-    height="24"
-    className={className}
     aria-hidden={ariaHidden}
     aria-label={ariaLabel}
+    className={className}
+    data-testid="favorite-ribbon-icon"
     focusable="false"
+    height="24"
     role="img"
+    viewBox="0 0 17 24"
+    width="17"
     xmlns="http://www.w3.org/2000/svg"
   >
     <g>

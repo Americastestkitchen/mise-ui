@@ -2,16 +2,16 @@ import React from 'react';
 import { action } from '@storybook/addon-actions';
 import { boolean, withKnobs, text } from '@storybook/addon-knobs/react';
 
-import PrintActionButton from './index';
+import ActionIconButton from './index';
 
 export default {
-  title: 'Components|Buttons/ActionButtons/PrintActionButton',
-  component: PrintActionButton,
+  title: 'Components|Buttons/ActionButtons/ActionIconButton',
+  component: ActionIconButton,
   decorators: [withKnobs],
 };
 
-export const Default = () => (
-  <PrintActionButton
+export const PrintActionButton = () => (
+  <ActionIconButton
     actionType='print'
     onClick={action('click button')}
     text="Print recipes"
