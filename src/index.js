@@ -2,7 +2,7 @@ import * as styles from './styles';
 import Accordion from './components/Accordion';
 import Badge from './components/Badge';
 import breakpoints from './styles/breakpoints';
-import Button from './components/Button';
+import Button from './components/Buttons/Button';
 import carousel from './styles/carousel';
 import ClearRefinements from './components/Algolia/shared/ClearRefinements';
 import CurrentRefinements from './components/Algolia/shared/CurrentRefinements';

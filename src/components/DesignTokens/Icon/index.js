@@ -27,6 +27,23 @@ export const Checkmark = ({ fill }) => (
 
 Checkmark.propTypes = Icons.Checkmark.propTypes;
 
+export const ChevronThinDown = ({
+  ariaHidden,
+  ariaLabel,
+  className,
+  fill,
+}) => (
+  <Icon>
+    <Icons.ChevronThinDown
+      ariaHidden={ariaHidden}
+      ariaLabel={ariaLabel}
+      className={className}
+      fill={fill}
+    />
+  </Icon>
+);
+ChevronThinDown.propTypes = Icons.ChevronThinDown.propTypes;
+
 export const Close = ({ ariaLabel, fill }) => (
   <Icon>
     <Icons.Close
@@ -71,6 +88,25 @@ export const FavoriteRibbon = ({ ariaHidden, ariaLabel, className, fill }) => (
 
 FavoriteRibbon.propTypes = Icons.FavoriteRibbon.propTypes;
 
+export const Folder = ({
+  ariaHidden,
+  ariaLabel,
+  className,
+  fill,
+}) => (
+  <Icon>
+    <Icons.Folder
+      ariaHidden={ariaHidden}
+      ariaLabel={ariaLabel}
+      className={className}
+      fill={fill}
+    />
+  </Icon>
+);
+
+Folder.propTypes = Icons.Folder.propTypes;
+
+
 export const Filter = ({ className, fill }) => (
   <Icon>
     <Icons.Filter
@@ -102,6 +138,24 @@ export const Plus = ({ fill }) => (
 );
 
 Plus.propTypes = Icons.Plus.propTypes;
+
+export const Print = ({
+  ariaHidden,
+  ariaLabel,
+  className,
+  fill,
+}) => (
+  <Icon>
+    <Icons.Print
+      ariaHidden={ariaHidden}
+      ariaLabel={ariaLabel}
+      className={className}
+      fill={fill}
+    />
+  </Icon>
+);
+
+Print.propTypes = Icons.Print.propTypes;
 
 export const QuestionMark = ({ fill }) => (
   <Icon>
