@@ -20,32 +20,32 @@ const StyledActionButton = styled(Button)`
   }
 `;
 
-const determineIconType = (actionType) => {
-  const actionTypes = {
+const determineIconType = (iconType) => {
+  const iconTypes = {
     print: Print,
   };
-  const El = actionTypes[actionType];
+  const El = iconTypes[iconType];
   return El && <El fill={color.white} />;
 };
 
 function ActionIconButton({
-  actionType,
+  iconType,
   onClick,
   text,
 }) {
   return (
     <StyledActionButton
-      actionType={actionType}
+      iconType={iconType}
       onClick={onClick}
     >
-      { actionType && determineIconType(actionType) }
+      { iconType && determineIconType(iconType) }
       <span>{text}</span>
     </StyledActionButton>
   );
 }
 
 ActionIconButton.propTypes = {
-  actionType: PropTypes.string.isRequired,
+  iconType: PropTypes.string.isRequired,
   onClick: PropTypes.func,
   text: PropTypes.string.isRequired,
 };

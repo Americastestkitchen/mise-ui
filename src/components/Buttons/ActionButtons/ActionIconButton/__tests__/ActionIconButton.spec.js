@@ -6,7 +6,7 @@ import 'jest-styled-components';
 import ActionIconButton from '../index';
 
 const printActionButton = {
-  actionType: 'print',
+  iconType: 'print',
   onClick: null,
   text: 'Print recipes',
 };

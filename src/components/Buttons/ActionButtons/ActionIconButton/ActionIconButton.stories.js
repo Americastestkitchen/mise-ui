@@ -12,7 +12,7 @@ export default {
 
 export const PrintActionButton = () => (
   <ActionIconButton
-    actionType='print'
+    iconType='print'
     onClick={action('click button')}
     text="Print recipes"
   />
