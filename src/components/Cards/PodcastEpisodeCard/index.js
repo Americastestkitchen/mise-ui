@@ -2,7 +2,9 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
+import fetch from 'cross-fetch';
 import { color, font, fontSize, spacing, lineHeight, letterSpacing, mixins } from '../../../styles';
+
 import { VideoPlay } from '../../DesignTokens/Icon';
 
 import Badge from '../../Badge';
@@ -163,6 +165,30 @@ const TextWrapper = styled.div`
 `;
 
 class PodcastEpisodeCard extends Component {
+  componentDidMount() {
+    const { imageId } = this.props;
+    fetch(
+      `https://art19.com/images/${imageId}`,
+      {
+        method: 'GET',
+        headers: {
+          Accept: 'application/vnd.art19.v0+json;q=0.9,application/json;q=0.8',
+          Authorization: 'Token token="jQ-ldsLx7USTQ4mjtOEBPIOsEXAno8UTh8l2KomNLQM5B75NUL-P9iFVGd1lF6c9-Lcq1dmUFTmhZTBsb09BmA", credential="14c39803-3e99-47c4-a4d3-d79398e74089"',
+        },
+        mode: 'cors',
+      },
+    )
+      .then(response => response.json())
+      .then((data) => {
+        const image = data.media_assets.filter(image => image.size_height === 640);
+        this.imageUrl = image.cdn_url;
+      },
+      )
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   setEpisode = (episode) => {
     const { setEpisode } = this.props;
     setEpisode(episode); // call method
@@ -176,7 +202,7 @@ class PodcastEpisodeCard extends Component {
       href,
       id,
       imageAlt,
-      imageUrl,
+      imageId,
       siteKey,
       stickers,
     } = this.props;
@@ -190,7 +216,7 @@ class PodcastEpisodeCard extends Component {
             <Image
               aria-hidden="true"
               imageAlt={imageAlt}
-              imageUrl={imageUrl}
+              imageUrl={this.imageUrl || 'https://res.cloudinary.com/hksqkdlah/image/upload/c_fill,dpr_2.0,f_auto,fl_lossy.progressive.strip_profile,g_faces:auto,h_460,q_auto:low,w_460/v1/Proof%20Season%204/04-Pandemic_Exodus_Bagels2'}
             />
             <StyledBadge
               type={siteKey}
@@ -214,7 +240,7 @@ class PodcastEpisodeCard extends Component {
                 href,
                 id,
                 imageAlt,
-                imageUrl,
+                imageId,
                 siteKey,
                 stickers,
               })}
@@ -245,7 +271,7 @@ PodcastEpisodeCard.propTypes = {
   /** episode id */
   id: PropTypes.string.isRequired,
   imageAlt: PropTypes.string,
-  imageUrl: PropTypes.string,
+  imageId: PropTypes.string,
   siteKey: PropTypes.string.isRequired,
   stickers: PropTypes.array,
   setEpisode: PropTypes.func,
@@ -253,7 +279,7 @@ PodcastEpisodeCard.propTypes = {
 
 PodcastEpisodeCard.defaultProps = {
   imageAlt: ' ',
-  imageUrl: '',
+  imageId: '',
   stickers: [],
   setEpisode: null,
 };
