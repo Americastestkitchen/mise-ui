@@ -47,17 +47,17 @@ export const Default = () => {
           mode: 'cors',
         },
       );
-      const episodes = await response.json().catch((err) => {
+      const episodeData = await response.json().catch((err) => {
         console.error('REQUEST RESPONSE.JSON PARSING ERROR', url); // eslint-disable-line
         console.error(err); // eslint-disable-line
       });
-      console.log(episodes.episodes);
-      setEpisodes(episodes.episodes.filter(ep => ep.itunes_type !== 'bonus').slice(0, 3).map(({
+      setEpisodes(episodeData.episodes.filter(ep => ep.itunes_type !== 'bonus').slice(0, 3).map(({
         id,
         title,
         episode_number,
         summary,
         cascaded_cover_image_id,
+        cover_image_id,
         rss_link_url,
       }) => ({
         id,
@@ -65,7 +65,7 @@ export const Default = () => {
         description: summary,
         episode: episode_number,
         href: rss_link_url,
-        imageUrl: `https://content.production.cdn.art19.com/images/af/10/33/1a/${cascaded_cover_image_id}/ca6ecdfece537fcd8f435cf9270a14050a09232f6b3df167cae73630623a60d3e72152309a442726188fc0b72add32466bec60c27b83262073d781d430c12ae0.jpeg`,
+        imageId: cover_image_id ? cover_image_id : cascaded_cover_image_id
       })));
     }
     fetchData();
