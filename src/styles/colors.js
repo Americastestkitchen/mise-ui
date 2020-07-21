@@ -39,6 +39,7 @@ const color = {
   miseUiGrayBorder: '#efefef', // only for stories, not components
   smokeyQuartz: '#2A2A2A',
   asphalt: '#191919',
+  charcoal: '#121212',
 };
 
 export default color;
