@@ -11,34 +11,87 @@ export default {
   component: LoadingCard,
 };
 
+const StoryWrapperTheme = {
+  default: css`
+    padding: 12rem;
+  `,
+  dark: css`
+    background-color: ${color.nero};
+  `,
+}
+
+const StoryWrapper = styled.div`
+  ${withThemes(StoryWrapperTheme)}
+`;
+
 export const StandardCard = () => (
-  <LoadingCard type="standard" />
+  <ThemeProvider theme={{breakpoints, mode: 'dark'}}>
+    <StoryWrapper>
+      <LoadingCard type="standard" />
+    </StoryWrapper>
+  </ThemeProvider>
 );
 
 export const FeatureCard = () => (
-  <LoadingCard type="feature" />
+  <ThemeProvider theme={{breakpoints, mode: 'dark'}}>
+    <StoryWrapper>
+      <LoadingCard type="feature" />
+    </StoryWrapper>
+  </ThemeProvider>
 );
 
 export const FeatureCardWide = () => (
-  <LoadingCard type="feature-wide" />
+  <ThemeProvider theme={{breakpoints, mode: 'dark'}}>
+    <StoryWrapper>
+      <LoadingCard type="feature-wide" />
+    </StoryWrapper>
+  </ThemeProvider>
 );
 
 export const HeroCard = () => (
-  <LoadingCard type="hero" />
+  <ThemeProvider theme={{breakpoints, mode: 'dark'}}>
+    <StoryWrapper>
+      <LoadingCard type="hero" />
+    </StoryWrapper>
+  </ThemeProvider>
 );
 
 export const TallCard = () => (
-  <LoadingCard type="tall" />
+  <ThemeProvider theme={{breakpoints, mode: 'dark'}}>
+    <StoryWrapper>
+      <LoadingCard type="tall" />
+    </StoryWrapper>
+  </ThemeProvider>
+);
+
+export const TallCardWide = () => (
+  <ThemeProvider theme={{breakpoints, mode: 'dark'}}>
+    <StoryWrapper>
+      <LoadingCard type="tall-wide" />
+    </StoryWrapper>
+  </ThemeProvider>
 );
 
 export const QueueCard = () => (
-  <LoadingCard type="queue" />
+  <ThemeProvider theme={{breakpoints, mode: 'dark'}}>
+    <StoryWrapper>
+      <LoadingCard type="queue" />
+    </StoryWrapper>
+  </ThemeProvider>
 );
 
 export const PersonCard = () => (
-  <LoadingCard type="person" />
+  <ThemeProvider theme={{breakpoints, mode: 'dark'}}>
+    <StoryWrapper>
+      <LoadingCard type="person" />
+    </StoryWrapper>
+  </ThemeProvider>
 );
 
 export const PodcastEpisodeCard = () => (
-  <LoadingCard type="podcast-episode" />
+  <ThemeProvider theme={{breakpoints, mode: 'dark'}}>
+    <StoryWrapper>
+      <LoadingCard type="podcast-episode" />
+    </StoryWrapper>
+  </ThemeProvider>
 );

@@ -1,3 +1,5 @@
+import { cards, color } from './index';
+
 export default {
   styledLink(underlineColor, backgroundColor, textColor = 'inherit') {
     return `
@@ -23,6 +25,42 @@ export default {
         background-image: none !important;
         background-color: transparent !important;
         color-adjust: exact !important;
+      }
+    `;
+  },
+
+  loadingGradientAnimation(
+    width = cards.standard.width.lg,
+    cardBackgroundColor = color.charcoal,
+    gradientColor = color.black,
+  ) {
+    return `
+      .animated-background {
+        animation-duration: 1.5s;
+        animation-fill-mode: forwards;
+        animation-iteration-count: infinite;
+        animation-name: loading;
+        animation-timing-function: linear;
+        background-color: ${cardBackgroundColor};
+        background-image:
+          linear-gradient(
+            90deg,
+            ${cardBackgroundColor} 0%,
+            ${gradientColor} 50%,
+            ${cardBackgroundColor} 100%
+          );
+        background-position: -${width} 0;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        height: 100%;
+        position: relative;
+        -webkit-backface-visibility: hidden;
+      }
+
+      @keyframes loading {
+        to {
+          background-position: calc(${width} * 3) 0;
+        }
       }
     `;
   },
