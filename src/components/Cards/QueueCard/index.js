@@ -1,15 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
-import { color, fontSize, spacing, lineHeight, font, letterSpacing } from '../../../styles';
+import { color, fontSize, spacing, lineHeight, font, letterSpacing, withThemes } from '../../../styles';
 import Badge from '../../Badge';
 import Image from '../shared/Image';
 import Sticker from '../shared/Sticker';
 import Title from '../shared/Title';
 import ProgressBar from '../shared/ProgressBar';
 
+const QueueCardTheme = {
+  default: css`
+  `,
+  dark: css`
+    color: ${color.white};
+
+    @media(hover: hover) {
+      &:hover {
+        color: ${color.silver};
+      }
+    }
+  `,
+};
+
 const StyledQueueCard = styled.article`
+  ${withThemes(QueueCardTheme)}
   position: relative;
   width: 27.2rem;
 
@@ -55,15 +70,8 @@ export const StyledSticker = styled(Sticker)`
 `;
 
 export const StyledTitle = styled(Title)`
-  color: ${color.white};
   font-size: ${fontSize.xl};
   transition: color 0.2s ease;
-
-  @media(hover: hover) {
-    &:hover {
-      color: ${color.silver};
-    }
-  }
 `;
 
 const QueueCard = ({
