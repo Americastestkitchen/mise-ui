@@ -24,6 +24,13 @@ const PodcastEpisodeCardWrapper = styled.div`
     margin-top: ${spacing.sm};
   }
 
+  @media(hover: hover) {
+    &:hover {
+      transform: translateY(-${spacing.xsm});
+      box-shadow: 0 7px 8px -2px ${color.black};
+    }
+  }
+
   ${breakpoint('md')`
     max-width: 85rem;
     overflow: auto;
