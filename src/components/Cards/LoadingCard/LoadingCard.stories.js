@@ -14,6 +14,7 @@ export default {
 const StoryWrapperTheme = {
   default: css`
     padding: 12rem;
+    background-color: ${color.whiteSmoke};
   `,
   dark: css`
     background-color: ${color.nero};
@@ -25,7 +26,7 @@ const StoryWrapper = styled.div`
 `;
 
 export const StandardCard = () => (
-  <ThemeProvider theme={{breakpoints, mode: 'dark'}}>
+  <ThemeProvider theme={{breakpoints, mode: 'light'}}>
     <StoryWrapper>
       <LoadingCard type="standard" />
     </StoryWrapper>
