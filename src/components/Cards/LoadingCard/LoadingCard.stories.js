@@ -2,6 +2,7 @@ import React from 'react';
 
 import styled, { css, ThemeProvider } from 'styled-components';
 import { action } from '@storybook/addon-actions';
+import { boolean, withKnobs } from '@storybook/addon-knobs';
 
 import LoadingCard from './index';
 import { breakpoints, color, spacing, withThemes } from '../../../styles';
@@ -9,6 +10,7 @@ import { breakpoints, color, spacing, withThemes } from '../../../styles';
 export default {
   title: 'Components|Cards/LoadingCard',
   component: LoadingCard,
+  decorators: [withKnobs],
 };
 
 const StoryWrapperTheme = {
@@ -34,7 +36,7 @@ export const StandardCard = () => (
 );
 
 export const FeatureCard = () => (
-  <ThemeProvider theme={{breakpoints, mode: 'dark'}}>
+  <ThemeProvider theme={{breakpoints, mode: 'light'}}>
     <StoryWrapper>
       <LoadingCard type="feature" />
     </StoryWrapper>
@@ -42,7 +44,7 @@ export const FeatureCard = () => (
 );
 
 export const FeatureCardWide = () => (
-  <ThemeProvider theme={{breakpoints, mode: 'dark'}}>
+  <ThemeProvider theme={{breakpoints, mode: 'light'}}>
     <StoryWrapper>
       <LoadingCard type="feature-wide" />
     </StoryWrapper>
@@ -50,7 +52,7 @@ export const FeatureCardWide = () => (
 );
 
 export const HeroCard = () => (
-  <ThemeProvider theme={{breakpoints, mode: 'dark'}}>
+  <ThemeProvider theme={{breakpoints, mode: 'light'}}>
     <StoryWrapper>
       <LoadingCard type="hero" />
     </StoryWrapper>
@@ -58,7 +60,7 @@ export const HeroCard = () => (
 );
 
 export const TallCard = () => (
-  <ThemeProvider theme={{breakpoints, mode: 'dark'}}>
+  <ThemeProvider theme={{breakpoints, mode: 'light'}}>
     <StoryWrapper>
       <LoadingCard type="tall" />
     </StoryWrapper>

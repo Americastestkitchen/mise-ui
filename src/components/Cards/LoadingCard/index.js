@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import { cards, color, mixins, spacing, withThemes } from '../../../styles';
 
-const StyledLoadingCardTheme = {
+const LoadingCardTheme = {
   default: css`
     overflow: hidden;
 
@@ -14,6 +14,10 @@ const StyledLoadingCardTheme = {
       height: 21.8rem;
       padding-bottom: ${spacing.sm};
       width: ${cards.standard.width.base};
+
+      .card-carousel & {
+        ${mixins.loadingGradientAnimation(cards.standard.width.lg)}
+      }
 
       .standard-card {
         &__mask-1 {
@@ -250,7 +254,7 @@ const StyledLoadingCardTheme = {
 };
 
 const StyledLoadingCard = styled.div`
-  ${withThemes(StyledLoadingCardTheme)}
+  ${withThemes(LoadingCardTheme)}
 `;
 
 const LoadingCard = ({ type }) => (
