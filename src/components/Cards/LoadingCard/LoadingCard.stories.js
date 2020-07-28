@@ -28,7 +28,7 @@ const StoryWrapper = styled.div`
 `;
 
 export const StandardCard = () => (
-  <ThemeProvider theme={{breakpoints, mode: 'light'}}>
+  <ThemeProvider theme={{breakpoints, mode: 'dark'}}>
     <StoryWrapper>
       <LoadingCard type="standard" />
     </StoryWrapper>
@@ -36,7 +36,7 @@ export const StandardCard = () => (
 );
 
 export const FeatureCard = () => (
-  <ThemeProvider theme={{breakpoints, mode: 'light'}}>
+  <ThemeProvider theme={{breakpoints, mode: 'dark'}}>
     <StoryWrapper>
       <LoadingCard type="feature" />
     </StoryWrapper>
@@ -44,7 +44,7 @@ export const FeatureCard = () => (
 );
 
 export const FeatureCardWide = () => (
-  <ThemeProvider theme={{breakpoints, mode: 'light'}}>
+  <ThemeProvider theme={{breakpoints, mode: 'dark'}}>
     <StoryWrapper>
       <LoadingCard type="feature-wide" />
     </StoryWrapper>
@@ -52,7 +52,7 @@ export const FeatureCardWide = () => (
 );
 
 export const HeroCard = () => (
-  <ThemeProvider theme={{breakpoints, mode: 'light'}}>
+  <ThemeProvider theme={{breakpoints, mode: 'dark'}}>
     <StoryWrapper>
       <LoadingCard type="hero" />
     </StoryWrapper>
@@ -60,7 +60,7 @@ export const HeroCard = () => (
 );
 
 export const TallCard = () => (
-  <ThemeProvider theme={{breakpoints, mode: 'light'}}>
+  <ThemeProvider theme={{breakpoints, mode: 'dark'}}>
     <StoryWrapper>
       <LoadingCard type="tall" />
     </StoryWrapper>

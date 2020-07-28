@@ -10,9 +10,7 @@ const LoadingCardTheme = {
 
     &.standard-card {
       ${mixins.loadingGradientAnimation(cards.standard.width.base)}
-      background-color: transparent;
-      height: 21.8rem;
-      padding-bottom: ${spacing.sm};
+      height: 20.2rem;
       width: ${cards.standard.width.base};
 
       .card-carousel & {
@@ -49,7 +47,7 @@ const LoadingCardTheme = {
 
       ${breakpoint('lg')`
         ${mixins.loadingGradientAnimation(cards.standard.width.lg)}
-        height: 34.4rem;
+        height: 32.8rem;
         width: ${cards.standard.width.lg};
 
         .standard-card {
@@ -73,7 +71,6 @@ const LoadingCardTheme = {
 
     &.queue-card {
       ${mixins.loadingGradientAnimation(cards.queue.width.base)};
-      background-color: transparent;
       height: 19.8rem;
       width: ${cards.queue.width.base};
 
@@ -259,17 +256,15 @@ const StyledLoadingCard = styled.div`
 
 const LoadingCard = ({ type }) => (
   <StyledLoadingCard className={`${type}-card card`}>
-    <div className="animated-background">
-      {
-        (type === 'standard' || type === 'queue') && (
-          <>
-            <div className={`${type}-card__mask-1`} />
-            <div className={`${type}-card__mask-2`} />
-            <div className={`${type}-card__mask-3`} />
-          </>
-        )
-      }
-    </div>
+    {
+      (type === 'standard' || type === 'queue') && (
+        <>
+          <div className={`${type}-card__mask-1`} />
+          <div className={`${type}-card__mask-2`} />
+          <div className={`${type}-card__mask-3`} />
+        </>
+      )
+    }
   </StyledLoadingCard>
 );
 
