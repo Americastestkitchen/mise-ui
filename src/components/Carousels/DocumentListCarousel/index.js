@@ -141,7 +141,7 @@ DocumentListCarousel.propTypes = {
   /** Larger title displayed above carousel */
   title: PropTypes.string.isRequired,
   /** Sets the carousel-item styles for a particular card style */
-  type: PropTypes.oneOf(['standard', 'feature']).isRequired,
+  type: PropTypes.oneOf(['standard', 'feature', 'person']).isRequired,
 };
 
 DocumentListCarousel.defaultProps = {

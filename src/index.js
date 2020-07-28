@@ -5,11 +5,16 @@ import Badge from './components/Badge';
 import breakpoints from './styles/breakpoints';
 import Button from './components/Buttons/Button';
 import carousel from './styles/carousel';
+import CardCarousel from './components/Carousels/CardCarousel';
 import ClearRefinements from './components/Algolia/shared/ClearRefinements';
 import CurrentRefinements from './components/Algolia/shared/CurrentRefinements';
+import DocumentListCarousel from './components/Carousels/DocumentListCarousel';
+import FavoriteActionButton from './components/Buttons/ActionButtons/FavoriteActionButton';
+import FeatureCard from './components/Cards/FeatureCard';
 import FilterButton from './components/FilterButton';
 import PodcastEpisodeCard from './components/Cards/PodcastEpisodeCard';
 import QueueCard from './components/Cards/QueueCard';
+import PersonCard from './components/Cards/PersonCard';
 import RefinementListBasic from './components/Algolia/shared/RefinementListBasic';
 import ResultsCount from './components/Algolia/shared/ResultsCount';
 import StandardCard from './components/Cards/StandardCard';
@@ -20,9 +25,12 @@ import SearchNumericMenuBasic from './components/Algolia/search/SearchNumericMen
 import SearchRefinementList from './components/Algolia/search/SearchRefinementList';
 import SearchSortBy from './components/Algolia/search/SearchSortBy';
 import ShowMoreLess from './components/ShowMoreLess';
+import Sticker from './components/Cards/shared/Sticker';
+import TallCard from './components/Cards/TallCard';
 import * as Icons from './components/DesignTokens/Icon';
 import fonts from './styles/fonts';
 import globalStyle from './styles/global';
+import { color, mixins, spacing } from './styles';
 
 export {
   Accordion,
@@ -31,14 +39,21 @@ export {
   breakpoints,
   Button,
   carousel,
+  CardCarousel,
+  color,
   ClearRefinements,
   CurrentRefinements,
+  DocumentListCarousel,
+  FavoriteActionButton,
+  FeatureCard,
   FilterButton,
   fonts,
   Icons,
   globalStyle,
   PodcastEpisodeCard,
   QueueCard,
+  mixins,
+  PersonCard,
   RefinementListBasic,
   ResultsCount,
   SearchBanner,
@@ -49,5 +64,8 @@ export {
   SearchSortBy,
   ShowMoreLess,
   StandardCard,
+  Sticker,
+  TallCard,
   styles,
+  spacing,
 };

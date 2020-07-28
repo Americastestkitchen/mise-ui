@@ -40,6 +40,7 @@ const CarouselTheme = {
       text-align: right;
 
       .dot {
+        border-radius: 50%;
         height: 1.2rem;
         margin: 0 ${spacing.xsm} 0 0;
         width: 1.2rem;
