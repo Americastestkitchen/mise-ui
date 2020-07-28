@@ -23,6 +23,39 @@ export default {
   },
 };
 
+const personItems = [
+  {
+    description: 'Bridget\'s favorite fair food is deep fried twinkies: learn why on this <a href="#">episode of proof</a>',
+    imgCloudinaryId: 'mise-play/Image_21_3x.png',
+    name: 'Bridget Lancaster',
+  },
+  {
+    description: 'Bridget\'s favorite fair food is deep fried twinkies: learn why on this <a href="#">episode of proof</a>',
+    imgCloudinaryId: 'mise-play/Image_21_3x.png',
+    name: 'Bridget Lancaster',
+  },
+  {
+    description: 'Bridget\'s favorite fair food is deep fried twinkies: learn why on this <a href="#">episode of proof</a>',
+    imgCloudinaryId: 'mise-play/Image_21_3x.png',
+    name: 'Bridget Lancaster',
+  },
+  {
+    description: 'Bridget\'s favorite fair food is deep fried twinkies: learn why on this <a href="#">episode of proof</a>',
+    imgCloudinaryId: 'mise-play/Image_21_3x.png',
+    name: 'Bridget Lancaster',
+  },
+  {
+    description: 'Bridget\'s favorite fair food is deep fried twinkies: learn why on this <a href="#">episode of proof</a>',
+    imgCloudinaryId: 'mise-play/Image_21_3x.png',
+    name: 'Bridget Lancaster',
+  },
+  {
+    description: 'Bridget\'s favorite fair food is deep fried twinkies: learn why on this <a href="#">episode of proof</a>',
+    imgCloudinaryId: 'mise-play/Image_21_3x.png',
+    name: 'Bridget Lancaster',
+  },
+];
+
 const items = [
   {
     contentType: 'recipe',
@@ -218,7 +251,21 @@ const StoryWrapper = styled.div`
   ${withThemes(StoryWrapperTheme)}
 `;
 
-export const Default = () => (
+export const PersonCard = () => (
+  <ThemeProvider theme={{
+    breakpoints,
+    mode: 'dark',
+  }}>
+    <StoryWrapper>
+      <CardCarousel
+        items={personItems}
+        type="person"
+      />
+    </StoryWrapper>
+  </ThemeProvider>
+);
+
+export const StandardCard = () => (
   <ThemeProvider theme={{
     breakpoints,
     mode: select('Theme', ['default', 'dark'], 'default')
