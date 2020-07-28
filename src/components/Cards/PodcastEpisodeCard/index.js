@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
+import fetch from 'cross-fetch';
 import { color, font, fontSize, spacing, lineHeight, letterSpacing, mixins } from '../../../styles';
+
 import { VideoPlay } from '../../DesignTokens/Icon';
 
 import Badge from '../../Badge';
@@ -17,6 +19,7 @@ const PodcastEpisodeCardWrapper = styled.div`
 
   > div {
     display: flex;
+    overflow: hidden;
   }
 
   p {
@@ -44,15 +47,15 @@ const PodcastEpisodeCardWrapper = styled.div`
 
 const ImageWrapper = styled.div`
   position: relative;
-  flex-basis: 41%;
+  flex-basis: 65%;
   max-height: 10rem;
   max-width: 10rem;
   margin-right: ${spacing.sm};
 
-  
   ${breakpoint('md')`
+    margin-right: 0;
+    max-height: none;
     max-width: 23rem;
-    max-height: 20rem;
   `}
 `;
 
@@ -84,6 +87,10 @@ export const StyledSticker = styled(Sticker)`
 const TextWrapper = styled.div`
   flex-basis: 59%;
 
+  button {
+    text-align: left;
+  }
+
   h4 {
     font: 1.2rem/${lineHeight.sm} ${font.pnb};
     color: ${color.silver};
@@ -107,7 +114,7 @@ const TextWrapper = styled.div`
   h3 {
     font: ${fontSize.md} ${font.pnb};
     margin-top: ${spacing.xsm};
-    margin-bottom: ${spacing.sm};
+    margin-bottom: ${spacing.sm}; 
     line-height: ${lineHeight.md};
   }
 
@@ -142,7 +149,7 @@ const TextWrapper = styled.div`
       display: flex;
       font-size: ${fontSize.xl};
       margin-top: ${spacing.sm};
-      margin-bottom: ${spacing.md};
+      margin-bottom: 0;
 
       svg {
         margin-right: ${spacing.xsm};
@@ -151,70 +158,130 @@ const TextWrapper = styled.div`
 
     p {
       display: block;
+      margin-top: ${spacing.md};
       margin-bottom: ${spacing.sm};
     }
   `}
 `;
 
-const PodcastEpisodeCard = ({
-  episode,
-  title,
-  description,
-  href,
-  imageAlt,
-  imageUrl,
-  siteKey,
-  stickers,
-}) => (
-  <PodcastEpisodeCardWrapper>
-    <div>
-      <ImageWrapper>
-        <Image
-          aria-hidden="true"
-          imageAlt={imageAlt}
-          imageUrl={imageUrl}
-        />
-        <StyledBadge
-          type={siteKey}
-        />
-        {stickers.map(({ text, type }) => (
-          <StyledSticker
-            key={text}
-            contentType="episode"
-            type={type}
-            text={text}
-          />
-        ))}
-      </ImageWrapper>
-      <TextWrapper>
-        <h4>Episode {episode} </h4>
-        <>
-          <VideoPlay fill={color.white} />
-          <h3>{title}</h3>
-        </>
+class PodcastEpisodeCard extends Component {
+  componentDidMount() {
+    const { imageId } = this.props;
+    fetch(
+      `https://art19.com/images/${imageId}`,
+      {
+        method: 'GET',
+        headers: {
+          Accept: 'application/vnd.art19.v0+json;q=0.9,application/json;q=0.8',
+          Authorization: 'Token token="jQ-ldsLx7USTQ4mjtOEBPIOsEXAno8UTh8l2KomNLQM5B75NUL-P9iFVGd1lF6c9-Lcq1dmUFTmhZTBsb09BmA", credential="14c39803-3e99-47c4-a4d3-d79398e74089"',
+        },
+        mode: 'cors',
+      },
+    )
+      .then(response => response.json())
+      .then((data) => {
+        const image = data.media_assets.filter(image => image.size_height === 640);
+        this.imageUrl = image.cdn_url;
+      },
+      )
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  setEpisode = (episode) => {
+    const { setEpisode } = this.props;
+    setEpisode(episode); // call method
+  };
+
+  render() {
+    const {
+      episode,
+      title,
+      description,
+      href,
+      id,
+      imageAlt,
+      imageId,
+      siteKey,
+      stickers,
+    } = this.props;
+
+    return (
+      <PodcastEpisodeCardWrapper
+        className="podcast-episode-card"
+      >
+        <div>
+          <ImageWrapper>
+            <Image
+              aria-hidden="true"
+              imageAlt={imageAlt}
+              imageUrl={this.imageUrl || 'https://res.cloudinary.com/hksqkdlah/image/upload/c_fill,dpr_2.0,f_auto,fl_lossy.progressive.strip_profile,g_faces:auto,h_460,q_auto:low,w_460/v1/Proof%20Season%204/04-Pandemic_Exodus_Bagels2'}
+            />
+            <StyledBadge
+              type={siteKey}
+            />
+            {stickers.map(({ text, type }) => (
+              <StyledSticker
+                key={text}
+                contentType="episode"
+                type={type}
+                text={text}
+              />
+            ))}
+          </ImageWrapper>
+          <TextWrapper>
+            <button
+              type="button"
+              onClick={this.setEpisode.bind(this, {
+                episode,
+                title,
+                description,
+                href,
+                id,
+                imageAlt,
+                imageId,
+                siteKey,
+                stickers,
+              })}
+            >
+              <h4>Episode {episode} </h4>
+              <VideoPlay fill={color.white} />
+              <h3>{title}</h3>
+            </button>
+            <p>{description} </p>
+            <span>•••</span><a href={href}>More From This Episode</a>
+          </TextWrapper>
+        </div>
         <p>{description} </p>
-        <span>•••</span><a href={href}>More From This Episode</a>
-      </TextWrapper>
-    </div>
-    <p>{description} </p>
-  </PodcastEpisodeCardWrapper>
-);
+      </PodcastEpisodeCardWrapper>
+    );
+  }
+}
 
 PodcastEpisodeCard.propTypes = {
-  episode: PropTypes.number.isRequired,
+  /** title of the episode */
   title: PropTypes.string.isRequired,
+  /** short description of episode */
   description: PropTypes.string.isRequired,
+  /** episode number */
+  episode: PropTypes.number.isRequired,
+  /** link of episode detail page */
   href: PropTypes.string.isRequired,
+  /** episode id */
+  id: PropTypes.string.isRequired,
   imageAlt: PropTypes.string,
-  imageUrl: PropTypes.string,
+  imageId: PropTypes.string,
   siteKey: PropTypes.string.isRequired,
   stickers: PropTypes.array,
+  setEpisode: PropTypes.func,
 };
 
 PodcastEpisodeCard.defaultProps = {
   imageAlt: ' ',
-  imageUrl: '',
+  imageId: '',
   stickers: [],
+  setEpisode: null,
 };
 
 export default PodcastEpisodeCard;

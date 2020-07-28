@@ -1,4 +1,5 @@
 import * as styles from './styles';
+import AudioPlayer from './components/AudioPlayer';
 import Accordion from './components/Accordion';
 import Badge from './components/Badge';
 import breakpoints from './styles/breakpoints';
@@ -7,6 +8,8 @@ import carousel from './styles/carousel';
 import ClearRefinements from './components/Algolia/shared/ClearRefinements';
 import CurrentRefinements from './components/Algolia/shared/CurrentRefinements';
 import FilterButton from './components/FilterButton';
+import PodcastEpisodeCard from './components/Cards/PodcastEpisodeCard';
+import QueueCard from './components/Cards/QueueCard';
 import RefinementListBasic from './components/Algolia/shared/RefinementListBasic';
 import ResultsCount from './components/Algolia/shared/ResultsCount';
 import StandardCard from './components/Cards/StandardCard';
@@ -23,6 +26,7 @@ import globalStyle from './styles/global';
 
 export {
   Accordion,
+  AudioPlayer,
   Badge,
   breakpoints,
   Button,
@@ -33,6 +37,8 @@ export {
   fonts,
   Icons,
   globalStyle,
+  PodcastEpisodeCard,
+  QueueCard,
   RefinementListBasic,
   ResultsCount,
   SearchBanner,

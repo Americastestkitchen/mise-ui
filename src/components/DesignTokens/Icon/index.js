@@ -75,6 +75,16 @@ export const Cookbook = ({ className }) => (
 
 Cookbook.propTypes = Icons.Cookbook.propTypes;
 
+export const FastForward = ({ fill }) => (
+  <Icon>
+    <Icons.FastForward
+      fill={fill}
+    />
+  </Icon>
+);
+
+FastForward.propTypes = Icons.FastForward.propTypes;
+
 export const FavoriteRibbon = ({ ariaHidden, ariaLabel, className, fill }) => (
   <Icon>
     <Icons.FavoriteRibbon
@@ -129,9 +139,19 @@ export const Lock = ({ className, fill }) => (
 
 Lock.propTypes = Icons.Lock.propTypes;
 
+export const Pause = ({ fill }) => (
+  <Icon>
+    <Icons.Pause
+      fill={fill}
+    />
+  </Icon>
+);
+
+Pause.propTypes = Icons.Pause.propTypes;
+
 export const Plus = ({ fill }) => (
   <Icon>
-    <Icons.Plus
+    <Icons.Pause
       fill={fill}
     />
   </Icon>
@@ -166,6 +186,16 @@ export const QuestionMark = ({ fill }) => (
 );
 
 QuestionMark.propTypes = Icons.QuestionMark.propTypes;
+
+export const Rewind = ({ fill }) => (
+  <Icon>
+    <Icons.Rewind
+      fill={fill}
+    />
+  </Icon>
+);
+
+Rewind.propTypes = Icons.Rewind.propTypes;
 
 export const SearchIcon = ({ fill }) => (
   <Icon>
