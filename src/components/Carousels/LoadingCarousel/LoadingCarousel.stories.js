@@ -35,7 +35,7 @@ export const StandardCardCarousel = () => (
 );
 
 export const FeatureCardCarousel = () => (
-  <ThemeProvider theme={{breakpoints, mode: 'dark'}}>
+  <ThemeProvider theme={{breakpoints, mode: 'light'}}>
     <StoryWrapper>
       <LoadingCarousel type="feature" />
     </StoryWrapper>

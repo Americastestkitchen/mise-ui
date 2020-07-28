@@ -2,14 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
-import { cards, color, mixins, spacing, withThemes } from '../../../styles';
+import { color, mixins, spacing, withThemes } from '../../../styles';
 import LoadingCard from '../../Cards/LoadingCard';
 
 const LoadingCarouselTheme = {
   default: css`
 
     .intro {
-      ${mixins.loadingGradientAnimation('22rem')};
       background-color: ${color.black};
       height: 2.1rem;
       margin-bottom: ${spacing.sm};
@@ -28,13 +27,11 @@ const LoadingCarouselTheme = {
       width: 100%;
 
       .title-and-cta {
-        ${mixins.loadingGradientAnimation('24rem', color.black)};
         background-color: ${color.black};
         width: 24rem;
       }
 
       .dots {
-        ${mixins.loadingGradientAnimation('5.1rem', color.black)};
         background-color: ${color.black};
         width: 5.1rem;
       }
@@ -58,12 +55,10 @@ const LoadingCarouselTheme = {
       }
 
       .card {
+        flex-shrink: 0;
+
         &:not(:first-child) {
           display: none;
-        }
-
-        &.standard-card {
-          flex-shrink: 0;
         }
       }
 
@@ -77,9 +72,9 @@ const LoadingCarouselTheme = {
         }
 
         .card-peek {
-            background-color: black;
-            width: 4rem;
-          }
+          background-color: black;
+          width: 4rem;
+        }
       `}
     }
   `,
@@ -109,6 +104,7 @@ const StyledLoadingCarousel = styled.div`
 `;
 
 const LoadingCarousel = ({
+  className,
   ctaText,
   intro,
   title,
@@ -124,10 +120,10 @@ const LoadingCarousel = ({
     )}
     <div className="card-carousel">
       <div className="cards">
-        <LoadingCard type={type} />
-        <LoadingCard type={type} />
-        <LoadingCard type={type} />
-        <LoadingCard type={type} />
+        <LoadingCard className={className} type={type} />
+        <LoadingCard className={className} type={type} />
+        <LoadingCard className={className} type={type} />
+        <LoadingCard className={className} type={type} />
         { title && ctaText && (
           <div className="card-peek" />
         )}
@@ -137,6 +133,7 @@ const LoadingCarousel = ({
 );
 
 LoadingCarousel.propTypes = {
+  className: PropTypes.string,
   /** Text displayed on CTA. */
   ctaText: PropTypes.string,
   /** Smaller intro text displayed above subtitle */
@@ -148,6 +145,7 @@ LoadingCarousel.propTypes = {
 };
 
 LoadingCarousel.defaultProps = {
+  className: '',
   ctaText: null,
   intro: null,
   title: null,
