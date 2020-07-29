@@ -6,6 +6,7 @@ import styled, { css } from 'styled-components';
 import Carousel from '../Carousel';
 import FeatureCard from '../../Cards/FeatureCard';
 import LinearGradient from '../../DesignTokens/LinearGradient';
+import PersonCard from '../../Cards/PersonCard';
 import StandardCard from '../../Cards/StandardCard';
 import TallCard from '../../Cards/TallCard';
 import { cards, spacing, withThemes } from '../../../styles';
@@ -22,8 +23,9 @@ const CardCarouselTheme = {
     .carousel {
       ${({ type }) => (type === 'tall' ? 'padding-top: 0; height: 62.8rem;' : '')}
     }
+
     .carousel-cell {
-      height: ${({ type }) => (type === 'tall' ? '60rem' : '40rem')};
+      height: ${({ type }) => (type === 'tall' ? '60rem' : type === 'person' ? '27.2rem' : '40rem')};
       margin-right: ${spacing.sm};
       width: ${cards.standard.width.lg};
     }
@@ -66,6 +68,7 @@ const CardCarouselWrapper = styled.div`
 
 const typeMap = {
   feature: FeatureCard,
+  person: PersonCard,
   standard: StandardCard,
   tall: TallCard,
 };
@@ -108,7 +111,7 @@ CardCarousel.propTypes = {
   /** Callback for rendering each carousel item */
   renderItem: PropTypes.func,
   /** Sets the carousel-item styles for a particular card style */
-  type: PropTypes.oneOf(['standard', 'feature', 'tall']).isRequired,
+  type: PropTypes.oneOf(['standard', 'feature', 'person', 'tall']).isRequired,
 };
 
 CardCarousel.defaultProps = {
