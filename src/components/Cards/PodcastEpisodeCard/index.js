@@ -27,6 +27,12 @@ const PodcastEpisodeCardWrapper = styled.div`
     margin-top: ${spacing.sm};
   }
 
+  &.is-playing {
+    box-shadow: 0 5px 8px 0 ${color.transparentBlack};
+    background-color: ${color.black};
+    max-width: 93rem;
+  }
+
   @media(hover: hover) {
     &:hover {
       transform: translateY(-${spacing.xsm});
@@ -82,6 +88,15 @@ export const StyledSticker = styled(Sticker)`
     height: ${stickerHeightMobile};
     font-size: ${fontSize.xxsm};
   `}
+`;
+
+const NowPlayingSticker = styled(Sticker)`
+  &.now-playing,
+  &.now-playing > * {
+    background-color: ${color.darkerMint};
+    font-size: ${fontSize.xsm};
+    transform: none;
+  }
 `;
 
 const TextWrapper = styled.div`
@@ -205,11 +220,12 @@ class PodcastEpisodeCard extends Component {
       imageId,
       siteKey,
       stickers,
+      isPlaying,
     } = this.props;
 
     return (
       <PodcastEpisodeCardWrapper
-        className="podcast-episode-card"
+        className={`podcast-episode-card ${isPlaying ? 'is-playing' : ''}`}
       >
         <div>
           <ImageWrapper>
@@ -245,7 +261,7 @@ class PodcastEpisodeCard extends Component {
                 stickers,
               })}
             >
-              <h4>Episode {episode} </h4>
+              <h4>{ isPlaying && (<NowPlayingSticker className="now-playing" type="editorial" text="now playing" />)} Episode {episode}</h4>
               <VideoPlay fill={color.white} />
               <h3>{title}</h3>
             </button>
@@ -270,6 +286,7 @@ PodcastEpisodeCard.propTypes = {
   href: PropTypes.string.isRequired,
   /** episode id */
   id: PropTypes.string.isRequired,
+  isPlaying: PropTypes.bool,
   imageAlt: PropTypes.string,
   imageId: PropTypes.string,
   siteKey: PropTypes.string.isRequired,
@@ -280,6 +297,7 @@ PodcastEpisodeCard.propTypes = {
 PodcastEpisodeCard.defaultProps = {
   imageAlt: ' ',
   imageId: '',
+  isPlaying: false,
   stickers: [],
   setEpisode: null,
 };

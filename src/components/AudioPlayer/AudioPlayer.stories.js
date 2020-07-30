@@ -91,6 +91,7 @@ export const Default = () => {
             key={episode.id}
             siteKey='atk'
             stickers={[{ type: 'editorial', text: '28:08' }]}
+            isPlaying={selectedEpisode && selectedEpisode.id === episode.id}
             setEpisode={setEpisode}
             {...episode}
           />
