@@ -12,6 +12,8 @@ import DocumentListCarousel from './components/Carousels/DocumentListCarousel';
 import FavoriteActionButton from './components/Buttons/ActionButtons/FavoriteActionButton';
 import FeatureCard from './components/Cards/FeatureCard';
 import FilterButton from './components/FilterButton';
+import HeroCard from './components/Cards/HeroCard';
+import LoadingCard from './components/Cards/LoadingCard';
 import PodcastEpisodeCard from './components/Cards/PodcastEpisodeCard';
 import QueueCard from './components/Cards/QueueCard';
 import PersonCard from './components/Cards/PersonCard';
@@ -27,6 +29,7 @@ import SearchSortBy from './components/Algolia/search/SearchSortBy';
 import ShowMoreLess from './components/ShowMoreLess';
 import Sticker from './components/Cards/shared/Sticker';
 import TallCard from './components/Cards/TallCard';
+import SubscribeBubbles from './components/SubscribeBubbles';
 import * as Icons from './components/DesignTokens/Icon';
 import fonts from './styles/fonts';
 import globalStyle from './styles/global';
@@ -50,6 +53,8 @@ export {
   fonts,
   Icons,
   globalStyle,
+  HeroCard,
+  LoadingCard,
   PodcastEpisodeCard,
   QueueCard,
   mixins,
@@ -66,6 +71,7 @@ export {
   StandardCard,
   Sticker,
   TallCard,
+  SubscribeBubbles,
   styles,
   spacing,
 };
