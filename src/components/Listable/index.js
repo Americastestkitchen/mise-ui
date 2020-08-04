@@ -6,7 +6,9 @@ import { Lock, VideoPlay } from '../DesignTokens/Icon/index';
 import { color, fontSize, font, grid, lineHeight, spacing } from '../../styles';
 import { getImageUrl } from '../../lib/cloudinary';
 
-const ListableWrapper = styled.div`
+const ListableWrapper = styled.div.attrs({
+  className: 'listable',
+})`
   display: flex;
   max-width: ${grid.columnWidth};
   width: ${grid.columnWidth};
