@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import breakpoint from 'styled-components-breakpoint';
 import styled from 'styled-components';
@@ -47,7 +47,9 @@ const SearchBannerClose = styled.button`
   `}
 `;
 
-const SearchBanner = ({ message, url }) => {
+const SearchBanner = ({ message, url, mixpanelType, incode, handleClick, handleView }) => {
+  const mixpanelParams = { mixpanelType, incode };
+  if (handleView !== null) useEffect(handleView, Object.values(mixpanelParams));
   const [closed, setClosed] = useState(false);
   return !closed && message && url ? (
     <SearchBannerSection className="search-banner">
@@ -56,6 +58,8 @@ const SearchBanner = ({ message, url }) => {
         href={url}
         rel="noopener noreferrer"
         target="_blank"
+        onClick={handleClick}
+        data-mixpanel-params={JSON.stringify(mixpanelParams)}
       >
         {message}
       </SearchBannerAnchor>
@@ -69,9 +73,31 @@ const SearchBanner = ({ message, url }) => {
 SearchBanner.propTypes = {
   message: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
+  mixpanelType: PropTypes.string,
+  incode: PropTypes.string,
+  handleClick: PropTypes.func,
+  handleView: PropTypes.func,
 };
 
-const QueryRules = ({ items }) => items.map(item => <SearchBanner {...item} />);
+SearchBanner.defaultProps = {
+  mixpanelType: null,
+  incode: null,
+  handleClick: null,
+  handleView: null,
+};
+
+const QueryRules = ({ items, isAnonymous, handleClickBanner, handleViewBanner }) => {
+  const loggedIn = !isAnonymous;
+  const banner = items.find(item => !(item.anonymousOnly && loggedIn));
+  if (banner) {
+    if (banner.mixpanelType) {
+      banner.handleClick = handleClickBanner;
+      banner.handleView = handleViewBanner;
+    }
+    return [<SearchBanner {...banner} />];
+  }
+  return [];
+};
 
 const CustomQueryRules = connectQueryRules(QueryRules);
 
