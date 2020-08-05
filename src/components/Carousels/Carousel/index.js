@@ -7,9 +7,9 @@ import { color, spacing, withThemes } from '../../../styles';
 
 const generatePositionStyles = (positions, breakpoint) => {
   const breakpointPositions = positions[breakpoint];
-  return breakpointPositions && (
+  return breakpointPositions ? (
     Object.keys(breakpointPositions).map(p => `${p}: ${breakpointPositions[p]};`).join('')
-  );
+  ) : '';
 };
 
 const CarouselTheme = {
@@ -276,11 +276,17 @@ Carousel.defaultProps = {
       right: spacing.sm,
       top: '0',
     },
+    md: {
+      right: spacing.sm,
+      top: `-${spacing.md}`,
+    },
     lg: {
       right: spacing.lg,
+      top: `-${spacing.md}`,
     },
     xlg: {
       right: spacing.xxlg,
+      top: `-${spacing.md}`,
     },
   },
   options: {},

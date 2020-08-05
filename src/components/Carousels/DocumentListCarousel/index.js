@@ -78,13 +78,13 @@ const TitleAndCta = styled.div`
 const DocumentListCarouselTheme = {
   default: css`
     color: ${color.eclipse};
+
+    .carousel {
+      padding-top: 0.6rem;
+    }
   `,
   dark: css`
     color: ${color.white};
-
-    .card-carousel {
-      margin-top: -1.8rem;
-    }
   `,
 };
 
