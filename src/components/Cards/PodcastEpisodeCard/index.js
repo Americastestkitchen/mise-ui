@@ -129,7 +129,7 @@ const TextWrapper = styled.div`
   h3 {
     font: ${fontSize.md} ${font.pnb};
     margin-top: ${spacing.xsm};
-    margin-bottom: ${spacing.sm}; 
+    margin-bottom: ${spacing.sm};
     line-height: ${lineHeight.md};
   }
 

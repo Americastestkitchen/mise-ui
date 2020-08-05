@@ -20,7 +20,7 @@ export default {
 
 const StyledLabelFrame = styled(LabelFrame)`
   padding: ${spacing.xlg} 0 ${spacing.sm};
-  
+
   h1 {
     font: ${fontSize.lg}/${lineHeight.md} ${font.pnb};
     margin: ${spacing.lg};
