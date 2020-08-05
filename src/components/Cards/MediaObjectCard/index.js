@@ -17,6 +17,7 @@ const MediaObjectCardWrapper = styled.section`
 `;
 
 const MediaObjectCardHeading = styled.div`
+  align-items: center;
   display: flex;
   margin-bottom: ${spacing.sm};
 
