@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components';
 
 import { ChefHat, Content, Cookbook, Knife, Sort, Time } from '../../../DesignTokens/Icon/svgs';
 import RefinementFilter from '../RefinementFilter/RefinementFilter';
-import { font, spacing, withThemes } from '../../../../styles';
+import { color, font, fontSize, spacing, withThemes } from '../../../../styles';
 
 const RefinementListRefinements = styled.div`
   border: none;
@@ -72,6 +72,11 @@ const RefinementListLegendTheme = {
       min-width: 2.3rem;
     }
   `,
+  dark: css`
+    color: ${color.white};
+    font: ${fontSize.md}/1 ${font.pnb};
+    padding: 0 0 ${spacing.sm};
+  `,
 };
 
 const RefinementListLegend = styled.legend`
@@ -91,6 +96,7 @@ const icons = {
 export const CustomBasicRefinementList = ({
   attribute,
   icon,
+  includeCount,
   items,
   label,
   refine,
@@ -112,6 +118,7 @@ export const CustomBasicRefinementList = ({
               <RefinementFilter
                 {...item}
                 attribute={attribute}
+                includeCount={includeCount}
                 key={`${attribute}-${item.label}`}
                 handleClick={handleClick}
                 refine={refine}
@@ -129,6 +136,7 @@ CustomBasicRefinementList.propTypes = {
   currentRefinement: PropTypes.array.isRequired,
   handleClick: PropTypes.func,
   icon: PropTypes.string,
+  includeCount: PropTypes.bool,
   items: PropTypes.array,
   label: PropTypes.string,
   refine: PropTypes.func.isRequired,
@@ -137,6 +145,7 @@ CustomBasicRefinementList.propTypes = {
 CustomBasicRefinementList.defaultProps = {
   handleClick: null,
   icon: null,
+  includeCount: true,
   items: null,
   label: null,
 };
