@@ -83,27 +83,42 @@ const RefinementFilterLabelTheme = {
       }
     ` : '')}
   `,
+  dark: css`
+    color: ${color.white};
+    ${({ isRefined }) => (isRefined ? `font-family: ${font.pnb};` : '')}
+  `,
 };
 
 const RefinementFilterLabel = styled.label.attrs({
   className: 'search-refinement-list__label',
 })`${withThemes(RefinementFilterLabelTheme)}`;
 
+const RefinementFilterCheckTheme = {
+  default: css`
+    height: 1.2rem;
+    margin-left: -2rem;
+    margin-right: ${spacing.xsm};
+    position: relative;
+    width: 1.2rem;
+
+    svg {
+      left: 0;
+      position: absolute;
+      top: 0;
+    }
+  `,
+  dark: css`
+    svg {
+      path {
+        fill: ${color.white};
+      }
+    }
+  `,
+};
+
 const RefinementFilterCheck = styled.div.attrs({
   className: 'refinement-filter__checkmark',
-})`
-  height: 1.2rem;
-  margin-left: -2rem;
-  margin-right: ${spacing.xsm};
-  position: relative;
-  width: 1.2rem;
-
-  svg {
-    left: 0;
-    position: absolute;
-    top: 0;
-  }
-`;
+})`${withThemes(RefinementFilterCheckTheme)}`;
 
 const RefinementFilterCheckbox = styled.input`
   height: 0.8rem;
