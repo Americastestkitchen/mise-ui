@@ -259,7 +259,7 @@ PodcastEpisodeCard.propTypes = {
   /** episode number */
   episode: PropTypes.number.isRequired,
   /** link of episode detail page */
-  href: PropTypes.string.isRequired,
+  href: PropTypes.string,
   /** episode id */
   id: PropTypes.string.isRequired,
   isPlaying: PropTypes.bool,
@@ -271,6 +271,7 @@ PodcastEpisodeCard.propTypes = {
 };
 
 PodcastEpisodeCard.defaultProps = {
+  href: '',
   imageAlt: ' ',
   imageUrl: '',
   isPlaying: false,
