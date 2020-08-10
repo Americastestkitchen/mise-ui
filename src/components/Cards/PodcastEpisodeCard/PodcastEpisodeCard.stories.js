@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { withKnobs, text, select } from '@storybook/addon-knobs';
-import fetch from 'cross-fetch';
 
 import PodcastEpisodeCard from './index';
 
@@ -25,6 +24,7 @@ export const Default = () => {
 
   useEffect(() => {
     async function fetchData() {
+      console.log(episode.cover_image_id || episode.cascaded_cover_image_id)
       const response = await fetch(
         `https://art19.com/images/${episode.cover_image_id || episode.cascaded_cover_image_id}`,
         {
@@ -37,9 +37,9 @@ export const Default = () => {
         },
       );
       const imageData = await response.json().catch((err) => {
-        console.error('REQUEST RESPONSE.JSON PARSING ERROR', url); // eslint-disable-line
-        console.error(err); // eslint-disable-line
+        console.error(err);
       });
+      console.log(imageData);
       const image = imageData.media_assets.filter(image => image.size_height === 640)[0];
       setImageUrl(image.cdn_url);
     }
