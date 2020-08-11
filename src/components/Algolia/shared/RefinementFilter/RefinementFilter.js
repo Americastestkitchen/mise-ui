@@ -86,6 +86,10 @@ const RefinementFilterLabelTheme = {
   dark: css`
     color: ${color.white};
     ${({ isRefined }) => (isRefined ? `font-family: ${font.pnb};` : '')}
+
+    &:hover {
+      color: ${color.mint};
+    }
   `,
 };
 
@@ -197,7 +201,7 @@ const RefinementFilter = ({
 RefinementFilter.propTypes = {
   altFill: PropTypes.string,
   /** Algolia attribute used to filter results. */
-  attribute: PropTypes.string.isRequired,
+  attribute: PropTypes.string,
   /** Number of hits for this filter value. */
   count: PropTypes.number,
   includeCount: PropTypes.bool,
@@ -210,10 +214,11 @@ RefinementFilter.propTypes = {
   /** Used to pass click functionality from jarvis etc. */
   handleClick: PropTypes.func,
   /** Value of filter to be used for refining results. */
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.array]).isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.array], PropTypes.string).isRequired,
 };
 
 RefinementFilter.defaultProps = {
+  attribute: '',
   altFill: null,
   count: null,
   includeCount: true,

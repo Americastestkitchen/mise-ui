@@ -103,7 +103,7 @@ export const CustomBasicRefinementList = ({
   handleClick,
 }) => {
   const Icon = icon ? icons[icon] : null;
-  return (
+  return items.length > 0 && (
     <RefinementListRefinements>
       <RefinementListFieldset>
         <div>
@@ -150,21 +150,33 @@ CustomBasicRefinementList.defaultProps = {
   label: null,
 };
 
-export const RefinementListBasicEl = ({ attribute, items, ...restProps }) => (
-  items.length > 0 && (
-    <CustomBasicRefinementList
-      attribute={attribute}
-      items={items}
-      {...restProps}
-    />
-  )
+const AlgoliaRefinementList = connectRefinementList(CustomBasicRefinementList);
+
+const RefinementListBasic = ({ attribute, items, ...restProps }) => (
+  attribute !== ''
+    ? (
+      <AlgoliaRefinementList
+        attribute={attribute}
+        items={items}
+        {...restProps}
+      />
+    )
+    : (
+      <CustomBasicRefinementList
+        attribute={attribute}
+        currentRefinement={[]}
+        items={items}
+        includeCount={false}
+        {...restProps}
+      />
+    )
 );
 
-RefinementListBasicEl.propTypes = {
+RefinementListBasic.propTypes = {
   /** Algolia attribute that is used to pull refinement values. */
-  attribute: PropTypes.string.isRequired,
+  attribute: PropTypes.string,
   /** Algolia attribute, list of refinement values. */
-  items: PropTypes.array.isRequired,
+  items: PropTypes.array,
   /** Used to pass click functionality from jarvis etc. */
   handleClick: PropTypes.func,
   /** Unique id string for svg icon to render next to label */
@@ -173,13 +185,18 @@ RefinementListBasicEl.propTypes = {
   label: PropTypes.string,
   /** Initial number of refinement filters that are visible in the refinement list. */
   transformItems: PropTypes.func,
+  /** Call this with the value of a filter to refine results based on filter. */
+  refine: PropTypes.func.isRequired,
 };
 
-RefinementListBasicEl.defaultProps = {
+RefinementListBasic.defaultProps = {
+  attribute: '',
   handleClick: null,
   icon: null,
+  items: null,
   label: null,
   transformItems: null,
 };
 
-export default connectRefinementList(RefinementListBasicEl);
+
+export default RefinementListBasic;
