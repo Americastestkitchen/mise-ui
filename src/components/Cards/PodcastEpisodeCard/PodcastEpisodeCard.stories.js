@@ -4,6 +4,17 @@ import fetch from 'cross-fetch';
 
 import PodcastEpisodeCard from './index';
 
+const headers = {
+  method: 'GET',
+  headers: {
+    'Accept': 'application/vnd.api+json',
+    'Authorization': 'Token token="jQ-ldsLx7USTQ4mjtOEBPIOsEXAno8UTh8l2KomNLQM5B75NUL-P9iFVGd1lF6c9-Lcq1dmUFTmhZTBsb09BmA", credential="14c39803-3e99-47c4-a4d3-d79398e74089"',
+  },
+  mode: 'cors',
+};
+
+const proxyUrl = 'https://www-staging.americastestkitchen.com/art19';
+
 export default {
   title: 'Components|Cards/PodcastEpisodeCard',
   component: PodcastEpisodeCard,
@@ -25,27 +36,25 @@ export const Default = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch(
-        `https://art19.com/images/${episode.cover_image_id || episode.cascaded_cover_image_id}`,
-        {
-          method: 'GET',
-          headers: {
-            'Accept': 'application/vnd.api+json',
-            'Authorization': 'Token token="jQ-ldsLx7USTQ4mjtOEBPIOsEXAno8UTh8l2KomNLQM5B75NUL-P9iFVGd1lF6c9-Lcq1dmUFTmhZTBsb09BmA", credential="14c39803-3e99-47c4-a4d3-d79398e74089"',
-          },
-          mode: 'no-cors',
-        },
-      );
-      const imageData = await response.json().catch((err) => {
-        console.error('REQUEST RESPONSE.JSON PARSING ERROR', url); // eslint-disable-line
-        console.error(err); // eslint-disable-line
-      });
-      const image = imageData.media_assets.filter(image => image.size_height === 640)[0];
-      setImageUrl(image.cdn_url);
+      try {
+        const response = await fetch(
+          `${proxyUrl}/images/${episode.cover_image_id || episode.cascaded_cover_image_id}`,
+          headers,
+        );
+        const { data: { relationships: { media_assets: { data: assets } } } } = await response.json();
+        const assetResponse = await fetch(
+          `${proxyUrl}/media_assets/${assets[4].id}`,
+          headers,
+        );
+        const { data: { attributes: { cdn_url: imgUrl } } } = await assetResponse.json();
+        setImageUrl(imgUrl);
+      } catch (err) {
+        console.log('error fetching data', err);
+      }
     }
     fetchData();
   }, []);
-  
+
   return (
     <PodcastEpisodeCard
       episode={episode.episode_number}
