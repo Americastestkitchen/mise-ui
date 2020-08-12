@@ -26,7 +26,7 @@ const StoryWrapperTheme = {
     padding: 2rem 0 2rem ${spacing.sm};
   `,
   dark: css`
-    background-color: ${color.nero};
+    background-color: ${color.gunmetal};
   `,
 }
 

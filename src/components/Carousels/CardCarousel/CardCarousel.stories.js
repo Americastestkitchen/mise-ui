@@ -243,7 +243,7 @@ const StoryWrapperTheme = {
     padding: 2rem;
   `,
   dark: css`
-    background-color: ${color.nero};
+    background-color: ${color.gunmetal};
   `,
 };
 
