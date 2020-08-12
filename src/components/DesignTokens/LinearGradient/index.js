@@ -10,7 +10,7 @@ const LinearGradientTheme = {
     background-image: ${({ angle, startColor, endColor, stop }) => `linear-gradient(${angle}deg, ${color[startColor]}, ${color[endColor]} ${stop})`};
   `,
   dark: css`
-    background-image: ${({ angle, stop }) => `linear-gradient(${angle}deg, transparent, ${color.nero} ${stop})`};
+    background-image: ${({ angle, stop }) => `linear-gradient(${angle}deg, transparent, ${color.gunmetal} ${stop})`};
   `,
 };
 
@@ -45,7 +45,7 @@ LinearGradient.propTypes = {
 
 LinearGradient.defaultProps = {
   angle: 0,
-  endColor: 'nero',
+  endColor: 'gunmetal',
   startColor: 'transparentWhite',
   stop: '70%',
 };

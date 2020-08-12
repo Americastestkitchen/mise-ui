@@ -54,7 +54,7 @@ const podcastApps = [
 ];
 
 const SubscribeBubblesStory = styled.div`
-  background-color: ${color.nero};
+  background-color: ${color.gunmetal};
   padding: ${spacing.sm};
 `;
 
