@@ -177,7 +177,7 @@ const StyledLoadingCardTheme = {
       &__mask-2,
       &__mask-3,
       &__mask-3::after {
-        background-color: ${color.nero};
+        background-color: ${color.gunmetal};
       }
     }
 
@@ -185,7 +185,7 @@ const StyledLoadingCardTheme = {
       &__mask-2,
       &__mask-2::after,
       &__mask-3 {
-        background-color: ${color.nero};
+        background-color: ${color.gunmetal};
       }
     }
   `,

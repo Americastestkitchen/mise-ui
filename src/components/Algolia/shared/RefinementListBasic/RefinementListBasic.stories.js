@@ -7,7 +7,7 @@ import MiseInstantSearch from '../../../../lib/algolia/MiseInstantSearch/MiseIns
 import { color, spacing } from '../../../../styles';
 
 const DarkModeWrapper = styled.div`
-  background-color: ${color.nero};
+  background-color: ${color.gunmetal};
   padding: ${spacing.lg};
   width: 100%;
 `;

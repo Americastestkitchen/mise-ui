@@ -10,7 +10,7 @@ export default {
 };
 
 const ListableStoryWrapper = styled.div`
-  background-color: ${color.nero};
+  background-color: ${color.gunmetal};
   max-width: ${grid.columnWidth};
   width: ${grid.columnWidth};
 `;

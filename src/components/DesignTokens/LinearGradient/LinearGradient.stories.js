@@ -45,7 +45,7 @@ export const CustomColors = () => (
     <LinearGradient
       angle={90}
       startColor={text('Start Color', 'transparentBlack')}
-      endColor={text('End Color', 'nero')}
+      endColor={text('End Color', 'gunmetal')}
     />
   </GradientContainer>
 );

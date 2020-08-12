@@ -17,7 +17,7 @@ const StoryWrapperTheme = {
     background-color: ${color.whiteSmoke};
   `,
   dark: css`
-    background-color: ${color.nero};
+    background-color: ${color.gunmetal};
   `,
 }
 
