@@ -6,6 +6,7 @@ import { color, font, fontSize, grid, lineHeight, mixins, spacing } from '../../
 import Badge from '../../Badge';
 import FavoriteButton from '../shared/FavoriteButton';
 import Image from '../shared/Image';
+import PersonHeadShot from '../shared/PersonHeadShot';
 import Sticker from '../shared/Sticker';
 import Title from '../shared/Title';
 
@@ -30,12 +31,21 @@ const StyledFeatureCard = styled.article`
   }
 
   .feature-card__subcomponents-wrapper {
+    display: flex;
     position: absolute;
     bottom: 0;
     left: 0;
     padding: ${spacing.sm} ${spacing.xsm};
     width: 100%;
     color: ${color.white};
+  }
+
+  .feature-card__subcomponents-content {
+    flex: 1 0 auto;
+  }
+
+  .feature-card__subcomponents-aside {
+    align-self: flex-end;
   }
 
   &.has-cta .feature-card__subcomponents-wrapper {
@@ -115,6 +125,7 @@ function FeatureCard({
   isWide,
   objectId,
   onClick,
+  personHeadShot,
   siteKey,
   siteKeyFavorites,
   stickers,
@@ -155,27 +166,49 @@ function FeatureCard({
             title={title}
           />
         ) : null }
-        <div className="feature-card__subcomponents-wrapper">
-          { stickers ? (
-            <StickerGroup>
-              {stickers.map(({ text, type }) => (
-                <StyledSticker
-                  className={className}
-                  key={text}
-                  contentType={contentType}
-                  type={type}
-                  text={text}
+        <div
+          className="feature-card__subcomponents-wrapper"
+        >
+          <div
+            className="feature-card__subcomponents-content"
+          >
+            { stickers ? (
+              <StickerGroup>
+                {stickers.map(({ text, type }, idx) => (
+                  <StyledSticker
+                    className={className}
+                    key={text}
+                    contentType={contentType}
+                    icon={idx === 0}
+                    type={type}
+                    text={text}
+                  />
+                ))}
+              </StickerGroup>
+            ) : null }
+            <StyledTitle
+              className={className}
+              title={title}
+            />
+            { attributions ? (
+              <Attributions>{attributions}</Attributions>
+            ) : null }
+          </div>
+          {
+            personHeadShot && (
+              <div
+                className="feature-card__subcomponents-aside"
+              >
+                <PersonHeadShot
+                  {...personHeadShot}
+                  size={{
+                    sm: '5',
+                    md: '8',
+                  }}
                 />
-              ))}
-            </StickerGroup>
-          ) : null }
-          <StyledTitle
-            className={className}
-            title={title}
-          />
-          { attributions ? (
-            <Attributions>{attributions}</Attributions>
-          ) : null }
+              </div>
+            )
+          }
         </div>
       </a>
       { ctaUrl && (
@@ -201,6 +234,10 @@ FeatureCard.propTypes = {
   isWide: PropTypes.bool,
   objectId: PropTypes.string.isRequired,
   onClick: PropTypes.func,
+  /** Optional: Image data that is used to render a PersonHeadShot. */
+  personHeadShot: PropTypes.shape({
+    ...PersonHeadShot.propTypes,
+  }),
   siteKey: PropTypes.oneOf(['atk', 'cco', 'cio', 'kids', 'school', 'shop']).isRequired,
   siteKeyFavorites: PropTypes.oneOf(['atk', 'cco', 'cio']),
   stickers: PropTypes.array,
@@ -218,6 +255,7 @@ FeatureCard.defaultProps = {
   isFavorited: false,
   isWide: false,
   onClick: null,
+  personHeadShot: null,
   siteKeyFavorites: null,
   stickers: [],
   target: null,
