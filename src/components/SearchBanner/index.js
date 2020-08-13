@@ -48,8 +48,8 @@ const SearchBannerClose = styled.button`
 `;
 
 const SearchBanner = ({ message, url, mixpanelType, incode, handleClick, handleView }) => {
+  useEffect(handleView, [mixpanelType]);
   const mixpanelParams = { mixpanelType, incode };
-  if (handleView !== null) useEffect(handleView, Object.values(mixpanelParams));
   const [closed, setClosed] = useState(false);
   return !closed && message && url ? (
     <SearchBannerSection className="search-banner">
@@ -83,7 +83,7 @@ SearchBanner.defaultProps = {
   mixpanelType: null,
   incode: null,
   handleClick: null,
-  handleView: null,
+  handleView: () => {},
 };
 
 const QueryRules = ({ items, isAnonymous, handleClickBanner, handleViewBanner }) => {
