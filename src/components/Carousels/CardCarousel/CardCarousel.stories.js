@@ -237,10 +237,46 @@ const tallItems = [
     onClick: action('result-click'),
   },
 ];
+const heroItems = [
+  {
+    ctaText: 'Start Learning',
+    contentType: 'skill',
+    title: 'Tomatoes 101',
+    href: 'https://www.google.com',
+    logoKey: 'atk',
+    backgroundCloudinaryId: "mise-play/Image_3x.png",
+    overlayColor: '#a53015',
+    siteKey: 'atk',
+    siteKeyFavorites: 'atk',
+    sticker: { contentType: 'video', type: 'editorial', text: '4 videos' },
+    onClick: action('result-click'),
+    description: 'Elle teaches you the basics of how to prepare tomatoes for cooking and preserving.',
+    personHeadShot: {
+      imgCloudinaryId: 'mise-play/Image_21_3x.png',
+    },
+  },
+  {
+    ctaText: 'Start Learning',
+    contentType: 'skill',
+    title: 'Stir-Frying 101',
+    href: 'https://www.google.com',
+    logoKey: 'atk',
+    backgroundCloudinaryId: "mise-play/Image_3x.png",
+    overlayColor: '#a53015',
+    siteKey: 'cco',
+    siteKeyFavorites: 'cco',
+    sticker: { contentType: 'video', type: 'editorial', text: '4 videos' },
+    onClick: action('result-click'),
+    description: 'Elle teaches you the basics of how to prepare stir-fry.',
+    personHeadShot: {
+      imgCloudinaryId: 'mise-play/Image_21_3x.png',
+    },
+  },
+];
 
 const StoryWrapperTheme = {
   default: css`
-    padding: 2rem;
+    padding: 4rem 2rem;
   `,
   dark: css`
     background-color: ${color.gunmetal};
@@ -289,6 +325,21 @@ export const TallCard = () => (
         dotPosition={{ sm: { bottom: `-${spacing.xxsm}`, right: '50%'  } }}
         items={tallItems}
         type={select('Card Type', ['standard', 'feature', 'tall'], 'tall')}
+      />
+    </StoryWrapper>
+  </ThemeProvider>
+);
+
+export const HeroCard = () => (
+  <ThemeProvider theme={{
+    breakpoints,
+    mode: 'dark',
+  }}>
+    <StoryWrapper>
+      <CardCarousel
+        dotPosition={{ sm: { bottom: `-${spacing.lg}`, right: '50%'  } }}
+        items={heroItems}
+        type={select('Card Type', ['standard', 'feature', 'tall', 'hero'], 'hero')}
       />
     </StoryWrapper>
   </ThemeProvider>
