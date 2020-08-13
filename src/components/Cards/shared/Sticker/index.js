@@ -20,6 +20,7 @@ const StyledSticker = styled.span`
   font: ${fontSize.xsm}/${stickerHeight} ${font.pnb};
   letter-spacing: ${letterSpacing.md};
   text-transform: uppercase;
+  vertical-align: top;
   white-space: nowrap;
 
   svg {
@@ -35,6 +36,7 @@ const determineIconType = (contentType) => {
     collection: Collection,
     clip: VideoPlay,
     episode: VideoPlay,
+    playlist: VideoPlay,
     video: VideoPlay,
     'cooking school course': VideoPlay,
   };
@@ -86,6 +88,7 @@ for mobile for most types of cards.
 const Sticker = ({
   className,
   contentType,
+  icon,
   text,
   type,
 }) => (
@@ -93,7 +96,7 @@ const Sticker = ({
     className={className}
     type={type}
   >
-    { type === 'editorial' ? determineIconType(contentType) : null }
+    { icon && type === 'editorial' ? determineIconType(contentType) : null }
     <span>{text}</span>
   </StyledSticker>
 );
@@ -102,6 +105,8 @@ Sticker.propTypes = {
   className: PropTypes.string,
   /** The type of content that the card represents */
   contentType: PropTypes.string,
+  /** Whether or not to include a content-type icon */
+  icon: PropTypes.bool,
   /** The text inside the sticker. */
   text: PropTypes.string.isRequired,
   type: PropTypes.oneOf(['editorial', 'priority']).isRequired,
@@ -110,6 +115,7 @@ Sticker.propTypes = {
 Sticker.defaultProps = {
   className: '',
   contentType: null,
+  icon: true,
 };
 
 export default Sticker;

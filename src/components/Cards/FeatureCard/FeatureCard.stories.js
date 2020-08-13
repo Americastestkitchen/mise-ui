@@ -45,6 +45,31 @@ export const Wide = () => (
   />
 );
 
+export const WideWithPersonHeadShot = () => (
+  <FeatureCard
+    attributions="Popular • America’s Test Kitchen"
+    contentType="episode"
+    displayFavoritesButton
+    href="http://google.com"
+    imageAlt={text('Image alt text', 'Lorem ipsum')}
+    imageUrl={text('Image url', 'https://res.cloudinary.com/hksqkdlah/image/upload/v1592916093/mise-play/feature-card-wide-cta.jpg')}
+    isWide
+    siteKey="atk"
+    siteKeyFavorites="atk"
+    stickers={[{
+      contentType: 'video',
+      text: '4 videos',
+      type: 'editorial',
+    }]}
+    objectId=""
+    onClick={action('result-click')}
+    personHeadShot={{
+      imgCloudinaryId: 'mise-play/Image_21_3x.png',
+    }}
+    title={text('Title', '12-Inch Stainless-Steel Skillets')}
+  />
+);
+
 export const WideWithCTA = () => (
   <FeatureCard
     attributions="Popular • America’s Test Kitchen"
