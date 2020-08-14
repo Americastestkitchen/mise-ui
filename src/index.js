@@ -20,6 +20,7 @@ import PodcastEpisodeCard from './components/Cards/PodcastEpisodeCard';
 import QueueCard from './components/Cards/QueueCard';
 import PersonCard from './components/Cards/PersonCard';
 import RefinementListBasic from './components/Algolia/shared/RefinementListBasic';
+import RefinementList from './components/Algolia/shared/RefinementList';
 import ResultsCount from './components/Algolia/shared/ResultsCount';
 import StandardCard from './components/Cards/StandardCard';
 import SearchBanner from './components/SearchBanner';
@@ -37,6 +38,7 @@ import fonts from './styles/fonts';
 import globalStyle from './styles/global';
 import { color, mixins, spacing } from './styles';
 
+/** add test commit */
 export {
   Accordion,
   AudioPlayer,
@@ -64,6 +66,7 @@ export {
   mixins,
   PersonCard,
   RefinementListBasic,
+  RefinementList,
   ResultsCount,
   SearchBanner,
   SearchInput,
