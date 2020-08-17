@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import 'jest-styled-components';
 
-import { RefinementListBasicEl } from '../index';
+import { CustomBasicRefinementList } from '../index';
 import MiseInstantSearch from '../../../../../lib/algolia/MiseInstantSearch/MiseInstantSearch';
 import breakpoints from '../../../../../styles/breakpoints';
 
@@ -36,7 +36,7 @@ describe('RefinementListBasic component should', () => {
     render(
       <ThemeProvider theme={{ breakpoints }}>
         <MiseInstantSearch>
-          <RefinementListBasicEl
+          <CustomBasicRefinementList
             attribute="search_difficulty_list"
             currentRefinement={[]}
             icon="chefHat"
