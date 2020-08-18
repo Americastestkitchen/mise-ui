@@ -32,6 +32,7 @@ const StyledFeatureCard = styled.article`
 
   .feature-card__subcomponents-wrapper {
     display: flex;
+    justify-content: space-between;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -41,11 +42,13 @@ const StyledFeatureCard = styled.article`
   }
 
   .feature-card__subcomponents-content {
-    flex: 1 0 auto;
+    flex: 1 0 calc(100% -  6.2rem);
+    max-width: calc(100% -  6.2rem);
   }
 
   .feature-card__subcomponents-aside {
     align-self: flex-end;
+    flex: 0 0 5rem;
   }
 
   &.has-cta .feature-card__subcomponents-wrapper {
