@@ -13,15 +13,28 @@ import TallCard from '../../Cards/TallCard';
 import { cards, spacing, withThemes } from '../../../styles';
 
 const typeWidths = {
-  hero: 'calc(100% - 10rem)',
-  default: cards.standard.width.lg,
+  default: {
+    hero: '100%',
+    default: cards.standard.width.lg,
+  },
+  sm: {
+    hero: '100%',
+  },
+  md: {
+    hero: 'calc(100% - 6.4rem)',
+  },
+  lg: {
+    hero: 'calc(100% - 10rem)',
+  },
 };
 
 const typeHeights = {
-  hero: '46.5rem',
-  tall: '60rem',
-  person: '27.2rem',
-  default: '40rem',
+  default: {
+    hero: '46.5rem',
+    tall: '60rem',
+    person: '27.2rem',
+    default: '40rem',
+  },
 };
 
 const carouselTypeStyles = {
@@ -42,9 +55,9 @@ const CardCarouselTheme = {
     }
 
     .carousel-cell {
-      height: ${({ type }) => (typeHeights[type] || typeHeights.default)};
+      height: ${({ type }) => (typeHeights?.sm?.[type] || typeHeights.default[type] || typeHeights.default.default)};
       margin-right: ${spacing.sm};
-      width: ${({ type }) => (typeWidths[type] || typeWidths.default)};
+      width: ${({ type }) => (typeWidths?.sm?.[type] || typeWidths.default[type] || typeWidths.default.default)};
     }
 
     .standard-card {
@@ -67,6 +80,11 @@ const CardCarouselTheme = {
     ${breakpoint('lg')`
       .linear-gradient {
         display: block;
+      }
+
+      .carousel-cell {
+        height: ${({ type }) => (typeHeights?.lg?.[type] || typeHeights.default[type] || typeHeights.default.default)};
+        width: ${({ type }) => (typeWidths?.lg?.[type] || typeWidths.default[type] || typeWidths.default.default)};
       }
 
       &.card-carousel--hero {
