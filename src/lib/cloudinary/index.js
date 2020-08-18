@@ -79,6 +79,12 @@ const imageConfig = {
       ...imageConfig.gradientFade(),
     };
   },
+  pairedProduct() {
+    return {
+      ...baseImageConfig,
+      width: 150,
+    };
+  },
 };
 
 /**

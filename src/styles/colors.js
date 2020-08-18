@@ -40,6 +40,8 @@ const color = {
   smokeyQuartz: '#2A2A2A',
   asphalt: '#191919',
   charcoal: '#121212',
+  wasabi: '#7ea042',
+  olive: '#627C33',
 };
 
 export default color;
