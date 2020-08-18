@@ -85,6 +85,27 @@ const imageConfig = {
       width: 150,
     };
   },
+  showcaseFreeTrialMobile() {
+    return {
+      ...baseImageConfig,
+      aspectRatio: '17:10',
+      width: 375,
+    };
+  },
+  showcaseFreeTrialTablet() {
+    return {
+      ...baseImageConfig,
+      aspectRatio: '34:33',
+      width: 300,
+    };
+  },
+  showcaseFreeTrialDesktop() {
+    return {
+      ...baseImageConfig,
+      aspectRatio: '56:33',
+      width: 500,
+    };
+  },
 };
 
 /**
