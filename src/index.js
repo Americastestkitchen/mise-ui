@@ -18,6 +18,7 @@ import LoadingCard from './components/Cards/LoadingCard';
 import MediaObjectCard from './components/Cards/MediaObjectCard';
 import PodcastEpisodeCard from './components/Cards/PodcastEpisodeCard';
 import QueueCard from './components/Cards/QueueCard';
+import PairedProductAd from './components/Ads/PairedProductAd';
 import PersonCard from './components/Cards/PersonCard';
 import RefinementListBasic from './components/Algolia/shared/RefinementListBasic';
 import RefinementList from './components/Algolia/shared/RefinementList';
@@ -61,6 +62,7 @@ export {
   Listable,
   LoadingCard,
   MediaObjectCard,
+  PairedProductAd,
   PodcastEpisodeCard,
   QueueCard,
   mixins,
