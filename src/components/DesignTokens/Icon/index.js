@@ -149,9 +149,20 @@ export const Pause = ({ fill }) => (
 
 Pause.propTypes = Icons.Pause.propTypes;
 
+export const Phone = ({ fill }) => (
+  <Icon>
+    <Icons.Phone
+      fill={fill}
+    />
+  </Icon>
+);
+
+Phone.propTypes = Icons.Phone.propTypes;
+
+
 export const Plus = ({ fill }) => (
   <Icon>
-    <Icons.Pause
+    <Icons.Plus
       fill={fill}
     />
   </Icon>
@@ -187,6 +198,16 @@ export const QuestionMark = ({ fill }) => (
 
 QuestionMark.propTypes = Icons.QuestionMark.propTypes;
 
+export const RecipeCard = ({ fill }) => (
+  <Icon>
+    <Icons.RecipeCard
+      fill={fill}
+    />
+  </Icon>
+);
+
+RecipeCard.propTypes = Icons.RecipeCard.propTypes;
+
 export const Rewind = ({ fill }) => (
   <Icon>
     <Icons.Rewind
@@ -196,6 +217,16 @@ export const Rewind = ({ fill }) => (
 );
 
 Rewind.propTypes = Icons.Rewind.propTypes;
+
+export const RibbonAward = ({ fill }) => (
+  <Icon>
+    <Icons.RibbonAward
+      fill={fill}
+    />
+  </Icon>
+);
+
+RibbonAward.propTypes = Icons.RibbonAward.propTypes;
 
 export const SearchIcon = ({ fill }) => (
   <Icon>
@@ -216,3 +247,13 @@ export const VideoPlay = ({ fill }) => (
 );
 
 VideoPlay.propTypes = Icons.VideoPlay.propTypes;
+
+export const Videos = ({ fill }) => (
+  <Icon>
+    <Icons.Videos
+      fill={fill}
+    />
+  </Icon>
+);
+
+Videos.propTypes = Icons.Videos.propTypes;
