@@ -73,6 +73,12 @@ const imageConfig = {
       effect: `gradient_fade:${strength},${edge},b_${backgroundColor}`,
     };
   },
+  heroAd() {
+    return {
+      ...baseImageConfig,
+      width: 272,
+    };
+  },
   heroCard() {
     return {
       ...baseImageConfig,
