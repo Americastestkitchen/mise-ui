@@ -10,8 +10,10 @@ import ClearRefinements from './components/Algolia/shared/ClearRefinements';
 import CurrentRefinements from './components/Algolia/shared/CurrentRefinements';
 import DocumentListCarousel from './components/Carousels/DocumentListCarousel';
 import FavoriteActionButton from './components/Buttons/ActionButtons/FavoriteActionButton';
+import EmailForm from './components/Forms/EmailForm';
 import FeatureCard from './components/Cards/FeatureCard';
 import FilterButton from './components/FilterButton';
+import FreeTrialAd from './components/Ads/ShowcaseAds/FreeTrialAd';
 import HeroCard from './components/Cards/HeroCard';
 import Listable from './components/Listable';
 import LoadingCard from './components/Cards/LoadingCard';
@@ -52,9 +54,11 @@ export {
   ClearRefinements,
   CurrentRefinements,
   DocumentListCarousel,
+  EmailForm,
   FavoriteActionButton,
   FeatureCard,
   FilterButton,
+  FreeTrialAd,
   fonts,
   Icons,
   globalStyle,

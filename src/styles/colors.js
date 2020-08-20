@@ -42,6 +42,7 @@ const color = {
   charcoal: '#121212',
   wasabi: '#7ea042',
   olive: '#627C33',
+  shadyLady: '#979797', // 151 151 151
 };
 
 export default color;
