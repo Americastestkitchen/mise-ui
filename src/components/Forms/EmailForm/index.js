@@ -82,7 +82,8 @@ const HowWeUseWrapper = styled.div`
   position: relative;
 
   ${breakpoint('md')`
-    text-align: right;
+    display: flex;
+    justify-content: flex-end;
   `}
 `;
 
@@ -137,10 +138,12 @@ const EmailForm = ({
       setDisabled(false);
     }
   };
-  const controlId = instanceId || inputLabel.split(' ').join('');
+  const controlId = instanceId || inputLabel?.split(' ').join('') || 'email-form';
 
   return (
-    <EmailFormWrapper>
+    <EmailFormWrapper
+      data-testid="email-form-wrapper"
+    >
       <EmailFormElement
         buttonColor={buttonColor}
         buttonTextColor={buttonTextColor}
@@ -206,9 +209,9 @@ EmailForm.propTypes = {
 };
 
 EmailForm.defaultProps = {
-  buttonColor: 'tomato',
+  buttonColor: 'wasabi',
   buttonTextColor: 'white',
-  buttonText: 'Submit',
+  buttonText: 'Sign me up',
   errorText: 'Invalid email address',
   inputLabel: 'Email address',
   instanceId: null,
