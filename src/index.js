@@ -14,7 +14,9 @@ import EmailForm from './components/Forms/EmailForm';
 import FeatureCard from './components/Cards/FeatureCard';
 import FilterButton from './components/FilterButton';
 import FreeTrialAd from './components/Ads/ShowcaseAds/FreeTrialAd';
+import HeroAd from './components/Ads/HeroAd';
 import HeroCard from './components/Cards/HeroCard';
+import InlineNewsletter from './components/Newsletters/InlineNewsletter';
 import Listable from './components/Listable';
 import LoadingCard from './components/Cards/LoadingCard';
 import MediaObjectCard from './components/Cards/MediaObjectCard';
@@ -61,7 +63,9 @@ export {
   FreeTrialAd,
   fonts,
   Icons,
+  InlineNewsletter,
   globalStyle,
+  HeroAd,
   HeroCard,
   Listable,
   LoadingCard,
