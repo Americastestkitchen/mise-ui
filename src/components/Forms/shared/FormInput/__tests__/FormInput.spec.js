@@ -9,8 +9,9 @@ describe('components', () => {
   const renderComponent = (error = '') => (
     render(
       <FormInput
-        aria-label="email"
+        label="email"
         error={error}
+        id="email"
         name="email"
         onChange={onChange}
         placeholder="placeholder text"
