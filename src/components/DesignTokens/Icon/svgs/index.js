@@ -13,14 +13,18 @@ import Filter from './Filter';
 import Knife from './Knife';
 import Lock from './Lock';
 import Pause from './Pause';
+import Phone from './Phone';
 import Plus from './Plus';
 import Print from './Print';
 import QuestionMark from './QuestionMark';
+import RecipeCard from './RecipeCard';
 import Rewind from './Rewind';
+import RibbonAward from './RibbonAward';
 import SearchIcon from './SearchIcon';
 import Sort from './Sort';
 import Time from './Time';
 import VideoPlay from './VideoPlay';
+import Videos from './Videos';
 
 export {
   BreadcrumbArrow,
@@ -38,12 +42,16 @@ export {
   Knife,
   Lock,
   Pause,
+  Phone,
   Plus,
   Print,
   QuestionMark,
+  RecipeCard,
   Rewind,
+  RibbonAward,
   SearchIcon,
   Sort,
   Time,
   VideoPlay,
+  Videos,
 };
