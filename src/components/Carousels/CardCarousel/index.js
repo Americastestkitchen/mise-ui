@@ -16,6 +16,11 @@ const CardCarouselTheme = {
     max-width: 100%;
     position: relative;
 
+    .flickity-page-dots {
+      height: 1.2rem;
+      width: auto;
+    }
+
     .linear-gradient {
       display: none;
     }
