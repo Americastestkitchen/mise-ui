@@ -17,13 +17,13 @@ import breakpoints from '../../../styles/breakpoints';
 
 const baseRecipe = {
   className: null,
-  commentCount: 1,
+  secondaryAttribution: 1,
   contentType: 'recipe',
   contentTypeFormatted: 'Recipe',
   ctaText: null,
   ctaUrl: null,
   displayCookbook: false,
-  displayCommentCount: true,
+  displaySecondaryAttribution: true,
   displayFavoritesButton: false,
   displayLockIcon: true,
   stickers: [{ text: 'new', type: 'priority' }],
@@ -41,13 +41,13 @@ const baseRecipe = {
 
 const baseTasteTest = {
   className: null,
-  commentCount: 1,
+  secondaryAttribution: 1,
   contentType: 'taste_test',
   contentTypeFormatted: 'Taste Test',
   ctaText: 'Buy The Winner',
   ctaUrl: 'http://www.amazon.com/dp/B00N9TX628/?tag=atksearchresult-20',
   displayCookbook: false,
-  displayCommentCount: true,
+  displaySecondaryAttribution: true,
   displayFavoritesButton: false,
   displayLockIcon: true,
   stickers: [{ text: '6 tested', type: 'editorial' }],
@@ -116,7 +116,9 @@ describe('StandardCard component', () => {
 
   it('Renders with a comment count', () => {
     const testInstance = componentSetup(baseRecipe);
-    expect(testInstance.findByType(Attributions).props.commentCount).toBe(baseRecipe.commentCount);
+    expect(
+      testInstance.findByType(Attributions).props.secondaryAttribution,
+    ).toBe(baseRecipe.secondaryAttribution);
   });
 
   it('Renders fallback content type attribution', () => {
@@ -124,7 +126,9 @@ describe('StandardCard component', () => {
       ...baseRecipe,
       contentTypeFormatted: null,
     });
-    expect(testInstance.findByType(Attributions).props.contentType).toBe(baseRecipe.contentType);
+    expect(
+      testInstance.findByType(Attributions).props.primaryAttribution,
+    ).toBe(baseRecipe.contentType);
   });
 
   it('Renders without a FavoriteButton', () => {

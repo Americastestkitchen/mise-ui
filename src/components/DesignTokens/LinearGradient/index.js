@@ -8,6 +8,14 @@ const LinearGradientTheme = {
   default: css`
     background-blend-mode: multiply;
     background-image: ${({ angle, startColor, endColor, stop }) => `linear-gradient(${angle}deg, ${color[startColor]}, ${color[endColor]} ${stop})`};
+
+    .jet-gradient & {
+      background-image: ${({ angle, stop }) => `linear-gradient(${angle}deg, ${color.transparentBlack}, ${color.jet} ${stop})`};
+    }
+
+    .asphalt-gradient & {
+      background-image: ${({ angle, stop }) => `linear-gradient(${angle}deg, ${color.transparentBlack}, ${color.asphalt} ${stop})`};
+    }
   `,
   dark: css`
     background-image: ${({ angle, stop }) => `linear-gradient(${angle}deg, transparent, ${color.gunmetal} ${stop})`};
