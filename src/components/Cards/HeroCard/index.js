@@ -66,9 +66,15 @@ const HeroCardSticker = styled.div`
   }
 `;
 
+const HeroCardTitle = styled.div`
+  color: ${color.white};
+  font: ${fontSize.xxxl}/${lineHeight.sm} ${font.pnb};
+  margin-bottom: ${spacing.xxsm};
+`;
+
 const HeroCardDescription = styled.p`
   color: ${color.white};
-  margin-bottom: ${spacing.sm};
+  margin-bottom: ${spacing.xsm};
 
   ${({ cardType }) => (cardType === 'learn' ? `
     font: ${fontSize.lg}/${lineHeight.md} ${font.pnb};
@@ -112,12 +118,21 @@ const HeroCardCtaText = styled.span`
 `;
 
 const HeroCard = ({
-  backgroundCloudinaryId, ctaUrl, ctaText, description, iconKey, personHeadShot, sticker,
+  backgroundCloudinaryId,
+  ctaUrl,
+  ctaText,
+  description,
+  iconKey,
+  personHeadShot,
+  sticker,
+  title,
 }) => {
   const Logo = keyToLogo(iconKey);
   const backgroundImg = getImageUrl(backgroundCloudinaryId, 'heroCard');
   return (
-    <HeroCardWrapper backgroundImg={backgroundImg}>
+    <HeroCardWrapper
+      backgroundImg={backgroundImg}
+    >
       <div>
         {
           Logo && (
@@ -146,7 +161,16 @@ const HeroCard = ({
             </HeroCardSticker>
           )
         }
-        <HeroCardDescription cardType={personHeadShot && sticker ? 'learn' : 'watch'}>
+        {
+          title && (
+            <HeroCardTitle>
+              {title}
+            </HeroCardTitle>
+          )
+        }
+        <HeroCardDescription
+          cardType={personHeadShot && sticker ? 'learn' : 'watch'}
+        >
           {description}
         </HeroCardDescription>
         <HeroCardCta href={ctaUrl}>
@@ -181,12 +205,15 @@ HeroCard.propTypes = {
   sticker: PropTypes.shape({
     ...Sticker.propTypes,
   }),
+  /** Title text above description */
+  title: PropTypes.string,
 };
 
 HeroCard.defaultProps = {
   iconKey: null,
   personHeadShot: null,
   sticker: null,
+  title: null,
 };
 
 export default HeroCard;

@@ -21,7 +21,7 @@ const CarouselTheme = {
       background: none;
       color: ${color.black};
       display: none;
-      z-index: 1;
+      z-index: 2;
 
       &:hover {
         background: none;
@@ -31,7 +31,7 @@ const CarouselTheme = {
         right: -1rem;
       }
 
-      &.prev {
+      &.previous {
         left: -1rem;
       }
     }
