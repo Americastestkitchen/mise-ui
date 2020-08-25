@@ -33,22 +33,22 @@ const StyledCookbook = styled(Cookbook)`
 
 const Attributions = ({
   className,
-  contentType,
   displayCookbook,
   displayLockIcon,
-  commentCount,
-  displayCommentCount,
+  displaySecondaryAttribution,
+  primaryAttribution,
+  secondaryAttribution,
   shopPrices,
 }) => (
   <StyledAttributions>
     <div className="attributions__content-type-wrapper">
       { displayLockIcon ? <StyledLock className="lock-icon" fill={`${color.nobel}`} /> : null }
-      { contentType === 'Cookbook Collection' || displayCookbook ? (
+      { primaryAttribution === 'Cookbook Collection' || displayCookbook ? (
         <StyledCookbook
           className={className}
         />
       ) : null }
-      {!shopPrices ? <span>{contentType}</span> : null}
+      {!shopPrices ? <span>{primaryAttribution}</span> : null}
       {
         shopPrices ? (
           <span>
@@ -68,10 +68,10 @@ const Attributions = ({
         ) : null
       }
     </div>
-    { displayCommentCount && commentCount > 0 ? (
+    { displaySecondaryAttribution && secondaryAttribution ? (
       <>
         <span className="attributions__bullet">•</span>
-        <span>{commentCount} {commentCount === 1 ? 'Comment' : 'Comments' }</span>
+        <span>{secondaryAttribution}</span>
       </>
     ) : null }
   </StyledAttributions>
@@ -79,20 +79,20 @@ const Attributions = ({
 
 Attributions.propTypes = {
   className: PropTypes.string,
-  commentCount: PropTypes.number,
-  contentType: PropTypes.string.isRequired,
   displayLockIcon: PropTypes.bool,
-  displayCommentCount: PropTypes.bool,
+  displaySecondaryAttribution: PropTypes.bool,
   displayCookbook: PropTypes.bool,
+  primaryAttribution: PropTypes.string.isRequired,
+  secondaryAttribution: PropTypes.number,
   shopPrices: PropTypes.object,
 };
 
 Attributions.defaultProps = {
   className: '',
-  commentCount: null,
-  displayCommentCount: false,
+  displaySecondaryAttribution: false,
   displayCookbook: false,
   displayLockIcon: false,
+  secondaryAttribution: null,
   shopPrices: null,
 };
 

@@ -24,6 +24,11 @@ const StyledButton = styled(Button)`
   justify-content: center;
   letter-spacing: ${letterSpacing.md};
 
+  em {
+    display: none;
+    font-style: normal;
+  }
+
   &.favorite-action,
   &.favorite-manage {
     display: flex;
@@ -39,6 +44,21 @@ const StyledButton = styled(Button)`
   &.favorite-manage {
     background: ${color.mint};
     flex-basis: 6rem;
+  }
+
+  &.favorited {
+    ${StyledFavoriteRibbon} {
+      fill: white;
+
+      [class*="vertical-line"],
+      [class*="horizontal-line"] {
+        stroke: white;
+      }
+    }
+
+    em {
+      display: inline;
+    }
   }
 
   ${StyledFavoriteRibbon} {
@@ -64,12 +84,16 @@ const StyledFolder = styled(Folder)`
 
 function FavoriteActionButton({
   className,
+  favoritableId,
   isFavorited,
   onClick,
+  title,
 }) {
   return (
     <ButtonWrapper>
       <StyledButton
+        data-favoritable-id={favoritableId}
+        data-document-title={title}
         className="favorite-action"
         isFavorited={isFavorited}
       >
@@ -80,7 +104,7 @@ function FavoriteActionButton({
           fill={color.white}
           onClick={onClick}
         />
-        { isFavorited ? 'Saved' : 'Save' }
+        <span>Save<em data-testid="saved">d</em></span>
       </StyledButton>
       { isFavorited && (
         <StyledButton
@@ -103,14 +127,18 @@ function FavoriteActionButton({
 
 FavoriteActionButton.propTypes = {
   className: PropTypes.string,
+  favoritableId: PropTypes.string,
   isFavorited: PropTypes.bool,
   onClick: PropTypes.func,
+  title: PropTypes.string,
 };
 
 FavoriteActionButton.defaultProps = {
   className: '',
+  favoritableId: null,
   isFavorited: false,
   onClick: () => {},
+  title: null,
 };
 
 export default FavoriteActionButton;

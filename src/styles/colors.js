@@ -30,6 +30,7 @@ const color = {
   email: '#3d3d3d',
   emailHover: '#94856b',
   jade: '#00A26D',
+  jet: '#080808',
   facebook: '#527aa1',
   facebookHover: '#43637a',
   pinterest: '#cf5553',
