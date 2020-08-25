@@ -34,6 +34,6 @@ describe('FavoriteActionButton component', () => {
 
   it('render button text', () => {
     renderComponent(saveToFavoritesButton);
-    expect(screen.getByText('Saved'));
+    expect(screen.getByTestId('saved'));
   });
 });

@@ -1,6 +1,6 @@
 import breakpoint from 'styled-components-breakpoint';
 import PropTypes from 'prop-types';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 
 import { color, spacing, withThemes } from '../../../styles';
@@ -56,6 +56,7 @@ const CarouselTheme = {
     }
 
     &:not(.flickity-enabled) {
+      display: flex;
       overflow: hidden;
 
       .slideshow & {
@@ -202,6 +203,7 @@ const defaultOptions = {
 const Carousel = ({ className, dotPosition, items, options, renderItem }) => {
   const elRef = useRef(null);
   const flktyRef = useRef();
+  const [enabled, setEnabled] = useState(false);
   const opts = { ...defaultOptions, ...options };
   const { slideshow } = opts;
 
@@ -209,8 +211,10 @@ const Carousel = ({ className, dotPosition, items, options, renderItem }) => {
     if (flktyRef.current) flktyRef.current.destroy();
     if (items.length > 1 && elRef?.current) {
       const flkty = getFlickityInstance(elRef.current, opts);
-      if (flkty.slides.length === 1) flkty.destroy();
+      const isEnabled = flkty.slides.length > 1;
+      if (isEnabled === false) flkty.destroy();
       else flktyRef.current = flkty;
+      setEnabled(isEnabled);
     }
     return () => {
       try { if (flktyRef.current) flktyRef.current.destroy(); } // eslint-disable-line
@@ -220,7 +224,11 @@ const Carousel = ({ className, dotPosition, items, options, renderItem }) => {
 
   return (
     <CarouselWrapper
-      className={`carousel-wrapper${slideshow ? ' slideshow' : ''}`}
+      className={[
+        'carousel-wrapper',
+        slideshow ? ' slideshow' : '',
+        enabled ? 'flickity-enabled' : '',
+      ].join(' ')}
     >
       <CarouselEl
         className={className}

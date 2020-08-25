@@ -37,12 +37,14 @@ function Button({
   children,
   onClick,
   type,
+  ...restProps
 }) {
   return (
     <StyledButton
       className={className}
       onClick={onClick}
       type={type}
+      {...restProps}
     >
       {children}
     </StyledButton>

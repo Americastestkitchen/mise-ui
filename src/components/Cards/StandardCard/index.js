@@ -148,13 +148,12 @@ export const StyledBadge = styled(Badge)`
 
 function StandardCard({
   className,
-  commentCount,
   contentType,
   contentTypeFormatted,
   ctaText,
   ctaUrl,
   displayCookbook,
-  displayCommentCount,
+  displaySecondaryAttribution,
   displayFavoritesButton,
   displayLockIcon,
   favoriteRibbonColor,
@@ -164,6 +163,7 @@ function StandardCard({
   isFavorited,
   objectId,
   onClick,
+  secondaryAttribution,
   shopPrices,
   siteKey,
   siteKeyFavorites,
@@ -224,11 +224,11 @@ function StandardCard({
         </TitleWrapper>
       </a>
       <StyledAttributions
-        commentCount={commentCount}
-        contentType={contentTypeFormatted || contentType}
         displayCookbook={displayCookbook}
         displayLockIcon={displayLockIcon}
-        displayCommentCount={displayCommentCount}
+        displaySecondaryAttribution={displaySecondaryAttribution}
+        primaryAttribution={contentTypeFormatted || contentType}
+        secondaryAttribution={secondaryAttribution}
         shopPrices={shopPrices}
       />
       {
@@ -249,11 +249,10 @@ StandardCard.propTypes = {
   className: PropTypes.string,
   contentType: PropTypes.string.isRequired,
   contentTypeFormatted: PropTypes.string,
-  commentCount: PropTypes.number,
   ctaText: PropTypes.string,
   ctaUrl: PropTypes.string,
   displayCookbook: PropTypes.bool,
-  displayCommentCount: PropTypes.bool,
+  displaySecondaryAttribution: PropTypes.bool,
   displayLockIcon: PropTypes.bool,
   favoriteRibbonColor: PropTypes.string,
   href: PropTypes.string.isRequired,
@@ -262,6 +261,10 @@ StandardCard.propTypes = {
   isFavorited: PropTypes.bool,
   objectId: PropTypes.string.isRequired,
   onClick: PropTypes.func,
+  secondaryAttribution: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]),
   shopPrices: PropTypes.object,
   siteKey: PropTypes.oneOf(['atk', 'cco', 'cio', 'kids', 'school', 'shop']).isRequired,
   siteKeyFavorites: PropTypes.oneOf(['atk', 'cco', 'cio']),
@@ -272,12 +275,11 @@ StandardCard.propTypes = {
 
 StandardCard.defaultProps = {
   className: null,
-  commentCount: null,
   contentTypeFormatted: null,
   ctaText: '',
   ctaUrl: '',
   displayCookbook: false,
-  displayCommentCount: false,
+  displaySecondaryAttribution: false,
   displayFavoritesButton: false,
   displayLockIcon: false,
   favoriteRibbonColor: color.eclipse,
@@ -285,6 +287,7 @@ StandardCard.defaultProps = {
   imageUrl: '',
   isFavorited: false,
   onClick: null,
+  secondaryAttribution: null,
   shopPrices: null,
   siteKeyFavorites: null,
   stickers: [],
