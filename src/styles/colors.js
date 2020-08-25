@@ -40,6 +40,13 @@ const color = {
   smokeyQuartz: '#2A2A2A',
   asphalt: '#191919',
   charcoal: '#121212',
+  wasabi: '#7ea042',
+  olive: '#627C33',
+  shadyLady: '#979797', // 151 151 151
+  darkSlate: '#28494b',
+  bluewood: '#374360',
+  slate: '#767d8e',
+  summerSky: '#3c9be2',
 };
 
 export default color;

@@ -6,7 +6,8 @@
     "fetch": true,
     "it": true,
     "navigator": true,
-    "window": true
+    "window": true,
+    "jest": true,
   },
   "parser": "babel-eslint",
   "rules": {

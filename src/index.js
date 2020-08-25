@@ -10,14 +10,19 @@ import ClearRefinements from './components/Algolia/shared/ClearRefinements';
 import CurrentRefinements from './components/Algolia/shared/CurrentRefinements';
 import DocumentListCarousel from './components/Carousels/DocumentListCarousel';
 import FavoriteActionButton from './components/Buttons/ActionButtons/FavoriteActionButton';
+import EmailForm from './components/Forms/EmailForm';
 import FeatureCard from './components/Cards/FeatureCard';
 import FilterButton from './components/FilterButton';
+import FreeTrialAd from './components/Ads/ShowcaseAds/FreeTrialAd';
+import HeroAd from './components/Ads/HeroAd';
 import HeroCard from './components/Cards/HeroCard';
+import InlineNewsletter from './components/Newsletters/InlineNewsletter';
 import Listable from './components/Listable';
 import LoadingCard from './components/Cards/LoadingCard';
 import MediaObjectCard from './components/Cards/MediaObjectCard';
 import PodcastEpisodeCard from './components/Cards/PodcastEpisodeCard';
 import QueueCard from './components/Cards/QueueCard';
+import PairedProductAd from './components/Ads/PairedProductAd';
 import PersonCard from './components/Cards/PersonCard';
 import RefinementListBasic from './components/Algolia/shared/RefinementListBasic';
 import RefinementList from './components/Algolia/shared/RefinementList';
@@ -51,16 +56,21 @@ export {
   ClearRefinements,
   CurrentRefinements,
   DocumentListCarousel,
+  EmailForm,
   FavoriteActionButton,
   FeatureCard,
   FilterButton,
+  FreeTrialAd,
   fonts,
   Icons,
+  InlineNewsletter,
   globalStyle,
+  HeroAd,
   HeroCard,
   Listable,
   LoadingCard,
   MediaObjectCard,
+  PairedProductAd,
   PodcastEpisodeCard,
   QueueCard,
   mixins,
