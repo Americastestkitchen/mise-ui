@@ -5,6 +5,7 @@ import Badge from './components/Badge';
 import breakpoints from './styles/breakpoints';
 import Button from './components/Buttons/Button';
 import carousel from './styles/carousel';
+import Carousel from './components/Carousels/Carousel';
 import CardCarousel from './components/Carousels/CardCarousel';
 import ClearRefinements from './components/Algolia/shared/ClearRefinements';
 import CurrentRefinements from './components/Algolia/shared/CurrentRefinements';
@@ -19,6 +20,7 @@ import HeroCard from './components/Cards/HeroCard';
 import InlineNewsletter from './components/Newsletters/InlineNewsletter';
 import Listable from './components/Listable';
 import LoadingCard from './components/Cards/LoadingCard';
+import LoadingCarousel from './components/Carousels/LoadingCarousel';
 import MediaObjectCard from './components/Cards/MediaObjectCard';
 import PodcastEpisodeCard from './components/Cards/PodcastEpisodeCard';
 import QueueCard from './components/Cards/QueueCard';
@@ -51,6 +53,7 @@ export {
   breakpoints,
   Button,
   carousel,
+  Carousel,
   CardCarousel,
   color,
   ClearRefinements,
@@ -69,6 +72,7 @@ export {
   HeroCard,
   Listable,
   LoadingCard,
+  LoadingCarousel,
   MediaObjectCard,
   PairedProductAd,
   PodcastEpisodeCard,
