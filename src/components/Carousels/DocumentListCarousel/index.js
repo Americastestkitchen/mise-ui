@@ -112,7 +112,7 @@ const DocumentListCarousel = ({
   title,
   type,
 }) => (
-  <DocumentListCarouselWrapper>
+  <DocumentListCarouselWrapper className="document-list-carousel">
     {intro && (<Intro>{intro}</Intro>)}
     <TitleAndCta>
       <Title>{title}</Title>
