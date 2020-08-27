@@ -73,7 +73,7 @@ const CardCarouselTheme = {
       overflow: visible;
     }
 
-    .linear-gradient {
+    .flickity-enabled ~ .linear-gradient {
       height: 100%;
       position: absolute;
       right: 0;
@@ -117,7 +117,6 @@ const CardCarouselTheme = {
 
       &.card-carousel--hero {
         .linear-gradient {
-
           &:last-child {
             right: -3rem;
           }
