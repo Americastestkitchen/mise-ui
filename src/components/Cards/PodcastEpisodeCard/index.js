@@ -104,6 +104,7 @@ const TextWrapper = styled.div`
 
   button {
     text-align: left;
+    width: 100%;
   }
 
   h4 {
