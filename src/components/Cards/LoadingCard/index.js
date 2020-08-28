@@ -254,7 +254,10 @@ const StyledLoadingCard = styled.div`
 `;
 
 const LoadingCard = ({ type }) => (
-  <StyledLoadingCard className={`${type}-card card`}>
+  <StyledLoadingCard
+    className={`${type}-card card`}
+    data-testid={`loading-${type}-card`}
+  >
     <div className="animated-background">
       {
         (type === 'standard' || type === 'queue') && (

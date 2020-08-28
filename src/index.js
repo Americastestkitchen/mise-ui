@@ -38,8 +38,9 @@ import SearchRefinementList from './components/Algolia/search/SearchRefinementLi
 import SearchSortBy from './components/Algolia/search/SearchSortBy';
 import ShowMoreLess from './components/ShowMoreLess';
 import Sticker from './components/Cards/shared/Sticker';
-import TallCard from './components/Cards/TallCard';
 import SubscribeBubbles from './components/SubscribeBubbles';
+import TallCard from './components/Cards/TallCard';
+import TextDecorations from './components/DesignTokens/TextDecoration';
 import * as Icons from './components/DesignTokens/Icon';
 import fonts from './styles/fonts';
 import globalStyle from './styles/global';
@@ -92,6 +93,7 @@ export {
   StandardCard,
   Sticker,
   TallCard,
+  TextDecorations,
   SubscribeBubbles,
   styles,
   spacing,

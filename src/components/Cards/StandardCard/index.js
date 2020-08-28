@@ -64,11 +64,17 @@ const ImageWrapper = styled.div`
   }
 `;
 
+const TitleWrapperTheme = {
+  default: css`
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-top: ${spacing.xsm};
+  `,
+};
+
 const TitleWrapper = styled.div`
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  padding-top: ${spacing.xsm};
+  ${withThemes(TitleWrapperTheme)}
 `;
 
 export const StyledTitle = styled(Title)`
@@ -101,7 +107,6 @@ export const StickerGroup = styled.div`
 `;
 
 const StyledAttributions = styled(Attributions)`
-
   ${breakpoint('xs', 'lg')`
     font-size: 1.2rem;
 

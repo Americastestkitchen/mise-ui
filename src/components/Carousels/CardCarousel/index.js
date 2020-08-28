@@ -138,19 +138,26 @@ const typeMap = {
   tall: TallCard,
 };
 
-const CardCarousel = ({ className, dotPosition, items, renderItem, type }) => {
+const CardCarousel = ({
+  cellAlign,
+  className,
+  dotPosition,
+  items,
+  renderItem,
+  type,
+}) => {
   const El = typeMap[type] || StandardCard;
   const defaultRender = item => <El key={item.objectId} {...item} />;
   const doRenderItem = renderItem || defaultRender;
   let options = {
     slideshow: false,
-    cellAlign: 'center',
+    cellAlign,
     wrapAround: true,
   };
   if (type === 'hero') {
     options = {
       slideshow: true,
-      cellAlign: 'center',
+      cellAlign,
       wrapAround: false,
     };
   }
@@ -179,6 +186,7 @@ const CardCarousel = ({ className, dotPosition, items, renderItem, type }) => {
 };
 
 CardCarousel.propTypes = {
+  cellAlign: PropTypes.oneOf(['center', 'left']),
   /** Additional classname */
   className: PropTypes.string,
   dotPosition: PropTypes.shape({
@@ -196,6 +204,7 @@ CardCarousel.propTypes = {
 };
 
 CardCarousel.defaultProps = {
+  cellAlign: 'center',
   className: undefined,
   dotPosition: {
     sm: {
