@@ -200,8 +200,11 @@ class PodcastEpisodeCard extends Component {
       isPlaying,
     } = this.props;
 
+    const jumpLink = title.replace(/[^a-zA-Z ]/g, '').replace(/\s+/g, '-').toLowerCase();
+
     return (
       <PodcastEpisodeCardWrapper
+        id={jumpLink}
         className={`podcast-episode-card ${isPlaying ? 'is-playing' : ''}`}
       >
         <div>
@@ -280,4 +283,4 @@ PodcastEpisodeCard.defaultProps = {
   setEpisode: null,
 };
 
-export default PodcastEpisodeCard;
+export default React.memo(PodcastEpisodeCard);
