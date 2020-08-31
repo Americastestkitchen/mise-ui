@@ -48,6 +48,7 @@ const color = {
   bluewood: '#374360',
   slate: '#767d8e',
   summerSky: '#3c9be2',
+  mineShaft: '#2a2a2a',
 };
 
 export default color;
