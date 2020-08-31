@@ -37,6 +37,17 @@ export const CCO = ({
 
 CCO.propTypes = Logos.CCO.propTypes;
 
+export const MysteryRecipe = ({
+  fill,
+}) => (
+  <Logo>
+    <Logos.MysteryRecipe
+      fill={fill}
+    />
+  </Logo>
+);
+
+MysteryRecipe.propTypes = Logos.MysteryRecipe.propTypes;
 
 export const keyToLogo = key => ({
   atk: ATK,
