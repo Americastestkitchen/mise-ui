@@ -37,6 +37,7 @@ import SearchNumericMenuBasic from './components/Algolia/search/SearchNumericMen
 import SearchRefinementList from './components/Algolia/search/SearchRefinementList';
 import SearchSortBy from './components/Algolia/search/SearchSortBy';
 import ShowMoreLess from './components/ShowMoreLess';
+import SingleProductMembershipAd from './components/Ads/MembershipAds/SingleProductMembershipAd';
 import Sticker from './components/Cards/shared/Sticker';
 import SubscribeBubbles from './components/SubscribeBubbles';
 import TallCard from './components/Cards/TallCard';
@@ -89,6 +90,7 @@ export {
   SearchNumericMenuBasic,
   SearchRefinementList,
   SearchSortBy,
+  SingleProductMembershipAd,
   ShowMoreLess,
   StandardCard,
   Sticker,

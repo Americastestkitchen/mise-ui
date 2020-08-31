@@ -112,6 +112,30 @@ const imageConfig = {
       width: 500,
     };
   },
+  membershipSingleMobile() {
+    return {
+      ...baseImageConfig,
+      aspectRatio: '17:10',
+      width: 375,
+      ...imageConfig.gradientFade(20, 'y_-100'),
+    };
+  },
+  membershipSingleTablet() {
+    return {
+      ...baseImageConfig,
+      aspectRatio: '34:33',
+      width: 300,
+      ...imageConfig.gradientFade(20, 'y_-120'),
+    };
+  },
+  membershipSingleDesktop() {
+    return {
+      ...baseImageConfig,
+      aspectRatio: '56:33',
+      width: 500,
+      ...imageConfig.gradientFade(20, 'y_-150'),
+    };
+  },
 };
 
 /**
