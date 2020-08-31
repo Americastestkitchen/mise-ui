@@ -66,7 +66,7 @@ const SingleMembershipPictureTheme = {
 
 const SingleMembershipFigure = styled.figure`
   position: relative;
-  margin-bottom: 2rem;
+  margin: 0 0 2rem;
 
   ${breakpoint('md')`
     flex: 0 0 34rem;
