@@ -1,54 +1,98 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { color } from '../../../../styles';
+import styled, { css } from 'styled-components';
+import { color, withThemes } from '../../../../styles';
 import { FavoriteRibbon } from '../../../DesignTokens/Icon';
 
-const StyledFavoriteButton = styled.button`
-
-  [class*="ribbon"] {
-    fill: transparent;
-    transition: 0.1s all ease-in-out;
-  }
-
-  [class*="vertical-line"],
-  [class*="horizontal-line"] {
-    stroke: transparent;
-  }
-
-  @media(hover: hover) {
-    &:hover {
-      [class*="ribbon"] {
-        fill: ${props => props.fill};
-        transition: 0.1s all ease-in-out;
-      }
-    }
-  }
-
-  &.favorited {
+const StyledFavoriteButtonTheme = {
+  default: css`
     [class*="ribbon"] {
-      fill: ${props => props.fill};
+      fill: transparent;
+      transition: 0.1s all ease-in-out;
     }
 
     [class*="vertical-line"],
     [class*="horizontal-line"] {
-      stroke: ${props => props.fill};
-      transition: 0.1s all ease-in-out;
+      stroke: transparent;
     }
 
     @media(hover: hover) {
       &:hover {
-        [class*="horizontal-line"] {
-          stroke: transparent;
+        [class*="ribbon"] {
+          fill: ${props => props.fill};
           transition: 0.1s all ease-in-out;
-        }
-
-        [class*="vertical-line"] {
-          stroke: ${props => props.fill};
         }
       }
     }
-  }
+
+    &.favorited {
+      [class*="ribbon"] {
+        fill: ${props => props.fill};
+      }
+
+      [class*="vertical-line"],
+      [class*="horizontal-line"] {
+        stroke: ${props => props.fill};
+        transition: 0.1s all ease-in-out;
+      }
+
+      @media(hover: hover) {
+        &:hover {
+          [class*="horizontal-line"] {
+            stroke: transparent;
+            transition: 0.1s all ease-in-out;
+          }
+
+          [class*="vertical-line"] {
+            stroke: ${props => props.fill};
+          }
+        }
+      }
+    }
+  `,
+  dark: css`
+    .outer-stroke {
+      stroke: ${color.white};
+    }
+
+    @media(hover: hover) {
+      &:hover {
+        [class*="ribbon"] {
+          fill: ${color.white};
+          transition: 0.1s all ease-in-out;
+        }
+      }
+    }
+
+    &.favorited {
+      [class*="ribbon"] {
+        fill: ${color.white};
+      }
+
+      [class*="vertical-line"],
+      [class*="horizontal-line"] {
+        stroke: ${color.white};
+        transition: 0.1s all ease-in-out;
+      }
+
+      @media(hover: hover) {
+        &:hover {
+          [class*="horizontal-line"] {
+            stroke: transparent;
+            transition: 0.1s all ease-in-out;
+          }
+
+          [class*="vertical-line"] {
+            stroke: ${color.white};
+          }
+        }
+      }
+    }
+  `,
+};
+
+const StyledFavoriteButton = styled.button`
+  ${withThemes(StyledFavoriteButtonTheme)}
 `;
 
 const FavoriteButton = ({

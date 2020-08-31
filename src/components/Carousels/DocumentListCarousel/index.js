@@ -105,6 +105,7 @@ const DocumentListCarouselWrapper = styled.div`
  * **Intro** (optional): Text located above the title
  */
 const DocumentListCarousel = ({
+  cellAlign,
   ctaText,
   ctaUrl,
   intro,
@@ -112,7 +113,9 @@ const DocumentListCarousel = ({
   title,
   type,
 }) => (
-  <DocumentListCarouselWrapper className="document-list-carousel">
+  <DocumentListCarouselWrapper
+    className="document-list-carousel"
+  >
     {intro && (<Intro>{intro}</Intro>)}
     <TitleAndCta>
       <Title>{title}</Title>
@@ -123,6 +126,7 @@ const DocumentListCarousel = ({
       )}
     </TitleAndCta>
     <CardCarousel
+      cellAlign={cellAlign}
       items={items}
       type={type}
     />
@@ -130,6 +134,8 @@ const DocumentListCarousel = ({
 );
 
 DocumentListCarousel.propTypes = {
+  /** Carousel cell alignment */
+  cellAlign: PropTypes.oneOf(['center', 'left']),
   /** Text displayed on CTA. */
   ctaText: PropTypes.string,
   /** Url value for CTA */
@@ -145,6 +151,7 @@ DocumentListCarousel.propTypes = {
 };
 
 DocumentListCarousel.defaultProps = {
+  cellAlign: null,
   ctaText: null,
   ctaUrl: null,
   intro: null,
