@@ -18,7 +18,7 @@ describe('components', () => {
           cloudinaryId="mise-play/play-showcase-membership-ad"
           cta="get free access"
           ctaHref="https://www.americastestkitchen.com"
-          title="Cook smart with 100% reliable recipes trusted by millions of home cooks—Try Digital All Access now."
+          title={() => <div>Cook with Confidence</div>}
         />
       </ThemeProvider>,
     )
@@ -29,9 +29,9 @@ describe('components', () => {
     expect(screen.getByTestId('membership-showcase-ad-img'));
   });
 
-  it('renders title', () => {
+  it('renders a title', () => {
     renderComponent();
-    expect(screen.getByText('Cook smart with 100% reliable recipes trusted by millions of home cooks—Try Digital All Access now.'));
+    expect(screen.getByText('Cook with Confidence'));
   });
 
   it('renders benefit icons and text', () => {
@@ -42,7 +42,6 @@ describe('components', () => {
     expect(screen.getByTestId('membership-benefit-1'));
     expect(screen.getByText('8,000 + ratings'));
 
-
     expect(screen.getByTestId('membership-benefit-2'));
     expect(screen.getByText('video and tips'));
 
@@ -52,7 +51,6 @@ describe('components', () => {
     expect(screen.getByTestId('membership-benefit-4'));
     expect(screen.getByText('mobile app'));
   });
-
 
   it('renders cta link', () => {
     renderComponent();

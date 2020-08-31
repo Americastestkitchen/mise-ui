@@ -39,15 +39,6 @@ const MembershipAdPictureTheme = {
     position: relative;
     width: 100%;
 
-    &::after {
-      background-image: linear-gradient(to bottom, rgba(25, 25, 25, 0), ${color.asphalt});
-      bottom: 0;
-      content: ' ';
-      height: 14rem;
-      position: absolute;
-      width: 100%;
-    }
-
     img {
       display: block;
       object-fit: cover;
@@ -160,7 +151,7 @@ const MembershipShowcaseAd = ({
       />
     </MembershipAdPicture>
     <MembershipContent>
-      <MembershipTitle>{title}</MembershipTitle>
+      <MembershipTitle>{title()}</MembershipTitle>
       <MembershipBenefitsIcons />
       <MembershipAdCta title={cta} href={ctaHref}>
         {cta}
@@ -171,7 +162,7 @@ const MembershipShowcaseAd = ({
 
 MembershipShowcaseAd.propTypes = {
   /** text to display on ad */
-  title: PropTypes.string.isRequired,
+  title: PropTypes.func.isRequired,
   /** Cloudinary Id of image to display */
   cloudinaryId: PropTypes.string.isRequired,
   /** text to display on cta */
