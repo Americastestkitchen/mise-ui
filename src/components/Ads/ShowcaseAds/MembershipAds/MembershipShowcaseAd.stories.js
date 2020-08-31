@@ -1,9 +1,12 @@
 import breakpoint from 'styled-components-breakpoint';
 import React from 'react';
 import styled, { css, ThemeProvider } from 'styled-components';
+import TextDecorations, { UnderlinedText } from '../../../DesignTokens/TextDecoration'
 
 import MembershipShowcaseAd from '../MembershipAds/index';
 import { breakpoints, color, spacing, withThemes } from '../../../../styles';
+
+const Underline = TextDecorations.UnderlineThree;
 
 export default {
   title: 'Components|Ads/ShowcaseAds/MembershipShowcaseAd',
@@ -34,8 +37,10 @@ export const Default = () => (
   }}>
     <StoryWrapper>
       <MembershipShowcaseAd
-        title="Cook smart with 100% reliable recipes trusted by millions of home cooks—Try Digital All Access now."
-        cloudinaryId="mise-play/play-showcase-membership-ad"
+        title={() => (
+          <span>Cook smart with <UnderlinedText>100% reliable recipes<Underline /></UnderlinedText> trusted by millions of home cooks—Try Digital All Access Now.</span>
+        )}
+        cloudinaryId="mise-play/showcase-membership-ad.gif"
         cta='get free access'
         ctaHref='https://www.americastestkitchen.com'
       />
