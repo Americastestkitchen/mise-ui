@@ -7,6 +7,7 @@ import SquiggleOne from './SquiggleOne';
 import SquiggleTwo from './SquiggleTwo';
 import UnderlineOne from './UnderlineOne';
 import UnderlineTwo from './UnderlineTwo';
+import UnderlineThree from './UnderlineThree';
 
 export default {
   CircleOne,
@@ -18,4 +19,5 @@ export default {
   SquiggleTwo,
   UnderlineOne,
   UnderlineTwo,
+  UnderlineThree,
 };
