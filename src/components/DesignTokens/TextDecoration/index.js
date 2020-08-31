@@ -1,6 +1,8 @@
 import React from 'react';
 
+import CircledText from './components/CircledText';
 import TextDecorations from './svgs';
+import UnderlinedText from './components/UnderlinedText';
 
 export const CircleOne = () => <TextDecorations.CircleOne />;
 export const CircleTwo = () => <TextDecorations.CircleTwo />;
@@ -11,6 +13,12 @@ export const SquiggleOne = () => <TextDecorations.SquiggleOne />;
 export const SquiggleTwo = () => <TextDecorations.SquiggleTwo />;
 export const UnderlineOne = () => <TextDecorations.UnderlineOne />;
 export const UnderlineTwo = () => <TextDecorations.UnderlineTwo />;
+export const UnderlineThree = () => <TextDecorations.UnderlineThree />;
+
+export {
+  CircledText,
+  UnderlinedText,
+};
 
 export const keyToDecoration = key => ({
   circleOne: CircleOne,
@@ -22,6 +30,7 @@ export const keyToDecoration = key => ({
   squiggleTwo: SquiggleTwo,
   underlineOne: UnderlineOne,
   underlineTwo: UnderlineTwo,
+  underlineThree: UnderlineThree,
 }[key] || null);
 
 export default TextDecorations;
