@@ -48,7 +48,7 @@ const Badge = ({
     data-testid="badge"
     role="img"
     aria-label={`${type}`.toUpperCase()}
-    className={className}
+    className={`badge${className ? ` ${className}` : ''}`}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 25 25"
   >
