@@ -31,7 +31,9 @@ const benefits = [
   },
 ];
 
-const MembershipBenefitsIconsWrapper = styled.div`
+const MembershipBenefitsIconsWrapper = styled.div.attrs({
+  className: 'membership-benefits-icons',
+})`
   display: flex;
   justify-content: space-between;
 `;
@@ -59,7 +61,7 @@ p {
   color: ${color.white};
   font: ${fontSize.xsm}/${lineHeight.sm} ${font.pnb};
   line-height: 1.2;
-  margin-top: 1rem;  
+  margin-top: 1rem;
   text-align: center;
   text-transform: uppercase;
 }
@@ -93,7 +95,9 @@ const CircularIcon = styled.div`
 `;
 
 const MembershipBenefitsIcons = () => (
-  <MembershipBenefitsIconsWrapper>
+  <MembershipBenefitsIconsWrapper
+    data-testid="benefit-icons"
+  >
     {
       benefits.map((benefit, idx) => (
         <Benefit
