@@ -235,7 +235,9 @@ const AudioPlayer = ({
           imageAlt={imageAlt}
           imageUrl={imageUrl}
         />
-        <span>•••</span><a href={href}>More From This Episode</a>
+        {
+          href && <><span>•••</span><a href={href}>More From This Episode</a></>
+        }
       </LinkWrapper>
     </PlayerWrapper>
   );

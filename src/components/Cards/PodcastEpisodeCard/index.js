@@ -259,9 +259,9 @@ PodcastEpisodeCard.propTypes = {
   /** title of the episode */
   title: PropTypes.string.isRequired,
   /** short description of episode */
-  description: PropTypes.string.isRequired,
+  description: PropTypes.string,
   /** episode number */
-  episode: PropTypes.number.isRequired,
+  episode: PropTypes.number,
   /** link of episode detail page */
   href: PropTypes.string,
   /** episode id */
@@ -275,6 +275,8 @@ PodcastEpisodeCard.propTypes = {
 };
 
 PodcastEpisodeCard.defaultProps = {
+  description: '',
+  episode: null,
   href: '',
   imageAlt: ' ',
   imageUrl: '',

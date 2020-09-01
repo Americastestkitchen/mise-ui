@@ -24,7 +24,6 @@ export const ATK = ({
 
 ATK.propTypes = Logos.ATK.propTypes;
 
-
 export const CCO = ({
   fill,
 }) => (
