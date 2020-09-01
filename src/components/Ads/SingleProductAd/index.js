@@ -40,6 +40,7 @@ const Product = styled.article.attrs({
   className: 'product',
 })`${withThemes(ProductTheme)}`;
 
+
 /**
  * Picture
  */

@@ -112,6 +112,33 @@ const imageConfig = {
       width: 500,
     };
   },
+  showcaseSchoolAdMobile() {
+    return {
+      ...baseImageConfig,
+      aspectRatio: '17:10',
+      gravity: 'center',
+      width: 375,
+      ...imageConfig.gradientFade(20, 'y_-100'),
+    };
+  },
+  showcaseSchoolAdTablet() {
+    return {
+      ...baseImageConfig,
+      aspectRatio: '34:33',
+      gravity: 'center',
+      width: 300,
+      ...imageConfig.gradientFade(20, 'y_-120'),
+    };
+  },
+  showcaseSchoolAdDesktop() {
+    return {
+      ...baseImageConfig,
+      aspectRatio: '56:33',
+      gravity: 'center',
+      width: 500,
+      ...imageConfig.gradientFade(20, 'y_-150'),
+    };
+  },
   membershipSingleMobile() {
     return {
       ...baseImageConfig,
@@ -134,6 +161,12 @@ const imageConfig = {
       aspectRatio: '56:33',
       width: 500,
       ...imageConfig.gradientFade(20, 'y_-150'),
+    };
+  },
+  atkSchoolLogoLockupMobile() {
+    return {
+      ...baseImageConfig,
+      width: 205,
     };
   },
 };
