@@ -128,7 +128,6 @@ const FreeTrialCta = styled.a.attrs({
   className: 'free-trial-ad__cta',
 })`${withThemes(FreeTrialCtaTheme)}`;
 
-
 const FreeTrialAd = ({
   cloudinaryId,
   cta,

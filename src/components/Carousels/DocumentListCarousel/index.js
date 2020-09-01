@@ -7,7 +7,6 @@ import styled, { css } from 'styled-components';
 import CardCarousel from '../CardCarousel';
 import { color, font, fontSize, lineHeight, spacing, withThemes } from '../../../styles';
 
-
 const IntroTheme = {
   default: css`
     font: italic ${fontSize.md}/1 ${font.mwr};

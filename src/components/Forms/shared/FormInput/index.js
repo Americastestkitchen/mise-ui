@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 
-
 import FormError from '../FormError';
 import FormLabel from '../FormLabel';
 import { color, font, fontSize, withThemes } from '../../../../styles';
