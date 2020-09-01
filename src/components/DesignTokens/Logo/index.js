@@ -51,6 +51,7 @@ MysteryRecipe.propTypes = Logos.MysteryRecipe.propTypes;
 export const keyToLogo = key => ({
   atk: ATK,
   cco: CCO,
+  mysteryRecipe: MysteryRecipe,
 }[key] || null);
 
 export default Logos;

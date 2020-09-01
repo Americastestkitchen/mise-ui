@@ -116,7 +116,6 @@ export const Folder = ({
 
 Folder.propTypes = Icons.Folder.propTypes;
 
-
 export const Filter = ({ className, fill }) => (
   <Icon>
     <Icons.Filter
@@ -158,7 +157,6 @@ export const Phone = ({ fill }) => (
 );
 
 Phone.propTypes = Icons.Phone.propTypes;
-
 
 export const Plus = ({ fill }) => (
   <Icon>
