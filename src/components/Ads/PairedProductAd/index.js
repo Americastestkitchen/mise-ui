@@ -52,7 +52,6 @@ const PairedProductInnerWrapper = styled.div.attrs({
   className: 'paired-product',
 })`${withThemes(PairedProductInnerWrapperTheme)}`;
 
-
 /**
  * Main title
  */

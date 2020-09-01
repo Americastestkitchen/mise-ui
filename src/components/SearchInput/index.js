@@ -104,7 +104,6 @@ const StyledSearch = styled.form`
   ${withThemes(StyledSearchTheme)}
 `;
 
-
 class StyledSearchBox extends Component {
   constructor(props) {
     super(props);

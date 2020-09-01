@@ -4,7 +4,6 @@ import styled, { css } from 'styled-components';
 
 import { color, font, fontSize, lineHeight, withThemes } from '../../../../styles';
 
-
 const NumericMenuTheme = {
   default: css`
     label {

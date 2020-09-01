@@ -9,12 +9,10 @@ describe('components', () => {
     expect(atkBadge).toMatchSnapshot();
   });
 
-
   it('renders a cio badge', () => {
     const cioBadge = create(<Badge type="cio" />).toJSON();
     expect(cioBadge).toMatchSnapshot();
   });
-
 
   it('renders a cco badge', () => {
     const ccoBadge = create(<Badge type="cco" />).toJSON();

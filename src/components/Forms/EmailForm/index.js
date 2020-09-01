@@ -110,7 +110,6 @@ const HoweWeUseText = styled.div.attrs({
   className: 'how-we-use__text',
 })`${withThemes(HoweWeUseTextTheme)}`;
 
-
 const EmailForm = ({
   buttonColor,
   buttonTextColor,

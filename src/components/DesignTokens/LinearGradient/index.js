@@ -33,7 +33,6 @@ const LinearGradientEl = styled.div.attrs({
   ${withThemes(LinearGradientTheme)}
 `;
 
-
 const LinearGradient = props => (
   <LinearGradientEl
     {...props}

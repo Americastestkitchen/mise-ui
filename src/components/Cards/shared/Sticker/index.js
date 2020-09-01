@@ -44,7 +44,6 @@ const determineIconType = (contentType) => {
   return El ? <El fill={`${color.white}`} /> : null;
 };
 
-
 /**
 
   A sticker surfaces ‘make or break’ information in order to help the user
