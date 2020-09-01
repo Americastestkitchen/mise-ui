@@ -81,6 +81,9 @@ const determineLogoWidth = (logoType) => {
   const logoTypes = {
     atk: '13.6rem',
     cco: '18.93rem',
+    mysteryRecipe: '14.3rem',
+    proof: '24rem',
+    walkIn: '20rem',
   };
   const logoWidth = logoTypes[logoType];
   return logoWidth;
