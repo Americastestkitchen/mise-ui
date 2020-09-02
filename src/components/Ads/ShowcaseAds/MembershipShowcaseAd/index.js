@@ -15,36 +15,42 @@ import {
   withThemes,
 } from '../../../../styles';
 
-const SingleMembershipTheme = {
+const MembershipShowcaseTheme = {
   default: css`
+    margin: 0 auto;
+    max-width: 113.6rem;
+
     ${breakpoint('md')`
       align-items: center;
       display: flex;
     `}
   `,
+  dark: css`
+    background-color: ${color.gunmetal};
+  `,
 };
 
-const SingleMembership = styled.article.attrs({
-  className: 'single-membership-ad',
-})`${withThemes(SingleMembershipTheme)}`;
+const MembershipShowcase = styled.article.attrs({
+  className: 'membership-showcase-ad',
+})`${withThemes(MembershipShowcaseTheme)}`;
 
-const SingleMembershipTitleTheme = {
+const MembershipShowcaseTitleTheme = {
   default: css`
     color: ${color.whiteSmoke};
     font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb};
     margin-bottom: ${spacing.sm};
 
     ${breakpoint('lg')`
-      font: 2.6rem/${lineHeight.sm} ${font.pnr};
+      font: 2.6rem/${lineHeight.sm} ${font.pnb};
     `}
   `,
 };
 
-const SingleMembershipTitle = styled.h3.attrs({
-  className: 'single-membership-ad__title',
-})`${withThemes(SingleMembershipTitleTheme)}`;
+const MembershipShowcaseTitle = styled.h3.attrs({
+  className: 'membership-showcase-ad__title',
+})`${withThemes(MembershipShowcaseTitleTheme)}`;
 
-const SingleMembershipCaptionTheme = {
+const MembershipShowcaseCaptionTheme = {
   default: css`
     bottom: ${spacing.sm};
     color: ${color.whiteSmoke};
@@ -54,19 +60,23 @@ const SingleMembershipCaptionTheme = {
   `,
 };
 
-const SingleMembershipCaption = styled.figcaption.attrs({
-  className: 'single-membership-ad__caption',
-})`${withThemes(SingleMembershipCaptionTheme)}`;
+const MembershipShowcaseCaption = styled.figcaption.attrs({
+  className: 'membership-showcase-ad__caption',
+})`${withThemes(MembershipShowcaseCaptionTheme)}`;
 
-const SingleMembershipPictureTheme = {
+const MembershipShowcasePictureTheme = {
   default: css`
     display: block;
   `,
 };
 
-const SingleMembershipFigure = styled.figure`
+const MembershipShowcaseFigure = styled.figure`
   position: relative;
   margin: 0 0 2rem;
+
+  img {
+    display: block;
+  }
 
   ${breakpoint('md')`
     flex: 0 0 34rem;
@@ -80,9 +90,9 @@ const SingleMembershipFigure = styled.figure`
   `}
 `;
 
-const SingleMembershipPicture = styled.picture.attrs({
-  className: 'single-membership-ad__picture',
-})`${withThemes(SingleMembershipPictureTheme)}`;
+const MembershipShowcasePicture = styled.picture.attrs({
+  className: 'membership-showcase-ad__picture',
+})`${withThemes(MembershipShowcasePictureTheme)}`;
 
 const MembershipCtaTheme = {
   default: css`
@@ -96,31 +106,41 @@ const MembershipCtaTheme = {
     text-align: center;
     text-transform: uppercase;
     width: 100%;
+
+    @media(hover: hover) {
+      &:hover {
+        background-color: ${color.olive};
+      }
+    }
   `,
 };
 
 const MembershipCta = styled.a.attrs({
-  className: 'single-membership-ad__cta',
+  className: 'membership-showcase-ad__cta',
 })`${withThemes(MembershipCtaTheme)}`;
 
-const SingleMembershipContent = styled.div`
+const MembershipShowcaseContent = styled.div`
   padding: 0 2rem;
 
   .membership-benefits-icons {
     margin-bottom: ${spacing.sm};
   }
+
+  ${breakpoint('lg')`
+    padding: 0 5rem;
+  `}
 `;
 
-const SingleProductMembershipAd = ({
+const MembershipShowcaseAd = ({
   caption,
   cloudinaryId,
   cta,
   ctaHref,
   title,
 }) => (
-  <SingleMembership>
-    <SingleMembershipFigure>
-      <SingleMembershipPicture>
+  <MembershipShowcase>
+    <MembershipShowcaseFigure>
+      <MembershipShowcasePicture>
         <source
           media="(min-width: 1024px)"
           srcSet={getImageUrl(
@@ -137,23 +157,23 @@ const SingleProductMembershipAd = ({
         />
         <img
           alt=" "
-          data-testid="single-membership-ad-img"
+          data-testid="membership-showcase-ad-img"
           src={getImageUrl(
             cloudinaryId,
             'membershipSingleMobile',
           )}
         />
-      </SingleMembershipPicture>
+      </MembershipShowcasePicture>
       {caption && (
-        <SingleMembershipCaption>
+        <MembershipShowcaseCaption>
           {caption}
-        </SingleMembershipCaption>
+        </MembershipShowcaseCaption>
       )}
-    </SingleMembershipFigure>
-    <SingleMembershipContent>
-      <SingleMembershipTitle>
+    </MembershipShowcaseFigure>
+    <MembershipShowcaseContent>
+      <MembershipShowcaseTitle>
         {title()}
-      </SingleMembershipTitle>
+      </MembershipShowcaseTitle>
       <MembershipBenefitIcons />
       <MembershipCta
         href={ctaHref}
@@ -161,11 +181,11 @@ const SingleProductMembershipAd = ({
       >
         {cta}
       </MembershipCta>
-    </SingleMembershipContent>
-  </SingleMembership>
+    </MembershipShowcaseContent>
+  </MembershipShowcase>
 );
 
-SingleProductMembershipAd.propTypes = {
+MembershipShowcaseAd.propTypes = {
   caption: PropTypes.string,
   cloudinaryId: PropTypes.string.isRequired,
   cta: PropTypes.string.isRequired,
@@ -173,8 +193,8 @@ SingleProductMembershipAd.propTypes = {
   title: PropTypes.func.isRequired,
 };
 
-SingleProductMembershipAd.defaultProps = {
+MembershipShowcaseAd.defaultProps = {
   caption: null,
 };
 
-export default SingleProductMembershipAd;
+export default MembershipShowcaseAd;

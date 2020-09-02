@@ -27,7 +27,7 @@ const defaultData = {
   ],
 };
 
-describe('components', () => {
+describe('PairedProductAd', () => {
   const renderComponent = () => (
     render(
       <ThemeProvider

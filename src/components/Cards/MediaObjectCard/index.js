@@ -43,7 +43,7 @@ const MediaObjectCardTitle = styled.h3`
   font: ${fontSize.md}/${lineHeight.sm} ${font.pnb};
 `;
 
-const MediaObjectCardDescription = styled.p`
+const MediaObjectCardDescription = styled.div`
   font: ${fontSize.md}/${lineHeight.lg} ${font.pnr};
   margin-bottom: ${spacing.xsm};
 `;
@@ -71,9 +71,9 @@ const MediaObjectCard = ({
         </MediaObjectCardTitle>
       </MediaObjectCardPersonInfo>
     </MediaObjectCardHeading>
-    <MediaObjectCardDescription>
-      {description}
-    </MediaObjectCardDescription>
+    <MediaObjectCardDescription
+      dangerouslySetInnerHTML={{ __html: description }}
+    />
     <MediaObjectCardCta href={ctaUrl}>
       {ctaText}
     </MediaObjectCardCta>
