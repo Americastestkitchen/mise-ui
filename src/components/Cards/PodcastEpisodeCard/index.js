@@ -200,8 +200,11 @@ class PodcastEpisodeCard extends Component {
       isPlaying,
     } = this.props;
 
+    const jumpLink = title.replace(/[^a-zA-Z ]/g, '').replace(/\s+/g, '-').toLowerCase();
+
     return (
       <PodcastEpisodeCardWrapper
+        id={jumpLink}
         className={`podcast-episode-card ${isPlaying ? 'is-playing' : ''}`}
       >
         <div>
@@ -256,9 +259,9 @@ PodcastEpisodeCard.propTypes = {
   /** title of the episode */
   title: PropTypes.string.isRequired,
   /** short description of episode */
-  description: PropTypes.string.isRequired,
+  description: PropTypes.string,
   /** episode number */
-  episode: PropTypes.number.isRequired,
+  episode: PropTypes.number,
   /** link of episode detail page */
   href: PropTypes.string,
   /** episode id */
@@ -272,6 +275,8 @@ PodcastEpisodeCard.propTypes = {
 };
 
 PodcastEpisodeCard.defaultProps = {
+  description: '',
+  episode: null,
   href: '',
   imageAlt: ' ',
   imageUrl: '',
@@ -280,4 +285,4 @@ PodcastEpisodeCard.defaultProps = {
   setEpisode: null,
 };
 
-export default PodcastEpisodeCard;
+export default React.memo(PodcastEpisodeCard);

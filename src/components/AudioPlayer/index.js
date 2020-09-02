@@ -156,7 +156,7 @@ const AudioPlayer = ({
       };
     }
     return () => player.destroy();
-  }, [id, title]);
+  }, []);
 
   // update player information when a new episode is selected
   useEffect(() => {
@@ -235,7 +235,9 @@ const AudioPlayer = ({
           imageAlt={imageAlt}
           imageUrl={imageUrl}
         />
-        <span>•••</span><a href={href}>More From This Episode</a>
+        {
+          href && <><span aria-hidden>•••</span><a href={href}>More From This Episode</a></>
+        }
       </LinkWrapper>
     </PlayerWrapper>
   );
@@ -260,4 +262,4 @@ AudioPlayer.defaultProps = {
   imageUrl: '',
 };
 
-export default AudioPlayer;
+export default React.memo(AudioPlayer);

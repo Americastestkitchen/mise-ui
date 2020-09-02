@@ -64,7 +64,6 @@ const ProductPicture = styled.picture.attrs({
   className: 'product__picture',
 })`${withThemes(ProductPictureTheme)}`;
 
-
 /**
  * Product info
  */

@@ -198,5 +198,4 @@ RefinementListBasic.defaultProps = {
   transformItems: null,
 };
 
-
 export default RefinementListBasic;
