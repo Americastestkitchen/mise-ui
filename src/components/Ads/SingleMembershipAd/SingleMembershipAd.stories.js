@@ -1,25 +1,27 @@
+/* eslint-disable line-len */
 import breakpoint from 'styled-components-breakpoint';
 import React from 'react';
 import styled, { css, ThemeProvider } from 'styled-components';
-import TextDecorations, { UnderlinedText } from '../../../DesignTokens/TextDecoration'
+import { withKnobs, select , text } from '@storybook/addon-knobs/react';
 
-import MembershipShowcaseAd from '../MembershipAds/index';
-import { breakpoints, color, spacing, withThemes } from '../../../../styles';
+import { breakpoints, color, spacing, withThemes } from '../../../styles';
+
+import SingleMembershipAd from './index';
+import TextDecorations, { UnderlinedText } from '../../DesignTokens/TextDecoration'
 
 const Underline = TextDecorations.UnderlineThree;
 
 export default {
-  title: 'Components|Ads/ShowcaseAds/MembershipShowcaseAd',
-  component: MembershipShowcaseAd,
+  title: 'Components|Ads/SingleMembershipAd',
+  component: SingleMembershipAd,
+  decorators: [withKnobs],
 };
 
 const StoryWrapperTheme = {
   default: css`
-  padding: ${spacing.sm};
-
-  ${breakpoint('lg')`
-    padding: 8rem ${spacing.sm};
-  `}
+    ${breakpoint('lg')`
+      padding: 8rem ${spacing.sm};
+    `}
   `,
   dark: css`
     background-color: ${color.gunmetal};
@@ -36,13 +38,12 @@ export const Default = () => (
     mode: 'dark',
   }}>
     <StoryWrapper>
-      <MembershipShowcaseAd
+      <SingleMembershipAd
+        cta={text('Cta Text', 'Get free access')}
+        ctaHref="https://www.americastestkitchen.com/order"
         title={() => (
           <span>Cook smart with <UnderlinedText>100% reliable recipes<Underline /></UnderlinedText> trusted by millions of home cooks—Try Digital All Access Now.</span>
         )}
-        cloudinaryId="mise-play/showcase-membership-ad.gif"
-        cta='get free access'
-        ctaHref='https://www.americastestkitchen.com'
       />
     </StoryWrapper>
   </ThemeProvider>

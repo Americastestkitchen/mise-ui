@@ -8,7 +8,7 @@ import HeroAd from '../index';
 import breakpoints from '../../../../styles/breakpoints';
 import { color } from '../../../../styles';
 
-describe('components', () => {
+describe('HeroAd', () => {
   const renderComponent = () => (
     render(
       <ThemeProvider
