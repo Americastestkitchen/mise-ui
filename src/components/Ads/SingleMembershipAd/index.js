@@ -105,6 +105,7 @@ const SingleMembershipContent = styled.div`
     display: flex;
     justify-content: space-between;
     margin-bottom: ${spacing.xsm};
+    max-width: 76.8rem;
   `}
 
   ${breakpoint('lg', 'xlg')`
