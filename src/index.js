@@ -22,6 +22,7 @@ import Listable from './components/Listable';
 import LoadingCard from './components/Cards/LoadingCard';
 import LoadingCarousel from './components/Carousels/LoadingCarousel';
 import MediaObjectCard from './components/Cards/MediaObjectCard';
+import MembershipShowcaseAd from './components/Ads/ShowcaseAds/MembershipShowcaseAd';
 import PodcastEpisodeCard from './components/Cards/PodcastEpisodeCard';
 import QueueCard from './components/Cards/QueueCard';
 import PairedProductAd from './components/Ads/PairedProductAd';
@@ -29,7 +30,7 @@ import PersonCard from './components/Cards/PersonCard';
 import RefinementListBasic from './components/Algolia/shared/RefinementListBasic';
 import RefinementList from './components/Algolia/shared/RefinementList';
 import ResultsCount from './components/Algolia/shared/ResultsCount';
-import StandardCard from './components/Cards/StandardCard';
+import SchoolAd from './components/Ads/ShowcaseAds/SchoolAd';
 import SearchBanner from './components/SearchBanner';
 import SearchInput from './components/SearchInput';
 import SearchNumericMenu from './components/Algolia/search/SearchNumericMenu';
@@ -37,11 +38,13 @@ import SearchNumericMenuBasic from './components/Algolia/search/SearchNumericMen
 import SearchRefinementList from './components/Algolia/search/SearchRefinementList';
 import SearchSortBy from './components/Algolia/search/SearchSortBy';
 import ShowMoreLess from './components/ShowMoreLess';
-import SingleProductMembershipAd from './components/Ads/MembershipAds/SingleProductMembershipAd';
+import SingleMembershipAd from './components/Ads/SingleMembershipAd';
+import SingleProductAd from './components/Ads/SingleProductAd';
+import StandardCard from './components/Cards/StandardCard';
 import Sticker from './components/Cards/shared/Sticker';
 import SubscribeBubbles from './components/SubscribeBubbles';
 import TallCard from './components/Cards/TallCard';
-import TextDecorations from './components/DesignTokens/TextDecoration';
+import TextDecorations, { CircledText, UnderlinedText } from './components/DesignTokens/TextDecoration';
 import * as Icons from './components/DesignTokens/Icon';
 import fonts from './styles/fonts';
 import globalStyle from './styles/global';
@@ -57,6 +60,7 @@ export {
   carousel,
   Carousel,
   CardCarousel,
+  CircledText,
   color,
   ClearRefinements,
   CurrentRefinements,
@@ -79,18 +83,21 @@ export {
   PairedProductAd,
   PodcastEpisodeCard,
   QueueCard,
+  MembershipShowcaseAd,
   mixins,
   PersonCard,
   RefinementListBasic,
   RefinementList,
   ResultsCount,
+  SchoolAd,
   SearchBanner,
   SearchInput,
   SearchNumericMenu,
   SearchNumericMenuBasic,
   SearchRefinementList,
   SearchSortBy,
-  SingleProductMembershipAd,
+  SingleMembershipAd,
+  SingleProductAd,
   ShowMoreLess,
   StandardCard,
   Sticker,
@@ -99,4 +106,5 @@ export {
   SubscribeBubbles,
   styles,
   spacing,
+  UnderlinedText,
 };

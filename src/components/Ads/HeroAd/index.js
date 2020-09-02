@@ -40,7 +40,6 @@ const HeroAdWrapper = styled.div.attrs({
 const HeroAdInnerWrapperTheme = {
   default: css`
     background-color: ${({ backgroundColor }) => `${color[backgroundColor] || 'transparent'}`};
-    margin-left: 3rem;
     padding: 0 ${spacing.sm};
     position: relative;
     width: calc(${grid.columnWidth} - 3rem);

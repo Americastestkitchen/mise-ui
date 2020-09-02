@@ -15,7 +15,7 @@ const defaultData = {
   title: 'Every recipe, rating & video',
 };
 
-describe('components', () => {
+describe('SingleProductAd', () => {
   const renderComponent = () => (
     render(
       <ThemeProvider
