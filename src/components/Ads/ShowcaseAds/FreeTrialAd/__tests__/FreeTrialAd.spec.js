@@ -5,7 +5,7 @@ import { render, screen } from '@testing-library/react';
 import FreeTrialAd from '../index';
 import breakpoints from '../../../../../styles/breakpoints';
 
-describe('components', () => {
+describe('FreeTrialAd', () => {
   const renderComponent = () => (
     render(
       <ThemeProvider

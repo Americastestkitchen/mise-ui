@@ -16,7 +16,7 @@ const defaultData = {
   title: 'dis title',
 };
 
-describe('components', () => {
+describe('SchoolAd', () => {
   const renderComponent = () => (
     render(
       <ThemeProvider

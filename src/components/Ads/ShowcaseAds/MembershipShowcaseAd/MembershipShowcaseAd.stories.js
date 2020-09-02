@@ -6,14 +6,14 @@ import { withKnobs, select , text } from '@storybook/addon-knobs/react';
 
 import { breakpoints, color, spacing, withThemes } from '../../../../styles';
 
-import SingleProductMembershipAd from './index';
+import MembershipShowcaseAd from './index';
 import TextDecorations, { UnderlinedText } from '../../../DesignTokens/TextDecoration'
 
 const Underline = TextDecorations.UnderlineThree;
 
 export default {
-  title: 'Components|Ads/MembershipAds/SingleProductMembershipAd',
-  component: SingleProductMembershipAd,
+  title: 'Components|Ads/ShowcaseAds/MembershipShowcaseAd',
+  component: MembershipShowcaseAd,
   decorators: [withKnobs],
 };
 
@@ -26,7 +26,7 @@ const StoryWrapperTheme = {
     `}
   `,
   dark: css`
-    background-color: ${color.gunmetal};
+    background-color: ${color.asphalt};
   `,
 }
 
@@ -40,7 +40,7 @@ export const Default = () => (
     mode: 'dark',
   }}>
     <StoryWrapper>
-      <SingleProductMembershipAd
+      <MembershipShowcaseAd
         caption={text('Caption', 'Pork Chops with Sweet Potatoes and Rosemary-Maple Sauce')}
         cloudinaryId={text('Image', 'mise-play/membership-single')}
         cta={text('Cta Text', 'Get free access')}

@@ -2,18 +2,16 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { render, screen } from '@testing-library/react';
 
-import SingleProductMembershipAd from '../index';
-import breakpoints from '../../../../../styles/breakpoints';
+import SingleMembershipAd from '../index';
+import breakpoints from '../../../../styles/breakpoints';
 
 const defaultData = {
-  caption: 'this is the caption',
-  cloudinaryId: 'mise-play/membership-single',
   cta: 'do something',
   ctaHref: '#foo',
   title: () => <div>Cook with Confidence</div>,
 };
 
-describe('components', () => {
+describe('SingleMembershipAd', () => {
   const renderComponent = () => (
     render(
       <ThemeProvider
@@ -22,26 +20,16 @@ describe('components', () => {
           mode: 'dark',
         }}
       >
-        <SingleProductMembershipAd
+        <SingleMembershipAd
           {...defaultData}
         />
       </ThemeProvider>,
     )
   );
 
-  it('renders one image', () => {
-    renderComponent();
-    expect(screen.getByTestId('single-membership-ad-img'));
-  });
-
   it('renders a title', () => {
     renderComponent();
     expect(screen.getByText('Cook with Confidence'));
-  });
-
-  it('renders a caption', () => {
-    renderComponent();
-    expect(screen.getByText('this is the caption'));
   });
 
   it('renders icons', () => {
