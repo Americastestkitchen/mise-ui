@@ -141,7 +141,7 @@ const SingleMembershipTitle = styled.h3.attrs({
   className: 'single-membership-ad__title',
 })`${withThemes(SingleMembershipTitleTheme)}`;
 
-const MembershipCtaTheme = {
+const SingleMembershipCtaTheme = {
   default: css`
     background-color: ${color.wasabi};
     color: ${color.white};
@@ -169,9 +169,9 @@ const MembershipCtaTheme = {
   `,
 };
 
-const MembershipCta = styled.a.attrs({
+const SingleMembershipCta = styled.a.attrs({
   className: 'single-membership-ad__cta',
-})`${withThemes(MembershipCtaTheme)}`;
+})`${withThemes(SingleMembershipCtaTheme)}`;
 
 const SingleMembershipAd = ({
   cta,
@@ -184,12 +184,12 @@ const SingleMembershipAd = ({
         <SingleMembershipTitle>
           {title()}
         </SingleMembershipTitle>
-        <MembershipCta
+        <SingleMembershipCta
           href={ctaHref}
           title={cta}
         >
           {cta}
-        </MembershipCta>
+        </SingleMembershipCta>
       </SingleMembershipContent>
       <MembershipBenefitIcons />
     </SingleMembershipInner>
