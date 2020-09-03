@@ -75,6 +75,10 @@ const HowWeUseLinkTheme = {
         text-decoration: underline;
       }
     }
+
+    ${breakpoint('lg')`
+      padding: 0.8rem 0 0;
+    `}
   `,
 };
 

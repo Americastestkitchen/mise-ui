@@ -91,6 +91,24 @@ const imageConfig = {
       width: 150,
     };
   },
+  singleProductDesktop() {
+    return {
+      ...baseImageConfig,
+      width: 500,
+    };
+  },
+  singleProductTablet() {
+    return {
+      ...baseImageConfig,
+      width: 450,
+    };
+  },
+  singleProductMobile() {
+    return {
+      ...baseImageConfig,
+      width: 300,
+    };
+  },
   showcaseFreeTrialMobile() {
     return {
       ...baseImageConfig,

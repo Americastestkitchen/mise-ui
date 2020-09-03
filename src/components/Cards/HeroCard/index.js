@@ -10,13 +10,15 @@ import { getImageUrl } from '../../../lib/cloudinary';
 import { keyToLogo } from '../../DesignTokens/Logo';
 import { VideoPlay } from '../../DesignTokens/Icon/svgs';
 
-const HeroCardWrapper = styled.div`
+const HeroCardWrapper = styled.div.attrs({
+  className: 'hero-card',
+})`
   background-image: url("${({ backgroundImg }) => backgroundImg}");
   background-position: center;
   background-size: cover;
   display: flex;
   flex-direction: column;
-  height: 46.5rem;
+  min-height: 46.5rem;
   justify-content: flex-end;
   padding: ${spacing.lg} ${spacing.sm};
   width: 100%;
