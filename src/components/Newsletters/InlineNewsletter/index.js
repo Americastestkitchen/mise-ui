@@ -20,6 +20,10 @@ const NewsletterTitleTheme = {
   default: css`
     font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb};
     margin-bottom: ${spacing.sm};
+
+    ${breakpoint('lg')`
+      margin-bottom: 0;
+    `}
   `,
   dark: css`
     color: ${color.white};
@@ -106,6 +110,10 @@ const InlineNewsletterContent = styled.div`
 const InlineNewsletterWrapperTheme = {
   default: css`
     padding: ${spacing.sm} ${spacing.sm} ${spacing.md};
+
+    ${breakpoint('lg')`
+      padding: ${spacing.sm};
+    `}
   `,
   dark: css`
     background-color: ${color.asphalt};

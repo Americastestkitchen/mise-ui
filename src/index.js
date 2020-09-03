@@ -40,6 +40,7 @@ import SearchSortBy from './components/Algolia/search/SearchSortBy';
 import ShowMoreLess from './components/ShowMoreLess';
 import SingleMembershipAd from './components/Ads/SingleMembershipAd';
 import SingleProductAd from './components/Ads/SingleProductAd';
+import SingleProductShowcaseAd from './components/Ads/ShowcaseAds/SingleProductShowcaseAd';
 import StandardCard from './components/Cards/StandardCard';
 import Sticker from './components/Cards/shared/Sticker';
 import SubscribeBubbles from './components/SubscribeBubbles';
@@ -98,6 +99,7 @@ export {
   SearchSortBy,
   SingleMembershipAd,
   SingleProductAd,
+  SingleProductShowcaseAd,
   ShowMoreLess,
   StandardCard,
   Sticker,
