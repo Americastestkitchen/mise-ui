@@ -6,13 +6,10 @@ import SingleProductAd from '../index';
 import breakpoints from '../../../../styles/breakpoints';
 
 const defaultData = {
-  cloudinaryId: 'atk-20th-anniversary-tv-show-cookbook-header_u6komg',
-  cta: 'START FREE TRIAL',
-  ctaHref: 'https://www.americastestkitchen.com/foo',
-  ctaTarget: '_blank',
-  siteKey: 'shop',
-  subtitle: 'DIGITAL ALL ACCESS',
-  title: 'Every recipe, rating & video',
+  cloudinaryId: 'mise-play/single-product-atk',
+  cta: 'Save 55% NOW',
+  ctaHref: '#foo',
+  title: 'Get 1,670+ recipes from all 21 seasons!',
 };
 
 describe('SingleProductAd', () => {
@@ -31,23 +28,18 @@ describe('SingleProductAd', () => {
     )
   );
 
-  it('renders image', () => {
+  it('renders a title', () => {
     renderComponent();
-    expect(screen.getByTestId('product-img'));
+    expect(screen.getByText('Get 1,670+ recipes from all 21 seasons!'));
   });
 
-  it('renders title', () => {
+  it('renders an image', () => {
     renderComponent();
-    expect(screen.getByText('Every recipe, rating & video'));
-  });
-
-  it('renders subtitle', () => {
-    renderComponent();
-    expect(screen.getByText('DIGITAL ALL ACCESS'));
+    expect(screen.getByTestId('single-product-ad-img'));
   });
 
   it('renders cta link', () => {
     renderComponent();
-    expect(screen.getByTitle('START FREE TRIAL'));
+    expect(screen.getByTitle('Save 55% NOW'));
   });
 });

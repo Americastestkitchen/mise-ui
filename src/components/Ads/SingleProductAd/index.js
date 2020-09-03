@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import Badge from '../../Badge';
 import { getImageUrl } from '../../../lib/cloudinary';
 import {
   color,
@@ -15,225 +14,191 @@ import {
   withThemes,
 } from '../../../styles';
 
-/**
- * Wrapper
- */
-const ProductTheme = {
-  dark: css`
-    background-color: ${color.mineShaft};
-    position: relative;
-
-    .badge {
-      left: ${spacing.xsm};
-      position: absolute;
-      top: ${spacing.xsm};
-    }
-
-    ${breakpoint('md')`
-      align-items: center;
-      display: flex;
-    `}
-  `,
-};
-
-const Product = styled.article.attrs({
-  className: 'product',
-})`${withThemes(ProductTheme)}`;
-
-
-/**
- * Picture
- */
-const ProductPictureTheme = {
-  dark: css`
-    display: block;
-
-    ${breakpoint('md')`
-      flex: 0 0 34rem;
-      width: 34rem;
-    `}
-
-    ${breakpoint('lg')`
-      flex: 0 0 56rem;
-      width: 56rem;
-    `}
-  `,
-};
-
-const ProductPicture = styled.picture.attrs({
-  className: 'product__picture',
-})`${withThemes(ProductPictureTheme)}`;
-
-/**
- * Product info
- */
-const ProductInfoTheme = {
+const SingleProductWrapperTheme = {
   default: css`
+    ${breakpoint('xlg')`
+      height: 16.2rem;
+      margin: 0 auto;
+    `}
+  `,
+  dark: css`
+    background-color: ${color.asphalt};
+  `,
+};
+
+const SingleProductWrapper = styled.div.attrs({
+  className: 'single-product-ad',
+})`${withThemes(SingleProductWrapperTheme)}`;
+
+const SingleProductInner = styled.div.attrs({
+  className: 'single-product-ad__inner',
+})`
+  ${breakpoint('md')`
     align-items: center;
     display: flex;
-    flex: 1 0 auto;
-    justify-content: center;
-    padding: 2rem 2rem 3.8rem;
+    height: 18rem;
+    justify-content: space-between;
+  `}
+
+  ${breakpoint('lg')`
+    margin: 0 auto;
+    max-width: 113.6rem;
+  `}
+`;
+
+const SingleProductPictureTheme = {
+  default: css`
+    display: block;
+
+    img {
+      display: block;
+    }
+
+    ${breakpoint('xs', 'md')`
+      left: 50%;
+      max-width: 130%;
+      position: relative;
+      transform: translateX(-50%);
+      width: 130%;
+    `}
 
     ${breakpoint('md')`
-      padding: 0;
-      margin-left: ${spacing.sm};
-      width: calc(50% - ${spacing.lg});
+      flex: 1 0 calc(100% - 27.2rem);
+      max-width: 60rem;
+      width: calc(100% - 27.2rem);
+
+      img {
+        max-width: 100%;
+      }
     `}
   `,
 };
-const ProductInfo = styled.div.attrs({
-  className: 'product__info',
-})`${withThemes(ProductInfoTheme)}`;
 
-const ProductInfoInner = styled.div`
+const SingleProductPicture = styled.picture.attrs({
+  className: 'single-product-ad__picture',
+})`${withThemes(SingleProductPictureTheme)}`;
+
+const SingleProductContentTheme = {
+  default: css`
+    padding: ${spacing.sm} 2rem;
+
+    ${breakpoint('md')`
+      padding: ${spacing.sm};
+    `}
+  `,
+  dark: css`
+    color: ${color.white};
+  `,
+};
+
+const SingleProductContent = styled.div.attrs({
+  className: 'single-product-ad__content',
+})`${withThemes(SingleProductContentTheme)}`;
+
+const SingleProductContentInner = styled.div`
+  ${breakpoint('md')`
+    width: 27.2rem;
+  `}
+
   ${breakpoint('lg')`
     width: 34.4rem;
   `}
 `;
 
-/**
- * Product title
- */
-const ProductTitleTheme = {
+const SingleProductTitleTheme = {
   default: css`
     font: 2.6rem/${lineHeight.sm} ${font.pnb};
     margin-bottom: ${spacing.sm};
-  `,
-  dark: css`
-    color: ${color.white}
-  `,
-};
-const ProductTitle = styled.h3.attrs({
-  className: 'product__title',
-})`${withThemes(ProductTitleTheme)}`;
+    text-align: center;
 
-/**
- * Product subtitle
- */
-const ProductSubtitleTheme = {
-  default: css`
-    font: ${fontSize.lg}/${lineHeight.md} ${font.pnr};
-    margin-bottom: ${spacing.sm};
-  `,
-  dark: css`
-    color: ${color.whiteSmoke}
+    ${breakpoint('md')`
+      text-align: left;
+    `}
   `,
 };
 
-const ProductSubtitle = styled.h4.attrs({
-  className: 'product__subtitle',
-})`${withThemes(ProductSubtitleTheme)}`;
+const SingleProductTitle = styled.div.attrs({
+  className: 'single-product-ad__title',
+})`${withThemes(SingleProductTitleTheme)}`;
 
-/**
- * Product cta button
- */
-const ProductCtaTheme = {
+const SingleProductCtaTheme = {
   default: css`
+    background-color: ${color.summerSky};
     color: ${color.white};
-    background-color: ${color.tomato};
     display: block;
-    flex: 1 0 100%;
     font: ${fontSize.lg}/4rem ${font.pnb};
     letter-spacing: ${letterSpacing.xlg};
     height: 4rem;
-    margin-top: ${spacing.xsm};
     text-align: center;
     text-transform: uppercase;
-    white-space: nowrap;
     width: 100%;
 
     @media(hover: hover) {
       &:hover {
-        background-color: ${color.rust};
+        background-color: ${color.endeavour};
       }
     }
-
-    ${breakpoint('md')`
-      display: inline-block;
-      margin: ${spacing.xsm} auto 0;
-      width: 29rem;
-    `}
-
-    ${breakpoint('lg')`
-      width: 34.4rem;
-    `}
   `,
 };
 
-const ProductCta = styled.a.attrs({
-  className: 'product__cta',
-})`${withThemes(ProductCtaTheme)}`;
+const SingleProductCta = styled.a.attrs({
+  className: 'single-product-ad__cta',
+})`${withThemes(SingleProductCtaTheme)}`;
 
 const SingleProductAd = ({
   cloudinaryId,
   cta,
   ctaHref,
-  ctaTarget,
-  siteKey,
-  subtitle,
   title,
 }) => (
-  <Product>
-    <ProductPicture>
-      <source
-        media="(min-width: 1024px)"
-        srcSet={getImageUrl(
-          cloudinaryId,
-          'showcaseFreeTrialDesktop',
-        )}
-      />
-      <source
-        media="(min-width: 768px)"
-        srcSet={getImageUrl(
-          cloudinaryId,
-          'showcaseFreeTrialTablet',
-        )}
-      />
-      <img
-        alt=" "
-        data-testid="product-img"
-        src={getImageUrl(
-          cloudinaryId,
-          'showcaseFreeTrialMobile',
-        )}
-      />
-    </ProductPicture>
-    <ProductInfo>
-      <ProductInfoInner>
-        <ProductTitle>
-          {title}
-        </ProductTitle>
-        <ProductSubtitle>
-          {subtitle}
-        </ProductSubtitle>
-        <ProductCta
-          href={ctaHref}
-          target={ctaTarget}
-          title={cta}
-        >
-          {cta}
-        </ProductCta>
-      </ProductInfoInner>
-    </ProductInfo>
-    <Badge
-      type={siteKey}
-    />
-  </Product>
+  <SingleProductWrapper>
+    <SingleProductInner>
+      <SingleProductContent>
+        <SingleProductContentInner>
+          <SingleProductTitle>
+            {title}
+          </SingleProductTitle>
+          <SingleProductCta
+            href={ctaHref}
+            title={cta}
+          >
+            {cta}
+          </SingleProductCta>
+        </SingleProductContentInner>
+      </SingleProductContent>
+      <SingleProductPicture>
+        <source
+          media="(min-width: 1024px)"
+          srcSet={getImageUrl(
+            cloudinaryId,
+            'singleProductDesktop',
+          )}
+        />
+        <source
+          media="(min-width: 768px)"
+          srcSet={getImageUrl(
+            cloudinaryId,
+            'singleProductTablet',
+          )}
+        />
+        <img
+          alt=" "
+          data-testid="single-product-ad-img"
+          src={getImageUrl(
+            cloudinaryId,
+            'singleProductMobile',
+          )}
+        />
+      </SingleProductPicture>
+    </SingleProductInner>
+  </SingleProductWrapper>
 );
 
 SingleProductAd.propTypes = {
   cloudinaryId: PropTypes.string.isRequired,
   cta: PropTypes.string.isRequired,
   ctaHref: PropTypes.string.isRequired,
-  ctaTarget: PropTypes.string,
-  siteKey: PropTypes.oneOf(['atk', 'cio', 'cco', 'kids', 'school', 'shop']).isRequired,
-  subtitle: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-};
-
-SingleProductAd.defaultProps = {
-  ctaTarget: null,
 };
 
 export default SingleProductAd;

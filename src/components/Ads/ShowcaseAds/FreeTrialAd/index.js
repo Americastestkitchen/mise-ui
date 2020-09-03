@@ -121,6 +121,12 @@ const FreeTrialCtaTheme = {
     text-align: center;
     text-transform: uppercase;
     width: 100%;
+
+    @media(hover: hover) {
+      &:hover {
+        background-color: ${color.rust};
+      }
+    }
   `,
 };
 
