@@ -62,6 +62,10 @@ const SchoolPictureTheme = {
   dark: css`
     display: block;
 
+    img {
+      display: block;
+    }
+
     ${breakpoint('md')`
       flex: 0 0 34rem;
       width: 34rem;
