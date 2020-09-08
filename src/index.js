@@ -7,6 +7,7 @@ import Button from './components/Buttons/Button';
 import carousel from './styles/carousel';
 import Carousel from './components/Carousels/Carousel';
 import CardCarousel from './components/Carousels/CardCarousel';
+import CardWrapper from './components/Cards/CardWrapper';
 import ClearRefinements from './components/Algolia/shared/ClearRefinements';
 import CurrentRefinements from './components/Algolia/shared/CurrentRefinements';
 import DocumentListCarousel from './components/Carousels/DocumentListCarousel';
@@ -58,9 +59,10 @@ export {
   Badge,
   breakpoints,
   Button,
+  CardCarousel,
+  CardWrapper,
   carousel,
   Carousel,
-  CardCarousel,
   CircledText,
   color,
   ClearRefinements,
