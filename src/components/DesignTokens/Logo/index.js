@@ -48,10 +48,36 @@ export const MysteryRecipe = ({
 
 MysteryRecipe.propTypes = Logos.MysteryRecipe.propTypes;
 
+export const Proof = ({
+  fill,
+}) => (
+  <Logo>
+    <Logos.Proof
+      fill={fill}
+    />
+  </Logo>
+);
+
+Proof.propTypes = Logos.Proof.propTypes;
+
+export const TheWalkIn = ({
+  fill,
+}) => (
+  <Logo>
+    <Logos.TheWalkIn
+      fill={fill}
+    />
+  </Logo>
+);
+
+TheWalkIn.propTypes = Logos.TheWalkIn.propTypes;
+
 export const keyToLogo = key => ({
   atk: ATK,
   cco: CCO,
   mysteryRecipe: MysteryRecipe,
+  proof: Proof,
+  walkIn: TheWalkIn,
 }[key] || null);
 
 export default Logos;
