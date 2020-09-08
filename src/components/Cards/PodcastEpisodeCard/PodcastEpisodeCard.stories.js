@@ -32,8 +32,6 @@ export const Default = () => {
     title: "Exodus Bagels: A Small Business and COVID-19",
   }
 
-  const [imageUrl, setImageUrl] = useState('');
-
   useEffect(() => {
     async function fetchData() {
       try {
@@ -46,8 +44,6 @@ export const Default = () => {
           `${proxyUrl}/media_assets/${assets[4].id}`,
           headers,
         );
-        const { data: { attributes: { cdn_url: imgUrl } } } = await assetResponse.json();
-        setImageUrl(imgUrl);
       } catch (err) {
         console.log('error fetching data', err);
       }
@@ -64,7 +60,7 @@ export const Default = () => {
       id={episode.id}
       isPlaying={select('Currently Playing', [true, false], false)}
       imageAlt={text('Image alt', '')}
-      imageUrl={imageUrl}
+      imageUrl={text('Image url', 'https://res.cloudinary.com/hksqkdlah/image/upload/v1599584414/play-listen/twi-testttt_ghdfud.png')}
       siteKey="atk"
       stickers={[{ type: 'editorial', text: '28:08' }]}
     />
