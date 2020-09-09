@@ -36,6 +36,18 @@ export const CCO = ({
 
 CCO.propTypes = Logos.CCO.propTypes;
 
+export const CIO = ({
+  fill,
+}) => (
+  <Logo>
+    <Logos.CIO
+      fill={fill}
+    />
+  </Logo>
+);
+
+CIO.propTypes = Logos.CIO.propTypes;
+
 export const MysteryRecipe = ({
   fill,
 }) => (
