@@ -128,6 +128,7 @@ const HeroCard = ({
   personHeadShot,
   sticker,
   title,
+  onClick,
 }) => {
   const Logo = keyToLogo(iconKey);
   const backgroundImg = getImageUrl(backgroundCloudinaryId, 'heroCard');
@@ -175,7 +176,10 @@ const HeroCard = ({
         >
           {description}
         </HeroCardDescription>
-        <HeroCardCta href={ctaUrl}>
+        <HeroCardCta
+          href={ctaUrl}
+          onClick={onClick}
+        >
           <HeroCardCtaIcon>
             <VideoPlay fill={color.white} />
           </HeroCardCtaIcon>
@@ -192,7 +196,7 @@ HeroCard.propTypes = {
   /** Image rendered as background for card. */
   backgroundCloudinaryId: PropTypes.string.isRequired,
   /** href for card CTA */
-  ctaUrl: PropTypes.string.isRequired,
+  ctaUrl: PropTypes.string,
   /** text for card CTA */
   ctaText: PropTypes.string.isRequired,
   /** Description text above CTA */
@@ -209,13 +213,16 @@ HeroCard.propTypes = {
   }),
   /** Title text above description */
   title: PropTypes.string,
+  onClick: PropTypes.func,
 };
 
 HeroCard.defaultProps = {
+  ctaUrl: null,
   iconKey: null,
   personHeadShot: null,
   sticker: null,
   title: null,
+  onClick: () => {},
 };
 
 export default HeroCard;
