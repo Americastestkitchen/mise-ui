@@ -5,6 +5,7 @@ import fetch from 'cross-fetch';
 import AudioPlayer from './index';
 import LabelFrame from '../LabelFrame';
 import PodcastEpisodeCard from '../Cards/PodcastEpisodeCard';
+import { getImageUrl } from '../../lib/cloudinary';
 
 import {
   font,
@@ -56,8 +57,6 @@ export const Default = () => {
         title,
         episode_number,
         summary,
-        cascaded_cover_image_id,
-        cover_image_id,
         rss_link_url,
       }) => ({
         id,
@@ -65,7 +64,7 @@ export const Default = () => {
         description: summary,
         episode: episode_number,
         href: rss_link_url,
-        imageId: cover_image_id ? cover_image_id : cascaded_cover_image_id
+        imageUrl: getImageUrl('play-listen/proof-s3e8-vertical'),
       })));
     }
     fetchData();
