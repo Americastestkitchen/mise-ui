@@ -41,7 +41,7 @@ const StyledFeatureCard = styled.article`
     color: ${color.white};
   }
 
-  .feature-card__subcomponents-content {
+  .feature-card__subcomponents-content:not(:only-child) {
     flex: 1 0 calc(100% -  6.2rem);
     max-width: calc(100% -  6.2rem);
   }
