@@ -19,7 +19,7 @@ const PodcastEpisodeCardWrapper = styled.div`
   > div {
     display: flex;
     overflow: hidden;
-    height: 24rem;
+    max-height: 24rem;
   }
 
   p {
@@ -217,6 +217,7 @@ class PodcastEpisodeCard extends Component {
       title,
       description,
       href,
+      cardId,
       id,
       imageAlt,
       imageUrl,
@@ -225,10 +226,9 @@ class PodcastEpisodeCard extends Component {
       isPlaying,
     } = this.props;
 
-    const jumpLink = title.replace(/[^\w\s]/gi, '').replace(/\s+/g, '-').replace(/(-)\1+/, '-').toLowerCase();
     return (
       <PodcastEpisodeCardWrapper
-        id={jumpLink}
+        id={cardId}
         className={`podcast-episode-card ${isPlaying ? 'is-playing' : ''}`}
       >
         <div>
@@ -303,6 +303,8 @@ PodcastEpisodeCard.propTypes = {
   href: PropTypes.string,
   /** episode id */
   id: PropTypes.string.isRequired,
+  /** id for jump link */
+  cardId: PropTypes.string.isRequired,
   isPlaying: PropTypes.bool,
   imageAlt: PropTypes.string,
   imageUrl: PropTypes.string,
