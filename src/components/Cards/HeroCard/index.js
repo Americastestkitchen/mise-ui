@@ -95,12 +95,6 @@ const HeroCardDescription = styled.p`
 const HeroCardCta = styled.a`
   align-items: center;
   display: flex;
-
-  @media(hover: hover) {
-    &:hover {
-      cursor: pointer;
-    }
-  }
 `;
 
 const HeroCardCtaIcon = styled.div`
