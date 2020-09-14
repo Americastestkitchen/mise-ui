@@ -19,6 +19,7 @@ const PodcastEpisodeCardWrapper = styled.div`
   > div {
     display: flex;
     overflow: hidden;
+    max-height: 24rem;
   }
 
   p {
@@ -30,12 +31,19 @@ const PodcastEpisodeCardWrapper = styled.div`
     box-shadow: 0 5px 8px 0 ${color.transparentBlack};
     background-color: ${color.black};
     max-width: 93rem;
+
+    .podcast-episode-card__image {
+      flex-basis: 80%;
+      margin-left: 1rem;
+      max-width: 25rem;
+    }
   }
 
   @media(hover: hover) {
     &:hover {
       transform: translateY(-${spacing.xsm});
       box-shadow: 0 7px 8px -2px ${color.black};
+      max-width: 93rem;
     }
   }
 
@@ -47,20 +55,31 @@ const PodcastEpisodeCardWrapper = styled.div`
     p {
       display: none;
     }
+
+    @media(hover: hover) {
+      &:hover {
+        .podcast-episode-card__image {
+          flex-basis: 90%;
+          margin-left: 1rem;
+          max-width: 25rem;
+        }
+      }
+    }
   `}
 `;
 
 const ImageWrapper = styled.div`
   position: relative;
-  flex-basis: 65%;
+  flex-basis: 88%;
   max-height: 10rem;
   max-width: 10rem;
   margin-right: ${spacing.sm};
+  overflow: hidden;
 
   ${breakpoint('md')`
     margin-right: 0;
     max-height: none;
-    max-width: 23rem;
+    max-width: 25rem;
   `}
 `;
 
@@ -90,9 +109,13 @@ export const StyledSticker = styled(Sticker)`
 `;
 
 const NowPlayingSticker = styled(Sticker)`
-  &.now-playing,
-  &.now-playing > * {
+  &.now-playing {
     background-color: ${color.darkerMint};
+    margin: 0 0.5rem 0 0;
+    transform: none;
+  }
+
+  &.now-playing > * {
     font-size: ${fontSize.xsm};
     margin-left: 0;
     transform: none;
@@ -108,8 +131,10 @@ const TextWrapper = styled.div`
   }
 
   h4 {
-    font: 1.2rem/${lineHeight.sm} ${font.pnb};
+    align-items: center;
     color: ${color.silver};
+    display: flex;
+    font: 1.2rem/${lineHeight.sm} ${font.pnb};
     letter-spacing: ${letterSpacing.lg};
     text-transform: uppercase;
   }
@@ -192,6 +217,7 @@ class PodcastEpisodeCard extends Component {
       title,
       description,
       href,
+      cardId,
       id,
       imageAlt,
       imageUrl,
@@ -200,15 +226,13 @@ class PodcastEpisodeCard extends Component {
       isPlaying,
     } = this.props;
 
-    const jumpLink = title.replace(/[^a-zA-Z ]/g, '').replace(/\s+/g, '-').toLowerCase();
-
     return (
       <PodcastEpisodeCardWrapper
-        id={jumpLink}
+        id={cardId}
         className={`podcast-episode-card ${isPlaying ? 'is-playing' : ''}`}
       >
         <div>
-          <ImageWrapper>
+          <ImageWrapper className="podcast-episode-card__image">
             <Image
               aria-hidden="true"
               imageAlt={imageAlt}
@@ -241,7 +265,20 @@ class PodcastEpisodeCard extends Component {
                 stickers,
               })}
             >
-              <h4>{ isPlaying && (<NowPlayingSticker className="now-playing" type="editorial" text="now playing" />)} Episode {episode}</h4>
+              <h4>
+                {
+                  isPlaying && (
+                    <NowPlayingSticker
+                      className="now-playing"
+                      type="editorial"
+                      text="now playing"
+                    />
+                  )
+                }
+                {
+                  episode ? `Episode ${episode}` : ''
+                }
+              </h4>
               <VideoPlay fill={color.white} />
               <h3>{title}</h3>
             </button>
@@ -266,6 +303,8 @@ PodcastEpisodeCard.propTypes = {
   href: PropTypes.string,
   /** episode id */
   id: PropTypes.string.isRequired,
+  /** id for jump link */
+  cardId: PropTypes.string.isRequired,
   isPlaying: PropTypes.bool,
   imageAlt: PropTypes.string,
   imageUrl: PropTypes.string,
