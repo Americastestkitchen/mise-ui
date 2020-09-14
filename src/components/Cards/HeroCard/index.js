@@ -74,7 +74,7 @@ const HeroCardTitle = styled.div`
   margin-bottom: ${spacing.xxsm};
 `;
 
-const HeroCardDescription = styled.p`
+const HeroCardDescription = styled.div`
   color: ${color.white};
   margin-bottom: ${spacing.xsm};
 
@@ -173,9 +173,8 @@ const HeroCard = ({
         }
         <HeroCardDescription
           cardType={personHeadShot && sticker ? 'learn' : 'watch'}
-        >
-          {description}
-        </HeroCardDescription>
+          dangerouslySetInnerHTML={{ __html: description }}
+        />
         <HeroCardCta
           href={ctaUrl}
           onClick={onClick}
