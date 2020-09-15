@@ -21,6 +21,7 @@ const PersonHeadShotWrapper = styled.div`
       width: ${lg || md || sm}rem;
     `}
   `}
+  flex-shrink: 0;
   overflow: hidden;
 `;
 
