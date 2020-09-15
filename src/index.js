@@ -15,6 +15,7 @@ import FavoriteActionButton from './components/Buttons/ActionButtons/FavoriteAct
 import EmailForm from './components/Forms/EmailForm';
 import FeatureCard from './components/Cards/FeatureCard';
 import FilterButton from './components/FilterButton';
+import FormInput from './components/Forms/shared/FormInput';
 import FreeTrialAd from './components/Ads/ShowcaseAds/FreeTrialAd';
 import HeroAd from './components/Ads/HeroAd';
 import HeroCard from './components/Cards/HeroCard';
@@ -72,6 +73,7 @@ export {
   FavoriteActionButton,
   FeatureCard,
   FilterButton,
+  FormInput,
   FreeTrialAd,
   fonts,
   Icons,
