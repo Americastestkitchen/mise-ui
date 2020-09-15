@@ -102,7 +102,9 @@ const StyledFavoriteButton = styled(FavoriteButton)`
   right: ${spacing.xsm};
 `;
 
-const Attributions = styled.p`
+const Attributions = styled.p.attrs({
+  className: 'feature-card__attributions',
+})`
   font: ${fontSize.md}/${lineHeight.md} ${font.pnb};
 `;
 
@@ -137,7 +139,7 @@ function FeatureCard({
 }) {
   return (
     <StyledFeatureCard
-      className={ctaUrl ? 'has-cta' : ''}
+      className={ctaUrl ? 'has-cta feature-card' : 'feature-card'}
       contentType={contentType}
       data-testid="feature-card"
       isWide={isWide}
