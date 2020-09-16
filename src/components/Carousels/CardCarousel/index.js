@@ -95,11 +95,11 @@ const CardCarouselTheme = {
       &.card-carousel--hero {
         .linear-gradient {
 
-          &:first-child {
+          &.left {
             left: 0;
           }
 
-          &:last-child {
+          &.right {
             right: 0;
           }
         }
@@ -168,9 +168,6 @@ const CardCarousel = ({
       data-testid={`card-carousel--${type}`}
       type={type}
     >
-      <LinearGradient
-        angle="-90"
-      />
       <Carousel
         className={className}
         dotPosition={dotPosition}
@@ -179,6 +176,11 @@ const CardCarousel = ({
         options={options}
       />
       <LinearGradient
+        className="left"
+        angle="-90"
+      />
+      <LinearGradient
+        className="right"
         angle="90"
       />
     </CardCarouselWrapper>
