@@ -83,7 +83,10 @@ Attributions.propTypes = {
   displaySecondaryAttribution: PropTypes.bool,
   displayCookbook: PropTypes.bool,
   primaryAttribution: PropTypes.string.isRequired,
-  secondaryAttribution: PropTypes.number,
+  secondaryAttribution: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]),
   shopPrices: PropTypes.object,
 };
 
