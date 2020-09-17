@@ -44,6 +44,7 @@ const InputWrapper = styled.div.attrs({
 `;
 
 const FormTextInput = ({
+  ariaLabel,
   error,
   id,
   label,
@@ -67,6 +68,7 @@ const FormTextInput = ({
         {label}
       </FormLabel>
       <FormInput
+        aria-label={ariaLabel}
         data-valid={Boolean(error)}
         id={id}
         name={name}
@@ -88,8 +90,10 @@ const FormTextInput = ({
 };
 
 FormTextInput.propTypes = {
+  ariaLabel: PropTypes.string,
   /** Error text */
   error: PropTypes.string,
+  defaultValue: PropTypes.string,
   /** HTML id attribute */
   id: PropTypes.string,
   /** Text for input label */
@@ -115,7 +119,9 @@ FormTextInput.propTypes = {
 };
 
 FormTextInput.defaultProps = {
+  ariaLabel: null,
   error: false,
+  defaultValue: null,
   id: null,
   onBlur: null,
   onChange: null,
