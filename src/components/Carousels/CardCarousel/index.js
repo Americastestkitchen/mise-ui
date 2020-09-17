@@ -80,6 +80,14 @@ const CardCarouselTheme = {
       top: 0;
       width: 4rem;
       z-index: 1;
+
+      &.left {
+        left: 0;
+      }
+
+      &.right {
+        right: -5rem;
+      }
     }
 
     ${breakpoint('lg')`
@@ -94,11 +102,6 @@ const CardCarouselTheme = {
 
       &.card-carousel--hero {
         .linear-gradient {
-
-          &.left {
-            left: 0;
-          }
-
           &.right {
             right: 0;
           }
@@ -175,13 +178,15 @@ const CardCarousel = ({
         renderItem={doRenderItem}
         options={options}
       />
+      {cellAlign === 'center' && (
+        <LinearGradient
+          angle="-90"
+          position="left"
+        />
+      )}
       <LinearGradient
-        className="left"
-        angle="-90"
-      />
-      <LinearGradient
-        className="right"
         angle="90"
+        position="right"
       />
     </CardCarouselWrapper>
   );

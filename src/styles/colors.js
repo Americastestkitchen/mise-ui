@@ -1,8 +1,6 @@
 const color = {
   white: '#ffffff',
-  transparentWhite: 'rgba(255, 255, 255, 0.5)',
   black: '#000000',
-  transparentBlack: 'rgba(0, 0, 0, 0.7)',
   tomato: '#d73a15',
   rust: '#a72e12',
   whiteSmoke: '#f5f5f5',
@@ -15,7 +13,6 @@ const color = {
   regentGray: '#767f81',
   silver: '#c2c2c2',
   gunmetal: '#262626',
-  transparentGunmetal: 'rgba(38, 38, 38, 0.5)',
   nobel: '#999999',
   denim: '#416490',
   malibu: '#69a0e1',
@@ -50,6 +47,11 @@ const color = {
   summerSky: '#3c9be2',
   mineShaft: '#2a2a2a',
   endeavour: '#0666B0',
+  transparentWhite: 'rgba(255, 255, 255, 0.5)',
+  transparentBlack: 'rgba(0, 0, 0, 0.7)',
+  transparentGunmetal: 'rgba(38, 38, 38, 0.5)',
+  transparentAsphalt: 'rgba(25, 25, 25, 0.5)',
+  transparentJet: 'rgba(8, 8, 8, 0.5)',
 };
 
 export default color;
