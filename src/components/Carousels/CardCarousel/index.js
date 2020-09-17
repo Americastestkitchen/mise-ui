@@ -107,6 +107,15 @@ const CardCarouselTheme = {
           }
         }
       }
+
+      .flickity-button {
+        &:hover {
+          svg {
+            transform: scale(1.2);
+            opacity: 0.6;
+          }
+        }
+      }
     `}
 
     ${breakpoint('xlg')`

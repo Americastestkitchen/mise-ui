@@ -82,7 +82,7 @@ const LoadingCarousel = ({
   title,
   type,
 }) => (
-  <StyledLoadingCarousel>
+  <StyledLoadingCarousel className="loading-carousel">
     {intro && (<div className="intro" />) }
     { title && ctaText && (
       <div className={`text-and-dots ${type}`}>

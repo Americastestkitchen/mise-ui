@@ -191,7 +191,7 @@ const AudioPlayer = ({
       className="player__wrapper"
     >
       <TitleWrapper>
-        <Subtitle>Episode {episode}</Subtitle>
+        {episode && <Subtitle>Episode {episode}</Subtitle>}
         <Title>{title}</Title>
       </TitleWrapper>
       <ControlsWrapper
@@ -249,7 +249,7 @@ AudioPlayer.propTypes = {
   /** title of the episode */
   title: PropTypes.string.isRequired,
   /** episode number */
-  episode: PropTypes.number.isRequired,
+  episode: PropTypes.number,
   /** link to page with more episode details */
   href: PropTypes.string,
   imageAlt: PropTypes.string,
@@ -257,6 +257,7 @@ AudioPlayer.propTypes = {
 };
 
 AudioPlayer.defaultProps = {
+  episode: null,
   href: '',
   imageAlt: ' ',
   imageUrl: '',
