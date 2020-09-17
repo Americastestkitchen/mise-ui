@@ -1,3 +1,4 @@
+import Arrow from './Arrow';
 import BreadcrumbArrow from './BreadcrumbArrow';
 import Checkmark from './Checkmark';
 import ChefHat from './ChefHat';
@@ -27,6 +28,7 @@ import VideoPlay from './VideoPlay';
 import Videos from './Videos';
 
 export {
+  Arrow,
   BreadcrumbArrow,
   Checkmark,
   ChefHat,

@@ -11,6 +11,12 @@ Icon.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
+export const Arrow = () => (
+  <Icon>
+    <Icons.Arrow />
+  </Icon>
+);
+
 export const BreadcrumbArrow = () => (
   <Icon>
     <Icons.BreadcrumbArrow />
