@@ -87,6 +87,7 @@ TheWalkIn.propTypes = Logos.TheWalkIn.propTypes;
 export const keyToLogo = key => ({
   atk: ATK,
   cco: CCO,
+  cio: CIO,
   mysteryRecipe: MysteryRecipe,
   proof: Proof,
   walkIn: TheWalkIn,
