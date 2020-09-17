@@ -34,8 +34,7 @@ const PodcastEpisodeCardWrapper = styled.div`
 
     .podcast-episode-card__image {
       flex-basis: 80%;
-      margin-left: 1rem;
-      max-width: 25rem;
+      max-width: 10rem;
     }
   }
 
@@ -56,12 +55,17 @@ const PodcastEpisodeCardWrapper = styled.div`
       display: none;
     }
 
+    &.is-playing {
+      .podcast-episode-card__image {
+        max-width: 25rem;
+      }
+    }
+
     @media(hover: hover) {
       &:hover {
         .podcast-episode-card__image {
           flex-basis: 90%;
           margin-left: 1rem;
-          max-width: 25rem;
         }
       }
     }
@@ -217,7 +221,6 @@ class PodcastEpisodeCard extends Component {
       title,
       description,
       href,
-      cardId,
       id,
       imageAlt,
       imageUrl,
@@ -228,7 +231,7 @@ class PodcastEpisodeCard extends Component {
 
     return (
       <PodcastEpisodeCardWrapper
-        id={cardId}
+        id={id}
         className={`podcast-episode-card ${isPlaying ? 'is-playing' : ''}`}
       >
         <div>
@@ -303,8 +306,6 @@ PodcastEpisodeCard.propTypes = {
   href: PropTypes.string,
   /** episode id */
   id: PropTypes.string.isRequired,
-  /** id for jump link */
-  cardId: PropTypes.string.isRequired,
   isPlaying: PropTypes.bool,
   imageAlt: PropTypes.string,
   imageUrl: PropTypes.string,
