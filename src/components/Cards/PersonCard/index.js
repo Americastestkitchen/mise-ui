@@ -12,7 +12,7 @@ const PersonCardWrapper = styled.div`
   flex-direction: column;
   height: 27.2rem;
   justify-content: flex-start;
-  padding: 2rem 2.4rem 2rem;
+  padding: 2rem 0.8rem 2rem;
   width: 27.2rem;
 
   .person-head-shot {
