@@ -5,7 +5,7 @@ import breakpoint from 'styled-components-breakpoint';
 import styled, { css } from 'styled-components';
 
 import CardCarousel from '../CardCarousel';
-import { color, font, fontSize, lineHeight, spacing, withThemes } from '../../../styles';
+import { color, font, fontSize, letterSpacing, lineHeight, spacing, withThemes } from '../../../styles';
 
 const IntroTheme = {
   default: css`
@@ -48,9 +48,14 @@ const CtaTheme = {
 
     ${breakpoint('md')`
       font-size: ${fontSize.md};
+      letter-spacing: ${letterSpacing.xlg};
     `}
   `,
-  dark: css``,
+  dark: css`
+    &:hover {
+      color: ${color.silver};
+    }
+  `,
 };
 
 const Cta = styled.a.attrs({
