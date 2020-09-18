@@ -64,7 +64,6 @@ export const Default = () => {
         description: summary,
         episode: episode_number,
         href: rss_link_url,
-        cardId: title.replace(/[^a-zA-Z ]/g, '').replace(/\s+/g, '-').toLowerCase(),
         imageUrl: getImageUrl('play-listen/proof-s3e8-vertical'),
       })));
     }
