@@ -13,9 +13,22 @@ const plyrStyles = css`
     font: ${fontSize.lg}/${lineHeight.lg} ${font.pnb}; 
   }
 
+  .plyr--audio {
+    .plyr__controls {
+      background-color: transparent;
+      color: ${color.white};
+      padding: 0%;
+    }
+  }
+
+  .plyr__controls__item.plyr__progress__container {
+    width: 100%;
+  }
+
   .plyr__progress {
     input {
       background: ${color.silver};
+      border-radius: 0;
       position: absolute;
       left: 0;
       height: 4px;
@@ -47,6 +60,8 @@ const plyrStyles = css`
   ${breakpoint('md')`
     .plyr__controls {
       align-items: center;
+      background-color: transparent;
+      color: ${color.white};
       display: flex;
     }
 
@@ -87,6 +102,10 @@ const plyrStyles = css`
 
     .plyr__controls__item.plyr__time--duration.plyr__time {
       display: block;
+
+      &::before {
+        display: none;
+      }
     }
 
     .plyr__controls__item.plyr__time--current.plyr__time {
