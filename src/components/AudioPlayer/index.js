@@ -28,8 +28,20 @@ const PlayerWrapper = styled.div`
   position: relative;
   width: 100%;
 
+  .audio-player {
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
   ${breakpoint('md')`
     padding: ${spacing.lg} 0;
+
+    .audio-player {
+      position: relative;
+      width: auto;
+    }
   `}
 `;
 
