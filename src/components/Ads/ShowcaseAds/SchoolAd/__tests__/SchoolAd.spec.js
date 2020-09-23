@@ -6,11 +6,10 @@ import SchoolAd from '../index';
 import breakpoints from '../../../../../styles/breakpoints';
 
 const defaultData = {
-  caption: 'dis caption',
-  cloudinaryId: 'mise-play/school-ad',
   cta: 'dis cta',
   ctaHref: 'https://school.americastestkitchen.com',
   ctaTarget: '_blank',
+  deviceType: 'tablet',
   siteKey: 'school',
   subtitle: 'dis subtitle',
   title: 'dis title',
@@ -34,7 +33,7 @@ describe('SchoolAd', () => {
 
   it('renders image', () => {
     renderComponent();
-    expect(screen.getByTestId('school-img'));
+    expect(screen.getByTestId('mise-gif'));
   });
 
   it('renders title', () => {
@@ -45,11 +44,6 @@ describe('SchoolAd', () => {
   it('renders subtitle', () => {
     renderComponent();
     expect(screen.getByText('dis subtitle'));
-  });
-
-  it('renders caption', () => {
-    renderComponent();
-    expect(screen.getByText('dis caption'));
   });
 
   it('renders cta link', () => {

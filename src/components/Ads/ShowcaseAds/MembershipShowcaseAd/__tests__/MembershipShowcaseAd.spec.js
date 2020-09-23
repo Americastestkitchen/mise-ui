@@ -6,10 +6,9 @@ import MembershipShowcaseAd from '../index';
 import breakpoints from '../../../../../styles/breakpoints';
 
 const defaultData = {
-  caption: 'this is the caption',
-  cloudinaryId: 'mise-play/membership-single',
   cta: 'do something',
   ctaHref: '#foo',
+  deviceType: 'desktop',
   title: () => <div>Cook with Confidence</div>,
 };
 
@@ -31,17 +30,12 @@ describe('MembershipShowcaseAd', () => {
 
   it('renders one image', () => {
     renderComponent();
-    expect(screen.getByTestId('membership-showcase-ad-img'));
+    expect(screen.getByTestId('mise-gif'));
   });
 
   it('renders a title', () => {
     renderComponent();
     expect(screen.getByText('Cook with Confidence'));
-  });
-
-  it('renders a caption', () => {
-    renderComponent();
-    expect(screen.getByText('this is the caption'));
   });
 
   it('renders icons', () => {

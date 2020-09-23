@@ -9,6 +9,7 @@
     "flickity": "^2.2.1",
     "lodash.memoize": "^4.1.2",
     "lodash.orderby": "^4.6.0",
+    "lodash.throttle": "^4.1.1",
     "plyr": "^3.6.2",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
@@ -19,7 +20,8 @@
     "react-scripts": "3.3.1",
     "styled-components": "5.0.1",
     "styled-components-breakpoint": "2.1.1",
-    "styled-normalize": "^8.0.7"
+    "styled-normalize": "^8.0.7",
+    "verge": "^1.10.2"
   },
   "peerDependencies": {
     "react-dom": "^16.13.1",
