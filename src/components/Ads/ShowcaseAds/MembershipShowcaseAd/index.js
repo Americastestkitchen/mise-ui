@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { css } from 'styled-components';
 
+import Gif from '../../../Gif';
 import MembershipBenefitIcons from '../../components/MembershipBenefitsIcons';
-import { getImageUrl } from '../../../../lib/cloudinary';
+import { getGifSrcSet } from '../../../../lib/cloudinary';
 import {
   color,
   font,
@@ -50,49 +51,31 @@ const MembershipShowcaseTitle = styled.h3.attrs({
   className: 'membership-showcase-ad__title',
 })`${withThemes(MembershipShowcaseTitleTheme)}`;
 
-const MembershipShowcaseCaptionTheme = {
-  default: css`
-    bottom: ${spacing.sm};
-    color: ${color.whiteSmoke};
-    font: ${fontSize.sm}/${lineHeight.sm} ${font.pnr};
-    left: ${spacing.sm};
-    position: absolute;
-  `,
-};
-
-const MembershipShowcaseCaption = styled.figcaption.attrs({
-  className: 'membership-showcase-ad__caption',
-})`${withThemes(MembershipShowcaseCaptionTheme)}`;
-
-const MembershipShowcasePictureTheme = {
-  default: css`
-    display: block;
-  `,
-};
-
 const MembershipShowcaseFigure = styled.figure`
   position: relative;
   margin: 0 0 2rem;
 
-  img {
-    display: block;
-  }
-
   ${breakpoint('md')`
     flex: 0 0 34rem;
+    height: 33rem;
     margin-bottom: 0;
     width: 34rem;
+
+    img {
+      height: 33rem;
+      width: 34rem;
+    }
   `}
 
   ${breakpoint('lg')`
     flex: 0 0 56rem;
     width: 56rem;
+
+    img {
+      width: 56rem;
+    }
   `}
 `;
-
-const MembershipShowcasePicture = styled.picture.attrs({
-  className: 'membership-showcase-ad__picture',
-})`${withThemes(MembershipShowcasePictureTheme)}`;
 
 const MembershipCtaTheme = {
   default: css`
@@ -131,44 +114,32 @@ const MembershipShowcaseContent = styled.div`
   `}
 `;
 
+const deviceConfigMap = {
+  desktop: 'membershipSingleDesktop',
+  tablet: 'membershipSingleTablet',
+  phone: 'membershipSingleMobile',
+};
+
+const deviceIdMap = {
+  desktop: 'mise-play/school-showcase-desktop',
+  tablet: 'mise-play/school-showcase-tablet',
+  phone: 'mise-play/school-showcase-desktop',
+};
+
 const MembershipShowcaseAd = ({
-  caption,
-  cloudinaryId,
   cta,
   ctaHref,
+  deviceType,
   title,
 }) => (
   <MembershipShowcase>
     <MembershipShowcaseFigure>
-      <MembershipShowcasePicture>
-        <source
-          media="(min-width: 1024px)"
-          srcSet={getImageUrl(
-            cloudinaryId,
-            'membershipSingleDesktop',
-          )}
-        />
-        <source
-          media="(min-width: 768px)"
-          srcSet={getImageUrl(
-            cloudinaryId,
-            'membershipSingleTablet',
-          )}
-        />
-        <img
-          alt=" "
-          data-testid="membership-showcase-ad-img"
-          src={getImageUrl(
-            cloudinaryId,
-            'membershipSingleMobile',
-          )}
-        />
-      </MembershipShowcasePicture>
-      {caption && (
-        <MembershipShowcaseCaption>
-          {caption}
-        </MembershipShowcaseCaption>
-      )}
+      <Gif
+        srcSet={getGifSrcSet(
+          deviceIdMap[deviceType],
+          deviceConfigMap[deviceType],
+        )}
+      />
     </MembershipShowcaseFigure>
     <MembershipShowcaseContent>
       <MembershipShowcaseTitle>
@@ -186,15 +157,10 @@ const MembershipShowcaseAd = ({
 );
 
 MembershipShowcaseAd.propTypes = {
-  caption: PropTypes.string,
-  cloudinaryId: PropTypes.string.isRequired,
   cta: PropTypes.string.isRequired,
   ctaHref: PropTypes.string.isRequired,
+  deviceType: PropTypes.oneOf(['desktop', 'phone', 'tablet']).isRequired,
   title: PropTypes.func.isRequired,
-};
-
-MembershipShowcaseAd.defaultProps = {
-  caption: null,
 };
 
 export default MembershipShowcaseAd;

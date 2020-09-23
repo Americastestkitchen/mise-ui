@@ -168,7 +168,7 @@ const AudioPlayer = ({
       };
     }
     return () => player.destroy();
-  }, []);
+  }, [id, title]);
 
   // update player information when a new episode is selected
   useEffect(() => {
