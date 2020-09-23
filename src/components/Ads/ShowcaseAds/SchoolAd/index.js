@@ -4,7 +4,8 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 import Badge from '../../../Badge';
-import { getImageUrl } from '../../../../lib/cloudinary';
+import Gif from '../../../Gif';
+import { getImageUrl, getGifSrcSet } from '../../../../lib/cloudinary';
 import {
   color,
   font,
@@ -45,42 +46,28 @@ const SchoolFigure = styled.figure.attrs({
 })`
   margin: 0;
   position: relative;
-`;
 
-const SchoolCaption = styled.figcaption`
-  bottom: ${spacing.sm};
-  color: ${color.white};
-  font: ${fontSize.sm}/${lineHeight.sm} ${font.pnr};
-  left: ${spacing.sm};
-  position: absolute;
-`;
-
-/**
- * Picture
- */
-const SchoolPictureTheme = {
-  dark: css`
-    display: block;
+  ${breakpoint('md')`
+    flex: 0 0 34rem;
+    height: 33rem;
+    margin-bottom: 0;
+    width: 34rem;
 
     img {
-      display: block;
-    }
-
-    ${breakpoint('md')`
-      flex: 0 0 34rem;
+      height: 33rem;
       width: 34rem;
-    `}
+    }
+  `}
 
-    ${breakpoint('lg')`
-      flex: 0 0 56rem;
+  ${breakpoint('lg')`
+    flex: 0 0 56rem;
+    width: 56rem;
+
+    img {
       width: 56rem;
-    `}
-  `,
-};
-
-const SchoolPicture = styled.picture.attrs({
-  className: 'school-ad__picture',
-})`${withThemes(SchoolPictureTheme)}`;
+    }
+  `}
+`;
 
 const AtkSchoolLogos = styled.img.attrs({
   className: 'school-ad__logos',
@@ -191,47 +178,36 @@ const SchoolCta = styled.a.attrs({
   className: 'school-ad__cta',
 })`${withThemes(SchoolCtaTheme)}`;
 
+
+const deviceConfigMap = {
+  desktop: 'showcaseSchoolAdDesktop',
+  tablet: 'showcaseSchoolAdTablet',
+  phone: 'showcaseSchoolAdMobile',
+};
+
+const deviceIdMap = {
+  desktop: 'mise-play/membership-showcase-desktop',
+  tablet: 'mise-play/membership-showcase-tablet',
+  phone: 'mise-play/membership-showcase-desktop',
+};
+
 const SchoolAd = ({
-  caption,
-  cloudinaryId,
   cta,
   ctaHref,
   ctaTarget,
+  deviceType,
   siteKey,
   subtitle,
   title,
 }) => (
   <School>
     <SchoolFigure>
-      <SchoolPicture>
-        <source
-          media="(min-width: 1024px)"
-          srcSet={getImageUrl(
-            cloudinaryId,
-            'showcaseSchoolAdDesktop',
-          )}
-        />
-        <source
-          media="(min-width: 768px)"
-          srcSet={getImageUrl(
-            cloudinaryId,
-            'showcaseSchoolAdTablet',
-          )}
-        />
-        <img
-          alt=" "
-          data-testid="school-img"
-          src={getImageUrl(
-            cloudinaryId,
-            'showcaseSchoolAdMobile',
-          )}
-        />
-      </SchoolPicture>
-      {caption && (
-        <SchoolCaption>
-          {caption}
-        </SchoolCaption>
-      )}
+      <Gif
+        srcSet={getGifSrcSet(
+          deviceIdMap[deviceType],
+          deviceConfigMap[deviceType],
+        )}
+      />
     </SchoolFigure>
     <SchoolInfo>
       <SchoolInfoInner>
@@ -264,18 +240,16 @@ const SchoolAd = ({
 );
 
 SchoolAd.propTypes = {
-  caption: PropTypes.string,
-  cloudinaryId: PropTypes.string.isRequired,
   cta: PropTypes.string.isRequired,
   ctaHref: PropTypes.string.isRequired,
   ctaTarget: PropTypes.string,
+  deviceType: PropTypes.oneOf(['desktop', 'phone', 'tablet']).isRequired,
   siteKey: PropTypes.oneOf(['atk', 'cio', 'cco', 'kids', 'school', 'shop']).isRequired,
   subtitle: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
 };
 
 SchoolAd.defaultProps = {
-  caption: null,
   ctaTarget: null,
 };
 
