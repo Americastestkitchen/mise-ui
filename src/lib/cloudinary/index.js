@@ -132,53 +132,44 @@ const imageConfig = {
   },
   showcaseSchoolAdMobile() {
     return {
-      ...baseImageConfig,
       aspectRatio: '17:10',
-      gravity: 'center',
+      secure: true,
       width: 375,
-      ...imageConfig.gradientFade(20, 'y_-100'),
     };
   },
   showcaseSchoolAdTablet() {
     return {
-      ...baseImageConfig,
       aspectRatio: '34:33',
-      gravity: 'center',
+      secure: true,
       width: 300,
-      ...imageConfig.gradientFade(20, 'y_-120'),
     };
   },
   showcaseSchoolAdDesktop() {
     return {
-      ...baseImageConfig,
       aspectRatio: '56:33',
-      gravity: 'center',
+      secure: true,
       width: 500,
-      ...imageConfig.gradientFade(20, 'y_-150'),
     };
   },
   membershipSingleMobile() {
     return {
-      ...baseImageConfig,
       aspectRatio: '17:10',
+      secure: true,
       width: 375,
-      ...imageConfig.gradientFade(20, 'y_-100'),
     };
   },
   membershipSingleTablet() {
     return {
-      ...baseImageConfig,
       aspectRatio: '34:33',
+      secure: true,
       width: 300,
-      ...imageConfig.gradientFade(20, 'y_-120'),
     };
   },
   membershipSingleDesktop() {
     return {
-      ...baseImageConfig,
       aspectRatio: '56:33',
+      secure: true,
       width: 500,
-      ...imageConfig.gradientFade(20, 'y_-150'),
     };
   },
   atkSchoolLogoLockupMobile() {
@@ -225,6 +216,7 @@ const getImageUrl = (cloudinaryId, ...configArgs) => {
 };
 
 const getGifSrcSet = (cloudinaryId, configKey, options) => {
+  if (typeof imageConfig[configKey] === 'undefined') return {};
   const formats = { mp4: 'mp4', webm: 'webm', gif: 'gif', poster: 'auto' };
   let config;
   return Object.keys(formats).reduce((acc, fmt) => {

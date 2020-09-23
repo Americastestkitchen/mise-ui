@@ -41,10 +41,9 @@ export const Default = () => (
   }}>
     <StoryWrapper>
       <MembershipShowcaseAd
-        caption={text('Caption', 'Pork Chops with Sweet Potatoes and Rosemary-Maple Sauce')}
-        cloudinaryId={text('Image', 'mise-play/membership-single')}
         cta={text('Cta Text', 'Get free access')}
         ctaHref="https://www.americastestkitchen.com/order"
+        deviceType="desktop"
         title={() => (
           <span>Cook smart with <UnderlinedText>100% reliable recipes<Underline /></UnderlinedText> trusted by millions of home cooks—Try Digital All Access Now.</span>
         )}
