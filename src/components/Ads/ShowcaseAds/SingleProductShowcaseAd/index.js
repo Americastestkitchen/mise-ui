@@ -101,7 +101,7 @@ const ProductTitleTheme = {
     margin-bottom: ${spacing.sm};
   `,
   dark: css`
-    color: ${color.white}
+    color: ${color.whiteSmoke}
   `,
 };
 const ProductTitle = styled.h3.attrs({
@@ -135,7 +135,7 @@ const ProductCtaTheme = {
     display: block;
     flex: 1 0 100%;
     font: ${fontSize.lg}/4rem ${font.pnb};
-    letter-spacing: ${letterSpacing.xlg};
+    letter-spacing: ${letterSpacing.cta};
     height: 4rem;
     margin-top: ${spacing.xsm};
     text-align: center;

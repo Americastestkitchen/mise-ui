@@ -171,7 +171,7 @@ const HeroAdCtaTheme = {
     background-color: ${({ backgroundColor }) => `${color[backgroundColor || 'eclipse']}`};
     display: block;
     font: ${fontSize.md}/4rem ${font.pnb};
-    letter-spacing: ${letterSpacing.xlg};
+    letter-spacing: ${letterSpacing.cta};
     height: 4rem;
     text-align: center;
     text-transform: uppercase;

@@ -116,7 +116,7 @@ const FreeTrialCtaTheme = {
     color: ${color.white};
     display: block;
     font: ${fontSize.lg}/4rem ${font.pnb};
-    letter-spacing: ${letterSpacing.xlg};
+    letter-spacing: ${letterSpacing.cta};
     height: 4rem;
     text-align: center;
     text-transform: uppercase;
