@@ -121,9 +121,9 @@ const deviceConfigMap = {
 };
 
 const deviceIdMap = {
-  desktop: 'mise-play/school-showcase-desktop',
-  tablet: 'mise-play/school-showcase-tablet',
-  phone: 'mise-play/school-showcase-desktop',
+  desktop: 'mise-play/membership-showcase-desktop',
+  tablet: 'mise-play/membership-showcase-tablet',
+  phone: 'mise-play/membership-showcase-desktop',
 };
 
 const MembershipShowcaseAd = ({
