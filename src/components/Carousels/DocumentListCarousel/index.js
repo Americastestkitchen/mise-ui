@@ -48,7 +48,7 @@ const CtaTheme = {
 
     ${breakpoint('md')`
       font-size: ${fontSize.md};
-      letter-spacing: ${letterSpacing.xlg};
+      letter-spacing: ${letterSpacing.cta};
     `}
   `,
   dark: css`

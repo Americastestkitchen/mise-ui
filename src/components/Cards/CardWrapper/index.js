@@ -65,7 +65,7 @@ const CardWrapperCtaTheme = {
   default: css`
     display: block;
     font: ${fontSize.sm}/${lineHeight.sm} ${font.pnr};
-    letter-spacing: ${letterSpacing.xlg};
+    letter-spacing: ${letterSpacing.cta};
     margin-bottom: ${spacing.xsm};
     text-transform: uppercase;
 

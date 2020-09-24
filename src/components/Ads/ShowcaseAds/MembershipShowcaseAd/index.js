@@ -84,7 +84,7 @@ const MembershipCtaTheme = {
     display: block;
     font: ${fontSize.lg}/4rem ${font.pnb};
     height: 4rem;
-    letter-spacing: ${letterSpacing.xlg};
+    letter-spacing: ${letterSpacing.cta};
     margin-bottom: ${spacing.sm};
     text-align: center;
     text-transform: uppercase;
