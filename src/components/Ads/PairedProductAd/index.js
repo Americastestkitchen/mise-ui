@@ -204,7 +204,7 @@ const PairedProductCtaTheme = {
     display: block;
     flex: 1 0 100%;
     font: ${fontSize.lg}/4rem ${font.pnb};
-    letter-spacing: ${letterSpacing.xlg};
+    letter-spacing: ${letterSpacing.cta};
     height: 4rem;
     margin-top: ${spacing.xsm};
     text-align: center;
