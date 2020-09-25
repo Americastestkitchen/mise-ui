@@ -28,11 +28,11 @@ const CarouselTheme = {
       }
 
       &.next {
-        right: -1rem;
+        right: 0;
       }
 
       &.previous {
-        left: -1rem;
+        left: 0;
       }
     }
 
@@ -96,6 +96,16 @@ const CarouselTheme = {
     ${breakpoint('xlg')`
       padding-top: 2.8rem;
       width: 118rem;
+
+      .flickity-button {
+        &.next {
+          right: -1rem;
+        }
+
+        &.previous {
+          left: -1rem;
+        }
+      }
 
       ${({ dotPosition }) => (dotPosition ? `
         .flickity-page-dots {
