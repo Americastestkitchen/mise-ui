@@ -26,6 +26,7 @@ const lineHeight = {
 };
 
 const letterSpacing = {
+  cta: '2.88px', // cta buttons for ads
   xxsm: '0.2px',
   xsm: '0.8px',
   sm: '1.0px',
