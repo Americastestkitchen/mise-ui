@@ -58,7 +58,7 @@ describe('QueueCard component', () => {
   it('has correct width', () => {
     renderComponent(inProgressEpisode);
     const queueCard = screen.getByTestId('queue-card');
-    expect(queueCard).toHaveStyle('width: 27.2rem');
+    expect(queueCard).toHaveStyleRule('width: 27.2rem');
   });
 
   it('render an editorial sticker', () => {
