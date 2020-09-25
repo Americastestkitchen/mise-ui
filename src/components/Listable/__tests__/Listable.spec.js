@@ -44,6 +44,6 @@ describe('Listable component should', () => {
 
   it('change background color when selected', () => {
     renderComponent({ hasAccess: true, isSelected: true });
-    expect(screen.getByTestId('listable-body')).toHaveStyle(`background-color: ${color.eclipse};`);
+    expect(screen.getByTestId('listable-body')).toHaveStyleRule(`background-color: ${color.eclipse};`);
   });
 });

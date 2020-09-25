@@ -52,11 +52,11 @@ describe('HeroAd', () => {
 
   it('renders correct background color', () => {
     renderComponent();
-    expect(screen.getByTestId('hero-ad__inner')).toHaveStyle(`background-color: ${color.darkSlate};`);
+    expect(screen.getByTestId('hero-ad__inner')).toHaveStyleRule(`background-color: ${color.darkSlate};`);
   });
 
   it('renders correct button color', () => {
     renderComponent();
-    expect(screen.getByTestId('hero-ad__cta')).toHaveStyle(`background-color: ${color.summerSky};`);
+    expect(screen.getByTestId('hero-ad__cta')).toHaveStyleRule(`background-color: ${color.summerSky};`);
   });
 });
