@@ -67,7 +67,7 @@ describe('FeatureCard component should', () => {
   it('have correct width and height', () => {
     renderComponent();
     const featureCard = screen.getByTestId('feature-card');
-    expect(featureCard).toHaveStyle('width: 27.2rem');
-    expect(featureCard).toHaveStyle('height: 40rem');
+    expect(featureCard).toHaveStyleRule('width: 27.2rem');
+    expect(featureCard).toHaveStyleRule('height: 40rem');
   });
 });

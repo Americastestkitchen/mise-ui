@@ -27,7 +27,7 @@ describe('SortBy component should', () => {
         },
       ],
     });
-    expect(screen.getByTestId('sort-by__radio')).toHaveStyle(`background-color: ${color.mint};`);
+    expect(screen.getByTestId('sort-by__radio')).toHaveStyleRule(`background-color: ${color.mint};`);
   });
 
   it('render empty radio for unrefined value', () => {
@@ -40,6 +40,6 @@ describe('SortBy component should', () => {
         },
       ],
     });
-    expect(screen.getByTestId('sort-by__radio')).toHaveStyle('background-color: transparent;');
+    expect(screen.getByTestId('sort-by__radio')).toHaveStyleRule('background-color: transparent;');
   });
 });

@@ -165,35 +165,41 @@ class Gif extends Component {
         className={`${lazy ? 'img-lazy ' : ''}img`}
         alt={alt}
         src={getBlankImage(aspectRatio)}
+        ref={(node) => { this.node = node; }}
       />
     );
   }
 
   renderVideo() {
-    const { className, srcSet } = this.props;
+    const { alt, aspectRatio, className, srcSet } = this.props;
     return (
       <GifContainer
         className={className}
         data-testid="mise-gif"
-      >
-        {this.renderBlankImage()}
-        <video
-          autoPlay
-          loop
-          muted
-          poster={srcSet.poster}
-          ref={(node) => { this.node = node; }}
-        >
-          <source
-            type="video/mp4"
-            src={`${srcSet.mp4}.mp4`}
+        dangerouslySetInnerHTML={{ __html: `
+          <img
+            crossOrigin="anonymous"
+            className="img"
+            alt="${alt}"
+            src="${getBlankImage(aspectRatio)}"
           />
-          <source
-            type="video/webm"
-            src={`${srcSet.webm}.webm`}
-          />
-        </video>
-      </GifContainer>
+          <video
+            autoPlay
+            loop
+            muted
+            poster="${srcSet.poster}"
+          >
+            <source
+              type="video/mp4"
+              src="${`${srcSet.mp4}.mp4`}"
+            />
+            <source
+              type="video/webm"
+              src="${`${srcSet.webm}.webm`}"
+            />
+          </video>
+        ` }}
+      />
     );
   }
 

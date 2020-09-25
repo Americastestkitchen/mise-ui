@@ -28,16 +28,16 @@ describe('PersonHeadShot component should', () => {
   it('have default size of 10rem', () => {
     renderComponent();
     const headShot = screen.getByTestId('person-head-shot');
-    expect(headShot).toHaveStyle('border-radius: 50%;');
-    expect(headShot).toHaveStyle('height: 10rem;');
-    expect(headShot).toHaveStyle('width: 10rem;');
+    expect(headShot).toHaveStyleRule('border-radius: 50%;');
+    expect(headShot).toHaveStyleRule('height: 10rem;');
+    expect(headShot).toHaveStyleRule('width: 10rem;');
   });
 
   it('set size based on size prop', () => {
     renderComponent({ size: { sm: '7.2' } });
     const headShot = screen.getByTestId('person-head-shot');
-    expect(headShot).toHaveStyle('border-radius: 50%;');
-    expect(headShot).toHaveStyle('height: 7.2rem;');
-    expect(headShot).toHaveStyle('width: 7.2rem;');
+    expect(headShot).toHaveStyleRule('border-radius: 50%;');
+    expect(headShot).toHaveStyleRule('height: 7.2rem;');
+    expect(headShot).toHaveStyleRule('width: 7.2rem;');
   });
 });

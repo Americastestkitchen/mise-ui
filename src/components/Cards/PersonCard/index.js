@@ -20,7 +20,7 @@ const PersonCardWrapper = styled.div`
   }
 
   a {
-    ${mixins.styledLink(color.turquoise, color.darkerMint)}
+    ${mixins.styledLink(color.turquoise, color.darkerMint)};
   }
 `;
 

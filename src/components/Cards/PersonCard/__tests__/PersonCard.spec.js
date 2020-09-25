@@ -40,7 +40,7 @@ describe('PersonCard component should', () => {
   it('have correct width and height', () => {
     renderComponent();
     const personCard = screen.getByTestId('person-card');
-    expect(personCard).toHaveStyle('width: 27.2rem');
-    expect(personCard).toHaveStyle('height: 27.2rem');
+    expect(personCard).toHaveStyleRule('width: 27.2rem');
+    expect(personCard).toHaveStyleRule('height: 27.2rem');
   });
 });
