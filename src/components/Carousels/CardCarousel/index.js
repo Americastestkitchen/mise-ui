@@ -84,10 +84,6 @@ const CardCarouselTheme = {
       &.left {
         left: 0;
       }
-
-      &.right {
-        right: -5rem;
-      }
     }
 
     ${breakpoint('lg')`

@@ -81,6 +81,10 @@ export const StyledTitle = styled(Title)`
   font-size: ${fontSize.md};
   margin-bottom: ${spacing.xsm};
 
+  .carousel & {
+    font-size: ${fontSize.xl};
+  }
+
   ${breakpoint('lg')`
     font-size: ${fontSize.xl};
   `}
