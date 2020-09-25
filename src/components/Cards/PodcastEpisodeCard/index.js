@@ -19,23 +19,19 @@ const PodcastEpisodeCardWrapper = styled.div`
   > div {
     display: flex;
     overflow: hidden;
-    max-height: 24rem;
+    max-height: 20rem;
   }
 
   p {
+    color: ${color.whiteSmoke};
     font-size: ${fontSize.md};
     margin-top: ${spacing.sm};
   }
 
   &.is-playing {
     box-shadow: 0 5px 8px 0 ${color.transparentBlack};
-    background-color: ${color.black};
+    background-color: ${color.jet};
     max-width: 93rem;
-
-    .podcast-episode-card__image {
-      flex-basis: 80%;
-      max-width: 10rem;
-    }
   }
 
   @media(hover: hover) {
@@ -57,14 +53,13 @@ const PodcastEpisodeCardWrapper = styled.div`
 
     &.is-playing {
       .podcast-episode-card__image {
-        max-width: 25rem;
+        margin-left: 1rem;
       }
     }
 
     @media(hover: hover) {
       &:hover {
         .podcast-episode-card__image {
-          flex-basis: 90%;
           margin-left: 1rem;
         }
       }
@@ -74,7 +69,8 @@ const PodcastEpisodeCardWrapper = styled.div`
 
 const ImageWrapper = styled.div`
   position: relative;
-  flex-basis: 88%;
+  flex-basis: 10rem;
+  flex-shrink: 0;
   max-height: 10rem;
   max-width: 10rem;
   margin-right: ${spacing.sm};
@@ -82,8 +78,9 @@ const ImageWrapper = styled.div`
 
   ${breakpoint('md')`
     margin-right: 0;
+    flex-basis: 23rem;
     max-height: none;
-    max-width: 25rem;
+    max-width: 23rem;
   `}
 `;
 
@@ -115,6 +112,7 @@ export const StyledSticker = styled(Sticker)`
 const NowPlayingSticker = styled(Sticker)`
   &.now-playing {
     background-color: ${color.darkerMint};
+    display: inline-flex;
     margin: 0 0.5rem 0 0;
     transform: none;
   }
@@ -127,8 +125,6 @@ const NowPlayingSticker = styled(Sticker)`
 `;
 
 const TextWrapper = styled.div`
-  flex-basis: 59%;
-
   button {
     text-align: left;
     width: 100%;
@@ -157,6 +153,7 @@ const TextWrapper = styled.div`
   }
 
   h3 {
+    color: ${color.whiteSmoke};
     font: ${fontSize.md} ${font.pnb};
     margin-top: ${spacing.xsm};
     margin-bottom: ${spacing.sm};
@@ -164,7 +161,7 @@ const TextWrapper = styled.div`
   }
 
   span {
-    color: ${color.white};
+    color: ${color.whiteSmoke};
     display: inline-block;
     font-size: ${fontSize.sm};
     margin-left: -6px;
@@ -172,13 +169,14 @@ const TextWrapper = styled.div`
   }
 
   a {
+    color: ${color.whiteSmoke};
     font: ${fontSize.sm} ${font.pnb};
     ${mixins.styledLink(color.turquoise, color.darkerMint)};
   }
 
   ${breakpoint('md')`
     flex-basis: auto;
-    margin: auto 0;
+    margin: 0;
     padding: ${spacing.sm} ${spacing.xlg};
 
     h4 {
@@ -202,6 +200,7 @@ const TextWrapper = styled.div`
     }
 
     p {
+      color: ${color.whiteSmoke};
       display: block;
       margin-top: ${spacing.md};
       margin-bottom: ${spacing.sm};

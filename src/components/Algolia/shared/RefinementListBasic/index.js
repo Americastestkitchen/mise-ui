@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components';
 
 import { ChefHat, Content, Cookbook, Knife, Sort, Time } from '../../../DesignTokens/Icon/svgs';
 import RefinementFilter from '../RefinementFilter/RefinementFilter';
-import { color, font, fontSize, spacing, withThemes } from '../../../../styles';
+import { color, font, fontSize, letterSpacing, spacing, withThemes } from '../../../../styles';
 
 const RefinementListRefinements = styled.div`
   border: none;
@@ -75,6 +75,7 @@ const RefinementListLegendTheme = {
   dark: css`
     color: ${color.white};
     font: ${fontSize.md}/1 ${font.pnb};
+    letter-spacing: ${letterSpacing.md};
     padding: 0 0 ${spacing.sm};
   `,
 };
