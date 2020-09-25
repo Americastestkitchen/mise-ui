@@ -70,7 +70,7 @@ const CardWrapperCtaTheme = {
     text-transform: uppercase;
 
     &:hover {
-      color: ${color.mint};
+      color: ${color.silver};
     }
 
     ${breakpoint('lg')`
