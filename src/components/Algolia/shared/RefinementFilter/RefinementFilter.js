@@ -88,7 +88,7 @@ const RefinementFilterLabelTheme = {
     ${({ isRefined }) => (isRefined ? `font-family: ${font.pnb};` : '')}
 
     &:hover {
-      color: ${color.mint};
+      color: ${color.silver};
     }
   `,
 };
