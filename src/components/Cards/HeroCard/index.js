@@ -26,14 +26,18 @@ const HeroCardWrapper = styled.div.attrs({
   ${breakpoint('md')`
     padding: ${spacing.xlg};
   `}
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const HeroCardLogo = styled.div`
   margin-bottom: ${spacing.sm};
-  max-width: 10rem;
+  max-width: 13rem;
 
   ${breakpoint('md')`
-    max-width: 13.7rem;
+    max-width: 21rem;
   `}
 
   svg {
@@ -90,6 +94,10 @@ const HeroCardDescription = styled.div`
     font: ${fontSize.lg}/${lineHeight.md} ${font.pnb};
     max-width: 45.4rem;
   `}
+
+  &:hover {
+    cursor: default;
+  }
 `;
 
 const HeroCardCta = styled.a`
@@ -112,6 +120,11 @@ const HeroCardCtaIcon = styled.div`
     max-height: 100%;
     max-width: 100%;
   }
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
 `;
 
 const HeroCardCtaText = styled.span`

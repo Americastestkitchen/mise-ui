@@ -94,6 +94,20 @@ const DocumentListCarouselTheme = {
   dark: css`
     color: ${color.white};
 
+    .flickity-page-dots {
+      .dot {
+        display: none;
+      }
+    }
+
+    ${breakpoint('md')`
+      .flickity-page-dots {
+        .dot {
+          display: inline-block;
+        }
+      }
+    `}
+
     ${breakpoint('lg')`
       .flickity-page-dots {
         right: 4.4rem;

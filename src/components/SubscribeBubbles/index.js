@@ -56,7 +56,8 @@ const SubscribeBubbleAnchor = styled.a`
   }
 
   &:hover {
-    background-color: ${color.mint};
+    box-shadow: 0 3px 6px 0 ${color.black};
+    transform: translateY(-${spacing.xsm});
   }
 `;
 
@@ -74,7 +75,7 @@ const SubscribeBubbleName = styled.span`
 `;
 
 const SubscribeBubbles = ({ bubbles, handleClick }) => (
-  <SubscribeBubblesWrapper>
+  <SubscribeBubblesWrapper className="subscribe-bubbles">
     <SubscribeBubblesTitle>
       SUBSCRIBE
     </SubscribeBubblesTitle>
