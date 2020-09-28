@@ -71,7 +71,7 @@ const Attributions = ({
     { displaySecondaryAttribution && secondaryAttribution ? (
       <>
         <span className="attributions__bullet">•</span>
-        <span>{secondaryAttribution}</span>
+        <span className="attributions__secondary">{secondaryAttribution}</span>
       </>
     ) : null }
   </StyledAttributions>

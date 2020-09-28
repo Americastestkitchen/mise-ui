@@ -9,8 +9,12 @@ import { color, font, fontSize, letterSpacing, lineHeight, spacing, withThemes }
 
 const IntroTheme = {
   default: css`
-    font: italic ${fontSize.md}/1 ${font.mwr};
+    font: italic ${fontSize.md}/1.31 ${font.mwr};
     padding-bottom: ${spacing.sm};
+
+    ${breakpoint('lg')`
+      line-height: 1;
+    `}
   `,
   dark: css``,
 };
@@ -89,6 +93,12 @@ const DocumentListCarouselTheme = {
   `,
   dark: css`
     color: ${color.white};
+
+    ${breakpoint('lg')`
+      .flickity-page-dots {
+        right: 4.4rem;
+      }
+    `}
   `,
 };
 

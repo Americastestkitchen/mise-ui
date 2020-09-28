@@ -98,9 +98,9 @@ const HeroCardCta = styled.a`
 `;
 
 const HeroCardCtaIcon = styled.div`
-  height: 2rem;
+  height: 3.8rem;
   margin-right: ${spacing.xsm};
-  width: 2rem;
+  width: 3.8rem;
 
   ${breakpoint('md')`
     height: 4rem;
