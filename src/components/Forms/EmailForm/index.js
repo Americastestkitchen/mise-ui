@@ -41,6 +41,13 @@ const EmailFormTheme = {
     button[type="submit"] {
       background-color: ${({ buttonColor }) => color[buttonColor]};
       color: ${({ buttonTextColor }) => color[buttonTextColor]};
+
+      @media(hover: hover) {
+        &:hover {
+          background-color: ${({ buttonHoverColor }) => color[buttonHoverColor]};
+          color: ${({ buttonHoverTextColor }) => color[buttonHoverTextColor]};
+        }
+      }
     }
 
     ${breakpoint('md')`
@@ -116,6 +123,8 @@ const HoweWeUseText = styled.div.attrs({
 
 const EmailForm = ({
   buttonColor,
+  buttonHoverTextColor,
+  buttonHoverColor,
   buttonTextColor,
   buttonText,
   errorText,
@@ -149,6 +158,8 @@ const EmailForm = ({
     >
       <EmailFormElement
         buttonColor={buttonColor}
+        buttonHoverColor={buttonHoverColor}
+        buttonHoverTextColor={buttonHoverTextColor}
         buttonTextColor={buttonTextColor}
         disabled={disabled}
         onSubmit={handleSubmit}
@@ -162,7 +173,9 @@ const EmailForm = ({
           readOnly={disabled}
         />
         <Button
+          data-testid="email-submit-button"
           disabled={disabled}
+          role="button"
           type="submit"
         >
           {buttonText}
@@ -201,6 +214,8 @@ const EmailForm = ({
 
 EmailForm.propTypes = {
   buttonColor: PropTypes.string,
+  buttonHoverColor: PropTypes.string,
+  buttonHoverTextColor: PropTypes.string,
   buttonTextColor: PropTypes.string,
   buttonText: PropTypes.string,
   errorText: PropTypes.string,
@@ -213,6 +228,8 @@ EmailForm.propTypes = {
 
 EmailForm.defaultProps = {
   buttonColor: 'wasabi',
+  buttonHoverColor: 'olive',
+  buttonHoverTextColor: 'white',
   buttonTextColor: 'white',
   buttonText: 'Sign me up',
   errorText: 'Invalid email address',
