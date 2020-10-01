@@ -167,7 +167,6 @@ const AudioPlayer = ({
         ],
       };
     }
-    return () => player.destroy();
   }, [id, title]);
 
   // update player information when a new episode is selected
@@ -184,6 +183,14 @@ const AudioPlayer = ({
       ],
     };
   }, [id, title]);
+
+  // destroy player and garbage collect
+  useEffect(() => {
+    if (player) {
+      return () => player.destroy();
+    }
+    return true;
+  }, []);
 
   const togglePlay = () => {
     playerEl.current.plyr.togglePlay(!isPlaying);
