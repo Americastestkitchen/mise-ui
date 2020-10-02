@@ -44,6 +44,7 @@ const CardWrapperTitleTheme = {
   default: css`
     font: ${fontSize.xl}/1 ${font.pnb};
     margin-bottom: ${spacing.xsm};
+    white-space: nowrap;
 
     ${breakpoint('lg')`
       font-size: ${fontSize.xxl};
@@ -67,7 +68,10 @@ const CardWrapperCtaTheme = {
     font: ${fontSize.sm}/${lineHeight.sm} ${font.pnr};
     letter-spacing: ${letterSpacing.cta};
     margin-bottom: ${spacing.xsm};
+    overflow: hidden;
     text-transform: uppercase;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 
     &:hover {
       color: ${color.silver};
