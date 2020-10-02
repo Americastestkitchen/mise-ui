@@ -165,8 +165,12 @@ const PairedProductTitleTheme = {
   default: css`
     font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb};
 
-    ${breakpoint('md')`
+    ${breakpoint('lg')`
       font: 2.6rem/${lineHeight.sm} ${font.pnb};
+
+      span {
+        white-space: nowrap;
+      }
     `}
   `,
   dark: css`
@@ -260,9 +264,9 @@ const PairedProducts = ({ title, products }) => (
             <PairedProductSubtitle>
               {subtitle}
             </PairedProductSubtitle>
-            <PairedProductTitle>
-              {title}
-            </PairedProductTitle>
+            <PairedProductTitle
+              dangerouslySetInnerHTML={{ __html: title }}
+            />
           </PairedProductInfo>
           <PairedProductCta
             href={ctaHref}
