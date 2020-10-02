@@ -39,6 +39,7 @@ import SearchNumericMenuBasic from './components/Algolia/search/SearchNumericMen
 import SearchRefinementList from './components/Algolia/search/SearchRefinementList';
 import SearchSortBy from './components/Algolia/search/SearchSortBy';
 import ShowMoreLess from './components/ShowMoreLess';
+import ShowMoreResults from './components/ShowMoreResults';
 import SingleMembershipAd from './components/Ads/SingleMembershipAd';
 import SingleProductAd from './components/Ads/SingleProductAd';
 import SingleProductShowcaseAd from './components/Ads/ShowcaseAds/SingleProductShowcaseAd';
@@ -104,6 +105,7 @@ export {
   SingleProductAd,
   SingleProductShowcaseAd,
   ShowMoreLess,
+  ShowMoreResults,
   StandardCard,
   StationFinderForm,
   Sticker,
