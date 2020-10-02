@@ -19,7 +19,7 @@ import {
 } from '../../styles';
 
 const PlayerWrapper = styled.div`
-  background-color: ${color.black};
+  background-color: ${color.charcoal};
   color: ${color.white};
   display: flex;
   justify-content: center;
