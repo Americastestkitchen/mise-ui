@@ -17,7 +17,7 @@ describe('Carousel component should', () => {
       <ThemeProvider theme={{ breakpoints }}>
         <Carousel
           items={images}
-          renderItem={i => <img data-testid={i} src={i} alt=" " />}
+          renderItem={i => <img data-testid={i} src={i} alt="" />}
         />
       </ThemeProvider>,
     )

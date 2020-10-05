@@ -195,7 +195,7 @@ TallCard.defaultProps = {
   className: null,
   dek: '',
   logoKey: null,
-  imageAlt: ' ',
+  imageAlt: '',
   isWide: false,
   onClick: null,
   overlayColor: color.black,
