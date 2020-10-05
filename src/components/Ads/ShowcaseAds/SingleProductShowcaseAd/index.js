@@ -191,7 +191,7 @@ const SingleProductShowcaseAd = ({
         )}
       />
       <img
-        alt=" "
+        alt=""
         data-testid="product-img"
         src={getImageUrl(
           cloudinaryId,

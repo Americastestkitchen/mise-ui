@@ -256,7 +256,7 @@ FeatureCard.defaultProps = {
   ctaText: '',
   ctaUrl: '',
   displayFavoritesButton: true,
-  imageAlt: ' ',
+  imageAlt: '',
   isFavorited: false,
   isWide: false,
   onClick: null,

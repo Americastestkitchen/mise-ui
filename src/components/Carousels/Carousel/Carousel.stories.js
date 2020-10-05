@@ -31,7 +31,7 @@ export const Default = () => (
   <DefaultCarouselWrapper>
     <Carousel
       items={images}
-      renderItem={(i) => <img src={i} alt=" " />}
+      renderItem={(i) => <img src={i} alt="" />}
       options={{
         cellAlign: select('Cell Alignment', ['center', 'left', 'right'], 'center'),
         navigationDots: boolean('Navigation Dots', true),

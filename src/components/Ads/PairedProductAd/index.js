@@ -253,7 +253,7 @@ const PairedProducts = ({ title, products }) => (
           key={ctaHref}
         >
           <PairedProductImage
-            alt=" "
+            alt=""
             data-testid={`paired-img-${idx}`}
             src={getImageUrl(
               cloudinaryId,
