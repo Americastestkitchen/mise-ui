@@ -1,12 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Cookbook, Phone, RecipeCard, RibbonAward, Videos } from '../../DesignTokens/Icon/svgs';
-import {
-  color,
-  font,
-  fontSize,
-  lineHeight,
-} from '../../../styles';
+import { color, font } from '../../../styles';
 
 const benefits = [
   {
@@ -57,14 +52,14 @@ const Benefit = styled.div`
   flex-direction: column;
   max-width: 5rem;
 
-p {
-  color: ${color.white};
-  font: ${fontSize.xsm}/${lineHeight.sm} ${font.pnb};
-  line-height: 1.2;
-  margin-top: 1rem;
-  text-align: center;
-  text-transform: uppercase;
-}
+  p {
+    color: ${color.white};
+    font: 1.2rem/1.17 ${font.pnb};
+    line-height: 1.2;
+    margin-top: 1rem;
+    text-align: center;
+    text-transform: uppercase;
+  }
 `;
 
 const CircularIcon = styled.div`
@@ -90,6 +85,49 @@ const CircularIcon = styled.div`
 
     &.ribbon-award {
       width: 2.5rem;
+    }
+  }
+
+  &:hover {
+    background-color: ${color.seaSalt};
+    cursor: pointer;
+
+    svg {
+      &.cookbook-svg,
+      &.recipe-card {
+        path {
+          fill: ${color.black};
+        }
+      }
+
+      &.ribbon-award {
+        circle,
+        path {
+          stroke: ${color.black};
+        }
+      }
+
+      &.videos {
+        circle {
+          fill ${color.black};
+          stroke: ${color.black};
+        }
+
+        path {
+          stroke: ${color.black};
+        }
+      }
+
+      &.phone {
+        path {
+          stroke: ${color.black};
+        }
+
+        circle {
+          fill: ${color.black};
+          stroke: ${color.black};
+        }
+      }
     }
   }
 `;
