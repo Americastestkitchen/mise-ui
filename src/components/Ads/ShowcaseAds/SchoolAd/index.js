@@ -212,7 +212,7 @@ const SchoolAd = ({
     <SchoolInfo>
       <SchoolInfoInner>
         <AtkSchoolLogos
-          alt=" "
+          alt=""
           src={getImageUrl(
             'mise-play/atk-school-logo-lockup',
             'atkSchoolLogoLockup',

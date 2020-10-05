@@ -317,7 +317,7 @@ PodcastEpisodeCard.defaultProps = {
   description: '',
   episode: null,
   href: '',
-  imageAlt: ' ',
+  imageAlt: '',
   imageUrl: '',
   isPlaying: false,
   stickers: [],

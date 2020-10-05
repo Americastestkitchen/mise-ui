@@ -158,7 +158,7 @@ const FreeTrialAd = ({
         )}
       />
       <img
-        alt=" "
+        alt=""
         data-testid="showcase-ad-img"
         src={getImageUrl(
           cloudinaryId,

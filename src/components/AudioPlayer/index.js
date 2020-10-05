@@ -278,7 +278,7 @@ AudioPlayer.propTypes = {
 AudioPlayer.defaultProps = {
   episode: null,
   href: '',
-  imageAlt: ' ',
+  imageAlt: '',
   imageUrl: '',
 };
 
