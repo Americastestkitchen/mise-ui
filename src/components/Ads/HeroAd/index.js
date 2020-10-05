@@ -180,7 +180,7 @@ const HeroAdCtaTheme = {
 
     @media(hover: hover) {
       &:hover {
-        background-color: ${color.rust};
+        background-color: ${({ hoverColor }) => `${color[hoverColor || 'rust']}`};
       }
     }
   `,
@@ -193,6 +193,7 @@ const HeroAdCta = styled.a.attrs({
 const HeroAds = ({
   backgroundColor,
   buttonColor,
+  buttonHoverColor,
   cloudinaryId,
   cta,
   ctaHref,
@@ -201,44 +202,48 @@ const HeroAds = ({
   title,
 }) => (
   <HeroAdWrapper>
-    <HeroAdInnerWrapper
-      backgroundColor={backgroundColor}
-      data-testid="hero-ad__inner"
-    >
-      <HeroAdContent>
-        <HeroAdTitle>
-          {title}
-        </HeroAdTitle>
-        {subtitle && (
-          <HeroAdSubtitle>
-            {subtitle}
-          </HeroAdSubtitle>
-        )}
-        <HeroAdImage
-          alt=""
-          data-testid="hero-ad__image"
-          src={getImageUrl(
-            cloudinaryId,
-            'heroAd',
+    <a href={ctaHref} target={ctaTarget}>
+      <HeroAdInnerWrapper
+        backgroundColor={backgroundColor}
+        data-testid="hero-ad__inner"
+      >
+        <HeroAdContent>
+          <HeroAdTitle>
+            {title}
+          </HeroAdTitle>
+          {subtitle && (
+            <HeroAdSubtitle>
+              {subtitle}
+            </HeroAdSubtitle>
           )}
-        />
-        <HeroAdCta
-          backgroundColor={buttonColor}
-          data-testid="hero-ad__cta"
-          href={ctaHref}
-          target={ctaTarget}
-          title={cta}
-        >
-          {cta}
-        </HeroAdCta>
-      </HeroAdContent>
-    </HeroAdInnerWrapper>
+          <HeroAdImage
+            alt=""
+            data-testid="hero-ad__image"
+            src={getImageUrl(
+              cloudinaryId,
+              'heroAd',
+            )}
+          />
+          <HeroAdCta
+            backgroundColor={buttonColor}
+            data-testid="hero-ad__cta"
+            hoverColor={buttonHoverColor}
+            href={ctaHref}
+            target={ctaTarget}
+            title={cta}
+          >
+            {cta}
+          </HeroAdCta>
+        </HeroAdContent>
+      </HeroAdInnerWrapper>
+    </a>
   </HeroAdWrapper>
 );
 
 HeroAds.propTypes = {
   backgroundColor: PropTypes.string,
   buttonColor: PropTypes.string,
+  buttonHoverColor: PropTypes.string,
   cloudinaryId: PropTypes.string.isRequired,
   cta: PropTypes.string.isRequired,
   ctaHref: PropTypes.string.isRequired,
@@ -250,6 +255,7 @@ HeroAds.propTypes = {
 HeroAds.defaultProps = {
   backgroundColor: 'transparent',
   buttonColor: 'tomato',
+  buttonHoverColor: null,
   ctaTarget: null,
   subtitle: null,
 };
