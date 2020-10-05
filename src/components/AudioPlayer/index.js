@@ -22,7 +22,7 @@ const PlayerWrapper = styled.div`
   background-color: ${color.charcoal};
   color: ${color.white};
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   margin: 0 auto;
   padding: ${spacing.md};
   position: relative;
@@ -35,8 +35,9 @@ const PlayerWrapper = styled.div`
     width: 100%;
   }
 
-  ${breakpoint('md')`
+  ${breakpoint('lg')`
     padding: ${spacing.lg} 0;
+    justify-content: center;
 
     .audio-player {
       position: relative;
@@ -47,11 +48,16 @@ const PlayerWrapper = styled.div`
 
 const TitleWrapper = styled.div`
   text-align: left;
-  max-width: 20rem;
 
-  ${breakpoint('md')`
+  ${breakpoint('smmd')`
+    width: 27rem;
+  `}
+
+  ${breakpoint('lg')`
     margin-left: ${spacing.sm};
     margin-right: ${spacing.xxlg};
+    max-width: 20rem;
+    width: auto;
   `}
 `;
 
@@ -59,14 +65,22 @@ const Title = styled.h2`
   color: ${color.white};
   font: ${fontSize.lg}/${lineHeight.md} ${font.pnb};
   margin-bottom: ${spacing.xxsm};
+
+  ${breakpoint('lg')`
+    font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb};
+  `}
 `;
 
 const Subtitle = styled.h4`
   color: ${color.silver};
-  font: 1.2rem/${lineHeight.sm} ${font.pnb};
+  font: ${fontSize.xsm}/${lineHeight.sm} ${font.pnb};
   letter-spacing: ${letterSpacing.lg};
   margin-bottom: ${spacing.xsm};
   text-transform: uppercase;
+
+  ${breakpoint('lg')`
+    font: 1.2rem/${lineHeight.md} ${font.pnb};
+  `}
 `;
 
 const ControlsWrapper = styled.div`
@@ -89,7 +103,7 @@ const RewindButton = styled.button`
   display: none;
   width: 1.5rem;
 
-  ${breakpoint('md')`
+  ${breakpoint('smmd')`
     display: block;
   `}
 `;
@@ -113,7 +127,7 @@ const PlyrPlayer = styled.div`
 const LinkWrapper = styled.div`
 display: none;
 
-  ${breakpoint('md')`
+  ${breakpoint('smmd')`
     align-items: center;
     display: flex;
 
