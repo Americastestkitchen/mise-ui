@@ -64,7 +64,7 @@ PersonHeadShot.propTypes = {
 };
 
 PersonHeadShot.defaultProps = {
-  imgAlt: ' ',
+  imgAlt: '',
   size: { sm: '10' },
 };
 

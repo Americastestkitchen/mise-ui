@@ -182,7 +182,7 @@ const SingleProductAd = ({
           )}
         />
         <img
-          alt=" "
+          alt=""
           data-testid="single-product-ad-img"
           src={getImageUrl(
             cloudinaryId,

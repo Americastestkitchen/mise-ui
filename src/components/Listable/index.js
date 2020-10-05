@@ -79,7 +79,7 @@ const Listable = ({
     isCompleted={isCompleted}
   >
     <ListableImage
-      alt=" "
+      alt=""
       src={getImageUrl(cloudinaryId, { height: 70, width: 122 })}
     />
     <ListableBody

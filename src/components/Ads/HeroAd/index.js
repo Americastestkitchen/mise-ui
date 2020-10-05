@@ -215,7 +215,7 @@ const HeroAds = ({
           </HeroAdSubtitle>
         )}
         <HeroAdImage
-          alt=" "
+          alt=""
           data-testid="hero-ad__image"
           src={getImageUrl(
             cloudinaryId,
