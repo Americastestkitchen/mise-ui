@@ -57,7 +57,7 @@ const plyrStyles = css`
     display: none;
   }
 
-  ${breakpoint('md')`
+  ${breakpoint('xlg')`
     .plyr__controls {
       align-items: center;
       background-color: transparent;
