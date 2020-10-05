@@ -5,7 +5,7 @@ import { color } from '../../../../styles';
 const Cookbook = ({ className, fill }) => (
   <svg
     aria-hidden="true"
-    className={className}
+    className={`${className} cookbook-svg`}
     data-testid="cookbook-svg"
     focusable="false"
     xmlns="http://www.w3.org/2000/svg"

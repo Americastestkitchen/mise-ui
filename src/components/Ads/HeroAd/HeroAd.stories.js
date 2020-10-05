@@ -36,6 +36,7 @@ export const Default = () => (
       <HeroAd
         backgroundColor={select('Background Color', ['darkSlate', 'bluewood', 'squirrel', 'slate'], 'darkSlate')}
         buttonColor={select('Button Color', ['summerSky', 'tomato', 'eclipse'], 'summerSky')}
+        buttonHoverColor="darkSummerSky"
         cloudinaryId={select('Image', ['mise-play/ATK-COMPLETE-SHOW-COVER', 'mise-play/CCO-SHOW-COVER'], 'mise-play/ATK-COMPLETE-SHOW-COVER')}
         cta={text('CTA Text', 'Save 56% Now')}
         ctaHref="https://shop.americastestkitchen.com"

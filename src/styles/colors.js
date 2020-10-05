@@ -45,6 +45,7 @@ const color = {
   bluewood: '#374360',
   slate: '#767d8e',
   summerSky: '#3c9be2',
+  darkSummerSky: '#0466B0',
   mineShaft: '#2a2a2a',
   endeavour: '#0666B0',
   transparentWhite: 'rgba(255, 255, 255, 0.5)',
