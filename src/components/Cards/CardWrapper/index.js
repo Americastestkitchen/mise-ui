@@ -29,9 +29,9 @@ const CardWrapperWrapper = styled.div.attrs({
 const CardWrapperInfoWrapperTheme = {
   default: css`
     ${breakpoint('lg')`
-      align-items: center;
+      align-items: flex-end;
       display: flex;
-      margin-bottom: ${spacing.xsm};
+      margin-bottom: 1.2rem;
     `}
   `,
 };
@@ -69,6 +69,7 @@ const CardWrapperCtaTheme = {
     letter-spacing: ${letterSpacing.cta};
     margin-bottom: ${spacing.xsm};
     overflow: hidden;
+    padding-bottom: 0.3rem;
     text-transform: uppercase;
     text-overflow: ellipsis;
     white-space: nowrap;
