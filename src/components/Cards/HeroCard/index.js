@@ -149,7 +149,7 @@ const HeroCard = ({
     <HeroCardWrapper
       backgroundImg={backgroundImg}
     >
-      <div>
+      <a href={ctaUrl}>
         {
           Logo && (
             <HeroCardLogo>
@@ -199,7 +199,7 @@ const HeroCard = ({
             {ctaText}
           </HeroCardCtaText>
         </HeroCardCta>
-      </div>
+      </a>
     </HeroCardWrapper>
   );
 };
