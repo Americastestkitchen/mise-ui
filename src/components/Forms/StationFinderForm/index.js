@@ -60,7 +60,7 @@ const StationFinderForm = ({ ariaLabel, inputId, onSubmit, value }) => (
       placeholder="your zipcode"
       type="text"
     />
-    <Button type="submit">
+    <Button aria-label="Submit and view station list" type="submit">
       <Arrow fill={color.jet} />
     </Button>
   </StationFinderFormWarpper>
