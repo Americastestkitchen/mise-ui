@@ -7,7 +7,6 @@ import {
   color,
   font,
   fontSize,
-  letterSpacing,
   lineHeight,
   spacing,
   withThemes,
@@ -40,8 +39,8 @@ const NewsletterTitle = styled.div.attrs({
 
 const NewsletterSubtitleTheme = {
   default: css`
-    font: 1.2rem/${lineHeight.sm} ${font.pnr};
-    letter-spacing: ${letterSpacing.lg};
+    font: ${fontSize.sm}/${lineHeight.sm} ${font.pnr};
+    letter-spacing: 2.24px;
     margin-bottom: ${spacing.xsm};
     text-transform: uppercase;
   `,
