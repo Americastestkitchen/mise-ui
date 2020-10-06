@@ -4,11 +4,11 @@ import styled, { css } from 'styled-components';
 
 import { color, font, spacing, withThemes } from '../../styles';
 
-const ShowMoreLessInitial = styled.div`
+const ShowMoreLessInitial = styled.ul`
   margin-bottom: ${spacing.xsm};
 `;
 
-const ShowMoreLessRest = styled.div`
+const ShowMoreLessRest = styled.ul`
   margin-bottom: 1.2rem;
 `;
 
