@@ -6,12 +6,12 @@ import ShowMoreLess from '../../../ShowMoreLess';
 import RefinementFilter from '../RefinementFilter/RefinementFilter';
 import { color } from '../../../../styles';
 
-const RefinementListRefinements = styled.div`
+const RefinementListRefinements = styled.ul`
   border: none;
   margin: 0;
   padding: 0;
 
-  label:last-child {
+  li:last-child {
     margin: 0;
   }
 `;

@@ -149,53 +149,55 @@ const RefinementFilter = ({
   handleClick,
   value,
 }) => (
-  <RefinementFilterLabel
-    altFill={altFill}
-    className={`${attribute}`}
-    data-site-key={value}
-    htmlFor={`${attribute}--${label}`}
-    isRefined={isRefined}
-    onClick={(e) => {
-      e.preventDefault();
-      if (!isRefined && typeof handleClick === 'function') handleClick(e);
-      refine(value);
-    }}
-  >
-    {
-      isRefined ? (
-        <RefinementFilterCheck data-testid="refinement-filter__checkmark">
-          <Checkmark />
-        </RefinementFilterCheck>
-      ) : null
-    }
-    <RefinementFilterCheckbox
-      id={`search-site-list--${value}`}
-      type="checkbox"
-    />
-    {
-      attribute === 'search_site_list' ? (
-        <Badge
-          className="search-refinement__badge"
-          fill={isRefined ? altFill : color.eclipse}
-          type={value}
-        />
-      ) : null
-    }
-    {
-      includeCount ? (
-        <span className="search-refinement-filter__count">
-          <span className="search-refinement-list__label-text">
-            {label}
+  <li>
+    <RefinementFilterLabel
+      altFill={altFill}
+      className={`${attribute}`}
+      data-site-key={value}
+      htmlFor={`${attribute}--${label}`}
+      isRefined={isRefined}
+      onClick={(e) => {
+        e.preventDefault();
+        if (!isRefined && typeof handleClick === 'function') handleClick(e);
+        refine(value);
+      }}
+    >
+      {
+        isRefined ? (
+          <RefinementFilterCheck data-testid="refinement-filter__checkmark">
+            <Checkmark />
+          </RefinementFilterCheck>
+        ) : null
+      }
+      <RefinementFilterCheckbox
+        id={`search-site-list--${value}`}
+        type="checkbox"
+      />
+      {
+        attribute === 'search_site_list' ? (
+          <Badge
+            className="search-refinement__badge"
+            fill={isRefined ? altFill : color.eclipse}
+            type={value}
+          />
+        ) : null
+      }
+      {
+        includeCount ? (
+          <span className="search-refinement-filter__count">
+            <span className="search-refinement-list__label-text">
+              {label}
+            </span>
+            <RefinementFilterCount data-testid="refinement-filter__count">
+              {` (${count})`}
+            </RefinementFilterCount>
           </span>
-          <RefinementFilterCount data-testid="refinement-filter__count">
-            {` (${count})`}
-          </RefinementFilterCount>
-        </span>
-      ) : (
-        label
-      )
-    }
-  </RefinementFilterLabel>
+        ) : (
+          label
+        )
+      }
+    </RefinementFilterLabel>
+  </li>
 );
 
 RefinementFilter.propTypes = {
