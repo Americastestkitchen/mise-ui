@@ -50,7 +50,7 @@ const Benefit = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  max-width: 5rem;
+  max-width: 6rem;
 
   p {
     color: ${color.white};
@@ -66,9 +66,9 @@ const CircularIcon = styled.div`
   background-color: ${color.black};
   border-radius: 50%;
   display: inline-block;
-  height: 50px;
+  height: 6rem;
   position: relative;
-  width: 50px;
+  width: 6rem;
 
   svg {
     position: absolute;
