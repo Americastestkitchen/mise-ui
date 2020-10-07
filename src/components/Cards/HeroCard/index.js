@@ -13,7 +13,7 @@ import { VideoPlay } from '../../DesignTokens/Icon/svgs';
 const HeroCardWrapper = styled.div.attrs({
   className: 'hero-card',
 })`
-  background-image: url("${({ backgroundImg }) => backgroundImg}");
+  background-image: ${({ backgroundImg, withGradient }) => `${withGradient ? `linear-gradient(to bottom, rgba(0, 0, 0, 0), ${color.black}), ` : ''}url("${backgroundImg}")`};
   background-position: center;
   background-size: cover;
   display: flex;
@@ -145,9 +145,11 @@ const HeroCard = ({
 }) => {
   const Logo = keyToLogo(iconKey);
   const backgroundImg = getImageUrl(backgroundCloudinaryId, 'heroCard');
+  const withGradient = backgroundCloudinaryId.startsWith('http');
   return (
     <HeroCardWrapper
       backgroundImg={backgroundImg}
+      withGradient={withGradient}
     >
       <a href={ctaUrl}>
         {
