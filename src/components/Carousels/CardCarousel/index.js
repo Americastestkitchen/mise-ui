@@ -24,7 +24,7 @@ const typeWidths = {
     hero: 'calc(100% - 6.4rem)',
   },
   lg: {
-    hero: 'calc(100% - 10rem)',
+    hero: '113.6rem',
   },
 };
 
@@ -86,6 +86,12 @@ const CardCarouselTheme = {
       }
     }
 
+    ${breakpoint('xs', 'md')`
+      .flickity-page-dots {
+        display: none;
+      }
+    `}
+
     ${breakpoint('lg')`
       .linear-gradient {
         display: block;
@@ -101,6 +107,13 @@ const CardCarouselTheme = {
           &.right {
             right: 0;
           }
+        }
+      }
+
+      &.card-carousel--standard {
+        .flickity-prev-next-button {
+          top: 13.6rem;
+          transform: none;
         }
       }
 
@@ -126,7 +139,7 @@ const CardCarouselTheme = {
       &.card-carousel--hero {
         .linear-gradient {
           &:last-child {
-            right: -3rem;
+            right: -4rem;
           }
         }
       }
@@ -157,17 +170,13 @@ const CardCarousel = ({
   const El = typeMap[type] || StandardCard;
   const defaultRender = item => <El key={item.objectId} {...item} />;
   const doRenderItem = renderItem || defaultRender;
-  let options = {
+  const options = {
     slideshow: false,
     cellAlign,
     wrapAround: true,
   };
   if (type === 'hero') {
-    options = {
-      slideshow: true,
-      cellAlign,
-      wrapAround: false,
-    };
+    options.slideshow = true;
   }
 
   return (

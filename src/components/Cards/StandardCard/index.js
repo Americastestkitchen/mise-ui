@@ -149,7 +149,7 @@ export const StyledBadge = styled(Badge)`
     left: 0;
   }
 
-  ${breakpoint('xs', 'lg')`
+  ${breakpoint('xs', 'md')`
     width: 1.6rem;
     height: 1.6rem;
   `}
