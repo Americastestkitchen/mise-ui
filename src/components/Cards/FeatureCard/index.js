@@ -18,7 +18,6 @@ const StyledFeatureCard = styled.article`
   box-shadow: 0 0 0 ${color.black};
   height: ${({ isWide }) => (isWide ? '33rem' : featureCardWideHeight)};
   position: relative;
-  transition: all .3s ease;
   width: ${({ isWide }) => (isWide ? '34rem' : featureCardWidth)};
 
   .feature-card__gradient-overlay {
@@ -28,6 +27,7 @@ const StyledFeatureCard = styled.article`
     left: 0;
     position: absolute;
     width: 100%;
+    z-index: 1;
   }
 
   .feature-card__subcomponents-wrapper {
@@ -39,6 +39,7 @@ const StyledFeatureCard = styled.article`
     padding: ${spacing.sm} ${spacing.xsm};
     width: 100%;
     color: ${color.white};
+    z-index: 2;
   }
 
   .feature-card__subcomponents-content:not(:only-child) {
@@ -57,8 +58,13 @@ const StyledFeatureCard = styled.article`
 
   @media(hover: hover) {
     &:hover {
-      transform: translateY(-${spacing.xsm});
-      box-shadow: 0 7px 8px -2px ${color.black};
+      a {
+        img {
+          transform: translateY(-${spacing.xsm});
+          transition: all .3s ease;
+          z-index: 0;
+        }
+      }
     }
   }
 
