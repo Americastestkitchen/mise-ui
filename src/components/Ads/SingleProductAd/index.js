@@ -95,15 +95,7 @@ const SingleProductContent = styled.div.attrs({
   className: 'single-product-ad__content',
 })`${withThemes(SingleProductContentTheme)}`;
 
-const SingleProductContentInner = styled.div`
-  ${breakpoint('md')`
-    width: 27.2rem;
-  `}
-
-  ${breakpoint('lg')`
-    width: 34.4rem;
-  `}
-`;
+const SingleProductContentInner = styled.div``;
 
 const SingleProductTitleTheme = {
   default: css`
@@ -138,6 +130,14 @@ const SingleProductCtaTheme = {
         background-color: ${color.endeavour};
       }
     }
+
+    ${breakpoint('md')`
+      width: 27.2rem;
+    `}
+
+    ${breakpoint('lg')`
+      width: 34.4rem;
+    `}
   `,
 };
 
