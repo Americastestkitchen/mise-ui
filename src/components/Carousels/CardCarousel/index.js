@@ -112,7 +112,7 @@ const CardCarouselTheme = {
 
       &.card-carousel--standard {
         .flickity-prev-next-button {
-          top: 13.6rem;
+          top: 11.4rem; /* vertically centered within image */
           transform: none;
         }
       }
