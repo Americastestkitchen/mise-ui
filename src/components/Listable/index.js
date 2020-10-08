@@ -15,21 +15,27 @@ const ListableWrapper = styled.div.attrs(({ isCompleted }) => ({
 
   &:hover {
     cursor: pointer;
+
+    .listable__title {
+      color: ${color.silver};
+    }
   }
 
   &.completed {
-    border-bottom: 4px solid ${color.darkerMint};
+    border-bottom: 4px solid ${color.mint};
   }
 `;
 
-const ListableImage = styled.img`
+const ListableImage = styled.img.attrs({
+  className: 'listable__image',
+})`
   background-color: ${color.eclipse};
   height: 7rem;
   width: 12rem;
 `;
 
 const ListableBody = styled.div.attrs(({ isSelected }) => ({
-  className: `${isSelected ? 'selected' : ''}`,
+  className: `listable__body${isSelected ? ' selected' : ''}`,
 }))`
   display: flex;
   flex: 1 0 calc(100% - 12rem);
@@ -41,7 +47,9 @@ const ListableBody = styled.div.attrs(({ isSelected }) => ({
   }
 `;
 
-const ListableTitle = styled.h3`
+const ListableTitle = styled.h3.attrs({
+  className: 'listable__title',
+})`
   color: ${color.white};
   font: ${fontSize.md}/${lineHeight.sm} ${font.pnb};
 
@@ -49,10 +57,6 @@ const ListableTitle = styled.h3`
     height: 1rem;
     margin-right: ${spacing.xxsm};
     width: 0.8rem;
-  }
-
-  &:hover {
-    color: ${color.silver};
   }
 `;
 
