@@ -84,14 +84,12 @@ const SchoolInfoTheme = {
   default: css`
     align-items: center;
     display: flex;
-    flex: 1 0 auto;
+    flex: 1 0 0;
     justify-content: center;
     padding: 2rem 2rem 3.8rem;
 
     ${breakpoint('md')`
       padding: 0;
-      margin-left: ${spacing.sm};
-      width: calc(50% - ${spacing.lg});
     `}
   `,
 };
@@ -100,6 +98,10 @@ const SchoolInfo = styled.div.attrs({
 })`${withThemes(SchoolInfoTheme)}`;
 
 const SchoolInfoInner = styled.div`
+  ${breakpoint('md', 'lg')`
+    padding: 0 ${spacing.sm};
+  `}
+
   ${breakpoint('lg')`
     width: 34.4rem;
   `}
