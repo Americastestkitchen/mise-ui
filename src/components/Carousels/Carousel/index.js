@@ -222,8 +222,13 @@ const Carousel = ({ className, dotPosition, items, options, renderItem }) => {
     if (items.length > 1 && elRef?.current) {
       const flkty = getFlickityInstance(elRef.current, opts);
       const isEnabled = flkty.slides.length > 1;
-      if (isEnabled === false) flkty.destroy();
-      else flktyRef.current = flkty;
+      if (isEnabled === false) {
+        flkty.destroy();
+        const cells = elRef.current.querySelectorAll('.carousel-cell');
+        [...cells].forEach(el => el.removeAttribute('aria-hidden'));
+      } else {
+        flktyRef.current = flkty;
+      }
       setEnabled(isEnabled);
     }
     return () => {
