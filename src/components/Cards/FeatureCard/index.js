@@ -185,12 +185,11 @@ function FeatureCard({
           >
             { stickers ? (
               <StickerGroup>
-                {stickers.map(({ text, type }, idx) => (
+                {stickers.map(({ text, type }) => (
                   <StyledSticker
                     className={className}
                     key={text}
                     contentType={contentType}
-                    icon={idx === 0}
                     type={type}
                     text={text}
                   />
