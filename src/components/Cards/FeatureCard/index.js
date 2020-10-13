@@ -56,12 +56,15 @@ const StyledFeatureCard = styled.article`
     bottom: ${spacing.md};
   }
 
+  a img {
+    transition: all .3s ease;
+  }
+
   @media(hover: hover) {
     &:hover {
       a {
         img {
           transform: translateY(-${spacing.xsm});
-          transition: all .3s ease;
           z-index: 0;
         }
       }
