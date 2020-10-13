@@ -5,7 +5,9 @@ import Button from '../../Button';
 import { color, letterSpacing, font, fontSize, spacing } from '../../../../styles';
 import { ChevronThinDown, FavoriteRibbon, Folder } from '../../../DesignTokens/Icon/svgs';
 
-const ButtonWrapper = styled.div`
+const ButtonWrapper = styled.div.attrs({
+  className: 'favorite-action-wrapper',
+})`
   align-items: center;
   display: inline-flex;
   justify-content: center;
