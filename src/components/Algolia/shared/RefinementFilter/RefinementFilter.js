@@ -87,10 +87,19 @@ const RefinementFilterLabelTheme = {
     color: ${color.white};
     ${({ isRefined }) => (isRefined ? `font-family: ${font.pnb};` : '')}
 
+    .search-refinement-list__label-text {
+      ${({ isRefined }) => (isRefined ? `color: ${color.white};` : '')}
+    }
+
     &:hover {
       color: ${color.silver};
+
+      .search-refinement-list__label-text {
+        color: ${color.silver};
+      }
     }
   `,
+  cio: css``,
 };
 
 const RefinementFilterLabel = styled.label.attrs({
