@@ -74,6 +74,7 @@ const CardCarouselTheme = {
     }
 
     .flickity-enabled ~ .linear-gradient {
+      display: block;
       height: 100%;
       position: absolute;
       right: 0;
