@@ -35,7 +35,7 @@ const StyledLoadingCarousel = styled.div`
     }
 
     ${breakpoint('md')`
-      width: 115rem;
+      max-width: 115rem;
 
       .title-and-cta {
         width: 61.2rem;
