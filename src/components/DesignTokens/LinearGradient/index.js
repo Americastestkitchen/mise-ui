@@ -10,19 +10,23 @@ const LinearGradientTheme = {
     background-image: ${({ angle, startColor, endColor, stop }) => `linear-gradient(${angle}deg, ${color[startColor]} 0, ${color[endColor]} ${stop})`};
 
     .jet-gradient & {
-      ${({ angle, stop }) => `background-image: linear-gradient(${angle}deg, transparent 0, ${color.jet} ${stop});`}
+      ${({ angle, stop }) => `background-image: linear-gradient(${angle}deg, rgba(8, 8, 8, 0) 0, rgba(8, 8, 8, 1) ${stop});`}
     }
 
     .gunmetal-gradient & {
-      ${({ angle, stop }) => `background-image: linear-gradient(${angle}deg, transparent 0, ${color.gunmetal} ${stop});`}
+      ${({ angle, stop }) => `background-image: linear-gradient(${angle}deg, rgba(38, 38, 38, 0) 0, rgba(38, 38, 38, 1) ${stop});`}
     }
 
     .asphalt-gradient & {
-      ${({ angle, stop }) => `background-image: linear-gradient(${angle}deg, transparent 0, ${color.asphalt} ${stop});`}
+      ${({ angle, stop }) => `background-image: linear-gradient(${angle}deg, rgba(25, 25, 25, 0) 0, rgba(25, 25, 25, 1) ${stop});`}
+    }
+
+    .whitesmoke-gradient & {
+      ${({ angle, stop }) => `background-image: linear-gradient(${angle}deg, rgba(245, 245, 245, 0) 0, rgba(245, 245, 245, 1) ${stop});`}
     }
   `,
   dark: css`
-    background-image: ${({ angle, stop }) => `linear-gradient(${angle}deg, transparent, ${color.gunmetal} ${stop})`};
+    background-image: ${({ angle, stop }) => `linear-gradient(${angle}deg, rgba(38, 38, 38, 0) 0, rgba(38, 38, 38, 1) ${stop})`};
   `,
 };
 
