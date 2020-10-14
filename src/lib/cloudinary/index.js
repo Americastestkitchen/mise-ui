@@ -132,7 +132,8 @@ const imageConfig = {
   },
   showcaseSchoolAdMobile() {
     return {
-      aspectRatio: '17:10',
+      aspectRatio: '34:33',
+      gravity: 'south_west',
       secure: true,
       width: 375,
     };
@@ -140,6 +141,7 @@ const imageConfig = {
   showcaseSchoolAdTablet() {
     return {
       aspectRatio: '34:33',
+      gravity: 'south_west',
       secure: true,
       width: 300,
     };
@@ -147,6 +149,7 @@ const imageConfig = {
   showcaseSchoolAdDesktop() {
     return {
       aspectRatio: '56:33',
+      gravity: 'south_west',
       secure: true,
       width: 500,
     };

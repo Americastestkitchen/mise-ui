@@ -122,7 +122,7 @@ const SingleMembershipContent = styled.div`
 
 const SingleMembershipTitleTheme = {
   default: css`
-    color: ${color.whiteSmoke};
+    color: ${color.white};
     font: 2rem/${lineHeight.sm} ${font.pnb};
     margin-bottom: ${spacing.xsm};
 
