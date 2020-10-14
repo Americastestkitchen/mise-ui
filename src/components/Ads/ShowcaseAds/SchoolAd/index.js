@@ -190,7 +190,7 @@ const deviceConfigMap = {
 const deviceIdMap = {
   desktop: 'mise-play/membership-showcase-desktop',
   tablet: 'mise-play/membership-showcase-tablet',
-  phone: 'mise-play/membership-showcase-desktop',
+  phone: 'mise-play/membership-showcase-tablet',
 };
 
 const SchoolAd = ({
