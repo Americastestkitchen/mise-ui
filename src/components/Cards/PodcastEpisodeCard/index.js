@@ -16,55 +16,72 @@ const PodcastEpisodeCardWrapper = styled.div`
   font: ${fontSize.md}/${lineHeight.md} ${font.pnr};
   padding: ${spacing.sm} ${spacing.md};
 
+  ${breakpoint('md')`
+    position: relative;
+    background-color: transparent;
+  `}
+
+  .grow-div {
+    float: left;
+    transition: 0.2s all ease-in-out;
+    z-index: -1;
+
+    ${breakpoint('md')`
+      float: none;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-color: ${color.asphalt};
+    `}
+  }
+
+  @media(hover:hover) {
+    &:hover .grow-div {
+      background-color: ${color.transparentBlack};
+      box-shadow: 0 7px 8px -2px ${color.black};
+      transform: scale(1.05);
+    }
+  }
+
+  &.is-playing .grow-div {
+    background-color: ${color.transparentBlack};
+    box-shadow: 0 7px 8px -2px ${color.black};
+    transform: scale(1.05);
+  }
+
   > div {
     display: flex;
-    overflow: hidden;
     max-height: 20rem;
   }
 
   p {
+    clear: both;
     color: ${color.whiteSmoke};
     font-size: ${fontSize.md};
-    margin-top: ${spacing.sm};
-  }
-
-  &.is-playing {
-    box-shadow: 0 5px 8px 0 ${color.transparentBlack};
-    background-color: ${color.jet};
-    max-width: 93rem;
-  }
-
-  @media(hover: hover) {
-    &:hover {
-      transform: translateY(-${spacing.xsm});
-      box-shadow: 0 7px 8px -2px ${color.black};
-      max-width: 93rem;
-    }
   }
 
   ${breakpoint('md')`
-    max-width: 85rem;
-    overflow: auto;
+    max-width: 84.8rem;
     padding: 0;
 
     p {
       display: none;
     }
-
-    &.is-playing {
-      .podcast-episode-card__image {
-        margin-left: 1rem;
-      }
-    }
-
-    @media(hover: hover) {
-      &:hover {
-        .podcast-episode-card__image {
-          margin-left: 1rem;
-        }
-      }
-    }
   `}
+
+  .place-hold {
+    display: none;
+
+    ${breakpoint('md')`
+      display: block;
+      flex-basis: 23rem;
+      flex-shrink: 0;
+      max-width: 23rem;
+      margin-right: ${spacing.sm};
+    `}
+  }
 `;
 
 const ImageWrapper = styled.div`
@@ -73,10 +90,12 @@ const ImageWrapper = styled.div`
   flex-shrink: 0;
   max-height: 10rem;
   max-width: 10rem;
+  margin-bottom: ${spacing.sm};
   margin-right: ${spacing.sm};
   overflow: hidden;
 
   ${breakpoint('md')`
+    margin-bottom: 0;
     margin-right: 0;
     flex-basis: 23rem;
     max-height: none;
@@ -89,7 +108,7 @@ export const StyledBadge = styled(Badge)`
   top: ${spacing.xsm};
   left: ${spacing.xsm};
 
-  ${breakpoint('xs', 'lg')`
+  ${breakpoint('xs', 'md')`
     width: 1.6rem;
     height: 1.6rem;
   `}
@@ -125,6 +144,8 @@ const NowPlayingSticker = styled(Sticker)`
 `;
 
 const TextWrapper = styled.div`
+  flex: 1;
+
   button {
     text-align: left;
     width: 100%;
@@ -177,7 +198,7 @@ const TextWrapper = styled.div`
   ${breakpoint('md')`
     flex-basis: auto;
     margin: 0;
-    padding: ${spacing.sm} ${spacing.xlg};
+    padding: ${spacing.sm} ${spacing.xlg} ${spacing.sm} ${spacing.md};
 
     h4 {
       margin-bottom: ${spacing.sm};
@@ -233,15 +254,12 @@ class PodcastEpisodeCard extends Component {
         id={id}
         className={`podcast-episode-card ${isPlaying ? 'is-playing' : ''}`}
       >
-        <div>
+        <div className="grow-div">
           <ImageWrapper className="podcast-episode-card__image">
             <Image
               aria-hidden="true"
               imageAlt={imageAlt}
               imageUrl={imageUrl}
-            />
-            <StyledBadge
-              type={siteKey}
             />
             {stickers.map(({ text, type }) => (
               <StyledSticker
@@ -252,6 +270,13 @@ class PodcastEpisodeCard extends Component {
               />
             ))}
           </ImageWrapper>
+        </div>
+        <div>
+          <div className="place-hold">
+            <StyledBadge
+              type={siteKey}
+            />
+          </div>
           <TextWrapper>
             <button
               type="button"
