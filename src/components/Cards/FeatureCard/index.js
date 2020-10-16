@@ -62,11 +62,9 @@ const StyledFeatureCard = styled.article`
 
   @media(hover: hover) {
     &:hover {
-      a {
-        img {
-          transform: translateY(-${spacing.xsm});
-          z-index: 0;
-        }
+      .feature-card__background-img {
+        transform: translateY(-${spacing.xsm});
+        z-index: 0;
       }
     }
   }
@@ -161,7 +159,7 @@ function FeatureCard({
       >
         <div className="feature-card__gradient-overlay" />
         <StyledImage
-          className={className}
+          className={`${className} feature-card__background-img`}
           imageAlt={imageAlt}
           imageUrl={imageUrl}
         />
@@ -260,7 +258,7 @@ FeatureCard.propTypes = {
 
 FeatureCard.defaultProps = {
   attributions: '',
-  className: null,
+  className: '',
   ctaText: '',
   ctaUrl: '',
   displayFavoritesButton: true,
