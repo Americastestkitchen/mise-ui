@@ -15,11 +15,11 @@ const SubscribeBubblesTitle = styled.h3`
   color: ${color.white};
   font: ${fontSize.md}/1 ${font.pnb};
   letter-spacing: ${letterSpacing.md};
-  margin-bottom: ${spacing.sm};
 `;
 
 const SubscribeBubblesList = styled.ul`
    display: flex;
+   padding-top: ${spacing.sm};
    overflow: scroll;
 
    ${breakpoint('lg')`
@@ -49,15 +49,18 @@ const SubscribeBubbleAnchor = styled.a`
   display: flex;
   height: 5rem;
   padding: ${spacing.sm};
+  transition: 0.2s all ease-in-out;
   scrollbar-width: none;
 
   &::-webkit-scrollbar {
     display: none;
   }
 
-  &:hover {
-    box-shadow: 0 3px 6px 0 ${color.black};
-    transform: translateY(-${spacing.xsm});
+  @media(hover: hover) {
+    &:hover {
+      box-shadow: 0 3px 6px 0 ${color.transparentBlack};
+      transform: translateY(-${spacing.xxsm});
+    }
   }
 `;
 
