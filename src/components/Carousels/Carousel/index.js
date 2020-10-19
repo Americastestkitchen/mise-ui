@@ -169,6 +169,7 @@ function temporaryCarouselFix() {
 function getFlickityInstance(el, options) {
   const {
     arrowShape,
+    autoPlay = false,
     cellAlign = 'center',
     slideshow,
     navigationArrows,
@@ -178,6 +179,7 @@ function getFlickityInstance(el, options) {
   const isPhone = window.innerWidth <= 768 || window.innerHeight <= 450;
   const groupCells = slideshow ? false : '100%';
   const cOptions = {
+    autoPlay,
     cellAlign,
     dragThreshold: 10,
     groupCells,
@@ -203,6 +205,7 @@ function getFlickityInstance(el, options) {
 
 const defaultOptions = {
   arrowShape: 'M54.48828 88.55859c2.59375 4.00782 7.78516 5.15235 11.82031 2.86329 4.03907-2.57422 5.19141-7.72657 2.88672-11.73047l-20.1875-32.04688 20.1875-32.04687c2.59375-4.00782 1.44141-9.44532-2.88672-11.73438-1.4414-.85547-2.88281-1.42969-4.61328-1.42969-2.88281 0-5.76562 1.42969-7.20703 4.00782L28.53516 47.64453l25.95312 40.91406zm0 0',
+  autoPlay: false,
   cellAlign: 'left',
   navigationArrows: true,
   navigationDots: true,
@@ -277,6 +280,8 @@ Carousel.propTypes = {
   options: PropTypes.shape({
     /** Change shape of arrows on carousel */
     arrowShape: PropTypes.object,
+    /** Change whether or not carousel advances to the next cell. */
+    autoPlay: PropTypes.bool,
     /** Change cell alignment inside carousel */
     cellAlign: PropTypes.string,
     /** Include prev/next navigation buttons */
