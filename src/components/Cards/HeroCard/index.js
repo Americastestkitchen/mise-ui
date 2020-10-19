@@ -20,12 +20,7 @@ const HeroCardWrapper = styled.div.attrs({
   flex-direction: column;
   min-height: 46.5rem;
   justify-content: flex-end;
-  padding: ${spacing.lg} ${spacing.sm};
   width: 100%;
-
-  ${breakpoint('md')`
-    padding: ${spacing.xlg};
-  `}
 
   &:hover {
     cursor: pointer;
@@ -100,7 +95,19 @@ const HeroCardDescription = styled.div`
   }
 `;
 
-const HeroCardCta = styled.a`
+const HeroCardLink = styled.a`
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 0;
+  justify-content: flex-end;
+  padding: ${spacing.lg} ${spacing.sm};
+
+  ${breakpoint('md')`
+    padding: ${spacing.xlg};
+  `}
+`;
+
+const HeroCardCta = styled.span`
   align-items: center;
   display: flex;
 `;
@@ -151,7 +158,10 @@ const HeroCard = ({
       backgroundImg={backgroundImg}
       withGradient={withGradient}
     >
-      <a href={ctaUrl}>
+      <HeroCardLink
+        href={ctaUrl}
+        onClick={onClick}
+      >
         {
           Logo && (
             <HeroCardLogo>
@@ -190,10 +200,7 @@ const HeroCard = ({
           cardType={personHeadShot && sticker ? 'learn' : 'watch'}
           dangerouslySetInnerHTML={{ __html: description }}
         />
-        <HeroCardCta
-          href={ctaUrl}
-          onClick={onClick}
-        >
+        <HeroCardCta>
           <HeroCardCtaIcon>
             <VideoPlay fill={color.white} />
           </HeroCardCtaIcon>
@@ -201,7 +208,7 @@ const HeroCard = ({
             {ctaText}
           </HeroCardCtaText>
         </HeroCardCta>
-      </a>
+      </HeroCardLink>
     </HeroCardWrapper>
   );
 };
