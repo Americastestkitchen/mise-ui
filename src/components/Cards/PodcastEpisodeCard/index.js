@@ -261,6 +261,13 @@ class PodcastEpisodeCard extends Component {
               imageAlt={imageAlt}
               imageUrl={imageUrl}
             />
+          </ImageWrapper>
+        </div>
+        <div>
+          <div className="place-hold">
+            <StyledBadge
+              type={siteKey}
+            />
             {stickers.map(({ text, type }) => (
               <StyledSticker
                 key={text}
@@ -269,13 +276,6 @@ class PodcastEpisodeCard extends Component {
                 text={text}
               />
             ))}
-          </ImageWrapper>
-        </div>
-        <div>
-          <div className="place-hold">
-            <StyledBadge
-              type={siteKey}
-            />
           </div>
           <TextWrapper>
             <button
