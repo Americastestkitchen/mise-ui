@@ -16,6 +16,10 @@ const PodcastEpisodeCardWrapper = styled.div`
   font: ${fontSize.md}/${lineHeight.md} ${font.pnr};
   padding: ${spacing.sm} ${spacing.md};
 
+  &:hover {
+    cursor: pointer;
+  }
+
   ${breakpoint('xs', 'md')`
     &.is-playing {
       background-color: ${color.jet};
@@ -66,7 +70,7 @@ const PodcastEpisodeCardWrapper = styled.div`
 
   p {
     clear: both;
-    color: ${color.whiteSmoke};
+    color: ${color.white};
     font-size: ${fontSize.md};
   }
 
@@ -145,7 +149,7 @@ const NowPlayingSticker = styled(Sticker)`
 const TextWrapper = styled.div`
   flex: 1;
 
-  button {
+  div {
     text-align: left;
     width: 100%;
   }
@@ -173,7 +177,7 @@ const TextWrapper = styled.div`
   }
 
   h3 {
-    color: ${color.whiteSmoke};
+    color: ${color.white};
     font: ${fontSize.md} ${font.pnb};
     margin-top: ${spacing.xsm};
     margin-bottom: ${spacing.sm};
@@ -220,7 +224,7 @@ const TextWrapper = styled.div`
     }
 
     p {
-      color: ${color.whiteSmoke};
+      color: ${color.white};
       display: block;
       margin-top: ${spacing.md};
       margin-bottom: ${spacing.sm};
@@ -252,6 +256,20 @@ class PodcastEpisodeCard extends Component {
       <PodcastEpisodeCardWrapper
         id={id}
         className={`podcast-episode-card ${isPlaying ? 'is-playing' : ''}`}
+        tabindex="0"
+        role="button"
+        aria-label={`${isPlaying ? 'Currently playing' : 'Play'} Episode ${episode}: ${title}`}
+        onClick={this.setEpisode.bind(this, {
+          episode,
+          title,
+          description,
+          href,
+          id,
+          imageAlt,
+          imageUrl,
+          siteKey,
+          stickers,
+        })}
       >
         <div className="grow-div">
           <ImageWrapper className="podcast-episode-card__image">
@@ -277,20 +295,7 @@ class PodcastEpisodeCard extends Component {
             ))}
           </div>
           <TextWrapper>
-            <button
-              type="button"
-              onClick={this.setEpisode.bind(this, {
-                episode,
-                title,
-                description,
-                href,
-                id,
-                imageAlt,
-                imageUrl,
-                siteKey,
-                stickers,
-              })}
-            >
+            <div>
               <h4>
                 {
                   isPlaying && (
@@ -307,7 +312,7 @@ class PodcastEpisodeCard extends Component {
               </h4>
               <VideoPlay fill={color.white} />
               <h3>{title}</h3>
-            </button>
+            </div>
             <p>{description} </p>
             {href && <> <span>•••</span><a href={href}>More From This Episode</a></>}
           </TextWrapper>

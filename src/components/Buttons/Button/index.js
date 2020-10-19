@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import {
   color,
   font,
@@ -8,28 +8,38 @@ import {
   letterSpacing,
   lineHeight,
   spacing,
+  withThemes,
 } from '../../../styles';
 
-const StyledButton = styled.button`
-  background-color: ${color.eclipse};
-  color: ${color.white};
-  font: ${fontSize.lg}/${lineHeight.md} ${font.pnb};
-  height: 4rem;
-  letter-spacing: ${letterSpacing.xxlg};
-  line-height: 4rem;
-  max-width: 100%;
-  padding: 0 ${spacing.xlg};
-  text-align: center;
-  text-align: center;
-  text-transform: uppercase;
-  transition: 0.2s all ease;
-  white-space: nowrap;
+const StyledButtonTheme = {
+  default: css`
+    background-color: ${color.eclipse};
+    color: ${color.white};
+    font: ${fontSize.lg}/${lineHeight.md} ${font.pnb};
+    height: 4rem;
+    letter-spacing: ${letterSpacing.xxlg};
+    line-height: 4rem;
+    max-width: 100%;
+    padding: 0 ${spacing.xlg};
+    text-align: center;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.2s all ease;
+    white-space: nowrap;
 
-  @media(hover: hover) {
-    &:hover {
-      background-color: ${color.mint};
+    @media(hover: hover) {
+      &:hover {
+        background-color: ${color.mint};
+      }
     }
-  }
+  `,
+  dark: css`
+    background-color: ${color.asphalt};
+  `,
+};
+
+const StyledButton = styled.button`
+${withThemes(StyledButtonTheme)}
 `;
 
 function Button({
