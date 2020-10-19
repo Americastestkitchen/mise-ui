@@ -60,9 +60,9 @@ const NewsletterSuccessTheme = {
 
     svg {
       display: inline-block;
-      height: 2.1rem;
+      height: 1.4rem;
       margin-right: ${spacing.xsm};
-      width: 2.8rem;
+      width: 2.1rem;
     }
   `,
   dark: css`
