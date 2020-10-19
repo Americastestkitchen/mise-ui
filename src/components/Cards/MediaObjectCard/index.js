@@ -74,21 +74,28 @@ const MediaObjectCard = ({
     <MediaObjectCardDescription
       dangerouslySetInnerHTML={{ __html: description }}
     />
-    <MediaObjectCardCta href={ctaUrl}>
-      {ctaText}
-    </MediaObjectCardCta>
+    {ctaUrl && ctaText && (
+      <MediaObjectCardCta href={ctaUrl}>
+        {ctaText}
+      </MediaObjectCardCta>
+    )}
   </MediaObjectCardWrapper>
 );
 
 MediaObjectCard.propTypes = {
-  ctaText: PropTypes.string.isRequired,
-  ctaUrl: PropTypes.string.isRequired,
+  ctaText: PropTypes.string,
+  ctaUrl: PropTypes.string,
   description: PropTypes.string.isRequired,
   personHeadShot: PropTypes.shape({
     ...PersonHeadShot.propTypes,
   }).isRequired,
   personName: PropTypes.string.isRequired,
   personTitle: PropTypes.string.isRequired,
+};
+
+MediaObjectCard.defaultProps = {
+  ctaText: null,
+  ctaUrl: null,
 };
 
 export default MediaObjectCard;
