@@ -39,14 +39,14 @@ const PodcastEpisodeCardWrapper = styled.div`
 
   @media(hover:hover) {
     &:hover .grow-div {
-      background-color: ${color.transparentBlack};
+      background-color: ${color.jet};
       box-shadow: 0 7px 8px -2px ${color.black};
       transform: scale(1.05);
     }
   }
 
   &.is-playing .grow-div {
-    background-color: ${color.transparentBlack};
+    background-color: ${color.jet};
     box-shadow: 0 7px 8px -2px ${color.black};
     transform: scale(1.05);
   }
