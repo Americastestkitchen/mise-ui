@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 
 import { color } from '../../../../styles';
 
-const CircleOne = ({ fill }) => (
+const CircleOne = ({ className, fill }) => (
   <svg
     aria-hidden="true"
+    className={className}
     focusable="false"
     role="img"
     viewBox="0 0 201.922 50.77"
@@ -16,10 +17,12 @@ const CircleOne = ({ fill }) => (
 );
 
 CircleOne.propTypes = {
+  className: PropTypes.string,
   fill: PropTypes.string,
 };
 
 CircleOne.defaultProps = {
+  className: '',
   fill: color.turquoise,
 };
 
