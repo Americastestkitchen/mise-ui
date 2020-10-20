@@ -63,12 +63,25 @@ const Benefit = styled.div`
 `;
 
 const CircularIcon = styled.div`
+  animation: pulse 6s infinite ease-in-out;
   background-color: ${color.black};
   border-radius: 50%;
   display: inline-block;
   height: 6rem;
   position: relative;
   width: 6rem;
+
+  @keyframes pulse {
+    5% {
+      background-color: ${color.darkerMint};
+    }
+    10% {
+      background-color: ${color.darkerMint};
+    }
+    15% {
+      background-color: ${color.black};
+    }
+  }
 
   svg {
     position: absolute;
@@ -87,49 +100,6 @@ const CircularIcon = styled.div`
       width: 2.5rem;
     }
   }
-
-  &:hover {
-    background-color: ${color.seaSalt};
-    cursor: pointer;
-
-    svg {
-      &.cookbook-svg,
-      &.recipe-card {
-        path {
-          fill: ${color.black};
-        }
-      }
-
-      &.ribbon-award {
-        circle,
-        path {
-          stroke: ${color.black};
-        }
-      }
-
-      &.videos {
-        circle {
-          fill ${color.black};
-          stroke: ${color.black};
-        }
-
-        path {
-          stroke: ${color.black};
-        }
-      }
-
-      &.phone {
-        path {
-          stroke: ${color.black};
-        }
-
-        circle {
-          fill: ${color.black};
-          stroke: ${color.black};
-        }
-      }
-    }
-  }
 `;
 
 const MembershipBenefitsIcons = () => (
@@ -143,7 +113,9 @@ const MembershipBenefitsIcons = () => (
           data-testid={`membership-benefit-${idx}`}
           key={benefit.icon}
         >
-          <CircularIcon className={benefit.icon}>
+          <CircularIcon
+            style={{ animationDelay: `${idx}s` }}
+          >
             {renderIcon(benefit.icon)}
           </CircularIcon>
           <p>
