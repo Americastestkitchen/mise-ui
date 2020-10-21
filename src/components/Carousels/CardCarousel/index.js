@@ -88,8 +88,10 @@ const CardCarouselTheme = {
     }
 
     ${breakpoint('xs', 'md')`
-      .flickity-page-dots {
-        display: none;
+      &:not(.card-carousel--hero) {
+        .flickity-page-dots {
+          display: none;
+        }
       }
     `}
 
