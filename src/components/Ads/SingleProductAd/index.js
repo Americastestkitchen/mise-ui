@@ -150,6 +150,7 @@ const SingleProductAd = ({
   cta,
   ctaHref,
   ctaTarget,
+  onClick,
   title,
 }) => (
   <SingleProductWrapper>
@@ -161,6 +162,7 @@ const SingleProductAd = ({
           </SingleProductTitle>
           <SingleProductCta
             href={ctaHref}
+            onClick={onClick}
             target={ctaTarget}
             title={cta}
           >
@@ -201,11 +203,13 @@ SingleProductAd.propTypes = {
   cta: PropTypes.string.isRequired,
   ctaHref: PropTypes.string.isRequired,
   ctaTarget: PropTypes.string,
+  onClick: PropTypes.func,
   title: PropTypes.string.isRequired,
 };
 
 SingleProductAd.defaultProps = {
   ctaTarget: null,
+  onClick: null,
 };
 
 export default SingleProductAd;

@@ -176,6 +176,7 @@ const SingleMembershipCta = styled.a.attrs({
 const SingleMembershipAd = ({
   cta,
   ctaHref,
+  onClick,
   title,
 }) => (
   <SingleMembership>
@@ -186,6 +187,7 @@ const SingleMembershipAd = ({
         </SingleMembershipTitle>
         <SingleMembershipCta
           href={ctaHref}
+          onClick={onClick}
           title={cta}
         >
           {cta}
@@ -199,7 +201,12 @@ const SingleMembershipAd = ({
 SingleMembershipAd.propTypes = {
   cta: PropTypes.string.isRequired,
   ctaHref: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
   title: PropTypes.func.isRequired,
+};
+
+SingleMembershipAd.defaultProps = {
+  onClick: null,
 };
 
 export default SingleMembershipAd;
