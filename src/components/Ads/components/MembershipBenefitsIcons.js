@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 import { Cookbook, Phone, RecipeCard, RibbonAward, Videos } from '../../DesignTokens/Icon/svgs';
@@ -63,7 +64,7 @@ const Benefit = styled.div`
 `;
 
 const CircularIcon = styled.div`
-  animation: pulse 6s infinite ease-in-out;
+  ${({ animated }) => (animated ? 'animation: pulse 6s infinite ease-in-out;' : '')}
   background-color: ${color.black};
   border-radius: 50%;
   display: inline-block;
@@ -102,7 +103,7 @@ const CircularIcon = styled.div`
   }
 `;
 
-const MembershipBenefitsIcons = () => (
+const MembershipBenefitsIcons = ({ animated }) => (
   <MembershipBenefitsIconsWrapper
     data-testid="benefit-icons"
   >
@@ -114,6 +115,7 @@ const MembershipBenefitsIcons = () => (
           key={benefit.icon}
         >
           <CircularIcon
+            animated={animated}
             style={{ animationDelay: `${idx}s` }}
           >
             {renderIcon(benefit.icon)}
@@ -126,5 +128,13 @@ const MembershipBenefitsIcons = () => (
     }
   </MembershipBenefitsIconsWrapper>
 );
+
+MembershipBenefitsIcons.propTypes = {
+  animated: PropTypes.bool,
+};
+
+MembershipBenefitsIcons.defaultProps = {
+  animated: true,
+};
 
 export default MembershipBenefitsIcons;
