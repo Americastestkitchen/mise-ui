@@ -92,10 +92,14 @@ const RefinementFilterLabelTheme = {
     }
 
     &:hover {
-      color: ${color.silver};
+      ${({ isRefined }) => (isRefined ? `color: ${color.white};` : `color: ${color.silver};`)}
 
       .search-refinement-list__label-text {
-        color: ${color.silver};
+        ${({ isRefined }) => (isRefined ? `color: ${color.white};` : `color: ${color.silver};`)}
+      }
+
+      .refinement-filter__count {
+        ${({ isRefined }) => (isRefined ? `color: ${color.white};` : `color: ${color.silver};`)}
       }
     }
   `,
@@ -141,11 +145,18 @@ const RefinementFilterCheckbox = styled.input`
   width: 1.2rem;
 `;
 
+const RefinementFilterCountTheme = {
+  default: css`
+    color: ${color.nobel};
+  `,
+  dark: css`
+    color: ${color.white};
+  `,
+};
+
 const RefinementFilterCount = styled.span.attrs({
   className: 'refinement-filter__count',
-})`
-  color: ${color.nobel};
-`;
+})`${withThemes(RefinementFilterCountTheme)}`;
 
 const RefinementFilter = ({
   altFill,
