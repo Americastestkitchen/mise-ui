@@ -121,9 +121,9 @@ const deviceConfigMap = {
 };
 
 const deviceIdMap = {
-  desktop: 'mise-play/membership-showcase-desktop',
-  tablet: 'mise-play/membership-showcase-tablet',
-  phone: 'mise-play/membership-showcase-desktop',
+  desktop: 'mise-play/membership-showcase-desktop-2',
+  tablet: 'mise-play/membership-showcase-tablet-2',
+  phone: 'mise-play/membership-showcase-desktop-2',
 };
 
 const MembershipShowcaseAd = ({
@@ -146,7 +146,9 @@ const MembershipShowcaseAd = ({
       <MembershipShowcaseTitle>
         {title()}
       </MembershipShowcaseTitle>
-      <MembershipBenefitIcons />
+      <MembershipBenefitIcons
+        animated={false}
+      />
       <MembershipCta
         href={ctaHref}
         onClick={onClick}
