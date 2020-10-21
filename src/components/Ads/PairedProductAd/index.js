@@ -235,7 +235,7 @@ const PairedProductCta = styled.a.attrs({
   className: 'paired-product__cta',
 })`${withThemes(PairedProductCtaTheme)}`;
 
-const PairedProducts = ({ title, products }) => (
+const PairedProducts = ({ onClick, products, title }) => (
   <PairedProductWrapper>
     <PairedProductInnerWrapper>
       <PairedProductMainTitle>
@@ -270,6 +270,7 @@ const PairedProducts = ({ title, products }) => (
           </PairedProductInfo>
           <PairedProductCta
             href={ctaHref}
+            onClick={onClick}
             target={ctaTarget}
             title={cta}
           >
@@ -283,6 +284,7 @@ const PairedProducts = ({ title, products }) => (
 
 PairedProducts.propTypes = {
   title: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
   products: PropTypes.arrayOf(
     PropTypes.shape({
       cloudinaryId: PropTypes.string.isRequired,
@@ -293,6 +295,10 @@ PairedProducts.propTypes = {
       title: PropTypes.string.isRequired,
     }),
   ).isRequired,
+};
+
+PairedProducts.defaultProps = {
+  onClick: null,
 };
 
 export default PairedProducts;
