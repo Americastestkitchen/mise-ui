@@ -138,6 +138,7 @@ const FreeTrialAd = ({
   cloudinaryId,
   cta,
   ctaHref,
+  onClick,
   subtitle,
   title,
 }) => (
@@ -176,6 +177,7 @@ const FreeTrialAd = ({
         </FreeTrialSubtitle>
         <FreeTrialCta
           href={ctaHref}
+          onClick={onClick}
           title={cta}
         >
           {cta}
@@ -189,8 +191,13 @@ FreeTrialAd.propTypes = {
   cloudinaryId: PropTypes.string.isRequired,
   cta: PropTypes.string.isRequired,
   ctaHref: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
+};
+
+FreeTrialAd.defaultProps = {
+  onClick: null,
 };
 
 export default FreeTrialAd;

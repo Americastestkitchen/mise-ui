@@ -170,6 +170,7 @@ const SingleProductShowcaseAd = ({
   cta,
   ctaHref,
   ctaTarget,
+  onClick,
   siteKey,
   subtitle,
   title,
@@ -209,6 +210,7 @@ const SingleProductShowcaseAd = ({
         </ProductSubtitle>
         <ProductCta
           href={ctaHref}
+          onClick={onClick}
           target={ctaTarget}
           title={cta}
         >
@@ -227,6 +229,7 @@ SingleProductShowcaseAd.propTypes = {
   cta: PropTypes.string.isRequired,
   ctaHref: PropTypes.string.isRequired,
   ctaTarget: PropTypes.string,
+  onClick: PropTypes.func,
   siteKey: PropTypes.oneOf(['atk', 'cio', 'cco', 'kids', 'school', 'shop']).isRequired,
   subtitle: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
@@ -234,6 +237,7 @@ SingleProductShowcaseAd.propTypes = {
 
 SingleProductShowcaseAd.defaultProps = {
   ctaTarget: null,
+  onClick: null,
 };
 
 export default SingleProductShowcaseAd;
