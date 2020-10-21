@@ -16,9 +16,31 @@ const PodcastEpisodeCardWrapper = styled.div`
   font: ${fontSize.md}/${lineHeight.md} ${font.pnr};
   padding: ${spacing.sm} ${spacing.md};
 
+  ${breakpoint('xs', 'md')`
+    &.is-playing {
+      background-color: ${color.jet};
+      box-shadow: 0 7px 8px -2px ${color.transparentBlack};
+    }
+  `}
+
   ${breakpoint('md')`
     position: relative;
     background-color: transparent;
+    max-width: 84.8rem;
+    padding: 0;
+
+    &:hover,
+    &.is-playing {
+      .grow-div {
+        background-color: ${color.jet};
+        box-shadow: 0 7px 8px -2px ${color.transparentBlack};
+        transform: scale(1.05);
+      }
+    }
+
+    p {
+      display: none;
+    }
   `}
 
   .grow-div {
@@ -37,20 +59,6 @@ const PodcastEpisodeCardWrapper = styled.div`
     `}
   }
 
-  @media(hover:hover) {
-    &:hover .grow-div {
-      background-color: ${color.jet};
-      box-shadow: 0 7px 8px -2px ${color.black};
-      transform: scale(1.05);
-    }
-  }
-
-  &.is-playing .grow-div {
-    background-color: ${color.jet};
-    box-shadow: 0 7px 8px -2px ${color.black};
-    transform: scale(1.05);
-  }
-
   > div {
     display: flex;
     max-height: 20rem;
@@ -61,15 +69,6 @@ const PodcastEpisodeCardWrapper = styled.div`
     color: ${color.whiteSmoke};
     font-size: ${fontSize.md};
   }
-
-  ${breakpoint('md')`
-    max-width: 84.8rem;
-    padding: 0;
-
-    p {
-      display: none;
-    }
-  `}
 
   .place-hold {
     display: none;
