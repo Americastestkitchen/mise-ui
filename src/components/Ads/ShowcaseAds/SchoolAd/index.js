@@ -198,6 +198,7 @@ const SchoolAd = ({
   ctaHref,
   ctaTarget,
   deviceType,
+  onClick,
   siteKey,
   subtitle,
   title,
@@ -229,6 +230,7 @@ const SchoolAd = ({
         <SchoolCta
           href={ctaHref}
           target={ctaTarget}
+          onClick={onClick}
           title={cta}
         >
           {cta}
@@ -246,6 +248,7 @@ SchoolAd.propTypes = {
   ctaHref: PropTypes.string.isRequired,
   ctaTarget: PropTypes.string,
   deviceType: PropTypes.oneOf(['desktop', 'phone', 'tablet']).isRequired,
+  onClick: PropTypes.func,
   siteKey: PropTypes.oneOf(['atk', 'cio', 'cco', 'kids', 'school', 'shop']).isRequired,
   subtitle: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
@@ -253,6 +256,7 @@ SchoolAd.propTypes = {
 
 SchoolAd.defaultProps = {
   ctaTarget: null,
+  onClick: null,
 };
 
 export default SchoolAd;

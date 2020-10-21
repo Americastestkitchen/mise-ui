@@ -130,6 +130,7 @@ const MembershipShowcaseAd = ({
   cta,
   ctaHref,
   deviceType,
+  onClick,
   title,
 }) => (
   <MembershipShowcase>
@@ -148,6 +149,7 @@ const MembershipShowcaseAd = ({
       <MembershipBenefitIcons />
       <MembershipCta
         href={ctaHref}
+        onClick={onClick}
         title={cta}
       >
         {cta}
@@ -160,7 +162,12 @@ MembershipShowcaseAd.propTypes = {
   cta: PropTypes.string.isRequired,
   ctaHref: PropTypes.string.isRequired,
   deviceType: PropTypes.oneOf(['desktop', 'phone', 'tablet']).isRequired,
+  onClick: PropTypes.func,
   title: PropTypes.func.isRequired,
+};
+
+MembershipShowcaseAd.defaultProps = {
+  onClick: null,
 };
 
 export default MembershipShowcaseAd;

@@ -186,7 +186,7 @@ const HeroAdCtaTheme = {
   `,
 };
 
-const HeroAdCta = styled.a.attrs({
+const HeroAdCta = styled.span.attrs({
   className: 'hero-ad__cta',
 })`${withThemes(HeroAdCtaTheme)}`;
 
@@ -198,11 +198,17 @@ const HeroAds = ({
   cta,
   ctaHref,
   ctaTarget,
+  onClick,
   subtitle,
   title,
 }) => (
   <HeroAdWrapper>
-    <a href={ctaHref} target={ctaTarget}>
+    <a
+      href={ctaHref}
+      target={ctaTarget}
+      onClick={onClick}
+      title={cta}
+    >
       <HeroAdInnerWrapper
         backgroundColor={backgroundColor}
         data-testid="hero-ad__inner"
@@ -228,9 +234,6 @@ const HeroAds = ({
             backgroundColor={buttonColor}
             data-testid="hero-ad__cta"
             hoverColor={buttonHoverColor}
-            href={ctaHref}
-            target={ctaTarget}
-            title={cta}
           >
             {cta}
           </HeroAdCta>
@@ -248,6 +251,7 @@ HeroAds.propTypes = {
   cta: PropTypes.string.isRequired,
   ctaHref: PropTypes.string.isRequired,
   ctaTarget: PropTypes.string,
+  onClick: PropTypes.func,
   subtitle: PropTypes.string,
   title: PropTypes.string.isRequired,
 };
@@ -257,6 +261,7 @@ HeroAds.defaultProps = {
   buttonColor: 'tomato',
   buttonHoverColor: null,
   ctaTarget: null,
+  onClick: null,
   subtitle: null,
 };
 
