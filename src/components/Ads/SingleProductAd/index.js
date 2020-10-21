@@ -149,6 +149,7 @@ const SingleProductAd = ({
   cloudinaryId,
   cta,
   ctaHref,
+  ctaTarget,
   title,
 }) => (
   <SingleProductWrapper>
@@ -160,6 +161,7 @@ const SingleProductAd = ({
           </SingleProductTitle>
           <SingleProductCta
             href={ctaHref}
+            target={ctaTarget}
             title={cta}
           >
             {cta}
@@ -198,7 +200,12 @@ SingleProductAd.propTypes = {
   cloudinaryId: PropTypes.string.isRequired,
   cta: PropTypes.string.isRequired,
   ctaHref: PropTypes.string.isRequired,
+  ctaTarget: PropTypes.string,
   title: PropTypes.string.isRequired,
+};
+
+SingleProductAd.defaultProps = {
+  ctaTarget: null,
 };
 
 export default SingleProductAd;
