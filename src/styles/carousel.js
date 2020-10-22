@@ -48,13 +48,13 @@ export default css`
 
   .flickity-button {
     position: absolute;
-    background: hsla(0, 0%, 100%, 0.75);
+    background: none;
     border: none;
     color: #333;
   }
 
   .flickity-button:hover {
-    background: white;
+    background: none;
     cursor: pointer;
   }
 
