@@ -8,13 +8,14 @@ const CustomShowMoreResults = ({
   hasMore,
   refineNext,
   resultsCount,
+  resultType,
 }) => (
   <Button
     className={className}
     disabled={!hasMore}
     onClick={refineNext}
   >
-    Show {resultsCount ? `${resultsCount}` : ''} more results
+    Show {resultsCount ? `${resultsCount}` : ''} more {resultType}s
   </Button>
 );
 
@@ -23,12 +24,14 @@ CustomShowMoreResults.propTypes = {
   hasMore: PropTypes.bool,
   refineNext: PropTypes.func.isRequired,
   resultsCount: PropTypes.number,
+  resultType: PropTypes.string,
 };
 
 CustomShowMoreResults.defaultProps = {
   className: '',
   hasMore: true,
   resultsCount: null,
+  resultType: 'result',
 };
 
 const AlgoliaShowMoreResults = connectInfiniteHits(CustomShowMoreResults);
@@ -47,6 +50,7 @@ ShowMoreResults.propTypes = {
   hasMore: PropTypes.bool,
   refineNext: PropTypes.func.isRequired,
   resultsCount: PropTypes.number,
+  resultType: PropTypes.string,
 };
 
 ShowMoreResults.defaultProps = {
@@ -54,6 +58,7 @@ ShowMoreResults.defaultProps = {
   className: '',
   hasMore: true,
   resultsCount: null,
+  resultType: 'result',
 };
 
 export default ShowMoreResults;
