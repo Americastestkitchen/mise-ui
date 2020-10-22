@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 
 import { color } from '../../../../styles';
 
-const UnderlineOne = ({ fill }) => (
+const UnderlineOne = ({ className, fill }) => (
   <svg
     aria-hidden="true"
+    className={className}
     focusable="false"
     role="img"
     viewBox="0 0 188.001 15.153"
@@ -29,10 +30,12 @@ const UnderlineOne = ({ fill }) => (
 );
 
 UnderlineOne.propTypes = {
+  className: PropTypes.string,
   fill: PropTypes.string,
 };
 
 UnderlineOne.defaultProps = {
+  className: '',
   fill: color.turquoise,
 };
 
