@@ -38,12 +38,20 @@ const PodcastEpisodeCardWrapper = styled.div`
       .grow-div {
         background-color: ${color.jet};
         box-shadow: 0 7px 8px -2px ${color.transparentBlack};
-        transform: scale(1.05);
       }
     }
 
     p {
       display: none;
+    }
+  `}
+
+  ${breakpoint('lg')`
+    &:hover,
+    &.is-playing {
+      .grow-div {
+        transform: scale(1.05);
+      }
     }
   `}
 
