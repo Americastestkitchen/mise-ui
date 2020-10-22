@@ -7,6 +7,7 @@ import LabelFrame from '../LabelFrame';
 import ShowMoreResults from './index';
 import MiseInstantSearch from '../../lib/algolia/MiseInstantSearch/MiseInstantSearch';
 import PodcastEpisodeCard from '../Cards/PodcastEpisodeCard';
+import { withKnobs, text } from '@storybook/addon-knobs/react';
 
 import {
   color,
@@ -42,6 +43,7 @@ Default.defaultProps = {
 export default {
   title: 'Components|ShowMoreResults',
   component: ShowMoreResults,
+  decorators: [withKnobs],
 };
 
 
@@ -113,8 +115,8 @@ export const WithoutAlgolia = () => {
             <ShowMoreResults
               isAlgolia={false}
               hasMore={!(episodeCount === episodes.length)}
-              // resultsCount={episodes.length - episodeCount}
               refineNext={() => setEpisodeCount(episodeCount+8)}
+              resultType={text('Result Type', 'Episode')}
             />
           </DarkModeWrapper>
         </ThemeProvider>
