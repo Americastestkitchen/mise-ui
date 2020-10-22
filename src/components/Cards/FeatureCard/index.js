@@ -17,6 +17,7 @@ const featureCardWideHeight = '40rem';
 const StyledFeatureCard = styled.article`
   box-shadow: 0 0 0 ${color.black};
   height: ${({ isWide }) => (isWide ? '33rem' : featureCardWideHeight)};
+  overflow: hidden; // solves/hides FF image edge flashing bug
   position: relative;
   width: ${({ isWide }) => (isWide ? '34rem' : featureCardWidth)};
 
