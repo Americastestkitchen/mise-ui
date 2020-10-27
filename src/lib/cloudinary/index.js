@@ -82,7 +82,6 @@ const imageConfig = {
   heroCard() {
     return {
       ...baseImageConfig,
-      ...imageConfig.gradientFade(),
     };
   },
   pairedProduct() {
