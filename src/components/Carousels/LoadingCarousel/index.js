@@ -17,7 +17,7 @@ const StyledLoadingCarousel = styled.div`
     `}
   }
 
-  .text-and-dots { 
+  .text-and-dots {
     display: flex;
     height: 2.1rem;
     justify-content: space-between;
@@ -72,7 +72,7 @@ const StyledLoadingCarousel = styled.div`
           width: 4rem;
         }
     `}
-    
+
   }
 `;
 
@@ -112,7 +112,7 @@ LoadingCarousel.propTypes = {
   /** Larger title displayed above carousel */
   title: PropTypes.string,
   /** Sets the carousel-item styles for a particular card style */
-  type: PropTypes.oneOf(['standard', 'feature', 'tall']).isRequired,
+  type: PropTypes.oneOf(['standard', 'feature', 'person', 'tall']).isRequired,
 };
 
 LoadingCarousel.defaultProps = {
