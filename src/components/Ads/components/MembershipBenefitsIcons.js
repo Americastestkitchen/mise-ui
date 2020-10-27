@@ -52,6 +52,25 @@ const Benefit = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 6rem;
+  ${({ animated }) => (animated ? 'animation: pulse 8s infinite ease-in-out;' : '')}
+
+  &:nth-child(1) { animation-delay: 1.2s; }
+  &:nth-child(2) { animation-delay: 2.4s; }
+  &:nth-child(3) { animation-delay: 3.6s; }
+  &:nth-child(4) { animation-delay: 4.8s; }
+  &:nth-child(5) { animation-delay: 6.0s; }
+
+  @keyframes pulse {
+    3% {
+      transform: scale(1.15);
+    }
+    13% {
+      transform: scale(1.15);
+    }
+    15% {
+      transform: scale(1);
+    }
+  }
 
   p {
     color: ${color.white};
@@ -64,25 +83,12 @@ const Benefit = styled.div`
 `;
 
 const CircularIcon = styled.div`
-  ${({ animated }) => (animated ? 'animation: pulse 6s infinite ease-in-out;' : '')}
   background-color: ${color.black};
   border-radius: 50%;
   display: inline-block;
   height: 6rem;
   position: relative;
   width: 6rem;
-
-  @keyframes pulse {
-    5% {
-      background-color: ${color.darkerMint};
-    }
-    10% {
-      background-color: ${color.darkerMint};
-    }
-    15% {
-      background-color: ${color.black};
-    }
-  }
 
   svg {
     position: absolute;
@@ -110,14 +116,12 @@ const MembershipBenefitsIcons = ({ animated }) => (
     {
       benefits.map((benefit, idx) => (
         <Benefit
+          animated={animated}
           className="membership-benefit"
           data-testid={`membership-benefit-${idx}`}
           key={benefit.icon}
         >
-          <CircularIcon
-            animated={animated}
-            style={{ animationDelay: `${idx}s` }}
-          >
+          <CircularIcon>
             {renderIcon(benefit.icon)}
           </CircularIcon>
           <p>
