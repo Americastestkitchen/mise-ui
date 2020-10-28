@@ -129,6 +129,11 @@ const CarouselTheme = {
       }
     }
   `,
+  light: css`
+    .flickity-button {
+      color: ${color.eclipse};
+    }
+  `,
 };
 
 const CarouselWrapper = styled.div`
