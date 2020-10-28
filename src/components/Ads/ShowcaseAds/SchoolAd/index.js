@@ -146,7 +146,7 @@ const SchoolSubtitle = styled.h4.attrs({
 const SchoolCtaTheme = {
   default: css`
     color: ${color.white};
-    background-color: ${color.summerSky};
+    background-color: ${color.coldPool};
     display: block;
     flex: 1 0 100%;
     font: ${fontSize.lg}/4rem ${font.pnb};
@@ -155,12 +155,13 @@ const SchoolCtaTheme = {
     margin-top: ${spacing.xsm};
     text-align: center;
     text-transform: uppercase;
+    transition: 0.2s background-color ease-in-out;
     white-space: nowrap;
     width: 100%;
 
     @media(hover: hover) {
       &:hover {
-        background-color: ${color.endeavour};
+        background-color: ${color.darkColdPool};
       }
     }
 

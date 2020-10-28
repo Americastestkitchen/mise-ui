@@ -227,8 +227,8 @@ EmailForm.propTypes = {
 };
 
 EmailForm.defaultProps = {
-  buttonColor: 'wasabi',
-  buttonHoverColor: 'olive',
+  buttonColor: 'frog',
+  buttonHoverColor: 'darkFrog',
   buttonHoverTextColor: 'white',
   buttonTextColor: 'white',
   buttonText: 'Sign me up',

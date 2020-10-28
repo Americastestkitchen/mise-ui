@@ -19,7 +19,7 @@ describe('HeroAd', () => {
       >
         <HeroAd
           backgroundColor="darkSlate"
-          buttonColor="summerSky"
+          buttonColor="coldPool"
           cloudinaryId="mise-play/ATK-COMPLETE-SHOW-COVER"
           cta="Free trial issue"
           ctaHref="https://www.americastestkitchen.com/order"
@@ -57,6 +57,6 @@ describe('HeroAd', () => {
 
   it('renders correct button color', () => {
     renderComponent();
-    expect(screen.getByTestId('hero-ad__cta')).toHaveStyleRule(`background-color: ${color.summerSky};`);
+    expect(screen.getByTestId('hero-ad__cta')).toHaveStyleRule(`background-color: ${color.coldPool};`);
   });
 });
