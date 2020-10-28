@@ -33,7 +33,7 @@ const typeHeights = {
     hero: '46.5rem',
     tall: '60rem',
     person: '27.2rem',
-    default: '40rem',
+    default: '41rem',
   },
 };
 
