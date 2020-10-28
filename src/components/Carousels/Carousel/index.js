@@ -84,6 +84,13 @@ const CarouselTheme = {
     ${breakpoint('lg')`
       .flickity-button {
         display: block;
+
+        &:hover {
+          svg {
+            transform: scale(1.2);
+            opacity: 0.6;
+          }
+        }
       }
 
       ${({ dotPosition }) => (dotPosition ? `
