@@ -120,6 +120,7 @@ const FreeTrialCtaTheme = {
     height: 4rem;
     text-align: center;
     text-transform: uppercase;
+    transition: 0.2s background-color ease-in-out;
     width: 100%;
 
     @media(hover: hover) {

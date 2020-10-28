@@ -40,7 +40,7 @@ export const Default = () => {
     }}>
       <StoryWrapper>
         <InlineNewsletter
-          buttonColor={select('Button Color', ['wasabi', 'tomato', 'eclipse'], 'wasabi')}
+          buttonColor={select('Button Color', ['frog', 'tomato', 'eclipse'], 'frog')}
           buttonTextColor={select('Button Text Color', ['white', 'eclipse', 'tomato'], 'white')}
           buttonText={text('Button Text', 'Sign me up')}
           inputId="newsletter-email"
