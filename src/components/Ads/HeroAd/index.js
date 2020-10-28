@@ -175,6 +175,7 @@ const HeroAdCtaTheme = {
     height: 4rem;
     text-align: center;
     text-transform: uppercase;
+    transition: 0.2s background-color ease-in-out;
     white-space: nowrap;
     width: 100%;
 
