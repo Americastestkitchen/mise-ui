@@ -17,7 +17,7 @@ describe('components', () => {
         }}
       >
         <EmailForm
-          buttonColor="wasabi"
+          buttonColor="frog"
           buttonText="make me some cookies"
           errorText="no cookies for you!"
           inputId="email-1"

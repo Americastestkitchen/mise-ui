@@ -115,7 +115,7 @@ const SingleProductTitle = styled.div.attrs({
 
 const SingleProductCtaTheme = {
   default: css`
-    background-color: ${color.summerSky};
+    background-color: ${color.coldPool};
     color: ${color.white};
     display: block;
     font: ${fontSize.lg}/4rem ${font.pnb};
@@ -123,11 +123,12 @@ const SingleProductCtaTheme = {
     height: 4rem;
     text-align: center;
     text-transform: uppercase;
+    transition: 0.2s background-color ease-in-out;
     width: 100%;
 
     @media(hover: hover) {
       &:hover {
-        background-color: ${color.endeavour};
+        background-color: ${color.darkColdPool};
       }
     }
 

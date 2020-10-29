@@ -204,7 +204,7 @@ const PairedProductSubtitle = styled.div.attrs({
 const PairedProductCtaTheme = {
   default: css`
     color: ${color.white};
-    background-color: ${color.wasabi};
+    background-color: ${color.frog};
     display: block;
     flex: 1 0 100%;
     font: ${fontSize.lg}/4rem ${font.pnb};
@@ -213,12 +213,13 @@ const PairedProductCtaTheme = {
     margin-top: ${spacing.xsm};
     text-align: center;
     text-transform: uppercase;
+    transition: 0.2s background-color ease-in-out;
     white-space: nowrap;
     width: 100%;
 
     @media(hover: hover) {
       &:hover {
-        background-color: ${color.olive};
+        background-color: ${color.darkFrog};
       }
     }
 

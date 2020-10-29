@@ -143,7 +143,7 @@ const SingleMembershipTitle = styled.h3.attrs({
 
 const SingleMembershipCtaTheme = {
   default: css`
-    background-color: ${color.wasabi};
+    background-color: ${color.frog};
     color: ${color.white};
     display: block;
     font: ${fontSize.lg}/4rem ${font.pnb};
@@ -152,11 +152,12 @@ const SingleMembershipCtaTheme = {
     margin-bottom: ${spacing.sm};
     text-align: center;
     text-transform: uppercase;
+    transition: 0.2s background-color ease-in-out;
     width: 100%;
 
     @media(hover: hover) {
       &:hover {
-        background-color: ${color.olive};
+        background-color: ${color.darkFrog};
       }
     }
 
