@@ -14,7 +14,7 @@ const HeroCardWrapper = styled.div.attrs({
   className: 'hero-card',
 })`
   background-image: ${({ backgroundImg }) => `url("${backgroundImg}")`};
-  background-position: bottom center;
+  background-position: center center;
   background-size: cover;
   display: flex;
   flex-direction: column;
