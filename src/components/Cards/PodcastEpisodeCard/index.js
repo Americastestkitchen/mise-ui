@@ -75,7 +75,10 @@ const PodcastEpisodeCardWrapper = styled.div`
 
   > div {
     display: flex;
-    height: 20rem;
+
+    ${breakpoint('md')`
+      height: 20rem;
+    `}
   }
 
   p {
