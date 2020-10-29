@@ -131,8 +131,9 @@ display: none;
     align-items: center;
     display: flex;
 
-    img {
+    .player__image {
       margin-right: ${spacing.sm};
+      overflow: hidden;
       height: 6rem;
       width: 6rem;
     }
@@ -263,11 +264,12 @@ const AudioPlayer = ({
         </audio>
       </PlyrPlayer>
       <LinkWrapper className="player__more-info">
-        <Image
-          aria-hidden="true"
-          imageAlt={imageAlt}
-          imageUrl={imageUrl}
-        />
+        <div className="player__image">
+          <Image
+            imageAlt={imageAlt}
+            imageUrl={imageUrl}
+          />
+        </div>
         {
           href && <><span aria-hidden>•••</span><a href={href}>More From This Episode</a></>
         }
