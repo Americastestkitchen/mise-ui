@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import Badge from '../../../Badge';
 import Gif from '../../../Gif';
 import { getImageUrl, getGifSrcSet } from '../../../../lib/cloudinary';
 import {
@@ -23,12 +22,6 @@ const SchoolTheme = {
   dark: css`
     background-color: ${color.mineShaft};
     position: relative;
-
-    .badge {
-      left: ${spacing.xsm};
-      position: absolute;
-      top: ${spacing.xsm};
-    }
 
     ${breakpoint('md')`
       align-items: center;
@@ -191,7 +184,7 @@ const deviceConfigMap = {
 const deviceIdMap = {
   desktop: 'mise-play/school-showcase-desktop-3',
   tablet: 'mise-play/school-showcase-tablet-3',
-  phone: 'mise-play/school-showcase-tablet-3',
+  phone: 'mise-play/school-showcase-desktop-3',
 };
 
 const SchoolAd = ({
@@ -200,7 +193,6 @@ const SchoolAd = ({
   ctaTarget,
   deviceType,
   onClick,
-  siteKey,
   subtitle,
   title,
 }) => (
@@ -238,9 +230,6 @@ const SchoolAd = ({
         </SchoolCta>
       </SchoolInfoInner>
     </SchoolInfo>
-    <Badge
-      type={siteKey}
-    />
   </School>
 );
 
@@ -250,7 +239,6 @@ SchoolAd.propTypes = {
   ctaTarget: PropTypes.string,
   deviceType: PropTypes.oneOf(['desktop', 'phone', 'tablet']).isRequired,
   onClick: PropTypes.func,
-  siteKey: PropTypes.oneOf(['atk', 'cio', 'cco', 'kids', 'school', 'shop']).isRequired,
   subtitle: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
 };

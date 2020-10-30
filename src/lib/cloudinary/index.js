@@ -131,24 +131,18 @@ const imageConfig = {
   },
   showcaseSchoolAdMobile() {
     return {
-      aspectRatio: '34:33',
-      gravity: 'south_west',
       secure: true,
       width: 375,
     };
   },
   showcaseSchoolAdTablet() {
     return {
-      aspectRatio: '34:33',
-      gravity: 'south_west',
       secure: true,
       width: 300,
     };
   },
   showcaseSchoolAdDesktop() {
     return {
-      aspectRatio: '56:33',
-      gravity: 'south_west',
       secure: true,
       width: 500,
     };
