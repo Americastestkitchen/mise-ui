@@ -42,21 +42,23 @@ const SchoolFigure = styled.figure.attrs({
 
   ${breakpoint('md')`
     flex: 0 0 34rem;
-    height: 33rem;
+    height: 34rem;
     margin-bottom: 0;
     width: 34rem;
 
     img {
-      height: 33rem;
+      height: 34rem;
       width: 34rem;
     }
   `}
 
-  ${breakpoint('lg')`
+  ${breakpoint('xlg')`
     flex: 0 0 56rem;
+    height: 33rem;
     width: 56rem;
 
     img {
+      height: 33rem;
       width: 56rem;
     }
   `}
@@ -91,12 +93,12 @@ const SchoolInfo = styled.div.attrs({
 })`${withThemes(SchoolInfoTheme)}`;
 
 const SchoolInfoInner = styled.div`
-  ${breakpoint('md', 'lg')`
+  ${breakpoint('md', 'xlg')`
     padding: 0 ${spacing.sm};
   `}
 
-  ${breakpoint('lg')`
-    width: 34.4rem;
+  ${breakpoint('xlg')`
+    width: 34.2rem;
   `}
 `;
 
@@ -164,7 +166,7 @@ const SchoolCtaTheme = {
       width: 31.6rem;
     `}
 
-    ${breakpoint('lg')`
+    ${breakpoint('xlg')`
       width: 30.3rem;
     `}
   `,
@@ -184,7 +186,7 @@ const deviceConfigMap = {
 const deviceIdMap = {
   desktop: 'mise-play/school-showcase-desktop-3',
   tablet: 'mise-play/school-showcase-tablet-3',
-  phone: 'mise-play/school-showcase-desktop-3',
+  phone: 'mise-play/school-showcase-tablet-3',
 };
 
 const SchoolAd = ({
