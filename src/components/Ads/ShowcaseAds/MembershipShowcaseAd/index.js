@@ -57,7 +57,6 @@ const MembershipShowcaseFigure = styled.figure`
 
   ${breakpoint('md')`
     flex: 0 0 34rem;
-    height: 33rem;
     margin-bottom: 0;
     width: 34rem;
 
@@ -67,11 +66,13 @@ const MembershipShowcaseFigure = styled.figure`
     }
   `}
 
-  ${breakpoint('lg')`
-    flex: 0 0 56rem;
-    width: 56rem;
+  ${breakpoint('xlg')`
+  flex: 0 0 56rem;
+  height: 33rem;
+  width: 56rem;
 
     img {
+      height: 33rem;
       width: 56rem;
     }
   `}
@@ -124,7 +125,7 @@ const deviceConfigMap = {
 const deviceIdMap = {
   desktop: 'mise-play/membership-showcase-desktop-3',
   tablet: 'mise-play/membership-showcase-tablet-3',
-  phone: 'mise-play/membership-showcase-desktop-3',
+  phone: 'mise-play/membership-showcase-tablet-3',
 };
 
 const MembershipShowcaseAd = ({

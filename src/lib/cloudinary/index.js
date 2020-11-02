@@ -149,21 +149,18 @@ const imageConfig = {
   },
   membershipSingleMobile() {
     return {
-      aspectRatio: '17:10',
       secure: true,
       width: 375,
     };
   },
   membershipSingleTablet() {
     return {
-      aspectRatio: '34:33',
       secure: true,
       width: 300,
     };
   },
   membershipSingleDesktop() {
     return {
-      aspectRatio: '56:33',
       secure: true,
       width: 500,
     };
