@@ -27,6 +27,7 @@ const TitleTheme = {
   default: css`
     font: ${fontSize.xl}/1 ${font.pnb};
     padding: 0 0 ${spacing.xsm};
+    margin-right: ${spacing.md};
 
     ${breakpoint('md')`
       font-size: ${fontSize.xxl};
