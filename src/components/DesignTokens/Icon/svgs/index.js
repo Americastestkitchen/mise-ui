@@ -1,6 +1,7 @@
 import Arrow from './Arrow';
 import BreadcrumbArrow from './BreadcrumbArrow';
 import Checkmark from './Checkmark';
+import Checkmark2 from './Checkmark2';
 import ChefHat from './ChefHat';
 import ChevronThinDown from './ChevronThinDown';
 import Close from './Close';
@@ -31,6 +32,7 @@ export {
   Arrow,
   BreadcrumbArrow,
   Checkmark,
+  Checkmark2,
   ChefHat,
   ChevronThinDown,
   Close,

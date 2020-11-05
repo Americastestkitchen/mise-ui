@@ -47,8 +47,6 @@ const PodcastEpisodeCardWrapper = styled.div`
   `}
 
   ${breakpoint('lg')`
-    width: 84.4rem;
-    
     &:hover,
     &.is-playing {
       .grow-div {
