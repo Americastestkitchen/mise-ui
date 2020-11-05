@@ -33,6 +33,16 @@ export const Checkmark = ({ fill }) => (
 
 Checkmark.propTypes = Icons.Checkmark.propTypes;
 
+export const Checkmark2 = ({ fill }) => (
+  <Icon>
+    <Icons.Checkmark2
+      fill={fill}
+    />
+  </Icon>
+);
+
+Checkmark2.propTypes = Icons.Checkmark2.propTypes;
+
 export const ChevronThinDown = ({
   ariaHidden,
   ariaLabel,
