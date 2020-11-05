@@ -12,7 +12,7 @@ import {
   withThemes,
 } from '../../../styles';
 
-import Checkmark from '../../DesignTokens/Icon/svgs/Checkmark';
+import Checkmark from '../../DesignTokens/Icon/svgs/Checkmark2';
 import EmailForm from '../../Forms/EmailForm';
 
 const NewsletterTitleTheme = {
