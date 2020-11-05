@@ -44,22 +44,22 @@ const SchoolFigure = styled.figure.attrs({
     flex: 0 0 34rem;
     height: 34rem;
     margin-bottom: 0;
-    width: 34rem;
+    max-width: 34rem;
 
     img {
       height: 34rem;
-      width: 34rem;
+      max-width: 100%;
     }
   `}
 
   ${breakpoint('xlg')`
     flex: 0 0 56rem;
     height: 33rem;
-    width: 56rem;
+    max-width: 56rem;
 
     img {
       height: 33rem;
-      width: 56rem;
+      max-width: 100%;
     }
   `}
 `;
