@@ -17,7 +17,7 @@ const AccordionButtonTheme = {
     font: ${fontSize.md}/1 ${font.pnb};
     justify-content: space-between;
     letter-spacing: ${letterSpacing.md};
-    padding: ${spacing.xsm} ${spacing.xxsm} ${spacing.xsm} 0;
+    padding: 0.2rem ${spacing.xxsm} 0.2rem 0;
     text-transform: uppercase;
     width: 100%;
 
