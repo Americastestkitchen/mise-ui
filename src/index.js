@@ -48,7 +48,7 @@ import StationFinderForm from './components/Forms/StationFinderForm';
 import Sticker from './components/Cards/shared/Sticker';
 import SubscribeBubbles from './components/SubscribeBubbles';
 import TallCard from './components/Cards/TallCard';
-import TextDecorations, { CircledText, UnderlinedText } from './components/DesignTokens/TextDecoration';
+import TextDecorations, { CircledText, SquiggledText, UnderlinedText } from './components/DesignTokens/TextDecoration';
 import * as Icons from './components/DesignTokens/Icon';
 import fonts from './styles/fonts';
 import globalStyle from './styles/global';
@@ -106,6 +106,7 @@ export {
   SingleProductShowcaseAd,
   ShowMoreLess,
   ShowMoreResults,
+  SquiggledText,
   StandardCard,
   StationFinderForm,
   Sticker,
