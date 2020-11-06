@@ -4,19 +4,21 @@ import styled, { css } from 'styled-components';
 
 import Badge from '../../../Badge';
 import { Checkmark } from '../../../DesignTokens/Icon/svgs';
-import { color, font, fontSize, lineHeight, spacing, withThemes } from '../../../../styles';
+import { color, font, fontSize, spacing, withThemes } from '../../../../styles';
 
 const RefinementFilterLabelTheme = {
   default: css`
     align-items: center;
+    border: 1px dashed transparent;
     color: ${color.eclipse};
     display: flex;
     font: ${fontSize.md}/1.38 ${font.pnr};
-    margin-bottom: 1.2rem;
+    padding: ${spacing.xxsm} 0.25rem ${spacing.xxsm} 2.5rem;
+    left: -2.5rem;
     position: relative;
 
     &.search_site_list {
-      margin-bottom: 1.8rem;
+      padding: ${spacing.xsm} 0.25rem ${spacing.xsm} 2.5rem;
     }
 
     .search-refinement-list__label-text {
@@ -37,15 +39,22 @@ const RefinementFilterLabelTheme = {
       }
     }
 
+    &:focus-within {
+      border: 1px dashed ${color.eclipse};
+    }
+
     .search-refinement__badge {
       margin-right: 0.8rem;
     }
   `,
   kidsSearch: css`
     background-color: ${color.greySmoke};
+    border: 2px solid transparent;
     border-radius: 1rem;
     color: ${color.black};
-    line-height: ${lineHeight.xlg};
+    left: 0;
+    line-height: 1.37;
+    margin-bottom: 1.2rem;
     padding: 0.4rem 1.3rem;
 
     .search-refinement-list__label-text {
@@ -82,6 +91,10 @@ const RefinementFilterLabelTheme = {
         }
       }
     ` : '')}
+
+    &:focus-within {
+      border: 2px solid ${color.jade};
+    }
   `,
   dark: css`
     color: ${color.white};
@@ -169,7 +182,7 @@ const RefinementFilter = ({
   handleClick,
   value,
 }) => (
-  <li>
+  <>
     <RefinementFilterLabel
       altFill={altFill}
       className={`${attribute}`}
@@ -217,7 +230,7 @@ const RefinementFilter = ({
         )
       }
     </RefinementFilterLabel>
-  </li>
+  </>
 );
 
 RefinementFilter.propTypes = {
