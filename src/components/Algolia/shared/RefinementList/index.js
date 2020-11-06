@@ -6,7 +6,7 @@ import ShowMoreLess from '../../../ShowMoreLess';
 import RefinementFilter from '../RefinementFilter/RefinementFilter';
 import { color } from '../../../../styles';
 
-const RefinementListRefinements = styled.ul`
+const RefinementListRefinements = styled.div`
   border: none;
   margin: 0;
   padding: 0;

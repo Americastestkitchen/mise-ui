@@ -12,31 +12,8 @@ import {
   withThemes,
 } from '../../../../styles';
 
-const SearchSortByList = styled.ul``;
-
 const SearchSortByItemTheme = {
   default: css`
-    margin-bottom: ${spacing.sm};
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-  `,
-  kidsSearch: css`
-    margin-bottom: ${spacing.xsm};
-  `,
-};
-
-const SearchSortByItem = styled.li`
-  ${withThemes(SearchSortByItemTheme)}
-`;
-
-const SearchSortByButtonTheme = {
-  default: css`
-    align-items: center;
-    display: flex;
-    letter-spacing: normal;
-
     &:hover {
       cursor: pointer;
 
@@ -51,40 +28,31 @@ const SearchSortByButtonTheme = {
     }
   `,
   kidsSearch: css`
-    background-color: ${color.greySmoke};
-    border-radius: 1rem;
-    color: ${color.black};
-    display: block;
-    line-height: ${lineHeight.xlg};
-    text-align: left;
-    padding: 0.4rem 1.3rem;
-    width: 100%;
-
-    .search-sort-by__label {
-      color: ${color.black};
-    }
+    margin-bottom: ${spacing.xsm};
 
     &:hover {
-      box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
-
       .search-sort-by__label {
         color: ${color.black};
-      }
-    }
-
-    &.refined {
-      background-color: ${color.jade};
-
-      .search-sort-by__label {
-        color: ${color.white};
-        font-family: ${font.pnb};
       }
     }
   `,
 };
 
-const SearchSortByButton = styled.button`
-  ${withThemes(SearchSortByButtonTheme)}
+const SearchSortByItem = styled.div`
+  ${withThemes(SearchSortByItemTheme)}
+`;
+
+const SearchSortByRadioInputTheme = {
+  default: css`
+    position: absolute;
+    opacity: 0;
+  `,
+  kidsSearch: css`
+  `,
+};
+
+const SearchSortByRadioInput = styled.input`
+  ${withThemes(SearchSortByRadioInputTheme)}
 `;
 
 const SearchSortByCircleTheme = {
@@ -112,38 +80,91 @@ const SearchSortByCircle = styled.div.attrs({
 
 const SearchSortByLabelTheme = {
   default: css`
+    align-items: center;
+    border: 1px dashed transparent;
     color: ${color.eclipse};
+    display: flex;
     font: ${fontSize.md}/1.38 ${font.pnr};
     font-size: ${fontSize.md};
+    left: -2.5rem;
+    letter-spacing: normal;
+    padding: ${spacing.xxsm} 0.25rem ${spacing.xxsm} 2.5rem;
+    position: relative;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:focus-within {
+      border: 1px dashed ${color.eclipse};
+    }
   `,
-  kidsSearch: css``,
+  kidsSearch: css`
+    background-color: ${color.greySmoke};
+    border: 2px solid transparent;
+    border-radius: 1rem;
+    color: ${color.black};
+    display: block;
+    left: 0;
+    line-height: ${lineHeight.sm};
+    text-align: left;
+    padding: 0.4rem 1.3rem;
+    width: 100%;
+
+    .search-sort-by__label {
+      color: ${color.black};
+    }
+
+    &:hover {
+      box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    }
+
+    ${({ isRefined }) => (isRefined ? `
+      background-color: ${color.jade};
+      color: ${color.white};
+      font-family: ${font.pnb};
+
+      &:hover {
+        color: ${color.white};
+      }
+    ` : '')}
+
+    &:focus-within {
+      border: 2px solid ${color.jade};
+    }
+  `,
 };
 
-const SearchSortByLabel = styled.span.attrs({
+const SearchSortByLabel = styled.label.attrs({
   className: 'search-sort-by__label',
 })`${withThemes(SearchSortByLabelTheme)}`;
 
 export const CustomSortBy = ({ items, refine }) => (
-  <SearchSortByList>
+  <>
     {
       items.map(({ isRefined, label, value }) => (
-        <SearchSortByItem key={value}>
-          <SearchSortByButton
-            className={isRefined ? 'refined' : ''}
-            onClick={(e) => { e.preventDefault(); refine(value); }}
+        <SearchSortByItem
+          key={value}
+        >
+          <SearchSortByLabel
+            isRefined={isRefined}
           >
+            <SearchSortByRadioInput
+              checked={isRefined}
+              className={isRefined ? 'refined' : ''}
+              onClick={(e) => { e.preventDefault(); refine(value); }}
+              type="radio"
+            />
             <SearchSortByCircle
               data-testid="sort-by__radio"
               isRefined={isRefined}
             />
-            <SearchSortByLabel>
-              {label}
-            </SearchSortByLabel>
-          </SearchSortByButton>
+            {label}
+          </SearchSortByLabel>
         </SearchSortByItem>
       ))
     }
-  </SearchSortByList>
+  </>
 );
 
 CustomSortBy.propTypes = {
