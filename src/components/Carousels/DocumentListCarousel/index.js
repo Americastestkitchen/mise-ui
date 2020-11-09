@@ -10,6 +10,7 @@ import { color, font, fontSize, letterSpacing, lineHeight, spacing, withThemes }
 const IntroTheme = {
   default: css`
     font: italic ${fontSize.md}/1.31 ${font.mwr};
+    margin-right: ${spacing.sm};
     padding-bottom: ${spacing.sm};
 
     ${breakpoint('lg')`
