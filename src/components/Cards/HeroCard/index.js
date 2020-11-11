@@ -18,12 +18,22 @@ const HeroCardWrapper = styled.div.attrs({
   background-size: cover;
   display: flex;
   flex-direction: column;
+  position: relative;
   min-height: 46.5rem;
   justify-content: flex-end;
   width: 100%;
 
   &:hover {
     cursor: pointer;
+  }
+
+  &::after {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(8, 8, 8, 1));
+    content: ' ';
+    position: absolute;
+    bottom: 0;
+    height: 50%;
+    width: 100%;
   }
 `;
 
@@ -96,12 +106,12 @@ const HeroCardDescription = styled.div`
 `;
 
 const HeroCardLink = styled.a`
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(8, 8, 8, 1));
   display: flex;
   flex-direction: column;
   flex: 1 0 0;
   justify-content: flex-end;
   padding: ${spacing.lg} ${spacing.sm};
+  z-index: 1;
 
   ${breakpoint('md')`
     padding: ${spacing.xlg};
