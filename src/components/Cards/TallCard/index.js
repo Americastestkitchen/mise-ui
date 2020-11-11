@@ -26,6 +26,16 @@ const StyledTallCard = styled.article`
     flex-direction: column;
     align-items: center;
     color: ${color.white};
+    z-index: 2;
+  }
+
+  @media(hover: hover) {
+    &:hover {
+      .tall-card__background-img {
+        transform: translateY(-${spacing.xsm});
+        z-index: 0;
+      }
+    }
   }
 
   ${breakpoint('md')`
@@ -40,6 +50,7 @@ const Overlay = styled.div`
   left: 0;
   position: absolute;
   width: 100%;
+  z-index: 1;
 `;
 
 const StyledImage = styled(Image)`
@@ -125,7 +136,7 @@ const TallCard = ({
           data-testid="overlay"
         />
         <StyledImage
-          className={className}
+          className={`${className} tall-card__background-img`}
           imageAlt={imageAlt}
           imageUrl={imageUrl}
         />
