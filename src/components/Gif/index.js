@@ -187,6 +187,7 @@ class Gif extends Component {
             autoPlay
             loop
             muted
+            playsinline
             poster="${srcSet.poster}"
           >
             <source
