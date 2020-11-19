@@ -60,6 +60,18 @@ export const MysteryRecipe = ({
 
 MysteryRecipe.propTypes = Logos.MysteryRecipe.propTypes;
 
+export const PerfectlySeasonal = ({
+  fill,
+}) => (
+  <Logo>
+    <Logos.PerfectlySeasonal
+      fill={fill}
+    />
+  </Logo>
+);
+
+PerfectlySeasonal.propTypes = Logos.PerfectlySeasonal.propTypes;
+
 export const Proof = ({
   fill,
 }) => (
@@ -84,13 +96,27 @@ export const TheWalkIn = ({
 
 TheWalkIn.propTypes = Logos.TheWalkIn.propTypes;
 
+export const WhatsEatingDan = ({
+  fill,
+}) => (
+  <Logo>
+    <Logos.WhatsEatingDan
+      fill={fill}
+    />
+  </Logo>
+);
+
+WhatsEatingDan.propTypes = Logos.WhatsEatingDan.propTypes;
+
 export const keyToLogo = key => ({
   atk: ATK,
   cco: CCO,
   cio: CIO,
   mysteryRecipe: MysteryRecipe,
+  perfectlySeasonal: PerfectlySeasonal,
   proof: Proof,
   walkIn: TheWalkIn,
+  whatsEatingDan: WhatsEatingDan,
 }[key] || null);
 
 export default Logos;
