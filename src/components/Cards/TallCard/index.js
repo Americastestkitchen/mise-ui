@@ -98,8 +98,10 @@ const determineLogoWidth = (logoType) => {
     cco: '18.93rem',
     cio: '15rem',
     mysteryRecipe: '14.3rem',
+    perfectlySeasonal: '16.3rem',
     proof: '24rem',
     walkIn: '20rem',
+    whatsEatingDan: '10rem',
   };
   const logoWidth = logoTypes[logoType];
   return logoWidth;
