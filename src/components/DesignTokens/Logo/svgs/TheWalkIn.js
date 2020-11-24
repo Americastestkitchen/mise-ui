@@ -29,7 +29,7 @@ TheWalkIn.propTypes = {
 };
 
 TheWalkIn.defaultProps = {
-  fill: color.eclipse,
+  fill: color.white,
 };
 
 export default TheWalkIn;
