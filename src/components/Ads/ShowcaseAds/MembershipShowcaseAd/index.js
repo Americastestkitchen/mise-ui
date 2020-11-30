@@ -68,7 +68,6 @@ const MembershipShowcaseFigure = styled.figure`
 
   ${breakpoint('xlg')`
   flex: 0 0 56rem;
-  height: 33rem;
   width: 56rem;
 
     img {
