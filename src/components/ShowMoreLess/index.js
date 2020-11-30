@@ -4,8 +4,8 @@ import styled, { css } from 'styled-components';
 
 import { color, font, spacing, withThemes } from '../../styles';
 
-const ShowMoreLessInitial = styled.div``;
-const ShowMoreLessRest = styled.div``;
+const ShowMoreLessInitial = styled.ul``;
+const ShowMoreLessRest = styled.ul``;
 
 export const ShowMoreLessButtonTheme = {
   default: css`
@@ -63,9 +63,9 @@ const ShowMoreLess = ({ initialCount, items, id }) => {
             </ShowMoreLessButton>
           </>
         ) : (
-          <>
+          <ul>
             {items.map(item => item)}
-          </>
+          </ul>
         )
       }
     </div>
