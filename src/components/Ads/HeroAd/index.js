@@ -24,7 +24,6 @@ const HeroAdWrapperTheme = {
 
     ${breakpoint('xs', 'md')`
       overflow: hidden;
-      padding-top: 3rem;
       width: 100%;
     `}
   `,

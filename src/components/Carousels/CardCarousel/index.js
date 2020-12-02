@@ -73,20 +73,6 @@ const CardCarouselTheme = {
       overflow: visible;
     }
 
-    .flickity-enabled ~ .linear-gradient {
-      display: block;
-      height: 100%;
-      position: absolute;
-      right: 0;
-      top: 0;
-      width: 4rem;
-      z-index: 1;
-
-      &.left {
-        left: 0;
-      }
-    }
-
     ${breakpoint('xs', 'md')`
       &:not(.card-carousel--hero) {
         .flickity-page-dots {
@@ -98,6 +84,16 @@ const CardCarouselTheme = {
     ${breakpoint('lg')`
       .linear-gradient {
         display: block;
+        height: 100%;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 4rem;
+        z-index: 1;
+
+        &.left {
+          left: 0;
+        }
       }
 
       .carousel-cell {
