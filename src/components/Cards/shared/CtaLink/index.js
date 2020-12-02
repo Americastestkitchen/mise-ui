@@ -19,6 +19,7 @@ const CtaLinkTheme = {
     `}
   `,
   dark: css`
+    font: ${fontSize.md} /${lineHeight.sm} ${font.pnb};
     ${mixins.styledLink(color.tomato, color.rust, color.white)};
     &:hover {
       color: ${color.white};
