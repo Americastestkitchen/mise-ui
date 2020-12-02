@@ -1,16 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import breakpoint from 'styled-components-breakpoint';
-import { font, fontSize, lineHeight, spacing } from '../../../../styles';
+import styled, { css } from 'styled-components';
+import { color, font, fontSize, lineHeight, withThemes } from '../../../../styles';
 
+const TitleTheme = {
+  default: css`
+    font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb};
+    transition: color 0.2s ease;
+
+    @media(hover: hover) {
+      &:hover {
+        color: ${color.mint};
+      }
+    }
+  `,
+  dark: css`
+    @media(hover: hover) {
+      &:hover {
+        color: ${color.silver};
+      }
+    }
+  `,
+};
 const StyledTitle = styled.h3`
-  margin-bottom: ${spacing.xsm};
-  font: ${fontSize.md}/${lineHeight.sm} ${font.pnb};
-
-  ${breakpoint('lg')`
-    font-size: ${fontSize.xl};
-  `}
+  ${withThemes(TitleTheme)};
 `;
 
 const Title = ({ className, title }) => (

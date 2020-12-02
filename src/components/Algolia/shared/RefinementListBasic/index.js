@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components';
 
 import { ChefHat, Content, Cookbook, Knife, Sort, Time } from '../../../DesignTokens/Icon/svgs';
 import RefinementFilter from '../RefinementFilter/RefinementFilter';
-import { font, spacing, withThemes } from '../../../../styles';
+import { color, font, fontSize, letterSpacing, spacing, withThemes } from '../../../../styles';
 
 const RefinementListRefinements = styled.div`
   border: none;
@@ -72,6 +72,12 @@ const RefinementListLegendTheme = {
       min-width: 2.3rem;
     }
   `,
+  dark: css`
+    color: ${color.white};
+    font: ${fontSize.md}/1 ${font.pnb};
+    letter-spacing: ${letterSpacing.md};
+    padding: 0 0 ${spacing.sm};
+  `,
 };
 
 const RefinementListLegend = styled.legend`
@@ -91,13 +97,14 @@ const icons = {
 export const CustomBasicRefinementList = ({
   attribute,
   icon,
+  includeCount,
   items,
   label,
   refine,
   handleClick,
 }) => {
   const Icon = icon ? icons[icon] : null;
-  return (
+  return items.length > 0 && (
     <RefinementListRefinements>
       <RefinementListFieldset>
         <div>
@@ -112,6 +119,7 @@ export const CustomBasicRefinementList = ({
               <RefinementFilter
                 {...item}
                 attribute={attribute}
+                includeCount={includeCount}
                 key={`${attribute}-${item.label}`}
                 handleClick={handleClick}
                 refine={refine}
@@ -129,6 +137,7 @@ CustomBasicRefinementList.propTypes = {
   currentRefinement: PropTypes.array.isRequired,
   handleClick: PropTypes.func,
   icon: PropTypes.string,
+  includeCount: PropTypes.bool,
   items: PropTypes.array,
   label: PropTypes.string,
   refine: PropTypes.func.isRequired,
@@ -137,25 +146,38 @@ CustomBasicRefinementList.propTypes = {
 CustomBasicRefinementList.defaultProps = {
   handleClick: null,
   icon: null,
+  includeCount: true,
   items: null,
   label: null,
 };
 
-export const RefinementListBasicEl = ({ attribute, items, ...restProps }) => (
-  items.length > 0 && (
-    <CustomBasicRefinementList
-      attribute={attribute}
-      items={items}
-      {...restProps}
-    />
-  )
+const AlgoliaRefinementList = connectRefinementList(CustomBasicRefinementList);
+
+const RefinementListBasic = ({ attribute, items, ...restProps }) => (
+  attribute !== ''
+    ? (
+      <AlgoliaRefinementList
+        attribute={attribute}
+        items={items}
+        {...restProps}
+      />
+    )
+    : (
+      <CustomBasicRefinementList
+        attribute={attribute}
+        currentRefinement={[]}
+        items={items}
+        includeCount={false}
+        {...restProps}
+      />
+    )
 );
 
-RefinementListBasicEl.propTypes = {
+RefinementListBasic.propTypes = {
   /** Algolia attribute that is used to pull refinement values. */
-  attribute: PropTypes.string.isRequired,
+  attribute: PropTypes.string,
   /** Algolia attribute, list of refinement values. */
-  items: PropTypes.array.isRequired,
+  items: PropTypes.array,
   /** Used to pass click functionality from jarvis etc. */
   handleClick: PropTypes.func,
   /** Unique id string for svg icon to render next to label */
@@ -164,13 +186,17 @@ RefinementListBasicEl.propTypes = {
   label: PropTypes.string,
   /** Initial number of refinement filters that are visible in the refinement list. */
   transformItems: PropTypes.func,
+  /** Call this with the value of a filter to refine results based on filter. */
+  refine: PropTypes.func.isRequired,
 };
 
-RefinementListBasicEl.defaultProps = {
+RefinementListBasic.defaultProps = {
+  attribute: '',
   handleClick: null,
   icon: null,
+  items: null,
   label: null,
   transformItems: null,
 };
 
-export default connectRefinementList(RefinementListBasicEl);
+export default RefinementListBasic;

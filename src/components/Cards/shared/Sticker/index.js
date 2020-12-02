@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import breakpoint from 'styled-components-breakpoint';
 import styled from 'styled-components';
 import { color, font, fontSize, letterSpacing, spacing } from '../../../../styles';
 import { Collection, VideoPlay } from '../../../DesignTokens/Icon';
@@ -21,6 +20,7 @@ const StyledSticker = styled.span`
   font: ${fontSize.xsm}/${stickerHeight} ${font.pnb};
   letter-spacing: ${letterSpacing.md};
   text-transform: uppercase;
+  vertical-align: top;
   white-space: nowrap;
 
   svg {
@@ -29,25 +29,20 @@ const StyledSticker = styled.span`
     height: 1rem;
     max-height: 60%;
   }
-
-  ${breakpoint('xs', 'lg')`
-    &:not(:first-of-type) {
-      display: none;
-    }
-  `}
 `;
 
 const determineIconType = (contentType) => {
   const contentTypes = {
     collection: Collection,
+    clip: VideoPlay,
     episode: VideoPlay,
+    playlist: VideoPlay,
     video: VideoPlay,
     'cooking school course': VideoPlay,
   };
   const El = contentTypes[contentType];
   return El ? <El fill={`${color.white}`} /> : null;
 };
-
 
 /**
 
@@ -92,6 +87,7 @@ for mobile for most types of cards.
 const Sticker = ({
   className,
   contentType,
+  icon,
   text,
   type,
 }) => (
@@ -99,7 +95,7 @@ const Sticker = ({
     className={className}
     type={type}
   >
-    { type === 'editorial' ? determineIconType(contentType) : null }
+    { icon && type === 'editorial' ? determineIconType(contentType) : null }
     <span>{text}</span>
   </StyledSticker>
 );
@@ -108,15 +104,17 @@ Sticker.propTypes = {
   className: PropTypes.string,
   /** The type of content that the card represents */
   contentType: PropTypes.string,
-  /** The text inside the sticker. Must be less than N characters. */
+  /** Whether or not to include a content-type icon */
+  icon: PropTypes.bool,
+  /** The text inside the sticker. */
   text: PropTypes.string.isRequired,
-  /** True if it is a priority sticker, false if it is a basic sticker */
   type: PropTypes.oneOf(['editorial', 'priority']).isRequired,
 };
 
 Sticker.defaultProps = {
   className: '',
   contentType: null,
+  icon: true,
 };
 
 export default Sticker;

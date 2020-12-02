@@ -4,19 +4,15 @@ import styled, { css } from 'styled-components';
 
 import { color, font, spacing, withThemes } from '../../styles';
 
-const ShowMoreLessInitial = styled.div`
-  margin-bottom: ${spacing.xsm};
-`;
-
-const ShowMoreLessRest = styled.div`
-  margin-bottom: 1.2rem;
-`;
+const ShowMoreLessInitial = styled.div``;
+const ShowMoreLessRest = styled.div``;
 
 export const ShowMoreLessButtonTheme = {
   default: css`
     color: ${color.nobel};
     font: 1.2rem/1 ${font.pnb};
     letter-spacing: 1.2px;
+    padding: ${spacing.xsm} 0;
     text-transform: uppercase;
 
     &:hover {

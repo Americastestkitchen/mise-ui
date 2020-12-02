@@ -1,0 +1,76 @@
+import * as TextDecorations from '../TextDecoration';
+import { color } from '../../../styles';
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Design Tokens|TextDecorations" component={TextDecorations}/>
+
+# Text Decorations
+<div style={{
+  backgroundColor: color.eclipse,
+  borderRadius: '20px',
+  display: 'flex',
+  flexWrap: 'wrap',
+  justifyContent: 'space-between',
+  margin: '24px 0 36px',
+  padding: '40px 40px 0',
+}}>
+  {
+    Object.keys(TextDecorations).filter(
+      decoration => decoration !== 'keyToDecoration' && decoration !== 'default'
+    ).map((decoration) => (
+      <div
+        key={decoration}
+        style={{
+          alignItems: 'center',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+          height: '100px',
+          marginBottom: '40px',
+          maxWidth: 'calc(25% - 16px)',
+          width: 'calc(25% - 16px)',
+        }}
+      >
+        <style>{`
+          svg {
+            margin-bottom: 12px;
+          }
+        `}
+        </style>
+        {
+          decoration === 'keyToDecoration' || decoration !== 'default' ? (
+            React.createElement(TextDecorations[decoration])
+          ) : null
+        }
+        <h2
+          style={{
+            borderBottom: 0,
+            color: color.white,
+            fontSize: '16px',
+          }}
+        >
+          {decoration}
+        </h2>
+      </div>
+    ))
+  }
+</div>
+
+## SVG Guidelines
+SVGs often have extra unnecessary code (usually from a design program export process) that bloats the file size and can slow down rendering. Here are a few things you should do before adding the SVG to the repo:
+
+1. Run the SVG through an SVG Optimizer (https://jakearchibald.github.io/svgomg/).
+
+2. Remove any inline width and height attributes on the SVG. Instead replace with `viewBox="0 0 width height"`. This allows the SVG to scale better.
+
+3. A11y: In order to reach our goal of compliance with the Web Content Accessibility Guidelines 2.1, please include the following attributes on the `svg` element:
+    - `role="img"`
+    - `aria-label="description of the overall image"`
+    - `aria-hidden="true"` (if purely decorative)
+    - `focusable="false"` (if purely decorative)
+
+4. Always name-space auto-generated clip path, id, and class names to make sure they are unique and don't conflict with other svgs.
+
+5. To keep our icon library looking tidy and feeling easy to use, please use a `fill` prop and set the default value to `${color.eclipse}`
+
+Note: Since the background of our Storybook is white it may be difficult to view your SVG; if so, you will need to change any fill/stroke attributes that are white or transparent.

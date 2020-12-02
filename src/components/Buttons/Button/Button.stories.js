@@ -5,7 +5,7 @@ import { withKnobs, text } from '@storybook/addon-knobs/react';
 import Button from './index';
 
 export default {
-  title: 'Components|Button',
+  title: 'Components|Buttons/Button',
   component: Button,
   decorators: [withKnobs],
 };

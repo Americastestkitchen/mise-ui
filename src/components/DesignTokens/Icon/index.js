@@ -11,6 +11,12 @@ Icon.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
+export const Arrow = () => (
+  <Icon>
+    <Icons.Arrow />
+  </Icon>
+);
+
 export const BreadcrumbArrow = () => (
   <Icon>
     <Icons.BreadcrumbArrow />
@@ -26,6 +32,33 @@ export const Checkmark = ({ fill }) => (
 );
 
 Checkmark.propTypes = Icons.Checkmark.propTypes;
+
+export const Checkmark2 = ({ fill }) => (
+  <Icon>
+    <Icons.Checkmark2
+      fill={fill}
+    />
+  </Icon>
+);
+
+Checkmark2.propTypes = Icons.Checkmark2.propTypes;
+
+export const ChevronThinDown = ({
+  ariaHidden,
+  ariaLabel,
+  className,
+  fill,
+}) => (
+  <Icon>
+    <Icons.ChevronThinDown
+      ariaHidden={ariaHidden}
+      ariaLabel={ariaLabel}
+      className={className}
+      fill={fill}
+    />
+  </Icon>
+);
+ChevronThinDown.propTypes = Icons.ChevronThinDown.propTypes;
 
 export const Close = ({ ariaLabel, fill }) => (
   <Icon>
@@ -58,6 +91,16 @@ export const Cookbook = ({ className }) => (
 
 Cookbook.propTypes = Icons.Cookbook.propTypes;
 
+export const FastForward = ({ fill }) => (
+  <Icon>
+    <Icons.FastForward
+      fill={fill}
+    />
+  </Icon>
+);
+
+FastForward.propTypes = Icons.FastForward.propTypes;
+
 export const FavoriteRibbon = ({ ariaHidden, ariaLabel, className, fill }) => (
   <Icon>
     <Icons.FavoriteRibbon
@@ -70,6 +113,24 @@ export const FavoriteRibbon = ({ ariaHidden, ariaLabel, className, fill }) => (
 );
 
 FavoriteRibbon.propTypes = Icons.FavoriteRibbon.propTypes;
+
+export const Folder = ({
+  ariaHidden,
+  ariaLabel,
+  className,
+  fill,
+}) => (
+  <Icon>
+    <Icons.Folder
+      ariaHidden={ariaHidden}
+      ariaLabel={ariaLabel}
+      className={className}
+      fill={fill}
+    />
+  </Icon>
+);
+
+Folder.propTypes = Icons.Folder.propTypes;
 
 export const Filter = ({ className, fill }) => (
   <Icon>
@@ -93,6 +154,26 @@ export const Lock = ({ className, fill }) => (
 
 Lock.propTypes = Icons.Lock.propTypes;
 
+export const Pause = ({ fill }) => (
+  <Icon>
+    <Icons.Pause
+      fill={fill}
+    />
+  </Icon>
+);
+
+Pause.propTypes = Icons.Pause.propTypes;
+
+export const Phone = ({ fill }) => (
+  <Icon>
+    <Icons.Phone
+      fill={fill}
+    />
+  </Icon>
+);
+
+Phone.propTypes = Icons.Phone.propTypes;
+
 export const Plus = ({ fill }) => (
   <Icon>
     <Icons.Plus
@@ -103,6 +184,24 @@ export const Plus = ({ fill }) => (
 
 Plus.propTypes = Icons.Plus.propTypes;
 
+export const Print = ({
+  ariaHidden,
+  ariaLabel,
+  className,
+  fill,
+}) => (
+  <Icon>
+    <Icons.Print
+      ariaHidden={ariaHidden}
+      ariaLabel={ariaLabel}
+      className={className}
+      fill={fill}
+    />
+  </Icon>
+);
+
+Print.propTypes = Icons.Print.propTypes;
+
 export const QuestionMark = ({ fill }) => (
   <Icon>
     <Icons.QuestionMark
@@ -112,6 +211,36 @@ export const QuestionMark = ({ fill }) => (
 );
 
 QuestionMark.propTypes = Icons.QuestionMark.propTypes;
+
+export const RecipeCard = ({ fill }) => (
+  <Icon>
+    <Icons.RecipeCard
+      fill={fill}
+    />
+  </Icon>
+);
+
+RecipeCard.propTypes = Icons.RecipeCard.propTypes;
+
+export const Rewind = ({ fill }) => (
+  <Icon>
+    <Icons.Rewind
+      fill={fill}
+    />
+  </Icon>
+);
+
+Rewind.propTypes = Icons.Rewind.propTypes;
+
+export const RibbonAward = ({ fill }) => (
+  <Icon>
+    <Icons.RibbonAward
+      fill={fill}
+    />
+  </Icon>
+);
+
+RibbonAward.propTypes = Icons.RibbonAward.propTypes;
 
 export const SearchIcon = ({ fill }) => (
   <Icon>
@@ -132,3 +261,13 @@ export const VideoPlay = ({ fill }) => (
 );
 
 VideoPlay.propTypes = Icons.VideoPlay.propTypes;
+
+export const Videos = ({ fill }) => (
+  <Icon>
+    <Icons.Videos
+      fill={fill}
+    />
+  </Icon>
+);
+
+Videos.propTypes = Icons.Videos.propTypes;

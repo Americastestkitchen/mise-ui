@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
-import { color, fontSize, spacing } from '../../../styles';
+import { cards, color, fontSize, spacing, withThemes } from '../../../styles';
 import Badge from '../../Badge';
 import Attributions from '../shared/Attributions';
 import CtaLink from '../shared/CtaLink';
@@ -11,19 +11,38 @@ import Image from '../shared/Image';
 import Sticker from '../shared/Sticker';
 import Title from '../shared/Title';
 
+const StandardCardTheme = {
+  default: css`
+    color: ${color.eclipse};
+
+    // This hover state is necessary for a specificity issue related to SERP
+    @media(hover: hover) {
+      a.standard-card__anchor:hover {
+        color: ${color.eclipse};
+      }
+    }
+  `,
+  dark: css`
+    color: ${color.white};
+
+    // This hover state is necessary for a specificity issue related to SERP
+    @media(hover: hover) {
+      a.standard-card__anchor:hover {
+        color: ${color.white};
+      }
+    }
+  `,
+};
+
 const StyledStandardCard = styled.article`
+  ${withThemes(StandardCardTheme)}
   position: relative;
   padding-bottom: ${spacing.md};
-  width: 16.2rem;
-  color: ${color.eclipse};
-
-  a.standard-card__anchor:hover {
-    color: ${color.eclipse};
-  }
+  width: ${cards.standard.width.base};
 
   ${breakpoint('lg')`
     padding-bottom: ${spacing.lg};
-    width: 27.2rem;
+    width: ${cards.standard.width.lg};
   `}
 `;
 
@@ -45,26 +64,36 @@ const ImageWrapper = styled.div`
   }
 `;
 
+const TitleWrapperTheme = {
+  default: css`
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-top: ${spacing.xsm};
+  `,
+};
+
 const TitleWrapper = styled.div`
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  padding-top: ${spacing.xsm};
+  ${withThemes(TitleWrapperTheme)}
 `;
 
 export const StyledTitle = styled(Title)`
-  transition: color 0.2s ease;
+  font-size: ${fontSize.md};
+  margin-bottom: ${spacing.xsm};
 
-  @media(hover: hover) {
-    &:hover {
-      color: ${color.mint};
-    }
+  .carousel & {
+    font-size: ${fontSize.xl};
   }
+
+  ${breakpoint('lg')`
+    font-size: ${fontSize.xl};
+  `}
 `;
 
 export const StyledFavoriteButton = styled(FavoriteButton)`
   flex-shrink: 0;
-  margin-top: ${spacing.xxsm};
+  margin-top: -${spacing.xxsm};
+  padding: ${spacing.xsm} 0 0 ${spacing.xsm};
 `;
 
 export const StickerGroup = styled.div`
@@ -81,6 +110,20 @@ export const StickerGroup = styled.div`
   }
 `;
 
+const StyledAttributions = styled(Attributions)`
+  ${breakpoint('xs', 'lg')`
+    font-size: 1.2rem;
+
+    & > span {
+      display: block;
+    }
+
+    .attributions__bullet {
+      display: none;
+    }
+  `}
+`;
+
 const stickerHeightMobile = '1.2rem';
 export const StyledSticker = styled(Sticker)`
   ${breakpoint('xs', 'lg')`
@@ -88,6 +131,10 @@ export const StyledSticker = styled(Sticker)`
     line-height: ${stickerHeightMobile};
     height: ${stickerHeightMobile};
     font-size: ${fontSize.xxsm};
+
+    &:not(:first-of-type) {
+      display: none;
+    }
   `}
 `;
 
@@ -102,7 +149,7 @@ export const StyledBadge = styled(Badge)`
     left: 0;
   }
 
-  ${breakpoint('xs', 'lg')`
+  ${breakpoint('xs', 'md')`
     width: 1.6rem;
     height: 1.6rem;
   `}
@@ -110,21 +157,22 @@ export const StyledBadge = styled(Badge)`
 
 function StandardCard({
   className,
-  commentCount,
   contentType,
   contentTypeFormatted,
   ctaText,
   ctaUrl,
   displayCookbook,
-  displayCommentCount,
+  displaySecondaryAttribution,
   displayFavoritesButton,
   displayLockIcon,
+  favoriteRibbonColor,
   stickers,
   imageAlt,
   imageUrl,
   isFavorited,
   objectId,
   onClick,
+  secondaryAttribution,
   shopPrices,
   siteKey,
   siteKeyFavorites,
@@ -133,7 +181,9 @@ function StandardCard({
   href,
 }) {
   return (
-    <StyledStandardCard className={imageUrl ? '' : 'no-image'}>
+    <StyledStandardCard
+      className={`standard-card${imageUrl ? '' : ' no-image'}`}
+    >
       <a
         className="standard-card__anchor"
         href={href}
@@ -172,6 +222,7 @@ function StandardCard({
           { displayFavoritesButton ? (
             <StyledFavoriteButton
               className={className}
+              fill={favoriteRibbonColor}
               role="button"
               isFavorited={isFavorited}
               objectId={objectId}
@@ -181,12 +232,12 @@ function StandardCard({
           ) : null }
         </TitleWrapper>
       </a>
-      <Attributions
-        commentCount={commentCount}
-        contentType={contentTypeFormatted || contentType}
+      <StyledAttributions
         displayCookbook={displayCookbook}
         displayLockIcon={displayLockIcon}
-        displayCommentCount={displayCommentCount}
+        displaySecondaryAttribution={displaySecondaryAttribution}
+        primaryAttribution={contentTypeFormatted || contentType}
+        secondaryAttribution={secondaryAttribution}
         shopPrices={shopPrices}
       />
       {
@@ -207,18 +258,22 @@ StandardCard.propTypes = {
   className: PropTypes.string,
   contentType: PropTypes.string.isRequired,
   contentTypeFormatted: PropTypes.string,
-  commentCount: PropTypes.number,
   ctaText: PropTypes.string,
   ctaUrl: PropTypes.string,
   displayCookbook: PropTypes.bool,
-  displayCommentCount: PropTypes.bool,
+  displaySecondaryAttribution: PropTypes.bool,
   displayLockIcon: PropTypes.bool,
+  favoriteRibbonColor: PropTypes.string,
   href: PropTypes.string.isRequired,
   imageAlt: PropTypes.string,
   imageUrl: PropTypes.string,
   isFavorited: PropTypes.bool,
   objectId: PropTypes.string.isRequired,
   onClick: PropTypes.func,
+  secondaryAttribution: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]),
   shopPrices: PropTypes.object,
   siteKey: PropTypes.oneOf(['atk', 'cco', 'cio', 'kids', 'school', 'shop']).isRequired,
   siteKeyFavorites: PropTypes.oneOf(['atk', 'cco', 'cio']),
@@ -229,18 +284,19 @@ StandardCard.propTypes = {
 
 StandardCard.defaultProps = {
   className: null,
-  commentCount: null,
   contentTypeFormatted: null,
   ctaText: '',
   ctaUrl: '',
   displayCookbook: false,
-  displayCommentCount: false,
+  displaySecondaryAttribution: false,
   displayFavoritesButton: false,
   displayLockIcon: false,
+  favoriteRibbonColor: color.eclipse,
   imageAlt: '',
   imageUrl: '',
   isFavorited: false,
   onClick: null,
+  secondaryAttribution: null,
   shopPrices: null,
   siteKeyFavorites: null,
   stickers: [],

@@ -52,8 +52,8 @@ const Label = styled.p.attrs({
   top: 0;
 `;
 
-const LabelFrame = ({ children, label }) => (
-  <Frame>
+const LabelFrame = ({ className, children, label }) => (
+  <Frame className={className}>
     <Label>
       {label}
     </Label>
@@ -62,11 +62,16 @@ const LabelFrame = ({ children, label }) => (
 );
 
 LabelFrame.propTypes = {
+  className: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]).isRequired,
   label: PropTypes.string.isRequired,
+};
+
+LabelFrame.defaultProps = {
+  className: '',
 };
 
 export default LabelFrame;

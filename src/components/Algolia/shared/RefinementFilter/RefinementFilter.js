@@ -4,19 +4,21 @@ import styled, { css } from 'styled-components';
 
 import Badge from '../../../Badge';
 import { Checkmark } from '../../../DesignTokens/Icon/svgs';
-import { color, font, fontSize, lineHeight, spacing, withThemes } from '../../../../styles';
+import { color, font, fontSize, spacing, withThemes } from '../../../../styles';
 
 const RefinementFilterLabelTheme = {
   default: css`
     align-items: center;
+    border: 1px dashed transparent;
     color: ${color.eclipse};
     display: flex;
     font: ${fontSize.md}/1.38 ${font.pnr};
-    margin-bottom: 1.2rem;
+    padding: ${spacing.xxsm} 0.25rem ${spacing.xxsm} 2.5rem;
+    left: -2.5rem;
     position: relative;
 
     &.search_site_list {
-      margin-bottom: 1.8rem;
+      padding: ${spacing.xsm} 0.25rem ${spacing.xsm} 2.5rem;
     }
 
     .search-refinement-list__label-text {
@@ -37,15 +39,22 @@ const RefinementFilterLabelTheme = {
       }
     }
 
+    &:focus-within {
+      border: 1px dashed ${color.eclipse};
+    }
+
     .search-refinement__badge {
       margin-right: 0.8rem;
     }
   `,
   kidsSearch: css`
     background-color: ${color.greySmoke};
+    border: 2px solid transparent;
     border-radius: 1rem;
     color: ${color.black};
-    line-height: ${lineHeight.xlg};
+    left: 0;
+    line-height: 1.37;
+    margin-bottom: 1.2rem;
     padding: 0.4rem 1.3rem;
 
     .search-refinement-list__label-text {
@@ -82,28 +91,64 @@ const RefinementFilterLabelTheme = {
         }
       }
     ` : '')}
+
+    &:focus-within {
+      border: 2px solid ${color.jade};
+    }
   `,
+  dark: css`
+    color: ${color.white};
+    ${({ isRefined }) => (isRefined ? `font-family: ${font.pnb};` : '')}
+
+    .search-refinement-list__label-text {
+      ${({ isRefined }) => (isRefined ? `color: ${color.white};` : '')}
+    }
+
+    &:hover {
+      ${({ isRefined }) => (isRefined ? `color: ${color.white};` : `color: ${color.silver};`)}
+
+      .search-refinement-list__label-text {
+        ${({ isRefined }) => (isRefined ? `color: ${color.white};` : `color: ${color.silver};`)}
+      }
+
+      .refinement-filter__count {
+        ${({ isRefined }) => (isRefined ? `color: ${color.white};` : `color: ${color.silver};`)}
+      }
+    }
+  `,
+  cio: css``,
 };
 
 const RefinementFilterLabel = styled.label.attrs({
   className: 'search-refinement-list__label',
 })`${withThemes(RefinementFilterLabelTheme)}`;
 
+const RefinementFilterCheckTheme = {
+  default: css`
+    height: 1.2rem;
+    margin-left: -2rem;
+    margin-right: ${spacing.xsm};
+    position: relative;
+    width: 1.2rem;
+
+    svg {
+      left: 0;
+      position: absolute;
+      top: 0;
+    }
+  `,
+  dark: css`
+    svg {
+      path {
+        fill: ${color.white};
+      }
+    }
+  `,
+};
+
 const RefinementFilterCheck = styled.div.attrs({
   className: 'refinement-filter__checkmark',
-})`
-  height: 1.2rem;
-  margin-left: -2rem;
-  margin-right: ${spacing.xsm};
-  position: relative;
-  width: 1.2rem;
-
-  svg {
-    left: 0;
-    position: absolute;
-    top: 0;
-  }
-`;
+})`${withThemes(RefinementFilterCheckTheme)}`;
 
 const RefinementFilterCheckbox = styled.input`
   height: 0.8rem;
@@ -113,11 +158,18 @@ const RefinementFilterCheckbox = styled.input`
   width: 1.2rem;
 `;
 
+const RefinementFilterCountTheme = {
+  default: css`
+    color: ${color.nobel};
+  `,
+  dark: css`
+    color: ${color.white};
+  `,
+};
+
 const RefinementFilterCount = styled.span.attrs({
   className: 'refinement-filter__count',
-})`
-  color: ${color.nobel};
-`;
+})`${withThemes(RefinementFilterCountTheme)}`;
 
 const RefinementFilter = ({
   altFill,
@@ -130,59 +182,61 @@ const RefinementFilter = ({
   handleClick,
   value,
 }) => (
-  <RefinementFilterLabel
-    altFill={altFill}
-    className={`${attribute}`}
-    data-site-key={value}
-    htmlFor={`${attribute}--${label}`}
-    isRefined={isRefined}
-    onClick={(e) => {
-      e.preventDefault();
-      if (!isRefined && typeof handleClick === 'function') handleClick(e);
-      refine(value);
-    }}
-  >
-    {
-      isRefined ? (
-        <RefinementFilterCheck data-testid="refinement-filter__checkmark">
-          <Checkmark />
-        </RefinementFilterCheck>
-      ) : null
-    }
-    <RefinementFilterCheckbox
-      id={`search-site-list--${value}`}
-      type="checkbox"
-    />
-    {
-      attribute === 'search_site_list' ? (
-        <Badge
-          className="search-refinement__badge"
-          fill={isRefined ? altFill : color.eclipse}
-          type={value}
-        />
-      ) : null
-    }
-    {
-      includeCount ? (
-        <span className="search-refinement-filter__count">
-          <span className="search-refinement-list__label-text">
-            {label}
+  <>
+    <RefinementFilterLabel
+      altFill={altFill}
+      className={`${attribute}`}
+      data-site-key={value}
+      htmlFor={`${attribute}--${label}`}
+      isRefined={isRefined}
+      onClick={(e) => {
+        e.preventDefault();
+        if (!isRefined && typeof handleClick === 'function') handleClick(e);
+        refine(value);
+      }}
+    >
+      {
+        isRefined ? (
+          <RefinementFilterCheck data-testid="refinement-filter__checkmark">
+            <Checkmark />
+          </RefinementFilterCheck>
+        ) : null
+      }
+      <RefinementFilterCheckbox
+        id={`search-site-list--${value}`}
+        type="checkbox"
+      />
+      {
+        attribute === 'search_site_list' ? (
+          <Badge
+            className="search-refinement__badge"
+            fill={isRefined ? altFill : color.eclipse}
+            type={value}
+          />
+        ) : null
+      }
+      {
+        includeCount ? (
+          <span className="search-refinement-filter__count">
+            <span className="search-refinement-list__label-text">
+              {label}
+            </span>
+            <RefinementFilterCount data-testid="refinement-filter__count">
+              {` (${count})`}
+            </RefinementFilterCount>
           </span>
-          <RefinementFilterCount data-testid="refinement-filter__count">
-            {` (${count})`}
-          </RefinementFilterCount>
-        </span>
-      ) : (
-        label
-      )
-    }
-  </RefinementFilterLabel>
+        ) : (
+          label
+        )
+      }
+    </RefinementFilterLabel>
+  </>
 );
 
 RefinementFilter.propTypes = {
   altFill: PropTypes.string,
   /** Algolia attribute used to filter results. */
-  attribute: PropTypes.string.isRequired,
+  attribute: PropTypes.string,
   /** Number of hits for this filter value. */
   count: PropTypes.number,
   includeCount: PropTypes.bool,
@@ -195,10 +249,11 @@ RefinementFilter.propTypes = {
   /** Used to pass click functionality from jarvis etc. */
   handleClick: PropTypes.func,
   /** Value of filter to be used for refining results. */
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.array]).isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.array], PropTypes.string).isRequired,
 };
 
 RefinementFilter.defaultProps = {
+  attribute: '',
   altFill: null,
   count: null,
   includeCount: true,

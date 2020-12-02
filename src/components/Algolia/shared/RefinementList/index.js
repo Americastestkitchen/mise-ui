@@ -11,7 +11,7 @@ const RefinementListRefinements = styled.div`
   margin: 0;
   padding: 0;
 
-  label:last-child {
+  li:last-child {
     margin: 0;
   }
 `;
