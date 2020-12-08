@@ -23,7 +23,6 @@ const HeroAdWrapperTheme = {
     width: ${grid.columnWidth};
 
     ${breakpoint('xs', 'md')`
-      overflow: hidden;
       width: 100%;
     `}
   `,
@@ -91,10 +90,11 @@ const HeroAdContent = styled.div.attrs({
  */
 const HeroAdTitleTheme = {
   default: css`
-    font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb};
+    font: 2.6rem/${lineHeight.sm} ${font.pnb};
     margin-bottom: ${spacing.sm};
 
     ${breakpoint('md')`
+      font-size: ${fontSize.xl};
       text-align: center;
     `}
   `,
