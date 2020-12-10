@@ -19,6 +19,7 @@ const HeroCardWrapper = styled.div.attrs({
   display: flex;
   flex-direction: column;
   position: relative;
+  overflow: hidden;
   min-height: 46.5rem;
   justify-content: flex-end;
   width: 100%;
@@ -31,7 +32,7 @@ const HeroCardWrapper = styled.div.attrs({
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(8, 8, 8, 1));
     content: ' ';
     position: absolute;
-    bottom: 0;
+    bottom: -1px;
     height: 50%;
     width: 100%;
   }
