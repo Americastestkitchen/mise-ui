@@ -136,6 +136,7 @@ const DocumentListCarouselWrapper = styled.div`
  */
 const DocumentListCarousel = ({
   cellAlign,
+  ctaTarget,
   ctaText,
   ctaUrl,
   intro,
@@ -150,7 +151,10 @@ const DocumentListCarousel = ({
     <TitleAndCta>
       <Title>{title}</Title>
       {ctaText && ctaUrl && (
-        <Cta href={ctaUrl}>
+        <Cta
+          href={ctaUrl}
+          target={ctaTarget}
+        >
           {`${ctaText} >`}
         </Cta>
       )}
@@ -166,6 +170,8 @@ const DocumentListCarousel = ({
 DocumentListCarousel.propTypes = {
   /** Carousel cell alignment */
   cellAlign: PropTypes.oneOf(['center', 'left']),
+  /** Specify where link should be opened */
+  ctaTarget: PropTypes.string,
   /** Text displayed on CTA. */
   ctaText: PropTypes.string,
   /** Url value for CTA */
@@ -183,6 +189,7 @@ DocumentListCarousel.propTypes = {
 DocumentListCarousel.defaultProps = {
   cellAlign: null,
   ctaText: null,
+  ctaTarget: '',
   ctaUrl: null,
   intro: null,
 };
