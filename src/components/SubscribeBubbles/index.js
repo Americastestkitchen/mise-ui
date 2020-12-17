@@ -77,7 +77,7 @@ const SubscribeBubbleName = styled.span`
   font: ${fontSize.md}/1 ${font.pnr};
 `;
 
-const SubscribeBubbles = ({ bubbles, handleClick }) => (
+const SubscribeBubbles = ({ bubbles, handleClick, pathname }) => (
   <SubscribeBubblesWrapper className="subscribe-bubbles">
     <SubscribeBubblesTitle>
       SUBSCRIBE
@@ -91,7 +91,7 @@ const SubscribeBubbles = ({ bubbles, handleClick }) => (
               <SubscribeBubbleAnchor
                 href={href}
                 rel="noopener noreferrer"
-                onClick={() => handleClick({ name, type })}
+                onClick={() => handleClick({ name, pathname, type })}
                 target="_blank"
               >
                 <SubscribeBubbleLogo>
@@ -116,6 +116,7 @@ const SubscribeBubbles = ({ bubbles, handleClick }) => (
 SubscribeBubbles.propTypes = {
   bubbles: PropTypes.array.isRequired,
   handleClick: PropTypes.func,
+  pathname: PropTypes.string.isRequired,
 };
 
 SubscribeBubbles.defaultProps = {
