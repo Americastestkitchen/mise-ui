@@ -59,7 +59,7 @@ PersonCard.propTypes = {
 };
 
 PersonCard.defaultProps = {
-  imgAlt: null,
+  imgAlt: '',
 };
 
 export default PersonCard;

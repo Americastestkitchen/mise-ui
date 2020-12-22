@@ -267,7 +267,7 @@ class PodcastEpisodeCard extends Component {
       <PodcastEpisodeCardWrapper
         id={id}
         className={`podcast-episode-card ${isPlaying ? 'is-playing' : ''}`}
-        tabindex="0"
+        tabIndex="0"
         role="button"
         aria-label={`${isPlaying ? 'Currently playing' : 'Play'} Episode ${episode || ''}: ${title}`}
         onClick={this.setEpisode.bind(this, {
