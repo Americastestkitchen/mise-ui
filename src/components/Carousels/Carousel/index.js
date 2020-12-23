@@ -2,6 +2,7 @@ import breakpoint from 'styled-components-breakpoint';
 import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
+import throttle from 'lodash.throttle';
 
 import { color, spacing, withThemes } from '../../../styles';
 
@@ -231,6 +232,7 @@ const Carousel = ({ className, dotPosition, items, options, renderItem }) => {
   const [enabled, setEnabled] = useState(false);
   const opts = { ...defaultOptions, ...options };
   const { slideshow } = opts;
+  const [windowWidth, setWindowWidth] = useState(0);
 
   useEffect(() => {
     if (flktyRef.current) flktyRef.current.destroy();
@@ -251,6 +253,24 @@ const Carousel = ({ className, dotPosition, items, options, renderItem }) => {
       catch (err) {}; // eslint-disable-line
     };
   }, [items, opts]);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && items.length <= 3) {
+      const handleResize = throttle(() => { setWindowWidth(window.innerWidth); }, 150);
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }
+    return null;
+  }, []);
+
+  // enable/disable flickity when switching between portrait and landscape mode on tablet
+  useEffect(() => {
+    if (windowWidth > 768 && items.length < 3) {
+      setEnabled(false);
+    } else if (windowWidth < 768 && items.length >= 3) {
+      setEnabled(true);
+    }
+  }, [windowWidth]);
 
   return (
     <CarouselWrapper
