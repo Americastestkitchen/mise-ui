@@ -32,6 +32,21 @@ const sizeLookup = {
       y: 13.5,
     },
   },
+  extraLarge: {
+    horizontal: {
+      height: '100%',
+      x: 12.5,
+      y: 0,
+      rx: 3,
+      width: 6,
+    },
+    vertical: {
+      height: 6,
+      x: 0,
+      y: 12.5,
+      width: '100%',
+    },
+  },
 };
 
 const Plus = ({ fill, size }) => (
@@ -61,7 +76,7 @@ const Plus = ({ fill, size }) => (
 
 Plus.propTypes = {
   fill: PropTypes.string,
-  size: PropTypes.oneOf(['default', 'large']),
+  size: PropTypes.oneOf(['default', 'large', 'extraLarge']),
 };
 
 Plus.defaultProps = {
