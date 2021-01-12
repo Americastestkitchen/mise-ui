@@ -206,7 +206,7 @@ function Accordion({
               <legend>{label}</legend>
               {Icon ? <Icon className={`show-hide__icon--${icon}`} /> : null}
             </AccordionLabelWrapper>
-          ) : label
+          ) : <span className="accordion__label">{label}</span>
         }
         <AccordionSvgWrapper isExpanded={!hidden}>
           <Plus size={iconSize} />
