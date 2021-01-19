@@ -20,6 +20,7 @@ import HeroAd from './components/Ads/HeroAd';
 import HeroCard from './components/Cards/HeroCard';
 import InlineNewsletter from './components/Newsletters/InlineNewsletter';
 import Listable from './components/Listable';
+import LeadMarqueeCard from './components/Cards/LeadMarqueeCard';
 import LoadingCard from './components/Cards/LoadingCard';
 import LoadingCarousel from './components/Carousels/LoadingCarousel';
 import MediaObjectCard from './components/Cards/MediaObjectCard';
@@ -82,6 +83,7 @@ export {
   HeroAd,
   HeroCard,
   Listable,
+  LeadMarqueeCard,
   LoadingCard,
   LoadingCarousel,
   MediaObjectCard,
