@@ -1,4 +1,5 @@
 import * as styles from './styles';
+import ArticleCard from './components/ArticleCard';
 import AudioPlayer from './components/AudioPlayer';
 import Accordion from './components/Accordion';
 import Badge from './components/Badge';
@@ -58,6 +59,7 @@ import { color, mixins, spacing } from './styles';
 /** add test commit */
 export {
   Accordion,
+  ArticleCard,
   AudioPlayer,
   Badge,
   breakpoints,
