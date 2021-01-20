@@ -1,0 +1,61 @@
+import React from 'react';
+import { ThemeProvider } from 'styled-components';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
+import 'jest-styled-components';
+
+import ArticleCard from '../index';
+
+import breakpoints from '../../../../styles/breakpoints';
+
+describe('ArticleCard component should', () => {
+  const renderComponent = () => (
+    render(
+      <ThemeProvider theme={{ breakpoints }}>
+        <ArticleCard
+          author="Kevin Pang"
+          authorImageCloudinaryId="Play%20Cast%20Headshots/staff_dan_souza"
+          backgroundCloudinaryId="AKO Articles/2020 Web Articles/Things_We_Love-01_2"
+          description="Including a virtual bread project; a punchy, small-batch hot sauce; and a digital encyclopedia of Texas tacos."
+          href="https://www.americastestkitchen.com/articles/2839-how-to-make-your-zoom-thanksgiving-feel-like-the-real-thing"
+          publishDate="Yesterday"
+          siteKey="atk"
+          stickers={[{ type: 'editorial', text: 'Community' }]}
+          title="10 Things in the Food World We Loved in November"
+        />
+      </ThemeProvider>,
+    )
+  );
+
+  it('render a badge', () => {
+    renderComponent();
+    expect(screen.getByTestId('badge'));
+  });
+
+  it('render an editorial sticker', () => {
+    renderComponent();
+    expect(screen.getByText('Community'));
+  });
+
+  it('render an image', () => {
+    renderComponent();
+    expect(screen.getByAltText(''));
+  });
+
+  it('renders a title', () => {
+    renderComponent();
+    expect(screen.getByText('10 Things in the Food World We Loved in November'));
+  });
+
+  it('renders a description', () => {
+    renderComponent();
+    expect(screen.getByText('Including a virtual bread project; a punchy, small-batch hot sauce; and a digital encyclopedia of Texas tacos.'));
+  });
+
+  it('renders an author and a publish date', () => {
+    renderComponent();
+    expect(screen.getByText('Kevin Pang'));
+    expect(screen.getByText('Yesterday'));
+  });
+
+});
