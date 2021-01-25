@@ -28,15 +28,6 @@ const typeWidths = {
   },
 };
 
-const typeHeights = {
-  default: {
-    hero: '46.5rem',
-    tall: '60rem',
-    person: '27.2rem',
-    default: '42rem',
-  },
-};
-
 const carouselTypeStyles = {
   tall: 'padding-top: 0; height: 62.8rem;',
 };
@@ -60,7 +51,6 @@ const CardCarouselTheme = {
     }
 
     .carousel-cell {
-      height: ${({ type }) => (typeHeights?.sm?.[type] || typeHeights.default[type] || typeHeights.default.default)};
       margin-right: ${spacing.sm};
       width: ${({ type }) => (typeWidths?.sm?.[type] || typeWidths.default[type] || typeWidths.default.default)};
     }
@@ -97,7 +87,6 @@ const CardCarouselTheme = {
       }
 
       .carousel-cell {
-        height: ${({ type }) => (typeHeights?.lg?.[type] || typeHeights.default[type] || typeHeights.default.default)};
         width: ${({ type }) => (typeWidths?.lg?.[type] || typeWidths.default[type] || typeWidths.default.default)};
       }
 
