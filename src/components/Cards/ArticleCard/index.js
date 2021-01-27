@@ -8,6 +8,7 @@ import Badge from '../../Badge';
 import Image from '../shared/Image';
 import PersonHeadShot from '../shared/PersonHeadShot';
 import Sticker from '../shared/Sticker';
+import Byline from '../../Byline';
 
 const ArticleCardWrapper = styled.article.attrs({
   className: 'article-card',
@@ -95,22 +96,6 @@ const Description = styled.p`
     display: block;
     font: ${fontSize.lg}/${lineHeight.lg} ${font.mwr};
   `}
-`;
-
-const Byline = styled.div`
-  align-items: center;
-  display: flex;
-
-  span {
-    color: ${color.eclipse};
-    font: ${fontSize.md}/${lineHeight.sm} ${font.pnb};
-    margin-left: ${spacing.sm};
-  }
-
-  time {
-    font: ${fontSize.md}/${lineHeight.sm} ${font.pnr};
-    margin-left: ${spacing.xsm};
-  }
 `;
 
 const ArticleCard = ({
