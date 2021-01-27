@@ -1,8 +1,9 @@
 import * as styles from './styles';
-import ArticleCard from './components/ArticleCard';
+import ArticleCard from './components/Cards/ArticleCard';
 import AudioPlayer from './components/AudioPlayer';
 import Accordion from './components/Accordion';
 import Badge from './components/Badge';
+import Byline from './components/Byline';
 import breakpoints from './styles/breakpoints';
 import Button from './components/Buttons/Button';
 import carousel from './styles/carousel';
@@ -63,6 +64,7 @@ export {
   AudioPlayer,
   Badge,
   breakpoints,
+  Byline,
   Button,
   CardCarousel,
   CardWrapper,
