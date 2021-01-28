@@ -13,11 +13,13 @@ import PersonHeadShot from '../Cards/shared/PersonHeadShot';
 const BylineWrapper = styled.div`
   align-items: center;
   display: flex;
-
+  .person-head-shot {
+    margin-right: ${spacing.sm};
+  }
+  
   p {
     color: ${color.eclipse};
     font: ${fontSize.md}/${lineHeight.sm} ${font.pnb};
-    margin-left: ${spacing.sm};
   }
 
   span {
@@ -32,15 +34,15 @@ const Byline = ({
   attribution,
   imgAlt, 
 }) => (
-  <BylineWrapper>
+  <BylineWrapper className="byline">
     {authorImageCloudinaryId && <PersonHeadShot imgCloudinaryId={authorImageCloudinaryId} size={{ sm: '4' }} imgAlt={imgAlt} />}
-    <p rel="author">{author} |</p>
-    <span> {attribution}</span>
+    <p rel="author">{author}</p>
+    {attribution && <span> | {attribution}</span>}
   </BylineWrapper>
 );
 
 Byline.propTypes = {
-  /** Author of article */
+  /** Author Name */
   author: PropTypes.string.isRequired,
   /** Cloudinary image id of author */
   authorImageCloudinaryId: PropTypes.string,

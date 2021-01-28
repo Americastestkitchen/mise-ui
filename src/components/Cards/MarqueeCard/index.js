@@ -6,11 +6,10 @@ import { color, font, fontSize, lineHeight, spacing } from '../../../styles';
 import { getImageUrl } from '../../../lib/cloudinary';
 import Badge from '../../Badge';
 import Image from '../shared/Image';
-import PersonHeadShot from '../shared/PersonHeadShot';
 import Sticker from '../shared/Sticker';
 import Byline from '../../Byline';
 
-const ArticleCardWrapper = styled.article.attrs({
+const MarqueeCardWrapper = styled.article.attrs({
   className: 'article-card',
 })`
   position: relative;
@@ -28,12 +27,6 @@ const ArticleCardWrapper = styled.article.attrs({
   }
 
   ${breakpoint('md')`
-    .article-card__background-image {
-      max-height: 19rem;
-    }
-  `};
-
-  ${breakpoint('lg')`
     max-width: 77.6rem;
 
     .article-card__background-image {
@@ -98,7 +91,7 @@ const Description = styled.p`
   `}
 `;
 
-const ArticleCard = ({
+const MarqueeCard = ({
   author,
   authorImageCloudinaryId,
   backgroundCloudinaryId,
@@ -110,13 +103,13 @@ const ArticleCard = ({
   title,
   onClick,
 }) => (
-  <ArticleCardWrapper>
+  <MarqueeCardWrapper>
     <a
       href={href}
       onClick={onClick}
     >
       <StyledBadge type={siteKey} />
-      <Image className="article-card__background-image" imageUrl={getImageUrl(backgroundCloudinaryId)} />
+      <Image className="article-card__background-image" imageUrl={getImageUrl(backgroundCloudinaryId)} imageAlt="" />
       <ContentWrapper>
         { stickers ? (
           <StickerGroup>
@@ -131,19 +124,20 @@ const ArticleCard = ({
         ) : null }
         <Title>{title}</Title>
         <Description>{description}</Description>
-        <Byline>
-          <PersonHeadShot imgCloudinaryId={authorImageCloudinaryId} size={{ sm: '4' }} />
-          <span rel="author">{author} |</span>
-          <time dateTime={publishDate} pubdate="pubdate"> {publishDate}</time>
-        </Byline>
+        <Byline
+          author={author}
+          authorImageCloudinaryId={authorImageCloudinaryId}
+          attribution={publishDate}
+        />
       </ContentWrapper>
     </a>
-  </ArticleCardWrapper>
+  </MarqueeCardWrapper>
 );
 
-ArticleCard.propTypes = {
-  /** Author of article */
+MarqueeCard.propTypes = {
+  /** Author Name */
   author: PropTypes.string.isRequired,
+  /** Image id for author */
   authorImageCloudinaryId: PropTypes.string,
   /** Image for card. */
   backgroundCloudinaryId: PropTypes.string.isRequired,
@@ -158,7 +152,7 @@ ArticleCard.propTypes = {
 };
 
 
-ArticleCard.defaultProps = {
+MarqueeCard.defaultProps = {
   authorImageCloudinaryId: '',
   description: null,
   publishDate: '',
@@ -166,4 +160,4 @@ ArticleCard.defaultProps = {
   onClick: () => {},
 };
 
-export default ArticleCard;
+export default MarqueeCard;
