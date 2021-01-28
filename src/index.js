@@ -1,5 +1,4 @@
 import * as styles from './styles';
-import ArticleCard from './components/Cards/ArticleCard';
 import AudioPlayer from './components/AudioPlayer';
 import Accordion from './components/Accordion';
 import Badge from './components/Badge';
@@ -25,6 +24,7 @@ import Listable from './components/Listable';
 import LeadMarqueeCard from './components/Cards/LeadMarqueeCard';
 import LoadingCard from './components/Cards/LoadingCard';
 import LoadingCarousel from './components/Carousels/LoadingCarousel';
+import MarqueeCard from './components/Cards/MarqueeCard';
 import MediaObjectCard from './components/Cards/MediaObjectCard';
 import MembershipShowcaseAd from './components/Ads/ShowcaseAds/MembershipShowcaseAd';
 import PodcastEpisodeCard from './components/Cards/PodcastEpisodeCard';
@@ -60,7 +60,6 @@ import { color, mixins, spacing } from './styles';
 /** add test commit */
 export {
   Accordion,
-  ArticleCard,
   AudioPlayer,
   Badge,
   breakpoints,
@@ -94,6 +93,7 @@ export {
   PairedProductAd,
   PodcastEpisodeCard,
   QueueCard,
+  MarqueeCard,
   MembershipShowcaseAd,
   mixins,
   PersonCard,
