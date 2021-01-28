@@ -4,15 +4,15 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import 'jest-styled-components';
 
-import ArticleCard from '../index';
+import MarqueeCard from '../index';
 
 import breakpoints from '../../../../styles/breakpoints';
 
-describe('ArticleCard component should', () => {
+describe('MarqueeCard component should', () => {
   const renderComponent = () => (
     render(
       <ThemeProvider theme={{ breakpoints }}>
-        <ArticleCard
+        <MarqueeCard
           author="Kevin Pang"
           authorImageCloudinaryId="Play%20Cast%20Headshots/staff_dan_souza"
           backgroundCloudinaryId="AKO Articles/2020 Web Articles/Things_We_Love-01_2"

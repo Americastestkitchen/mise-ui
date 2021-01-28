@@ -5,8 +5,8 @@ import breakpoint from 'styled-components-breakpoint';
 import { color, font, fontSize, lineHeight, spacing } from '../../../styles';
 import { getImageUrl } from '../../../lib/cloudinary';
 import Badge from '../../Badge';
+import Byline from '../../Byline';
 import Image from '../shared/Image';
-import PersonHeadShot from '../shared/PersonHeadShot';
 import Sticker from '../shared/Sticker';
 
 const LeadMarqueeCardWrapper = styled.article.attrs({
@@ -50,8 +50,12 @@ const ContentWrapper = styled.div`
   background-color: ${props => props.backgroundColor};
   display: flex;
   flex-direction: column;
-  padding: ${spacing.sm} ${spacing.md};
+  padding: ${spacing.sm};
   text-align: center;
+
+  .byline p {
+    color: ${color.white};
+  }
 
   ${breakpoint('lg')`
     padding: ${spacing.xxlg} ${spacing.lg};
@@ -77,7 +81,7 @@ export const StyledSticker = styled(Sticker)`
 const Title = styled.h1`
   color: ${color.white};
   font: ${fontSize.xxl}/${lineHeight.sm} ${font.pnb};
-  margin-bottom: ${spacing.xxsm};
+  margin-bottom: ${spacing.xsm};
 
   ${breakpoint('md')`
     font-size: ${fontSize.xxxl};
@@ -87,18 +91,7 @@ const Title = styled.h1`
 const Description = styled.p`
   color: ${color.white};
   font: ${fontSize.lg}/${lineHeight.md} ${font.mwr};
-  margin-bottom: ${spacing.xxsm};
-`;
-
-const Author = styled.div`
-  align-items: center;
-  display: flex;
-
-  span {
-    color: ${color.white};
-    font: ${fontSize.md}/${lineHeight.sm} ${font.pnb};
-    margin-left: ${spacing.sm};
-  }
+  margin-bottom: ${spacing.xsm};
 `;
 
 const LeadMarqueeCard = ({
@@ -119,7 +112,7 @@ const LeadMarqueeCard = ({
       onClick={onClick}
     >
       <StyledBadge type={siteKey} />
-      <Image className="lead-marquee-card__background-image" imageUrl={getImageUrl(backgroundCloudinaryId)} />
+      <Image className="lead-marquee-card__background-image" imageUrl={getImageUrl(backgroundCloudinaryId)} imageAlt="" />
       <ContentWrapper backgroundColor={backgroundColor}>
         { stickers ? (
           <StickerGroup>
@@ -134,18 +127,19 @@ const LeadMarqueeCard = ({
         ) : null }
         <Title>{title}</Title>
         <Description>{description}</Description>
-        <Author>
-          <PersonHeadShot imgCloudinaryId={authorImageCloudinaryId} size={{ sm: '4' }} />
-          <span rel="author">{author}</span>
-        </Author>
+        <Byline
+          author={author}
+          authorImageCloudinaryId={authorImageCloudinaryId}
+        />
       </ContentWrapper>
     </a>
   </LeadMarqueeCardWrapper>
 );
 
 LeadMarqueeCard.propTypes = {
-  /** Author of article */
+  /** Author Name */
   author: PropTypes.string.isRequired,
+  /** Image id for author */
   authorImageCloudinaryId: PropTypes.string,
   /** Image for card. */
   backgroundCloudinaryId: PropTypes.string.isRequired,
