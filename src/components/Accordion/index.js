@@ -232,7 +232,7 @@ Accordion.propTypes = {
   /** Unique id string for svg icon to render next to label */
   icon: PropTypes.string,
   /* Size of icon */
-  iconSize: PropTypes.oneOf(['default', 'large']),
+  iconSize: PropTypes.oneOf(['default', 'large', 'extraLarge']),
   /** For accessability we need a fieldset version of this component. */
   isFieldset: PropTypes.bool,
   /** Sets initial state of the hidden content. */
