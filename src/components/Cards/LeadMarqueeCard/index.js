@@ -31,6 +31,10 @@ const LeadMarqueeCardWrapper = styled.article.attrs({
       display: flex;
       max-height: 44rem;
     }
+
+    .lead-marquee-card__background-image {
+      max-width: 79rem;
+    }
   `}
 `;
 
@@ -50,16 +54,16 @@ const ContentWrapper = styled.div`
   background-color: ${props => props.backgroundColor};
   display: flex;
   flex-direction: column;
-  padding: ${spacing.sm};
+  padding: ${spacing.md};
   text-align: center;
 
-  .byline p {
+  .byline span {
     color: ${color.white};
   }
 
   ${breakpoint('lg')`
-    padding: ${spacing.xxlg} ${spacing.lg};
     max-width: 34.4rem;
+    padding: ${spacing.xxxlg} ${spacing.md};
   `}
 `;
 
@@ -83,15 +87,20 @@ const Title = styled.h1`
   font: ${fontSize.xxl}/${lineHeight.sm} ${font.pnb};
   margin-bottom: ${spacing.xsm};
 
-  ${breakpoint('md')`
+  ${breakpoint('lg')`
     font-size: ${fontSize.xxxl};
+    margin-bottom: ${spacing.sm};
   `};
 `;
 
 const Description = styled.p`
   color: ${color.white};
-  font: ${fontSize.lg}/${lineHeight.md} ${font.mwr};
+  font: ${fontSize.md}/${lineHeight.md} ${font.mwr};
   margin-bottom: ${spacing.xsm};
+
+  ${breakpoint('md')`
+    margin-bottom: ${spacing.sm};
+  `};
 `;
 
 const LeadMarqueeCard = ({
@@ -128,7 +137,7 @@ const LeadMarqueeCard = ({
         <Title>{title}</Title>
         <Description>{description}</Description>
         <Byline
-          author={author}
+          author={`By ${author}`}
           authorImageCloudinaryId={authorImageCloudinaryId}
         />
       </ContentWrapper>
