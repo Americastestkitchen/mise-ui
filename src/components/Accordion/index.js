@@ -77,11 +77,25 @@ const AccordionButtonTheme = {
       width: 100%;
     `}
   `,
+  reviewsets: css`
+    display: block;
+    letter-spacing: inherit;
+    padding: 0;
+    position: relative;
+    text-align: inherit;
+    text-transform: none;
+
+    ${breakpoint('xlg')`
+      width: 100%;
+    `}
+  `,
   light: css`
   `,
 };
 
-const AccordionButton = styled.button`
+const AccordionButton = styled.button.attrs({
+  className: 'accordion-item__button',
+})`
   ${withThemes(AccordionButtonTheme)}
 `;
 
@@ -128,7 +142,9 @@ const AccordionLabelWrapperTheme = {
   `,
 };
 
-const AccordionLabelWrapper = styled.div`
+const AccordionLabelWrapper = styled.div.attrs({
+  className: 'accordion-item__label',
+})`
   ${withThemes(AccordionLabelWrapperTheme)}
 `;
 
@@ -156,14 +172,30 @@ const AccordionSvgWrapperTheme = {
     }
   `,
   play: css`
+    border: 1px solid ${color.black};
     height: 3rem;
     max-height: 3rem;
     max-width: 3rem;
     width: 3rem;
   `,
+  reviewsets: css`
+    background-color: ${color.white};
+    border: 2px solid ${color.black};
+    border-radius: 50%;
+    height: 3rem;
+    max-height: 3rem;
+    max-width: 3rem;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(50%, -50%);
+    width: 3rem;
+  `,
 };
 
-const AccordionSvgWrapper = styled.div`
+const AccordionSvgWrapper = styled.div.attrs({
+  className: 'accordion-item__icon',
+})`
   ${withThemes(AccordionSvgWrapperTheme)}
 `;
 
@@ -180,22 +212,47 @@ const icons = {
   time: Time,
 };
 
+const Legend = ({ children }) => (
+  <legend>{children}</legend>
+);
+
+Legend.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
+};
+
 function Accordion({
   children,
   icon,
   iconSize,
+  id,
   isFieldset,
   isHidden,
-  label,
+  label: Label,
 }) {
   const [hidden, toggleHidden] = useState(isHidden);
   const AccordionWrapper = isFieldset ? AccordionFieldsetWrapper : AccordionDivWrapper;
   const Icon = icon ? icons[icon] : null;
+  let idVal = id;
+  if (!idVal && typeof Label === 'string') {
+    idVal = Label?.split(' ')?.join('');
+  }
+
+  const isLabelString = typeof Label === 'string';
+  let labelEl;
+  if (isFieldset) {
+    labelEl = isLabelString ? <Legend>{Label}</Legend> : <Label />;
+  } else {
+    labelEl = isLabelString ? Label : <Label />;
+  }
 
   return (
     <AccordionWrapper>
       <AccordionButton
-        aria-controls={`show-hide--${label.split(' ').join('')}`}
+        aria-controls={`show-hide--${idVal}`}
         aria-expanded={!hidden}
         className="show-hide__expand-collapse-button"
         onClick={() => toggleHidden(!hidden)}
@@ -203,12 +260,10 @@ function Accordion({
         {
           isFieldset ? (
             <AccordionLabelWrapper hasIcon={icon}>
-              <legend>
-                {label}
-              </legend>
+              {labelEl}
               {Icon ? <Icon className={`show-hide__icon--${icon}`} /> : null}
             </AccordionLabelWrapper>
-          ) : <span className="accordion__label">{label}</span>
+          ) : labelEl
         }
         <AccordionSvgWrapper isExpanded={!hidden}>
           <Plus size={iconSize} />
@@ -216,7 +271,7 @@ function Accordion({
       </AccordionButton>
       <AccordionContent
         data-testid="accordion-content"
-        id={`show-hide--${label.split(' ').join('')}`}
+        id={`show-hide--${idVal}`}
         hidden={hidden ? true : null}
       >
         {children}
@@ -235,17 +290,24 @@ Accordion.propTypes = {
   icon: PropTypes.string,
   /* Size of icon */
   iconSize: PropTypes.oneOf(['default', 'large', 'extraLarge']),
+  /** HTML attribute */
+  id: PropTypes.string,
   /** For accessability we need a fieldset version of this component. */
   isFieldset: PropTypes.bool,
   /** Sets initial state of the hidden content. */
   isHidden: PropTypes.bool,
   /** Clickable text that appears in button next to plus/minus icon. */
-  label: PropTypes.string.isRequired,
+  label: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
 };
 
 Accordion.defaultProps = {
   icon: null,
   iconSize: 'default',
+  id: null,
   isFieldset: false,
   isHidden: false,
 };
