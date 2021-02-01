@@ -16,15 +16,20 @@ const BylineWrapper = styled.div`
   .person-head-shot {
     margin-right: ${spacing.sm};
   }
-  
-  p {
-    color: ${color.eclipse};
-    font: ${fontSize.md}/${lineHeight.sm} ${font.pnb};
-  }
 
   span {
+    color: ${color.eclipse};
     font: ${fontSize.md}/${lineHeight.sm} ${font.pnr};
-    margin-left: ${spacing.xsm};
+    margin: 0 ${spacing.xsm};
+
+    &:first-of-type {
+      font: ${fontSize.md}/${lineHeight.sm} ${font.pnb};
+      margin: 0;
+    }
+
+    :last-of-type {
+      margin: 0;
+    }
   }
 `;
 
@@ -36,8 +41,9 @@ const Byline = ({
 }) => (
   <BylineWrapper className="byline">
     {authorImageCloudinaryId && <PersonHeadShot imgCloudinaryId={authorImageCloudinaryId} size={{ sm: '4' }} imgAlt={imgAlt} />}
-    <p rel="author">{author}</p>
-    {attribution && <span> | {attribution}</span>}
+    <span rel="author">{author}</span>
+    {author && attribution && (<span> |</span>)}
+    {attribution && <span>{attribution}</span>}
   </BylineWrapper>
 );
 
