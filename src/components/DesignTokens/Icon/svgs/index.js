@@ -24,6 +24,9 @@ import Rewind from './Rewind';
 import RibbonAward from './RibbonAward';
 import SearchIcon from './SearchIcon';
 import Sort from './Sort';
+import StarEmpty from './StarEmpty';
+import StarHalf from './StarHalf';
+import StarFull from './StarFull';
 import Time from './Time';
 import VideoPlay from './VideoPlay';
 import Videos from './Videos';
@@ -55,6 +58,9 @@ export {
   RibbonAward,
   SearchIcon,
   Sort,
+  StarEmpty,
+  StarHalf,
+  StarFull,
   Time,
   VideoPlay,
   Videos,
