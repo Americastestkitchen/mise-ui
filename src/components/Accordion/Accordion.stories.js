@@ -70,3 +70,45 @@ export const SearchWithIcon = () => (
     </Accordion>
   </AccordionWrapper>
 );
+
+export const Reviewsets = () => (
+  <ThemeProvider theme={{ siteKey: 'reviewsets' }}>
+    <AccordionWrapper maxWidth="30">
+      <Accordion
+        icon="cookbook"
+        label={() => (
+          <h3>This is a component</h3>
+        )}
+      >
+        <p>Hidden Content</p>
+      </Accordion>
+    </AccordionWrapper>
+  </ThemeProvider>
+);
+
+export const WithComponentAsLabel = () => (
+  <AccordionWrapper maxWidth="30">
+    <Accordion
+      icon="cookbook"
+      label={() => (
+        <h3>This is a component</h3>
+      )}
+    >
+      <p>Hidden Content</p>
+    </Accordion>
+  </AccordionWrapper>
+);
+
+export const WithComponentAsLabelInFieldset = () => (
+  <AccordionWrapper maxWidth="30">
+    <Accordion
+      icon="cookbook"
+      isFieldset
+      label={() => (
+        <h3>This is a component in a fieldset</h3>
+      )}
+    >
+      <p>Hidden Content</p>
+    </Accordion>
+  </AccordionWrapper>
+);

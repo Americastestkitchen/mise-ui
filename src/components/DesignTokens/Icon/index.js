@@ -252,6 +252,36 @@ export const SearchIcon = ({ fill }) => (
 
 SearchIcon.propTypes = Icons.SearchIcon.propTypes;
 
+export const StarEmpty = ({ color }) => (
+  <Icon>
+    <Icons.StarEmpty
+      color={color}
+    />
+  </Icon>
+);
+
+StarEmpty.propTypes = Icons.StarEmpty.propTypes;
+
+export const StarHalf = ({ color }) => (
+  <Icon>
+    <Icons.StarHalf
+      color={color}
+    />
+  </Icon>
+);
+
+StarHalf.propTypes = Icons.StarHalf.propTypes;
+
+export const StarFull = ({ color }) => (
+  <Icon>
+    <Icons.StarFull
+      color={color}
+    />
+  </Icon>
+);
+
+StarFull.propTypes = Icons.StarFull.propTypes;
+
 export const VideoPlay = ({ fill }) => (
   <Icon>
     <Icons.VideoPlay
