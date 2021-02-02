@@ -44,6 +44,7 @@ const sizeLookup = {
       height: 6,
       x: 0,
       y: 12.5,
+      rx: 3,
       width: '100%',
     },
   },
@@ -63,6 +64,7 @@ const Plus = ({ fill, size }) => (
       y={sizeLookup[size].vertical.y}
       width={sizeLookup[size].vertical.width}
       height={sizeLookup[size].vertical.height}
+      rx={sizeLookup[size].vertical.rx || null}
     />
     <rect
       className="plus-horizontal-bar"
@@ -70,6 +72,7 @@ const Plus = ({ fill, size }) => (
       y={sizeLookup[size].horizontal.y}
       width={sizeLookup[size].horizontal.width}
       height={sizeLookup[size].horizontal.height}
+      rx={sizeLookup[size].horizontal.rx || null}
     />
   </svg>
 );
