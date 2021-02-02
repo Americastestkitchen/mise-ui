@@ -21,8 +21,9 @@ const MarqueeCardWrapper = styled.article.attrs({
 
   @media(hover: hover) {
     &:hover {
-      transform: translateY(-${spacing.xsm});
-      z-index: 0;
+      h2 {
+        color: ${color.darkTeal}
+      }
     }
   }
 
@@ -64,7 +65,9 @@ export const StickerGroup = styled.div`
 
 const stickerHeightMobile = '1.2rem';
 export const StyledSticker = styled(Sticker)`
-  margin-left: 0;
+  &:first-child {
+    margin-left: 0;
+  }
 
   ${breakpoint('xs', 'lg')`
     border-radius: 0.5rem;
@@ -79,8 +82,8 @@ const Title = styled.h2`
   font: 2rem/${lineHeight.sm} ${font.pnb};
   margin-bottom: ${spacing.xsm};
 
-  ${breakpoint('md')`
-    font-size: ${fontSize.xxxl};
+  ${breakpoint('lg')`
+    font-size: ${fontSize.xxl};
   `};
 `;
 
@@ -90,7 +93,7 @@ const Description = styled.p`
   ${breakpoint('lg')`
     color: ${color.eclipse};
     display: block;
-    font: ${fontSize.lg}/${lineHeight.lg} ${font.mwr};
+    font: ${fontSize.md}/${lineHeight.md} ${font.mwr};
     margin-bottom: ${spacing.xsm};
   `}
 `;
