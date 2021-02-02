@@ -8,6 +8,7 @@ const color = {
   eclipse: '#3d3d3d',
   mint: '#6ba6aa',
   darkerMint: '#5a8e91',
+  darkTeal: '#4D7A7C',
   turquoise: '#8fdee3',
   seaSalt: '#d1fcff',
   regentGray: '#767f81',
