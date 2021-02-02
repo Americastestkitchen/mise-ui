@@ -25,7 +25,7 @@ export const Default = () => (
       href={text('Link', 'https://www.americastestkitchen.com/articles/2839-how-to-make-your-zoom-thanksgiving-feel-like-the-real-thing')}
       publishDate={text('Publish Date', 'Yesterday')}
       siteKey={select('Site Key', ['atk', 'cco', 'cio', 'kids', 'school', 'shop'], 'atk')}
-      stickers={[{ type: 'editorial', text: 'Community' }]}
+      stickers={[{ type: 'priority', text: 'new' }, { type: 'editorial', text: 'Community' }]}
       title={text('Title', '10 Things in the Food World We Loved in November')}
     />
   </StoryWrapper>
