@@ -13,18 +13,37 @@ const LeadMarqueeCardWrapper = styled.article.attrs({
   className: 'lead-marquee-card',
 })`
   position: relative;
-
-  .lead-marquee-card__background-image {
-    display: block;
-    width: 100%;
-  }
+  overflow: hidden;
 
   @media(hover: hover) {
     &:hover {
-      transform: translateY(-${spacing.xsm});
-      z-index: 0;
+      .lead-marquee-card__image {
+        transition: all 0.3s ease;
+        transform:  translateY(-${spacing.xsm}) scale(1.1);
+        z-index: 0;
+      }
     }
   }
+  
+  .lead-marquee-card__image {
+    display: block;
+    width: 100%;
+    transform: scale(1.1);
+  }
+
+  ${breakpoint('smmd')`
+    .lead-marquee-card__image {
+      transform: scale(1.05);
+    }
+
+    @media(hover: hover) {
+      &:hover {
+        .lead-marquee-card__image {
+          transform:  translateY(-${spacing.xsm}) scale(1.05);
+        }
+      }
+    }
+  `}
 
   ${breakpoint('lg')`
     a {
@@ -32,7 +51,8 @@ const LeadMarqueeCardWrapper = styled.article.attrs({
       max-height: 44rem;
     }
 
-    .lead-marquee-card__background-image {
+    .lead-marquee-card__image {
+      height: 102%;
       max-width: 79rem;
     }
   `}
@@ -42,6 +62,7 @@ export const StyledBadge = styled(Badge)`
   position: absolute;
   top: ${spacing.xsm};
   left: ${spacing.xsm};
+  z-index: 1;
 
   ${breakpoint('xs', 'md')`
     width: 1.6rem;
@@ -55,7 +76,9 @@ const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding: ${spacing.md};
+  position: relative;
   text-align: center;
+  z-index: 1;
 
   .byline span {
     color: ${color.white};
@@ -88,17 +111,17 @@ const Title = styled.h1`
   margin-bottom: ${spacing.xsm};
 
   ${breakpoint('lg')`
-    font-size: ${fontSize.xxxl};
     margin-bottom: ${spacing.sm};
   `};
 `;
 
 const Description = styled.p`
   color: ${color.white};
-  font: ${fontSize.md}/${lineHeight.md} ${font.mwr};
-  margin-bottom: ${spacing.xsm};
+  display: none;
 
   ${breakpoint('md')`
+    display: block;
+    font: ${fontSize.md}/${lineHeight.md} ${font.mwr};
     margin-bottom: ${spacing.sm};
   `};
 `;
@@ -106,9 +129,9 @@ const Description = styled.p`
 const LeadMarqueeCard = ({
   author,
   authorImageCloudinaryId,
-  backgroundCloudinaryId,
   backgroundColor,
   description,
+  imageCloudinaryId,
   href,
   siteKey,
   stickers,
@@ -121,7 +144,11 @@ const LeadMarqueeCard = ({
       onClick={onClick}
     >
       <StyledBadge type={siteKey} />
-      <Image className="lead-marquee-card__background-image" imageUrl={getImageUrl(backgroundCloudinaryId)} imageAlt="" />
+      <Image
+        className="lead-marquee-card__image"
+        imageUrl={getImageUrl(imageCloudinaryId)}
+        imageAlt=""
+      />
       <ContentWrapper backgroundColor={backgroundColor}>
         { stickers ? (
           <StickerGroup>
@@ -135,7 +162,7 @@ const LeadMarqueeCard = ({
           </StickerGroup>
         ) : null }
         <Title>{title}</Title>
-        <Description>{description}</Description>
+        <Description dangerouslySetInnerHTML={{ __html: description }} />
         <Byline
           author={`By ${author}`}
           authorImageCloudinaryId={authorImageCloudinaryId}
@@ -150,11 +177,11 @@ LeadMarqueeCard.propTypes = {
   author: PropTypes.string.isRequired,
   /** Image id for author */
   authorImageCloudinaryId: PropTypes.string,
-  /** Image for card. */
-  backgroundCloudinaryId: PropTypes.string.isRequired,
   /** Background color for content wrapper */
   backgroundColor: PropTypes.string.isRequired,
   description: PropTypes.string,
+  /** Image for card. */
+  imageCloudinaryId: PropTypes.string.isRequired,
   href: PropTypes.string.isRequired,
   siteKey: PropTypes.oneOf(['atk', 'cco', 'cio', 'kids', 'school', 'shop']).isRequired,
   /** Optional: Data used to render stickers */
@@ -166,6 +193,7 @@ LeadMarqueeCard.propTypes = {
 
 LeadMarqueeCard.defaultProps = {
   authorImageCloudinaryId: '',
+  backgroundColor: '#783681',
   description: null,
   stickers: null,
   onClick: () => {},
