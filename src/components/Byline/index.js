@@ -39,7 +39,7 @@ const Byline = ({
   attribution,
   imgAlt, 
 }) => (
-  <BylineWrapper className="byline">
+  <BylineWrapper className={`byline${authorImageCloudinaryId ? '' : ' no-image'}`}>
     {authorImageCloudinaryId && <PersonHeadShot imgCloudinaryId={authorImageCloudinaryId} size={{ sm: '4' }} imgAlt={imgAlt} />}
     <span rel="author">{author}</span>
     {author && attribution && (<span> |</span>)}
