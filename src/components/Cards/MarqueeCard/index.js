@@ -51,6 +51,10 @@ const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding: ${spacing.sm};
+
+  .byline.no-image {
+    margin-top: ${spacing.md};
+  }
 `;
 
 export const StickerGroup = styled.div`
@@ -72,7 +76,7 @@ export const StyledSticker = styled(Sticker)`
 
 const Title = styled.h2`
   color: ${color.eclipse};
-  font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb};
+  font: 2rem/${lineHeight.sm} ${font.pnb};
   margin-bottom: ${spacing.xsm};
 
   ${breakpoint('md')`
@@ -82,12 +86,12 @@ const Title = styled.h2`
 
 const Description = styled.p`
   display: none;
-  margin-bottom: ${spacing.xxsm};
 
   ${breakpoint('lg')`
     color: ${color.eclipse};
     display: block;
     font: ${fontSize.lg}/${lineHeight.lg} ${font.mwr};
+    margin-bottom: ${spacing.xsm};
   `}
 `;
 
