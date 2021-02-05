@@ -183,6 +183,7 @@ function getFlickityInstance(el, options) {
     arrowShape,
     autoPlay = false,
     cellAlign = 'center',
+    freeScroll,
     imagesLoaded,
     slideshow,
     navigationArrows,
@@ -201,7 +202,7 @@ function getFlickityInstance(el, options) {
     pageDots: navigationDots,
     wrapAround,
   };
-  if (isPhone) {
+  if (isPhone && freeScroll) {
     temporaryCarouselFix();
     cOptions.freeScroll = true;
     cOptions.freeScrollFriction = 0.085;
@@ -221,6 +222,7 @@ const defaultOptions = {
   arrowShape: 'M54.48828 88.55859c2.59375 4.00782 7.78516 5.15235 11.82031 2.86329 4.03907-2.57422 5.19141-7.72657 2.88672-11.73047l-20.1875-32.04688 20.1875-32.04687c2.59375-4.00782 1.44141-9.44532-2.88672-11.73438-1.4414-.85547-2.88281-1.42969-4.61328-1.42969-2.88281 0-5.76562 1.42969-7.20703 4.00782L28.53516 47.64453l25.95312 40.91406zm0 0',
   autoPlay: false,
   cellAlign: 'left',
+  freeScroll: true,
   imagesLoaded: true,
   navigationArrows: true,
   navigationDots: true,
