@@ -1,6 +1,7 @@
 import * as styles from './styles';
 import AudioPlayer from './components/AudioPlayer';
 import Accordion from './components/Accordion';
+import AccordionControl from './components/AccordionControl';
 import Badge from './components/Badge';
 import breakpoints from './styles/breakpoints';
 import Button from './components/Buttons/Button';
@@ -57,6 +58,7 @@ import { color, mixins, spacing } from './styles';
 /** add test commit */
 export {
   Accordion,
+  AccordionControl,
   AudioPlayer,
   Badge,
   breakpoints,
