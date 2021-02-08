@@ -77,7 +77,7 @@ const AccordionButtonTheme = {
       width: 100%;
     `}
   `,
-  reviewsets: css`
+  atk: css`
     display: block;
     letter-spacing: inherit;
     padding: 0;
@@ -178,7 +178,7 @@ const AccordionSvgWrapperTheme = {
     max-width: 3rem;
     width: 3rem;
   `,
-  reviewsets: css`
+  atk: css`
     background-color: ${color.white};
     border: 2px solid ${color.black};
     border-radius: 50%;
