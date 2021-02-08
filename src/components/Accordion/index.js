@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 
+import AccordionControl from '../AccordionControl';
 import { ChefHat, Content, Cookbook, Knife, Plus, Sort, Time } from '../DesignTokens/Icon/svgs';
 import { color, font, fontSize, letterSpacing, spacing, withThemes } from '../../styles';
 
@@ -148,57 +149,6 @@ const AccordionLabelWrapper = styled.div.attrs({
   ${withThemes(AccordionLabelWrapperTheme)}
 `;
 
-const AccordionSvgWrapperTheme = {
-  default: css`
-    height: 2rem;
-    max-height: 2rem;
-    max-width: 2rem;
-    width: 2rem;
-
-    svg {
-      height: 100%;
-      transition: all 0.2s ease;
-      width: 100%;
-
-      ${({ isExpanded }) => (isExpanded ? `
-        transform: rotate(90deg);
-
-        rect {
-          &:first-child {
-            opacity: 0;
-          }
-        }
-      ` : '')}
-    }
-  `,
-  play: css`
-    border: 1px solid ${color.black};
-    height: 3rem;
-    max-height: 3rem;
-    max-width: 3rem;
-    width: 3rem;
-  `,
-  atk: css`
-    background-color: ${color.white};
-    border: 2px solid ${color.black};
-    border-radius: 50%;
-    height: 3rem;
-    max-height: 3rem;
-    max-width: 3rem;
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translate(50%, -50%);
-    width: 3rem;
-  `,
-};
-
-const AccordionSvgWrapper = styled.div.attrs({
-  className: 'accordion-item__icon',
-})`
-  ${withThemes(AccordionSvgWrapperTheme)}
-`;
-
 const AccordionContent = styled.div`
   display: ${({ hidden }) => (hidden ? 'none' : 'block')};
 `;
@@ -249,13 +199,20 @@ function Accordion({
     labelEl = isLabelString ? Label : <Label />;
   }
 
+  useEffect(() => {
+    if (typeof dry !== 'undefined') {
+      // eslint-disable-next-line no-undef
+      dry.events.subscribe('accordion:toggle', val => toggleHidden(val));
+    }
+  }, []);
+
   return (
     <AccordionWrapper>
       <AccordionButton
         aria-controls={`show-hide--${idVal}`}
         aria-expanded={!hidden}
         className="show-hide__expand-collapse-button"
-        onClick={() => toggleHidden(!hidden)}
+        onClick={() => toggleHidden(curr => !curr)}
       >
         {
           isFieldset ? (
@@ -265,9 +222,10 @@ function Accordion({
             </AccordionLabelWrapper>
           ) : labelEl
         }
-        <AccordionSvgWrapper isExpanded={!hidden}>
-          <Plus size={iconSize} />
-        </AccordionSvgWrapper>
+        <AccordionControl
+          iconSize={iconSize}
+          isExpanded={!hidden}
+        />
       </AccordionButton>
       <AccordionContent
         data-testid="accordion-content"
@@ -299,6 +257,7 @@ Accordion.propTypes = {
   /** Clickable text that appears in button next to plus/minus icon. */
   label: PropTypes.oneOfType([
     PropTypes.string,
+    PropTypes.func,
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]).isRequired,
