@@ -72,7 +72,7 @@ export const SearchWithIcon = () => (
 );
 
 export const Reviewsets = () => (
-  <ThemeProvider theme={{ siteKey: 'reviewsets' }}>
+  <ThemeProvider theme={{ siteKey: 'atk' }}>
     <AccordionWrapper maxWidth="30">
       <Accordion
         icon="cookbook"
