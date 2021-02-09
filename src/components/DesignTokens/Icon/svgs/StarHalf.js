@@ -12,7 +12,7 @@ const StarHalf = ({ ariaHidden, color, focusable }) => (
     role="img"
     viewBox="0 0 16.7 16"
   >
-    <path fill="none" stroke={color} strokeWidth=".5" d="M8.4 11.9l-4.7 3.4 1.8-5.5L.8 6.3l5.8.1L8.4.8l1.8 5.6 5.8-.1-4.7 3.5 1.8 5.5-4.7-3.4z"/>
+    <path fill="none" stroke={color} strokeWidth=".5" d="M8.4 11.9l-4.7 3.4 1.8-5.5L.8 6.3l5.8.1L8.4.8l1.8 5.6 5.8-.1-4.7 3.5 1.8 5.5-4.7-3.4z" />
     <path fill={color} d="M8.4 11.9l-4.7 3.4 1.8-5.5L.8 6.3l5.8.1L8.4.8v11.1z" />
   </svg>
 );
