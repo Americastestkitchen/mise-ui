@@ -17,11 +17,6 @@ const FormInputTheme = {
     font: ${fontSize.lg}/1 ${font.pnr};
     padding: 0.9rem 1rem;
 
-    &:focus {
-      outline: 0;
-      outline-offset: 0;
-    }
-
     &::placeholder {
       color: ${color.eclipse};
       font: ${fontSize.lg}/1 ${font.pnr};

@@ -91,8 +91,9 @@ const ContentWrapper = styled.div`
 `;
 
 export const StickerGroup = styled.div`
-  display: flex;
   bottom: 0;
+  display: flex;
+  flex-shrink: 0;
 `;
 
 const stickerHeightMobile = '1.2rem';
@@ -121,7 +122,7 @@ const Description = styled.p`
 
   ${breakpoint('md')`
     display: block;
-    font: ${fontSize.md}/${lineHeight.md} ${font.mwr};
+    font: ${fontSize.md}/${lineHeight.lg} ${font.mwr};
     margin-bottom: ${spacing.sm};
   `};
 `;
