@@ -74,11 +74,17 @@ const ContentWrapper = styled.div`
   align-items: center;
   background-color: ${props => props.backgroundColor};
   display: flex;
-  flex-direction: column;
   padding: ${spacing.md};
   position: relative;
-  text-align: center;
   z-index: 1;
+
+  .lead-marquee-card__content {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: auto 0;
+    text-align: center;
+  }
 
   .byline span {
     color: ${color.white};
@@ -86,7 +92,6 @@ const ContentWrapper = styled.div`
 
   ${breakpoint('lg')`
     max-width: 34.4rem;
-    padding: ${spacing.xxxlg} ${spacing.md};
   `}
 `;
 
@@ -150,24 +155,30 @@ const LeadMarqueeCard = ({
         imageUrl={getImageUrl(imageCloudinaryId)}
         imageAlt=""
       />
-      <ContentWrapper backgroundColor={backgroundColor}>
-        { stickers ? (
-          <StickerGroup>
-            {stickers.map(({ text, type }) => (
-              <StyledSticker
-                key={text}
-                type={type}
-                text={text}
-              />
-            ))}
-          </StickerGroup>
-        ) : null }
-        <Title>{title}</Title>
-        <Description dangerouslySetInnerHTML={{ __html: description }} />
-        <Byline
-          author={`By ${author}`}
-          authorImageCloudinaryId={authorImageCloudinaryId}
-        />
+      <ContentWrapper
+        backgroundColor={backgroundColor}
+      >
+        <div
+          className="lead-marquee-card__content"
+        >
+          { stickers ? (
+            <StickerGroup>
+              {stickers.map(({ text, type }) => (
+                <StyledSticker
+                  key={text}
+                  type={type}
+                  text={text}
+                />
+              ))}
+            </StickerGroup>
+          ) : null }
+          <Title>{title}</Title>
+          <Description dangerouslySetInnerHTML={{ __html: description }} />
+          <Byline
+            author={`By ${author}`}
+            authorImageCloudinaryId={authorImageCloudinaryId}
+          />
+        </div>
       </ContentWrapper>
     </a>
   </LeadMarqueeCardWrapper>
