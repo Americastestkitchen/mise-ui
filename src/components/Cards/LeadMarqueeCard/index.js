@@ -63,11 +63,6 @@ export const StyledBadge = styled(Badge)`
   top: ${spacing.xsm};
   left: ${spacing.xsm};
   z-index: 1;
-
-  ${breakpoint('xs', 'md')`
-    width: 1.6rem;
-    height: 1.6rem;
-  `}
 `;
 
 const ContentWrapper = styled.div`
@@ -96,14 +91,10 @@ export const StickerGroup = styled.div`
   flex-shrink: 0;
 `;
 
-const stickerHeightMobile = '1.2rem';
 export const StyledSticker = styled(Sticker)`
-  ${breakpoint('xs', 'lg')`
-    border-radius: 0.5rem;
-    line-height: ${stickerHeightMobile};
-    height: ${stickerHeightMobile};
-    font-size: ${fontSize.xxsm};
-  `}
+  &:first-child {
+    margin-left: 0;
+  }
 `;
 
 const Title = styled.h1`
