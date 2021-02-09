@@ -93,7 +93,7 @@ const Description = styled.p`
   ${breakpoint('lg')`
     color: ${color.eclipse};
     display: block;
-    font: ${fontSize.md}/${lineHeight.md} ${font.mwr};
+    font: ${fontSize.md}/${lineHeight.lg} ${font.mwr};
     margin-bottom: ${spacing.xsm};
   `}
 `;
