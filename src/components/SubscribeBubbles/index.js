@@ -116,11 +116,12 @@ const SubscribeBubbles = ({ bubbles, handleClick, pathname }) => (
 SubscribeBubbles.propTypes = {
   bubbles: PropTypes.array.isRequired,
   handleClick: PropTypes.func,
-  pathname: PropTypes.string.isRequired,
+  pathname: PropTypes.string,
 };
 
 SubscribeBubbles.defaultProps = {
   handleClick: () => {},
+  pathname: '',
 };
 
 export default SubscribeBubbles;

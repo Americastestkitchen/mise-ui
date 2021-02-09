@@ -298,10 +298,14 @@ Carousel.propTypes = {
     /** Change shape of arrows on carousel */
     arrowShape: PropTypes.object,
     /** Change whether or not carousel advances to the next cell. */
+<<<<<<< HEAD
     autoPlay: PropTypes.oneOfType([
       PropTypes.number,
       PropTypes.bool,
     ]),
+=======
+    autoPlay: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
+>>>>>>> brand icons, review summary card, affiliate link
     /** Change cell alignment inside carousel */
     cellAlign: PropTypes.string,
     /** Include prev/next navigation buttons */
