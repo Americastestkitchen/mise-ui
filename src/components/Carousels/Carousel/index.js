@@ -296,7 +296,7 @@ Carousel.propTypes = {
     /** Change shape of arrows on carousel */
     arrowShape: PropTypes.object,
     /** Change whether or not carousel advances to the next cell. */
-    autoPlay: PropTypes.oneOfType(PropTypes.number, PropTypes.bool),
+    autoPlay: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
     /** Change cell alignment inside carousel */
     cellAlign: PropTypes.string,
     /** Include prev/next navigation buttons */

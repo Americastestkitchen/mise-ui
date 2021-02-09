@@ -73,6 +73,22 @@ const imageConfig = {
       effect: `gradient_fade:${strength},${edge},b_${backgroundColor}`,
     };
   },
+  thumbnail(options = {}) {
+    const config = { ...options };
+    const { aspectRatio, height, size = 'large', width } = options;
+    if ((width && height && aspectRatio) || aspectRatio === 'auto') {
+      delete config.aspectRatio;
+    }
+    // set a sensible max-width
+    if (!width && !height) {
+      config.width = size === 'small' ? 90 : 270;
+    }
+
+    return {
+      ...baseImageConfig,
+      ...config,
+    };
+  },
   heroAd() {
     return {
       ...baseImageConfig,

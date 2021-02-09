@@ -41,7 +41,7 @@ const SearchBannerClose = styled.button`
   top: 1rem;
   width: 1.2rem;
 
-  ${breakpoint('tablet')`
+  ${breakpoint('md')`
     right: 1.8rem;
     top: 1.4rem;
   `}
