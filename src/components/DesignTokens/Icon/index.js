@@ -11,9 +11,21 @@ Icon.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
+export const Alert = () => (
+  <Icon>
+    <Icons.Alert />
+  </Icon>
+);
+
 export const Arrow = () => (
   <Icon>
     <Icons.Arrow />
+  </Icon>
+);
+
+export const Bell = () => (
+  <Icon>
+    <Icons.Bell />
   </Icon>
 );
 
@@ -143,6 +155,12 @@ export const Filter = ({ className, fill }) => (
 
 Filter.propTypes = Icons.Filter.propTypes;
 
+export const Lightbulb = () => (
+  <Icon>
+    <Icons.Lightbulb />
+  </Icon>
+);
+
 export const Lock = ({ className, fill }) => (
   <Icon>
     <Icons.Lock
@@ -183,6 +201,12 @@ export const Plus = ({ fill }) => (
 );
 
 Plus.propTypes = Icons.Plus.propTypes;
+
+export const PriceUpdate = () => (
+  <Icon>
+    <Icons.PriceUpdate />
+  </Icon>
+);
 
 export const Print = ({
   ariaHidden,
@@ -288,6 +312,12 @@ export const TriangleRight = () => (
   </Icon>
 );
 
+export const TwitterBird = () => (
+  <Icon>
+    <Icons.TwitterBird />
+  </Icon>
+);
+
 export const VideoPlay = ({ fill }) => (
   <Icon>
     <Icons.VideoPlay
@@ -307,3 +337,9 @@ export const Videos = ({ fill }) => (
 );
 
 Videos.propTypes = Icons.Videos.propTypes;
+
+export const WavyStar = () => (
+  <Icon>
+    <Icons.WavyStar />
+  </Icon>
+);
