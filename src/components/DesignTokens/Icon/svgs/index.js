@@ -28,6 +28,7 @@ import StarEmpty from './StarEmpty';
 import StarHalf from './StarHalf';
 import StarFull from './StarFull';
 import Time from './Time';
+import TriangleRight from './TriangleRight';
 import VideoPlay from './VideoPlay';
 import Videos from './Videos';
 
@@ -62,6 +63,7 @@ export {
   StarHalf,
   StarFull,
   Time,
+  TriangleRight,
   VideoPlay,
   Videos,
 };

@@ -47,6 +47,7 @@ const color = {
   bluewood: '#374360',
   slate: '#767d8e',
   mineShaft: '#2a2a2a',
+  tabasco: '#A72E13', // 167, 46, 19
   transparentWhite: 'rgba(255, 255, 255, 0.5)',
   transparentBlack: 'rgba(0, 0, 0, 0.7)',
   transparentGunmetal: 'rgba(38, 38, 38, 0.5)',

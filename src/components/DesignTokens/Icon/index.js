@@ -282,6 +282,12 @@ export const StarFull = ({ color }) => (
 
 StarFull.propTypes = Icons.StarFull.propTypes;
 
+export const TriangleRight = () => (
+  <Icon>
+    <Icons.TriangleRight />
+  </Icon>
+);
+
 export const VideoPlay = ({ fill }) => (
   <Icon>
     <Icons.VideoPlay

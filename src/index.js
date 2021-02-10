@@ -4,6 +4,7 @@ import Accordion from './components/Accordion';
 import AccordionControl from './components/AccordionControl';
 import Badge from './components/Badge';
 import breakpoints from './styles/breakpoints';
+import Brands from './components/DesignTokens/Brands';
 import Button from './components/Buttons/Button';
 import carousel from './styles/carousel';
 import Carousel from './components/Carousels/Carousel';
@@ -32,6 +33,7 @@ import PersonCard from './components/Cards/PersonCard';
 import RefinementListBasic from './components/Algolia/shared/RefinementListBasic';
 import RefinementList from './components/Algolia/shared/RefinementList';
 import ResultsCount from './components/Algolia/shared/ResultsCount';
+import ReviewableSummaryCard from './components/Cards/ReviewableSummaryCard';
 import SchoolAd from './components/Ads/ShowcaseAds/SchoolAd';
 import SearchBanner from './components/SearchBanner';
 import SearchInput from './components/SearchInput';
@@ -55,13 +57,13 @@ import fonts from './styles/fonts';
 import globalStyle from './styles/global';
 import { color, mixins, spacing } from './styles';
 
-/** add test commit */
 export {
   Accordion,
   AccordionControl,
   AudioPlayer,
   Badge,
   breakpoints,
+  Brands,
   Button,
   CardCarousel,
   CardWrapper,
@@ -96,6 +98,7 @@ export {
   RefinementListBasic,
   RefinementList,
   ResultsCount,
+  ReviewableSummaryCard,
   SchoolAd,
   SearchBanner,
   SearchInput,

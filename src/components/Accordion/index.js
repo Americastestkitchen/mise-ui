@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 
 import AccordionControl from '../AccordionControl';
-import { ChefHat, Content, Cookbook, Knife, Plus, Sort, Time } from '../DesignTokens/Icon/svgs';
+import { ChefHat, Content, Cookbook, Knife, Sort, Time } from '../DesignTokens/Icon/svgs';
 import { color, font, fontSize, letterSpacing, spacing, withThemes } from '../../styles';
 
 const AccordionDivWrapper = styled.div``;
