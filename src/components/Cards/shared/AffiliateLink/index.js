@@ -25,18 +25,19 @@ const AffiliateLinkWrapper = styled.div.attrs({
 
 const AffiliateLinkTheme = {
   default: css`
-    background-color: ${color.linen};
+    background-color: ${color.dirtyLinen};
     border-radius: 3rem;
-    color: ${color.tabasco};
+    color: ${color.rust};
     display: inline-block;
     font: ${fontSize.md}/${lineHeight.md} ${font.pnb};
-    min-width: 10rem;
+    min-width: 16.2rem;
     padding: 1rem 2rem;
     position: relative;
+    text-align: center;
 
     svg {
       display: inline-block;
-      fill: ${color.tabasco};
+      fill: ${color.rust};
       height: 0.9rem;
       margin-left: 0.5rem;
       position: relative;
