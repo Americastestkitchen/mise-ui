@@ -203,7 +203,9 @@ function Accordion({
         {
           isFieldset ? (
             <AccordionLabelWrapper hasIcon={icon}>
-              <legend>{label}</legend>
+              <legend>
+                {label}
+              </legend>
               {Icon ? <Icon className={`show-hide__icon--${icon}`} /> : null}
             </AccordionLabelWrapper>
           ) : <span className="accordion__label">{label}</span>
