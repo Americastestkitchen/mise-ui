@@ -18,7 +18,6 @@ const LeadMarqueeCardWrapper = styled.article.attrs({
   @media(hover: hover) {
     &:hover {
       .lead-marquee-card__image {
-        transition: all 0.3s ease;
         transform:  translateY(-${spacing.xsm}) scale(1.1);
         z-index: 0;
       }
@@ -28,6 +27,7 @@ const LeadMarqueeCardWrapper = styled.article.attrs({
   .lead-marquee-card__image {
     display: block;
     width: 100%;
+    transition: all 0.3s ease;
     transform: scale(1.1);
   }
 
