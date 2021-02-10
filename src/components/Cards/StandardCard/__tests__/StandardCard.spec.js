@@ -9,11 +9,11 @@ import StandardCard, {
   StickerGroup,
   StyledSticker,
   StyledTitle,
-} from '../StandardCard';
-import Attributions from '../shared/Attributions';
-import CtaLink from '../shared/CtaLink';
-import Image from '../shared/Image';
-import breakpoints from '../../../styles/breakpoints';
+} from '../index';
+import Attributions from '../../shared/Attributions';
+import CtaLink from '../../shared/CtaLink';
+import Image from '../../shared/Image';
+import breakpoints from '../../../../styles/breakpoints';
 
 const baseRecipe = {
   className: null,

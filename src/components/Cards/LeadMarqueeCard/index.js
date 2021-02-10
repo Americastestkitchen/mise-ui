@@ -128,6 +128,7 @@ const LeadMarqueeCard = ({
   authorImageCloudinaryId,
   backgroundColor,
   description,
+  imageAlt,
   imageCloudinaryId,
   href,
   siteKey,
@@ -144,7 +145,7 @@ const LeadMarqueeCard = ({
       <Image
         className="lead-marquee-card__image"
         imageUrl={getImageUrl(imageCloudinaryId)}
-        imageAlt=""
+        imageAlt={imageAlt}
       />
       <ContentWrapper
         backgroundColor={backgroundColor}
@@ -181,8 +182,9 @@ LeadMarqueeCard.propTypes = {
   /** Image id for author */
   authorImageCloudinaryId: PropTypes.string,
   /** Background color for content wrapper */
-  backgroundColor: PropTypes.string.isRequired,
+  backgroundColor: PropTypes.string,
   description: PropTypes.string,
+  imageAlt: PropTypes.string,
   /** Image for card. */
   imageCloudinaryId: PropTypes.string.isRequired,
   href: PropTypes.string.isRequired,
@@ -198,6 +200,7 @@ LeadMarqueeCard.defaultProps = {
   authorImageCloudinaryId: '',
   backgroundColor: '#783681',
   description: null,
+  imageAlt: '',
   stickers: null,
   onClick: () => {},
 };

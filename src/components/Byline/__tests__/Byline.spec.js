@@ -19,7 +19,7 @@ describe('Byline component should', () => {
       </ThemeProvider>,
     )
   );
-    
+
   it('render an image', () => {
     renderComponent();
     expect(screen.getByAltText(''));
