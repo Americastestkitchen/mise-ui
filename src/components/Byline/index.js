@@ -37,7 +37,7 @@ const Byline = ({
   author,
   authorImageCloudinaryId,
   attribution,
-  imgAlt, 
+  imgAlt,
 }) => (
   <BylineWrapper className={`byline${authorImageCloudinaryId ? '' : ' no-image'}`}>
     {authorImageCloudinaryId && <PersonHeadShot imgCloudinaryId={authorImageCloudinaryId} size={{ sm: '4' }} imgAlt={imgAlt} />}

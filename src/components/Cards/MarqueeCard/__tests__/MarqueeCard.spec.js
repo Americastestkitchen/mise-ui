@@ -39,7 +39,7 @@ describe('MarqueeCard component should', () => {
 
   it('render an image', () => {
     renderComponent();
-    expect(screen.getByAltText(''));
+    expect(screen.getAllByAltText(''));
   });
 
   it('renders a title', () => {
@@ -57,5 +57,4 @@ describe('MarqueeCard component should', () => {
     expect(screen.getByText('Kevin Pang'));
     expect(screen.getByText('Yesterday'));
   });
-
 });
