@@ -59,18 +59,13 @@ describe('ReviewableSummaryCard component should', () => {
     expect(screen.getByAltText(defaultProps.imageAltText));
   });
 
-  it('renders the price when no buy now link is present', () => {
-    renderComponent({ ...defaultProps, buyNowLink: null });
-    expect(screen.getByText(defaultProps.price));
+  it('renders the price', () => {
+    renderComponent({ ...defaultProps, price: '$5' });
+    expect(screen.getByText('$5'));
   });
 
-  it('renders the affiliate link when buyNowLink is present', () => {
-    renderComponent({ ...defaultProps });
-    expect(screen.getByText(`Buy for ${defaultProps.price}`));
-  });
-
-  it('renders the affiliate link with generic text when no price is present', () => {
-    renderComponent({ ...defaultProps, price: null });
+  it('renders the affiliate link with Buy Now text', () => {
+    renderComponent();
     expect(screen.getByText('Buy Now'));
   });
 });

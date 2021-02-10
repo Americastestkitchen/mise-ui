@@ -12,7 +12,11 @@ import { color, font, fontSize, lineHeight, withThemes } from '../../../styles';
 
 const ReviewableSummaryItemTheme = {
   default: css`
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
     background-color: ${color.white};
+    justify-content: center;
     padding: 1.6rem;
     position: relative;
     min-height: 14rem;
@@ -53,7 +57,8 @@ const TitleImageWrapper = styled.div`
 
   h3 {
     flex: 1 0 0;
-    margin-bottom: 1.8rem;
+    font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb};
+    margin-bottom: 1.4rem;
   }
 
   img {
@@ -74,8 +79,19 @@ const TitleImageWrapper = styled.div`
 
 const ItemPrice = styled.div`
   font: ${fontSize.md}/${lineHeight.md} ${font.pnr};
-  margin-bottom: 1.6rem;
+
+  &:not(:last-child) {
+    margin-bottom: 1.4rem;
+  }
+
+  ${breakpoint('xs', 'md')`
+    span {
+      display: block;
+    }
+  `}
 `;
+
+const parensRe = /(\([^)]+\))/;
 
 const ReviewableSummaryCard = React.memo(({
   asin,
@@ -90,7 +106,7 @@ const ReviewableSummaryCard = React.memo(({
   winner,
   winnerHeader,
 }) => {
-  const buyNowText = price ? `Buy for ${price}` : 'Buy Now';
+  const priceMarkup = price?.replace(parensRe, '<span>$1</span>') ?? null;
   let buyNowIcon = asin ? 'Amazon' : null;
   if (buyNowOverrideAffiliateActive && buyNowOverrideAffiliateName) {
     buyNowIcon = buyNowOverrideAffiliateName;
@@ -119,6 +135,18 @@ const ReviewableSummaryCard = React.memo(({
             </div>
           )}
           <h3>{name}</h3>
+          {priceMarkup && (
+            <ItemPrice
+              dangerouslySetInnerHTML={{ __html: priceMarkup }}
+            />
+          )}
+          {buyNowLink && (
+            <AffiliateLink
+              text="Buy Now"
+              icon={buyNowIcon}
+              url={buyNowLink}
+            />
+          )}
         </div>
         {cloudinaryId && (
           <Image
@@ -128,16 +156,6 @@ const ReviewableSummaryCard = React.memo(({
           />
         )}
       </TitleImageWrapper>
-      {!buyNowLink && price && (
-        <ItemPrice>{price}</ItemPrice>
-      )}
-      {buyNowLink && (
-        <AffiliateLink
-          text={buyNowText}
-          icon={buyNowIcon}
-          url={buyNowLink}
-        />
-      )}
     </ReviewableSummaryItemEl>
   );
 });
@@ -151,7 +169,7 @@ ReviewableSummaryCard.propTypes = {
   imageAltText: PropTypes.string,
   name: PropTypes.string.isRequired,
   price: PropTypes.string,
-  recommendationStatus: PropTypes.string.isRequired,
+  recommendationStatus: PropTypes.string,
   winner: PropTypes.bool.isRequired,
   winnerHeader: PropTypes.string,
 };
@@ -163,6 +181,7 @@ ReviewableSummaryCard.defaultProps = {
   cloudinaryId: null,
   imageAltText: '',
   price: null,
+  recommendationStatus: null,
   winnerHeader: null,
 };
 
