@@ -102,13 +102,14 @@ const CardWrapper = ({
   ctaText,
   ctaUrl,
   item,
+  onClick,
   title,
   type,
 }) => {
   const El = typeMap[type] || FeatureCard;
 
   return (
-    <CardWrapperWrapper>
+    <CardWrapperWrapper onClick={onClick}>
       <CardWrapperInfoWrapper>
         <CardWrapperTitle>
           {title}
@@ -130,6 +131,8 @@ CardWrapper.propTypes = {
   ctaText: PropTypes.string,
   ctaUrl: PropTypes.string,
   item: PropTypes.object.isRequired,
+  /** onClick handler for tracking events */
+  onClick: PropTypes.func,
   title: PropTypes.string.isRequired,
   type: PropTypes.oneOf(['standard', 'feature', 'tall']).isRequired,
 };
@@ -137,6 +140,7 @@ CardWrapper.propTypes = {
 CardWrapper.defaultProps = {
   ctaText: null,
   ctaUrl: null,
+  onClick: null,
 };
 
 export default CardWrapper;

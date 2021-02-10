@@ -161,6 +161,7 @@ function StandardCard({
   contentTypeFormatted,
   ctaText,
   ctaUrl,
+  dataAttrs,
   displayCookbook,
   displaySecondaryAttribution,
   displayFavoritesButton,
@@ -183,6 +184,7 @@ function StandardCard({
   return (
     <StyledStandardCard
       className={`standard-card${imageUrl ? '' : ' no-image'}`}
+      {...dataAttrs}
     >
       <a
         className="standard-card__anchor"
@@ -260,6 +262,8 @@ StandardCard.propTypes = {
   contentTypeFormatted: PropTypes.string,
   ctaText: PropTypes.string,
   ctaUrl: PropTypes.string,
+  /** document data attributes */
+  dataAttrs: PropTypes.object,
   displayCookbook: PropTypes.bool,
   displaySecondaryAttribution: PropTypes.bool,
   displayLockIcon: PropTypes.bool,
@@ -287,6 +291,7 @@ StandardCard.defaultProps = {
   contentTypeFormatted: null,
   ctaText: '',
   ctaUrl: '',
+  dataAttrs: null,
   displayCookbook: false,
   displaySecondaryAttribution: false,
   displayFavoritesButton: false,

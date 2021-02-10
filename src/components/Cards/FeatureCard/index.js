@@ -130,6 +130,7 @@ function FeatureCard({
   contentType,
   ctaText,
   ctaUrl,
+  dataAttrs,
   displayFavoritesButton,
   href,
   imageAlt,
@@ -150,6 +151,7 @@ function FeatureCard({
       className={ctaUrl ? 'has-cta feature-card' : 'feature-card'}
       contentType={contentType}
       data-testid="feature-card"
+      {...dataAttrs}
       isWide={isWide}
     >
       <a
@@ -238,6 +240,8 @@ FeatureCard.propTypes = {
   contentType: PropTypes.string.isRequired,
   ctaText: PropTypes.string,
   ctaUrl: PropTypes.string,
+  /** document data attributes */
+  dataAttrs: PropTypes.object,
   displayFavoritesButton: PropTypes.bool,
   href: PropTypes.string.isRequired,
   imageAlt: PropTypes.string,
@@ -262,6 +266,7 @@ FeatureCard.defaultProps = {
   className: '',
   ctaText: '',
   ctaUrl: '',
+  dataAttrs: null,
   displayFavoritesButton: true,
   imageAlt: '',
   isFavorited: false,
