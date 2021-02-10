@@ -5,7 +5,6 @@ import '@testing-library/jest-dom/extend-expect';
 import 'jest-styled-components';
 
 import LeadMarqueeCard from '../index';
-
 import breakpoints from '../../../../styles/breakpoints';
 
 describe('LeadMarqueeCard component should', () => {
@@ -15,7 +14,8 @@ describe('LeadMarqueeCard component should', () => {
         <LeadMarqueeCard
           author="Kevin Pang"
           authorImageCloudinaryId="Play%20Cast%20Headshots/staff_dan_souza"
-          backgroundCloudinaryId="AKO%20Articles/2020%20Web%20Articles/ZoomThanksgivinghero"
+          imageAlt="Image alt text"
+          imageCloudinaryId="AKO%20Articles/2020%20Web%20Articles/ZoomThanksgivinghero"
           backgroundColor="#783681"
           description="There’s a better way than squinting into a laptop."
           href="https://www.americastestkitchen.com/articles/2839-how-to-make-your-zoom-thanksgiving-feel-like-the-real-thing"
@@ -44,7 +44,7 @@ describe('LeadMarqueeCard component should', () => {
 
   it('render an image', () => {
     renderComponent();
-    expect(screen.getByAltText(''));
+    expect(screen.getByAltText('Image alt text'));
   });
 
   it('renders a title', () => {
@@ -59,7 +59,6 @@ describe('LeadMarqueeCard component should', () => {
 
   it('renders an author', () => {
     renderComponent();
-    expect(screen.getByText('Kevin Pang'));
+    expect(screen.getByText('By Kevin Pang'));
   });
-
 });
