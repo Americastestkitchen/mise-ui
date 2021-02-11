@@ -18,7 +18,7 @@ export const Default = () => (
     <LeadMarqueeCard
       author={text('Author Name', 'Kevin Pang')}
       authorImageCloudinaryId={text('Author Image', 'AKO%20Articles/Author_Headshots/staff_kevin_pang')}
-      imageCloudinaryId={text('Background Image', 'AKO%20Articles/2020%20Web%20Articles/ZoomThanksgivinghero')}
+      imageUrl={text('Background Image', 'https://res.cloudinary.com/hksqkdlah/image/upload/v1/AKO%20Articles/Cooking%20for%20One/SFS_LemonySpaghettiGarlicPineNuts-4')}
       backgroundColor={select('Background Color', ['#1A3352', '#B25B18', '#321A52', '#1775C2', '#857351', '#521a2d','#405700', '#005E71','#167A7A', '#0B3C3D'], "#783681")}
       description={text('Dek', '"There’s a better way than squinting into a laptop."')}
       href={text('Link', 'https://www.americastestkitchen.com/articles/2839-how-to-make-your-zoom-thanksgiving-feel-like-the-real-thing')}
@@ -33,7 +33,7 @@ export const NoAuthorImage = () => (
   <StoryWrapper className="story-wrapper">
     <LeadMarqueeCard
       author={text('Author Name', 'Kevin Pang')}
-      imageCloudinaryId={text('Background Image', 'AKO%20Articles/2020%20Web%20Articles/ZoomThanksgivinghero')}
+      imageUrl={text('Background Image', 'https://res.cloudinary.com/hksqkdlah/image/upload/v1/AKO%20Articles/Cooking%20for%20One/SFS_LemonySpaghettiGarlicPineNuts-4')}
       backgroundColor={select('Background Color', ['#1A3352', '#B25B18', '#321A52', '#1775C2', '#857351', '#521a2d','#405700', '#005E71','#167A7A', '#0B3C3D'], "#783681")}
       description={text('Dek', '"There’s a better way than squinting into a laptop."')}
       href={text('Link', 'https://www.americastestkitchen.com/articles/2839-how-to-make-your-zoom-thanksgiving-feel-like-the-real-thing')}

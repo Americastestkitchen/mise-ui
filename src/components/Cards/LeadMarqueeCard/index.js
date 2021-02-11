@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import { color, font, fontSize, lineHeight, spacing } from '../../../styles';
-import { getImageUrl } from '../../../lib/cloudinary';
 import Badge from '../../Badge';
 import Byline from '../../Byline';
 import Image from '../shared/Image';
@@ -129,7 +128,7 @@ const LeadMarqueeCard = ({
   backgroundColor,
   description,
   imageAlt,
-  imageCloudinaryId,
+  imageUrl,
   href,
   siteKey,
   stickers,
@@ -144,7 +143,7 @@ const LeadMarqueeCard = ({
       <StyledBadge type={siteKey} />
       <Image
         className="lead-marquee-card__image"
-        imageUrl={getImageUrl(imageCloudinaryId)}
+        imageUrl={imageUrl}
         imageAlt={imageAlt}
       />
       <ContentWrapper
@@ -186,7 +185,7 @@ LeadMarqueeCard.propTypes = {
   description: PropTypes.string,
   imageAlt: PropTypes.string,
   /** Image for card. */
-  imageCloudinaryId: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string.isRequired,
   href: PropTypes.string.isRequired,
   siteKey: PropTypes.oneOf(['atk', 'cco', 'cio', 'kids', 'school', 'shop']).isRequired,
   /** Optional: Data used to render stickers */
