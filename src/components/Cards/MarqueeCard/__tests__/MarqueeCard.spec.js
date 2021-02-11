@@ -15,7 +15,7 @@ describe('MarqueeCard component should', () => {
         <MarqueeCard
           author="Kevin Pang"
           authorImageCloudinaryId="Play%20Cast%20Headshots/staff_dan_souza"
-          backgroundCloudinaryId="AKO Articles/2020 Web Articles/Things_We_Love-01_2"
+          imageUrl="https://res.cloudinary.com/hksqkdlah/image/upload/v1/AKO%20Articles/Cooking%20for%20One/SFS_LemonySpaghettiGarlicPineNuts-4"
           description="Including a virtual bread project; a punchy, small-batch hot sauce; and a digital encyclopedia of Texas tacos."
           href="https://www.americastestkitchen.com/articles/2839-how-to-make-your-zoom-thanksgiving-feel-like-the-real-thing"
           publishDate="Yesterday"

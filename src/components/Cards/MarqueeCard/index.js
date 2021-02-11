@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import { color, font, fontSize, lineHeight, spacing } from '../../../styles';
-import { getImageUrl } from '../../../lib/cloudinary';
 import Badge from '../../Badge';
 import Image from '../shared/Image';
 import Sticker from '../shared/Sticker';
@@ -88,7 +87,7 @@ const Description = styled.p`
 const MarqueeCard = ({
   author,
   authorImageCloudinaryId,
-  backgroundCloudinaryId,
+  imageUrl,
   publishDate,
   description,
   href,
@@ -103,7 +102,7 @@ const MarqueeCard = ({
       onClick={onClick}
     >
       <StyledBadge type={siteKey} />
-      <Image className="article-card__background-image" imageUrl={getImageUrl(backgroundCloudinaryId)} imageAlt="" />
+      <Image className="article-card__background-image" imageUrl={imageUrl} imageAlt="" />
       <ContentWrapper>
         { stickers ? (
           <StickerGroup>
@@ -134,7 +133,7 @@ MarqueeCard.propTypes = {
   /** Image id for author */
   authorImageCloudinaryId: PropTypes.string,
   /** Image for card. */
-  backgroundCloudinaryId: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string.isRequired,
   publishDate: PropTypes.string,
   description: PropTypes.string,
   href: PropTypes.string.isRequired,
