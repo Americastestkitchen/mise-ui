@@ -44,6 +44,11 @@ const ReviewableSummaryItemTheme = {
         flex-basis: 100%;
       }
     `}
+
+    @media print {
+      justify-content: flex-start;
+      padding: 0;
+    }
   `,
 };
 

@@ -29,6 +29,10 @@ const StyledSticker = styled.span`
     height: 1rem;
     max-height: 60%;
   }
+
+  @media print {
+    background-color: ${color.black};
+  }
 `;
 
 const determineIconType = (contentType) => {

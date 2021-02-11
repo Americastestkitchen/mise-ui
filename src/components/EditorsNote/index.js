@@ -35,6 +35,12 @@ const EditorNoteTheme = {
         }
       }
     `}
+
+    @media print {
+      color: ${color.black};
+      border-color: ${color.black};
+      margin-top: 3rem;
+    }
   `,
 };
 
@@ -61,6 +67,14 @@ const EditorNoteIconTheme = {
       top: 0;
       transform: translate(25%, -50%);
     `}
+
+    @media print {
+      color: ${color.black};
+
+      svg circle {
+        fill: ${color.black};
+      }
+    }
   `,
 };
 
@@ -77,6 +91,14 @@ const EditorNoteTitleTheme = {
 
     .note-alert & {
       color: ${color.tabasco};
+    }
+
+    @media print {
+      color: ${color.black};
+
+      .note-alert & {
+        color: ${color.black};
+      }
     }
   `,
 };
