@@ -14,6 +14,7 @@ import ClearRefinements from './components/Algolia/shared/ClearRefinements';
 import CurrentRefinements from './components/Algolia/shared/CurrentRefinements';
 import DocumentListCarousel from './components/Carousels/DocumentListCarousel';
 import FavoriteActionButton from './components/Buttons/ActionButtons/FavoriteActionButton';
+import EditorsNote from './components/EditorsNote';
 import EmailForm from './components/Forms/EmailForm';
 import FeatureCard from './components/Cards/FeatureCard';
 import FilterButton from './components/FilterButton';
@@ -74,6 +75,7 @@ export {
   ClearRefinements,
   CurrentRefinements,
   DocumentListCarousel,
+  EditorsNote,
   EmailForm,
   FavoriteActionButton,
   FeatureCard,

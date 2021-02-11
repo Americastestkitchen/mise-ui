@@ -1,4 +1,6 @@
+import Alert from './Alert';
 import Arrow from './Arrow';
+import Bell from './Bell';
 import BreadcrumbArrow from './BreadcrumbArrow';
 import Checkmark from './Checkmark';
 import Checkmark2 from './Checkmark2';
@@ -13,10 +15,12 @@ import FavoriteRibbon from './FavoriteRibbon';
 import Folder from './Folder';
 import Filter from './Filter';
 import Knife from './Knife';
+import Lightbulb from './Lightbulb';
 import Lock from './Lock';
 import Pause from './Pause';
 import Phone from './Phone';
 import Plus from './Plus';
+import PriceUpdate from './PriceUpdate';
 import Print from './Print';
 import QuestionMark from './QuestionMark';
 import RecipeCard from './RecipeCard';
@@ -29,11 +33,15 @@ import StarHalf from './StarHalf';
 import StarFull from './StarFull';
 import Time from './Time';
 import TriangleRight from './TriangleRight';
+import TwitterBird from './TwitterBird';
 import VideoPlay from './VideoPlay';
 import Videos from './Videos';
+import WavyStar from './WavyStar';
 
 export {
+  Alert,
   Arrow,
+  Bell,
   BreadcrumbArrow,
   Checkmark,
   Checkmark2,
@@ -48,10 +56,12 @@ export {
   Folder,
   Filter,
   Knife,
+  Lightbulb,
   Lock,
   Pause,
   Phone,
   Plus,
+  PriceUpdate,
   Print,
   QuestionMark,
   RecipeCard,
@@ -64,6 +74,8 @@ export {
   StarFull,
   Time,
   TriangleRight,
+  TwitterBird,
   VideoPlay,
   Videos,
+  WavyStar,
 };

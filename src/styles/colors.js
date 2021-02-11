@@ -1,6 +1,7 @@
 const color = {
   white: '#ffffff',
   black: '#000000',
+  cuttySark: '#57797b',
   tomato: '#d73a15',
   rust: '#a72e12',
   whiteSmoke: '#f5f5f5',
@@ -19,6 +20,7 @@ const color = {
   arapawa: '#2e4a69',
   cornflower: '#e6f1ff',
   linen: '#fcf9f3',
+  dirtyLinen: '#fbebe8',
   squirrel: '#94856B',
   cork: '#3f2b1e',
   bone: '#d9ccA7',
