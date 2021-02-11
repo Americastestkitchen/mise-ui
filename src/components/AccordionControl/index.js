@@ -27,6 +27,10 @@ const AccordionSvgWrapperTheme = {
         }
       ` : '')}
     }
+
+    @media print {
+      display: none;
+    }
   `,
   play: css`
     border: 1px solid ${color.black};
