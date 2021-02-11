@@ -8,6 +8,7 @@
     "navigator": true,
     "window": true,
     "jest": true,
+    "IntersectionObserver": true
   },
   "parser": "babel-eslint",
   "rules": {

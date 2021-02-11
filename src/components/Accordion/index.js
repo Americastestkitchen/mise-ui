@@ -151,6 +151,10 @@ const AccordionLabelWrapper = styled.div.attrs({
 
 const AccordionContent = styled.div`
   display: ${({ hidden }) => (hidden ? 'none' : 'block')};
+
+  @media print {
+    display: block !important;
+  }
 `;
 
 const icons = {

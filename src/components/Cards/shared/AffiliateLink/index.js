@@ -16,6 +16,10 @@ const AffiliateLinkWrapperTheme = {
       margin: 1rem auto 0;
       width: 10rem;
     }
+
+    @media print {
+      display: none;
+    }
   `,
 };
 
