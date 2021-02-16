@@ -96,7 +96,7 @@ const Sticker = ({
     type={type}
   >
     { icon && type === 'editorial' ? determineIconType(contentType) : null }
-    <span>{text}</span>
+    <span dangerouslySetInnerHTML={{ __html: text }} />
   </StyledSticker>
 );
 
