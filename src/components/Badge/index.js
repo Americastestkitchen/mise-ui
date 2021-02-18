@@ -40,14 +40,16 @@ const determineType = (type, fill) => {
  */
 
 const Badge = ({
+  ariaHidden,
   className,
   fill,
   type,
 }) => (
   <StyledBadge
+    aria-hidden={ariaHidden}
     data-testid="badge"
     role="img"
-    aria-label={`${type}`.toUpperCase()}
+    aria-label={!ariaHidden ? `${type}`.toUpperCase() : null}
     className={`badge${className ? ` ${className}` : ''}`}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 25 25"
@@ -57,12 +59,14 @@ const Badge = ({
 );
 
 Badge.propTypes = {
+  ariaHidden: PropTypes.bool,
   className: PropTypes.string,
   fill: PropTypes.string,
   type: PropTypes.oneOf(['atk', 'cio', 'cco', 'kids', 'school', 'shop']).isRequired,
 };
 
 Badge.defaultProps = {
+  ariaHidden: false,
   className: '',
   fill: `${color.transparentBlack}`,
 };

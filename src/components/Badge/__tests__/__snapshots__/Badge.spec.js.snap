@@ -2,6 +2,7 @@
 
 exports[`components renders a cco badge 1`] = `
 <svg
+  aria-hidden={false}
   aria-label="CCO"
   className="sc-bdnylx nmOjv badge"
   data-testid="badge"
@@ -70,6 +71,7 @@ exports[`components renders a cco badge 1`] = `
 
 exports[`components renders a cio badge 1`] = `
 <svg
+  aria-hidden={false}
   aria-label="CIO"
   className="sc-bdnylx nmOjv badge"
   data-testid="badge"
@@ -92,6 +94,7 @@ exports[`components renders a cio badge 1`] = `
 
 exports[`components renders a kids badge 1`] = `
 <svg
+  aria-hidden={false}
   aria-label="KIDS"
   className="sc-bdnylx nmOjv badge"
   data-testid="badge"
@@ -152,6 +155,7 @@ exports[`components renders a kids badge 1`] = `
 
 exports[`components renders an atk badge 1`] = `
 <svg
+  aria-hidden={false}
   aria-label="ATK"
   className="sc-bdnylx nmOjv badge"
   data-testid="badge"
