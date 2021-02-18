@@ -15,6 +15,7 @@ const Image = ({
   imageAlt,
   imageUrl,
   lazy,
+  lowQualityImageUrl,
 }) => {
   const intersectionRef = useRef(null);
 
@@ -24,11 +25,21 @@ const Image = ({
     threshold: 0,
   }) || { isIntersecting: false };
 
-  const [src, setSrc] = useState(lazy ? inlineSrc : imageUrl);
+  let initSrc = lazy ? inlineSrc : imageUrl;
+  if (lazy && lowQualityImageUrl) {
+    initSrc = lowQualityImageUrl;
+  }
+  const [src, setSrc] = useState(initSrc);
 
   useEffect(() => {
     if (isIntersecting) setSrc(imageUrl);
   }, [isIntersecting]);
+
+  useEffect(() => {
+    if (lazy && lowQualityImageUrl) {
+      setSrc(lowQualityImageUrl);
+    }
+  }, []);
 
   useEffect(() => {
     const showImage = () => setSrc(imageUrl);
@@ -51,11 +62,13 @@ Image.propTypes = {
   imageAlt: PropTypes.string.isRequired,
   imageUrl: PropTypes.string.isRequired,
   lazy: PropTypes.bool,
+  lowQualityImageUrl: PropTypes.string,
 };
 
 Image.defaultProps = {
   className: '',
   lazy: true,
+  lowQualityImageUrl: null,
 };
 
 export default Image;
