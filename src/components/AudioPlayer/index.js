@@ -1,11 +1,11 @@
 import breakpoint from 'styled-components-breakpoint';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import Plyr from 'plyr';
 import styled from 'styled-components';
 import plyrStyles from './plyrStyles';
 
 import Image from '../Cards/shared/Image';
+import utils from '../../lib/utils';
 import { Pause, VideoPlay, Rewind, FastForward } from '../DesignTokens/Icon';
 
 import {
@@ -154,7 +154,6 @@ display: none;
 `;
 
 const plyrOptions = { controls: ['progress', 'current-time', 'duration'], invertTime: false, displayDuration: true };
-let player;
 
 const AudioPlayer = ({
   id,
@@ -165,13 +164,14 @@ const AudioPlayer = ({
   href,
 }) => {
   const playerEl = useRef(null);
+  const playerInstance = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  // this only happens once, on mount
+  // update player information when a new episode is selected
   useEffect(() => {
-    if (!player) {
-      player = new Plyr(playerEl.current, plyrOptions);
-      player.source = {
+    setIsPlaying(false);
+    if (playerInstance.current) {
+      playerInstance.current.source = {
         type: 'audio',
         title,
         sources: [
@@ -184,27 +184,39 @@ const AudioPlayer = ({
     }
   }, [id, title]);
 
-  // update player information when a new episode is selected
-  useEffect(() => {
-    setIsPlaying(false);
-    player.source = {
-      type: 'audio',
-      title,
-      sources: [
-        {
-          src: `https://rss.art19.com/episodes/${id}.mp3`,
-          type: 'audio/mp3',
-        },
-      ],
-    };
-  }, [id, title]);
+  // check to see if Plyr has loaded, then create Plyr instance
+  const checkPlyr = useCallback(() => {
+    if (typeof Plyr !== 'undefined') {
+      // eslint-disable-next-line no-undef
+      playerInstance.current = new Plyr(playerEl.current, plyrOptions);
+      playerInstance.current.source = {
+        type: 'audio',
+        title,
+        sources: [
+          {
+            src: `https://rss.art19.com/episodes/${id}.mp3`,
+            type: 'audio/mp3',
+          },
+        ],
+      };
+    } else {
+      setTimeout(checkPlyr, 500);
+    }
+  }, [playerInstance, playerEl, id, title]);
 
   // destroy player and garbage collect
   useEffect(() => {
-    if (player) {
-      return () => player.destroy();
-    }
-    return true;
+    setTimeout(() => {
+      utils.loadScriptFile('cdn.plyr.io/3.6.4/plyr.js', false, true, 'footer');
+      utils.loadCssFile('https://cdn.plyr.io/3.6.4/plyr.css');
+      checkPlyr();
+    }, 50);
+
+    return () => {
+      if (playerInstance.current?.destroy) {
+        playerInstance.current.destroy();
+      }
+    };
   }, []);
 
   const togglePlay = () => {
