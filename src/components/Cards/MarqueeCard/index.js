@@ -46,10 +46,6 @@ const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding: ${spacing.sm};
-
-  .byline.no-image {
-    margin-top: ${spacing.md};
-  }
 `;
 
 export const StickerGroup = styled.div`
@@ -82,6 +78,23 @@ const Description = styled.p`
     font: ${fontSize.md}/${lineHeight.lg} ${font.mwr};
     margin-bottom: ${spacing.xsm};
   `}
+`;
+
+const StyledByline = styled(Byline)`
+  align-items: center;
+  flex-direction: row;
+  
+  &.no-image {
+    margin-top: ${spacing.md};
+  }
+
+  .byline__attribution {
+    margin-top: 0;
+
+    span:first-child {
+      display: block;
+    }
+  }
 `;
 
 const MarqueeCard = ({
@@ -117,7 +130,7 @@ const MarqueeCard = ({
         ) : null }
         <Title>{title}</Title>
         <Description>{description}</Description>
-        <Byline
+        <StyledByline
           author={author}
           authorImageCloudinaryId={authorImageCloudinaryId}
           attribution={publishDate}

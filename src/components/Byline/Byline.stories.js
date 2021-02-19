@@ -22,3 +22,10 @@ export const NoImage = () => (
     attribution={text('Attribution', 'Digital Editorial Director')}
   />
 );
+
+export const NoAttribution = () => (
+  <Byline
+    author={text('Author Name', 'Kevin Pang')}
+    authorImageCloudinaryId={text('Author Image', 'AKO%20Articles/Author_Headshots/staff_kevin_pang')}
+  />
+);
