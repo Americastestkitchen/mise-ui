@@ -17,6 +17,7 @@ describe('SubscribeBubbles component should', () => {
             name: 'Apple Podcasts',
             href: 'https://itunes.apple.com/us/podcast/proof/id1438546054',
           }]}
+          pathname="/podcasts"
         />
       </ThemeProvider>,
     )
