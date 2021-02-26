@@ -25,7 +25,6 @@ const CardWrapperWrapper = styled.div.attrs({
   className: 'card-wrapper',
 })`${withThemes(CardWrapperWrapperTheme)}`;
 
-
 const CardWrapperInfoWrapperTheme = {
   default: css`
     ${breakpoint('lg')`
@@ -60,7 +59,6 @@ const CardWrapperTitleTheme = {
 const CardWrapperTitle = styled.h3.attrs({
   className: 'card-wrapper__title',
 })`${withThemes(CardWrapperTitleTheme)}`;
-
 
 const CardWrapperCtaTheme = {
   default: css`

@@ -58,5 +58,4 @@ SearchRefinementList.defaultProps = {
   transformItems: null,
 };
 
-
 export default connectRefinementList(SearchRefinementList);

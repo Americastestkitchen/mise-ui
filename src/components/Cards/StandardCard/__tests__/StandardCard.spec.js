@@ -63,7 +63,6 @@ const baseTasteTest = {
   href: 'https://www-staging.americastestkitchen.com/taste_tests/1644-baking-powder?incode=MASAD00L0&ref=new_search_experience_1',
 };
 
-
 describe('StandardCard component', () => {
   const componentSetup = (props) => {
     const testRenderer = TestRenderer.create(
