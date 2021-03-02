@@ -176,7 +176,6 @@ const SchoolCta = styled.a.attrs({
   className: 'school-ad__cta',
 })`${withThemes(SchoolCtaTheme)}`;
 
-
 const deviceConfigMap = {
   desktop: 'showcaseSchoolAdDesktop',
   tablet: 'showcaseSchoolAdTablet',

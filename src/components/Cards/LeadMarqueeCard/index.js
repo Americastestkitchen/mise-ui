@@ -194,7 +194,6 @@ LeadMarqueeCard.propTypes = {
   onClick: PropTypes.func,
 };
 
-
 LeadMarqueeCard.defaultProps = {
   authorImageCloudinaryId: '',
   backgroundColor: '#783681',

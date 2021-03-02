@@ -144,7 +144,6 @@ MarqueeCard.propTypes = {
   onClick: PropTypes.func,
 };
 
-
 MarqueeCard.defaultProps = {
   authorImageCloudinaryId: '',
   description: null,

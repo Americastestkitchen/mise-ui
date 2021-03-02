@@ -58,10 +58,10 @@ Byline.propTypes = {
   imgAlt: PropTypes.string,
 };
 
-
 Byline.defaultProps = {
   authorImageCloudinaryId: null,
   attribution: '',
   imgAlt: '',
 };
+
 export default Byline;
