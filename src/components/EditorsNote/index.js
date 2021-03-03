@@ -8,9 +8,10 @@ import * as Icons from '../DesignTokens/Icon';
 
 const iconTypeMap = {
   alert: Icons.Alert,
-  bell: Icons.Bell,
-  lightbulb: Icons.Lightbulb,
-  price: Icons.PriceUpdate,
+  coming_soon: Icons.Lightbulb,
+  generic: Icons.Bell,
+  retest: Icons.Bell,
+  price_update: Icons.PriceUpdate,
 };
 
 const EditorNoteTheme = {
@@ -127,21 +128,21 @@ const EditorNoteTextTheme = {
   `,
 };
 
-const EditorNoteText = styled.p`
+const EditorNoteText = styled.div`
   ${withThemes(EditorNoteTextTheme)}
 `;
 
 const EditorsNote = ({
+  content,
+  noteType,
   subtitle,
-  text,
   title,
-  type,
 }) => {
-  const Icon = iconTypeMap[type];
+  const Icon = iconTypeMap[noteType] || iconTypeMap.generic;
   return (
-    <EditorNote className={`note-${type}`}>
+    <EditorNote className={`editors-note note-${noteType}`}>
       {Icon && (
-        <EditorNoteIcon data-type={type}>
+        <EditorNoteIcon data-type={noteType}>
           <Icon />
         </EditorNoteIcon>
       )}
@@ -149,27 +150,30 @@ const EditorsNote = ({
         <EditorNoteTitle>{title}</EditorNoteTitle>
         <EditorNoteSubtitle>{subtitle}</EditorNoteSubtitle>
       </div>
-      <EditorNoteText>{text}</EditorNoteText>
+      <EditorNoteText
+        dangerouslySetInnerHTML={{ __html: content }}
+      />
     </EditorNote>
   );
 };
 
 EditorsNote.propTypes = {
-  subtitle: PropTypes.string,
-  text: PropTypes.string.isRequired,
-  title: PropTypes.string,
-  type: PropTypes.oneOf([
+  content: PropTypes.string.isRequired,
+  noteType: PropTypes.oneOf([
     'alert',
-    'bell',
-    'lightbulb',
-    'price',
+    'coming_soon',
+    'generic',
+    'retest',
+    'price_update',
   ]),
+  subtitle: PropTypes.string,
+  title: PropTypes.string,
 };
 
 EditorsNote.defaultProps = {
+  noteType: null,
   subtitle: null,
   title: null,
-  type: null,
 };
 
 export default EditorsNote;
