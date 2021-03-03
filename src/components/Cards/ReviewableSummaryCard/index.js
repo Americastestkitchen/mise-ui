@@ -48,6 +48,7 @@ const ReviewableSummaryItemTheme = {
     @media print {
       justify-content: flex-start;
       padding: 0;
+      width: 100%;
     }
   `,
 };
@@ -80,6 +81,14 @@ const TitleImageWrapper = styled.div`
       width: 18rem;
     }
   `}
+
+    @media print {
+      width: 100%;
+
+      > div {
+        width: 100%;
+      }
+    }
 `;
 
 const ItemPrice = styled.div`

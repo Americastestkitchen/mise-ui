@@ -36,6 +36,7 @@ import PairedProductAd from './components/Ads/PairedProductAd';
 import PersonCard from './components/Cards/PersonCard';
 import RefinementListBasic from './components/Algolia/shared/RefinementListBasic';
 import RefinementList from './components/Algolia/shared/RefinementList';
+import RelatedDocumentCard from './components/Cards/RelatedDocumentCard';
 import ResultsCount from './components/Algolia/shared/ResultsCount';
 import ReviewableSummaryCard from './components/Cards/ReviewableSummaryCard';
 import SchoolAd from './components/Ads/ShowcaseAds/SchoolAd';
@@ -105,6 +106,7 @@ export {
   PersonCard,
   RefinementListBasic,
   RefinementList,
+  RelatedDocumentCard,
   ResultsCount,
   ReviewableSummaryCard,
   SchoolAd,
