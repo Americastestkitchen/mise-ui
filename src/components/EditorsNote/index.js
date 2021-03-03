@@ -48,7 +48,6 @@ const EditorNote = styled.section`
   ${withThemes(EditorNoteTheme)}
 `;
 
-
 const EditorNoteIconTheme = {
   default: css`
     align-items: center;
@@ -82,7 +81,6 @@ const EditorNoteIcon = styled.span`
   ${withThemes(EditorNoteIconTheme)}
 `;
 
-
 const EditorNoteTitleTheme = {
   default: css`
     color: ${color.cuttySark};
@@ -107,7 +105,6 @@ const EditorNoteTitle = styled.span`
   ${withThemes(EditorNoteTitleTheme)}
 `;
 
-
 const EditorNoteSubtitleTheme = {
   default: css`
     font: ${fontSize.md}/${lineHeight.md} ${font.pnr};
@@ -123,7 +120,6 @@ const EditorNoteSubtitleTheme = {
 const EditorNoteSubtitle = styled.span`
   ${withThemes(EditorNoteSubtitleTheme)}
 `;
-
 
 const EditorNoteTextTheme = {
   default: css`
