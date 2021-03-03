@@ -8,9 +8,9 @@ import EditorsNote from '../index';
 import breakpoints from '../../../styles/breakpoints';
 
 const defaultProps = {
+  content: 'This is longer and less interesting',
   subtitle: 'February 2020',
   title: 'Price Update',
-  text: 'This is longer and less interesting',
   type: 'bell',
 };
 
@@ -25,9 +25,9 @@ describe('EditorsNote component should', () => {
     )
   );
 
-  it('render the text', () => {
+  it('render the content', () => {
     renderComponent();
-    expect(screen.getByText(defaultProps.text));
+    expect(screen.getByText(defaultProps.content));
   });
 
   it('render the title', () => {
