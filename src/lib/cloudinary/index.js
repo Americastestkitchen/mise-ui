@@ -68,6 +68,14 @@ const imageConfig = {
       ...config,
     };
   },
+  placeholder(options = {}) {
+    const config = imageConfig.thumbnail(options);
+    return {
+      ...config,
+      effect: 'blur:500',
+      quality: 5,
+    };
+  },
   gradientFade(strength = 8, edge = 'y_-0.5', backgroundColor = 'black') {
     return {
       effect: `gradient_fade:${strength},${edge},b_${backgroundColor}`,

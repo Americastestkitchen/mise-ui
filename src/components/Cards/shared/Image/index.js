@@ -28,19 +28,20 @@ const Image = ({
 
   useEffect(() => {
     if (isIntersecting) setSrc(imageUrl);
-  }, [isIntersecting]);
+  }, [imageUrl, isIntersecting]);
 
   useEffect(() => {
     const showImage = () => setSrc(imageUrl);
     window.addEventListener('beforeprint', showImage);
     return () => window.removeEventListener('beforeprint', showImage);
-  }, []);
+  }, [imageUrl]);
 
   return (
     <StyledImage
       alt={imageAlt}
       className={className}
       ref={intersectionRef}
+      role="img"
       src={src}
     />
   );

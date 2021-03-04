@@ -41,6 +41,7 @@ const EditorNoteTheme = {
       color: ${color.black};
       border-color: ${color.black};
       margin-top: 3rem;
+      page-break-inside: avoid;
     }
   `,
 };

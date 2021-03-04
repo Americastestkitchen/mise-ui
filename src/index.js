@@ -27,6 +27,7 @@ import Listable from './components/Listable';
 import LeadMarqueeCard from './components/Cards/LeadMarqueeCard';
 import LoadingCard from './components/Cards/LoadingCard';
 import LoadingCarousel from './components/Carousels/LoadingCarousel';
+import LoadingRelatedDocumentCard from './components/Cards/LoadingRelatedDocumentCard';
 import MarqueeCard from './components/Cards/MarqueeCard';
 import MediaObjectCard from './components/Cards/MediaObjectCard';
 import MembershipShowcaseAd from './components/Ads/ShowcaseAds/MembershipShowcaseAd';
@@ -36,6 +37,7 @@ import PairedProductAd from './components/Ads/PairedProductAd';
 import PersonCard from './components/Cards/PersonCard';
 import RefinementListBasic from './components/Algolia/shared/RefinementListBasic';
 import RefinementList from './components/Algolia/shared/RefinementList';
+import RelatedDocumentCard from './components/Cards/RelatedDocumentCard';
 import ResultsCount from './components/Algolia/shared/ResultsCount';
 import ReviewableSummaryCard from './components/Cards/ReviewableSummaryCard';
 import SchoolAd from './components/Ads/ShowcaseAds/SchoolAd';
@@ -95,6 +97,7 @@ export {
   LeadMarqueeCard,
   LoadingCard,
   LoadingCarousel,
+  LoadingRelatedDocumentCard,
   MediaObjectCard,
   PairedProductAd,
   PodcastEpisodeCard,
@@ -105,6 +108,7 @@ export {
   PersonCard,
   RefinementListBasic,
   RefinementList,
+  RelatedDocumentCard,
   ResultsCount,
   ReviewableSummaryCard,
   SchoolAd,
