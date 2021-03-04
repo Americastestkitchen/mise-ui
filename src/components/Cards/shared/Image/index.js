@@ -31,10 +31,13 @@ const Image = ({
   }, [imageUrl, isIntersecting]);
 
   useEffect(() => {
-    const showImage = () => setSrc(imageUrl);
-    window.addEventListener('beforeprint', showImage);
-    return () => window.removeEventListener('beforeprint', showImage);
-  }, [imageUrl]);
+    if (lazy) {
+      const showImage = () => setSrc(imageUrl);
+      window.addEventListener('beforeprint', showImage);
+      return () => window.removeEventListener('beforeprint', showImage);
+    }
+    return true;
+  }, []);
 
   return (
     <StyledImage
