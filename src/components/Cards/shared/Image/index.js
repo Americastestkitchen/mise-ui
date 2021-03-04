@@ -15,20 +15,31 @@ const Image = ({
   imageAlt,
   imageUrl,
   lazy,
+  lowQualityImageUrl,
 }) => {
   const intersectionRef = useRef(null);
 
   const { isIntersecting } = useIntersection(intersectionRef, {
     root: null,
-    rootMargin: '30px',
+    rootMargin: lowQualityImageUrl ? '0px' : '30px',
     threshold: 0,
   }) || { isIntersecting: false };
 
-  const [src, setSrc] = useState(lazy ? inlineSrc : imageUrl);
+  let initSrc = lazy ? inlineSrc : imageUrl;
+  if (lazy && lowQualityImageUrl) {
+    initSrc = lowQualityImageUrl;
+  }
+  const [src, setSrc] = useState(initSrc);
 
   useEffect(() => {
     if (isIntersecting) setSrc(imageUrl);
-  }, [imageUrl, isIntersecting]);
+  }, [isIntersecting]);
+
+  useEffect(() => {
+    if (lazy && lowQualityImageUrl) {
+      setSrc(lowQualityImageUrl);
+    }
+  }, []);
 
   useEffect(() => {
     if (lazy) {
@@ -36,7 +47,7 @@ const Image = ({
       window.addEventListener('beforeprint', showImage);
       return () => window.removeEventListener('beforeprint', showImage);
     }
-    return true;
+    return () => {};
   }, []);
 
   return (
@@ -44,7 +55,6 @@ const Image = ({
       alt={imageAlt}
       className={className}
       ref={intersectionRef}
-      role="img"
       src={src}
     />
   );
@@ -55,11 +65,13 @@ Image.propTypes = {
   imageAlt: PropTypes.string.isRequired,
   imageUrl: PropTypes.string.isRequired,
   lazy: PropTypes.bool,
+  lowQualityImageUrl: PropTypes.string,
 };
 
 Image.defaultProps = {
   className: '',
   lazy: true,
+  lowQualityImageUrl: null,
 };
 
 export default Image;

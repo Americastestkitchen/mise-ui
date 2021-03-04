@@ -167,6 +167,7 @@ const ReviewableSummaryCard = React.memo(({
             aspectRatio="1:1"
             imageAlt={imageAltText}
             imageUrl={getImageUrl(cloudinaryId, 'thumbnail')}
+            lowQualityImageUrl={getImageUrl(cloudinaryId, 'thumbnailPlaceholder')}
           />
         )}
       </TitleImageWrapper>

@@ -97,6 +97,15 @@ const imageConfig = {
       ...config,
     };
   },
+  thumbnailPlaceholder(options = {}) {
+    const config = imageConfig.thumbnail(options);
+    return {
+      ...config,
+      dpr: '1.0',
+      quality: '5',
+      effect: 'blur:500',
+    };
+  },
   heroAd() {
     return {
       ...baseImageConfig,
