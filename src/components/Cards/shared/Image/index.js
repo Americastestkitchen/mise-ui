@@ -41,6 +41,7 @@ const Image = ({
       alt={imageAlt}
       className={className}
       ref={intersectionRef}
+      role="img"
       src={src}
     />
   );

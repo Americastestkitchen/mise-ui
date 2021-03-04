@@ -27,6 +27,7 @@ import Listable from './components/Listable';
 import LeadMarqueeCard from './components/Cards/LeadMarqueeCard';
 import LoadingCard from './components/Cards/LoadingCard';
 import LoadingCarousel from './components/Carousels/LoadingCarousel';
+import LoadingRelatedDocumentCard from './components/Cards/LoadingRelatedDocumentCard';
 import MarqueeCard from './components/Cards/MarqueeCard';
 import MediaObjectCard from './components/Cards/MediaObjectCard';
 import MembershipShowcaseAd from './components/Ads/ShowcaseAds/MembershipShowcaseAd';
@@ -96,6 +97,7 @@ export {
   LeadMarqueeCard,
   LoadingCard,
   LoadingCarousel,
+  LoadingRelatedDocumentCard,
   MediaObjectCard,
   PairedProductAd,
   PodcastEpisodeCard,
