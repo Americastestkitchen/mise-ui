@@ -51,6 +51,16 @@ const AccordionSvgWrapperTheme = {
     top: 50%;
     transform: translate(50%, -50%);
     width: 3rem;
+
+    @media(hover: hover) {
+      &:hover {
+        border: 2px solid ${color.nobel};
+
+        svg {
+          fill: ${color.nobel};
+        }
+      }
+    }
   `,
 };
 

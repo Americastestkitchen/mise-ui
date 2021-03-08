@@ -89,6 +89,18 @@ const AccordionButtonTheme = {
     ${breakpoint('xlg')`
       width: 100%;
     `}
+
+    @media(hover: hover) {
+      &:hover {
+        cursor: pointer;
+        .accordion-item__icon {
+          border-color: ${color.nobel};
+        }
+        svg {
+          fill: ${color.nobel};
+        }
+      }
+    }
   `,
   light: css`
   `,
