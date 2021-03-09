@@ -14,6 +14,7 @@ describe('RelatedDocumentCard component should', () => {
         <RelatedDocumentCard
           attribution="AMERICA’S TEST KITCHEN"
           contentType="episode"
+          imageAlt="this is a test, only a test"
           imageUrl="https://res.cloudinary.com/hksqkdlah/image/upload/c_fill,f_auto,g_faces:auto,q_auto:low,w_300,ar_16:9/v1592840035/mise-play/feature-card-wide.jpg"
           siteKey="atk"
           stickers={[{ type: 'priority', text: 'New' }, { type: 'editorial', text: '28:03' }]}
