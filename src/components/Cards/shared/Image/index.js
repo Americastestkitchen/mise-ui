@@ -1,8 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import useIntersection from '../../../hooks/useIntersection';
+import useMedia from '../../../hooks/useMedia';
 
 const StyledImage = styled.img`
   max-width: 100%;
@@ -18,6 +19,7 @@ const Image = ({
   lowQualityImageUrl,
 }) => {
   const intersectionRef = useRef(null);
+  const isPrint = useMedia('print');
 
   const { isIntersecting } = useIntersection(intersectionRef, {
     root: null,
@@ -31,21 +33,26 @@ const Image = ({
   }
   const [src, setSrc] = useState(initSrc);
 
+  const loadImage = useCallback(() => {
+    setSrc(imageUrl);
+  }, [imageUrl]);
+
   useEffect(() => {
-    if (isIntersecting) setSrc(imageUrl);
+    if (isIntersecting) loadImage();
   }, [isIntersecting]);
+
+  useEffect(() => {
+    if (isPrint) loadImage();
+  }, [isPrint]);
 
   useEffect(() => {
     if (lazy && lowQualityImageUrl) {
       setSrc(lowQualityImageUrl);
     }
-  }, []);
-
-  useEffect(() => {
-    if (lazy) {
-      const showImage = () => setSrc(imageUrl);
-      window.addEventListener('beforeprint', showImage);
-      return () => window.removeEventListener('beforeprint', showImage);
+    if (typeof dry !== 'undefined') {
+      // eslint-disable-next-line no-undef
+      const printSub = dry.events.subscribe('images:load', loadImage);
+      return () => printSub.remove();
     }
     return () => {};
   }, []);
