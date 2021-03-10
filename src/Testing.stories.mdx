@@ -4,11 +4,9 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # Testing 
 Testing is important to maintain quality of any system.
-- use Jest to test create unit tests that test component structure and interactions.... ._."
 
 **Some best practice tips to keep in mind:**
 - Articulate supported component states as stories to clarify which combinations of inputs yields a given state. Ruthlessly omit unsupported states to reduce noise.
-
 - Render components consistently to mitigate variability that can be triggered by randomized (Math.random) or relative (Date.now) inputs.
 
 ## Visual Test Appearance
@@ -19,30 +17,12 @@ ChromaticQA?
 ## Accessibility Tests
 Disabilities affect 15% of the population according to the World Health Organization. Design systems have an outsized impact on accessibility because they contain the building blocks of user interfaces. 
 
-storybook a11y add on? -- tool for verifying web accessibility standards (WCAG) in realtime.
+Some extensions to help find and identify accessibility issues are axe DevTools and WAVE Evaluation Tool.
 
 ## Structural Testing
-Structual tests focus on the structure of the UI and how it’s laid out. We want to test whether or not each component has the correct content. Snapshot tests with Storyshots capture a component’s rendered markup. They help us stay abreast of markup changes that cause rendering errors and warnings. Jest's Snapshots makes it easy to make sure the UI does not change unexpectedly. It lets you capture a string that represents your rendered component and store it in a file. Then you can compare it later to ensure that the UI didn't change.
+Structual tests focus on the structure of the UI and how it’s laid out. We want to test whether or not each component has the correct content. Mise-UI currently uses React Testing Library to test our components by querying DOM elements.
 
-The test will fail if the two snapshots do not match: either the change is unexpected, or the reference snapshot needs to be updated to the new version of the UI component.
-
-Running Jest Test Suite
-
+Running the Test Suite
 to run all tests: `yarn run test`
 
-to update tests: `yarn run test --updateSnapshot` or `yarn run jest --updateSnapshot`
-
-to generate or code coverage add `--coverage` flag
-
-If you want to run Jest directly from the CLI: `yarn global add jest`
-
-### Interaction Testing
-UI is all about interacting with the user. We do this with a bunch of UI elements, such as buttons, links, and input elements. With interaction testing, we need to test if they are working properly.
-
-We have few ways to do this type of testing with React. One way is to use Enzyme.
-
-### CSS/Style Testing
-UI is all about styles (whether they’re simple, beautiful, or even ugly). With style testing, we are evaluating the look and feel of our UI components between code changes. This is a pretty complex subject and usually we do it by comparing images.
-- BackstopJS
-- Gemini
-- Happo
+to generate code coverage add `--coverage` flag
