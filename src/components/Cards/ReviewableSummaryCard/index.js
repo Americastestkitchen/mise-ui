@@ -121,6 +121,7 @@ const ReviewableSummaryCard = React.memo(({
   buyNowOverrideAffiliateName,
   cloudinaryId,
   imageAltText,
+  isShortList,
   name,
   price,
   recommendationStatus,
@@ -132,6 +133,7 @@ const ReviewableSummaryCard = React.memo(({
   if (buyNowOverrideAffiliateActive && buyNowOverrideAffiliateName) {
     buyNowIcon = buyNowOverrideAffiliateName;
   }
+  const sortOfWinner = winner || isShortList;
 
   return (
     <ReviewableSummaryItemEl
@@ -139,22 +141,13 @@ const ReviewableSummaryCard = React.memo(({
     >
       <TitleImageWrapper>
         <div>
-          {(winner || recommendationStatus) && (
+          {(sortOfWinner || recommendationStatus) && (
             <div>
-              {winner && (
-                <Sticker
-                  className="sticker"
-                  text={winnerHeader || 'Winner'}
-                  type="editorial"
-                />
-              )}
-              {!winner && recommendationStatus && (
-                <Sticker
-                  className="sticker"
-                  text={recommendationStatus}
-                  type="editorial"
-                />
-              )}
+              <Sticker
+                className="sticker"
+                text={sortOfWinner ? (winnerHeader || 'Winner') : recommendationStatus}
+                type="editorial"
+              />
             </div>
           )}
           <h3>{name}</h3>
@@ -193,6 +186,7 @@ ReviewableSummaryCard.propTypes = {
   buyNowOverrideAffiliateName: PropTypes.string,
   cloudinaryId: PropTypes.string,
   imageAltText: PropTypes.string,
+  isShortList: PropTypes.bool,
   name: PropTypes.string.isRequired,
   price: PropTypes.string,
   recommendationStatus: PropTypes.string,
@@ -207,6 +201,7 @@ ReviewableSummaryCard.defaultProps = {
   buyNowOverrideAffiliateName: null,
   cloudinaryId: null,
   imageAltText: '',
+  isShortList: false,
   price: null,
   recommendationStatus: null,
   winnerHeader: null,

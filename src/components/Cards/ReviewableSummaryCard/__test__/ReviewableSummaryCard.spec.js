@@ -10,10 +10,11 @@ import breakpoints from '../../../../styles/breakpoints';
 const defaultProps = {
   id: 2058,
   name: 'Morton & Bassett Chili Powder',
+  isShortList: true,
   recommendationStatus: 'Recommended',
+  winnerHeader: 'Best Buy',
   testersComments: '<p>This “smoky, sizzling, full-flavored” chili powder was “much more dimensional than others.” “The flavor I’ve been waiting for!” one taster wrote. The “hot, smoky, herbaceous” powder was “balanced,” “bright,” and “lively,” with “raisiny fruitiness” and a “nice building heat.”</p>',
   winner: true,
-  winnerHeader: 'Our Winner',
   asin: 'B00AW4XQ82',
   price: '$5.19 for 1.9 oz ($2.73 per oz)',
   cloudinaryId: '12540_sil-chili-powder-morton-and-bassett-3',
@@ -51,7 +52,7 @@ describe('ReviewableSummaryCard component should', () => {
 
   it('renders the editorial sticker with proper text', () => {
     renderComponent({ ...defaultProps, winner: false });
-    expect(screen.getByText('Recommended'));
+    expect(screen.getByText('Best Buy'));
   });
 
   it('renders the image with correct alt text', () => {
