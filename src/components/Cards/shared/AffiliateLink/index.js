@@ -39,6 +39,12 @@ const AffiliateLinkTheme = {
     position: relative;
     text-align: center;
 
+    @media(hover: hover) {
+      &:hover {
+        background-color: ${color.palePink};
+      }
+    }
+
     svg {
       display: inline-block;
       fill: ${color.rust};
@@ -57,13 +63,14 @@ const AffiliateLinkEl = styled.a.attrs({
 
 const AffiliateLink = ({
   icon,
+  onClick,
   text,
   title,
   url,
 }) => {
   const Icon = Brands[icon] || null;
   return (
-    <AffiliateLinkWrapper>
+    <AffiliateLinkWrapper onClick={onClick}>
       <AffiliateLinkEl
         href={url}
         target="_blank"
@@ -82,6 +89,8 @@ const AffiliateLink = ({
 
 AffiliateLink.propTypes = {
   icon: PropTypes.any,
+  /** for mixpanel purposes */
+  onClick: PropTypes.func,
   text: PropTypes.string.isRequired,
   title: PropTypes.string,
   url: PropTypes.string.isRequired,
@@ -89,6 +98,7 @@ AffiliateLink.propTypes = {
 
 AffiliateLink.defaultProps = {
   icon: null,
+  onClick: null,
   title: null,
 };
 

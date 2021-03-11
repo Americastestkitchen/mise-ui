@@ -110,6 +110,7 @@ const parensRe = /(\([^)]+\))/;
 const ReviewableSummaryCard = React.memo(({
   asin,
   buyNowLink,
+  buyNowOnClick,
   buyNowOverrideAffiliateActive,
   buyNowOverrideAffiliateName,
   cloudinaryId,
@@ -158,6 +159,7 @@ const ReviewableSummaryCard = React.memo(({
             <AffiliateLink
               text="Buy Now"
               icon={buyNowIcon}
+              onClick={buyNowOnClick}
               url={buyNowLink}
             />
           )}
@@ -178,6 +180,7 @@ const ReviewableSummaryCard = React.memo(({
 ReviewableSummaryCard.propTypes = {
   asin: PropTypes.string,
   buyNowLink: PropTypes.string,
+  buyNowOnClick: PropTypes.func,
   buyNowOverrideAffiliateActive: PropTypes.bool.isRequired,
   buyNowOverrideAffiliateName: PropTypes.string,
   cloudinaryId: PropTypes.string,
@@ -192,6 +195,7 @@ ReviewableSummaryCard.propTypes = {
 ReviewableSummaryCard.defaultProps = {
   asin: null,
   buyNowLink: null,
+  buyNowOnClick: null,
   buyNowOverrideAffiliateName: null,
   cloudinaryId: null,
   imageAltText: '',

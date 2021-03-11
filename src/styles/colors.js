@@ -33,6 +33,7 @@ const color = {
   jet: '#080808',
   facebook: '#527aa1',
   facebookHover: '#43637a',
+  palePink: '#f5d7d1',
   pinterest: '#cf5553',
   pinterestHover: '#893b3b',
   twitter: '#79aed1',
