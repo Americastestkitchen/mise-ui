@@ -122,7 +122,7 @@ const CtaLink = styled.a`
   font: ${fontSize.md}/${lineHeight.sm} ${font.pnb};
   left: ${spacing.xsm};
   position: absolute;
-  z-index: 1;
+  z-index: 2;
 `;
 
 function FeatureCard({
@@ -229,7 +229,11 @@ function FeatureCard({
         </div>
       </a>
       { ctaUrl && (
-        <CtaLink ctaUrl={ctaUrl}>
+        <CtaLink
+          aria-label={`${ctaText} (opens in new window)`}
+          href={ctaUrl}
+          target="_blank"
+        >
           { ctaText }
         </CtaLink>
       )}

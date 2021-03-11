@@ -143,20 +143,11 @@ const ReviewableSummaryCard = React.memo(({
         <div>
           {(sortOfWinner || recommendationStatus) && (
             <div>
-              {sortOfWinner && (
-                <Sticker
-                  className="sticker"
-                  text={winnerHeader || 'Winner'}
-                  type="editorial"
-                />
-              )}
-              {!sortOfWinner && recommendationStatus && (
-                <Sticker
-                  className="sticker"
-                  text={recommendationStatus}
-                  type="editorial"
-                />
-              )}
+              <Sticker
+                className="sticker"
+                text={sortOfWinner ? (winnerHeader || 'Winner') : recommendationStatus}
+                type="editorial"
+              />
             </div>
           )}
           <h3>{name}</h3>
