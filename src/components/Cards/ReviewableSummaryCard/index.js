@@ -86,7 +86,7 @@ const TitleImageWrapper = styled.div`
       width: 100%;
 
       > div {
-        width: 100%;
+        width: calc(100% - 19rem);
       }
     }
 `;
