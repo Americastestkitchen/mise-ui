@@ -19,7 +19,10 @@ const ReviewableSummaryItemTheme = {
     justify-content: center;
     padding: 1.6rem;
     position: relative;
-    min-height: 14rem;
+
+    &[data-has-img="true"] {
+      min-height: 14rem;
+    }
 
     h3 {
       font: ${fontSize.lg}/${lineHeight.md} ${font.pnb};
@@ -38,7 +41,10 @@ const ReviewableSummaryItemTheme = {
     ${breakpoint('md')`
       flex: 0 0 calc(50% - 1.6rem);
       padding-right: 19.6rem;
-      min-height: 20rem;
+
+      &[data-has-img="true"] {
+        min-height: 20rem;
+      }
 
       &:only-child {
         flex-basis: 100%;
@@ -128,7 +134,9 @@ const ReviewableSummaryCard = React.memo(({
   }
 
   return (
-    <ReviewableSummaryItemEl>
+    <ReviewableSummaryItemEl
+      data-has-img={Boolean(cloudinaryId)}
+    >
       <TitleImageWrapper>
         <div>
           {(winner || recommendationStatus) && (
