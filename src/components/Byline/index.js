@@ -16,15 +16,6 @@ const BylineWrapper = styled.div`
   display: flex;
   flex-direction: column;
 
-  span {
-    color: ${color.eclipse};
-    font: ${fontSize.md}/${lineHeight.sm} ${font.pnr};
-
-    &:first-of-type {
-      font: ${fontSize.md}/${lineHeight.sm} ${font.pnb};
-    }
-  }
-
   ${breakpoint('md')`
     align-items: center;
     flex-direction: row;
@@ -37,6 +28,11 @@ const Author = styled.div.attrs({
   align-items: center;
   display: flex;
 
+  span {
+    color: ${color.eclipse};
+    font: ${fontSize.md}/${lineHeight.sm} ${font.pnb};
+  }
+
   .person-head-shot {
     margin-right: ${spacing.sm};
   }
@@ -48,9 +44,14 @@ const Attribution = styled.div.attrs({
   display: flex;
   margin-top: ${spacing.sm};
 
-  span:first-child {
-    display: ${props => (props.attribution ? 'none' : 'block')};  
-    margin: 0 ${spacing.xsm};
+  span {
+    color: ${color.eclipse};
+    font: ${fontSize.md}/${lineHeight.sm} ${font.pnr};
+
+    &:first-child {
+      display: ${props => (props.attribution ? 'none' : 'block')};  
+      margin: 0 ${spacing.xsm};
+    }
   }
 
   ${breakpoint('md')`
