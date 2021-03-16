@@ -25,10 +25,6 @@ const AccordionButtonTheme = {
     @media(hover: hover) {
       &:hover {
         cursor: pointer;
-
-        svg {
-          fill: ${color.mint};
-        }
       }
     }
 
@@ -92,7 +88,6 @@ const AccordionButtonTheme = {
 
     @media(hover: hover) {
       &:hover {
-        cursor: pointer;
         .accordion-item__icon {
           border-color: ${color.nobel};
           height:3.6rem;

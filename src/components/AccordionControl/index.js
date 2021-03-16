@@ -42,7 +42,7 @@ const AccordionSvgWrapperTheme = {
   `,
   atk: css`
     background-color: ${color.white};
-    border: 2px solid ${color.black};
+    border: 2px solid ${color.eclipse};
     border-radius: 50%;
     height: 3rem;
     max-height: 3rem;
