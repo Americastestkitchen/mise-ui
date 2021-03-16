@@ -95,9 +95,14 @@ const AccordionButtonTheme = {
         cursor: pointer;
         .accordion-item__icon {
           border-color: ${color.nobel};
-        }
-        svg {
-          fill: ${color.nobel};
+          height:3.6rem;
+          width: 3.6rem;
+          max-height:3.6rem;
+          max-width: 3.6rem;
+
+          svg {
+            fill: ${color.nobel};
+          }
         }
       }
     }

@@ -54,8 +54,9 @@ const AccordionSvgWrapperTheme = {
 
     @media(hover: hover) {
       &:hover {
-        border: 2px solid ${color.nobel};
-
+        max-height: 3.6rem;
+        max-width: 3.6rem;
+        
         svg {
           fill: ${color.nobel};
         }
