@@ -49,17 +49,13 @@ const Attribution = styled.div.attrs({
     font: ${fontSize.md}/${lineHeight.sm} ${font.pnr};
 
     &:first-child {
-      display: ${props => (props.attribution ? 'none' : 'block')};  
-      margin: 0 ${spacing.xsm};
+      display: ${props => (props.author && props.attribution ? 'block' : 'none')};  
+      margin: ${props => (props.author && props.attribution ? `0 ${spacing.xsm}` : '0')};   
     }
   }
 
   ${breakpoint('md')`
     margin-top: 0;
-
-    span:first-child {
-      display: block;
-    }
   `}
 `;
 
@@ -75,8 +71,8 @@ const Byline = ({
       {authorImageCloudinaryId && <PersonHeadShot imgCloudinaryId={authorImageCloudinaryId} size={{ sm: '4' }} imgAlt={imgAlt} />}
       <span rel="author">{author}</span>
     </Author>
-    <Attribution attribution={attribution}>
-      {author && attribution && (<span> |</span>)}
+    <Attribution author={author} attribution={attribution}>
+      <span> |</span>
       {attribution && <span>{attribution}</span>}
     </Attribution>
   </BylineWrapper>
@@ -84,7 +80,7 @@ const Byline = ({
 
 Byline.propTypes = {
   /** Author Name */
-  author: PropTypes.string.isRequired,
+  author: PropTypes.string,
   /** Cloudinary image id of author */
   authorImageCloudinaryId: PropTypes.string,
   /** Optional field to add custom text information such as publish date or author title */
@@ -95,6 +91,7 @@ Byline.propTypes = {
 };
 
 Byline.defaultProps = {
+  author: '',
   authorImageCloudinaryId: null,
   attribution: '',
   className: '',

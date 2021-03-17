@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
+import breakpoint from 'styled-components-breakpoint';
 
 import { color, withThemes } from '../../styles';
 import { Plus } from '../DesignTokens/Icon/svgs';
@@ -41,13 +42,13 @@ const AccordionSvgWrapperTheme = {
   `,
   atk: css`
     background-color: ${color.white};
-    border: 2px solid ${color.black};
+    border: 2px solid ${color.eclipse};
     border-radius: 50%;
     height: 3rem;
     max-height: 3rem;
     max-width: 3rem;
     position: absolute;
-    right: 0;
+    right: 2.5rem;
     top: 50%;
     transform: translate(50%, -50%);
     width: 3rem;
@@ -62,6 +63,10 @@ const AccordionSvgWrapperTheme = {
         }
       }
     }
+
+    ${breakpoint('md')`
+      right: 0;
+    `}
   `,
 };
 
