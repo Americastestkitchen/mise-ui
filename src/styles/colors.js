@@ -57,6 +57,7 @@ const color = {
   transparentGunmetal: 'rgba(38, 38, 38, 0.5)',
   transparentAsphalt: 'rgba(25, 25, 25, 0.5)',
   transparentJet: 'rgba(8, 8, 8, 0.5)',
+  transparentWhiteSmoke: 'rgba(245, 245, 245, 0.5)',
 };
 
 export default color;

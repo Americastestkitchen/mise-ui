@@ -151,7 +151,9 @@ const CardCarousel = ({
   cellAlign,
   className,
   dotPosition,
+  extraOptions,
   items,
+  gradient,
   renderItem,
   type,
 }) => {
@@ -162,6 +164,7 @@ const CardCarousel = ({
     slideshow: false,
     cellAlign,
     wrapAround: true,
+    ...extraOptions,
   };
   if (type === 'hero') {
     options.slideshow = true;
@@ -189,6 +192,7 @@ const CardCarousel = ({
       <LinearGradient
         angle="90"
         position="right"
+        {...gradient}
       />
     </CardCarouselWrapper>
   );
@@ -206,6 +210,11 @@ CardCarousel.propTypes = {
   }),
   /** List of items for the carousel */
   items: PropTypes.array.isRequired,
+  gradient: PropTypes.shape({
+    endColor: PropTypes.string,
+    startColor: PropTypes.string,
+  }),
+  extraOptions: PropTypes.object,
   /** Callback for rendering each carousel item */
   renderItem: PropTypes.func,
   /** Sets the carousel-item styles for a particular card style */
@@ -233,6 +242,8 @@ CardCarousel.defaultProps = {
       top: `-${spacing.md}`,
     },
   },
+  gradient: null,
+  extraOptions: null,
   renderItem: undefined,
 };
 
