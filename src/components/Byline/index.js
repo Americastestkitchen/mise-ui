@@ -49,7 +49,6 @@ const Attribution = styled.div.attrs({
     font: ${fontSize.md}/${lineHeight.sm} ${font.pnr};
 
     &:first-child {
-      display: ${props => (props.author && props.attribution ? 'block' : 'none')};  
       margin: ${props => (props.author && props.attribution ? `0 ${spacing.xsm}` : '0')};   
     }
   }
@@ -72,7 +71,7 @@ const Byline = ({
       <span rel="author">{author}</span>
     </Author>
     <Attribution author={author} attribution={attribution}>
-      <span> |</span>
+      {author && attribution && <span> |</span>}
       {attribution && <span>{attribution}</span>}
     </Attribution>
   </BylineWrapper>

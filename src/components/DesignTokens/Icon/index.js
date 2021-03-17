@@ -29,11 +29,13 @@ export const Bell = () => (
   </Icon>
 );
 
-export const BreadcrumbArrow = () => (
+export const BreadcrumbArrow = ({ fill }) => (
   <Icon>
-    <Icons.BreadcrumbArrow />
+    <Icons.BreadcrumbArrow fill={fill} />
   </Icon>
 );
+
+BreadcrumbArrow.propTypes = Icons.BreadcrumbArrow.propTypes;
 
 export const Checkmark = ({ fill }) => (
   <Icon>

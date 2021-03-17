@@ -32,7 +32,7 @@ const PersonCardName = styled.h3`
   margin-bottom: ${spacing.sm};
 `;
 
-const PersonCardDescription = styled.p`
+const PersonCardDescription = styled.div`
   color: ${({ mode }) => (mode === 'dark' ? color.white : color.eclipse)};
   font: ${fontSize.md}/${lineHeight.md} ${font.pnr};
   text-align: center;
