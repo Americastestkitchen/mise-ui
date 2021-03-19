@@ -6,7 +6,16 @@ import styled, { css } from 'styled-components';
 import Badge from '../../Badge';
 import Image from '../shared/Image';
 import Sticker from '../shared/Sticker';
-import { color, font, fontSize, letterSpacing, lineHeight, spacing, withThemes } from '../../../styles';
+import {
+  color,
+  font,
+  fontSize,
+  letterSpacing,
+  lineHeight,
+  mixins,
+  spacing,
+  withThemes,
+} from '../../../styles';
 
 /** WRAPPER */
 const RelatedDocumentCardTheme = {
@@ -86,7 +95,7 @@ const RelatedDocumentCardTitleTheme = {
     margin-bottom: ${spacing.xsm};
 
     ${breakpoint('md')`
-    font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb};
+      font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb};
     `}
   `,
 };
@@ -101,8 +110,12 @@ const RelatedDocumentCardSubtitleTheme = {
     font: ${fontSize.md}/${lineHeight.md} ${font.pnr};
 
     ${breakpoint('md')`
-      display: block;
+      align-self: flex-start;
+      display: inline-block;
     `}`,
+  atk: css`
+    ${mixins.styledLink(color.turquoise, color.seaSalt)}
+  `,
 };
 const RelatedDocumentCardSubtitle = styled.span.attrs({
   className: 'related-document-card__subtitle',

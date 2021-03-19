@@ -16,9 +16,9 @@ const ReviewableSummaryItemTheme = {
     display: flex;
     flex-direction: column;
     background-color: ${color.white};
-    justify-content: center;
     padding: 1.6rem;
     position: relative;
+    width: 100%;
 
     &[data-has-img="true"] {
       min-height: 14rem;
@@ -39,11 +39,9 @@ const ReviewableSummaryItemTheme = {
     }
 
     ${breakpoint('md')`
-      flex: 0 0 calc(50% - 1.6rem);
-      padding-right: 19.6rem;
-
       &[data-has-img="true"] {
-        min-height: 20rem;
+        min-height: 17rem;
+        padding-right: 17.6rem;
       }
 
       &:only-child {
@@ -63,9 +61,12 @@ const ReviewableSummaryItemEl = styled.div.attrs({
   className: 'reviewable-summary-card',
 })`${withThemes(ReviewableSummaryItemTheme)}`;
 
-const TitleImageWrapper = styled.div`
+const TitleImageWrapper = styled.div.attrs({
+  className: 'reviewable-title-image-wrapper',
+})`
   align-items: flex-start;
   display: flex;
+  width: 100%;
 
   h3 {
     flex: 1 0 0;
@@ -75,6 +76,7 @@ const TitleImageWrapper = styled.div`
 
   img {
     display: block;
+    height: clamp(6rem, 10rem, 9rem);
     width: 6rem;
     width: clamp(6rem, 10rem, 9rem);
   }
@@ -82,12 +84,14 @@ const TitleImageWrapper = styled.div`
   ${breakpoint('md')`
     img {
       position: absolute;
+      height: 15rem;
       right: 1rem;
       top: 1rem;
-      width: 18rem;
+      width: 15rem;
     }
   `}
 
+  ${breakpoint('xlg')`
     @media print {
       width: 100%;
 
@@ -95,6 +99,18 @@ const TitleImageWrapper = styled.div`
         width: calc(100% - 19rem);
       }
     }
+  `}
+`;
+
+const TitleImageContent = styled.div`
+  flex: 1 0 0;
+`;
+
+const StickerWrapper = styled.div.attrs({
+  className: 'reviewable-sticker-wrapper',
+})`
+  position: relative;
+  z-index: 1;
 `;
 
 const ItemPrice = styled.div`
@@ -140,15 +156,15 @@ const ReviewableSummaryCard = React.memo(({
       data-has-img={Boolean(cloudinaryId)}
     >
       <TitleImageWrapper>
-        <div>
+        <TitleImageContent>
           {(sortOfWinner || recommendationStatus) && (
-            <div>
+            <StickerWrapper>
               <Sticker
                 className="sticker"
                 text={sortOfWinner ? (winnerHeader || 'Winner') : recommendationStatus}
                 type="editorial"
               />
-            </div>
+            </StickerWrapper>
           )}
           <h3>{name}</h3>
           {priceMarkup && (
@@ -164,7 +180,7 @@ const ReviewableSummaryCard = React.memo(({
               url={buyNowLink}
             />
           )}
-        </div>
+        </TitleImageContent>
         {cloudinaryId && (
           <Image
             aspectRatio="1:1"
