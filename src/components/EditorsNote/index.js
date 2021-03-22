@@ -2,7 +2,16 @@ import breakpoint from 'styled-components-breakpoint';
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import { color, font, fontSize, letterSpacing, lineHeight, spacing, withThemes } from '../../styles';
+import {
+  color,
+  font,
+  fontSize,
+  letterSpacing,
+  lineHeight,
+  mixins,
+  spacing,
+  withThemes,
+} from '../../styles';
 
 import * as Icons from '../DesignTokens/Icon';
 
@@ -25,6 +34,14 @@ const EditorNoteTheme = {
 
     div {
       margin-bottom: ${spacing.xxsm};
+    }
+
+    a {
+      ${mixins.styledLink(color.turquoise, color.seaSalt)}
+    }
+
+    &.note-alert {
+      border-color: ${color.rust};
     }
 
     ${breakpoint('xs', 'md')`

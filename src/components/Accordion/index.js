@@ -7,8 +7,21 @@ import AccordionControl from '../AccordionControl';
 import { ChefHat, Content, Cookbook, Knife, Sort, Time } from '../DesignTokens/Icon/svgs';
 import { color, font, fontSize, letterSpacing, spacing, withThemes } from '../../styles';
 
-const AccordionDivWrapper = styled.div``;
-const AccordionFieldsetWrapper = styled.fieldset``;
+const AccordionDivWrapper = styled.div.attrs({
+  className: 'accordion-content-wrapper',
+})`
+  &:focus-within {
+    box-shadow: 0 0 0 2px ${color.focusRing};
+
+    > button:focus {
+      outline: none;
+    }
+  }
+`;
+
+const AccordionFieldsetWrapper = styled.fieldset.attrs({
+  className: 'accordion-content-wrapper',
+})``;
 
 const AccordionButtonTheme = {
   default: css`
