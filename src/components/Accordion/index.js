@@ -198,6 +198,7 @@ function Accordion({
   isFieldset,
   isHidden,
   label: Label,
+  onClick,
 }) {
   const [hidden, toggleHidden] = useState(isHidden);
   const AccordionWrapper = isFieldset ? AccordionFieldsetWrapper : AccordionDivWrapper;
@@ -228,7 +229,10 @@ function Accordion({
         aria-controls={`show-hide--${idVal}`}
         aria-expanded={!hidden}
         className="show-hide__expand-collapse-button"
-        onClick={() => toggleHidden(curr => !curr)}
+        onClick={() => {
+          toggleHidden(curr => !curr);
+          if (onClick) { onClick(); }
+        }}
       >
         {
           isFieldset ? (
@@ -277,6 +281,8 @@ Accordion.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]).isRequired,
+  /** for mixpanel purposes */
+  onClick: PropTypes.func,
 };
 
 Accordion.defaultProps = {
@@ -285,6 +291,7 @@ Accordion.defaultProps = {
   id: null,
   isFieldset: false,
   isHidden: false,
+  onClick: null,
 };
 
 export default Accordion;
