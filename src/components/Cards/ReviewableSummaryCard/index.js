@@ -115,6 +115,9 @@ const StickerWrapper = styled.div.attrs({
 })`
   position: relative;
   z-index: 1;
+  span {
+    background-color: ${props => color[props.winner ? 'darkTeal' : 'eclipse']};
+  }
 `;
 
 const ItemPrice = styled.div`
@@ -162,7 +165,7 @@ const ReviewableSummaryCard = React.memo(({
       <TitleImageWrapper>
         <TitleImageContent>
           {(sortOfWinner || recommendationStatus) && (
-            <StickerWrapper>
+            <StickerWrapper winner={sortOfWinner}>
               <Sticker
                 className="sticker"
                 text={sortOfWinner ? (winnerHeader || 'Winner') : recommendationStatus}
