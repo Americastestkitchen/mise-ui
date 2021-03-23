@@ -98,6 +98,11 @@ const RelatedDocumentCardTitleTheme = {
       font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb};
     `}
   `,
+  atk: css`
+    span {
+      ${mixins.styledLink(color.turquoise, color.seaSalt)}
+    }
+  `,
 };
 const RelatedDocumentCardTitle = styled.h4.attrs({
   className: 'related-document-card__title',
@@ -113,9 +118,6 @@ const RelatedDocumentCardSubtitleTheme = {
       align-self: flex-start;
       display: inline-block;
     `}`,
-  atk: css`
-    ${mixins.styledLink(color.turquoise, color.seaSalt)}
-  `,
 };
 const RelatedDocumentCardSubtitle = styled.span.attrs({
   className: 'related-document-card__subtitle',
@@ -194,7 +196,7 @@ const RelatedDocumentCard = ({
           </RelatedDocumentCardAttribution>
         )}
         <RelatedDocumentCardTitle>
-          {title}
+          <span>{title}</span>
         </RelatedDocumentCardTitle>
         {subtitle && (
           <RelatedDocumentCardSubtitle>

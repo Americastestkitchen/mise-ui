@@ -104,6 +104,10 @@ const TitleImageWrapper = styled.div.attrs({
 
 const TitleImageContent = styled.div`
   flex: 1 0 0;
+
+  ${breakpoint('xs', 'md')`
+    max-width: calc(100% - 10rem);
+  `}
 `;
 
 const StickerWrapper = styled.div.attrs({
