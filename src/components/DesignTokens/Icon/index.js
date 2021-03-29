@@ -258,6 +258,16 @@ export const Rewind = ({ fill }) => (
 
 Rewind.propTypes = Icons.Rewind.propTypes;
 
+export const ReviewsRibbon = ({ fill }) => (
+  <Icon>
+    <Icons.ReviewsRibbon
+      fill={fill}
+    />
+  </Icon>
+);
+
+ReviewsRibbon.propTypes = Icons.ReviewsRibbon.propTypes;
+
 export const RibbonAward = ({ fill }) => (
   <Icon>
     <Icons.RibbonAward
