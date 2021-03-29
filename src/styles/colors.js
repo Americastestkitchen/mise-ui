@@ -36,6 +36,7 @@ const color = {
   twitter: '#79aed1',
   twitterHover: '#557d93',
   miseUiGrayBorder: '#efefef', // only for stories, not components
+  frost: '#e9f0f0',
   smokeyQuartz: '#2A2A2A',
   asphalt: '#191919',
   charcoal: '#121212',
