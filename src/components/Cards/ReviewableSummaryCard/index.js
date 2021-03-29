@@ -127,6 +127,10 @@ const ItemPrice = styled.div`
     margin-bottom: 1.4rem;
   }
 
+  [data-discontinued="true"] & {
+    font-family: ${font.pnb};
+  }
+
   ${breakpoint('xs', 'md')`
     span {
       display: block;
@@ -151,6 +155,7 @@ const ReviewableSummaryCard = React.memo(({
   winner,
   winnerHeader,
 }) => {
+  const isDiscontinued = price?.toLowerCase()?.includes('discontinued') ?? false;
   const priceMarkup = price?.replace(parensRe, '<span>$1</span>') ?? null;
   let buyNowIcon = asin ? 'Amazon' : null;
   if (buyNowOverrideAffiliateActive && buyNowOverrideAffiliateName) {
@@ -160,6 +165,7 @@ const ReviewableSummaryCard = React.memo(({
 
   return (
     <ReviewableSummaryItemEl
+      data-discontinued={isDiscontinued}
       data-has-img={Boolean(cloudinaryId)}
     >
       <TitleImageWrapper>
@@ -174,7 +180,7 @@ const ReviewableSummaryCard = React.memo(({
             </StickerWrapper>
           )}
           <h3>{name}</h3>
-          {priceMarkup && (
+          {!buyNowLink && priceMarkup && (
             <ItemPrice
               dangerouslySetInnerHTML={{ __html: priceMarkup }}
             />

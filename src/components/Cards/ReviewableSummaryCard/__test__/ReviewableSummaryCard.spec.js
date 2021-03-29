@@ -61,7 +61,7 @@ describe('ReviewableSummaryCard component should', () => {
   });
 
   it('renders the price', () => {
-    renderComponent({ ...defaultProps, price: '$5' });
+    renderComponent({ ...defaultProps, buyNowLink: null, price: '$5' });
     expect(screen.getByText('$5'));
   });
 
