@@ -181,6 +181,7 @@ const RelatedDocumentCard = ({
             type={siteKey}
           />
           <Image
+            imageAlt=""
             aspectRatio={imageAspectRatio}
             imageUrl={imageUrl}
             lazy={false}
