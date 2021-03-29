@@ -11,6 +11,7 @@ import carousel from './styles/carousel';
 import Carousel from './components/Carousels/Carousel';
 import CardCarousel from './components/Carousels/CardCarousel';
 import CardWrapper from './components/Cards/CardWrapper';
+import CategoryCard from './components/Cards/CategoryCard';
 import ClearRefinements from './components/Algolia/shared/ClearRefinements';
 import CurrentRefinements from './components/Algolia/shared/CurrentRefinements';
 import DocumentListCarousel from './components/Carousels/DocumentListCarousel';
@@ -76,6 +77,7 @@ export {
   CardWrapper,
   carousel,
   Carousel,
+  CategoryCard,
   CircledText,
   color,
   ClearRefinements,
