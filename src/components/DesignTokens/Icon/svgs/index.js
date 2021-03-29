@@ -25,6 +25,7 @@ import Print from './Print';
 import QuestionMark from './QuestionMark';
 import RecipeCard from './RecipeCard';
 import Rewind from './Rewind';
+import ReviewsRibbon from './ReviewsRibbon';
 import RibbonAward from './RibbonAward';
 import SearchIcon from './SearchIcon';
 import Sort from './Sort';
@@ -66,6 +67,7 @@ export {
   QuestionMark,
   RecipeCard,
   Rewind,
+  ReviewsRibbon,
   RibbonAward,
   SearchIcon,
   Sort,
