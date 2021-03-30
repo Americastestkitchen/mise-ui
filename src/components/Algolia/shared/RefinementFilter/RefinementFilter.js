@@ -175,6 +175,8 @@ const RefinementFilter = ({
   altFill,
   attribute,
   count,
+  currentRefinement,
+  filterType,
   includeCount,
   isRefined,
   label,
@@ -192,11 +194,19 @@ const RefinementFilter = ({
       onClick={(e) => {
         e.preventDefault();
         if (!isRefined && typeof handleClick === 'function') handleClick(e);
-        refine(value);
+        if (filterType === 'refinementList') {
+          refine(value);
+        } else if (filterType === 'toggleRefinement') {
+          if (currentRefinement.length > 0) {
+            refine(false);
+          } else {
+            refine(value);
+          }
+        }
       }}
     >
       {
-        isRefined ? (
+        isRefined || (filterType === 'toggleRefinement' && currentRefinement.length > 0) ? (
           <RefinementFilterCheck data-testid="refinement-filter__checkmark">
             <Checkmark />
           </RefinementFilterCheck>
@@ -239,6 +249,8 @@ RefinementFilter.propTypes = {
   attribute: PropTypes.string,
   /** Number of hits for this filter value. */
   count: PropTypes.number,
+  currentRefinement: PropTypes.bool,
+  filterType: PropTypes.string,
   includeCount: PropTypes.bool,
   /** Is this filter selected? */
   isRefined: PropTypes.bool.isRequired,
@@ -256,6 +268,8 @@ RefinementFilter.defaultProps = {
   attribute: '',
   altFill: null,
   count: null,
+  currentRefinement: null,
+  filterType: 'refinementList',
   includeCount: true,
   handleClick: null,
 };
