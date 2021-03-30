@@ -8,6 +8,7 @@ import FeatureCard from '../../Cards/FeatureCard';
 import HeroCard from '../../Cards/HeroCard';
 import LinearGradient from '../../DesignTokens/LinearGradient';
 import PersonCard from '../../Cards/PersonCard';
+import ReviewableSummaryCard from '../../Cards/ReviewableSummaryCard';
 import StandardCard from '../../Cards/StandardCard';
 import TallCard from '../../Cards/TallCard';
 import { cards, spacing, withThemes } from '../../../styles';
@@ -143,6 +144,7 @@ const typeMap = {
   feature: FeatureCard,
   hero: HeroCard,
   person: PersonCard,
+  reviewable: ReviewableSummaryCard,
   standard: StandardCard,
   tall: TallCard,
 };
@@ -218,7 +220,14 @@ CardCarousel.propTypes = {
   /** Callback for rendering each carousel item */
   renderItem: PropTypes.func,
   /** Sets the carousel-item styles for a particular card style */
-  type: PropTypes.oneOf(['standard', 'feature', 'person', 'tall', 'hero']).isRequired,
+  type: PropTypes.oneOf([
+    'feature',
+    'hero',
+    'person',
+    'reviewable',
+    'standard',
+    'tall',
+  ]).isRequired,
 };
 
 CardCarousel.defaultProps = {

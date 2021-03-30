@@ -1,7 +1,6 @@
-// import breakpoint from 'styled-components-breakpoint';
+import breakpoint from 'styled-components-breakpoint';
 import PropTypes from 'prop-types';
 import React from 'react';
-import breakpoint from 'styled-components-breakpoint';
 import styled, { css } from 'styled-components';
 
 import CardCarousel from '../CardCarousel';
@@ -196,7 +195,13 @@ DocumentListCarousel.propTypes = {
   /** Larger title displayed above carousel */
   title: PropTypes.string.isRequired,
   /** Sets the carousel-item styles for a particular card style */
-  type: PropTypes.oneOf(['standard', 'feature', 'person', 'tall']).isRequired,
+  type: PropTypes.oneOf([
+    'feature',
+    'person',
+    'reviewable',
+    'standard',
+    'tall',
+  ]).isRequired,
 };
 
 DocumentListCarousel.defaultProps = {
