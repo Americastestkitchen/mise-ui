@@ -59,6 +59,7 @@ import Sticker from './components/Cards/shared/Sticker';
 import SubscribeBubbles from './components/SubscribeBubbles';
 import TallCard from './components/Cards/TallCard';
 import TextDecorations, { CircledText, SquiggledText, UnderlinedText } from './components/DesignTokens/TextDecoration';
+import ToggleRefinement from './components/Algolia/shared/ToggleRefinement';
 import * as Icons from './components/DesignTokens/Icon';
 import fonts from './styles/fonts';
 import globalStyle from './styles/global';
@@ -131,6 +132,7 @@ export {
   Sticker,
   TallCard,
   TextDecorations,
+  ToggleRefinement,
   SubscribeBubbles,
   styles,
   spacing,
