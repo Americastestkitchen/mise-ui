@@ -102,7 +102,9 @@ const TitleImageWrapper = styled.div.attrs({
   `}
 `;
 
-const TitleImageContent = styled.div`
+const TitleImageContent = styled.div.attrs({
+  className: 'reviewable-title',
+})`
   flex: 1 0 0;
 
   ${breakpoint('xs', 'md')`
