@@ -1,11 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
+import PropTypes from 'prop-types';
+import React from 'react';
+import styled from 'styled-components';
 
 import IconMap from './iconMap';
 import Image from '../shared/Image';
 import { color, font, fontSize } from '../../../styles';
+import { getImageUrl } from '../../../lib/cloudinary';
+
+const CarouselContainer = styled.div`
+    height: 12.5rem;  
+`;
 
 const LinkToBrowse = styled.a`
   align-items: center;
@@ -17,9 +22,9 @@ const LinkToBrowse = styled.a`
 
   ${breakpoint('xlg')`
     &:hover {
+      background-color: ${color.white};
       border-radius: 8px;
       box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
-      background-color: ${color.white};
     }
   `}  
 `;
@@ -44,54 +49,54 @@ const Tagline = styled.p`
 `;
 
 const SvgWrapper = styled.div`
-    align-items: center;
-    display: flex;
-    height: 60%;
-    position: relative;
-    width: 60%;
+  align-items: center;
+  display: flex;
+  height: 60%;
+  position: relative;
+  width: 60%;
 
-    .landing-play-icon {
-        position: absolute;
-        left: 2%;
-    }
+  .landing-play-icon {
+    position: absolute;
+    left: 2%;
+  }
 
-    .shopping-cart-icon {
-        position: absolute;
-        right: 9%;
-    }
+  .shopping-cart-icon {
+    position: absolute;
+    right: 9%;
+  }
 
-    .star-icon {
-        position: absolute;
-        left: 5%;
-        top: 1%;
-    }
+  .star-icon {
+    position: absolute;
+    left: 5%;
+    top: 1%;
+  }
 `;
 
 const CategoryCard = ({
   assetType,
   browsePath,
   cloudinaryId,
+  lazy,
   svgId,
   tagline,
 }) => {
   const CategoryIcon = IconMap?.[svgId] || IconMap.star;
 
   return (
-    <LinkToBrowse
-      href={browsePath}
-    >
-      <ImageWrapper>
-        {assetType === 'productImage' ? <Image className="category-product-image" imageAlt={tagline} imageUrl={cloudinaryId} /> : (
-          <SvgWrapper>
-            <CategoryIcon fill={color.mint} />
-          </SvgWrapper>
-        )}
-
-      </ImageWrapper>
-      <Tagline>
-        {tagline}
-      </Tagline>
-    </LinkToBrowse>
+    <CarouselContainer>
+      <LinkToBrowse href={`${browsePath}`}>
+        <ImageWrapper>
+          {assetType === 'productImage' ? <Image className="category-product-image" imageAlt={tagline} imageUrl={getImageUrl(cloudinaryId)} lazy={lazy} /> : (
+            <SvgWrapper>
+              <CategoryIcon fill={color.mint} />
+            </SvgWrapper>
+          )}
+        </ImageWrapper>
+        <Tagline>
+          {tagline}
+        </Tagline>
+      </LinkToBrowse>
+    </CarouselContainer>
   );
 };
 
@@ -99,12 +104,14 @@ CategoryCard.propTypes = {
   assetType: PropTypes.oneOf(['productImage', 'svgIcon']).isRequired,
   browsePath: PropTypes.string.isRequired,
   cloudinaryId: PropTypes.string,
+  lazy: PropTypes.bool,
   svgId: PropTypes.oneOf(['shoppingCart', 'star', 'trendingArrow', 'play', '']),
   tagline: PropTypes.string.isRequired,
 };
 
 CategoryCard.defaultProps = {
   cloudinaryId: '',
+  lazy: true,
   svgId: 'star',
 };
 
