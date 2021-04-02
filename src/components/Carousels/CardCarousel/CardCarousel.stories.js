@@ -274,6 +274,22 @@ const heroItems = [
   },
 ];
 
+const categoryItems = [
+  {
+    assetType: "svgIcon",
+    browsePath: ".americastestkitchen.com/reviews/browse?page=1&refinementList%5Bsearch_document_klass%5D=&refinementList%5Bsearch_review_type_list%5D=",
+    svgId: "star",
+    tagline: "Browse all Reviews"
+  },
+  {
+    assetType: "productImage",
+    browsePath: ".americastestkitchen.com/reviews/browse?page=1&refinementList%5Bsearch_document_klass%5D=&refinementList%5Bsearch_review_type_list%5D%5B0%5D=Tools%20%26%20Gadgets",
+    cloudinaryId: "/ATK Landing Page/tools_and_gadgets_3x.jpg",
+    lazy: false,
+    tagline: "Tools & Gadgets"
+  },
+];
+
 const StoryWrapperTheme = {
   default: css`
     padding: 4rem 2rem;
@@ -340,6 +356,20 @@ export const HeroCard = () => (
         dotPosition={{ sm: { bottom: `-${spacing.lg}`, right: '50%'  } }}
         items={heroItems}
         type={select('Card Type', ['standard', 'feature', 'tall', 'hero'], 'hero')}
+      />
+    </StoryWrapper>
+  </ThemeProvider>
+);
+
+export const CategoryCard = () => (
+  <ThemeProvider theme={{
+    breakpoints
+  }}>
+    <StoryWrapper>
+      <CardCarousel 
+        dotPosition={{ sm: { bottom: `-${spacing.lg}`, right: '50%' }}}
+        items={categoryItems}
+        type="category"
       />
     </StoryWrapper>
   </ThemeProvider>
