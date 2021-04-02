@@ -60,6 +60,16 @@ const color = {
   transparentAsphalt: 'rgba(25, 25, 25, 0.5)',
   transparentJet: 'rgba(8, 8, 8, 0.5)',
   transparentWhiteSmoke: 'rgba(245, 245, 245, 0.5)',
+  midnight: '#1A3352',
+  sienna: '#B25B18',
+  violet: '#321A52',
+  pacific: '#1775C2',
+  goldClay: '#857351',
+  darkMagenta: '#521A2D',
+  timber: '#405700',
+  blueLagoon: '#005E71',
+  teal: '#167A7A',
+  deepSea: '#0B3C3D',
 };
 
 export default color;
