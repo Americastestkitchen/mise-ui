@@ -27,6 +27,25 @@ export const Default = () => (
   />
 );
 
+export const ShopItem = () => (
+  <FeatureCard
+    attributions=""
+    contentType="reviewable"
+    displayFavoritesButton
+    discountedPrice="$35.99"
+    imageAlt={text('Image alt text', '')}
+    imageUrl="https://res.cloudinary.com/hksqkdlah/image/upload/v1617638854/ATK%20Landing%20Page/SPS_3x.jpg"
+    siteKey="shop"
+    siteKeyFavorites="cco"
+    stickers={[{ type: 'priority', text: "Exclusive Deal"} ]}
+    objectId=""
+    onClick={action('result-click')}
+    originalPrice="$59.99"
+    title={text('Title', 'Tacos Two Ways')}
+    href="https://shop.americastestkitchen.com/shop-all-equipment/capresso-silver-h2o-electric-kettle.html"
+  />
+);
+
 export const Wide = () => (
   <FeatureCard
     attributions="Episode • America’s Test Kitchen"
