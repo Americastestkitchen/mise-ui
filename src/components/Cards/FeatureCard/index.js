@@ -125,6 +125,22 @@ const CtaLink = styled.a`
   z-index: 2;
 `;
 
+const PricingWrapper = styled.div`
+  display: flex;
+  white-space: break-spaces;
+`;
+
+const DiscountPricing = styled.p`
+  font: ${fontSize.md}/1 ${font.pnb};
+  line-height: 1.2rem;
+`;
+
+const OriginalPricing = styled.p`
+  font: ${fontSize.md}/1 ${font.pnr};
+  line-height: 1.2rem;
+  text-decoration: line-through;
+`;
+
 function FeatureCard({
   attributions,
   className,
@@ -132,6 +148,7 @@ function FeatureCard({
   ctaText,
   ctaUrl,
   dataAttrs,
+  discountedPrice,
   displayFavoritesButton,
   href,
   imageAlt,
@@ -141,6 +158,7 @@ function FeatureCard({
   lazyImage,
   objectId,
   onClick,
+  originalPrice,
   personHeadShot,
   siteKey,
   siteKeyFavorites,
@@ -210,6 +228,12 @@ function FeatureCard({
             { attributions ? (
               <Attributions>{attributions}</Attributions>
             ) : null }
+            { originalPrice && discountedPrice ? (
+              <PricingWrapper>
+                <DiscountPricing>{`${discountedPrice} `}</DiscountPricing>
+                <OriginalPricing>{originalPrice}</OriginalPricing>
+              </PricingWrapper>
+            ) : null }
           </div>
           {
             personHeadShot && (
@@ -249,6 +273,7 @@ FeatureCard.propTypes = {
   ctaUrl: PropTypes.string,
   /** document data attributes */
   dataAttrs: PropTypes.object,
+  discountedPrice: PropTypes.string,
   displayFavoritesButton: PropTypes.bool,
   href: PropTypes.string.isRequired,
   imageAlt: PropTypes.string,
@@ -258,6 +283,7 @@ FeatureCard.propTypes = {
   lazyImage: PropTypes.bool,
   objectId: PropTypes.string.isRequired,
   onClick: PropTypes.func,
+  originalPrice: PropTypes.string,
   /** Optional: Image data that is used to render a PersonHeadShot. */
   personHeadShot: PropTypes.shape({
     ...PersonHeadShot.propTypes,
@@ -275,12 +301,14 @@ FeatureCard.defaultProps = {
   ctaText: '',
   ctaUrl: '',
   dataAttrs: null,
+  discountedPrice: null,
   displayFavoritesButton: true,
   imageAlt: '',
   isFavorited: false,
   isWide: false,
   lazyImage: true,
   onClick: null,
+  originalPrice: null,
   personHeadShot: null,
   siteKeyFavorites: null,
   stickers: [],
