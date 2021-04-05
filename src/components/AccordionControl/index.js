@@ -57,7 +57,7 @@ const AccordionSvgWrapperTheme = {
       &:hover {
         max-height: 3.6rem;
         max-width: 3.6rem;
-        
+
         svg {
           fill: ${color.nobel};
         }
@@ -85,7 +85,7 @@ const AccordionControl = ({ iconSize, isExpanded }) => (
 );
 
 AccordionControl.propTypes = {
-  iconSize: PropTypes.oneOf(['default', 'large']),
+  iconSize: PropTypes.oneOf(['default', 'large', 'extraLarge']),
   isExpanded: PropTypes.bool.isRequired,
 };
 
