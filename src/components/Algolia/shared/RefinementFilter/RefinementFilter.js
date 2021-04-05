@@ -190,7 +190,7 @@ const RefinementFilter = ({
       className={`${attribute}`}
       data-site-key={value}
       htmlFor={`${attribute}--${label}`}
-      isRefined={isRefined}
+      isRefined={isRefined || (currentRefinement && currentRefinement.length > 0)}
       onClick={(e) => {
         e.preventDefault();
         if (!isRefined && typeof handleClick === 'function') handleClick(e);
@@ -236,7 +236,9 @@ const RefinementFilter = ({
             </RefinementFilterCount>
           </span>
         ) : (
-          label
+          <span className="search-refinement-list__label-text">
+            {label}
+          </span>
         )
       }
     </RefinementFilterLabel>
@@ -253,7 +255,7 @@ RefinementFilter.propTypes = {
   filterType: PropTypes.string,
   includeCount: PropTypes.bool,
   /** Is this filter selected? */
-  isRefined: PropTypes.bool.isRequired,
+  isRefined: PropTypes.bool,
   /** Filter label */
   label: PropTypes.string.isRequired,
   /** Call this with the value of a filter to refine results based on filter. */
@@ -271,6 +273,7 @@ RefinementFilter.defaultProps = {
   currentRefinement: null,
   filterType: 'refinementList',
   includeCount: true,
+  isRefined: null,
   handleClick: null,
 };
 
