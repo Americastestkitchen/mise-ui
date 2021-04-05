@@ -8,6 +8,7 @@ import FeatureCard from '../../Cards/FeatureCard';
 import HeroCard from '../../Cards/HeroCard';
 import LinearGradient from '../../DesignTokens/LinearGradient';
 import PersonCard from '../../Cards/PersonCard';
+import ReviewableSummaryCard from '../../Cards/ReviewableSummaryCard';
 import StandardCard from '../../Cards/StandardCard';
 import TallCard from '../../Cards/TallCard';
 import { cards, spacing, withThemes } from '../../../styles';
@@ -143,6 +144,7 @@ const typeMap = {
   feature: FeatureCard,
   hero: HeroCard,
   person: PersonCard,
+  reviewable: ReviewableSummaryCard,
   standard: StandardCard,
   tall: TallCard,
 };
@@ -151,7 +153,9 @@ const CardCarousel = ({
   cellAlign,
   className,
   dotPosition,
+  extraOptions,
   items,
+  gradient,
   renderItem,
   type,
 }) => {
@@ -162,6 +166,7 @@ const CardCarousel = ({
     slideshow: false,
     cellAlign,
     wrapAround: true,
+    ...extraOptions,
   };
   if (type === 'hero') {
     options.slideshow = true;
@@ -189,6 +194,7 @@ const CardCarousel = ({
       <LinearGradient
         angle="90"
         position="right"
+        {...gradient}
       />
     </CardCarouselWrapper>
   );
@@ -206,10 +212,22 @@ CardCarousel.propTypes = {
   }),
   /** List of items for the carousel */
   items: PropTypes.array.isRequired,
+  gradient: PropTypes.shape({
+    endColor: PropTypes.string,
+    startColor: PropTypes.string,
+  }),
+  extraOptions: PropTypes.object,
   /** Callback for rendering each carousel item */
   renderItem: PropTypes.func,
   /** Sets the carousel-item styles for a particular card style */
-  type: PropTypes.oneOf(['standard', 'feature', 'person', 'tall', 'hero']).isRequired,
+  type: PropTypes.oneOf([
+    'feature',
+    'hero',
+    'person',
+    'reviewable',
+    'standard',
+    'tall',
+  ]).isRequired,
 };
 
 CardCarousel.defaultProps = {
@@ -233,6 +251,8 @@ CardCarousel.defaultProps = {
       top: `-${spacing.md}`,
     },
   },
+  gradient: null,
+  extraOptions: null,
   renderItem: undefined,
 };
 

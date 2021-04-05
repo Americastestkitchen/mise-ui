@@ -1,6 +1,7 @@
 const color = {
   white: '#ffffff',
   black: '#000000',
+  cuttySark: '#57797b',
   tomato: '#d73a15',
   rust: '#a72e12',
   whiteSmoke: '#f5f5f5',
@@ -20,6 +21,7 @@ const color = {
   arapawa: '#2e4a69',
   cornflower: '#e6f1ff',
   linen: '#fcf9f3',
+  dirtyLinen: '#fbebe8',
   squirrel: '#94856B',
   cork: '#3f2b1e',
   bone: '#d9ccA7',
@@ -31,6 +33,7 @@ const color = {
   jet: '#080808',
   facebook: '#527aa1',
   facebookHover: '#43637a',
+  palePink: '#f5d7d1',
   pinterest: '#cf5553',
   pinterestHover: '#893b3b',
   twitter: '#79aed1',
@@ -48,11 +51,14 @@ const color = {
   bluewood: '#374360',
   slate: '#767d8e',
   mineShaft: '#2a2a2a',
+  focusRing: '#2A5FCC',
+  tabasco: '#A72E13', // 167, 46, 19
   transparentWhite: 'rgba(255, 255, 255, 0.5)',
   transparentBlack: 'rgba(0, 0, 0, 0.7)',
   transparentGunmetal: 'rgba(38, 38, 38, 0.5)',
   transparentAsphalt: 'rgba(25, 25, 25, 0.5)',
   transparentJet: 'rgba(8, 8, 8, 0.5)',
+  transparentWhiteSmoke: 'rgba(245, 245, 245, 0.5)',
 };
 
 export default color;

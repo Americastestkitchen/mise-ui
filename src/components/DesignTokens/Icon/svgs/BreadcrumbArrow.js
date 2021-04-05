@@ -13,7 +13,7 @@ BreadcrumbArrow.propTypes = {
 };
 
 BreadcrumbArrow.defaultProps = {
-  fill: `${color.eclipse}`,
+  fill: color.eclipse,
 };
 
 export default BreadcrumbArrow;

@@ -1,13 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 
-import { ChefHat, Content, Cookbook, Knife, Plus, Sort, Time } from '../DesignTokens/Icon/svgs';
+import AccordionControl from '../AccordionControl';
+import { ChefHat, Content, Cookbook, Knife, Sort, Time } from '../DesignTokens/Icon/svgs';
 import { color, font, fontSize, letterSpacing, spacing, withThemes } from '../../styles';
 
-const AccordionDivWrapper = styled.div``;
-const AccordionFieldsetWrapper = styled.fieldset``;
+const AccordionDivWrapper = styled.div.attrs({
+  className: 'accordion-content-wrapper',
+})`
+  &:focus-within {
+    box-shadow: 0 0 0 2px ${color.focusRing};
+
+    > button:focus {
+      outline: none;
+    }
+  }
+`;
+
+const AccordionFieldsetWrapper = styled.fieldset.attrs({
+  className: 'accordion-content-wrapper',
+})``;
 
 const AccordionButtonTheme = {
   default: css`
@@ -24,10 +38,6 @@ const AccordionButtonTheme = {
     @media(hover: hover) {
       &:hover {
         cursor: pointer;
-
-        svg {
-          fill: ${color.mint};
-        }
       }
     }
 
@@ -77,11 +87,41 @@ const AccordionButtonTheme = {
       width: 100%;
     `}
   `,
+  atk: css`
+    display: block;
+    letter-spacing: inherit;
+    padding: 0;
+    position: relative;
+    text-align: inherit;
+    text-transform: none;
+
+    ${breakpoint('xlg')`
+      width: 100%;
+    `}
+
+    @media(hover: hover) {
+      &:hover {
+        .accordion-item__icon {
+          border-color: ${color.nobel};
+          height:3.6rem;
+          width: 3.6rem;
+          max-height:3.6rem;
+          max-width: 3.6rem;
+
+          svg {
+            fill: ${color.nobel};
+          }
+        }
+      }
+    }
+  `,
   light: css`
   `,
 };
 
-const AccordionButton = styled.button`
+const AccordionButton = styled.button.attrs({
+  className: 'accordion-item__button',
+})`
   ${withThemes(AccordionButtonTheme)}
 `;
 
@@ -128,47 +168,18 @@ const AccordionLabelWrapperTheme = {
   `,
 };
 
-const AccordionLabelWrapper = styled.div`
+const AccordionLabelWrapper = styled.div.attrs({
+  className: 'accordion-item__label',
+})`
   ${withThemes(AccordionLabelWrapperTheme)}
-`;
-
-const AccordionSvgWrapperTheme = {
-  default: css`
-    height: 2rem;
-    max-height: 2rem;
-    max-width: 2rem;
-    width: 2rem;
-
-    svg {
-      height: 100%;
-      transition: all 0.2s ease;
-      width: 100%;
-
-      ${({ isExpanded }) => (isExpanded ? `
-        transform: rotate(90deg);
-
-        rect {
-          &:first-child {
-            opacity: 0;
-          }
-        }
-      ` : '')}
-    }
-  `,
-  play: css`
-    height: 3rem;
-    max-height: 3rem;
-    max-width: 3rem;
-    width: 3rem;
-  `,
-};
-
-const AccordionSvgWrapper = styled.div`
-  ${withThemes(AccordionSvgWrapperTheme)}
 `;
 
 const AccordionContent = styled.div`
   display: ${({ hidden }) => (hidden ? 'none' : 'block')};
+
+  @media print {
+    display: block !important;
+  }
 `;
 
 const icons = {
@@ -180,43 +191,78 @@ const icons = {
   time: Time,
 };
 
+const Legend = ({ children }) => (
+  <legend>{children}</legend>
+);
+
+Legend.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
+};
+
 function Accordion({
   children,
   icon,
   iconSize,
+  id,
   isFieldset,
   isHidden,
-  label,
+  label: Label,
+  onClick,
 }) {
   const [hidden, toggleHidden] = useState(isHidden);
   const AccordionWrapper = isFieldset ? AccordionFieldsetWrapper : AccordionDivWrapper;
   const Icon = icon ? icons[icon] : null;
+  let idVal = id;
+  if (!idVal && typeof Label === 'string') {
+    idVal = Label?.split(' ')?.join('');
+  }
+
+  const isLabelString = typeof Label === 'string';
+  let labelEl;
+  if (isFieldset) {
+    labelEl = isLabelString ? <Legend>{Label}</Legend> : <Label />;
+  } else {
+    labelEl = isLabelString ? Label : <Label />;
+  }
+
+  useEffect(() => {
+    if (typeof dry !== 'undefined') {
+      // eslint-disable-next-line no-undef
+      dry.events.subscribe('accordion:toggle', val => toggleHidden(val));
+    }
+  }, []);
 
   return (
     <AccordionWrapper>
       <AccordionButton
-        aria-controls={`show-hide--${label.split(' ').join('')}`}
+        aria-controls={`show-hide--${idVal}`}
         aria-expanded={!hidden}
         className="show-hide__expand-collapse-button"
-        onClick={() => toggleHidden(!hidden)}
+        onClick={() => {
+          toggleHidden(curr => !curr);
+          if (onClick) { onClick(); }
+        }}
       >
         {
           isFieldset ? (
             <AccordionLabelWrapper hasIcon={icon}>
-              <legend>
-                {label}
-              </legend>
+              {labelEl}
               {Icon ? <Icon className={`show-hide__icon--${icon}`} /> : null}
             </AccordionLabelWrapper>
-          ) : <span className="accordion__label">{label}</span>
+          ) : labelEl
         }
-        <AccordionSvgWrapper isExpanded={!hidden}>
-          <Plus size={iconSize} />
-        </AccordionSvgWrapper>
+        <AccordionControl
+          iconSize={iconSize}
+          isExpanded={!hidden}
+        />
       </AccordionButton>
       <AccordionContent
         data-testid="accordion-content"
-        id={`show-hide--${label.split(' ').join('')}`}
+        id={`show-hide--${idVal}`}
         hidden={hidden ? true : null}
       >
         {children}
@@ -235,19 +281,30 @@ Accordion.propTypes = {
   icon: PropTypes.string,
   /* Size of icon */
   iconSize: PropTypes.oneOf(['default', 'large', 'extraLarge']),
+  /** HTML attribute */
+  id: PropTypes.string,
   /** For accessability we need a fieldset version of this component. */
   isFieldset: PropTypes.bool,
   /** Sets initial state of the hidden content. */
   isHidden: PropTypes.bool,
   /** Clickable text that appears in button next to plus/minus icon. */
-  label: PropTypes.string.isRequired,
+  label: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.func,
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
+  /** for mixpanel purposes */
+  onClick: PropTypes.func,
 };
 
 Accordion.defaultProps = {
   icon: null,
   iconSize: 'default',
+  id: null,
   isFieldset: false,
   isHidden: false,
+  onClick: null,
 };
 
 export default Accordion;

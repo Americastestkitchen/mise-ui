@@ -11,17 +11,31 @@ Icon.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
+export const Alert = () => (
+  <Icon>
+    <Icons.Alert />
+  </Icon>
+);
+
 export const Arrow = () => (
   <Icon>
     <Icons.Arrow />
   </Icon>
 );
 
-export const BreadcrumbArrow = () => (
+export const Bell = () => (
   <Icon>
-    <Icons.BreadcrumbArrow />
+    <Icons.Bell />
   </Icon>
 );
+
+export const BreadcrumbArrow = ({ fill }) => (
+  <Icon>
+    <Icons.BreadcrumbArrow fill={fill} />
+  </Icon>
+);
+
+BreadcrumbArrow.propTypes = Icons.BreadcrumbArrow.propTypes;
 
 export const Checkmark = ({ fill }) => (
   <Icon>
@@ -143,6 +157,12 @@ export const Filter = ({ className, fill }) => (
 
 Filter.propTypes = Icons.Filter.propTypes;
 
+export const Lightbulb = () => (
+  <Icon>
+    <Icons.Lightbulb />
+  </Icon>
+);
+
 export const Lock = ({ className, fill }) => (
   <Icon>
     <Icons.Lock
@@ -183,6 +203,12 @@ export const Plus = ({ fill }) => (
 );
 
 Plus.propTypes = Icons.Plus.propTypes;
+
+export const PriceUpdate = () => (
+  <Icon>
+    <Icons.PriceUpdate />
+  </Icon>
+);
 
 export const Print = ({
   ariaHidden,
@@ -232,6 +258,16 @@ export const Rewind = ({ fill }) => (
 
 Rewind.propTypes = Icons.Rewind.propTypes;
 
+export const ReviewsRibbon = ({ fill }) => (
+  <Icon>
+    <Icons.ReviewsRibbon
+      fill={fill}
+    />
+  </Icon>
+);
+
+ReviewsRibbon.propTypes = Icons.ReviewsRibbon.propTypes;
+
 export const RibbonAward = ({ fill }) => (
   <Icon>
     <Icons.RibbonAward
@@ -252,6 +288,48 @@ export const SearchIcon = ({ fill }) => (
 
 SearchIcon.propTypes = Icons.SearchIcon.propTypes;
 
+export const StarEmpty = ({ color }) => (
+  <Icon>
+    <Icons.StarEmpty
+      color={color}
+    />
+  </Icon>
+);
+
+StarEmpty.propTypes = Icons.StarEmpty.propTypes;
+
+export const StarHalf = ({ color }) => (
+  <Icon>
+    <Icons.StarHalf
+      color={color}
+    />
+  </Icon>
+);
+
+StarHalf.propTypes = Icons.StarHalf.propTypes;
+
+export const StarFull = ({ color }) => (
+  <Icon>
+    <Icons.StarFull
+      color={color}
+    />
+  </Icon>
+);
+
+StarFull.propTypes = Icons.StarFull.propTypes;
+
+export const TriangleRight = () => (
+  <Icon>
+    <Icons.TriangleRight />
+  </Icon>
+);
+
+export const TwitterBird = () => (
+  <Icon>
+    <Icons.TwitterBird />
+  </Icon>
+);
+
 export const VideoPlay = ({ fill }) => (
   <Icon>
     <Icons.VideoPlay
@@ -271,3 +349,9 @@ export const Videos = ({ fill }) => (
 );
 
 Videos.propTypes = Icons.Videos.propTypes;
+
+export const WavyStar = () => (
+  <Icon>
+    <Icons.WavyStar />
+  </Icon>
+);

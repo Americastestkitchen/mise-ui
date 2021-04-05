@@ -217,7 +217,7 @@ const AudioPlayer = ({
         playerInstance.current.destroy();
       }
     };
-  }, []);
+  }, [checkPlyr]);
 
   const togglePlay = () => {
     playerEl.current.plyr.togglePlay(!isPlaying);

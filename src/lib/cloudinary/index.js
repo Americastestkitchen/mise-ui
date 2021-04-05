@@ -68,9 +68,42 @@ const imageConfig = {
       ...config,
     };
   },
+  placeholder(options = {}) {
+    const config = imageConfig.thumbnail(options);
+    return {
+      ...config,
+      effect: 'blur:500',
+      quality: 5,
+    };
+  },
   gradientFade(strength = 8, edge = 'y_-0.5', backgroundColor = 'black') {
     return {
       effect: `gradient_fade:${strength},${edge},b_${backgroundColor}`,
+    };
+  },
+  thumbnail(options = {}) {
+    const config = { ...options };
+    const { aspectRatio, height, size = 'large', width } = options;
+    if ((width && height && aspectRatio) || aspectRatio === 'auto') {
+      delete config.aspectRatio;
+    }
+    // set a sensible max-width
+    if (!width && !height) {
+      config.width = size === 'small' ? 90 : 270;
+    }
+
+    return {
+      ...baseImageConfig,
+      ...config,
+    };
+  },
+  thumbnailPlaceholder(options = {}) {
+    const config = imageConfig.thumbnail(options);
+    return {
+      ...config,
+      dpr: '1.0',
+      quality: '5',
+      effect: 'blur:500',
     };
   },
   heroAd() {

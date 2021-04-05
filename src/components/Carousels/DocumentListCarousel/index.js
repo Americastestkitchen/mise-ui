@@ -1,7 +1,6 @@
-// import breakpoint from 'styled-components-breakpoint';
+import breakpoint from 'styled-components-breakpoint';
 import PropTypes from 'prop-types';
 import React from 'react';
-import breakpoint from 'styled-components-breakpoint';
 import styled, { css } from 'styled-components';
 
 import CardCarousel from '../CardCarousel';
@@ -38,7 +37,7 @@ const TitleTheme = {
   dark: css``,
 };
 
-const Title = styled.h3.attrs({
+const Title = styled.h2.attrs({
   className: 'document-list-carousel__title',
 })`${withThemes(TitleTheme)}`;
 
@@ -141,6 +140,9 @@ const DocumentListCarousel = ({
   ctaUrl,
   intro,
   items,
+  gradient,
+  options,
+  renderItem,
   title,
   type,
 }) => (
@@ -161,7 +163,10 @@ const DocumentListCarousel = ({
     </TitleAndCta>
     <CardCarousel
       cellAlign={cellAlign}
+      extraOptions={options}
       items={items}
+      gradient={gradient}
+      renderItem={renderItem}
       type={type}
     />
   </DocumentListCarouselWrapper>
@@ -180,10 +185,23 @@ DocumentListCarousel.propTypes = {
   intro: PropTypes.string,
   /** List of items for the carousel */
   items: PropTypes.array.isRequired,
+  gradient: PropTypes.shape({
+    endColor: PropTypes.string,
+    startColor: PropTypes.string,
+  }),
+  options: PropTypes.object,
+  /** Optional: override default render function in CardCarousel */
+  renderItem: PropTypes.func,
   /** Larger title displayed above carousel */
   title: PropTypes.string.isRequired,
   /** Sets the carousel-item styles for a particular card style */
-  type: PropTypes.oneOf(['standard', 'feature', 'person', 'tall']).isRequired,
+  type: PropTypes.oneOf([
+    'feature',
+    'person',
+    'reviewable',
+    'standard',
+    'tall',
+  ]).isRequired,
 };
 
 DocumentListCarousel.defaultProps = {
@@ -192,6 +210,9 @@ DocumentListCarousel.defaultProps = {
   ctaTarget: '',
   ctaUrl: null,
   intro: null,
+  gradient: null,
+  options: null,
+  renderItem: null,
 };
 
 export default DocumentListCarousel;

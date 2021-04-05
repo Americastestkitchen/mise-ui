@@ -122,6 +122,7 @@ const CtaLink = styled.a`
   font: ${fontSize.md}/${lineHeight.sm} ${font.pnb};
   left: ${spacing.xsm};
   position: absolute;
+  z-index: 2;
 `;
 
 function FeatureCard({
@@ -137,6 +138,7 @@ function FeatureCard({
   imageUrl,
   isFavorited,
   isWide,
+  lazyImage,
   objectId,
   onClick,
   personHeadShot,
@@ -165,6 +167,7 @@ function FeatureCard({
           className={`${className} feature-card__background-img`}
           imageAlt={imageAlt}
           imageUrl={imageUrl}
+          lazy={lazyImage}
         />
         <StyledBadge
           className={className}
@@ -226,7 +229,11 @@ function FeatureCard({
         </div>
       </a>
       { ctaUrl && (
-        <CtaLink ctaUrl={ctaUrl}>
+        <CtaLink
+          aria-label={`${ctaText} (opens in new window)`}
+          href={ctaUrl}
+          target="_blank"
+        >
           { ctaText }
         </CtaLink>
       )}
@@ -248,6 +255,7 @@ FeatureCard.propTypes = {
   imageUrl: PropTypes.string.isRequired,
   isFavorited: PropTypes.bool,
   isWide: PropTypes.bool,
+  lazyImage: PropTypes.bool,
   objectId: PropTypes.string.isRequired,
   onClick: PropTypes.func,
   /** Optional: Image data that is used to render a PersonHeadShot. */
@@ -271,6 +279,7 @@ FeatureCard.defaultProps = {
   imageAlt: '',
   isFavorited: false,
   isWide: false,
+  lazyImage: true,
   onClick: null,
   personHeadShot: null,
   siteKeyFavorites: null,
