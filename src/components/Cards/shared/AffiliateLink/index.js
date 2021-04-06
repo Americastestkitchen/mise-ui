@@ -24,7 +24,7 @@ const AffiliateLinkWrapperTheme = {
 };
 
 const AffiliateLinkWrapper = styled.div.attrs({
-  className: 'affiliate-link',
+  className: 'partner-link',
 })`${withThemes(AffiliateLinkWrapperTheme)}`;
 
 const AffiliateLinkTheme = {
@@ -58,7 +58,7 @@ const AffiliateLinkTheme = {
 };
 
 const AffiliateLinkEl = styled.a.attrs({
-  className: 'affiliate-link__anchor',
+  className: 'partner-link__anchor',
 })`${withThemes(AffiliateLinkTheme)}`;
 
 const AffiliateLink = ({
