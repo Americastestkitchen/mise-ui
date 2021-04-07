@@ -273,7 +273,18 @@ const LoadingCard = ({ type }) => (
 );
 
 LoadingCard.propTypes = {
-  type: PropTypes.oneOf(['standard', 'feature', 'feature-wide', 'hero', 'tall', 'tall-wide', 'queue', 'person', 'podcast-episode']).isRequired,
+  type: PropTypes.oneOf([
+    'feature',
+    'feature-wide',
+    'hero',
+    'person',
+    'podcast-episode',
+    'queue',
+    'reviewable',
+    'standard',
+    'tall',
+    'tall-wide',
+  ]).isRequired,
 };
 
 export default LoadingCard;

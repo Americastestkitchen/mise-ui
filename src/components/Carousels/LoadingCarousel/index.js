@@ -112,7 +112,13 @@ LoadingCarousel.propTypes = {
   /** Larger title displayed above carousel */
   title: PropTypes.string,
   /** Sets the carousel-item styles for a particular card style */
-  type: PropTypes.oneOf(['standard', 'feature', 'person', 'tall']).isRequired,
+  type: PropTypes.oneOf([
+    'feature',
+    'person',
+    'reviewable',
+    'standard',
+    'tall',
+  ]).isRequired,
 };
 
 LoadingCarousel.defaultProps = {

@@ -62,6 +62,7 @@ const AffiliateLinkEl = styled.a.attrs({
 })`${withThemes(AffiliateLinkTheme)}`;
 
 const AffiliateLink = ({
+  dataAttrs,
   icon,
   onClick,
   text,
@@ -76,6 +77,7 @@ const AffiliateLink = ({
         target="_blank"
         rel="noopener noreferrer nofollow"
         title={title || text}
+        {...dataAttrs}
       >
         {text}
         <Icons.TriangleRight />
@@ -88,6 +90,7 @@ const AffiliateLink = ({
 };
 
 AffiliateLink.propTypes = {
+  dataAttrs: PropTypes.object,
   icon: PropTypes.any,
   /** for mixpanel purposes */
   onClick: PropTypes.func,
@@ -97,6 +100,7 @@ AffiliateLink.propTypes = {
 };
 
 AffiliateLink.defaultProps = {
+  dataAttrs: {},
   icon: null,
   onClick: null,
   title: null,
