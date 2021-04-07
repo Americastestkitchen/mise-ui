@@ -76,7 +76,11 @@ const CategoryCard = ({
   assetType,
   browsePath,
   cloudinaryId,
+  documentType,
+  filterName,
+  filterValue,
   lazy,
+  onClick,
   svgId,
   tagline,
 }) => {
@@ -84,7 +88,14 @@ const CategoryCard = ({
 
   return (
     <CarouselContainer>
-      <LinkToBrowse href={`${browsePath}`}>
+      <LinkToBrowse
+        className="category-card-link"
+        data-document-type={documentType}
+        data-filter-name={filterName}
+        data-filter-value={filterValue}
+        href={`${browsePath}`}
+        onClick={onClick}
+      >
         <ImageWrapper>
           {assetType === 'productImage' ? <Image className="category-product-image" imageAlt={tagline} imageUrl={getImageUrl(cloudinaryId)} lazy={lazy} /> : (
             <SvgWrapper>
@@ -104,14 +115,22 @@ CategoryCard.propTypes = {
   assetType: PropTypes.oneOf(['productImage', 'svgIcon']).isRequired,
   browsePath: PropTypes.string.isRequired,
   cloudinaryId: PropTypes.string,
+  documentType: PropTypes.string,
+  filterName: PropTypes.string,
+  filterValue: PropTypes.string,
   lazy: PropTypes.bool,
+  onClick: PropTypes.func,
   svgId: PropTypes.oneOf(['shoppingCart', 'star', 'trendingArrow', 'play', '']),
   tagline: PropTypes.string.isRequired,
 };
 
 CategoryCard.defaultProps = {
   cloudinaryId: '',
+  documentType: null,
   lazy: true,
+  filterName: null,
+  filterValue: null,
+  onClick: null,
   svgId: 'star',
 };
 

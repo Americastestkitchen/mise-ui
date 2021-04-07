@@ -164,6 +164,9 @@ const ReviewableSummaryCard = React.memo(({
     buyNowIcon = buyNowOverrideAffiliateName;
   }
   const sortOfWinner = winner || isShortList;
+  const stickerText = sortOfWinner
+    ? winnerHeader || 'Winner'
+    : recommendationStatus;
 
   return (
     <ReviewableSummaryItemEl
@@ -176,7 +179,7 @@ const ReviewableSummaryCard = React.memo(({
             <StickerWrapper winner={sortOfWinner}>
               <Sticker
                 className="sticker"
-                text={sortOfWinner ? (winnerHeader || 'Winner') : recommendationStatus}
+                text={stickerText}
                 type="editorial"
               />
             </StickerWrapper>
@@ -189,6 +192,12 @@ const ReviewableSummaryCard = React.memo(({
           )}
           {buyNowLink && (
             <AffiliateLink
+              dataAttrs={{
+                'data-asin': asin || '',
+                'data-price': price || '',
+                'data-recommendation-status': stickerText,
+                'data-reviewable': name,
+              }}
               text="Buy Now"
               icon={buyNowIcon}
               onClick={buyNowOnClick}
