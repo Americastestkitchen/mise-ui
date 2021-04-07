@@ -80,7 +80,9 @@ const TitleAndCtaTheme = {
   dark: css``,
 };
 
-const TitleAndCta = styled.div`
+const TitleAndCta = styled.div.attrs({
+  className: 'title-wrapper',
+})`
   ${withThemes(TitleAndCtaTheme)}
 `;
 
