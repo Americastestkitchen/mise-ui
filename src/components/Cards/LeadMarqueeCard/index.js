@@ -96,6 +96,8 @@ export const StickerGroup = styled.div`
 `;
 
 export const StyledSticker = styled(Sticker)`
+  margin-bottom: 0;
+
   &:first-child {
     margin-left: 0;
   }
@@ -120,6 +122,10 @@ const Description = styled.p`
     font: ${fontSize.md}/${lineHeight.lg} ${font.mwr};
     margin-bottom: ${spacing.sm};
   `};
+  
+  ${breakpoint('lg')`
+    line-height: ${lineHeight.md};
+  `}
 `;
 
 const LeadMarqueeCard = ({
