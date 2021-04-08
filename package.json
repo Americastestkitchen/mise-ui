@@ -1,6 +1,6 @@
 {
   "name": "@atk/mise-ui",
-  "version": "1.5.4-canary.acc02691.0",
+  "version": "1.5.4-canary.8238b32c.0",
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "algoliasearch": "^4.0.3",
@@ -12,19 +12,19 @@
     "lodash.orderby": "^4.6.0",
     "lodash.throttle": "^4.1.1",
     "prop-types": "^15.7.2",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-instantsearch-dom": "^6.3.0",
     "react-loadable": "^5.5.0",
     "react-loadable-visibility": "^3.0.2",
     "react-scripts": "3.3.1",
-    "styled-components": "5.2.1",
+    "styled-components": "5.2.3",
     "styled-components-breakpoint": "2.1.1",
     "styled-normalize": "^8.0.7",
     "verge": "^1.10.2"
   },
   "peerDependencies": {
-    "react-dom": "^17.0.1",
+    "react-dom": "^17.0.2",
     "react-instantsearch-dom": "^6.3.0"
   },
   "scripts": {
