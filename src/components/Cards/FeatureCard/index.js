@@ -187,11 +187,8 @@ function FeatureCard({
           imageUrl={imageUrl}
           lazy={lazyImage}
         />
-        <StyledBadge
-          className={className}
-          type={siteKey}
-        />
-        { displayFavoritesButton ? (
+        <StyledBadge className={className} type={siteKey} />
+        {displayFavoritesButton && siteKeyFavorites ? (
           <StyledFavoriteButton
             className={className}
             fill={`${color.white}`}
@@ -201,14 +198,10 @@ function FeatureCard({
             siteKey={siteKeyFavorites}
             title={title}
           />
-        ) : null }
-        <div
-          className="feature-card__subcomponents-wrapper"
-        >
-          <div
-            className="feature-card__subcomponents-content"
-          >
-            { stickers ? (
+        ) : null}
+        <div className="feature-card__subcomponents-wrapper">
+          <div className="feature-card__subcomponents-content">
+            {stickers ? (
               <StickerGroup>
                 {stickers.map(({ text, type }) => (
                   <StyledSticker
@@ -220,45 +213,36 @@ function FeatureCard({
                   />
                 ))}
               </StickerGroup>
-            ) : null }
-            <StyledTitle
-              className={className}
-              title={title}
-            />
-            { attributions ? (
-              <Attributions>{attributions}</Attributions>
-            ) : null }
-            { originalPrice && discountedPrice ? (
+            ) : null}
+            <StyledTitle className={className} title={title} />
+            {attributions ? <Attributions>{attributions}</Attributions> : null}
+            {originalPrice && discountedPrice ? (
               <PricingWrapper>
                 <DiscountPricing>{`${discountedPrice} `}</DiscountPricing>
                 <OriginalPricing>{originalPrice}</OriginalPricing>
               </PricingWrapper>
-            ) : null }
+            ) : null}
           </div>
-          {
-            personHeadShot && (
-              <div
-                className="feature-card__subcomponents-aside"
-              >
-                <PersonHeadShot
-                  {...personHeadShot}
-                  size={{
-                    sm: '5',
-                    md: '8',
-                  }}
-                />
-              </div>
-            )
-          }
+          {personHeadShot && (
+            <div className="feature-card__subcomponents-aside">
+              <PersonHeadShot
+                {...personHeadShot}
+                size={{
+                  sm: '5',
+                  md: '8',
+                }}
+              />
+            </div>
+          )}
         </div>
       </a>
-      { ctaUrl && (
+      {ctaUrl && (
         <CtaLink
           aria-label={`${ctaText} (opens in new window)`}
           href={ctaUrl}
           target="_blank"
         >
-          { ctaText }
+          {ctaText}
         </CtaLink>
       )}
     </StyledFeatureCard>

@@ -66,6 +66,7 @@ const TitleImageWrapper = styled.div.attrs({
 })`
   align-items: flex-start;
   display: flex;
+  position: relative;
   width: 100%;
 
   h3 {
