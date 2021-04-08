@@ -97,11 +97,19 @@ const CategoryCard = ({
         onClick={onClick}
       >
         <ImageWrapper>
-          {assetType === 'productImage' ? <Image className="category-product-image" imageAlt={tagline} imageUrl={getImageUrl(cloudinaryId)} lazy={lazy} /> : (
-            <SvgWrapper>
-              <CategoryIcon fill={color.mint} />
-            </SvgWrapper>
-          )}
+          {assetType === 'productImage'
+            ? (
+              <Image
+                className="category-product-image"
+                imageAlt={tagline}
+                imageUrl={getImageUrl(cloudinaryId)}
+                lazy={lazy}
+              />
+            ) : (
+              <SvgWrapper>
+                <CategoryIcon fill={color.mint} />
+              </SvgWrapper>
+            )}
         </ImageWrapper>
         <Tagline>
           {tagline}

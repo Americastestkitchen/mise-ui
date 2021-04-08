@@ -85,6 +85,12 @@ const CardCarouselTheme = {
       }
     `}
 
+    ${breakpoint('md')`
+      .carousel-cell {
+        margin-right: ${({ type }) => (type === 'category' ? spacing.xxsm : spacing.sm)};
+      }
+    `}
+
     ${breakpoint('lg')`
       .linear-gradient {
         display: block;
