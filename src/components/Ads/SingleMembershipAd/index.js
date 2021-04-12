@@ -135,6 +135,9 @@ const SingleMembershipTitleTheme = {
       font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb};
     `}
   `,
+  light: css`
+    color: ${color.eclipse};
+  `,
 };
 
 const SingleMembershipTitle = styled.h3.attrs({
