@@ -15,9 +15,20 @@ import Image from '../../../Cards/shared/Image';
 
 const LandingEmailTheme = {
   default: css`
+    background-color: ${color.white};
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin: 0 auto;
+    min-height: 46rem;
     width: 34rem;
+
+    ${breakpoint('md')`
+      flex-direction: row;
+      min-height: 33rem;
+      width: 69.9rem;
+    `}
 
     ${breakpoint('xlg')`
       height: 33rem;
@@ -55,11 +66,22 @@ const LandingEmailWrapper = styled.div.attrs({
 
 const ImageWrapper = styled.div`
   background-size: cover;    
-  width: 50%;
+  margin-bottom: 1rem;
+  width: 100%;
+
+  ${breakpoint('md')`
+    margin-bottom: 0;
+    min-height: 32.9rem;
+    width: 50%;
+  `}
 
   .landing-ad-image {
     height: 100%;
     width: 100%;
+
+    ${breakpoint('md')`
+      min-height: 32.9rem;
+    `}
   }
 `;
 
@@ -73,9 +95,11 @@ const FormBodyContent = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-bottom: 1rem;
   width: 30rem;
 
   ${breakpoint('xlg')`
+    margin-bottom: 0;
     width: 34.4rem;
   `}
 
@@ -95,10 +119,14 @@ const FormBodyContent = styled.div`
 const ContentHeadlineTheme = {
   default: css`
     color: ${color.eclipse};
-    font: ${fontSize.md}/1.6rem ${font.pnr};
+    font: 1.34rem/1.6rem ${font.pnr};
     letter-spacing: 0.25rem;
     margin-bottom: 0.9rem;
     text-transform: uppercase;
+
+    ${breakpoint('xlg')`
+      font: ${fontSize.md}/1.6rem ${font.pnr};
+    `}
   `,
   dark: css`
     color: ${color.white};
@@ -114,7 +142,11 @@ const ContentTitleTheme = {
     color: ${color.eclipse};
     font: 2.6rem ${font.pnb};
     line-height: 3rem;
-    width: 34.4rem;
+    width: 30rem;
+
+    ${breakpoint('xlg')`
+      width: 34.4rem;
+    `}
   `,
   dark: css`
     color: ${color.white};

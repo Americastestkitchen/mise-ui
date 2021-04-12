@@ -25,6 +25,7 @@ import HeroAd from './components/Ads/HeroAd';
 import HeroCard from './components/Cards/HeroCard';
 import InlineNewsletter from './components/Newsletters/InlineNewsletter';
 import Listable from './components/Listable';
+import LandingEmailAd from './components/Ads/ShowcaseAds/LandingEmailAd';
 import LeadMarqueeCard from './components/Cards/LeadMarqueeCard';
 import LoadingCard from './components/Cards/LoadingCard';
 import LoadingCarousel from './components/Carousels/LoadingCarousel';
@@ -96,6 +97,7 @@ export {
   globalStyle,
   HeroAd,
   HeroCard,
+  LandingEmailAd,
   Listable,
   LeadMarqueeCard,
   LoadingCard,
