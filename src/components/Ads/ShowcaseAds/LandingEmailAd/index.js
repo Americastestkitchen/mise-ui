@@ -158,14 +158,41 @@ const ContentTitle = styled.p.attrs({
   className: 'landing-ad-content-title',
 })`${withThemes(ContentTitleTheme)}`;
 
+const RegistrantButtonTheme = {
+  default: css`
+    background-color: ${color.coldPool};
+    color: ${color.white};
+    font: ${fontSize.lg}/2.6rem ${font.pnb};
+    letter-spacing: 0.28rem;
+    margin-top: 4rem;
+    min-height: 4rem;
+    text-transform: uppercase;
+    width: 30rem;
+
+    ${breakpoint('xlg')`
+      width: 34.4rem;
+    `}
+  `,
+  dark: css`
+    background-color: ${color.tomato};
+  `,
+};
+
+const RegistrantButton = styled.button.attrs({
+  className: 'landing-ad-registrant-button',
+})`${withThemes(RegistrantButtonTheme)}`;
+
 const LandingEmailAd = ({
   buttonText,
   errorText,
   headline,
   imageUrl,
   inputId,
+  isRegistrant,
   onSubmit,
+  subdomain,
   title,
+  userEmail,
 }) => (
   <LandingEmailWrapper>
     <ImageWrapper data-testid="adImage">
@@ -175,13 +202,22 @@ const LandingEmailAd = ({
       <FormBodyContent>
         {headline ? <ContentHeadline>{headline}</ContentHeadline> : null}
         <ContentTitle>{title}</ContentTitle>
-        <EmailForm
-          buttonText={buttonText}
-          errorText={errorText}
-          inputId={inputId}
-          onSubmit={onSubmit}
-          placeholder="Enter Your Email Address"
-        />
+        {isRegistrant ? (
+          <RegistrantButton
+            id={`${inputId}-submit`}
+            onClick={() => onSubmit(subdomain, userEmail, true)}
+          >
+            {buttonText}
+          </RegistrantButton>
+        ) : (
+          <EmailForm
+            buttonText={buttonText}
+            errorText={errorText}
+            inputId={inputId}
+            onSubmit={onSubmit}
+            placeholder="Enter Your Email Address"
+          />
+        )}
       </FormBodyContent>
     </FormColumnWrapper>
   </LandingEmailWrapper>
@@ -192,15 +228,19 @@ LandingEmailAd.propTypes = {
   errorText: PropTypes.string,
   imageUrl: PropTypes.string.isRequired,
   inputId: PropTypes.string.isRequired,
+  isRegistrant: PropTypes.bool.isRequired,
   headline: PropTypes.string,
   onSubmit: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
+  subdomain: PropTypes.string.isRequired,
+  userEmail: PropTypes.string,
 };
 
 LandingEmailAd.defaultProps = {
   buttonText: 'Sign me up',
   errorText: 'Invalid email address',
   headline: '',
+  userEmail: null,
 };
 
 export default LandingEmailAd;
