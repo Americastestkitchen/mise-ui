@@ -5,6 +5,7 @@ import { color } from '../../../../styles';
 const TrendingArrow = ({ fill }) => (
   <svg
     aria-hidden="true"
+    className="trending-icon"
     focusable="false"
     viewBox="0 0 37.458 25.384"
     xmlns="http://www.w3.org/2000/svg"

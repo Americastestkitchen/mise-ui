@@ -27,7 +27,7 @@ const typeWidths = {
     hero: 'calc(100% - 6.4rem)',
   },
   lg: {
-    category: '9.35rem',
+    category: '9.5rem',
     hero: '113.6rem',
   },
 };
@@ -87,7 +87,7 @@ const CardCarouselTheme = {
 
     ${breakpoint('md')`
       .carousel-cell {
-        margin-right: ${({ type }) => (type === 'category' ? spacing.xxsm : spacing.sm)};
+        margin-right: ${({ type }) => (type === 'category' ? '0.5rem' : spacing.sm)};
       }
     `}
 
@@ -98,7 +98,7 @@ const CardCarouselTheme = {
         position: absolute;
         right: 0;
         top: 0;
-        width: 4rem;
+        width: 10rem;
         z-index: 1;
 
         &.left {
@@ -152,7 +152,7 @@ const CardCarouselTheme = {
       &.card-carousel--hero {
         .linear-gradient {
           &:last-child {
-            right: -4rem;
+            right: -3rem;
           }
         }
       }

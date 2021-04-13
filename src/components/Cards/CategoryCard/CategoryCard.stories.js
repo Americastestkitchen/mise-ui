@@ -11,7 +11,7 @@ export const DefaultSvg = () => (
   <CategoryCard 
     assetType="svgIcon"
     browsePath="url"
-    svgId="star"
+    svgId="reviews"
     tagline="Browse All Reviews"
   />
 );

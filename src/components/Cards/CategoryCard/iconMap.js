@@ -1,12 +1,12 @@
 import ShoppingCart from '../../DesignTokens/Icon/svgs/ShoppingCart';
-import Star from '../../DesignTokens/Icon/svgs/Star';
 import TrendingArrow from '../../DesignTokens/Icon/svgs/TrendingArrow';
 import LandingPlay from '../../DesignTokens/Icon/svgs/LandingPlay';
+import ReviewsRibbon from '../../DesignTokens/Icon/svgs/ReviewsRibbon';
 
 const IconMap = {
   play: LandingPlay,
   shoppingCart: ShoppingCart,
-  star: Star,
+  reviews: ReviewsRibbon,
   trendingArrow: TrendingArrow,
 };
 
