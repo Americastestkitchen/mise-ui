@@ -9,7 +9,8 @@ import { color, font, fontSize } from '../../../styles';
 import { getImageUrl } from '../../../lib/cloudinary';
 
 const CarouselContainer = styled.div`
-    height: 12.5rem;  
+    height: 12.5rem;
+    margin-right: 0.5rem;
 `;
 
 const LinkToBrowse = styled.a`
@@ -51,24 +52,26 @@ const Tagline = styled.p`
 const SvgWrapper = styled.div`
   align-items: center;
   display: flex;
-  height: 60%;
+  height: 50%;
   position: relative;
-  width: 60%;
+  width: 50%;
 
   .landing-play-icon {
     position: absolute;
-    left: 2%;
+  }
+
+  .reviews-ribbon {
+    position: absolute;
+    width: 100%;
   }
 
   .shopping-cart-icon {
     position: absolute;
-    right: 9%;
+    left: -4%; 
   }
 
-  .star-icon {
-    position: absolute;
-    left: 5%;
-    top: 1%;
+  .trending-icon {
+    width: 100%;
   }
 `;
 
@@ -128,7 +131,7 @@ CategoryCard.propTypes = {
   filterValue: PropTypes.string,
   lazy: PropTypes.bool,
   onClick: PropTypes.func,
-  svgId: PropTypes.oneOf(['shoppingCart', 'star', 'trendingArrow', 'play', '']),
+  svgId: PropTypes.oneOf(['shoppingCart', 'reviews', 'trendingArrow', 'play', '']),
   tagline: PropTypes.string.isRequired,
 };
 
