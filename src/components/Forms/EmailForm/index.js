@@ -60,6 +60,7 @@ const EmailFormTheme = {
 
       button[type="submit"] {
         flex: 1 0 auto;
+        max-width: 23rem;
       }
     `}
   `,
