@@ -97,27 +97,26 @@ const CategoryCard = ({
         data-document-type={documentType}
         data-filter-name={filterName}
         data-filter-value={filterValue}
+        data-title={tagline}
+        data-type={documentType}
         href={`${browsePath}`}
         onClick={onClick}
       >
         <ImageWrapper>
-          {assetType === 'productImage'
-            ? (
-              <Image
-                className="category-product-image"
-                imageAlt={tagline}
-                imageUrl={getImageUrl(cloudinaryId)}
-                lazy={lazy}
-              />
-            ) : (
-              <SvgWrapper>
-                <CategoryIcon fill={color.mint} />
-              </SvgWrapper>
-            )}
+          {assetType === 'productImage' ? (
+            <Image
+              className="category-product-image"
+              imageAlt={tagline}
+              imageUrl={getImageUrl(cloudinaryId)}
+              lazy={lazy}
+            />
+          ) : (
+            <SvgWrapper>
+              <CategoryIcon fill={color.mint} />
+            </SvgWrapper>
+          )}
         </ImageWrapper>
-        <Tagline>
-          {tagline}
-        </Tagline>
+        <Tagline>{tagline}</Tagline>
       </LinkToBrowse>
     </CarouselContainer>
   );

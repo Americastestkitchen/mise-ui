@@ -159,6 +159,7 @@ function StandardCard({
   className,
   contentType,
   contentTypeFormatted,
+  ctaDataAttrs,
   ctaText,
   ctaUrl,
   dataAttrs,
@@ -247,6 +248,7 @@ function StandardCard({
           <CtaLink
             ctaText={ctaText}
             ctaUrl={ctaUrl}
+            dataAttrs={ctaDataAttrs}
             onClick={onClick}
           />
         )
@@ -260,6 +262,7 @@ StandardCard.propTypes = {
   className: PropTypes.string,
   contentType: PropTypes.string.isRequired,
   contentTypeFormatted: PropTypes.string,
+  ctaDataAttrs: PropTypes.object,
   ctaText: PropTypes.string,
   ctaUrl: PropTypes.string,
   /** document data attributes */
@@ -289,6 +292,7 @@ StandardCard.propTypes = {
 StandardCard.defaultProps = {
   className: null,
   contentTypeFormatted: null,
+  ctaDataAttrs: null,
   ctaText: '',
   ctaUrl: '',
   dataAttrs: null,
