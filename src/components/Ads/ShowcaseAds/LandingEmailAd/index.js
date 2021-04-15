@@ -39,7 +39,7 @@ const LandingEmailTheme = {
       background-color: ${color.coldPool};
 
       &:hover {
-        background-color: ${color.coldPool};
+        background-color: ${color.darkColdPool};
       }
     }
 
@@ -109,10 +109,26 @@ const FormBodyContent = styled.div`
     & div {
       margin: 1.6rem 0 0.8rem;
     }
+
+    .form-error__inline {
+      margin: 0;
+      position: absolute;
+      top: 5%;
+    }
   }
 
   .email-form-wrapper div {
     justify-content: flex-start;
+  }
+
+  #landing-newsletter-ad {
+    background-color: ${color.white};
+    border: 1px solid ${color.black};
+
+    &::placeholder {
+      font: ${fontSize.md}/2.6rem ${font.mwr};
+      font-style: italic;
+    }
   }
 `;
 

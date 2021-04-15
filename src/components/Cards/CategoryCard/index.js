@@ -42,6 +42,7 @@ const ImageWrapper = styled.div`
 `;
 
 const Tagline = styled.p`
+  color: ${color.eclipse};
   font: ${fontSize.sm} ${font.pnr};
   height: 3rem;
   line-height: 1.14;
