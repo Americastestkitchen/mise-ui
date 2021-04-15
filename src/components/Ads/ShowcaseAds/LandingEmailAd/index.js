@@ -7,21 +7,26 @@ import {
   color,
   font,
   fontSize,
+  lineHeight,
+  spacing,
   withThemes,
 } from '../../../../styles';
 
+import Checkmark from '../../../DesignTokens/Icon/svgs/Checkmark2';
 import EmailForm from '../../../Forms/EmailForm';
 import Image from '../../../Cards/shared/Image';
 
 const LandingEmailTheme = {
   default: css`
-    background-color: ${color.white};
+    ${({ success }) => `${success
+    ? 'background-color: rgb(233, 240, 240); height: 10rem; min-width: 100%;'
+    : `background-color: ${color.white}; min-height: 46rem;`}
+    `}}
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-    min-height: 46rem;
     width: 34rem;
 
     ${breakpoint('md')`
@@ -31,12 +36,19 @@ const LandingEmailTheme = {
     `}
 
     ${breakpoint('xlg')`
-      height: 33rem;
-      width: 113.6rem;
+      ${({ success }) => `${success
+    ? 'min-height: 10rem;'
+    : 'height: 33rem; width: 113.6rem;'
+  }`}
     `}
 
     .email-form button {
       background-color: ${color.coldPool};
+      width: 100%;
+
+      ${breakpoint('xlg')`
+        max-width: 35rem;
+      `}
 
       &:hover {
         background-color: ${color.darkColdPool};
@@ -87,8 +99,10 @@ const ImageWrapper = styled.div`
 
 const FormColumnWrapper = styled.div`
   display: flex;
-  justify-content: center;
-  width: 50%;
+  ${({ success }) => `${success
+    ? 'width: 113rem; justify-content: flex-start;'
+    : 'width: 50%; justify-content: center;'}
+  `}
 `;
 
 const FormBodyContent = styled.div`
@@ -96,7 +110,10 @@ const FormBodyContent = styled.div`
   flex-direction: column;
   justify-content: center;
   margin-bottom: 1rem;
-  width: 30rem;
+  ${({ success }) => `${success
+    ? 'min-width: 100%;'
+    : 'width: 30rem;'}
+  `}
 
   ${breakpoint('xlg')`
     margin-bottom: 0;
@@ -170,33 +187,30 @@ const ContentTitleTheme = {
   `,
 };
 
-const ContentTitle = styled.p.attrs({
-  className: 'landing-ad-content-title',
-})`${withThemes(ContentTitleTheme)}`;
-
-const RegistrantButtonTheme = {
+const NewsletterSuccessTheme = {
   default: css`
-    background-color: ${color.coldPool};
-    color: ${color.white};
-    font: ${fontSize.lg}/2.6rem ${font.pnb};
-    letter-spacing: 0.28rem;
-    margin-top: 4rem;
-    min-height: 4rem;
-    text-transform: uppercase;
-    width: 30rem;
-
-    ${breakpoint('xlg')`
-      width: 34.4rem;
-    `}
+    font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb};
+    margin: 0 0 ${spacing.sm} 0;
+    width: 100%;
+    svg {
+      display: inline-block;
+      height: 1.4rem;
+      margin-right: ${spacing.xsm};
+      width: 2.1rem;
+    }
   `,
   dark: css`
-    background-color: ${color.tomato};
+    color: ${color.white};
   `,
 };
 
-const RegistrantButton = styled.button.attrs({
-  className: 'landing-ad-registrant-button',
-})`${withThemes(RegistrantButtonTheme)}`;
+const NewsletterSuccess = styled.div.attrs({
+  className: 'newsletter-showcase__success',
+})`${withThemes(NewsletterSuccessTheme)}`;
+
+const ContentTitle = styled.p.attrs({
+  className: 'landing-ad-content-title',
+})`${withThemes(ContentTitleTheme)}`;
 
 const LandingEmailAd = ({
   buttonText,
@@ -204,36 +218,37 @@ const LandingEmailAd = ({
   headline,
   imageUrl,
   inputId,
-  isRegistrant,
   onSubmit,
-  subdomain,
+  success,
+  successText,
   title,
-  userEmail,
 }) => (
-  <LandingEmailWrapper>
-    <ImageWrapper data-testid="adImage">
-      <Image className="landing-ad-image" imageUrl={imageUrl} />
-    </ImageWrapper>
-    <FormColumnWrapper>
-      <FormBodyContent>
+  <LandingEmailWrapper success={success}>
+    {!success && (
+      <ImageWrapper data-testid="adImage">
+        <Image className="landing-ad-image" imageUrl={imageUrl} />
+      </ImageWrapper>
+    )}
+    <FormColumnWrapper success={success}>
+      <FormBodyContent success={success}>
         {headline ? <ContentHeadline>{headline}</ContentHeadline> : null}
-        <ContentTitle>{title}</ContentTitle>
-        {isRegistrant ? (
-          <RegistrantButton
-            id={`${inputId}-submit`}
-            onClick={() => onSubmit(subdomain, userEmail, true)}
-          >
-            {buttonText}
-          </RegistrantButton>
-        ) : (
-          <EmailForm
-            buttonText={buttonText}
-            errorText={errorText}
-            inputId={inputId}
-            onSubmit={onSubmit}
-            placeholder="Enter Your Email Address"
-          />
-        )}
+        {!success && (<ContentTitle>{title}</ContentTitle>)}
+        {success
+          ? (
+            <NewsletterSuccess>
+              <Checkmark fill={color.mint} />
+              <span>{successText}</span>
+            </NewsletterSuccess>
+          )
+          : (
+            <EmailForm
+              buttonText={buttonText}
+              errorText={errorText}
+              inputId={inputId}
+              onSubmit={onSubmit}
+              placeholder="Enter Your Email Address"
+            />
+          )}
       </FormBodyContent>
     </FormColumnWrapper>
   </LandingEmailWrapper>
@@ -244,19 +259,19 @@ LandingEmailAd.propTypes = {
   errorText: PropTypes.string,
   imageUrl: PropTypes.string.isRequired,
   inputId: PropTypes.string.isRequired,
-  isRegistrant: PropTypes.bool.isRequired,
   headline: PropTypes.string,
   onSubmit: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
-  subdomain: PropTypes.string.isRequired,
-  userEmail: PropTypes.string,
+  success: PropTypes.bool,
+  successText: PropTypes.string,
 };
 
 LandingEmailAd.defaultProps = {
   buttonText: 'Sign me up',
   errorText: 'Invalid email address',
   headline: '',
-  userEmail: null,
+  success: false,
+  successText: 'Thank you! You have been added to our mailing list.',
 };
 
 export default LandingEmailAd;
