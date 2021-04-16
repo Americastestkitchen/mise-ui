@@ -18,8 +18,17 @@ export const Default = () => (
   }}>
     <LandingEmailAd 
       headline="Well-Equipped Cook Newsletter"
-      imageUrl="https://res.cloudinary.com/hksqkdlah/image/upload/v1617747520/820fbf3886b68cb7594772729199ae3f_3x_s1gxkt.jpg"
+      imageUrl="https://res.cloudinary.com/hksqkdlah/image/upload/ar_16:9,c_scale,dpr_auto,h_330,w_560/v1618429645/ATK%20Landing%20Page/WellEquippedCookNewsletter_3x.jpg"
       onSubmit={action('click button')}
+      title="How far does our team go to research equipment and ingredients on your behalf? Find out."
+    />
+    <br/>
+    <br/>
+    <LandingEmailAd 
+      headline="Well-Equipped Cook Newsletter"
+      imageUrl="https://res.cloudinary.com/hksqkdlah/image/upload/ar_16:9,c_scale,dpr_auto,h_330,w_560/v1618429645/ATK%20Landing%20Page/WellEquippedCookNewsletter_3x.jpg"
+      onSubmit={action('click button')}
+      success={true}
       title="How far does our team go to research equipment and ingredients on your behalf? Find out."
     />
   </ThemeProvider>
@@ -31,9 +40,18 @@ export const DarkMode = () => (
     mode: 'dark',
   }}>
     <LandingEmailAd
-      imageUrl="https://res.cloudinary.com/hksqkdlah/image/upload/v1617747520/820fbf3886b68cb7594772729199ae3f_3x_s1gxkt.jpg"
+      imageUrl="https://res.cloudinary.com/hksqkdlah/image/upload/ar_16:9,c_scale,dpr_auto,h_330,w_560/v1618429645/ATK%20Landing%20Page/WellEquippedCookNewsletter_3x.jpg"
       onSubmit={action('click button')}
       title="Get out of that cooking rut with six weeks of this newsletter from Jack Bishop in your inbox."
+    />
+    <br/>
+    <br/>
+    <LandingEmailAd 
+      headline="Well-Equipped Cook Newsletter"
+      imageUrl="https://res.cloudinary.com/hksqkdlah/image/upload/ar_16:9,c_scale,dpr_auto,h_330,w_560/v1618429645/ATK%20Landing%20Page/WellEquippedCookNewsletter_3x.jpg"
+      onSubmit={action('click button')}
+      success={true}
+      title="How far does our team go to research equipment and ingredients on your behalf? Find out."
     />
   </ThemeProvider>
 );
