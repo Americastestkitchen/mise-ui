@@ -44,7 +44,7 @@ const LeadMarqueeCardWrapper = styled.article.attrs({
     }
   `}
 
-  ${breakpoint('lg')`
+  ${breakpoint('xlg')`
     a {
       display: flex;
       max-height: 44rem;
@@ -83,10 +83,6 @@ const ContentWrapper = styled.div`
   .byline span {
     color: ${color.white};
   }
-
-  ${breakpoint('lg')`
-    max-width: 34.4rem;
-  `}
 `;
 
 export const StickerGroup = styled.div`
