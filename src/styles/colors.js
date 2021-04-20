@@ -70,6 +70,7 @@ const color = {
   blueLagoon: '#005E71',
   teal: '#167A7A',
   deepSea: '#0B3C3D',
+  danube: '#5E9ED6',
 };
 
 export default color;
