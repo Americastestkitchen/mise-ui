@@ -41,8 +41,15 @@ describe('components', () => {
 
   it('renders error message', () => {
     renderComponent();
+    fireEvent.change(screen.getByLabelText('give da email'), { target: { value: 'someEmail' } });
     fireEvent.click(screen.getByText('make me some cookies'));
     expect(screen.getByText('no cookies for you!'));
+  });
+
+  it('renders Email is required when no email given', () => {
+    renderComponent();
+    fireEvent.click(screen.getByText('make me some cookies'));
+    expect(screen.getByText('Email is required'));
   });
 
   it('renders label', () => {

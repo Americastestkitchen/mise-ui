@@ -21,6 +21,12 @@ const LinkToBrowse = styled.a`
   justify-content: center;
   width: 9.4rem;
 
+  &:focus {
+    outline: none;
+    border: 0.5rem solid ${color.danube};
+    border-radius: 5px;
+  }
+
   ${breakpoint('xlg')`
     &:hover {
       background-color: ${color.white};
@@ -47,7 +53,7 @@ const Tagline = styled.p`
   height: 3rem;
   line-height: 1.14;
   text-align: center;
-  width: 7rem;
+  width: 8rem;
 `;
 
 const SvgWrapper = styled.div`

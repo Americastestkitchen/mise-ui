@@ -50,6 +50,10 @@ const EmailFormTheme = {
       }
     }
 
+    .form-error__inline {
+      text-transform: uppercase;
+    }
+
     ${breakpoint('md')`
       flex-direction: row;
 
@@ -147,7 +151,7 @@ const EmailForm = ({
     if (validateEmail(email)) {
       if (onSubmit) onSubmit(email);
     } else {
-      setError(errorText);
+      setError(email.length === 0 ? 'Email is required' : errorText);
       setDisabled(false);
     }
   };
