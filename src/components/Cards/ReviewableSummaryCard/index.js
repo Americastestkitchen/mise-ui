@@ -64,13 +64,13 @@ const ReviewableSummaryItemEl = styled.div.attrs({
 const TitleImageWrapper = styled.div.attrs({
   className: 'reviewable-title-image-wrapper',
 })`
-  align-items: flex-start;
+  align-items: stretch;
   display: flex;
+  flex: 1 0 auto;
   width: 100%;
 
   h3 {
-    flex: 1 0 0;
-    font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb};
+    font: ${fontSize.xl} / ${lineHeight.sm} ${font.pnb};
     margin-bottom: 1.4rem;
   }
 
@@ -80,6 +80,12 @@ const TitleImageWrapper = styled.div.attrs({
     width: 6rem;
     width: clamp(6rem, 10rem, 9rem);
   }
+
+  ${breakpoint('xs', 'md')`
+    h3 {
+      flex: 1 0 0;
+    }
+  `}
 
   ${breakpoint('md')`
     img {
@@ -105,9 +111,20 @@ const TitleImageWrapper = styled.div.attrs({
 const TitleImageContent = styled.div.attrs({
   className: 'reviewable-title',
 })`
-  flex: 1 0 0;
+  display: flex;
+  flex-direction: column;
+
+  &[data-buy-now='true'] {
+    align-items: flex-start;
+    flex: 1 0 0;
+  }
+
+  .partner-link {
+    margin-top: auto;
+  }
 
   ${breakpoint('xs', 'md')`
+    flex: 1 0 0;
     max-width: calc(100% - 10rem);
   `}
 `;
@@ -149,6 +166,7 @@ const ReviewableSummaryCard = React.memo(({
   buyNowOverrideAffiliateActive,
   buyNowOverrideAffiliateName,
   cloudinaryId,
+  displayPrice,
   imageAltText,
   isShortList,
   name,
@@ -174,7 +192,7 @@ const ReviewableSummaryCard = React.memo(({
       data-has-img={Boolean(cloudinaryId)}
     >
       <TitleImageWrapper>
-        <TitleImageContent>
+        <TitleImageContent data-buy-now={Boolean(buyNowLink)}>
           {(sortOfWinner || recommendationStatus) && (
             <StickerWrapper winner={sortOfWinner}>
               <Sticker
@@ -198,7 +216,7 @@ const ReviewableSummaryCard = React.memo(({
                 'data-recommendation-status': stickerText,
                 'data-reviewable': name,
               }}
-              text="Buy Now"
+              text={displayPrice && price ? `Buy for ${price}` : 'Buy Now'}
               icon={buyNowIcon}
               onClick={buyNowOnClick}
               url={buyNowLink}
@@ -225,6 +243,7 @@ ReviewableSummaryCard.propTypes = {
   buyNowOverrideAffiliateActive: PropTypes.bool.isRequired,
   buyNowOverrideAffiliateName: PropTypes.string,
   cloudinaryId: PropTypes.string,
+  displayPrice: PropTypes.bool,
   imageAltText: PropTypes.string,
   isShortList: PropTypes.bool,
   name: PropTypes.string.isRequired,
@@ -240,6 +259,7 @@ ReviewableSummaryCard.defaultProps = {
   buyNowOnClick: null,
   buyNowOverrideAffiliateName: null,
   cloudinaryId: null,
+  displayPrice: false,
   imageAltText: '',
   isShortList: false,
   price: null,

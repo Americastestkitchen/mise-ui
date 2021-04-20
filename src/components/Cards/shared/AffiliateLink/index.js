@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import { color, font, fontSize, lineHeight, withThemes } from '../../../../styles';
+import { color, font, fontSize, lineHeight, mixins, withThemes } from '../../../../styles';
 import * as Icons from '../../../DesignTokens/Icon';
 import Brands from '../../../DesignTokens/Brands';
 
@@ -10,6 +10,7 @@ const AffiliateLinkWrapperTheme = {
   default: css`
     display: inline-block;
     position: relative;
+    white-space: nowrap;
 
     > svg {
       display: block;
@@ -38,6 +39,7 @@ const AffiliateLinkTheme = {
     padding: 1rem 2rem;
     position: relative;
     text-align: center;
+    ${mixins.truncate()}
 
     @media(hover: hover) {
       &:hover {

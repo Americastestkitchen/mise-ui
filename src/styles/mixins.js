@@ -29,6 +29,20 @@ export default {
     `;
   },
 
+  /**
+   * Truncates text with ellipsis
+   * @param  {Number} width optional - set the width of the element
+   * @return {String}       CSS Text
+   */
+  truncate(width) {
+    return `
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      ${width ? `width: ${width}` : ''}
+    `;
+  },
+
   loadingGradientAnimation(
     width = cards.standard.width.lg,
     cardBackgroundColor = color.charcoal,
