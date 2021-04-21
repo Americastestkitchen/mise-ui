@@ -75,6 +75,20 @@ const NewsletterSuccess = styled.div.attrs({
 })`${withThemes(NewsletterSuccessTheme)}`;
 
 const InlineNewsletterContent = styled.div`
+  ${breakpoint('md')`
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .inline-newsletter__info {
+      max-width: 69.6rem;
+    }
+
+    .email-form-wrapper {
+      min-width: 69.6rem;
+    }
+  `}
+
   ${breakpoint('lg')`
     display: flex;
     justify-content: space-between;
@@ -86,18 +100,24 @@ const InlineNewsletterContent = styled.div`
     .inline-newsletter__success,
     .email-form-wrapper {
       flex: 3 0 auto;
-      min-width: 48rem;
+      min-width: 69.6rem;
     }
 
     .inline-newsletter__info {
       flex: 4 1 auto;
-      margin-right: ${spacing.sm};
+      margin-bottom: 1rem;
     }
   `}
 
   ${breakpoint('xlg')`
+    flex-direction: row;
     margin: 0 auto;
     max-width: 113.6rem;
+
+    .inline-newsletter__info {
+      flex: 4 1 auto;
+      margin-right: 2.6rem;
+    }
 
     .inline-newsletter__success,
     .email-form-wrapper {
@@ -110,7 +130,11 @@ const InlineNewsletterWrapperTheme = {
   default: css`
     padding: ${spacing.sm} ${spacing.sm} ${spacing.md};
 
-    ${breakpoint('lg')`
+    ${breakpoint('md')`
+      padding: 1.6rem 3.6rem 0.6rem;
+    `}
+
+    ${breakpoint('xlg')`
       padding: ${spacing.sm};
     `}
   `,

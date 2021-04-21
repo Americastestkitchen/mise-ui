@@ -32,7 +32,7 @@ const LandingEmailTheme = {
     ${breakpoint('md')`
       flex-direction: row;
       min-height: 33rem;
-      width: 69.9rem;
+      width: 69.6rem;
     `}
 
     ${breakpoint('xlg')`
