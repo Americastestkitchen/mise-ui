@@ -239,6 +239,7 @@ function FeatureCard({
       {ctaUrl && (
         <CtaLink
           aria-label={`${ctaText} (opens in new window)`}
+          className="cta-link"
           href={ctaUrl}
           target="_blank"
         >
