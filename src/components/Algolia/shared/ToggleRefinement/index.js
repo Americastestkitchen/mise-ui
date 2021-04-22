@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connectRefinementList } from 'react-instantsearch-dom';
 
-import RefinementFilter from '../RefinementFilter/RefinementFilter';
+import RefinementFilter2 from '../RefinementFilter2';
 
 const ToggleRefinement = ({
   attribute,
@@ -11,7 +11,7 @@ const ToggleRefinement = ({
   ...restProps
 }) => (
   <div className="toggle-refinement">
-    <RefinementFilter
+    <RefinementFilter2
       attribute={attribute}
       filterType="toggleRefinement"
       includeCount={false}

@@ -2,6 +2,7 @@ import * as styles from './styles';
 import AudioPlayer from './components/AudioPlayer';
 import Accordion from './components/Accordion';
 import AccordionControl from './components/AccordionControl';
+import AccordionRefinementList from './components/Algolia/shared/AccordionRefinementList';
 import Badge from './components/Badge';
 import breakpoints from './styles/breakpoints';
 import Brands from './components/DesignTokens/Brands';
@@ -69,6 +70,7 @@ import { color, mixins, spacing } from './styles';
 export {
   Accordion,
   AccordionControl,
+  AccordionRefinementList,
   AudioPlayer,
   Badge,
   breakpoints,

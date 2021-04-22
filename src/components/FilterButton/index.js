@@ -48,9 +48,13 @@ const StyledFilter = styled(Filter)`
   ${withThemes(StyledFilterTheme)}
 `;
 
-const FilterButton = ({ className, onClick, text }) => (
+const FilterButton = ({ ariaControls, ariaExpanded, ariaLabel, className, id, onClick, text }) => (
   <StyledFilterButton
+    aria-controls={ariaControls}
+    aria-expanded={ariaExpanded}
+    aria-label={ariaLabel}
     className={className}
+    id={id}
     onClick={onClick}
   >
     {text}
@@ -59,13 +63,21 @@ const FilterButton = ({ className, onClick, text }) => (
 );
 
 FilterButton.propTypes = {
+  ariaControls: PropTypes.string,
+  ariaExpanded: PropTypes.bool,
+  ariaLabel: PropTypes.string,
   className: PropTypes.string,
+  id: PropTypes.string,
   onClick: PropTypes.func,
   text: PropTypes.string,
 };
 
 FilterButton.defaultProps = {
+  ariaControls: null,
+  ariaExpanded: null,
+  ariaLabel: null,
   className: null,
+  id: null,
   onClick: null,
   text: 'Filter',
 };
