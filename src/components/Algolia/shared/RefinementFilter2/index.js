@@ -101,6 +101,7 @@ const RefinementFilter = ({
   value,
 }) => (
   <RefinementFilterWrapper
+    className="refinement-filter__wrapper"
     onClick={(e) => {
       e.preventDefault();
       if (!isRefined && typeof handleClick === 'function') handleClick(e);
