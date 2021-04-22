@@ -88,7 +88,8 @@ const TitleImageWrapper = styled.div.attrs({
   `}
 
   ${breakpoint('md')`
-    img {
+    > .image-link,
+    > img {
       position: absolute;
       height: 15rem;
       right: 1rem;
@@ -114,13 +115,13 @@ const TitleImageContent = styled.div.attrs({
   display: flex;
   flex-direction: column;
 
+  .partner-link {
+    margin-top: auto;
+  }
+
   &[data-buy-now='true'] {
     align-items: flex-start;
     flex: 1 0 0;
-  }
-
-  .partner-link {
-    margin-top: auto;
   }
 
   ${breakpoint('xs', 'md')`
@@ -159,6 +160,37 @@ const ItemPrice = styled.div`
 
 const parensRe = /(\([^)]+\))/;
 
+const ReviewableLink = ({
+  children,
+  className,
+  href,
+  hrefDataAttrs,
+}) => (href ? (
+  <a
+    className={className}
+    href={href}
+    {...hrefDataAttrs}
+  >
+    {children}
+  </a>
+) : children);
+
+ReviewableLink.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
+  className: PropTypes.string,
+  href: PropTypes.string,
+  hrefDataAttrs: PropTypes.object,
+};
+
+ReviewableLink.defaultProps = {
+  className: null,
+  href: null,
+  hrefDataAttrs: {},
+};
+
 const ReviewableSummaryCard = React.memo(({
   asin,
   buyNowLink,
@@ -167,6 +199,8 @@ const ReviewableSummaryCard = React.memo(({
   buyNowOverrideAffiliateName,
   cloudinaryId,
   displayPrice,
+  href,
+  hrefDataAttrs,
   imageAltText,
   isShortList,
   name,
@@ -202,11 +236,11 @@ const ReviewableSummaryCard = React.memo(({
               />
             </StickerWrapper>
           )}
-          <h3>{name}</h3>
+          <ReviewableLink href={href} hrefDataAttrs={hrefDataAttrs}>
+            <h3>{name}</h3>
+          </ReviewableLink>
           {!buyNowLink && priceMarkup && (
-            <ItemPrice
-              dangerouslySetInnerHTML={{ __html: priceMarkup }}
-            />
+            <ItemPrice dangerouslySetInnerHTML={{ __html: priceMarkup }} />
           )}
           {buyNowLink && (
             <AffiliateLink
@@ -224,12 +258,21 @@ const ReviewableSummaryCard = React.memo(({
           )}
         </TitleImageContent>
         {cloudinaryId && (
-          <Image
-            aspectRatio="1:1"
-            imageAlt={imageAltText}
-            imageUrl={getImageUrl(cloudinaryId, 'thumbnail')}
-            lowQualityImageUrl={getImageUrl(cloudinaryId, 'thumbnailPlaceholder')}
-          />
+          <ReviewableLink
+            className="image-link"
+            href={href}
+            hrefDataAttrs={hrefDataAttrs}
+          >
+            <Image
+              aspectRatio="1:1"
+              imageAlt={imageAltText}
+              imageUrl={getImageUrl(cloudinaryId, 'thumbnail')}
+              lowQualityImageUrl={getImageUrl(
+                cloudinaryId,
+                'thumbnailPlaceholder',
+              )}
+            />
+          </ReviewableLink>
         )}
       </TitleImageWrapper>
     </ReviewableSummaryItemEl>
@@ -244,6 +287,8 @@ ReviewableSummaryCard.propTypes = {
   buyNowOverrideAffiliateName: PropTypes.string,
   cloudinaryId: PropTypes.string,
   displayPrice: PropTypes.bool,
+  href: PropTypes.string,
+  hrefDataAttrs: PropTypes.object,
   imageAltText: PropTypes.string,
   isShortList: PropTypes.bool,
   name: PropTypes.string.isRequired,
@@ -260,6 +305,8 @@ ReviewableSummaryCard.defaultProps = {
   buyNowOverrideAffiliateName: null,
   cloudinaryId: null,
   displayPrice: false,
+  href: null,
+  hrefDataAttrs: {},
   imageAltText: '',
   isShortList: false,
   price: null,
