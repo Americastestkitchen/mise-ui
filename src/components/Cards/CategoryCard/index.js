@@ -137,7 +137,7 @@ CategoryCard.propTypes = {
   filterValue: PropTypes.string,
   lazy: PropTypes.bool,
   onClick: PropTypes.func,
-  svgId: PropTypes.oneOf(['shoppingCart', 'reviews', 'trendingArrow', 'play', '']),
+  svgId: PropTypes.oneOf(['shoppingCart', 'star', 'reviews', 'trendingArrow', 'play', '']),
   tagline: PropTypes.string.isRequired,
 };
 
