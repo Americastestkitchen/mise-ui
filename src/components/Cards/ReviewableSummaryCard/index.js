@@ -160,19 +160,27 @@ const ItemPrice = styled.div`
 
 const parensRe = /(\([^)]+\))/;
 
+const ReviewableLinkEl = styled.a`
+  @media(hover: hover) {
+    &:hover {
+      color: ${color.mint};
+    }
+  }
+`;
+
 const ReviewableLink = ({
   children,
   className,
   href,
   hrefDataAttrs,
 }) => (href ? (
-  <a
+  <ReviewableLinkEl
     className={className}
     href={href}
     {...hrefDataAttrs}
   >
     {children}
-  </a>
+  </ReviewableLinkEl>
 ) : children);
 
 ReviewableLink.propTypes = {
