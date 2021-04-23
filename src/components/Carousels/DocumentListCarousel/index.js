@@ -171,6 +171,7 @@ const DocumentListCarousel = ({
       items={items}
       gradient={gradient}
       renderItem={renderItem}
+      title={title}
       type={type}
     />
   </DocumentListCarouselWrapper>

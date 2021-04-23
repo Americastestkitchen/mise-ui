@@ -66,6 +66,7 @@ const AffiliateLinkEl = styled.a.attrs({
 const AffiliateLink = ({
   dataAttrs,
   icon,
+  name,
   onClick,
   text,
   title,
@@ -73,7 +74,7 @@ const AffiliateLink = ({
 }) => {
   const Icon = Brands[icon] || null;
   return (
-    <AffiliateLinkWrapper onClick={onClick}>
+    <AffiliateLinkWrapper aria-label={name} onClick={onClick}>
       <AffiliateLinkEl
         href={url}
         target="_blank"
@@ -94,6 +95,7 @@ const AffiliateLink = ({
 AffiliateLink.propTypes = {
   dataAttrs: PropTypes.object,
   icon: PropTypes.any,
+  name: PropTypes.string,
   /** for mixpanel purposes */
   onClick: PropTypes.func,
   text: PropTypes.string.isRequired,
@@ -104,6 +106,7 @@ AffiliateLink.propTypes = {
 AffiliateLink.defaultProps = {
   dataAttrs: {},
   icon: null,
+  name: null,
   onClick: null,
   title: null,
 };

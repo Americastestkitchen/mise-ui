@@ -182,6 +182,7 @@ const CardCarousel = ({
   items,
   gradient,
   renderItem,
+  title,
   type,
 }) => {
   const El = typeMap[type] || StandardCard;
@@ -199,6 +200,7 @@ const CardCarousel = ({
 
   return (
     <CardCarouselWrapper
+      aria-label={`${title} carousel`}
       className={`card-carousel card-carousel--${type}`}
       data-testid={`card-carousel--${type}`}
       type={type}
@@ -244,6 +246,7 @@ CardCarousel.propTypes = {
   extraOptions: PropTypes.object,
   /** Callback for rendering each carousel item */
   renderItem: PropTypes.func,
+  title: PropTypes.string,
   /** Sets the carousel-item styles for a particular card style */
   type: PropTypes.oneOf([
     'category',
@@ -280,6 +283,7 @@ CardCarousel.defaultProps = {
   gradient: null,
   extraOptions: null,
   renderItem: undefined,
+  title: '',
 };
 
 export default CardCarousel;

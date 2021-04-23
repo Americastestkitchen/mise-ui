@@ -260,6 +260,7 @@ const ReviewableSummaryCard = React.memo(({
               }}
               text={displayPrice && price ? `Buy for ${price}` : 'Buy Now'}
               icon={buyNowIcon}
+              name={name}
               onClick={buyNowOnClick}
               url={buyNowLink}
             />
