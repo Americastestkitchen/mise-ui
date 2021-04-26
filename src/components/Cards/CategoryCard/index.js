@@ -112,7 +112,6 @@ const CategoryCard = ({
           {assetType === 'productImage' ? (
             <Image
               className="category-product-image"
-              imageAlt={tagline}
               imageUrl={getImageUrl(cloudinaryId)}
               lazy={lazy}
             />

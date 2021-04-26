@@ -41,6 +41,7 @@ const FormError = ({ renderAs, ...props }) => {
   const El = renderAs ? errors[renderAs.toUpperCase()] : INLINE;
   return (
     <El
+      role="alert"
       data-testid="form-error"
       className={`form-error__${renderAs.toLowerCase()}`}
       {...props}

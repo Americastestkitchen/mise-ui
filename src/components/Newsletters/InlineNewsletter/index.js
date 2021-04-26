@@ -33,7 +33,7 @@ const NewsletterInfoWrapper = styled.div.attrs({
   className: 'inline-newsletter__info',
 })``;
 
-const NewsletterTitle = styled.div.attrs({
+const NewsletterTitle = styled.h2.attrs({
   className: 'inline-newsletter__title',
 })`${withThemes(NewsletterTitleTheme)}`;
 
@@ -43,6 +43,11 @@ const NewsletterSubtitleTheme = {
     letter-spacing: 2.24px;
     margin-bottom: ${spacing.xsm};
     text-transform: uppercase;
+
+    ${breakpoint('xlg')`
+      font: ${fontSize.md}/1.6rem ${font.pnr};
+      letter-spacing: 2.56px;
+    `}
   `,
   dark: css`
     color: ${color.white};
@@ -110,7 +115,10 @@ const InlineNewsletterContent = styled.div`
   `}
 
   ${breakpoint('xlg')`
-    flex-direction: row;
+    ${({ success }) => `${success
+    ? `flex-direction: column; align-items: flex-start; color: ${color.eclipse};`
+    : 'flex-direction: row;'}
+    `}
     margin: 0 auto;
     max-width: 113.6rem;
 

@@ -35,7 +35,7 @@ describe('CategoryCard component should', () => {
 
   it('renders bubble productImage from cloudinary', () => {
     renderProductComponent();
-    expect(screen.getByAltText('Kitchen Basics'));
+    expect(screen.getByText('Kitchen Basics'));
   });
 
   it('renders a tagline', () => {
