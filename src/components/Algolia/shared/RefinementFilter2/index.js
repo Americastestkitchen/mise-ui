@@ -43,6 +43,7 @@ const RefinementFilterLabel = styled.label.attrs({
 const RefinementFilterCountTheme = {
   default: css`
     color: ${color.nobel};
+    font: ${fontSize.md}/1.38 ${font.pnr};
   `,
   dark: css`
     color: ${color.white};
