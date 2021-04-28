@@ -104,7 +104,7 @@ const FavoriteButton = ({
   title,
 }) => (
   <StyledFavoriteButton
-    ariaLabel={isFavorited ? `Remove ${title} from favorites` : `Save ${title} to favorites`}
+    aria-label={isFavorited ? `Remove ${title} from favorites` : `Save ${title} to favorites`}
     className={`${className} favorite-action ${isFavorited ? 'favorited' : ''}`}
     data-document-title={title}
     data-favoritable-id={objectId}
