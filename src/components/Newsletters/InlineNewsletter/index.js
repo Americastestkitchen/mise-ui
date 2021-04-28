@@ -114,7 +114,7 @@ const InlineNewsletterContent = styled.div`
     }
   `}
 
-  ${breakpoint('xlg')`
+  ${breakpoint('lg')`
     ${({ success }) => `${success
     ? `flex-direction: column; align-items: flex-start; color: ${color.eclipse};`
     : 'flex-direction: row;'}

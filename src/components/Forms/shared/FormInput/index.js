@@ -21,6 +21,10 @@ const FormInputTheme = {
       color: ${color.eclipse};
       font: ${fontSize.lg}/1 ${font.pnr};
     }
+
+    &:focus {
+      outline: ${({ error }) => (error ? 'red auto 1px' : '')}
+    }
   `,
 };
 
@@ -65,6 +69,7 @@ const FormTextInput = ({
       <FormInput
         aria-label={ariaLabel}
         data-valid={Boolean(error)}
+        error={Boolean(error)}
         id={id}
         name={name}
         onBlur={onBlur}

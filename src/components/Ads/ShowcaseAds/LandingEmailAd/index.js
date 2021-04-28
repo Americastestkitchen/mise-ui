@@ -18,28 +18,28 @@ import Image from '../../../Cards/shared/Image';
 
 const LandingEmailTheme = {
   default: css`
-    ${({ success }) => `${success
-    ? 'background-color: rgb(233, 240, 240); height: 10rem; min-width: 100%;'
-    : `background-color: ${color.white}; min-height: 46rem;`}
-    `}}
+    align-items: center;
+    background-color: ${color.white};
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     margin: 0 auto;
-    width: 34rem;
+    ${({ success }) => (success ? 'height: 34rem' : 'min-height: 46rem;')}
+    width: calc(100% - 3.2rem);
 
     ${breakpoint('md')`
       flex-direction: row;
       min-height: 33rem;
-      width: 69.6rem;
+      width: calc(100% - 7.2rem);
+    `}
+
+    ${breakpoint('lg')`
+      width: calc(100% - 3.2rem);
     `}
 
     ${breakpoint('xlg')`
-      ${({ success }) => `${success
-    ? 'min-height: 10rem;'
-    : 'height: 33rem; width: 113.6rem;'
-  }`}
+      height: 33rem; 
+      width: 113.6rem;
     `}
 
     .email-form button {
@@ -83,7 +83,8 @@ const ImageWrapper = styled.div`
 
   ${breakpoint('md')`
     margin-bottom: 0;
-    min-height: 32.9rem;
+    max-height: 33rem;
+    overflow: hidden;
     width: 50%;
   `}
 
@@ -99,10 +100,12 @@ const ImageWrapper = styled.div`
 
 const FormColumnWrapper = styled.div`
   display: flex;
-  ${({ success }) => `${success
-    ? 'width: 113rem; justify-content: flex-start;'
-    : 'width: 50%; justify-content: center;'}
-  `}
+  justify-content: center;
+  margin-bottom: ${({ success }) => (success ? '10%' : '0')};
+
+  ${breakpoint('md')`
+    width: 50%;
+  `} 
 `;
 
 const FormBodyContent = styled.div`
@@ -110,10 +113,7 @@ const FormBodyContent = styled.div`
   flex-direction: column;
   justify-content: center;
   margin-bottom: 1rem;
-  ${({ success }) => `${success
-    ? 'min-width: 100%;'
-    : 'width: 30rem;'}
-  `}
+  width: 30rem;
 
   ${breakpoint('xlg')`
     margin-bottom: 0;
@@ -177,6 +177,10 @@ const ContentTitleTheme = {
     line-height: 3rem;
     width: 30rem;
 
+    ${breakpoint('sm')`
+      width: 31rem;
+    `}  
+
     ${breakpoint('xlg')`
       width: 34.4rem;
     `}
@@ -191,13 +195,16 @@ const NewsletterSuccessTheme = {
   default: css`
     font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb};
     margin: 0 0 ${spacing.sm} 0;
-    width: 100%;
     svg {
       display: inline-block;
       height: 1.4rem;
       margin-right: ${spacing.xsm};
       width: 2.1rem;
     }
+
+    ${breakpoint('xlg')`
+      width: 85%;
+    `}
   `,
   dark: css`
     color: ${color.white};
@@ -224,11 +231,9 @@ const LandingEmailAd = ({
   title,
 }) => (
   <LandingEmailWrapper success={success}>
-    {!success && (
-      <ImageWrapper data-testid="adImage">
-        <Image className="landing-ad-image" imageUrl={imageUrl} />
-      </ImageWrapper>
-    )}
+    <ImageWrapper data-testid="adImage">
+      <Image className="landing-ad-image" imageUrl={imageUrl} />
+    </ImageWrapper>
     <FormColumnWrapper success={success}>
       <FormBodyContent success={success}>
         {headline ? <ContentHeadline>{headline}</ContentHeadline> : null}
@@ -271,7 +276,7 @@ LandingEmailAd.defaultProps = {
   errorText: 'Invalid email address',
   headline: '',
   success: false,
-  successText: 'Thank you! You have been added to our mailing list.',
+  successText: 'Thank you! Get ready for watch and cook newsletter in your inbox.',
 };
 
 export default LandingEmailAd;
