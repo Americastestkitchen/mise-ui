@@ -13,10 +13,12 @@ const inlineSrc = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAA
 
 const Image = ({
   className,
+  height,
   imageAlt,
   imageUrl,
   lazy,
   lowQualityImageUrl,
+  width,
 }) => {
   const intersectionRef = useRef(null);
   const isPrint = useMedia('print');
@@ -61,24 +63,36 @@ const Image = ({
     <StyledImage
       alt={imageAlt}
       className={className}
+      height={height}
       ref={intersectionRef}
       src={src}
+      width={width}
     />
   );
 };
 
 Image.propTypes = {
   className: PropTypes.string,
+  height: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
   imageAlt: PropTypes.string.isRequired,
   imageUrl: PropTypes.string.isRequired,
   lazy: PropTypes.bool,
   lowQualityImageUrl: PropTypes.string,
+  width: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
 };
 
 Image.defaultProps = {
   className: '',
+  height: null,
   lazy: true,
   lowQualityImageUrl: null,
+  width: null,
 };
 
 export default Image;
