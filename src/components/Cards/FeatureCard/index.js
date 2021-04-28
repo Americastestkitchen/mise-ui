@@ -145,6 +145,7 @@ function FeatureCard({
   attributions,
   className,
   contentType,
+  ctaDataAttrs,
   ctaText,
   ctaUrl,
   dataAttrs,
@@ -242,6 +243,7 @@ function FeatureCard({
           className="cta-link"
           href={ctaUrl}
           target="_blank"
+          {...ctaDataAttrs}
         >
           {ctaText}
         </CtaLink>
@@ -254,6 +256,7 @@ FeatureCard.propTypes = {
   attributions: PropTypes.string,
   className: PropTypes.string,
   contentType: PropTypes.string.isRequired,
+  ctaDataAttrs: PropTypes.object,
   ctaText: PropTypes.string,
   ctaUrl: PropTypes.string,
   /** document data attributes */
@@ -283,6 +286,7 @@ FeatureCard.propTypes = {
 FeatureCard.defaultProps = {
   attributions: '',
   className: '',
+  ctaDataAttrs: null,
   ctaText: '',
   ctaUrl: '',
   dataAttrs: null,

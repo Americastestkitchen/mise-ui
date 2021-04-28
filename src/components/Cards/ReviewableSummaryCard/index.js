@@ -255,7 +255,7 @@ const ReviewableSummaryCard = React.memo(({
               dataAttrs={{
                 'data-asin': asin || '',
                 'data-price': price || '',
-                'data-recommendation-status': stickerText,
+                'data-recommendation-status': recommendationStatus,
                 'data-reviewable': name,
               }}
               text={displayPrice && price ? `Buy for ${price}` : 'Buy Now'}

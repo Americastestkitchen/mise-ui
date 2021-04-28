@@ -113,6 +113,7 @@ const CategoryCard = ({
             <Image
               className="category-product-image"
               height={60}
+              imageAlt=""
               imageUrl={getImageUrl(cloudinaryId, 'thumbnail', { size: 'small' })}
               lazy={lazy}
               width={60}
