@@ -50,6 +50,10 @@ const EmailFormTheme = {
       }
     }
 
+    .form-error__inline {
+      text-transform: uppercase;
+    }
+
     ${breakpoint('md')`
       flex-direction: row;
 
@@ -138,6 +142,13 @@ const EmailForm = ({
   const [disabled, setDisabled] = useState(false);
   const [error, setError] = useState('');
 
+  const refocusInput = () => {
+    const inputNode = document.getElementById(inputId);
+    if (inputNode) {
+      inputNode.focus();
+    }
+  };
+
   const handleSubmit = (evt) => {
     setDisabled(true);
     evt.preventDefault();
@@ -146,12 +157,12 @@ const EmailForm = ({
     if (validateEmail(email)) {
       if (onSubmit) onSubmit(email);
     } else {
-      setError(errorText);
+      setError(email.length === 0 ? 'Email is required' : errorText);
       setDisabled(false);
+      refocusInput();
     }
   };
   const controlId = instanceId || inputLabel?.split(' ').join('') || 'email-form';
-
   return (
     <EmailFormWrapper
       data-testid="email-form-wrapper"

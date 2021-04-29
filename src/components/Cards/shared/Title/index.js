@@ -22,7 +22,7 @@ const TitleTheme = {
     }
   `,
 };
-const StyledTitle = styled.h3`
+const StyledTitle = styled.p`
   ${withThemes(TitleTheme)};
 `;
 

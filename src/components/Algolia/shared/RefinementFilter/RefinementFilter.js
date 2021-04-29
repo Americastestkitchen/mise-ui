@@ -175,6 +175,8 @@ const RefinementFilter = ({
   altFill,
   attribute,
   count,
+  currentRefinement,
+  filterType,
   includeCount,
   isRefined,
   label,
@@ -188,15 +190,23 @@ const RefinementFilter = ({
       className={`${attribute}`}
       data-site-key={value}
       htmlFor={`${attribute}--${label}`}
-      isRefined={isRefined}
+      isRefined={isRefined || (currentRefinement && currentRefinement.length > 0)}
       onClick={(e) => {
         e.preventDefault();
         if (!isRefined && typeof handleClick === 'function') handleClick(e);
-        refine(value);
+        if (filterType === 'refinementList') {
+          refine(value);
+        } else if (filterType === 'toggleRefinement') {
+          if (currentRefinement.length > 0) {
+            refine(false);
+          } else {
+            refine(value);
+          }
+        }
       }}
     >
       {
-        isRefined ? (
+        isRefined || (filterType === 'toggleRefinement' && currentRefinement.length > 0) ? (
           <RefinementFilterCheck data-testid="refinement-filter__checkmark">
             <Checkmark />
           </RefinementFilterCheck>
@@ -226,7 +236,9 @@ const RefinementFilter = ({
             </RefinementFilterCount>
           </span>
         ) : (
-          label
+          <span className="search-refinement-list__label-text">
+            {label}
+          </span>
         )
       }
     </RefinementFilterLabel>
@@ -239,9 +251,11 @@ RefinementFilter.propTypes = {
   attribute: PropTypes.string,
   /** Number of hits for this filter value. */
   count: PropTypes.number,
+  currentRefinement: PropTypes.bool,
+  filterType: PropTypes.string,
   includeCount: PropTypes.bool,
   /** Is this filter selected? */
-  isRefined: PropTypes.bool.isRequired,
+  isRefined: PropTypes.bool,
   /** Filter label */
   label: PropTypes.string.isRequired,
   /** Call this with the value of a filter to refine results based on filter. */
@@ -256,7 +270,10 @@ RefinementFilter.defaultProps = {
   attribute: '',
   altFill: null,
   count: null,
+  currentRefinement: null,
+  filterType: 'refinementList',
   includeCount: true,
+  isRefined: null,
   handleClick: null,
 };
 

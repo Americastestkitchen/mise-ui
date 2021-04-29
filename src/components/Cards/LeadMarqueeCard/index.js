@@ -44,7 +44,7 @@ const LeadMarqueeCardWrapper = styled.article.attrs({
     }
   `}
 
-  ${breakpoint('lg')`
+  ${breakpoint('xlg')`
     a {
       display: flex;
       max-height: 44rem;
@@ -83,10 +83,6 @@ const ContentWrapper = styled.div`
   .byline span {
     color: ${color.white};
   }
-
-  ${breakpoint('lg')`
-    max-width: 34.4rem;
-  `}
 `;
 
 export const StickerGroup = styled.div`
@@ -96,6 +92,8 @@ export const StickerGroup = styled.div`
 `;
 
 export const StyledSticker = styled(Sticker)`
+  margin-bottom: 0;
+
   &:first-child {
     margin-left: 0;
   }
@@ -120,6 +118,10 @@ const Description = styled.p`
     font: ${fontSize.md}/${lineHeight.lg} ${font.mwr};
     margin-bottom: ${spacing.sm};
   `};
+  
+  ${breakpoint('lg')`
+    line-height: ${lineHeight.md};
+  `}
 `;
 
 const LeadMarqueeCard = ({

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import { color, font, fontSize, lineHeight, withThemes } from '../../../../styles';
+import { color, font, fontSize, lineHeight, mixins, withThemes } from '../../../../styles';
 import * as Icons from '../../../DesignTokens/Icon';
 import Brands from '../../../DesignTokens/Brands';
 
@@ -10,6 +10,7 @@ const AffiliateLinkWrapperTheme = {
   default: css`
     display: inline-block;
     position: relative;
+    white-space: nowrap;
 
     > svg {
       display: block;
@@ -38,6 +39,7 @@ const AffiliateLinkTheme = {
     padding: 1rem 2rem;
     position: relative;
     text-align: center;
+    ${mixins.truncate()}
 
     @media(hover: hover) {
       &:hover {
@@ -62,7 +64,9 @@ const AffiliateLinkEl = styled.a.attrs({
 })`${withThemes(AffiliateLinkTheme)}`;
 
 const AffiliateLink = ({
+  dataAttrs,
   icon,
+  name,
   onClick,
   text,
   title,
@@ -70,12 +74,13 @@ const AffiliateLink = ({
 }) => {
   const Icon = Brands[icon] || null;
   return (
-    <AffiliateLinkWrapper onClick={onClick}>
+    <AffiliateLinkWrapper aria-label={name} onClick={onClick}>
       <AffiliateLinkEl
         href={url}
         target="_blank"
         rel="noopener noreferrer nofollow"
         title={title || text}
+        {...dataAttrs}
       >
         {text}
         <Icons.TriangleRight />
@@ -88,7 +93,9 @@ const AffiliateLink = ({
 };
 
 AffiliateLink.propTypes = {
+  dataAttrs: PropTypes.object,
   icon: PropTypes.any,
+  name: PropTypes.string,
   /** for mixpanel purposes */
   onClick: PropTypes.func,
   text: PropTypes.string.isRequired,
@@ -97,7 +104,9 @@ AffiliateLink.propTypes = {
 };
 
 AffiliateLink.defaultProps = {
+  dataAttrs: {},
   icon: null,
+  name: null,
   onClick: null,
   title: null,
 };

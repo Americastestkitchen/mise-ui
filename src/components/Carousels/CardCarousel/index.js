@@ -4,6 +4,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 import Carousel from '../Carousel';
+import CategoryCard from '../../Cards/CategoryCard';
 import FeatureCard from '../../Cards/FeatureCard';
 import HeroCard from '../../Cards/HeroCard';
 import LinearGradient from '../../DesignTokens/LinearGradient';
@@ -20,17 +21,20 @@ const typeWidths = {
   },
   sm: {
     hero: '100%',
+    category: '7.4rem',
   },
   md: {
     hero: 'calc(100% - 6.4rem)',
   },
   lg: {
+    category: '9.5rem',
     hero: '113.6rem',
   },
 };
 
 const carouselTypeStyles = {
   tall: 'padding-top: 0; height: 62.8rem;',
+  category: 'padding-top: 0; height: 14rem;',
 };
 
 const CardCarouselTheme = {
@@ -39,8 +43,13 @@ const CardCarouselTheme = {
     position: relative;
 
     .flickity-page-dots {
+      display: ${({ type }) => (type === 'category' ? 'none' : '')};
       height: 1.2rem;
       width: auto;
+    }
+
+    .flickity-button.previous {
+      display: ${({ type }) => (type === 'category' ? 'none' : '')}
     }
 
     .linear-gradient {
@@ -52,12 +61,16 @@ const CardCarouselTheme = {
     }
 
     .carousel-cell {
-      margin-right: ${spacing.sm};
+      margin-right: ${({ type }) => (type === 'category' ? '0.85rem' : `${spacing.sm}`)};
       width: ${({ type }) => (typeWidths?.sm?.[type] || typeWidths.default[type] || typeWidths.default.default)};
     }
 
     .standard-card {
       width: ${cards.standard.width.lg};
+    }
+
+    .category {
+      width: 90rem;
     }
 
     .carousel-wrapper {
@@ -72,6 +85,12 @@ const CardCarouselTheme = {
       }
     `}
 
+    ${breakpoint('md')`
+      .carousel-cell {
+        margin-right: ${({ type }) => (type === 'category' ? '0.5rem' : spacing.sm)};
+      }
+    `}
+
     ${breakpoint('lg')`
       .linear-gradient {
         display: block;
@@ -79,7 +98,7 @@ const CardCarouselTheme = {
         position: absolute;
         right: 0;
         top: 0;
-        width: 4rem;
+        width: 10rem;
         z-index: 1;
 
         &.left {
@@ -113,6 +132,11 @@ const CardCarouselTheme = {
             opacity: 0.6;
           }
         }
+
+        &.next {
+          top: ${({ type }) => (type === 'category' ? '6rem' : '')};
+          right: ${({ type }) => (type === 'category' ? '.7rem' : '')};
+        }
       }
     `}
 
@@ -128,7 +152,7 @@ const CardCarouselTheme = {
       &.card-carousel--hero {
         .linear-gradient {
           &:last-child {
-            right: -4rem;
+            right: -3rem;
           }
         }
       }
@@ -141,6 +165,7 @@ const CardCarouselWrapper = styled.div`
 `;
 
 const typeMap = {
+  category: CategoryCard,
   feature: FeatureCard,
   hero: HeroCard,
   person: PersonCard,
@@ -157,6 +182,7 @@ const CardCarousel = ({
   items,
   gradient,
   renderItem,
+  title,
   type,
 }) => {
   const El = typeMap[type] || StandardCard;
@@ -174,6 +200,7 @@ const CardCarousel = ({
 
   return (
     <CardCarouselWrapper
+      aria-label={`${title} carousel`}
       className={`card-carousel card-carousel--${type}`}
       data-testid={`card-carousel--${type}`}
       type={type}
@@ -219,8 +246,10 @@ CardCarousel.propTypes = {
   extraOptions: PropTypes.object,
   /** Callback for rendering each carousel item */
   renderItem: PropTypes.func,
+  title: PropTypes.string,
   /** Sets the carousel-item styles for a particular card style */
   type: PropTypes.oneOf([
+    'category',
     'feature',
     'hero',
     'person',
@@ -254,6 +283,7 @@ CardCarousel.defaultProps = {
   gradient: null,
   extraOptions: null,
   renderItem: undefined,
+  title: '',
 };
 
 export default CardCarousel;

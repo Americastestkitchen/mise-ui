@@ -80,7 +80,9 @@ const TitleAndCtaTheme = {
   dark: css``,
 };
 
-const TitleAndCta = styled.div`
+const TitleAndCta = styled.div.attrs({
+  className: 'title-wrapper',
+})`
   ${withThemes(TitleAndCtaTheme)}
 `;
 
@@ -135,6 +137,7 @@ const DocumentListCarouselWrapper = styled.div`
  */
 const DocumentListCarousel = ({
   cellAlign,
+  ctaDataAttrs,
   ctaTarget,
   ctaText,
   ctaUrl,
@@ -154,8 +157,10 @@ const DocumentListCarousel = ({
       <Title>{title}</Title>
       {ctaText && ctaUrl && (
         <Cta
+          aria-label={ctaText}
           href={ctaUrl}
           target={ctaTarget}
+          {...ctaDataAttrs}
         >
           {`${ctaText} >`}
         </Cta>
@@ -167,6 +172,7 @@ const DocumentListCarousel = ({
       items={items}
       gradient={gradient}
       renderItem={renderItem}
+      title={title}
       type={type}
     />
   </DocumentListCarouselWrapper>
@@ -175,6 +181,8 @@ const DocumentListCarousel = ({
 DocumentListCarousel.propTypes = {
   /** Carousel cell alignment */
   cellAlign: PropTypes.oneOf(['center', 'left']),
+  /** data-attributes for tracking */
+  ctaDataAttrs: PropTypes.object,
   /** Specify where link should be opened */
   ctaTarget: PropTypes.string,
   /** Text displayed on CTA. */
@@ -206,6 +214,7 @@ DocumentListCarousel.propTypes = {
 
 DocumentListCarousel.defaultProps = {
   cellAlign: null,
+  ctaDataAttrs: null,
   ctaText: null,
   ctaTarget: '',
   ctaUrl: null,

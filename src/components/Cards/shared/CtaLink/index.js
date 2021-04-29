@@ -31,12 +31,14 @@ const StyledCtaLink = styled.a`
   ${withThemes(CtaLinkTheme)};
 `;
 
-const CtaLink = ({ ctaText, ctaUrl, onClick }) => (
+const CtaLink = ({ ctaText, ctaUrl, dataAttrs, onClick }) => (
   <StyledCtaLink
     aria-label={`${ctaText} (opens in new window)`}
+    className="cta-link"
     href={ctaUrl}
     target="_blank"
     onClick={onClick}
+    {...dataAttrs}
   >
     {ctaText}
   </StyledCtaLink>
@@ -45,11 +47,13 @@ const CtaLink = ({ ctaText, ctaUrl, onClick }) => (
 CtaLink.propTypes = {
   ctaText: PropTypes.string.isRequired,
   ctaUrl: PropTypes.string.isRequired,
+  dataAttrs: PropTypes.object,
   onClick: PropTypes.func,
 };
 
 CtaLink.defaultProps = {
   onClick: null,
+  dataAttrs: {},
 };
 
 export default CtaLink;

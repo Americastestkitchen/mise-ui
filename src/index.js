@@ -2,6 +2,7 @@ import * as styles from './styles';
 import AudioPlayer from './components/AudioPlayer';
 import Accordion from './components/Accordion';
 import AccordionControl from './components/AccordionControl';
+import AccordionRefinementList from './components/Algolia/shared/AccordionRefinementList';
 import Badge from './components/Badge';
 import breakpoints from './styles/breakpoints';
 import Brands from './components/DesignTokens/Brands';
@@ -11,6 +12,7 @@ import carousel from './styles/carousel';
 import Carousel from './components/Carousels/Carousel';
 import CardCarousel from './components/Carousels/CardCarousel';
 import CardWrapper from './components/Cards/CardWrapper';
+import CategoryCard from './components/Cards/CategoryCard';
 import ClearRefinements from './components/Algolia/shared/ClearRefinements';
 import CurrentRefinements from './components/Algolia/shared/CurrentRefinements';
 import DocumentListCarousel from './components/Carousels/DocumentListCarousel';
@@ -24,6 +26,7 @@ import HeroAd from './components/Ads/HeroAd';
 import HeroCard from './components/Cards/HeroCard';
 import InlineNewsletter from './components/Newsletters/InlineNewsletter';
 import Listable from './components/Listable';
+import LandingEmailAd from './components/Ads/ShowcaseAds/LandingEmailAd';
 import LeadMarqueeCard from './components/Cards/LeadMarqueeCard';
 import LoadingCard from './components/Cards/LoadingCard';
 import LoadingCarousel from './components/Carousels/LoadingCarousel';
@@ -58,6 +61,7 @@ import Sticker from './components/Cards/shared/Sticker';
 import SubscribeBubbles from './components/SubscribeBubbles';
 import TallCard from './components/Cards/TallCard';
 import TextDecorations, { CircledText, SquiggledText, UnderlinedText } from './components/DesignTokens/TextDecoration';
+import ToggleRefinement from './components/Algolia/shared/ToggleRefinement';
 import * as Icons from './components/DesignTokens/Icon';
 import fonts from './styles/fonts';
 import globalStyle from './styles/global';
@@ -66,6 +70,7 @@ import { color, mixins, spacing } from './styles';
 export {
   Accordion,
   AccordionControl,
+  AccordionRefinementList,
   AudioPlayer,
   Badge,
   breakpoints,
@@ -76,6 +81,7 @@ export {
   CardWrapper,
   carousel,
   Carousel,
+  CategoryCard,
   CircledText,
   color,
   ClearRefinements,
@@ -93,6 +99,7 @@ export {
   globalStyle,
   HeroAd,
   HeroCard,
+  LandingEmailAd,
   Listable,
   LeadMarqueeCard,
   LoadingCard,
@@ -129,6 +136,7 @@ export {
   Sticker,
   TallCard,
   TextDecorations,
+  ToggleRefinement,
   SubscribeBubbles,
   styles,
   spacing,

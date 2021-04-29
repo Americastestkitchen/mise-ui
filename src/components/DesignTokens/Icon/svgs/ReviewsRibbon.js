@@ -7,6 +7,7 @@ const ReviewsRibbon = ({ fill }) => (
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden="true"
     className="reviews-ribbon"
+    fill={fill}
     focusable="false"
     viewBox="0 0 14.77 18"
   >

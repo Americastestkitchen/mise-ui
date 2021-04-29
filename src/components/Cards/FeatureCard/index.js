@@ -125,13 +125,31 @@ const CtaLink = styled.a`
   z-index: 2;
 `;
 
+const PricingWrapper = styled.div`
+  display: flex;
+  white-space: break-spaces;
+`;
+
+const DiscountPricing = styled.p`
+  font: ${fontSize.md}/1 ${font.pnb};
+  line-height: 1.2rem;
+`;
+
+const OriginalPricing = styled.p`
+  font: ${fontSize.md}/1 ${font.pnr};
+  line-height: 1.2rem;
+  text-decoration: line-through;
+`;
+
 function FeatureCard({
   attributions,
   className,
   contentType,
+  ctaDataAttrs,
   ctaText,
   ctaUrl,
   dataAttrs,
+  discountedPrice,
   displayFavoritesButton,
   href,
   imageAlt,
@@ -141,6 +159,7 @@ function FeatureCard({
   lazyImage,
   objectId,
   onClick,
+  originalPrice,
   personHeadShot,
   siteKey,
   siteKeyFavorites,
@@ -169,11 +188,8 @@ function FeatureCard({
           imageUrl={imageUrl}
           lazy={lazyImage}
         />
-        <StyledBadge
-          className={className}
-          type={siteKey}
-        />
-        { displayFavoritesButton ? (
+        <StyledBadge className={className} type={siteKey} />
+        {displayFavoritesButton && siteKeyFavorites ? (
           <StyledFavoriteButton
             className={className}
             fill={`${color.white}`}
@@ -183,14 +199,10 @@ function FeatureCard({
             siteKey={siteKeyFavorites}
             title={title}
           />
-        ) : null }
-        <div
-          className="feature-card__subcomponents-wrapper"
-        >
-          <div
-            className="feature-card__subcomponents-content"
-          >
-            { stickers ? (
+        ) : null}
+        <div className="feature-card__subcomponents-wrapper">
+          <div className="feature-card__subcomponents-content">
+            {stickers ? (
               <StickerGroup>
                 {stickers.map(({ text, type }) => (
                   <StyledSticker
@@ -202,39 +214,38 @@ function FeatureCard({
                   />
                 ))}
               </StickerGroup>
-            ) : null }
-            <StyledTitle
-              className={className}
-              title={title}
-            />
-            { attributions ? (
-              <Attributions>{attributions}</Attributions>
-            ) : null }
+            ) : null}
+            <StyledTitle className={className} title={title} />
+            {attributions ? <Attributions>{attributions}</Attributions> : null}
+            {originalPrice && discountedPrice ? (
+              <PricingWrapper>
+                <DiscountPricing>{`${discountedPrice} `}</DiscountPricing>
+                <OriginalPricing>{originalPrice}</OriginalPricing>
+              </PricingWrapper>
+            ) : null}
           </div>
-          {
-            personHeadShot && (
-              <div
-                className="feature-card__subcomponents-aside"
-              >
-                <PersonHeadShot
-                  {...personHeadShot}
-                  size={{
-                    sm: '5',
-                    md: '8',
-                  }}
-                />
-              </div>
-            )
-          }
+          {personHeadShot && (
+            <div className="feature-card__subcomponents-aside">
+              <PersonHeadShot
+                {...personHeadShot}
+                size={{
+                  sm: '5',
+                  md: '8',
+                }}
+              />
+            </div>
+          )}
         </div>
       </a>
-      { ctaUrl && (
+      {ctaUrl && (
         <CtaLink
           aria-label={`${ctaText} (opens in new window)`}
+          className="cta-link"
           href={ctaUrl}
           target="_blank"
+          {...ctaDataAttrs}
         >
-          { ctaText }
+          {ctaText}
         </CtaLink>
       )}
     </StyledFeatureCard>
@@ -245,10 +256,12 @@ FeatureCard.propTypes = {
   attributions: PropTypes.string,
   className: PropTypes.string,
   contentType: PropTypes.string.isRequired,
+  ctaDataAttrs: PropTypes.object,
   ctaText: PropTypes.string,
   ctaUrl: PropTypes.string,
   /** document data attributes */
   dataAttrs: PropTypes.object,
+  discountedPrice: PropTypes.string,
   displayFavoritesButton: PropTypes.bool,
   href: PropTypes.string.isRequired,
   imageAlt: PropTypes.string,
@@ -258,6 +271,7 @@ FeatureCard.propTypes = {
   lazyImage: PropTypes.bool,
   objectId: PropTypes.string.isRequired,
   onClick: PropTypes.func,
+  originalPrice: PropTypes.string,
   /** Optional: Image data that is used to render a PersonHeadShot. */
   personHeadShot: PropTypes.shape({
     ...PersonHeadShot.propTypes,
@@ -272,15 +286,18 @@ FeatureCard.propTypes = {
 FeatureCard.defaultProps = {
   attributions: '',
   className: '',
+  ctaDataAttrs: null,
   ctaText: '',
   ctaUrl: '',
   dataAttrs: null,
+  discountedPrice: null,
   displayFavoritesButton: true,
   imageAlt: '',
   isFavorited: false,
   isWide: false,
   lazyImage: true,
   onClick: null,
+  originalPrice: null,
   personHeadShot: null,
   siteKeyFavorites: null,
   stickers: [],

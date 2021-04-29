@@ -24,6 +24,10 @@ const ReviewableSummaryItemTheme = {
       min-height: 14rem;
     }
 
+    &[data-buy-now="false"] {
+      min-height: 0;
+    }
+
     h3 {
       font: ${fontSize.lg}/${lineHeight.md} ${font.pnb};
     }
@@ -42,6 +46,10 @@ const ReviewableSummaryItemTheme = {
       &[data-has-img="true"] {
         min-height: 17rem;
         padding-right: 17.6rem;
+      }
+
+      &[data-buy-now="false"] {
+        min-height: 0;
       }
 
       &:only-child {
@@ -64,13 +72,13 @@ const ReviewableSummaryItemEl = styled.div.attrs({
 const TitleImageWrapper = styled.div.attrs({
   className: 'reviewable-title-image-wrapper',
 })`
-  align-items: flex-start;
+  align-items: stretch;
   display: flex;
+  flex: 1 0 auto;
   width: 100%;
 
   h3 {
-    flex: 1 0 0;
-    font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb};
+    font: ${fontSize.xl} / ${lineHeight.sm} ${font.pnb};
     margin-bottom: 1.4rem;
   }
 
@@ -81,8 +89,15 @@ const TitleImageWrapper = styled.div.attrs({
     width: clamp(6rem, 10rem, 9rem);
   }
 
+  ${breakpoint('xs', 'md')`
+    h3 {
+      flex: 1 0 0;
+    }
+  `}
+
   ${breakpoint('md')`
-    img {
+    > .image-link,
+    > img {
       position: absolute;
       height: 15rem;
       right: 1rem;
@@ -105,9 +120,20 @@ const TitleImageWrapper = styled.div.attrs({
 const TitleImageContent = styled.div.attrs({
   className: 'reviewable-title',
 })`
-  flex: 1 0 0;
+  display: flex;
+  flex-direction: column;
+
+  .partner-link {
+    margin-top: auto;
+  }
+
+  &[data-buy-now='true'] {
+    align-items: flex-start;
+    flex: 1 0 0;
+  }
 
   ${breakpoint('xs', 'md')`
+    flex: 1 0 0;
     max-width: calc(100% - 10rem);
   `}
 `;
@@ -142,6 +168,45 @@ const ItemPrice = styled.div`
 
 const parensRe = /(\([^)]+\))/;
 
+const ReviewableLinkEl = styled.a`
+  @media(hover: hover) {
+    &:hover {
+      color: ${color.mint};
+    }
+  }
+`;
+
+const ReviewableLink = ({
+  children,
+  className,
+  href,
+  hrefDataAttrs,
+}) => (href ? (
+  <ReviewableLinkEl
+    className={className}
+    href={href}
+    {...hrefDataAttrs}
+  >
+    {children}
+  </ReviewableLinkEl>
+) : children);
+
+ReviewableLink.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
+  className: PropTypes.string,
+  href: PropTypes.string,
+  hrefDataAttrs: PropTypes.object,
+};
+
+ReviewableLink.defaultProps = {
+  className: null,
+  href: null,
+  hrefDataAttrs: {},
+};
+
 const ReviewableSummaryCard = React.memo(({
   asin,
   buyNowLink,
@@ -149,6 +214,9 @@ const ReviewableSummaryCard = React.memo(({
   buyNowOverrideAffiliateActive,
   buyNowOverrideAffiliateName,
   cloudinaryId,
+  displayPrice,
+  href,
+  hrefDataAttrs,
   imageAltText,
   isShortList,
   name,
@@ -164,45 +232,65 @@ const ReviewableSummaryCard = React.memo(({
     buyNowIcon = buyNowOverrideAffiliateName;
   }
   const sortOfWinner = winner || isShortList;
+  const stickerText = sortOfWinner
+    ? winnerHeader || 'Winner'
+    : recommendationStatus;
 
   return (
     <ReviewableSummaryItemEl
       data-discontinued={isDiscontinued}
       data-has-img={Boolean(cloudinaryId)}
+      data-buy-now={Boolean(buyNowLink)}
     >
       <TitleImageWrapper>
-        <TitleImageContent>
+        <TitleImageContent data-buy-now={Boolean(buyNowLink)}>
           {(sortOfWinner || recommendationStatus) && (
             <StickerWrapper winner={sortOfWinner}>
               <Sticker
                 className="sticker"
-                text={sortOfWinner ? (winnerHeader || 'Winner') : recommendationStatus}
+                text={stickerText}
                 type="editorial"
               />
             </StickerWrapper>
           )}
-          <h3>{name}</h3>
+          <ReviewableLink href={href} hrefDataAttrs={hrefDataAttrs}>
+            <h3>{name}</h3>
+          </ReviewableLink>
           {!buyNowLink && priceMarkup && (
-            <ItemPrice
-              dangerouslySetInnerHTML={{ __html: priceMarkup }}
-            />
+            <ItemPrice dangerouslySetInnerHTML={{ __html: priceMarkup }} />
           )}
           {buyNowLink && (
             <AffiliateLink
-              text="Buy Now"
+              dataAttrs={{
+                'data-asin': asin || '',
+                'data-price': price || '',
+                'data-recommendation-status': recommendationStatus,
+                'data-reviewable': name,
+              }}
+              text={displayPrice && price ? `Buy for ${price}` : 'Buy Now'}
               icon={buyNowIcon}
+              name={name}
               onClick={buyNowOnClick}
               url={buyNowLink}
             />
           )}
         </TitleImageContent>
         {cloudinaryId && (
-          <Image
-            aspectRatio="1:1"
-            imageAlt={imageAltText}
-            imageUrl={getImageUrl(cloudinaryId, 'thumbnail')}
-            lowQualityImageUrl={getImageUrl(cloudinaryId, 'thumbnailPlaceholder')}
-          />
+          <ReviewableLink
+            className="image-link"
+            href={href}
+            hrefDataAttrs={hrefDataAttrs}
+          >
+            <Image
+              aspectRatio="1:1"
+              imageAlt={imageAltText}
+              imageUrl={getImageUrl(cloudinaryId, 'thumbnail')}
+              lowQualityImageUrl={getImageUrl(
+                cloudinaryId,
+                'thumbnailPlaceholder',
+              )}
+            />
+          </ReviewableLink>
         )}
       </TitleImageWrapper>
     </ReviewableSummaryItemEl>
@@ -216,6 +304,9 @@ ReviewableSummaryCard.propTypes = {
   buyNowOverrideAffiliateActive: PropTypes.bool.isRequired,
   buyNowOverrideAffiliateName: PropTypes.string,
   cloudinaryId: PropTypes.string,
+  displayPrice: PropTypes.bool,
+  href: PropTypes.string,
+  hrefDataAttrs: PropTypes.object,
   imageAltText: PropTypes.string,
   isShortList: PropTypes.bool,
   name: PropTypes.string.isRequired,
@@ -231,6 +322,9 @@ ReviewableSummaryCard.defaultProps = {
   buyNowOnClick: null,
   buyNowOverrideAffiliateName: null,
   cloudinaryId: null,
+  displayPrice: false,
+  href: null,
+  hrefDataAttrs: {},
   imageAltText: '',
   isShortList: false,
   price: null,

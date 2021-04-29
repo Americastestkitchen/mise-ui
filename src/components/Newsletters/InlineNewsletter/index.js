@@ -33,7 +33,7 @@ const NewsletterInfoWrapper = styled.div.attrs({
   className: 'inline-newsletter__info',
 })``;
 
-const NewsletterTitle = styled.div.attrs({
+const NewsletterTitle = styled.h2.attrs({
   className: 'inline-newsletter__title',
 })`${withThemes(NewsletterTitleTheme)}`;
 
@@ -43,6 +43,11 @@ const NewsletterSubtitleTheme = {
     letter-spacing: 2.24px;
     margin-bottom: ${spacing.xsm};
     text-transform: uppercase;
+
+    ${breakpoint('xlg')`
+      font: ${fontSize.md}/1.6rem ${font.pnr};
+      letter-spacing: 2.56px;
+    `}
   `,
   dark: css`
     color: ${color.white};
@@ -75,6 +80,23 @@ const NewsletterSuccess = styled.div.attrs({
 })`${withThemes(NewsletterSuccessTheme)}`;
 
 const InlineNewsletterContent = styled.div`
+  ${breakpoint('md')`
+    ${({ success }) => `${success
+    ? 'align-items: flex-start;'
+    : 'align-items: center;'
+  }`}
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .inline-newsletter__info {
+      max-width: 69.6rem;
+    }
+
+    .email-form-wrapper {
+      min-width: 69.6rem;
+    }
+  `}
+
   ${breakpoint('lg')`
     display: flex;
     justify-content: space-between;
@@ -86,18 +108,27 @@ const InlineNewsletterContent = styled.div`
     .inline-newsletter__success,
     .email-form-wrapper {
       flex: 3 0 auto;
-      min-width: 48rem;
+      min-width: 69.6rem;
     }
 
     .inline-newsletter__info {
       flex: 4 1 auto;
-      margin-right: ${spacing.sm};
+      margin-bottom: 1rem;
     }
   `}
 
-  ${breakpoint('xlg')`
+  ${breakpoint('lg')`
+    ${({ success }) => `${success
+    ? `flex-direction: column; align-items: flex-start; color: ${color.eclipse};`
+    : 'flex-direction: row;'}
+    `}
     margin: 0 auto;
     max-width: 113.6rem;
+
+    .inline-newsletter__info {
+      flex: 4 1 auto;
+      margin-right: 2.6rem;
+    }
 
     .inline-newsletter__success,
     .email-form-wrapper {
@@ -110,7 +141,11 @@ const InlineNewsletterWrapperTheme = {
   default: css`
     padding: ${spacing.sm} ${spacing.sm} ${spacing.md};
 
-    ${breakpoint('lg')`
+    ${breakpoint('md')`
+      padding: 1.6rem 3.6rem 0.6rem;
+    `}
+
+    ${breakpoint('xlg')`
       padding: ${spacing.sm};
     `}
   `,
@@ -180,7 +215,7 @@ InlineNewsletter.propTypes = {
 InlineNewsletter.defaultProps = {
   ...EmailForm.defaultProps,
   success: false,
-  successText: 'Thank you! You have been added to our mailing list.',
+  successText: 'Thank you! Get ready for watch and cook newsletter in your inbox.',
   successDescription: null,
 };
 
