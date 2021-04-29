@@ -112,8 +112,11 @@ const CategoryCard = ({
           {assetType === 'productImage' ? (
             <Image
               className="category-product-image"
-              imageUrl={getImageUrl(cloudinaryId)}
+              height={60}
+              imageAlt=""
+              imageUrl={getImageUrl(cloudinaryId, 'thumbnail', { size: 'small' })}
               lazy={lazy}
+              width={60}
             />
           ) : (
             <SvgWrapper>
