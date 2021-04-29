@@ -24,10 +24,6 @@ const ReviewableSummaryItemTheme = {
       min-height: 14rem;
     }
 
-    &[data-buy-now="false"] {
-      min-height: 0;
-    }
-
     h3 {
       font: ${fontSize.lg}/${lineHeight.md} ${font.pnb};
     }
@@ -46,10 +42,6 @@ const ReviewableSummaryItemTheme = {
       &[data-has-img="true"] {
         min-height: 17rem;
         padding-right: 17.6rem;
-      }
-
-      &[data-buy-now="false"] {
-        min-height: 0;
       }
 
       &:only-child {
