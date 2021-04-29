@@ -193,6 +193,7 @@ const ContentTitleTheme = {
 
 const NewsletterSuccessTheme = {
   default: css`
+    color: ${color.eclipse};
     font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb};
     margin: 0 0 ${spacing.sm} 0;
     svg {

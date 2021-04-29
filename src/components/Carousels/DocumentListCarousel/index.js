@@ -157,6 +157,7 @@ const DocumentListCarousel = ({
       <Title>{title}</Title>
       {ctaText && ctaUrl && (
         <Cta
+          aria-label={ctaText}
           href={ctaUrl}
           target={ctaTarget}
           {...ctaDataAttrs}

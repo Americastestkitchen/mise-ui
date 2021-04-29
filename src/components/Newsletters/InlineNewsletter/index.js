@@ -81,7 +81,10 @@ const NewsletterSuccess = styled.div.attrs({
 
 const InlineNewsletterContent = styled.div`
   ${breakpoint('md')`
-    align-items: center;
+    ${({ success }) => `${success
+    ? 'align-items: flex-start;'
+    : 'align-items: center;'
+  }`}
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -212,7 +215,7 @@ InlineNewsletter.propTypes = {
 InlineNewsletter.defaultProps = {
   ...EmailForm.defaultProps,
   success: false,
-  successText: 'Thank you! You have been added to our mailing list.',
+  successText: 'Thank you! Get ready for watch and cook newsletter in your inbox.',
   successDescription: null,
 };
 
