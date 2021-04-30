@@ -27,6 +27,10 @@ const LandingEmailTheme = {
     ${({ success }) => (success ? 'height: 34rem' : 'min-height: 46rem;')}
     width: calc(100% - 3.2rem);
 
+    .landing-ad-image-desktop {
+      display: none;
+    }
+
     ${breakpoint('md')`
       flex-direction: row;
       min-height: 33rem;
@@ -40,6 +44,14 @@ const LandingEmailTheme = {
     ${breakpoint('xlg')`
       height: 33rem; 
       width: 113.6rem;
+
+      .landing-ad-image-tablet {
+        display: none;
+      }
+
+      .landing-ad-image-desktop {
+        display: block;
+      }
     `}
 
     .email-form button {
@@ -56,6 +68,7 @@ const LandingEmailTheme = {
     }
 
     .how-we-use__link {
+        color: ${color.eclipse};
         padding: 0;
     }
   `,
@@ -140,9 +153,10 @@ const FormBodyContent = styled.div`
 
   #landing-newsletter-ad {
     background-color: ${color.white};
-    border: 1px solid ${color.black};
+    border: 1px solid ${color.eclipse};
 
     &::placeholder {
+      color: ${color.eclipse};
       font: ${fontSize.md}/2.6rem ${font.mwr};
       font-style: italic;
     }
@@ -222,18 +236,20 @@ const ContentTitle = styled.p.attrs({
 
 const LandingEmailAd = ({
   buttonText,
+  desktopImageUrl,
   errorText,
   headline,
-  imageUrl,
   inputId,
   onSubmit,
   success,
   successText,
+  tabletImageUrl,
   title,
 }) => (
   <LandingEmailWrapper success={success}>
     <ImageWrapper data-testid="adImage">
-      <Image className="landing-ad-image" imageUrl={imageUrl} />
+      <Image className="landing-ad-image-desktop" imageUrl={desktopImageUrl} />
+      <Image className="landing-ad-image-tablet" imageUrl={tabletImageUrl} />
     </ImageWrapper>
     <FormColumnWrapper success={success}>
       <FormBodyContent success={success}>
@@ -262,11 +278,12 @@ const LandingEmailAd = ({
 
 LandingEmailAd.propTypes = {
   buttonText: PropTypes.string,
+  desktopImageUrl: PropTypes.string.isRequired,
   errorText: PropTypes.string,
-  imageUrl: PropTypes.string.isRequired,
   inputId: PropTypes.string.isRequired,
   headline: PropTypes.string,
   onSubmit: PropTypes.func.isRequired,
+  tabletImageUrl: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   success: PropTypes.bool,
   successText: PropTypes.string,

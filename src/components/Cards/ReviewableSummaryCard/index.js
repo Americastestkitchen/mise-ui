@@ -25,11 +25,7 @@ const ReviewableSummaryItemTheme = {
     }
 
     h3 {
-      display: -webkit-box;
       font: ${fontSize.lg}/${lineHeight.md} ${font.pnb};
-      overflow: hidden;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
     }
 
     img {
