@@ -1,6 +1,6 @@
 {
   "name": "@atk/mise-ui",
-  "version": "1.7.1-canary.a4a9d052.0",
+  "version": "1.7.3-canary.07c3fc90.0",
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "algoliasearch": "^4.0.3",

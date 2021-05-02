@@ -88,12 +88,9 @@ const InlineNewsletterContent = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    .inline-newsletter__info {
-      max-width: 69.6rem;
-    }
 
     .email-form-wrapper {
-      min-width: 69.6rem;
+      width: 100%;
     }
   `}
 
@@ -108,7 +105,7 @@ const InlineNewsletterContent = styled.div`
     .inline-newsletter__success,
     .email-form-wrapper {
       flex: 3 0 auto;
-      min-width: 69.6rem;
+      max-width: 69.6rem;
     }
 
     .inline-newsletter__info {
@@ -130,9 +127,12 @@ const InlineNewsletterContent = styled.div`
       margin-right: 2.6rem;
     }
 
-    .inline-newsletter__success,
+    .inline-newsletter__success {
+      max-width: 100%;
+    }
+    
     .email-form-wrapper {
-      min-width: 56rem;
+      max-width: 56rem;
     }
   `}
 `;
