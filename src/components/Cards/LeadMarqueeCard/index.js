@@ -165,7 +165,7 @@ const LeadMarqueeCard = ({
               ))}
             </StickerGroup>
           ) : null }
-          <Title>{title}</Title>
+          <Title dangerouslySetInnerHTML={{ __html: title }} />
           <Description dangerouslySetInnerHTML={{ __html: description }} />
           <Byline
             author={`By ${author}`}
