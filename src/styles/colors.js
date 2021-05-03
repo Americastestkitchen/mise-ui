@@ -13,6 +13,7 @@ const color = {
   turquoise: '#8fdee3',
   seaSalt: '#d1fcff',
   regentGray: '#767f81',
+  mediumGray: '#6E6E6E',
   silver: '#c2c2c2',
   gunmetal: '#262626',
   nobel: '#999999',
