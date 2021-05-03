@@ -3,6 +3,7 @@ import AudioPlayer from './components/AudioPlayer';
 import Accordion from './components/Accordion';
 import AccordionControl from './components/AccordionControl';
 import AccordionRefinementList from './components/Algolia/shared/AccordionRefinementList';
+import ArticleImage from './components/Articles/ArticleImage';
 import Badge from './components/Badge';
 import breakpoints from './styles/breakpoints';
 import Brands from './components/DesignTokens/Brands';
@@ -72,6 +73,7 @@ export {
   Accordion,
   AccordionControl,
   AccordionRefinementList,
+  ArticleImage,
   AudioPlayer,
   Badge,
   breakpoints,

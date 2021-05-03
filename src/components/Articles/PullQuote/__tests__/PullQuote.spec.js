@@ -33,11 +33,11 @@ describe('PullQuote component should', () => {
 
   it('render an attribution when provided', () => {
     renderComponent({ quote: 'Test Quote', attribution: 'Test Citation' });
-    expect(screen.getByTestId('pull-quote__attribution') && screen.queryByText('Test Citatioin'));
+    expect(screen.queryByText('Test Citation'));
   });
 
   it('not render an attribution when not provided', () => {
     renderComponent({ quote: 'Test Quote' });
-    expect(!screen.queryByTestId('pull-quote__attribution') && !screen.queryByText('Test Citation'));
+    expect(!screen.queryByText('Test Citation'));
   });
 });
