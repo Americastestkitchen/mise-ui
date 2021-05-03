@@ -1,6 +1,15 @@
 import { cards, color } from './index';
 
 export default {
+  /**
+   * Handles max-width style for Articles components.
+   * @param  {String} widthType ['default', 'wide']
+   * @return {String}           CSS Text
+   */
+  articlesWidth(widthType) {
+    return widthType === 'default' ? 'max-width: 63.2rem;' : 'max-width: 84.8rem;';
+  },
+
   styledLink(underlineColor, backgroundColor, textColor = 'inherit') {
     return `
       background-image: linear-gradient(transparent 91%, ${underlineColor} 91%);
