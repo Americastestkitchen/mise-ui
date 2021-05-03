@@ -23,6 +23,7 @@ import Plus from './Plus';
 import PriceUpdate from './PriceUpdate';
 import Print from './Print';
 import QuestionMark from './QuestionMark';
+import Quote from './Quote';
 import RecipeCard from './RecipeCard';
 import Rewind from './Rewind';
 import ReviewsRibbon from './ReviewsRibbon';
@@ -65,6 +66,7 @@ export {
   PriceUpdate,
   Print,
   QuestionMark,
+  Quote,
   RecipeCard,
   Rewind,
   ReviewsRibbon,

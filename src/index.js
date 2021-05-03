@@ -40,6 +40,7 @@ import PodcastEpisodeCard from './components/Cards/PodcastEpisodeCard';
 import QueueCard from './components/Cards/QueueCard';
 import PairedProductAd from './components/Ads/PairedProductAd';
 import PersonCard from './components/Cards/PersonCard';
+import PullQuote from './components/Articles/PullQuote';
 import RefinementListBasic from './components/Algolia/shared/RefinementListBasic';
 import RefinementList from './components/Algolia/shared/RefinementList';
 import RelatedDocumentCard from './components/Cards/RelatedDocumentCard';
@@ -114,6 +115,7 @@ export {
   MediaObjectCard,
   PairedProductAd,
   PodcastEpisodeCard,
+  PullQuote,
   QueueCard,
   MarqueeCard,
   MembershipShowcaseAd,
