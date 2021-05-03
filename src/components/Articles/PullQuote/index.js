@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 
+import ArticleFigcaption from '../shared/ArticleFigcaption';
 import { Quote } from '../../DesignTokens/Icon/svgs';
 import { color, font, fontSize, mixins } from '../../../styles';
 
@@ -40,6 +41,12 @@ const PullQuoteIcon = styled.div`
 const PullQuoteFigure = styled.figure`
   margin: 0;
   padding: 0;
+
+  ${breakpoint('xlg')`
+    .article-figcaption {
+      padding-bottom: 0.8rem;
+    }
+  `}
 `;
 
 const PullQuoteBlockQuote = styled.blockquote`
@@ -49,22 +56,6 @@ const PullQuoteBlockQuote = styled.blockquote`
   font-weight: bold;
   margin: 0 0 1.2rem 0;
   padding: 0;
-`;
-
-const PullQuoteFigcaption = styled.figcaption`
-  color: ${color.mediumGray};
-  font: ${fontSize.md}/1.5 ${font.pnb};
-  position: relative;
-
-  &::after {
-    bottom: -0.8rem;
-    background-color: ${color.mint};
-    content: '';
-    display: block;
-    height: 0.6rem;
-    position: absolute;
-    width: 1.6rem;
-  }
 `;
 
 const PullQuote = ({ attribution, includeIcon, quote, width }) => (
@@ -82,9 +73,10 @@ const PullQuote = ({ attribution, includeIcon, quote, width }) => (
       </PullQuoteBlockQuote>
       {
         attribution && (
-          <PullQuoteFigcaption data-testid="pull-quote__attribution">
-            {attribution}
-          </PullQuoteFigcaption>
+          <ArticleFigcaption
+            caption={attribution}
+            decorationPosition="bottom"
+          />
         )
       }
     </PullQuoteFigure>
