@@ -4,7 +4,7 @@ const CircledText = styled.span`
   display: inline-block;
   position: relative;
 
-  svg {
+  img {
     max-width: 150%;
     position: absolute;
     top: 50%;

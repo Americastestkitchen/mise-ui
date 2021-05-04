@@ -50,7 +50,10 @@
     "react/jsx-fragments": 0,
     "import/no-cycle": 0
   },
-  "extends" : ["airbnb"],
+  "extends": [
+    "airbnb",
+    "plugin:react-hooks/recommended"
+  ],
   "plugins": [
     "import",
     "react"

@@ -4,7 +4,7 @@ const UnderlinedText = styled.span`
   display: inline-block;
   position: relative;
 
-  svg {
+  img {
     position: absolute;
     top: 95%;
     left: 50%;

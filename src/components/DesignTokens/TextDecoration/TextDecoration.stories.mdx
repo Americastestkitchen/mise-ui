@@ -16,7 +16,13 @@ import { Meta } from '@storybook/addon-docs/blocks';
 }}>
   {
     Object.keys(TextDecorations).filter(
-      decoration => decoration !== 'keyToDecoration' && decoration !== 'default'
+      decoration => ![
+      'keyToDecoration',
+      'default',
+      'CircledText',
+      'SquiggledText',
+      'UnderlinedText',
+    ].includes(decoration)
     ).map((decoration) => (
       <div
         key={decoration}

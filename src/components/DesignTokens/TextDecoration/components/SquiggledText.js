@@ -4,7 +4,7 @@ const SquiggledText = styled.span`
   display: inline-block;
   position: relative;
 
-  svg {
+  img {
     position: absolute;
     top: 80%;
     left: 50%;

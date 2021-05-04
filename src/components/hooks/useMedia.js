@@ -17,7 +17,7 @@ function useMedia(query) {
       return () => media.removeListener(listener);
     }
     return () => {};
-  }, [query]);
+  }, [matches, query]);
 
   return matches;
 }
