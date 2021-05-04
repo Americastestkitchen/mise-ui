@@ -10,8 +10,7 @@ const StyledImage = styled.img`
   max-width: 100%;
 `;
 
-const inlineSrc =
-  'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';
+const inlineSrc = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';
 
 const Image = ({
   className,
