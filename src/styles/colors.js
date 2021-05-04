@@ -85,6 +85,7 @@ const color = {
   danube: '#5E9ED6',
   bigStone: '#182d48',
   pictonBlue: '#3c9be2',
+  morningGlory: '#a0dce2',
 };
 
 export default color;
