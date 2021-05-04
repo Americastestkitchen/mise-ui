@@ -28,6 +28,8 @@ import FreeTrialAd from './components/Ads/ShowcaseAds/FreeTrialAd';
 import HeroAd from './components/Ads/HeroAd';
 import HeroCard from './components/Cards/HeroCard';
 import InlineNewsletter from './components/Newsletters/InlineNewsletter';
+import ImageListContainer from './components/Articles/ImageList/ImageListContainer';
+import ImageListItem from './components/Articles/ImageList/ImageListItem';
 import Listable from './components/Listable';
 import LandingEmailAd from './components/Ads/ShowcaseAds/LandingEmailAd';
 import LeadMarqueeCard from './components/Cards/LeadMarqueeCard';
@@ -109,6 +111,8 @@ export {
   globalStyle,
   HeroAd,
   HeroCard,
+  ImageListContainer,
+  ImageListItem,
   LandingEmailAd,
   Listable,
   LeadMarqueeCard,
