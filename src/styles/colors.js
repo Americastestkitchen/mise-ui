@@ -71,6 +71,7 @@ const color = {
   teal: '#167A7A',
   deepSea: '#0B3C3D',
   danube: '#5E9ED6',
+  morningGlory: '#a0dce2',
 };
 
 export default color;

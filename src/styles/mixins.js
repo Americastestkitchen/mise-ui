@@ -43,6 +43,20 @@ export default {
     `;
   },
 
+  /**
+   * Truncate text with ellipses (line clamp)
+   * @param {Number} lines required - truncate after set number of lines
+   * @returns {String} CSS Text
+   */
+  truncateLineClamp(lines) {
+    return `
+      display: -webkit-box;
+      overflow: hidden;
+      -webkit-line-clamp: ${lines};
+      -webkit-box-orient: vertical;
+    `;
+  },
+
   loadingGradientAnimation(
     width = cards.standard.width.lg,
     cardBackgroundColor = color.charcoal,
