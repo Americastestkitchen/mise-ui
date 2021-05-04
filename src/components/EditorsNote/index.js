@@ -136,7 +136,11 @@ const EditorNoteIconTheme = {
 
     ${breakpoint('xs', 'md')`
       top: 0;
-      transform: translate(25%, -50%);
+      transform: translate(50%, -50%);
+    `}
+
+    ${breakpoint('md', 'xlg')`
+      left: 5px;
     `}
 
     @media print {
@@ -148,6 +152,10 @@ const EditorNoteIconTheme = {
     }
   `,
   cco: css`
+    ${breakpoint('md', 'xlg')`
+      left: 0;
+    `}
+
     .note-retention & {
       svg circle {
         fill: ${color.wedgewood};
