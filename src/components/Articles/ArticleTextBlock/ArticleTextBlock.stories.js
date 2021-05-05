@@ -1,35 +1,62 @@
 import React from 'react';
+import styled from 'styled-components';
+import breakpoint from 'styled-components-breakpoint';
 
 import ArticleTextBlock from './index';
+import storyProps from './articleTextBlockStoryProps';
+
+const ArticleTextBlockStoryWrapper = styled.div`
+  background-color: #F5F5F5;
+  padding: 1.6rem;
+
+  ${breakpoint('md')`
+    padding: 3.6rem;
+  `}
+`;
 
 export default {
   title: 'Components|Articles/ArticleTextBlock',
   component: ArticleTextBlock,
 };
 
-const title = 'How Pickles Are Made: Refrigeration, Pasteurization, and Fermentation';
-const content = 'After crunching our way through dozens and dozens of whole dill pickles, <a href="#">Boar’s Head Kosher Dill Pickles</a>—the sibling of our favorite dill pickle spears—emerged as the clear favorite. These refrigerated pickles were “firm” and had “great crunch.” Tasters also loved that they tasted lots of garlic and dill, “almost like a homemade pickle,” with balanced tanginess and no bold competing spices. For a refreshingly tangy, garlicky whole dill pickle, Boar’s Head is our top pick.';
-const dropCapContent = 'This is the guide for all the different elements that we’re moving over to this new layout. Grouped by content type, we’ll start with text here. The intro paragraph is a little larger than the rest of the body copy and extends the full width. We’re hoping to treat all text links in the story in the same way we treat text links everywhere else, with <a href="#">this underline</a>.';
+export const DropCap = () => <ArticleTextBlock {...storyProps.dropCap} />;
 
-export const NoImageDefault = () => (
-  <ArticleTextBlock
-    content={content}
-    title={title}
-  />
+export const NoImageDefaultWidth = () => <ArticleTextBlock {...storyProps.noImageDefaultWidth} />;
+
+export const NoImageWideWidth = () => <ArticleTextBlock {...storyProps.noImageWideWidth} />;
+
+export const BoxNoImageDefaultWidth = () => (
+  <ArticleTextBlockStoryWrapper>
+    <ArticleTextBlock {...storyProps.boxNoImageDefaultWidth} />
+  </ArticleTextBlockStoryWrapper>
 );
 
-export const NoImageWide = () => (
-  <ArticleTextBlock
-    content={content}
-    title={title}
-    width="wide"
-  />
+export const BoxNoImageWideWidth = () => (
+  <ArticleTextBlockStoryWrapper>
+    <ArticleTextBlock {...storyProps.boxNoImageWideWidth} />
+  </ArticleTextBlockStoryWrapper>
 );
 
-export const DropCap = () => (
-  <ArticleTextBlock
-    content={dropCapContent}
-    dropCap
-    width="wide"
-  />
+export const BoxTopImageDefaultWidth = () => (
+  <ArticleTextBlockStoryWrapper>
+    <ArticleTextBlock {...storyProps.boxTopImageDefaultWidth} />
+  </ArticleTextBlockStoryWrapper>
+);
+
+export const BoxTopImageWideWidth = () => (
+  <ArticleTextBlockStoryWrapper>
+    <ArticleTextBlock {...storyProps.boxTopImageWideWidth} />
+  </ArticleTextBlockStoryWrapper>
+);
+
+export const BoxBottomImageDefaultWidth = () => (
+  <ArticleTextBlockStoryWrapper>
+    <ArticleTextBlock {...storyProps.boxBottomImageDefaultWidth} />
+  </ArticleTextBlockStoryWrapper>
+);
+
+export const BoxBottomImageWideWidth = () => (
+  <ArticleTextBlockStoryWrapper>
+    <ArticleTextBlock {...storyProps.boxBottomImageWideWidth} />
+  </ArticleTextBlockStoryWrapper>
 );
