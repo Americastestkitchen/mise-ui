@@ -45,7 +45,7 @@ const Image = ({
 
   useEffect(() => {
     if (isPrint) loadImage();
-  }, [isPrint]);
+  }, [isPrint, loadImage]);
 
   useEffect(() => {
     if (lazy && lowQualityImageUrl) {
@@ -57,7 +57,7 @@ const Image = ({
       return () => printSub.remove();
     }
     return () => {};
-  }, []);
+  }, [lazy, lowQualityImageUrl]);
 
   return (
     <StyledImage

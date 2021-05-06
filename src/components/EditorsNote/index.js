@@ -19,6 +19,7 @@ const iconTypeMap = {
   alert: Icons.Alert,
   coming_soon: Icons.Lightbulb,
   generic: Icons.Bell,
+  retention: Icons.Bell,
   retest: Icons.Bell,
   price_update: Icons.PriceUpdate,
 };
@@ -28,7 +29,7 @@ const EditorNoteTheme = {
     background-color: ${color.white};
     border: 3px solid ${color.cuttySark};
     color: ${color.eclipse};
-    font: ${fontSize.lg}/${lineHeight.lg} ${font.pnr};
+    font: ${fontSize.lg} / ${lineHeight.lg} ${font.pnr};
     padding: ${spacing.md} 3.6rem;
     position: relative;
 
@@ -40,8 +41,21 @@ const EditorNoteTheme = {
       ${mixins.styledLink(color.turquoise, color.seaSalt)}
     }
 
+    strong {
+      font-weight: normal;
+      font-family: ${font.pnb};
+    }
+
     &.note-alert {
       border-color: ${color.rust};
+    }
+
+    &.note-retention {
+      padding: ${spacing.md} ${spacing.sm};
+    }
+
+    &.note-retention {
+      border: none;
     }
 
     ${breakpoint('xs', 'md')`
@@ -54,11 +68,46 @@ const EditorNoteTheme = {
       }
     `}
 
+    ${breakpoint('md')`
+      &.note-retention {
+        padding: 1.4rem ${spacing.md} 1rem ${spacing.lg};
+      }
+    `}
+
     @media print {
       color: ${color.black};
       border-color: ${color.black};
       margin-top: 3rem;
       page-break-inside: avoid;
+    }
+  `,
+  atk: css`
+    &.note-retention {
+      background-color: ${color.solitude};
+
+      a {
+        ${mixins.styledLink(color.riptide, color.oysterBay)};
+      }
+    }
+  `,
+  cco: css`
+    &.note-retention {
+      background-color: ${color.aliceBlue};
+      color: ${color.black};
+
+      a {
+        ${mixins.styledLink(color.malibu, color.cornflower)};
+      }
+    }
+  `,
+  cio: css`
+    &.note-retention {
+      background-color: ${color.ivory};
+      color: ${color.cork};
+
+      a {
+        ${mixins.styledLink(color.dijon, color.sand)};
+      }
     }
   `,
 };
@@ -81,9 +130,17 @@ const EditorNoteIconTheme = {
     top: ${spacing.xlg};
     width: 3rem;
 
+    .note-retention & {
+      background-color: ${color.darkTeal};
+    }
+
     ${breakpoint('xs', 'md')`
       top: 0;
-      transform: translate(25%, -50%);
+      transform: translate(50%, -50%);
+    `}
+
+    ${breakpoint('md', 'xlg')`
+      left: 5px;
     `}
 
     @media print {
@@ -91,6 +148,24 @@ const EditorNoteIconTheme = {
 
       svg circle {
         fill: ${color.black};
+      }
+    }
+  `,
+  cco: css`
+    ${breakpoint('md', 'xlg')`
+      left: 0;
+    `}
+
+    .note-retention & {
+      svg circle {
+        fill: ${color.wedgewood};
+      }
+    }
+  `,
+  cio: css`
+    .note-retention & {
+      svg circle {
+        fill: ${color.arrowTown};
       }
     }
   `,
@@ -108,6 +183,10 @@ const EditorNoteTitleTheme = {
 
     .note-alert & {
       color: ${color.tabasco};
+    }
+
+    .note-retention & {
+      color: ${color.eclipse};
     }
 
     @media print {
@@ -143,6 +222,10 @@ const EditorNoteSubtitle = styled.span`
 const EditorNoteTextTheme = {
   default: css`
     font: ${fontSize.lg}/2.8rem ${font.pnr};
+
+    .note-retention & {
+      line-height: 2.6rem;
+    }
   `,
 };
 
@@ -164,10 +247,16 @@ const EditorsNote = ({
           <Icon />
         </EditorNoteIcon>
       )}
-      <div>
-        <EditorNoteTitle>{title}</EditorNoteTitle>
-        <EditorNoteSubtitle>{subtitle}</EditorNoteSubtitle>
-      </div>
+      {(title || subtitle) && (
+        <div>
+          {title && (
+            <EditorNoteTitle>{title}</EditorNoteTitle>
+          )}
+          {subtitle && (
+            <EditorNoteSubtitle>{subtitle}</EditorNoteSubtitle>
+          )}
+        </div>
+      )}
       <EditorNoteText
         dangerouslySetInnerHTML={{ __html: content }}
       />
@@ -183,6 +272,7 @@ EditorsNote.propTypes = {
     'generic',
     'retest',
     'price_update',
+    'retention',
   ]),
   subtitle: PropTypes.string,
   title: PropTypes.string,
