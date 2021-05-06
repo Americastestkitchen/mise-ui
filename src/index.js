@@ -4,6 +4,7 @@ import Accordion from './components/Accordion';
 import AccordionControl from './components/AccordionControl';
 import AccordionRefinementList from './components/Algolia/shared/AccordionRefinementList';
 import ArticleImage from './components/Articles/ArticleImage';
+import ArticlePhotoCollection from './components/Articles/ArticlePhotoCollection';
 import Badge from './components/Badge';
 import BookCarouselAd from './components/Ads/ReviewsAds/BookCarouselAd';
 import breakpoints from './styles/breakpoints';
@@ -81,6 +82,7 @@ export {
   AccordionControl,
   AccordionRefinementList,
   ArticleImage,
+  ArticlePhotoCollection,
   AudioPlayer,
   Badge,
   BookCarouselAd,
