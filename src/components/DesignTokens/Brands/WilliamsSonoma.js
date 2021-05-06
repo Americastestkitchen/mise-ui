@@ -2,7 +2,7 @@ import React from 'react';
 
 const WilliamsSonoma = () => (
   <img
-    alt=""
+    alt="William Sonoma Logo"
     src="https://res.cloudinary.com/hksqkdlah/image/upload/v1620154961/Brands/WilliamsSonoma.svg"
   />
 );

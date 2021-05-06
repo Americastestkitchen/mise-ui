@@ -2,7 +2,7 @@ import React from 'react';
 
 const SurLaTable = () => (
   <img
-    alt=""
+    alt="SurLaTable Logo"
     src="https://res.cloudinary.com/hksqkdlah/image/upload/v1620154961/Brands/SurLaTable.svg"
   />
 );
