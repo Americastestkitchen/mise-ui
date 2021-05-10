@@ -25,6 +25,7 @@ import EditorsNote from './components/EditorsNote';
 import EmailForm from './components/Forms/EmailForm';
 import FeatureCard from './components/Cards/FeatureCard';
 import FilterButton from './components/FilterButton';
+import FinePrint from './components/Articles/FinePrint';
 import FreeTrialAd from './components/Ads/ShowcaseAds/FreeTrialAd';
 import HeroAd from './components/Ads/HeroAd';
 import HeroCard from './components/Cards/HeroCard';
@@ -106,6 +107,7 @@ export {
   FavoriteActionButton,
   FeatureCard,
   FilterButton,
+  FinePrint,
   FreeTrialAd,
   fonts,
   Icons,
