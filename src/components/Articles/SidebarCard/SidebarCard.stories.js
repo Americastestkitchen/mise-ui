@@ -3,7 +3,7 @@ import React from 'react';
 import SidebarCard from './index';
 
 export default {
-    title: 'Components|Cards/SidebarCard',
+    title: 'Components|Articles/SidebarCard',
     component: SidebarCard,
 };
 
@@ -11,8 +11,6 @@ export const WithImage = () => (
     <SidebarCard 
       altText="picture of a thing"
       description="We’ve happily made do with Weber’s basic kettle for years. But would newer, more tricked-out charcoal cookers be worth the upgrade?"
-      deviceType="tablet"
-      lazy={true}
       photo="TnT/2020/1_CCJJ_Dill%20Pickles/SPS_Pickle_Samples_with_Brine_104-1" 
       title="FAQ About Storing Blue Cheese" 
       type="Article" 
