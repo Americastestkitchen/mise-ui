@@ -3,7 +3,7 @@ const images = [{
   attributes: {
     photo: {
       publicId: 'TnT/2020/1_CCJJ_Dill%20Pickles/STP_Spear_Crunch_102',
-      width: 400,
+      contentWidth: 400,
       height: 400,
       format: 'gif',
     },
@@ -14,7 +14,7 @@ const images = [{
   attributes: {
     photo: {
       publicId: 'TnT/2020/1_CCJJ_Dill%20Pickles/STP_Spear_Crunch_102',
-      width: 400,
+      contentWidth: 400,
       height: 400,
       format: 'gif',
     },
@@ -25,7 +25,7 @@ const images = [{
   attributes: {
     photo: {
       publicId: 'TnT/2020/1_CCJJ_Dill%20Pickles/STP_Spear_Crunch_102',
-      width: 400,
+      contentWidth: 400,
       height: 400,
       format: 'gif',
     },
