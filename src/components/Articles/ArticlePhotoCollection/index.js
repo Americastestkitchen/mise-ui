@@ -8,37 +8,44 @@ import { color, font, fontSize, mixins } from '../../../styles';
 import { getImageUrl } from '../../../lib/cloudinary';
 
 const PhotoCollectionWrapper = styled.div`
-
-  ${breakpoint('xlg')`
   .photo-collection__default {
     display: flex;
-    margin-bottom: 3rem;
-    ${mixins.articlesWidth('default')}
+    flex-direction: column;
+  }
 
-      figcaption {
-        min-width: 20rem;
-        width: 100%;
+  .photo-collection__wide {
+    display: flex;
+    flex-direction: column;
+  }
+
+  ${breakpoint('xlg')`
+    .photo-collection__default {
+      flex-direction: row;
+      margin-bottom: 3rem;
+      ${mixins.articlesWidth('default')}
+
+        figcaption {
+          min-width: 20rem;
+          width: 100%;
+        }
+
+        picture:not(:last-child) {
+          margin-right: 1.6rem;
+        }
       }
 
-      picture:not(:last-child) {
-        margin-right: 1.6rem;
-      }
-    }
+      .photo-collection__wide {
+        ${mixins.articlesWidth('wide')}
 
-    .photo-collection__wide {
-      display: flex;
-      flex-direction: column;
-      ${mixins.articlesWidth('wide')}
+        figcaption {
+          max-width: 63.4rem;
+          width: 100%;
+        }
 
-      figcaption {
-        max-width: 63.4rem;
-        width: 100%;
+        picture:not(:last-child) {
+          margin-right: 2.2rem;
+        }
       }
-
-      picture:not(:last-child) {
-        margin-right: 2.2rem;
-      }
-    }
   `}
 `;
 
@@ -143,7 +150,7 @@ const ArticlePhotoCollection = ({
         {items.map((el, i) => {
           const imageClass = count === 2 ? 'two-up' : 'three-up';
           const { altText: alt, photo } = el.attributes;
-          const ar = photo.width / photo.height;
+          const ar = photo.contentWidth / photo.height;
 
           return (
             <CollectionPicture

@@ -7,6 +7,7 @@ import { color, font, fontSize, mixins } from '../../../../styles';
 
 const ImageListWrapper = styled.aside`
   background-color: ${color.white};
+  margin: 3rem 0 2.7rem;
   max-width: 34.1rem;
   padding: 2.4rem 1rem 2rem;
 
