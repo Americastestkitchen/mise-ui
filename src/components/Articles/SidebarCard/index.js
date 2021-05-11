@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 
-import Image from '../shared/Image';
 import { color, font, fontSize, letterSpacing, mixins } from '../../../styles';
 import { getImageUrl } from '../../../lib/cloudinary';
 
@@ -24,6 +23,21 @@ const SidebarCardContainer = styled.aside`
     height: auto;
     width: 20rem;
   `}
+
+  picture {
+    min-height: 14.5rem;
+    min-width: 14.5rem;
+
+    ${breakpoint('md')`
+      min-height: 16.1rem;
+      min-width: 16.1rem;
+    `}
+
+    ${breakpoint('xlg')`
+      min-height: 20rem;
+      min-width: 20rem;
+    `}
+  }
 `;
 
 const SidebarTextContent = styled.div`
@@ -65,7 +79,8 @@ const HeadlineType = styled.p`
 const SidebarTitle = styled.h2`
   color: ${color.eclipse};
   font: ${fontSize.lg}/2.1rem ${font.pnb};
-  letter-spacing: ${letterSpacing.lg};
+  letter-spacing: normal;
+  min-width: 16.8rem;
 
   ${breakpoint('md')`
     letter-spacing: 2.08px;
@@ -84,7 +99,7 @@ const SidebarDescription = styled.span`
 
   ${breakpoint('md')`
     font: ${fontSize.md}/2.0rem ${font.pnr};
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     ${mixins.truncateLineClamp(1)};
   `}
 
@@ -107,17 +122,9 @@ const SidebarLink = styled.a`
   `}
 `;
 
-const imageSizing = {
-  desktop: 200,
-  tablet: 161,
-  mobile: 145,
-};
-
 const SidebarCard = ({
   altText,
   description,
-  deviceType,
-  lazy,
   photo,
   title,
   type,
@@ -125,12 +132,21 @@ const SidebarCard = ({
 }) => (
   <SidebarCardContainer>
     {photo ? (
-      <Image
-        className="sidebar-image"
-        imageAlt={altText}
-        imageUrl={getImageUrl(photo, { aspectRatio: '1:1', height: imageSizing[deviceType] })}
-        lazy={lazy}
-      />
+      <picture>
+        <source
+          media="(min-width: 1136px)"
+          srcSet={getImageUrl(photo, { aspectRatio: '1:1', height: 200, width: 200 })}
+        />
+        <source
+          media="(min-width: 768px)"
+          srcSet={getImageUrl(photo, { aspectRatio: '1:1', height: 161, width: 161 })}
+        />
+        <img
+          alt={altText}
+          className="sidebar-image"
+          src={getImageUrl(photo, { aspectRatio: '1:1', height: 145, width: 145 })}
+        />
+      </picture>
     ) : null}
     <SidebarTextContent photo={Boolean(photo)}>
       <HeadlineType>{type === 'HowTo' ? 'How to' : type}</HeadlineType>
@@ -144,8 +160,6 @@ const SidebarCard = ({
 SidebarCard.propTypes = {
   altText: PropTypes.string.isRequired,
   description: PropTypes.string,
-  deviceType: PropTypes.string,
-  lazy: PropTypes.bool,
   photo: PropTypes.string,
   title: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
@@ -154,8 +168,6 @@ SidebarCard.propTypes = {
 
 SidebarCard.defaultProps = {
   description: null,
-  deviceType: 'desktop',
-  lazy: false,
   photo: null,
 };
 
