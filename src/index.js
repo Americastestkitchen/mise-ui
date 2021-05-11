@@ -58,7 +58,7 @@ import SearchRefinementList from './components/Algolia/search/SearchRefinementLi
 import SearchSortBy from './components/Algolia/search/SearchSortBy';
 import ShowMoreLess from './components/ShowMoreLess';
 import ShowMoreResults from './components/ShowMoreResults';
-import SidebarCard from './components/Cards/SidebarCard';
+import SidebarCard from './components/Articles/SidebarCard';
 import SingleMembershipAd from './components/Ads/SingleMembershipAd';
 import SingleProductAd from './components/Ads/SingleProductAd';
 import SingleProductShowcaseAd from './components/Ads/ShowcaseAds/SingleProductShowcaseAd';
