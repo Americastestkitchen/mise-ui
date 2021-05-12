@@ -25,6 +25,34 @@ export const NoImageDefaultWidth = () => <ArticleTextBlock {...storyProps.noImag
 
 export const NoImageWideWidth = () => <ArticleTextBlock {...storyProps.noImageWideWidth} />;
 
+export const FloatImageWithoutCaption = () => (
+  <ArticleTextBlockStoryWrapper>
+    <ArticleTextBlock {...storyProps.floatImageWithoutCaption} />
+    <ArticleTextBlock {...storyProps.floatImageSupplement} />
+  </ArticleTextBlockStoryWrapper>
+);
+
+export const FloatImageWithCaption = () => (
+  <ArticleTextBlockStoryWrapper>
+    <ArticleTextBlock {...storyProps.floatImageWithCaption} />
+    <ArticleTextBlock {...storyProps.floatImageSupplement} />
+  </ArticleTextBlockStoryWrapper>
+);
+
+export const SidebarImageWithoutCaption = () => (
+  <ArticleTextBlockStoryWrapper>
+    <ArticleTextBlock {...storyProps.sidebarImageWithoutCaption} />
+    <ArticleTextBlock {...storyProps.floatImageSupplement} />
+  </ArticleTextBlockStoryWrapper>
+);
+
+export const SidebarImageWithCaption = () => (
+  <ArticleTextBlockStoryWrapper>
+    <ArticleTextBlock {...storyProps.sidebarImageWithCaption} />
+    <ArticleTextBlock {...storyProps.floatImageSupplement} />
+  </ArticleTextBlockStoryWrapper>
+);
+
 export const BoxNoImageDefaultWidth = () => (
   <ArticleTextBlockStoryWrapper>
     <ArticleTextBlock {...storyProps.boxNoImageDefaultWidth} />
