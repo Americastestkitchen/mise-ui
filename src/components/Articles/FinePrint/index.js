@@ -11,7 +11,7 @@ import { color } from '../../../styles';
 
 const FinePrintContainer = styled.div`
   background-color: ${color.white};
-  max-width: 33.3rem;
+  max-width: 100%;
 
   ${breakpoint('md')`
     max-width: 69.6rem;
@@ -33,17 +33,24 @@ const FinePrintContainer = styled.div`
     width: 3rem;
 
     ${breakpoint('md')`
-      right: 3.2rem;
+      right: 0;
       top: 4.5rem;
     `}
 
     ${breakpoint('xlg')`
-      left: 62.7rem;
+      left: 60.2rem;
     `}
   }
 
   .accordion-content-wrapper > button {
     width: 100%;
+    &:hover {
+      .accordion-item__icon {
+        ${breakpoint('xlg')`
+          left: 59.5rem;
+        `}
+      }
+    }
   }
 `;
 
@@ -65,7 +72,7 @@ const FinePrint = ({
       id={id || 'fine-print__accordion'}
       isFieldset={isFieldset}
       isHidden={isHidden}
-      label={<FinePrintLabel subtitle={subtitle} title={title} />}
+      label={() => <FinePrintLabel subtitle={subtitle} title={title} />}
       onClick={onClick}
     >
       <FinePrintContent content={content} />
