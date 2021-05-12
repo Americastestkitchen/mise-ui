@@ -6,11 +6,14 @@ import styled from 'styled-components';
 import { color, font, fontSize } from '../../../../styles';
 import { getImageUrl } from '../../../../lib/cloudinary';
 
-const ListItemWrapper = styled.aside`
+const ListItemWrapper = styled.div`
   background-color: ${color.white};
   display: flex;
   flex-direction: column;
-  margin-bottom: 1.6rem;
+
+  &:not(:last-child){
+    margin-bottom: 1.6rem;
+  }
 
   ${breakpoint('md')`
     flex-direction: row;
@@ -26,6 +29,10 @@ const ListItemWrapper = styled.aside`
     margin-bottom: 1.6rem;
     min-height: 24.1rem;
     object-fit: cover;
+
+    &:not(:last-child) {
+      margin-bottom: 1.6rem;
+    }
     
     ${breakpoint('md')`
       margin-bottom: 0;
@@ -42,10 +49,20 @@ const ListItemWrapper = styled.aside`
 const ListItemContent = styled.p`
   color: ${color.eclipse};
   font: ${fontSize.md}/2.4rem ${font.pnr};
-  width: 32.1rem;
+  .default-content {
+    width: 32.1rem;
+  }
+  .wide-content {
+    width: 32.1rem;
+  }
 
   ${breakpoint('md')`
-    width: 35.6rem;
+    .default-content {
+      width: 35.6rem;
+    }
+    .wide-content {
+      width: 35.6rem;
+    }
   `}    
 
   ${breakpoint('xlg')`
