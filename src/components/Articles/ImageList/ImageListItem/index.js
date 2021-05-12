@@ -25,7 +25,7 @@ const ListItemWrapper = styled.div`
   `}
 
   .list-item__image {
-    max-width: 32.1rem;
+    max-width: 100%;
     margin-bottom: 1.6rem;
     min-height: 24.1rem;
     object-fit: cover;
