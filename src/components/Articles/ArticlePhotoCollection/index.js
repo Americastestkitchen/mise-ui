@@ -52,7 +52,7 @@ const PhotoCollectionWrapper = styled.div`
 const PhotoCollection = styled.div`
   display: flex;
   margin-bottom: 1.2rem;
-  max-width: 34.1rem;
+  max-width: 100%;
 
   picture:not(:last-child) {
     margin-right: 0.9rem;
@@ -72,14 +72,7 @@ const PhotoCollection = styled.div`
 `;
 
 const CollectionPicture = styled.picture`
-  .photo-two-up {
-    max-height: 16.6rem;
-    max-width: 16.6rem;
-  }
-  .photo-three-up {
-    max-height: 16.6rem;
-    max-width: 10.8rem;
-  }
+
 
   ${breakpoint('md')`
     .photo-two-up {
