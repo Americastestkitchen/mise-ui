@@ -159,7 +159,7 @@ const imageConfig = {
     return {
       ...baseImageConfig,
       aspectRatio: '56:33',
-      width: 500,
+      width: 450,
     };
   },
   showcaseSchoolAdMobile() {
