@@ -6,6 +6,7 @@ import AccordionRefinementList from './components/Algolia/shared/AccordionRefine
 import ArticleFigcaption from './components/Articles/shared/ArticleFigcaption';
 import ArticleImage from './components/Articles/ArticleImage';
 import ArticlePhotoCollection from './components/Articles/ArticlePhotoCollection';
+import ArticleTextBlock from './components/Articles/ArticleTextBlock';
 import Badge from './components/Badge';
 import BookCarouselAd from './components/Ads/ReviewsAds/BookCarouselAd';
 import breakpoints from './styles/breakpoints';
@@ -86,6 +87,7 @@ export {
   ArticleFigcaption,
   ArticleImage,
   ArticlePhotoCollection,
+  ArticleTextBlock,
   AudioPlayer,
   Badge,
   BookCarouselAd,
