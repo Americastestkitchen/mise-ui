@@ -68,6 +68,27 @@ const sidebarImageWithCaption = {
   },
 };
 
+const sidebarCard = {
+  altText: 'picture of a thing',
+  description: 'We’ve happily made do with Weber’s basic kettle for years. But would newer, more tricked-out charcoal cookers be worth the upgrade?',
+  title: 'FAQ About Storing Blue Cheese',
+  type: 'Article',
+  url: 'https://www.americastestkitchen.com/articles/3236-this-hardware-store-staple-deodorizes-your-fridge-better-than-baking-soda',
+};
+
+const sidebarCardWithoutImage = {
+  ...noImageDefaultWidth,
+  sidebarCard,
+};
+
+const sidebarCardWithImage = {
+  ...sidebarCardWithoutImage,
+  sidebarCard: {
+    ...sidebarCard,
+    photo: 'TnT/2020/1_CCJJ_Dill%20Pickles/SPS_Pickle_Samples_with_Brine_104-1',
+  },
+};
+
 const boxContent = 'We tested a variety of bowl sizes, ranging from 10 to 20 ounces. The smaller bowls (10 to 12 ounces) were great for sides—potato salad—or even containing a messy pulled pork sandwich or a slice of ice cream cake. However, they were too small to hold a meal-size portion of chili or a salad containing bulky greens. We found that the 16- to 20-ounce bowls were too big for a small side, but they were perfect for larger portions of soup, stew, and salad. If you’re serving a variety of foods and want to buy only one model, we think that the larger sizes are more versatile.';
 const boxTitle = 'Which Size Is Right for You?';
 
@@ -122,6 +143,8 @@ export default {
   floatImageSupplement,
   sidebarImageWithoutCaption,
   sidebarImageWithCaption,
+  sidebarCardWithoutImage,
+  sidebarCardWithImage,
   boxNoImageDefaultWidth,
   boxNoImageWideWidth,
   boxTopImageDefaultWidth,
