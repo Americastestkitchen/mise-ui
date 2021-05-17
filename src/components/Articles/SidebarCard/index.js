@@ -11,17 +11,16 @@ const SidebarCardContainer = styled.aside`
   display: flex;
   flex-direction: row;
   height: 14.1rem;
-  width: calc(100% - 3.4rem);
+  width: 100%;
 
   ${breakpoint('md')`
     height: 16.1rem;
-    width: calc(100% - 7.2rem);
   `}
 
   ${breakpoint('xlg')`
     flex-direction: column;
     height: auto;
-    width: 20rem;
+    max-width: 20rem;
   `}
 
   picture {

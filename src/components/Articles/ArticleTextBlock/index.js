@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 
 import ArticleTextBlockFloatImage from './components/ArticleTextBlockFloatImage';
+import SidebarCard from '../SidebarCard';
 import { color, font, fontSize, lineHeight, mixins } from '../../../styles';
 
 const ArticleTextBlockWrapper = styled.div`
@@ -112,6 +113,14 @@ const ArticleTextBlockImage = styled.img`
   width: 100%;
 `;
 
+const ArticleTextBlockSidebarCard = styled.div`
+  ${breakpoint('xlg')`
+    left: calc(100% + 1.6rem);
+    position: absolute;
+    top: 0;
+  `}
+`;
+
 const generateImageElAndPosition = (photo) => {
   let imageEl = null;
   if (photo) {
@@ -137,6 +146,7 @@ const ArticleTextBlock = ({
   displayOption,
   dropCap,
   photo,
+  sidebarCard,
   title,
   width,
 }) => {
@@ -159,6 +169,11 @@ const ArticleTextBlock = ({
           className={`article-text-block__p${dropCap ? ' drop-cap' : ''}`}
           dangerouslySetInnerHTML={{ __html: content }}
         />
+        {sidebarCard && (
+          <ArticleTextBlockSidebarCard>
+            <SidebarCard {...sidebarCard} />
+          </ArticleTextBlockSidebarCard>
+        )}
       </ArticleTextBlockCopy>
     </ArticleTextBlockWrapper>
   );
@@ -177,6 +192,10 @@ ArticleTextBlock.propTypes = {
     photoDisplayOption: PropTypes.oneOf(['bottom', 'float', 'sidebar', 'top']).isRequired,
     photoUrl: PropTypes.string.isRequired,
   }),
+  /** Sidebar card configuration options */
+  sidebarCard: PropTypes.shape({
+    ...SidebarCard.propTypes,
+  }),
   /** Heading level 3 title for text block */
   title: PropTypes.string,
   /** Width configuration for PullQuote */
@@ -187,6 +206,7 @@ ArticleTextBlock.defaultProps = {
   displayOption: 'default',
   dropCap: false,
   photo: null,
+  sidebarCard: null,
   title: null,
   width: 'default',
 };
