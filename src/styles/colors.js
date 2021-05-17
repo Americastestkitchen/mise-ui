@@ -82,6 +82,7 @@ const color = {
   teal: '#167A7A',
   deepSea: '#0B3C3D',
   danube: '#5E9ED6',
+  bigStone: '#182d48',
 };
 
 export default color;
