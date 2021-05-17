@@ -204,6 +204,14 @@ const imageConfig = {
       width: 205,
     };
   },
+  reviewsMarketingHat(width, height) {
+    return {
+      aspectRatio: '16:9',
+      crop: 'fill',
+      height,
+      width,
+    };
+  },
 };
 
 /**
