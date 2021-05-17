@@ -53,6 +53,20 @@ export const SidebarImageWithCaption = () => (
   </ArticleTextBlockStoryWrapper>
 );
 
+export const SidebarCardWithoutImage = () => (
+  <ArticleTextBlockStoryWrapper>
+    <ArticleTextBlock {...storyProps.sidebarCardWithoutImage} />
+    <ArticleTextBlock {...storyProps.floatImageSupplement} />
+  </ArticleTextBlockStoryWrapper>
+);
+
+export const SidebarCardWithImage = () => (
+  <ArticleTextBlockStoryWrapper>
+    <ArticleTextBlock {...storyProps.sidebarCardWithImage} />
+    <ArticleTextBlock {...storyProps.floatImageSupplement} />
+  </ArticleTextBlockStoryWrapper>
+);
+
 export const BoxNoImageDefaultWidth = () => (
   <ArticleTextBlockStoryWrapper>
     <ArticleTextBlock {...storyProps.boxNoImageDefaultWidth} />
