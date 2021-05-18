@@ -212,6 +212,14 @@ const imageConfig = {
       width,
     };
   },
+  reviewsCookingSchoolAd(width, height) {
+    return {
+      aspectRatio: '1:1',
+      height,
+      width,
+      crop: 'fill',
+    };
+  },
 };
 
 /**
