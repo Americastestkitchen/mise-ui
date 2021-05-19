@@ -4,6 +4,7 @@ import Accordion from './components/Accordion';
 import AccordionControl from './components/AccordionControl';
 import AccordionRefinementList from './components/Algolia/shared/AccordionRefinementList';
 import Badge from './components/Badge';
+import BookCarouselAd from './components/Ads/ReviewsAds/BookCarouselAd';
 import breakpoints from './styles/breakpoints';
 import Brands from './components/DesignTokens/Brands';
 import Button from './components/Buttons/Button';
@@ -44,6 +45,7 @@ import RefinementList from './components/Algolia/shared/RefinementList';
 import RelatedDocumentCard from './components/Cards/RelatedDocumentCard';
 import ResultsCount from './components/Algolia/shared/ResultsCount';
 import ReviewableSummaryCard from './components/Cards/ReviewableSummaryCard';
+import ReviewsEmailCapture from './components/Ads/ReviewsAds/ReviewsEmailCapture';
 import ReviewsMarketingHat from './components/Ads/ReviewsAds/ReviewsMarketingHat';
 import SchoolAd from './components/Ads/ShowcaseAds/SchoolAd';
 import SearchBanner from './components/SearchBanner';
@@ -75,6 +77,7 @@ export {
   AccordionRefinementList,
   AudioPlayer,
   Badge,
+  BookCarouselAd,
   breakpoints,
   Brands,
   Button,
@@ -121,6 +124,7 @@ export {
   RelatedDocumentCard,
   ResultsCount,
   ReviewableSummaryCard,
+  ReviewsEmailCapture,
   ReviewsMarketingHat,
   SchoolAd,
   SearchBanner,

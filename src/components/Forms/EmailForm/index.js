@@ -132,6 +132,7 @@ const EmailForm = ({
   buttonTextColor,
   buttonText,
   errorText,
+  howWeUseText,
   inputId,
   inputLabel,
   instanceId,
@@ -204,7 +205,7 @@ const EmailForm = ({
             setShowHow(curr => !curr);
           }}
         >
-          How we use your email address
+          {howWeUseText}
         </HowWeUseLink>
         <HoweWeUseText
           className="email-form__how-we-use-text"
@@ -230,6 +231,7 @@ EmailForm.propTypes = {
   buttonTextColor: PropTypes.string,
   buttonText: PropTypes.string,
   errorText: PropTypes.string,
+  howWeUseText: PropTypes.string,
   inputId: PropTypes.string.isRequired,
   inputLabel: PropTypes.string,
   instanceId: PropTypes.string,
@@ -244,6 +246,7 @@ EmailForm.defaultProps = {
   buttonTextColor: 'white',
   buttonText: 'Sign me up',
   errorText: 'Invalid email address',
+  howWeUseText: 'How we use your email address',
   inputLabel: 'Email address',
   instanceId: null,
   placeholder: 'Enter your email address',
