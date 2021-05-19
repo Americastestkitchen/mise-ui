@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -73,18 +74,12 @@ const Image = ({
 
 Image.propTypes = {
   className: PropTypes.string,
-  height: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]),
+  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   imageAlt: PropTypes.string.isRequired,
   imageUrl: PropTypes.string.isRequired,
   lazy: PropTypes.bool,
   lowQualityImageUrl: PropTypes.string,
-  width: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]),
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 Image.defaultProps = {

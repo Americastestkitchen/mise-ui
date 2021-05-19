@@ -46,7 +46,7 @@ const HeroCardLogo = styled.div`
     max-width: 21rem;
   `}
 
-  svg {
+  img {
     max-width: 100%;
     width: 100%;
   }
