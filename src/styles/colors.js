@@ -83,6 +83,7 @@ const color = {
   deepSea: '#0B3C3D',
   danube: '#5E9ED6',
   bigStone: '#182d48',
+  pictonBlue: '#3c9be2',
 };
 
 export default color;
