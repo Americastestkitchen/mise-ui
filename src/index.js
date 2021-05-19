@@ -14,6 +14,7 @@ import CardCarousel from './components/Carousels/CardCarousel';
 import CardWrapper from './components/Cards/CardWrapper';
 import CategoryCard from './components/Cards/CategoryCard';
 import ClearRefinements from './components/Algolia/shared/ClearRefinements';
+import CookingSchoolAd from './components/Ads/ReviewsAds/CookingSchoolAd';
 import CurrentRefinements from './components/Algolia/shared/CurrentRefinements';
 import DocumentListCarousel from './components/Carousels/DocumentListCarousel';
 import FavoriteActionButton from './components/Buttons/ActionButtons/FavoriteActionButton';
@@ -86,6 +87,7 @@ export {
   CircledText,
   color,
   ClearRefinements,
+  CookingSchoolAd,
   CurrentRefinements,
   DocumentListCarousel,
   EditorsNote,
