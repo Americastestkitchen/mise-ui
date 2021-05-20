@@ -182,57 +182,53 @@ const ReviewsMarketingHat = ({
   description,
   desktopAsset,
   headline,
+  incode,
   inputId,
   isAnonymous,
+  mdc,
   mobileAsset,
   onSubmit,
-  subdomain,
   title,
-  user,
 }) => (
-  <>
-    {user ? (
-      <MarketingHatWrapper>
-        <AdImage>
-          <source
-            srcSet={getImageUrl(desktopAsset, 'reviewsMarketingHat', 777, 307)}
-            media="(min-width: 1136px)"
+  <MarketingHatWrapper>
+    <AdImage>
+      <source
+        srcSet={getImageUrl(desktopAsset, 'reviewsMarketingHat', 777, 307)}
+        media="(min-width: 1136px)"
+      />
+      <source
+        srcSet={getImageUrl(desktopAsset, 'reviewsMarketingHat', 376, 307)}
+        media="(min-width: 768px)"
+      />
+      <img
+        alt=""
+        className="marketing-hat__image"
+        src={getImageUrl(mobileAsset, 'reviewsMarketingHat', 375, 267)}
+      />
+    </AdImage>
+    <ContentSection isAnonymous={isAnonymous}>
+      <ContentWrapper isAnonymous={isAnonymous}>
+        <Headline>{headline}</Headline>
+        <Title>{title}</Title>
+        <Description isAnonymous={isAnonymous}>{description}</Description>
+        {isAnonymous ? (
+          <EmailForm
+            buttonText={buttonText}
+            inputId={inputId}
+            onSubmit={onSubmit}
+            placeholder="Enter Your Email Address"
           />
-          <source
-            srcSet={getImageUrl(desktopAsset, 'reviewsMarketingHat', 376, 307)}
-            media="(min-width: 768px)"
-          />
-          <img
-            alt=""
-            className="marketing-hat__image"
-            src={getImageUrl(mobileAsset, 'reviewsMarketingHat', 375, 267)}
-          />
-        </AdImage>
-        <ContentSection isAnonymous={isAnonymous}>
-          <ContentWrapper isAnonymous={isAnonymous}>
-            <Headline>{headline}</Headline>
-            <Title>{title}</Title>
-            <Description isAnonymous={isAnonymous}>{description}</Description>
-            {isAnonymous ? (
-              <EmailForm
-                buttonText={buttonText}
-                inputId={inputId}
-                onSubmit={onSubmit}
-                placeholder="Enter Your Email Address"
-              />
-            ) : (
-              <RegistrantSubmit
-                href=""
-                onClick={() => onSubmit(subdomain, user.email, true)}
-              >
-                {buttonText}
-              </RegistrantSubmit>
-            )}
-          </ContentWrapper>
-        </ContentSection>
-      </MarketingHatWrapper>
-    ) : null }
-  </>
+        ) : (
+          <RegistrantSubmit
+            href={`/order?mdc=${mdc}&incode=${incode}`}
+            onClick={onSubmit}
+          >
+            {buttonText}
+          </RegistrantSubmit>
+        )}
+      </ContentWrapper>
+    </ContentSection>
+  </MarketingHatWrapper>
 );
 
 ReviewsMarketingHat.propTypes = {
@@ -240,23 +236,22 @@ ReviewsMarketingHat.propTypes = {
   description: PropTypes.string.isRequired,
   desktopAsset: PropTypes.string,
   headline: PropTypes.string.isRequired,
+  incode: PropTypes.string.isRequired,
   /** Input Id used in email form to shift focus on error */
   inputId: PropTypes.string.isRequired,
   /** Remove Email Capture in instances where user is not anon */
   isAnonymous: PropTypes.bool.isRequired,
+  mdc: PropTypes.string.isRequired,
   mobileAsset: PropTypes.string,
   /** Function that redirects & fires mixpanel w/ corresponding incodes */
   onSubmit: PropTypes.func.isRequired,
-  subdomain: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   /** Object used to prevent marketing hat flashing while user is being defined */
-  user: PropTypes.object,
 };
 
 ReviewsMarketingHat.defaultProps = {
   desktopAsset: 'ATK Reviews Ads/PansHat_Desktop_3x.jpg',
   mobileAsset: 'ATK Reviews Ads/PansHat_Mobile_3x.jpg',
-  user: null,
 };
 
 export default ReviewsMarketingHat;
