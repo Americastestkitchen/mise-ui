@@ -20,6 +20,8 @@ export const ReviewsLanding = () => (
     <CookingSchoolAd
       deviceType="desktop"
       identifier="landing"
+      incode="MAR1DCS1M"
+      mdc="SF0110SM8KLM8P"
       onClick={onClick}
     />
   </ThemeProvider>
@@ -30,6 +32,8 @@ export const ReviewsLandingMobile = () => (
       <CookingSchoolAd
         deviceType="mobile"
         identifier="landing"
+        incode="MAR1DCS1M"
+        mdc="SF0110SM8KLM8P"
         onClick={onClick}
       />
     </ThemeProvider>
@@ -40,6 +44,8 @@ export const RecipeDetail = () => (
     <CookingSchoolAd
       deviceType="desktop"
       identifier="detail"
+      incode="MAR1DCS1M"
+      mdc="SF0110SM8KLM8P"
       onClick={onClick}
     />
   </ThemeProvider>
