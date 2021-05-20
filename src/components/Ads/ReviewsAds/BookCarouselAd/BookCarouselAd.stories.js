@@ -13,6 +13,8 @@ export default {
 
 export const DefaultBookCarouselAd = () => (
   <ThemeProvider theme={{ breakpoints }}>
-    <BookCarouselAd />
+    <BookCarouselAd 
+      sourceKey="CARDDTVAA"
+    />
   </ThemeProvider>
 )

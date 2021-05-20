@@ -21,12 +21,12 @@ export const DefaultFormer = () => (
     buttonText="Rejoin Now"
     description="Would you cook 700 eggs to find the best nonstick skillet? We did, so you don't have to. Rejoin now to buy the best products."
     headline="Get instant access to all ratings & recipes"
+    incode="MAR2DAA1A"
     inputId="email-form__input"
     isAnonymous={false}
+    mdc='AF0150MA1D'
     onSubmit={handleSubmit}
-    subdomain="www-test"
     title="Rejoin Now"
-    user={ { testing: true }}
   />
 </ThemeProvider>
 )
@@ -37,12 +37,12 @@ export const DefaultAnonymous = () => (
     buttonText="Get Free Access"
     description="Would you cook 700 eggs to find the best nonstick skillet? We did, so you don't have to. Rejoin now to buy the best products."
     headline="Get instant access to all ratings & recipes"
+    incode="MAR2DAA1A"
     inputId="email-form__input"
     isAnonymous={true}
+    mdc='AF0150MA1D'
     onSubmit={handleSubmit}
-    subdomain="www-test"
     title="2-Week Free Trial"
-    user={ { testing: true }}
   />
 </ThemeProvider>
   )
@@ -53,12 +53,12 @@ export const DefaultRegistrant = () => (
     buttonText="Get Free Access"
     description="Would you cook 700 eggs to find the best nonstick skillet? We did, so you don't have to. Rejoin now to buy the best products."
     headline="Get instant access to all ratings & recipes"
+    incode="MAR2DAA1A"
     inputId="email-form__input"
     isAnonymous={false}
+    mdc='AF0150MA1D'
     onSubmit={handleSubmit}
-    subdomain="www-test"
     title="2-Week Free Trial"
-    user={ { testing: true }}
   />
 </ThemeProvider>
 )
@@ -69,12 +69,12 @@ export const DefaultSingleSite = () => (
     buttonText="Upgrade Now"
     description="Would you cook 700 eggs to find the best nonstick skillet? We did, so you don't have to. Rejoin now to buy the best products."
     headline="Get instant access to all ratings & recipes"
+    incode="MAR2DAA1A"
     inputId="email-form__input"
     isAnonymous={false}
+    mdc='AF0150MA1D'
     onSubmit={handleSubmit}
-    subdomain="www-test"
     title="Upgrade Now"
-    user={ { testing: true }}
   />
 </ThemeProvider>
 )

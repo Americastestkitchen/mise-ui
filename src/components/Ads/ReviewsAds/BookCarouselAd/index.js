@@ -26,6 +26,8 @@ const AdCtaLink = styled.a`
   margin-bottom: ${spacing.xsm};
   min-height: 4rem;
   min-width: 19.6rem;
+  position: absolute;
+  top: 35rem;
   text-transform: uppercase;
 `;
 
@@ -35,12 +37,13 @@ const AdTitle = styled.h2`
   font-weight: bold;
   letter-spacing: normal;
   margin-bottom: ${spacing.xxsm};
+  position: absolute;
+  top: 2.5rem;
   text-align: center;
 `;
 
 const AdWrapper = styled.div`
   align-items: center;
-  background-color: ${color.eclipse};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -50,15 +53,16 @@ const AdWrapper = styled.div`
   overflow: hidden;
 
   img {
-    max-height: 27rem;
-    max-width: 20.9rem;
-    transform: rotate(10deg);
+    max-height: 40rem;
+    max-width: 27.2rem;
   }
 `;
 
 const BookCarouselAd = ({
   cloudinaryId,
   ctaLinkText,
+  hrefUrl,
+  sourceKey,
   title,
 }) => (
   <AdWrapper>
@@ -66,21 +70,24 @@ const BookCarouselAd = ({
     <Image
       className="book-carousel-ad__image"
       imageAlt="The Complete America's Test Kitchen TV Show Cookbook"
-      imageUrl={getImageUrl(cloudinaryId, { aspectRatio: '673:790', width: 177, height: 225 })}
+      imageUrl={getImageUrl(cloudinaryId, { aspectRatio: '816:1200', width: 272, height: 400 })}
     />
-    <AdCtaLink href="">{ctaLinkText}</AdCtaLink>
+    <AdCtaLink href={`${hrefUrl}?sourcekey=${sourceKey}`} target="_blank">{ctaLinkText}</AdCtaLink>
   </AdWrapper>
 );
 
 BookCarouselAd.propTypes = {
   cloudinaryId: PropTypes.string,
   ctaLinkText: PropTypes.string,
+  hrefUrl: PropTypes.string,
+  sourceKey: PropTypes.string.isRequired,
   title: PropTypes.string,
 };
 
 BookCarouselAd.defaultProps = {
-  cloudinaryId: 'ATK Reviews Ads/ATKTV21_Cover_CMYK_3x.png',
+  cloudinaryId: 'ATK Reviews Ads/Mask_Group_49066_3x.jpg',
   ctaLinkText: 'Save 56% Now',
+  hrefUrl: 'https://shop.americastestkitchen.com/complete-atk-21.html',
   title: 'Every Recipe (1,670!) From All 21 Seasons',
 };
 

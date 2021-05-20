@@ -166,8 +166,10 @@ const CookingSchoolAd = ({
   deviceType,
   headline,
   identifier,
-  onClick,
+  incode,
+  mdc,
   mobileLinkCta,
+  onClick,
 }) => (
   <AdWrapper className={`cooking-school-ad__${identifier}`}>
     <AdDimensions className={`cooking-school-ad__${identifier}`}>
@@ -190,7 +192,7 @@ const CookingSchoolAd = ({
       </MainContent>
       <CtaLink
         className={`cooking-school-ad__${identifier}`}
-        href=""
+        href={`/order?mdc=${mdc}&incode=${incode}`}
         onClick={onClick}
       >
         {deviceType === 'mobile' ? mobileLinkCta : linkCta}
@@ -205,9 +207,11 @@ CookingSchoolAd.propTypes = {
   deviceType: PropTypes.string.isRequired,
   headline: PropTypes.string,
   identifier: PropTypes.oneOf(['landing', 'detail']).isRequired,
+  incode: PropTypes.string.isRequired,
   linkCta: PropTypes.string,
-  onClick: PropTypes.func.isRequired,
+  mdc: PropTypes.string.isRequired,
   mobileLinkCta: PropTypes.string,
+  onClick: PropTypes.func.isRequired,
 };
 
 CookingSchoolAd.defaultProps = {
