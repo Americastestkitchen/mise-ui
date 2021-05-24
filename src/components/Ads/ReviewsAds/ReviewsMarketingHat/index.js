@@ -6,12 +6,17 @@ import styled from 'styled-components';
 // grab email for for bottom logic
 import EmailForm from '../../../Forms/EmailForm';
 import { getImageUrl } from '../../../../lib/cloudinary';
-import { color, font, fontSize, letterSpacing } from '../../../../styles';
+import { color, font, fontSize, letterSpacing, spacing } from '../../../../styles';
 
 const AdImage = styled.picture`
   max-height: 26.7rem;
   width: 100%;
   z-index: 1;
+
+  img {
+    max-height: 31.5rem;
+    min-width: 100%;
+  }
 
   ${breakpoint('md')`
     max-height: 30.7rem;
@@ -23,29 +28,48 @@ const AdImage = styled.picture`
       max-width: 77.7rem;
     }
   `}
+
+  ${breakpoint('xlg')`
+    min-width: 50%;
+
+    img {
+      min-height: 100%;
+    }
+  `}
 `;
 
 const ContentSection = styled.div`
   background-color: ${color.bigStone};
   left: 1.7rem;
-  padding: 1.6rem 1.9rem 2.4rem 2rem;
+  padding: ${spacing.sm} 1.9rem ${spacing.md} 2rem;
   position: absolute;
   text-align: left;
   top: 15.5rem;
   width: calc(100% - 3.4rem);
   z-index: 2;
 
+  &.anon-user {
+    padding: ${spacing.sm} 1.9rem ${spacing.xxsm} 2rem;
+  }
+
   ${breakpoint('md')`
     max-height: 30.7rem;
-    padding: ${({ isAnonymous }) => (isAnonymous
-    ? '1.4rem 1.8rem;'
-    : '4.1rem 3.6rem 4rem 1.8rem;')}
+    max-width: 50%;
+    padding: ${spacing.xlg} 3.6rem ${spacing.xlg} 1.8rem;
     position: static;
+
+    &.anon-user {
+      padding: 1.4rem 1.8rem;
+    }
   `}
 
   ${breakpoint('xlg')`
-    padding: 5.8rem 23.8rem 5.8rem 4rem;
+    padding: 5.1rem 23.8rem 5.8rem ${spacing.xlg};
     min-width: 83.2rem;
+
+    &.anon-user {
+      padding: 5.1rem 23.8rem 5.8rem ${spacing.xlg};
+    }
   `}
 `;
 
@@ -82,12 +106,23 @@ const ContentWrapper = styled.div`
 
     .email-form {
       flex-direction: row;
-      min-height: 4rem;
+      max-width: 51.5rem;
+      min-height: ${spacing.xlg};
+
+      button {
+        min-width: 22.5rem;
+      }
+
+      .form-input {
+        input {
+          max-height: ${spacing.xlg};
+          max-width: 29rem;
+        }
     }
 
     .email-form__how {
       left: 0;
-      padding-top: 0.7rem;
+      padding-top: ${spacing.xsm};
       position: absolute;
     }
   `}
@@ -97,14 +132,22 @@ const Description = styled.p`
   color: ${color.white};
   font: ${fontSize.md}/2.1rem ${font.pnr};
   letter-spacing: normal;
-  margin-bottom: 1.6rem;
+  margin-bottom: ${spacing.sm};
 
   ${breakpoint('md')`
-    margin-bottom: ${({ isAnonymous }) => (isAnonymous ? '1.2rem;' : '2.4rem;')}
+    margin-bottom: ${spacing.md};
+
+    &.anon-user {
+      margin-bottom: 1.2rem;
+    }
   `}
 
   ${breakpoint('xlg')`
     margin-bottom: 2rem;
+
+    &.anon-user {
+      margin-bottom: 2rem;
+    }
   `}
 `;
 
@@ -112,7 +155,7 @@ const Headline = styled.h2`
   color: ${color.white};
   font: ${fontSize.sm}/1.7rem ${font.pnb};
   letter-spacing: 1.4px;
-  margin-bottom: 0.7rem;
+  margin-bottom: ${spacing.xsm};
   text-transform: uppercase;
 
   ${breakpoint('md')`
@@ -130,14 +173,28 @@ const Headline = styled.h2`
 const MarketingHatWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  margin-bottom: 20rem;
   width: 100%;
+
+  &.anon-user {
+    margin-bottom: 26rem;
+  }
+
+  ${breakpoint('sm')`
+    margin-bottom: 14rem;
+
+    &.anon-user {
+      margin-bottom: 20rem;
+    }
+  `}
 
   ${breakpoint('md')`
     flex-direction: row;
-  `}
+    margin-bottom: 0;
 
-  ${breakpoint('xlg')`
-    width: 160.9rem;
+    &.anon-user {
+      margin-bottom: 0;
+    }
   `}
 `;
 
@@ -149,8 +206,8 @@ const RegistrantSubmit = styled.a`
   font: ${fontSize.lg}/2rem ${font.pnb};
   justify-content: center;
   letter-spacing: ${letterSpacing.cta};
-  max-height: 4rem;
-  min-height: 4rem;
+  max-height: ${spacing.xlg};
+  min-height: ${spacing.xlg};
   max-width: 100%;
   text-transform: uppercase;
 
@@ -163,15 +220,15 @@ const Title = styled.h3`
   color: ${color.white};
   font: 3rem/3rem ${font.pnb};
   letter-spacing: normal;
-  margin-bottom: 0.3rem;
+  margin-bottom: ${spacing.xxsm};
 
   ${breakpoint('md')`
     font: 4rem/3rem ${font.pnb};
-    margin-bottom: 1.6rem;
+    margin-bottom: ${spacing.sm};
   `}
 
   ${breakpoint('xlg')`
-    margin-bottom: 0.7rem;
+    margin-bottom: ${spacing.xsm};
     max-height: 4.9rem;
     min-height: 4.9rem;
   `}
@@ -190,27 +247,27 @@ const ReviewsMarketingHat = ({
   onSubmit,
   title,
 }) => (
-  <MarketingHatWrapper>
+  <MarketingHatWrapper className={isAnonymous ? 'anon-user' : ''}>
     <AdImage>
       <source
-        srcSet={getImageUrl(desktopAsset, 'reviewsMarketingHat', 777, 307)}
+        srcSet={getImageUrl(desktopAsset, 'reviewsMarketingHat', 307, 'fit')}
         media="(min-width: 1136px)"
       />
       <source
-        srcSet={getImageUrl(desktopAsset, 'reviewsMarketingHat', 376, 307)}
+        srcSet={getImageUrl(mobileAsset, 'reviewsMarketingHat', 307, 'fit', 512)}
         media="(min-width: 768px)"
       />
       <img
         alt=""
         className="marketing-hat__image"
-        src={getImageUrl(mobileAsset, 'reviewsMarketingHat', 375, 267)}
+        src={getImageUrl(mobileAsset, 'reviewsMarketingHat', 267, 'fit', 450)}
       />
     </AdImage>
-    <ContentSection isAnonymous={isAnonymous}>
-      <ContentWrapper isAnonymous={isAnonymous}>
+    <ContentSection className={isAnonymous ? 'anon-user' : ''}>
+      <ContentWrapper className={isAnonymous ? 'anon-user' : ''} isAnonymous={isAnonymous}>
         <Headline>{headline}</Headline>
         <Title>{title}</Title>
-        <Description isAnonymous={isAnonymous}>{description}</Description>
+        <Description className={isAnonymous ? 'anon-user' : ''}>{description}</Description>
         {isAnonymous ? (
           <EmailForm
             buttonText={buttonText}
