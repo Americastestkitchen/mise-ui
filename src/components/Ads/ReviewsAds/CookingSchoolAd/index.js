@@ -55,13 +55,14 @@ const AdPicture = styled.picture`
 
 const AdWrapper = styled.div`
   background-color: ${color.solitude};
-  padding: 1.9rem 1.9rem 2.3rem 1.8rem;
+  margin-bottom: 1.8rem;
+  padding: 1.9rem 1.9rem ${spacing.md} 1.8rem;
   width: 100%;
 
   ${breakpoint('md')`
     align-items: center;
     flex-direction: row;
-    padding: 2.2rem 1.8rem;
+    padding: 2.2rem 3.6rem;
     text-align: left;
   `}
 
@@ -96,8 +97,7 @@ const CtaLink = styled.a`
   font: ${fontSize.lg}/1.2rem ${font.pnb};
   justify-content: center;
   letter-spacing: ${letterSpacing.cta};
-  min-height: 4rem;
-  max-width: 34rem;
+  min-height: ${spacing.xlg};
   text-transform: uppercase;
 
   ${breakpoint('md')`
@@ -105,7 +105,7 @@ const CtaLink = styled.a`
   `}
 
   ${breakpoint('xlg')`
-    margin-right: 4rem;
+    margin-right: ${spacing.xlg};
   `}
 `;
 
@@ -127,12 +127,12 @@ const Headline = styled.span`
   color: ${color.eclipse};
   font: ${fontSize.sm}/1.6rem ${font.pnr};
   letter-spacing: 1.4px;
-  margin-bottom: 0.7rem;
+  margin-bottom: ${spacing.xsm};
   text-transform: uppercase;
 
   ${breakpoint('md')`
     font: ${fontSize.md}/2.6rem ${font.pnr};
-    letter-spacing: 1.6px;
+    letter-spacing: ${letterSpacing.md};
     margin-bottom: ${spacing.xxsm};
   `}
 
@@ -143,7 +143,7 @@ const Headline = styled.span`
 
 const MainContent = styled.div`
   display: flex;
-  margin-bottom: 1.5rem;
+  margin-bottom: ${spacing.md};
 
   ${breakpoint('md')`
     margin-bottom: 0;
