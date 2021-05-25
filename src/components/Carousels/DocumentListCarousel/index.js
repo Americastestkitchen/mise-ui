@@ -136,11 +136,13 @@ const DocumentListCarouselWrapper = styled.div`
  * **Intro** (optional): Text located above the title
  */
 const DocumentListCarousel = ({
+  adSourceKey,
   cellAlign,
   ctaDataAttrs,
   ctaTarget,
   ctaText,
   ctaUrl,
+  includesAdType,
   intro,
   items,
   gradient,
@@ -167,8 +169,10 @@ const DocumentListCarousel = ({
       )}
     </TitleAndCta>
     <CardCarousel
+      adSourceKey={adSourceKey}
       cellAlign={cellAlign}
       extraOptions={options}
+      includesAdType={includesAdType}
       items={items}
       gradient={gradient}
       renderItem={renderItem}
@@ -179,6 +183,8 @@ const DocumentListCarousel = ({
 );
 
 DocumentListCarousel.propTypes = {
+  /** SourceKey Included in Ad Link */
+  adSourceKey: PropTypes.string,
   /** Carousel cell alignment */
   cellAlign: PropTypes.oneOf(['center', 'left']),
   /** data-attributes for tracking */
@@ -189,6 +195,8 @@ DocumentListCarousel.propTypes = {
   ctaText: PropTypes.string,
   /** Url value for CTA */
   ctaUrl: PropTypes.string,
+  /** Type of Ad Placement */
+  includesAdType: PropTypes.oneOf(['book']),
   /** Smaller intro text displayed above subtitle */
   intro: PropTypes.string,
   /** List of items for the carousel */
@@ -213,11 +221,13 @@ DocumentListCarousel.propTypes = {
 };
 
 DocumentListCarousel.defaultProps = {
+  adSourceKey: null,
   cellAlign: null,
   ctaDataAttrs: null,
   ctaText: null,
   ctaTarget: '',
   ctaUrl: null,
+  includesAdType: null,
   intro: null,
   gradient: null,
   options: null,

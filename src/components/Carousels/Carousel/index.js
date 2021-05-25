@@ -5,6 +5,8 @@ import styled, { css } from 'styled-components';
 
 import { color, spacing, withThemes } from '../../../styles';
 
+import BookCarouselAd from '../../Ads/ReviewsAds/BookCarouselAd';
+
 const generatePositionStyles = (positions, breakpoint) => {
   const breakpointPositions = positions[breakpoint];
   return breakpointPositions ? (
@@ -230,7 +232,19 @@ const defaultOptions = {
   wrapAround: true,
 };
 
-const Carousel = ({ className, dotPosition, items, options, renderItem }) => {
+const renderAd = key => (
+  <BookCarouselAd sourceKey={key} />
+);
+
+const Carousel = ({
+  adSourceKey,
+  className,
+  dotPosition,
+  includesAdType,
+  items,
+  options,
+  renderItem,
+}) => {
   const elRef = useRef(null);
   const flktyRef = useRef();
   const [enabled, setEnabled] = useState(false);
@@ -275,7 +289,9 @@ const Carousel = ({ className, dotPosition, items, options, renderItem }) => {
             className="carousel-cell"
             key={`carousel-cell-${item.id}-${idx}`}
           >
-            {renderItem(item, idx)}
+            {idx === 0 && includesAdType
+              ? renderAd(adSourceKey)
+              : renderItem(item, idx)}
           </div>
         ))}
       </CarouselEl>
@@ -284,6 +300,8 @@ const Carousel = ({ className, dotPosition, items, options, renderItem }) => {
 };
 
 Carousel.propTypes = {
+  /** SourceKey Included in Ad Link */
+  adSourceKey: PropTypes.string,
   /** Additional classname */
   className: PropTypes.string,
   /** List of items for the carousel */
@@ -294,6 +312,8 @@ Carousel.propTypes = {
     right: PropTypes.string,
     top: PropTypes.string,
   }),
+  /** Optional prop for Ad Placement */
+  includesAdType: PropTypes.oneOf(['book']),
   options: PropTypes.shape({
     /** Change shape of arrows on carousel */
     arrowShape: PropTypes.object,
@@ -318,6 +338,7 @@ Carousel.propTypes = {
 };
 
 Carousel.defaultProps = {
+  adSourceKey: null,
   className: undefined,
   dotPosition: {
     sm: {
@@ -337,6 +358,7 @@ Carousel.defaultProps = {
       top: `-${spacing.md}`,
     },
   },
+  includesAdType: null,
   options: {},
 };
 
