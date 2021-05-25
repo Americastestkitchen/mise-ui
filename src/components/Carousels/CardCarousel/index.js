@@ -175,10 +175,12 @@ const typeMap = {
 };
 
 const CardCarousel = ({
+  adSourceKey,
   cellAlign,
   className,
   dotPosition,
   extraOptions,
+  includesAdType,
   items,
   gradient,
   renderItem,
@@ -197,7 +199,6 @@ const CardCarousel = ({
   if (type === 'hero') {
     options.slideshow = true;
   }
-
   return (
     <CardCarouselWrapper
       aria-label={`${title} carousel`}
@@ -206,8 +207,10 @@ const CardCarousel = ({
       type={type}
     >
       <Carousel
+        adSourceKey={adSourceKey}
         className={className}
         dotPosition={dotPosition}
+        includesAdType={includesAdType}
         items={items}
         renderItem={doRenderItem}
         options={options}
@@ -228,6 +231,8 @@ const CardCarousel = ({
 };
 
 CardCarousel.propTypes = {
+  /** SourceKey Included in Ad Link */
+  adSourceKey: PropTypes.string,
   cellAlign: PropTypes.oneOf(['center', 'left']),
   /** Additional classname */
   className: PropTypes.string,
@@ -237,6 +242,8 @@ CardCarousel.propTypes = {
     right: PropTypes.string,
     top: PropTypes.string,
   }),
+  /** Optional prop for Ad Placement */
+  includesAdType: PropTypes.oneOf(['book']),
   /** List of items for the carousel */
   items: PropTypes.array.isRequired,
   gradient: PropTypes.shape({
@@ -260,6 +267,7 @@ CardCarousel.propTypes = {
 };
 
 CardCarousel.defaultProps = {
+  adSourceKey: null,
   cellAlign: 'center',
   className: undefined,
   dotPosition: {
@@ -282,6 +290,7 @@ CardCarousel.defaultProps = {
   },
   gradient: null,
   extraOptions: null,
+  includesAdType: null,
   renderItem: undefined,
   title: '',
 };
