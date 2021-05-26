@@ -55,21 +55,44 @@ const AdPicture = styled.picture`
 
 const AdWrapper = styled.div`
   background-color: ${color.solitude};
-  margin-bottom: 1.8rem;
   padding: 1.9rem 1.9rem ${spacing.md} 1.8rem;
-  width: 100%;
+
+  &.cooking-school-ad__detail {
+    margin: 3.2rem -1.6rem;
+    margin-bottom: 2.2rem;
+    width: calc(100% + 3.2rem);
+  }
+
+  &.cooking-school-ad__landing {
+    margin-bottom: 4.1rem;
+    width: 100%;
+  }
 
   ${breakpoint('md')`
     align-items: center;
     flex-direction: row;
     padding: 2.2rem 3.6rem;
     text-align: left;
+    
+    &.cooking-school-ad__detail {
+      margin: 4rem -3.6rem 0;
+      width: calc(100% + 7.2rem);
+    }
+
+    &.cooking-school-ad__landing {
+      margin-bottom: 3.4rem;
+    }
   `}
 
   ${breakpoint('xlg')`
     &.cooking-school-ad__detail {
+      margin: 4rem 0 0;
       max-height: 14.4rem;
       width: 84.8rem;
+    }
+
+    &.cooking-school-ad__landing {
+      margin-bottom: 1.8rem;
     }
   `}
 `;
