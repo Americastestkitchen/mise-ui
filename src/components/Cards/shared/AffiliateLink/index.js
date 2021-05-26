@@ -12,7 +12,7 @@ const AffiliateLinkWrapperTheme = {
     position: relative;
     white-space: nowrap;
 
-    > svg {
+    > img {
       display: block;
       margin: 1rem auto 0;
       width: 10rem;

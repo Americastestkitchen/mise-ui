@@ -28,7 +28,7 @@ const ReviewableSummaryItemTheme = {
       font: ${fontSize.lg}/${lineHeight.md} ${font.pnb};
     }
 
-    img {
+    .reviewable-img {
       float: right;
       margin-left: 1rem;
       width: 30%;
@@ -74,7 +74,7 @@ const TitleImageWrapper = styled.div.attrs({
     margin-bottom: 1.4rem;
   }
 
-  img {
+  .reviewable-img {
     display: block;
     height: clamp(6rem, 10rem, 9rem);
     width: 6rem;
@@ -89,7 +89,7 @@ const TitleImageWrapper = styled.div.attrs({
 
   ${breakpoint('md')`
     > .image-link,
-    > img {
+    > .reviewable-img {
       position: absolute;
       height: 15rem;
       right: 1rem;
@@ -275,6 +275,7 @@ const ReviewableSummaryCard = React.memo(({
           >
             <Image
               aspectRatio="1:1"
+              className="reviewable-img"
               imageAlt={imageAltText}
               imageUrl={getImageUrl(cloudinaryId, 'thumbnail')}
               lowQualityImageUrl={getImageUrl(
