@@ -63,6 +63,7 @@ const AdWrapper = styled.div`
   background-color: ${color.frost};
   display: flex;
   flex-direction: column;
+  margin-top: 3.6rem;
   padding: 2.4rem 1.7rem 2.2rem;
   text-align: left;
   width: 100%;
@@ -96,6 +97,7 @@ const AdWrapper = styled.div`
     ${({ success }) => (success
     ? 'flex-direction: column; align-items: flex-start;'
     : 'flex-direction: row; justify-content: space-between;')}
+    margin-top: 4rem;
     max-height: 17.7rem;
     padding: 3.5rem 3.65rem 3.45rem 3.6rem;
 
@@ -106,6 +108,7 @@ const AdWrapper = styled.div`
   `}
 
   ${breakpoint('xlg')`
+    margin-top: 4.4rem;
     padding: 3.4rem 5.3rem;
     width: 84.8rem;
 `}
