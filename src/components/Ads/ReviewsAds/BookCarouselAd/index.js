@@ -27,7 +27,7 @@ const AdCtaLink = styled.a`
   min-height: 4rem;
   min-width: 19.6rem;
   position: absolute;
-  top: 35rem;
+  top: 34.5rem;
   text-transform: uppercase;
 `;
 
@@ -38,7 +38,7 @@ const AdTitle = styled.h2`
   letter-spacing: normal;
   margin-bottom: ${spacing.xxsm};
   position: absolute;
-  top: 2.5rem;
+  top: 1.5rem;
   text-align: center;
 `;
 
