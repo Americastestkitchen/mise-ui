@@ -88,7 +88,7 @@ const CollectionPicture = styled.picture`
   ${breakpoint('xlg')`
     .photo-two-up {
       ${({ width }) => mixins.articlesTwoUpImageCollection(width)}
-    }  
+    }
 
     .photo-three-up {
       ${({ width }) => mixins.articlesThreeUpImageCollection(width)}
@@ -132,7 +132,7 @@ const cropMap = {
 const ArticlePhotoCollection = ({
   caption,
   count,
-  items,
+  images,
   title,
   width,
 }) => (
@@ -140,29 +140,34 @@ const ArticlePhotoCollection = ({
     { title && <CollectionTitle>{title}</CollectionTitle> }
     <PhotoCollection className={`photo-collection__${width}`}>
       <ImagesWrapper>
-        {items.map((el, i) => {
+        {images.map((image, i) => {
           const imageClass = count === 2 ? 'two-up' : 'three-up';
-          const { altText: alt, photo } = el.attributes;
-          const ar = photo.contentWidth / photo.height;
+          const {
+            alt,
+            height: imageHeight,
+            publicId,
+            width: imageWidth,
+          } = image;
+          const ar = imageHeight && imageWidth ? imageWidth / imageHeight : null;
 
           return (
             <CollectionPicture
               className={`photo-collection__${imageClass}`}
-              key={`${photo.publicId.slice(-10)}-${i}`}
+              key={`${publicId.slice(-10)}-${i}`}
               width={width}
             >
               <source
-                srcSet={getImageUrl(photo.publicId, { aspectRatio: ar, ...cropMap.desktop[width][imageClass], crop: 'fill' })}
+                srcSet={getImageUrl(publicId, { aspectRatio: ar, ...cropMap.desktop[width][imageClass], crop: 'fill' })}
                 media="(min-width: 1136px)"
               />
               <source
-                srcSet={getImageUrl(photo.publicId, { aspectRatio: ar, ...cropMap.tablet[imageClass], crop: 'fill' })}
+                srcSet={getImageUrl(publicId, { aspectRatio: ar, ...cropMap.tablet[imageClass], crop: 'fill' })}
                 media="(min-width: 768px)"
               />
               <img
                 alt={alt}
                 className={`photo-${imageClass}`}
-                src={getImageUrl(photo.publicId, { aspectRatio: ar, ...cropMap.mobile[imageClass], crop: 'fill' })}
+                src={getImageUrl(publicId, { aspectRatio: ar, ...cropMap.mobile[imageClass], crop: 'fill' })}
               />
             </CollectionPicture>
           );
@@ -180,10 +185,15 @@ const ArticlePhotoCollection = ({
 );
 
 ArticlePhotoCollection.propTypes = {
+  /* Editorial caption for collection */
   caption: PropTypes.string,
+  /* Count of images, determines 2-up or 3-up treatment */
   count: PropTypes.oneOf([2, 3]).isRequired,
-  items: PropTypes.arrayOf(PropTypes.object).isRequired,
+  /* Array of image objects */
+  images: PropTypes.arrayOf(PropTypes.object).isRequired,
+  /* Heading level 3 title for collection */
   title: PropTypes.string,
+  /* Width configuration for ArticlePhotoCollection */
   width: PropTypes.oneOf(['default', 'wide']).isRequired,
 };
 

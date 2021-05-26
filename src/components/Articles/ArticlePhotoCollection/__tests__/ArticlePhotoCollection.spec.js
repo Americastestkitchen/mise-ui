@@ -20,19 +20,19 @@ describe('ArticlePhotoCollection component should', () => {
   );
 
   it('renders optional title', () => {
-    renderComponent({ title: 'Testing title', count: 3, items: images, width: 'wide' });
+    renderComponent({ title: 'Testing title', count: 3, images, width: 'wide' });
     expect(screen.getByText('Testing title'));
   });
 
   it('renders optional caption', () => {
-    renderComponent({ caption: 'testing caption', count: 3, items: images, width: 'wide' });
+    renderComponent({ caption: 'testing caption', count: 3, images, width: 'wide' });
     expect(screen.getByText('testing caption'));
   });
 
   it('renders multiple images to size--two, default', () => {
     renderComponent({
       count: 2,
-      items: images.slice(0, 2),
+      images: images.slice(0, 2),
       width: 'default',
     });
     const renderedImages = document.getElementsByTagName('picture');
@@ -43,7 +43,7 @@ describe('ArticlePhotoCollection component should', () => {
   it('renders multiple images to size--three, wide', () => {
     renderComponent({
       count: 3,
-      items: images,
+      images,
       width: 'wide',
     });
     const renderedImages = document.getElementsByTagName('picture');
