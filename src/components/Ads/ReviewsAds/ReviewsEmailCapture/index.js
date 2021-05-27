@@ -55,7 +55,7 @@ const AdTitle = styled.h2`
   margin-bottom: 1rem;
 
   ${breakpoint('md')`
-    margin-bottom: 0.3rem;
+    margin-bottom: ${spacing.xxsm};
   `}
 `;
 
@@ -63,10 +63,10 @@ const AdWrapper = styled.div`
   background-color: ${color.frost};
   display: flex;
   flex-direction: column;
-  margin-top: 3.6rem;
-  padding: 2.4rem 1.7rem 2.2rem;
+  margin: 3.6rem -${spacing.sm} 0;
+  padding: ${spacing.md} ${spacing.sm} 2.2rem;
   text-align: left;
-  width: 100%;
+  width: calc(100% + ${spacing.lg});
 
   .email-form__how {
     color: ${color.eclipse};
@@ -75,9 +75,7 @@ const AdWrapper = styled.div`
     position: absolute;
 
     ${breakpoint('md')`
-      left: 0;
       margin-top: 0.3rem;
-      position: absolute;
     `}
   }
 
@@ -97,9 +95,10 @@ const AdWrapper = styled.div`
     ${({ success }) => (success
     ? 'flex-direction: column; align-items: flex-start;'
     : 'flex-direction: row; justify-content: space-between;')}
-    margin-top: 4rem;
+    margin: ${spacing.xlg} -3.6rem 0;
     max-height: 17.7rem;
     padding: 3.5rem 3.65rem 3.45rem 3.6rem;
+    width: calc(100% + ${spacing.xxxlg});
 
     .email-form {
       flex-direction: column;
@@ -108,7 +107,7 @@ const AdWrapper = styled.div`
   `}
 
   ${breakpoint('xlg')`
-    margin-top: 4.4rem;
+    margin: 4.4rem 0 0;
     padding: 3.4rem 5.3rem;
     width: 84.8rem;
 `}
