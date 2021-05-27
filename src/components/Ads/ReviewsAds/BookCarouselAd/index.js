@@ -31,7 +31,7 @@ const AdCtaLink = styled.a`
   text-transform: uppercase;
 `;
 
-const AdTitle = styled.h2`
+const AdTitle = styled.p`
   color: ${color.white};
   font: ${fontSize.xl}/2.6rem ${font.mwr};
   font-weight: bold;
