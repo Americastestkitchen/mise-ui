@@ -9,37 +9,37 @@ export default {
 };
 
 export const defaultTwoImages = () => (
-  <ArticlePhotoCollection 
+  <ArticlePhotoCollection
     caption={"The heat applied during pasteurization, a necessary step for all shelf-stable jars, essentially cooks the pickles. Pickle spears (left) are especially vulnerable and often turn out soft and soggy. Shelf-stable whole pickles (right) are much more likely to stay firm and crunchy."}
     count={2}
-    items={images.slice(0, 2)}
+    images={images.slice(0, 2)}
     title=""
     width="default"
   />
 );
 
 export const defaultThreeImagesWithTitle = () => (
-    <ArticlePhotoCollection 
+    <ArticlePhotoCollection
     caption={"The heat applied during pasteurization, a necessary step for all shelf-stable jars, essentially cooks the pickles. Pickle spears (left) are especially vulnerable and often turn out soft and soggy. Shelf-stable whole pickles (right) are much more likely to stay firm and crunchy."}
     count={3}
-    items={images}
+    images={images}
     title="Collection of Pickle Photos"
     width="default"
   />
 );
 
 export const wideTwoImagesWithTitle = () => (
-    <ArticlePhotoCollection 
+    <ArticlePhotoCollection
     caption={"The heat applied during pasteurization, a necessary step for all shelf-stable jars, essentially cooks the pickles. Pickle spears (left) are especially vulnerable and often turn out soft and soggy. Shelf-stable whole pickles (right) are much more likely to stay firm and crunchy."}
     count={2}
-    items={images.slice(0, 2)}
+    images={images.slice(0, 2)}
     title="Collection of Pickle Photos"
     width="wide"
   />
 );
 
 export const wideThreeImages = () => (
-    <ArticlePhotoCollection 
+    <ArticlePhotoCollection
     caption={"The heat applied during pasteurization, a necessary step for all shelf-stable jars, essentially cooks the pickles. Pickle spears (left) are especially vulnerable and often turn out soft and soggy. Shelf-stable whole pickles (right) are much more likely to stay firm and crunchy."}
     count={3}
     items={images}
