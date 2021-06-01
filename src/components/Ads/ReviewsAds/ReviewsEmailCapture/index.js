@@ -22,6 +22,7 @@ const AdDescription = styled.p`
 
   ${breakpoint('md')`
     font: ${fontSize.md}/2.6rem ${font.mwr};
+    min-width: 35rem;
   `}
 `;
 
@@ -67,6 +68,30 @@ const AdWrapper = styled.div`
   padding: ${spacing.md} ${spacing.sm} 2.2rem;
   text-align: left;
   width: calc(100% + ${spacing.lg});
+
+  .email-form {
+    display: flex;
+    justify-content: center;
+
+    .form-input input {
+      background-color: ${color.white};
+
+      &::placeholder {
+        font: ${fontSize.md}/2.6rem ${font.pnr};
+      }
+    }
+
+    button {
+      display: flex;
+      justify-content: center;
+      letter-spacing: 1.6px;
+
+      span {
+        font-size: 3.1rem;
+        margin: 0.15rem 0 0 0.8rem;
+      }
+    }
+  }
 
   .email-form__how {
     color: ${color.eclipse};
@@ -147,6 +172,7 @@ const ReviewsEmailCapture = ({
       : (
         <EmailForm
           {...emailFormProps}
+          optionalIcon="‣"
           onSubmit={onSubmit}
           howWeUseText="How we use your email"
         />
