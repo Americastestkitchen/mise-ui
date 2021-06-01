@@ -77,6 +77,25 @@ const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
 
+  .email-form {
+    .form-input input {
+      background-color: ${color.white};
+
+      &::placeholder {
+        font: ${fontSize.md}/1rem ${font.pnr};
+      }
+    }
+
+    button {
+      letter-spacing: ${letterSpacing.cta};
+    }
+  }
+
+  .email-form__how {
+    color: ${color.white};
+    font: 1rem/1.2rem ${font.pnr};
+  }
+
   ${breakpoint('xs')`
     .email-form button {
       padding: 0;
@@ -210,6 +229,10 @@ const RegistrantSubmit = styled.a`
   min-height: ${spacing.xlg};
   max-width: 100%;
   text-transform: uppercase;
+
+  &:hover {
+    background-color: ${color.darkFrog};
+  }
 
   ${breakpoint('md')`
     max-width: 22.6rem;

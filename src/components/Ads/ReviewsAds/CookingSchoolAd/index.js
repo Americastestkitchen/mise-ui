@@ -123,6 +123,10 @@ const CtaLink = styled.a`
   min-height: ${spacing.xlg};
   text-transform: uppercase;
 
+  &:hover {
+    background-color: ${color.darkColdPool};
+  }
+
   ${breakpoint('md')`
     min-width: 19.7rem;
   `}
@@ -157,6 +161,7 @@ const Headline = styled.span`
     font: ${fontSize.md}/2.6rem ${font.pnr};
     letter-spacing: ${letterSpacing.md};
     margin-bottom: ${spacing.xxsm};
+    min-width: 31.7rem;
   `}
 
   ${breakpoint('xlg')`

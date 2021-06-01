@@ -29,6 +29,10 @@ const AdCtaLink = styled.a`
   position: absolute;
   top: 34.5rem;
   text-transform: uppercase;
+
+  &:hover {
+    background-color: ${color.darkColdPool};
+  }
 `;
 
 const AdTitle = styled.p`
