@@ -136,6 +136,7 @@ const EmailForm = ({
   inputId,
   inputLabel,
   instanceId,
+  optionalIcon,
   placeholder,
   onSubmit,
 }) => {
@@ -190,7 +191,7 @@ const EmailForm = ({
           role="button"
           type="submit"
         >
-          {buttonText}
+          {buttonText}{optionalIcon ? <span>{optionalIcon}</span> : null}
         </Button>
       </EmailFormElement>
       <HowWeUseWrapper>
@@ -236,6 +237,7 @@ EmailForm.propTypes = {
   inputLabel: PropTypes.string,
   instanceId: PropTypes.string,
   onSubmit: PropTypes.func.isRequired,
+  optionalIcon: PropTypes.string,
   placeholder: PropTypes.string,
 };
 
@@ -249,6 +251,7 @@ EmailForm.defaultProps = {
   howWeUseText: 'How we use your email address',
   inputLabel: 'Email address',
   instanceId: null,
+  optionalIcon: null,
   placeholder: 'Enter your email address',
 };
 

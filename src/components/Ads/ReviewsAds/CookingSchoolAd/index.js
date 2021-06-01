@@ -46,7 +46,6 @@ const AdPicture = styled.picture`
     margin-right: 2.65rem;
 
     &.cooking-school-ad__detail {
-      margin-left: 2rem;
       margin-right: 1rem;
     }
   `}
