@@ -60,6 +60,7 @@ const NewsletterSubtitle = styled.div.attrs({
 
 const NewsletterSuccessTheme = {
   default: css`
+    color: ${color.eclipse};
     font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb};
     margin: 0 0 ${spacing.sm} ${spacing.xsm};
 
