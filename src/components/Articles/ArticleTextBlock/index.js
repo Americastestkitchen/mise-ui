@@ -66,7 +66,7 @@ const ArticleTextBlockHeading = styled.h3`
   margin-bottom: 0.8rem;
 `;
 
-const ArticleTextBlockP = styled.p`
+const ArticleTextBlockContent = styled.div`
   color: ${color.eclipse};
   font: ${fontSize.md}/${lineHeight.lg} ${font.mwr};
   margin-bottom: 2.4rem;
@@ -75,19 +75,34 @@ const ArticleTextBlockP = styled.p`
     ${mixins.styledLink(color.turquoise, color.seaSalt)}
   }
 
+  > p {
+    margin-bottom: 2.4rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
   &:last-child {
     margin-bottom: 0;
   }
 
   &.drop-cap {
-    font-size: 2rem;
+    > p {
+      &:first-child {
+        font-size: 2rem;
+        ${mixins.articlesWidth('wide')}
 
-    &:first-letter {
-      float: left;
-      font-size: 6rem;
-      font-weight: bold;
-      line-height: 5rem;
-      padding: 0.6rem 0.8rem 0 0;
+        &:first-letter {
+          float: left;
+          font-size: 6rem;
+          font-weight: bold;
+          line-height: 5rem;
+          padding: 0.6rem 0.8rem 0 0;
+        }
+      }
+
+      ${mixins.articlesWidth('default')}
     }
   }
 `;
@@ -165,7 +180,7 @@ const ArticleTextBlock = ({
       }
       <ArticleTextBlockCopy className="article-text-block__copy">
         {includePhoto && generateImageElAndPosition(photo)}
-        <ArticleTextBlockP
+        <ArticleTextBlockContent
           className={`article-text-block__p${dropCap ? ' drop-cap' : ''}`}
           dangerouslySetInnerHTML={{ __html: content }}
         />
