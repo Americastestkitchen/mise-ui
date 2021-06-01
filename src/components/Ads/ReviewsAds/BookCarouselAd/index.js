@@ -9,7 +9,6 @@ import {
   color,
   font,
   fontSize,
-  letterSpacing,
   spacing,
 } from '../../../../styles';
 
@@ -21,7 +20,7 @@ const AdCtaLink = styled.a`
   color: ${color.white};
   display: flex;
   font: ${fontSize.lg}/1.2rem ${font.pnb};
-  letter-spacing: ${letterSpacing.cta}; 
+  letter-spacing: 1.8px;
   justify-content: center;
   margin-bottom: ${spacing.xsm};
   min-height: 4rem;
