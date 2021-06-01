@@ -83,6 +83,7 @@ const ContentWrapper = styled.div`
 
       &::placeholder {
         font: ${fontSize.md}/1rem ${font.pnr};
+        line-height: 2.1rem;
       }
     }
 
