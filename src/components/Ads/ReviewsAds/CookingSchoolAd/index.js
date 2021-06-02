@@ -33,11 +33,13 @@ const AdDimensions = styled.div`
 
 const AdPicture = styled.picture`
   margin-right: 1.1rem;
+  max-width: 10.2rem;
   min-height: 10.2rem;
   min-width: 10.2rem;
 
   ${breakpoint('md')`
     margin-right: 1.05rem;
+    max-width: 10rem;
     min-height: 10rem;
     min-width: 10rem;
   `}
@@ -63,7 +65,7 @@ const AdWrapper = styled.div`
   }
 
   &.cooking-school-ad__landing {
-    margin-bottom: 4.1rem;
+    margin-bottom: ${spacing.xlg};
     width: 100%;
   }
 
@@ -74,7 +76,7 @@ const AdWrapper = styled.div`
     text-align: left;
     
     &.cooking-school-ad__detail {
-      margin: 4rem -3.6rem 0;
+      margin: ${spacing.xlg} -3.6rem 0;
       width: calc(100% + 7.2rem);
     }
 
@@ -83,11 +85,16 @@ const AdWrapper = styled.div`
     }
   `}
 
+  ${breakpoint('lg')`
+    &.cooking-school-ad__detail {
+      width: 84.8rem;
+    }
+  `}
+
   ${breakpoint('xlg')`
     &.cooking-school-ad__detail {
-      margin: 4rem 0 0;
+      margin: ${spacing.xlg} 0 0;
       max-height: 14.4rem;
-      width: 84.8rem;
     }
 
     &.cooking-school-ad__landing {
@@ -203,13 +210,13 @@ const CookingSchoolAd = ({
       <MainContent className={`cooking-school-ad__${identifier}`}>
         <AdPicture className={`cooking-school-ad__${identifier}`}>
           <source
-            srcSet={getImageUrl(cloudinaryId, 'reviewsCookingSchoolAd', 100, 100)}
+            src={getImageUrl(cloudinaryId, { aspectRatio: '1:1', width: 500 })}
             media="(min-width: 768)"
           />
           <img
             alt=""
             className="cooking-school-ad__image"
-            src={getImageUrl(cloudinaryId, 'reviewsCookingSchoolAd', 102, 102)}
+            src={getImageUrl(cloudinaryId, { aspectRatio: '1:1', width: 400 })}
           />
         </AdPicture>
         <ContentWrapper className={`cooking-school-ad__${identifier}`}>

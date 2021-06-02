@@ -114,6 +114,11 @@ const ContentWrapper = styled.div`
   )}
     }
 
+    .email-form__how-we-use-text {
+      left: 0;
+      top 2.5rem;
+    }
+
     .email-form__how {
       left: 0;
       padding-top: 0.7rem;
@@ -201,7 +206,7 @@ const MarketingHatWrapper = styled.div`
   }
 
   ${breakpoint('sm')`
-    margin-bottom: 14rem;
+    margin-bottom: 15rem;
 
     &.anon-user {
       margin-bottom: 20rem;
@@ -297,7 +302,7 @@ const ReviewsMarketingHat = ({
             buttonText={buttonText}
             inputId={inputId}
             onSubmit={onSubmit}
-            placeholder="Enter Your Email Address"
+            placeholder="Enter your email address"
           />
         ) : (
           <RegistrantSubmit
