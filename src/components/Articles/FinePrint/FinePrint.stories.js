@@ -12,11 +12,10 @@ const subtitle = "There's a method to our madness, here's our full list of testi
 const title = "Methodology"
 
 export const FinePrintAccordion = () => (
-  <FinePrint 
+  <FinePrint
     content={content}
-    isFieldset={true}
-    isHidden={true}
-    subtitle={subtitle} 
+    isHidden
+    subtitle={subtitle}
     title={title}
   />
 );
