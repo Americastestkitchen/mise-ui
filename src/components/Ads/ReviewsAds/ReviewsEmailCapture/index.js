@@ -24,6 +24,14 @@ const AdDescription = styled.p`
     font: ${fontSize.md}/2.6rem ${font.mwr};
     min-width: 35rem;
   `}
+
+  ${breakpoint('lg')`
+    min-width: 34rem;
+  `}
+
+  ${breakpoint('xlg')`
+    min-width: 35rem;
+  `}
 `;
 
 const AdSuccess = styled.div`
@@ -57,6 +65,14 @@ const AdTitle = styled.h2`
 
   ${breakpoint('md')`
     margin-bottom: ${spacing.xxsm};
+  `}
+
+  ${breakpoint('lg')`
+    max-width: 32rem;
+  `}
+
+  ${breakpoint('xlg')`
+    max-width: none;
   `}
 `;
 
@@ -140,10 +156,26 @@ const AdWrapper = styled.div`
     }
   `}
 
+  ${breakpoint('lg')`
+    margin: ${spacing.xlg} 0 0;
+    padding: 2.5rem 3.65rem 3.45rem 3rem;
+    width: 66.7rem;
+
+    .email-form {
+      margin-top: 1.5rem;
+      min-width: 27rem;
+    }
+
+  `}
+
   ${breakpoint('xlg')`
     margin: 4.4rem 0 0;
     padding: 3.4rem 5.3rem;
     width: 84.8rem;
+
+    .email-form {
+      margin-top: 0;
+    }
 `}
 `;
 
@@ -153,6 +185,14 @@ const MainContent = styled.div`
   ${breakpoint('md')`
     margin-right: 1.65rem;
     max-width: 34rem;
+  `}
+
+  ${breakpoint('lg')`
+    margin-right: 0;
+  `}
+
+  ${breakpoint('xlg')`
+    margin-right: 1.65rem;
   `}
 `;
 
