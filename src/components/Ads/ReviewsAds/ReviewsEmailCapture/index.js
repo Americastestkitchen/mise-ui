@@ -93,6 +93,10 @@ const AdWrapper = styled.div`
     }
   }
 
+  .email-form__how-we-use-text {
+    top: 2rem;
+  }
+
   .email-form__how {
     color: ${color.eclipse};
     left: 0;
@@ -128,6 +132,11 @@ const AdWrapper = styled.div`
     .email-form {
       flex-direction: column;
       min-width: 34rem;
+    }
+
+    .email-form__how-we-use-text {
+      left: 0;
+      top: 2.5rem;
     }
   `}
 
