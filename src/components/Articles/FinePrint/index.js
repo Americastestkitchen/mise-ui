@@ -56,10 +56,7 @@ const FinePrintContainer = styled.div`
 
 const FinePrint = ({
   content,
-  icon,
-  iconSize,
   id,
-  isFieldset,
   isHidden,
   onClick,
   subtitle,
@@ -67,10 +64,7 @@ const FinePrint = ({
 }) => (
   <FinePrintContainer>
     <Accordion
-      icon={icon}
-      iconSize={iconSize}
-      id={id || 'fine-print__accordion'}
-      isFieldset={isFieldset}
+      id={id || `fine-print__accordion--${title}`}
       isHidden={isHidden}
       label={() => <FinePrintLabel subtitle={subtitle} title={title} />}
       onClick={onClick}
@@ -83,14 +77,8 @@ const FinePrint = ({
 FinePrint.propTypes = {
   /** Content for child - open on click */
   content: PropTypes.string.isRequired,
-  /** Unique id string for svg icon to render next to label */
-  icon: PropTypes.string,
-  /* Size of icon */
-  iconSize: PropTypes.oneOf(['default', 'large', 'extraLarge']),
   /** HTML attribute */
   id: PropTypes.string,
-  /** For accessability we need a fieldset version of this component. */
-  isFieldset: PropTypes.bool,
   /** Sets initial state of the hidden content. */
   isHidden: PropTypes.bool,
   /** for mixpanel purposes */
@@ -101,10 +89,7 @@ FinePrint.propTypes = {
 };
 
 FinePrint.defaultProps = {
-  icon: null,
-  iconSize: 'default',
   id: null,
-  isFieldset: false,
   isHidden: false,
   onClick: null,
 };
