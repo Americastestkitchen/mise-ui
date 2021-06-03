@@ -25,7 +25,7 @@ const AdDescription = styled.p`
     min-width: 35rem;
   `}
 
-  ${breakpoint('lg')`
+  ${breakpoint('desktop')`
     min-width: 34rem;
   `}
 
@@ -67,7 +67,7 @@ const AdTitle = styled.h2`
     margin-bottom: ${spacing.xxsm};
   `}
 
-  ${breakpoint('lg')`
+  ${breakpoint('desktop')`
     max-width: 32rem;
   `}
 
@@ -156,10 +156,11 @@ const AdWrapper = styled.div`
     }
   `}
 
-  ${breakpoint('lg')`
+  ${breakpoint('desktop')`
     margin: ${spacing.xlg} 0 0;
+    min-width: 66.7rem;
     padding: 2.5rem 3.65rem 3.45rem 3rem;
-    width: 66.7rem;
+    width: 100%;
 
     .email-form {
       margin-top: 1.5rem;
@@ -175,6 +176,7 @@ const AdWrapper = styled.div`
 
     .email-form {
       margin-top: 0;
+      min-width: 34rem;
     }
 `}
 `;
@@ -187,7 +189,7 @@ const MainContent = styled.div`
     max-width: 34rem;
   `}
 
-  ${breakpoint('lg')`
+  ${breakpoint('desktop')`
     margin-right: 0;
   `}
 
@@ -245,7 +247,7 @@ ReviewsEmailCapture.propTypes = {
 
 ReviewsEmailCapture.defaultProps = {
   success: false,
-  successText: 'Thank you! Get ready for watch and cook newsletter in your inbox.',
+  successText: 'Thank you! Get ready for Well-Equipped Cook in your inbox on Wednesdays!',
   ...EmailForm.defaultProps,
 };
 

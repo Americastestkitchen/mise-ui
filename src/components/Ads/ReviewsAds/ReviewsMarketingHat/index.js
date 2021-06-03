@@ -300,6 +300,7 @@ const ReviewsMarketingHat = ({
         {isAnonymous ? (
           <EmailForm
             buttonText={buttonText}
+            formId="hat-email-form"
             inputId={inputId}
             onSubmit={onSubmit}
             placeholder="Enter your email address"
