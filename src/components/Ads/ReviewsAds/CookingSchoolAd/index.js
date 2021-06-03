@@ -243,7 +243,7 @@ const CookingSchoolAd = ({
       </MainContent>
       <CtaLink
         className={`cooking-school-ad__${identifier}`}
-        href={`/order?mdc=${mdc}&incode=${incode}`}
+        href={`https://school.americastestkitchen.com/order?mdc=${mdc}&incode=${incode}`}
         onClick={onClick}
       >
         {deviceType === 'mobile' ? mobileLinkCta : linkCta}
