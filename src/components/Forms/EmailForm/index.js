@@ -132,6 +132,7 @@ const EmailForm = ({
   buttonTextColor,
   buttonText,
   errorText,
+  formId,
   howWeUseText,
   inputId,
   inputLabel,
@@ -175,6 +176,7 @@ const EmailForm = ({
         buttonHoverTextColor={buttonHoverTextColor}
         buttonTextColor={buttonTextColor}
         disabled={disabled}
+        id={formId}
         onSubmit={handleSubmit}
       >
         <FormInput
@@ -232,6 +234,8 @@ EmailForm.propTypes = {
   buttonTextColor: PropTypes.string,
   buttonText: PropTypes.string,
   errorText: PropTypes.string,
+  /** Id used to gather innerHTML for order flow prefill */
+  formId: PropTypes.string,
   howWeUseText: PropTypes.string,
   inputId: PropTypes.string.isRequired,
   inputLabel: PropTypes.string,
@@ -247,6 +251,7 @@ EmailForm.defaultProps = {
   buttonHoverTextColor: 'white',
   buttonTextColor: 'white',
   buttonText: 'Sign me up',
+  formId: 'email-form',
   errorText: 'Invalid email address',
   howWeUseText: 'How we use your email address',
   inputLabel: 'Email address',

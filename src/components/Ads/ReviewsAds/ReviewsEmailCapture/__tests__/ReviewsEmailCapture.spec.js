@@ -31,6 +31,6 @@ describe('ReviewsEmailCapture', () => {
 
   it('renders success message', () => {
     renderComponent({ success: true });
-    expect(screen.getByText('Thank you! Get ready for watch and cook newsletter in your inbox.'));
+    expect(screen.getByText('Thank you! Get ready for Well-Equipped Cook in your inbox on Wednesdays!'));
   });
 });
