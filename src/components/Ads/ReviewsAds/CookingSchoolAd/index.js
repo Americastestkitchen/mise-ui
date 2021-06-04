@@ -12,7 +12,7 @@ import {
 } from '../../../../styles';
 import { getImageUrl } from '../../../../lib/cloudinary';
 
-const AdDimensions = styled.div`
+const AdDimensions = styled.a`
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -139,7 +139,7 @@ const ContentWrapper = styled.div`
   `}
 `;
 
-const CtaLink = styled.a`
+const CtaLink = styled.div`
   align-items: center;
   background-color: ${color.coldPool};
   color: ${color.white};
@@ -234,7 +234,11 @@ const CookingSchoolAd = ({
   onClick,
 }) => (
   <AdWrapper className={`cooking-school-ad__${identifier}`}>
-    <AdDimensions className={`cooking-school-ad__${identifier}`}>
+    <AdDimensions
+      className={`cooking-school-ad__${identifier}`}
+      href={`https://school.americastestkitchen.com/order?mdc=${mdc}&incode=${incode}`}
+      onClick={onClick}
+    >
       <MainContent className={`cooking-school-ad__${identifier}`}>
         <AdPicture className={`cooking-school-ad__${identifier}`}>
           <source
@@ -252,11 +256,7 @@ const CookingSchoolAd = ({
           <Description>{description}</Description>
         </ContentWrapper>
       </MainContent>
-      <CtaLink
-        className={`cooking-school-ad__${identifier}`}
-        href={`https://school.americastestkitchen.com/order?mdc=${mdc}&incode=${incode}`}
-        onClick={onClick}
-      >
+      <CtaLink className={`cooking-school-ad__${identifier}`}>
         {deviceType === 'mobile' ? mobileLinkCta : linkCta}
       </CtaLink>
     </AdDimensions>
