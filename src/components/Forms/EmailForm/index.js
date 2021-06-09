@@ -132,9 +132,12 @@ const EmailForm = ({
   buttonTextColor,
   buttonText,
   errorText,
+  formId,
+  howWeUseText,
   inputId,
   inputLabel,
   instanceId,
+  optionalIcon,
   placeholder,
   onSubmit,
 }) => {
@@ -173,6 +176,7 @@ const EmailForm = ({
         buttonHoverTextColor={buttonHoverTextColor}
         buttonTextColor={buttonTextColor}
         disabled={disabled}
+        id={formId}
         onSubmit={handleSubmit}
       >
         <FormInput
@@ -189,7 +193,7 @@ const EmailForm = ({
           role="button"
           type="submit"
         >
-          {buttonText}
+          {buttonText}{optionalIcon ? <span>{optionalIcon}</span> : null}
         </Button>
       </EmailFormElement>
       <HowWeUseWrapper>
@@ -204,7 +208,7 @@ const EmailForm = ({
             setShowHow(curr => !curr);
           }}
         >
-          How we use your email address
+          {howWeUseText}
         </HowWeUseLink>
         <HoweWeUseText
           className="email-form__how-we-use-text"
@@ -230,10 +234,14 @@ EmailForm.propTypes = {
   buttonTextColor: PropTypes.string,
   buttonText: PropTypes.string,
   errorText: PropTypes.string,
+  /** Id used to gather innerHTML for order flow prefill */
+  formId: PropTypes.string,
+  howWeUseText: PropTypes.string,
   inputId: PropTypes.string.isRequired,
   inputLabel: PropTypes.string,
   instanceId: PropTypes.string,
   onSubmit: PropTypes.func.isRequired,
+  optionalIcon: PropTypes.string,
   placeholder: PropTypes.string,
 };
 
@@ -243,9 +251,12 @@ EmailForm.defaultProps = {
   buttonHoverTextColor: 'white',
   buttonTextColor: 'white',
   buttonText: 'Sign me up',
+  formId: 'email-form',
   errorText: 'Invalid email address',
+  howWeUseText: 'How we use your email address',
   inputLabel: 'Email address',
   instanceId: null,
+  optionalIcon: null,
   placeholder: 'Enter your email address',
 };
 

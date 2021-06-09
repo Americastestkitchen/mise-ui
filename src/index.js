@@ -4,6 +4,7 @@ import Accordion from './components/Accordion';
 import AccordionControl from './components/AccordionControl';
 import AccordionRefinementList from './components/Algolia/shared/AccordionRefinementList';
 import Badge from './components/Badge';
+import BookCarouselAd from './components/Ads/ReviewsAds/BookCarouselAd';
 import breakpoints from './styles/breakpoints';
 import Brands from './components/DesignTokens/Brands';
 import Button from './components/Buttons/Button';
@@ -14,6 +15,7 @@ import CardCarousel from './components/Carousels/CardCarousel';
 import CardWrapper from './components/Cards/CardWrapper';
 import CategoryCard from './components/Cards/CategoryCard';
 import ClearRefinements from './components/Algolia/shared/ClearRefinements';
+import CookingSchoolAd from './components/Ads/ReviewsAds/CookingSchoolAd';
 import CurrentRefinements from './components/Algolia/shared/CurrentRefinements';
 import DocumentListCarousel from './components/Carousels/DocumentListCarousel';
 import FavoriteActionButton from './components/Buttons/ActionButtons/FavoriteActionButton';
@@ -43,6 +45,8 @@ import RefinementList from './components/Algolia/shared/RefinementList';
 import RelatedDocumentCard from './components/Cards/RelatedDocumentCard';
 import ResultsCount from './components/Algolia/shared/ResultsCount';
 import ReviewableSummaryCard from './components/Cards/ReviewableSummaryCard';
+import ReviewsEmailCapture from './components/Ads/ReviewsAds/ReviewsEmailCapture';
+import ReviewsMarketingHat from './components/Ads/ReviewsAds/ReviewsMarketingHat';
 import SchoolAd from './components/Ads/ShowcaseAds/SchoolAd';
 import SearchBanner from './components/SearchBanner';
 import SearchInput from './components/SearchInput';
@@ -73,6 +77,7 @@ export {
   AccordionRefinementList,
   AudioPlayer,
   Badge,
+  BookCarouselAd,
   breakpoints,
   Brands,
   Button,
@@ -85,6 +90,7 @@ export {
   CircledText,
   color,
   ClearRefinements,
+  CookingSchoolAd,
   CurrentRefinements,
   DocumentListCarousel,
   EditorsNote,
@@ -118,6 +124,8 @@ export {
   RelatedDocumentCard,
   ResultsCount,
   ReviewableSummaryCard,
+  ReviewsEmailCapture,
+  ReviewsMarketingHat,
   SchoolAd,
   SearchBanner,
   SearchInput,
