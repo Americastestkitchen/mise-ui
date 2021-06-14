@@ -7,50 +7,20 @@ import Accordion from '../../Accordion';
 import FinePrintContent from './FinePrintContent';
 import FinePrintLabel from './FinePrintLabel';
 
-import { color } from '../../../styles';
+import { color, mixins } from '../../../styles';
 
 const FinePrintContainer = styled.div`
   background-color: ${color.white};
+  margin-bottom: 3rem;
   max-width: 100%;
 
-  ${breakpoint('md')`
-    max-width: 69.6rem;
-  `}
-
   ${breakpoint('xlg')`
-    max-width: 63.2rem;
+    ${mixins.articlesWidth('default')};
   `}
 
-  .accordion-item__icon {
-    border: 2px solid ${color.eclipse};
-    border-radius: 50%;
-    height: 3rem;
-    max-height: 3rem;
-    max-width: 3rem;
-    position: absolute;
-    right: 0.2rem;
-    top: 5rem;
-    width: 3rem;
-
-    ${breakpoint('md')`
-      right: 0;
-      top: 4.5rem;
-    `}
-
-    ${breakpoint('xlg')`
-      left: 60.2rem;
-    `}
-  }
-
-  .accordion-content-wrapper > button {
+  .accordion-item__button {
+    position: relative;
     width: 100%;
-    &:hover {
-      .accordion-item__icon {
-        ${breakpoint('xlg')`
-          left: 59.5rem;
-        `}
-      }
-    }
   }
 `;
 
@@ -65,6 +35,7 @@ const FinePrint = ({
   <FinePrintContainer>
     <Accordion
       id={id || `fine-print__accordion--${title}`}
+      iconSize="large"
       isHidden={isHidden}
       label={() => <FinePrintLabel subtitle={subtitle} title={title} />}
       onClick={onClick}
