@@ -6,17 +6,16 @@ import styled from 'styled-components';
 import { color, font, fontSize, mixins } from '../../../styles';
 
 const ContentWrapper = styled.div`
-  max-width: 33.3rem;
-  padding: 0 0.5rem 2.6rem 1rem;
+  margin-bottom: 3rem;
+  max-width: 100%;
+  padding: 0 0.4rem 2.6rem 1rem;
 
   ${breakpoint('md')`
-    max-width: 69.6rem;
     padding: 0.8rem 3.2rem 2.4rem 1.6rem;
   `}
 
   ${breakpoint('xlg')`
-    max-width: 63.2rem;
-    padding: 0.8rem 3rem 2.9rem 2.5rem;
+    padding: 0.8rem 3rem 3rem 2.4rem;
   `}
 `;
 
@@ -24,19 +23,32 @@ const ContentTextBlockP = styled.p`
   color: ${color.eclipse};
   font: ${fontSize.md}/2.4rem ${font.pnr};
 
+  ul {
+    li {
+      align-items: flex-start;
+      display: flex;
+      margin-bottom: 1rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      &::before {
+        border-radius: 4px;
+        content: ' ';
+        background-color: ${color.mediumGray};
+        margin: 0.8rem 0.8rem 0 0;
+        min-height: 4px;
+        min-width: 4px;
+      }
+    }
+  }
+
+
   a {
     ${mixins.styledLink(color.turquoise, color.seaSalt)}
   }
 
-  ul {
-    list-style: none;
-  }
-
-  ul li::before {
-    content: "\2022";
-    color: ${color.mediumGray};
-    margin-right: 0.9rem;
-  }
 `;
 
 const FinePrintContent = ({ content }) => (
