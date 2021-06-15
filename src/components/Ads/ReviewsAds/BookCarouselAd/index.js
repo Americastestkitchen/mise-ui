@@ -55,6 +55,10 @@ const AdWrapper = styled.div`
   min-height: 40rem;
   overflow: hidden;
 
+  @media print {
+    display: none;
+  }
+
   img {
     max-height: 40rem;
     max-width: 27.2rem;

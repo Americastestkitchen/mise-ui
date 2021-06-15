@@ -201,6 +201,10 @@ const MarketingHatWrapper = styled.div`
   margin-bottom: 20rem;
   width: 100%;
 
+  @media print {
+    display: none;
+  }
+
   &.anon-user {
     margin-bottom: 26rem;
   }
