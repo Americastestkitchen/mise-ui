@@ -39,7 +39,7 @@ const ShowMoreLess = ({ initialCount, items, id }) => {
     restItems = items.slice(initialCount);
   }
   return (
-    <div>
+    <aside aria-label="All Seasons">
       {
         initialItems && restItems ? (
           <>
@@ -68,7 +68,7 @@ const ShowMoreLess = ({ initialCount, items, id }) => {
           </ul>
         )
       }
-    </div>
+    </aside>
   );
 };
 
