@@ -248,12 +248,12 @@ const Carousel = ({
   const elRef = useRef(null);
   const flktyRef = useRef();
   const [enabled, setEnabled] = useState(false);
-  const opts = { ...defaultOptions, ...options };
-  const { slideshow } = opts;
+  const slideshow = options.slideshow || defaultOptions.slideshow;
 
   useEffect(() => {
     if (flktyRef.current) flktyRef.current.destroy();
     if (items.length > 1 && elRef?.current) {
+      const opts = { ...defaultOptions, ...options };
       const flkty = getFlickityInstance(elRef.current, opts);
       const isEnabled = flkty.slides.length > 1;
       if (isEnabled === false) {
@@ -269,7 +269,7 @@ const Carousel = ({
       try { if (flktyRef.current) flktyRef.current.destroy(); } // eslint-disable-line
       catch (err) {}; // eslint-disable-line
     };
-  }, [items, opts]);
+  }, [items, options]);
 
   return (
     <CarouselWrapper

@@ -48,7 +48,7 @@ const SearchBannerClose = styled.button`
 `;
 
 const SearchBanner = ({ message, url, mixpanelType, incode, handleClick, handleView }) => {
-  useEffect(handleView, [mixpanelType]);
+  useEffect(handleView, [mixpanelType, handleView]);
   const mixpanelParams = { mixpanelType, incode };
   const [closed, setClosed] = useState(false);
   return !closed && message && url ? (
