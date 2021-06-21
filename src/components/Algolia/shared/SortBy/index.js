@@ -86,17 +86,15 @@ const SearchSortByLabelTheme = {
     display: flex;
     font: ${fontSize.md}/1.38 ${font.pnr};
     font-size: ${fontSize.md};
-    left: -2.5rem;
     letter-spacing: normal;
-    padding: ${spacing.xxsm} 0.25rem ${spacing.xxsm} 2.5rem;
-    position: relative;
+    margin: ${spacing.xxsm} 0.25rem ${spacing.xsm};
 
     &:hover {
       cursor: pointer;
     }
 
     &:focus-within {
-      border: 1px dashed ${color.eclipse};
+      outline: 2px dotted ${color.eclipse};
     }
   `,
   kidsSearch: css`
