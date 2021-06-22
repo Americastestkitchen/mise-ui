@@ -34,6 +34,16 @@ const ArticleTextBlockWrapper = styled.div`
     }
   }
 
+  &.has-img--float {
+    ${breakpoint('xs', 'md')`
+      .article-text-block__copy {
+        display: flex;
+        flex-direction: column;
+      }
+    `}
+
+  }
+
   ${breakpoint('md')`
     &.article-text-block--box {
       background-color: ${color.white};
