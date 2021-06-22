@@ -10,7 +10,7 @@ const SidebarCardContainer = styled.aside`
   background-color: ${color.white};
   display: flex;
   flex-direction: row;
-  height: 14.1rem;
+  height: 14.5rem;
   width: 100%;
 
   ${breakpoint('md')`
@@ -26,6 +26,12 @@ const SidebarCardContainer = styled.aside`
   picture {
     min-height: 14.5rem;
     min-width: 14.5rem;
+
+    img {
+      display: block;
+      max-height: 100%;
+      max-width: 100%;
+    }
 
     ${breakpoint('md')`
       min-height: 16.1rem;
@@ -114,7 +120,7 @@ const SidebarLink = styled.a`
   font: ${fontSize.md}/2.6rem ${font.mwr};
   font-style: italic;
   font-weight: bold;
-  ${mixins.styledLink(color.morningGlory, color.white)};
+  ${mixins.styledLink(color.turquoise, color.seaSalt)};
 
   ${breakpoint('xlg')`
     letter-spacing: normal;
