@@ -22,9 +22,11 @@ const StandardCardTheme = {
       }
     }
 
-    a:focus-within p {
-      outline: 2px dotted ${color.eclipse};
-      outline-offset: 3px;
+    .search-page & {
+      a:focus-within p {
+        outline: 2px dotted ${color.eclipse};
+        outline-offset: 3px;
+      }
     }
   `,
   dark: css`
