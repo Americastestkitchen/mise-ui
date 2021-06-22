@@ -40,7 +40,7 @@ const RefinementFilterLabelTheme = {
     }
 
     &:focus-within {
-      border: 1px dashed ${color.eclipse};
+      outline: 2px dotted ${color.eclipse};
     }
 
     .search-refinement__badge {
