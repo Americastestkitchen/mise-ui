@@ -18,6 +18,9 @@ const FloatImageFigure = styled.figure`
   }
 
   ${breakpoint('xs', 'md')`
+    margin-top: 3rem;
+    order: 1;
+
     .article-figcaption {
       padding: 0.8rem 0 0;
 

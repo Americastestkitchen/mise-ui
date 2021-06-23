@@ -10,6 +10,7 @@ import { color, font, fontSize, mixins } from '../../../styles';
 const PullQuoteWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  margin-bottom: 3rem;
   width: 100%;
 
   ${breakpoint('md')`
