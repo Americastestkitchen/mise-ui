@@ -26,8 +26,9 @@ const ContentTextBlockP = styled.p`
   ul {
     li {
       align-items: flex-start;
-      display: flex;
       margin-bottom: 1rem;
+      padding-left: 1.2rem;
+      position: relative;
 
       &:last-child {
         margin-bottom: 0;
@@ -37,9 +38,11 @@ const ContentTextBlockP = styled.p`
         border-radius: 4px;
         content: ' ';
         background-color: ${color.mediumGray};
+        left: 0;
         margin: 0.8rem 0.8rem 0 0;
         min-height: 4px;
         min-width: 4px;
+        position: absolute;
       }
     }
   }

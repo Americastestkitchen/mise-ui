@@ -8,6 +8,8 @@ import { color, font, fontSize, mixins } from '../../../styles';
 import { getImageUrl } from '../../../lib/cloudinary';
 
 const PhotoCollectionWrapper = styled.div`
+  margin-bottom: 3rem;
+
   .photo-collection__default {
     display: flex;
     flex-direction: column;
@@ -21,7 +23,6 @@ const PhotoCollectionWrapper = styled.div`
   ${breakpoint('xlg')`
     .photo-collection__default {
       flex-direction: row;
-      margin-bottom: 3rem;
       ${mixins.articlesWidth('default')}
 
         figcaption {
@@ -51,7 +52,6 @@ const PhotoCollectionWrapper = styled.div`
 
 const PhotoCollection = styled.div`
   display: flex;
-  margin-bottom: 1.2rem;
   max-width: 100%;
 
   picture:not(:last-child) {
@@ -98,8 +98,11 @@ const CollectionPicture = styled.picture`
 
 const ImagesWrapper = styled.div`
   display: flex;
-  margin-bottom: 1.2rem;
-  margin-right: 1.6rem;
+  margin: 0 0 1.2rem;
+
+  ${breakpoint('xlg')`
+    margin: 0 1.6rem 0;
+  `}
 `;
 
 const CollectionTitle = styled.h3`
