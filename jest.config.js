@@ -1,4 +1,5 @@
 module.exports = {
+  testEnvironment: 'jest-environment-jsdom-fifteen',
   testPathIgnorePatterns: [
     '<rootDir>/node_modules/',
     '<rootDir>/dist/',
