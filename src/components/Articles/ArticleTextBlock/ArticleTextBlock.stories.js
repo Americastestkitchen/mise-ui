@@ -67,6 +67,12 @@ export const SidebarCardWithImage = () => (
   </ArticleTextBlockStoryWrapper>
 );
 
+export const BoxWithOrderedListDefaultWidth = () => (
+  <ArticleTextBlockStoryWrapper>
+    <ArticleTextBlock {...storyProps.boxWithOrderedListDefaultWidth} />;
+  </ArticleTextBlockStoryWrapper>
+);
+
 export const BoxNoImageDefaultWidth = () => (
   <ArticleTextBlockStoryWrapper>
     <ArticleTextBlock {...storyProps.boxNoImageDefaultWidth} />

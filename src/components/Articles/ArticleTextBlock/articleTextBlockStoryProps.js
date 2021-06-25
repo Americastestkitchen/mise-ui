@@ -121,6 +121,13 @@ const boxTopImageWideWidth = {
   width: widthWide,
 };
 
+const orderedList = '<ol><li>A quiet motor (a few sounded like jackhammers)</li><li>The Feed tube should be big enough to minimize pretrimming and waste, but narrow enough to hold food upright.</li><li>A heavy anchoring base that doesn’t need suction cups to stay stable</li><li>Buttons and controls that are easy to interpret, comfortable to push, and simple to wipe clean</li></ol>';
+
+const boxWithOrderedListDefaultWidth = {
+  ...boxNoImageDefaultWidth,
+  content: orderedList,
+};
+
 const boxBottomImageDefaultWidth = {
   ...boxNoImageDefaultWidth,
   photo: {
@@ -147,6 +154,7 @@ export default {
   sidebarCardWithImage,
   boxNoImageDefaultWidth,
   boxNoImageWideWidth,
+  boxWithOrderedListDefaultWidth,
   boxTopImageDefaultWidth,
   boxTopImageWideWidth,
   boxBottomImageDefaultWidth,
