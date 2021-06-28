@@ -24,7 +24,7 @@ const StandardCardTheme = {
 
     .search-page & {
       a:focus-within p {
-        ${mixins.focusIndicator(color.eclipse)};
+        ${mixins.focusIndicator()};
       }
     }
   `,

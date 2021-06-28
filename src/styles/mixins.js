@@ -79,9 +79,9 @@ export default {
     `;
   },
 
-  focusIndicator(color) {
+  focusIndicator(outlineColor = color.eclipse) {
     return `
-      outline: 2px dotted ${color};
+      outline: 2px dotted ${outlineColor};
       outline-offset: 3px;
     `;
   },

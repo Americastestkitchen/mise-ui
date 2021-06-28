@@ -95,7 +95,7 @@ const SearchSortByLabelTheme = {
     }
 
     &:focus-within {
-      ${mixins.focusIndicator(color.eclipse)};
+      ${mixins.focusIndicator()};
       outline-offset: 0;
     }
   `,
