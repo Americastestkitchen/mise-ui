@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 
 import Badge from '../../../Badge';
 import { Checkmark } from '../../../DesignTokens/Icon/svgs';
-import { color, font, fontSize, spacing, withThemes } from '../../../../styles';
+import { color, font, fontSize, mixins, spacing, withThemes } from '../../../../styles';
 
 const RefinementFilterLabelTheme = {
   default: css`
@@ -40,7 +40,8 @@ const RefinementFilterLabelTheme = {
     }
 
     &:focus-within {
-      outline: 2px dotted ${color.eclipse};
+      ${mixins.focusIndicator(color.eclipse)};
+      outline-offset: 0;
     }
 
     .search-refinement__badge {

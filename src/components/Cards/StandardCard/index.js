@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
-import { cards, color, fontSize, spacing, withThemes } from '../../../styles';
+import { cards, color, fontSize, mixins, spacing, withThemes } from '../../../styles';
 import Badge from '../../Badge';
 import Attributions from '../shared/Attributions';
 import CtaLink from '../shared/CtaLink';
@@ -24,8 +24,7 @@ const StandardCardTheme = {
 
     .search-page & {
       a:focus-within p {
-        outline: 2px dotted ${color.eclipse};
-        outline-offset: 3px;
+        ${mixins.focusIndicator(color.eclipse)};
       }
     }
   `,

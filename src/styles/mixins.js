@@ -78,4 +78,11 @@ export default {
       }
     `;
   },
+
+  focusIndicator(color) {
+    return `
+      outline: 2px dotted ${color};
+      outline-offset: 3px;
+    `;
+  },
 };

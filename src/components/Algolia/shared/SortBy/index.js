@@ -8,6 +8,7 @@ import {
   font,
   fontSize,
   lineHeight,
+  mixins,
   spacing,
   withThemes,
 } from '../../../../styles';
@@ -94,7 +95,8 @@ const SearchSortByLabelTheme = {
     }
 
     &:focus-within {
-      outline: 2px dotted ${color.eclipse};
+      ${mixins.focusIndicator(color.eclipse)};
+      outline-offset: 0;
     }
   `,
   kidsSearch: css`
