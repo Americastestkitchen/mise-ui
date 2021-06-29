@@ -29,6 +29,19 @@ const determineType = (type, fill) => {
   return El && <El fill={fill} />;
 };
 
+const determineBadgeText = (type) => {
+  const types = {
+    atk: 'America’s Test Kitchen',
+    cio: 'Cook’s Illustrated',
+    cco: 'Cook’s Country',
+    kids: 'ATK Kids',
+    school: 'Cooking School',
+    shop: 'ATK Shop',
+  };
+  const El = types[type];
+  return El;
+};
+
 /**
  * Badges exist for brand logos (cc, ci, atk, kids) and also other destination
  * identities like shop.
@@ -47,7 +60,7 @@ const Badge = ({
   <StyledBadge
     data-testid={`${type}-badge`}
     role="img"
-    aria-label={`${type}`.toUpperCase()}
+    aria-label={determineBadgeText(type)}
     className={`badge${className ? ` ${className}` : ''}`}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 25 25"
