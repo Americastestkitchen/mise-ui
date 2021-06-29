@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
-import { cards, color, fontSize, spacing, withThemes } from '../../../styles';
+import { cards, color, fontSize, mixins, spacing, withThemes } from '../../../styles';
 import Badge from '../../Badge';
 import Attributions from '../shared/Attributions';
 import CtaLink from '../shared/CtaLink';
@@ -21,6 +21,12 @@ const StandardCardTheme = {
         color: ${color.eclipse};
       }
     }
+
+    .search-page & {
+      a:focus-within p {
+        ${mixins.focusIndicator()};
+      }
+    }
   `,
   dark: css`
     color: ${color.white};
@@ -36,12 +42,14 @@ const StandardCardTheme = {
 
 const StyledStandardCard = styled.article`
   ${withThemes(StandardCardTheme)}
+  margin-bottom: ${spacing.xsm};
   position: relative;
-  padding-bottom: ${spacing.md};
+  padding-bottom: ${spacing.sm};
   width: ${cards.standard.width.base};
 
   ${breakpoint('lg')`
-    padding-bottom: ${spacing.lg};
+    margin-bottom: ${spacing.sm};
+    padding-bottom: ${spacing.sm};
     width: ${cards.standard.width.lg};
   `}
 `;
@@ -70,6 +78,7 @@ const TitleWrapperTheme = {
     align-items: flex-start;
     justify-content: space-between;
     padding-top: ${spacing.xsm};
+    max-width: ${props => [props.displayFavoritesButton ? '24.5rem' : 'none']};
   `,
 };
 
@@ -91,9 +100,21 @@ export const StyledTitle = styled(Title)`
 `;
 
 export const StyledFavoriteButton = styled(FavoriteButton)`
-  flex-shrink: 0;
-  margin-top: -${spacing.xxsm};
-  padding: ${spacing.xsm} 0 0 ${spacing.xsm};
+  position: absolute;
+  top: 17rem;
+  right: 0;
+
+  .no-image & {
+    top: 3.5rem;
+  }
+
+  ${breakpoint('lg')`
+    top: 28rem;
+
+    .no-image & {
+      top: 3.5rem;
+    }
+  `}
 `;
 
 export const StickerGroup = styled.div`
@@ -220,21 +241,21 @@ function StandardCard({
             </StickerGroup>
           ) : null }
         </ImageWrapper>
-        <TitleWrapper className="standard-card__title-wrapper">
+        <TitleWrapper displayFavoritesButton={displayFavoritesButton} className="standard-card__title-wrapper">
           <StyledTitle className={className} title={title} />
-          { displayFavoritesButton ? (
-            <StyledFavoriteButton
-              className={className}
-              fill={favoriteRibbonColor}
-              role="button"
-              isFavorited={isFavorited}
-              objectId={objectId}
-              siteKey={siteKeyFavorites}
-              title={title}
-            />
-          ) : null }
         </TitleWrapper>
       </a>
+      { displayFavoritesButton ? (
+        <StyledFavoriteButton
+          className={className}
+          fill={favoriteRibbonColor}
+          role="button"
+          isFavorited={isFavorited}
+          objectId={objectId}
+          siteKey={siteKeyFavorites}
+          title={title}
+        />
+      ) : null }
       <StyledAttributions
         displayCookbook={displayCookbook}
         displayLockIcon={displayLockIcon}

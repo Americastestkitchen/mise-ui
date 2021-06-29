@@ -78,4 +78,11 @@ export default {
       }
     `;
   },
+
+  focusIndicator(outlineColor = color.eclipse) {
+    return `
+      outline: 2px dotted ${outlineColor};
+      outline-offset: 3px;
+    `;
+  },
 };
