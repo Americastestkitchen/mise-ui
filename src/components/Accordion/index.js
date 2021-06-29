@@ -229,6 +229,10 @@ function Accordion({
     labelEl = isLabelString ? Label : <Label />;
   }
 
+  if (typeof Label === 'object') {
+    labelEl = Label;
+  }
+
   useEffect(() => {
     if (typeof dry !== 'undefined') {
       // eslint-disable-next-line no-undef

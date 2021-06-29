@@ -1,6 +1,33 @@
 import { cards, color } from './index';
 
 export default {
+  /**
+   * Handles max-width style for Articles components.
+   * @param  {String} widthType ['default', 'wide']
+   * @return {String}           CSS Text
+   */
+  articlesWidth(widthType) {
+    return widthType === 'default' ? 'max-width: 63.2rem;' : 'max-width: 84.8rem;';
+  },
+
+  /**
+   * TwoUp & ThreeUpImage Handle Sizing for Articles Photo Collection Component
+   * @param {String} widthType  ['default, wide]
+   * @returns {String}          CSS Text
+   */
+
+  articlesTwoUpImageCollection(widthType) {
+    return (widthType === 'default')
+      ? 'max-height: 30.8rem; max-width: 30.8rem;'
+      : 'max-height: 41.3rem; max-width: 41.3rem;';
+  },
+
+  articlesThreeUpImageCollection(widthType) {
+    return (widthType === 'default')
+      ? 'max-height: 30.8rem; max-width: 20rem;'
+      : 'max-height: 41.3rem; max-width: 26.8rem;';
+  },
+
   styledLink(underlineColor, backgroundColor, textColor = 'inherit') {
     return `
       background-image: linear-gradient(transparent 91%, ${underlineColor} 91%);
@@ -40,6 +67,20 @@ export default {
       text-overflow: ellipsis;
       white-space: nowrap;
       ${width ? `width: ${width}` : ''}
+    `;
+  },
+
+  /**
+   * Truncate text with ellipses (line clamp)
+   * @param {Number} lines required - truncate after set number of lines
+   * @returns {String} CSS Text
+   */
+  truncateLineClamp(lines) {
+    return `
+      display: -webkit-box;
+      overflow: hidden;
+      -webkit-line-clamp: ${lines};
+      -webkit-box-orient: vertical;
     `;
   },
 

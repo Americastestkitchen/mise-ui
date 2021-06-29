@@ -238,6 +238,17 @@ export const QuestionMark = ({ fill }) => (
 
 QuestionMark.propTypes = Icons.QuestionMark.propTypes;
 
+export const Quote = ({ circleFill, quoteColor }) => (
+  <Icon>
+    <Icons.Quote
+      circleFill={circleFill}
+      quoteColor={quoteColor}
+    />
+  </Icon>
+);
+
+Quote.propTypes = Icons.Quote.propTypes;
+
 export const RecipeCard = ({ fill }) => (
   <Icon>
     <Icons.RecipeCard
