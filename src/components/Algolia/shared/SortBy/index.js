@@ -98,6 +98,10 @@ const SearchSortByLabelTheme = {
       ${mixins.focusIndicator()};
       outline-offset: 0;
     }
+
+    .sort-by__status {
+      ${mixins.visuallyHidden};
+    }
   `,
   kidsSearch: css`
     background-color: ${color.greySmoke};
@@ -160,6 +164,7 @@ export const CustomSortBy = ({ items, refine }) => (
               isRefined={isRefined}
             />
             {label}
+            {isRefined ? <div className="sort-by__status" role="status">Results sorted by {label}</div> : null }
           </SearchSortByLabel>
         </SearchSortByItem>
       ))
