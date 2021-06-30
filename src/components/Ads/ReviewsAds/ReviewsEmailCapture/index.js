@@ -85,6 +85,10 @@ const AdWrapper = styled.div`
   text-align: left;
   width: calc(100% + ${spacing.lg});
 
+  @media print {
+    display: none;
+  }
+
   .email-form {
     display: flex;
     justify-content: center;

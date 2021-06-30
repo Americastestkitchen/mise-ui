@@ -68,6 +68,10 @@ const AdWrapper = styled.div`
   background-color: ${color.solitude};
   padding: 1.9rem 1.9rem ${spacing.md} 1.8rem;
 
+  @media print {
+    display: none;
+  }
+
   &.cooking-school-ad__detail {
     margin: 3.2rem -1.6rem;
     margin-bottom: 2.2rem;
