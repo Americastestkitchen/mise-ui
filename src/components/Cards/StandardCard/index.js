@@ -78,7 +78,7 @@ const TitleWrapperTheme = {
     align-items: flex-start;
     justify-content: space-between;
     padding-top: ${spacing.xsm};
-    max-width: ${props => [props.displayFavoritesButton ? '24.5rem' : 'none']};
+    margin-right: ${props => [props.displayFavoritesButton ? spacing.sm : 'none']};
   `,
 };
 
