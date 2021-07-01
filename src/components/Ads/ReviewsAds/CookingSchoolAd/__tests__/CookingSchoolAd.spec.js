@@ -12,6 +12,8 @@ describe('CookingSchoolAd', () => {
       <ThemeProvider theme={{ breakpoints }}>
         <CookingSchoolAd
           deviceType="desktop"
+          incode="MAR1DCS1M"
+          mdc="SF0110SM8KLM8P"
           onClick={action('click button')}
           {...props}
         />

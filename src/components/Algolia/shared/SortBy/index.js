@@ -150,7 +150,7 @@ export const CustomSortBy = ({ items, refine }) => (
             isRefined={isRefined}
           >
             <SearchSortByRadioInput
-              checked={isRefined}
+              defaultChecked={isRefined}
               className={isRefined ? 'refined' : ''}
               onClick={(e) => { e.preventDefault(); refine(value); }}
               type="radio"

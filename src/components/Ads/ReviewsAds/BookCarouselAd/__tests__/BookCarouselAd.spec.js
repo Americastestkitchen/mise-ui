@@ -17,7 +17,7 @@ describe('BookCarouselAd', () => {
   );
 
   it('renders title, image w/ alt text, button', () => {
-    renderComponent();
+    renderComponent({ sourceKey: 'CARDDTVAA' });
     expect(screen.getByText('Every Recipe (1,670!) From All 21 Seasons')
     && screen.getByText('Save 56% Now')
     && screen.getByAltText('The Complete America\'s Test Kitchen TV Show Cookbook'));

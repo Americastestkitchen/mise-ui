@@ -19,6 +19,7 @@ const Image = ({
   imageUrl,
   lazy,
   lowQualityImageUrl,
+  testId,
   width,
 }) => {
   const intersectionRef = useRef(null);
@@ -64,6 +65,7 @@ const Image = ({
     <StyledImage
       alt={imageAlt}
       className={className}
+      data-testid={testId}
       height={height}
       ref={intersectionRef}
       src={src}
@@ -79,6 +81,7 @@ Image.propTypes = {
   imageUrl: PropTypes.string.isRequired,
   lazy: PropTypes.bool,
   lowQualityImageUrl: PropTypes.string,
+  testId: PropTypes.string,
   width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
@@ -87,6 +90,7 @@ Image.defaultProps = {
   height: null,
   lazy: true,
   lowQualityImageUrl: null,
+  testId: '',
   width: null,
 };
 

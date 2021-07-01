@@ -26,6 +26,6 @@ describe('LoadingRelatedDocumentCard component should', () => {
 
   it('render a badge', () => {
     renderComponent();
-    expect(screen.getByTestId('badge'));
+    expect(screen.getByTestId('atk-badge'));
   });
 });
