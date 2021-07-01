@@ -12,6 +12,10 @@ describe('ImageListItem component should', () => {
     render(
       <ThemeProvider theme={{ breakpoints }}>
         <ImageListItem
+          altText="testing"
+          content="testing"
+          cloudinaryId="TnT/2020/1_CCJJ_Dill%20Pickles/SPS_Pickle_Samples_with_Brine_104-1"
+          width="default"
           {...props}
         />
       </ThemeProvider>,
@@ -19,12 +23,12 @@ describe('ImageListItem component should', () => {
   );
 
   it('renders a photo if provided', () => {
-    renderComponent({ cloudinaryId: 'TnT/2020/1_CCJJ_Dill%20Pickles/SPS_Pickle_Samples_with_Brine_104-1', altText: 'testing' });
+    renderComponent();
     expect(screen.getByAltText('testing'));
   });
 
   it('renders a content description', () => {
-    renderComponent({ content: 'testing' });
+    renderComponent();
     expect(screen.getByText('testing'));
   });
 });

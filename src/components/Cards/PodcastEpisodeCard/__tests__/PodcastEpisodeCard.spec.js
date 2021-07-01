@@ -53,6 +53,6 @@ describe('PodcastEpisodeCard component', () => {
 
   it('render an atk badge', () => {
     renderComponent();
-    expect(screen.getByTestId('badge'));
+    expect(screen.getByTestId('atk-badge'));
   });
 });

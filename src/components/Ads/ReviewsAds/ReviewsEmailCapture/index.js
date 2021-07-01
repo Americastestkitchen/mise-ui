@@ -25,7 +25,7 @@ const AdDescription = styled.p`
     min-width: 35rem;
   `}
 
-  ${breakpoint('desktop')`
+  ${breakpoint('lg')`
     min-width: 34rem;
   `}
 
@@ -67,7 +67,7 @@ const AdTitle = styled.h2`
     margin-bottom: ${spacing.xxsm};
   `}
 
-  ${breakpoint('desktop')`
+  ${breakpoint('lg')`
     max-width: 32rem;
   `}
 
@@ -160,7 +160,7 @@ const AdWrapper = styled.div`
     }
   `}
 
-  ${breakpoint('desktop')`
+  ${breakpoint('lg')`
     margin: ${spacing.xlg} 0 0;
     min-width: 66.7rem;
     padding: 2.5rem 3.65rem 3.45rem 3rem;
@@ -193,7 +193,7 @@ const MainContent = styled.div`
     max-width: 34rem;
   `}
 
-  ${breakpoint('desktop')`
+  ${breakpoint('lg')`
     margin-right: 0;
   `}
 

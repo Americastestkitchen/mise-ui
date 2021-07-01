@@ -247,9 +247,19 @@ const LandingEmailAd = ({
   title,
 }) => (
   <LandingEmailWrapper success={success}>
-    <ImageWrapper data-testid="adImage">
-      <Image className="landing-ad-image-desktop" imageUrl={desktopImageUrl} />
-      <Image className="landing-ad-image-tablet" imageUrl={tabletImageUrl} />
+    <ImageWrapper>
+      <Image
+        className="landing-ad-image-desktop"
+        testId="landing-ad-image-desktop"
+        imageUrl={desktopImageUrl}
+        imageAlt=""
+      />
+      <Image
+        className="landing-ad-image-tablet"
+        testId="landing-ad-image-tablet"
+        imageUrl={tabletImageUrl}
+        imageAlt=""
+      />
     </ImageWrapper>
     <FormColumnWrapper success={success}>
       <FormBodyContent success={success}>

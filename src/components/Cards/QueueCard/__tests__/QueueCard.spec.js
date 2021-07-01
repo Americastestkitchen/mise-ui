@@ -45,7 +45,7 @@ describe('QueueCard component', () => {
 
   it('render a badge', () => {
     renderComponent(inProgressEpisode);
-    expect(screen.getByTestId('badge'));
+    expect(screen.getByTestId('atk-badge'));
   });
 
   it('render an image', () => {

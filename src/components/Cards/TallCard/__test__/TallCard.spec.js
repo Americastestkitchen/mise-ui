@@ -35,7 +35,7 @@ describe('TallCard component should', () => {
 
   it('render a badge', () => {
     renderComponent();
-    expect(screen.getByTestId('badge'));
+    expect(screen.getByTestId('cco-badge'));
   });
 
   it('render a gradient overlay', () => {

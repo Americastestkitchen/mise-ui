@@ -13,29 +13,35 @@ const images = [{
   cloudinaryId: 'TnT/2020/1_CCJJ_Dill%20Pickles/SPS_Dill_Pickle_Hero_123',
   content: '\u003cp\u003eThere are many things about this picture to say. There are many things about this picture to say. There are many things about this picture to say.\u003cp\u003e',
   lazy: true,
+  width: 'default',
 }, {
   altText: 'picture of a thing',
   cloudinaryId: 'TnT/2020/1_CCJJ_Dill%20Pickles/SPS_Dill_Pickle_Hero_123',
   content: '\u003cp\u003eThere are many things about this picture to say. There are many things about this picture to say. There are many things about this picture to say.\u003cp\u003e',
   lazy: true,
+  width: 'default',
 }];
 
 describe('ImageListContainer component should', () => {
   const renderComponent = props => (
     render(
       <ThemeProvider theme={{ breakpoints }}>
-        <ImageListContainer {...props} />
+        <ImageListContainer
+          title="testing"
+          width="default"
+          {...props}
+        />
       </ThemeProvider>,
     )
   );
 
   it('renders multiple images', () => {
-    renderComponent({ children: images.map(el => <ImageListItem {...el} />) });
+    renderComponent({ children: images.map((el, i) => <ImageListItem key={i} {...el} />) });
     expect(screen.getAllByAltText('picture of a thing'));
   });
 
   it('renders a title', () => {
-    renderComponent({ title: 'testing' });
+    renderComponent({ children: images.map((el, i) => <ImageListItem key={i} {...el} />) });
     expect(screen.getByText('testing'));
   });
 });

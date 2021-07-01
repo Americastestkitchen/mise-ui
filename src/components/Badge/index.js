@@ -45,7 +45,7 @@ const Badge = ({
   type,
 }) => (
   <StyledBadge
-    data-testid="badge"
+    data-testid={`${type}-badge`}
     role="img"
     aria-label={`${type}`.toUpperCase()}
     className={`badge${className ? ` ${className}` : ''}`}

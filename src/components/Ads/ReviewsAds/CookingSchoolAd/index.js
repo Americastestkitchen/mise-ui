@@ -22,7 +22,7 @@ const AdDimensions = styled.a`
     flex-direction: row;
   `}
 
-  ${breakpoint('desktop')`
+  ${breakpoint('lg')`
     &.cooking-school-ad__detail {
       justify-content: space-between;
     }
@@ -99,7 +99,7 @@ const AdWrapper = styled.div`
     }
   `}
 
-  ${breakpoint('desktop')`
+  ${breakpoint('lg')`
     &.cooking-school-ad__detail {
       margin: ${spacing.xlg} 0 2.2rem;
       min-width: 66.7rem;
@@ -126,7 +126,7 @@ const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
 
-  ${breakpoint('desktop')`
+  ${breakpoint('lg')`
     &.cooking-school-ad__detail {
       max-width: 26rem;
     }
@@ -162,7 +162,7 @@ const CtaLink = styled.div`
     min-width: 19.7rem;
   `}
 
-  ${breakpoint('desktop')`
+  ${breakpoint('lg')`
     min-width: 17.7rem;
     margin-left: 2.5rem;
   `}
