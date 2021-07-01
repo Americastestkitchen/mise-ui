@@ -8,7 +8,7 @@ import AffiliateLink from '../shared/AffiliateLink';
 import Image from '../shared/Image';
 import Sticker from '../shared/Sticker';
 import { getImageUrl } from '../../../lib/cloudinary';
-import { color, font, fontSize, lineHeight, withThemes } from '../../../styles';
+import { color, font, fontSize, lineHeight, spacing, withThemes } from '../../../styles';
 
 const ReviewableSummaryItemTheme = {
   default: css`
@@ -72,6 +72,11 @@ const TitleImageWrapper = styled.div.attrs({
   h3 {
     font: ${fontSize.xl} / ${lineHeight.sm} ${font.pnb};
     margin-bottom: 1.4rem;
+  }
+
+  p {
+    font: ${fontSize.lg}/${lineHeight.lg} ${font.mwr};
+    margin-bottom: ${spacing.md};
   }
 
   .reviewable-img {
@@ -206,10 +211,12 @@ const ReviewableSummaryCard = React.memo(({
   buyNowOverrideAffiliateActive,
   buyNowOverrideAffiliateName,
   cloudinaryId,
+  dek,
   displayPrice,
   href,
   hrefDataAttrs,
   imageAltText,
+  includeDek,
   isShortList,
   name,
   price,
@@ -247,6 +254,7 @@ const ReviewableSummaryCard = React.memo(({
           )}
           <ReviewableLink href={href} hrefDataAttrs={hrefDataAttrs}>
             <h3>{name}</h3>
+            {includeDek && (<p>{dek}</p>)}
           </ReviewableLink>
           {!buyNowLink && priceMarkup && (
             <ItemPrice dangerouslySetInnerHTML={{ __html: priceMarkup }} />
@@ -297,10 +305,12 @@ ReviewableSummaryCard.propTypes = {
   buyNowOverrideAffiliateActive: PropTypes.bool.isRequired,
   buyNowOverrideAffiliateName: PropTypes.string,
   cloudinaryId: PropTypes.string,
+  dek: PropTypes.string,
   displayPrice: PropTypes.bool,
   href: PropTypes.string,
   hrefDataAttrs: PropTypes.object,
   imageAltText: PropTypes.string,
+  includeDek: PropTypes.bool,
   isShortList: PropTypes.bool,
   name: PropTypes.string.isRequired,
   price: PropTypes.string,
@@ -315,10 +325,12 @@ ReviewableSummaryCard.defaultProps = {
   buyNowOnClick: null,
   buyNowOverrideAffiliateName: null,
   cloudinaryId: null,
+  dek: '',
   displayPrice: false,
   href: null,
   hrefDataAttrs: {},
   imageAltText: '',
+  includeDek: false,
   isShortList: false,
   price: null,
   recommendationStatus: null,
