@@ -1,4 +1,4 @@
-Mise en place is a French term for having all your ingredients measured, cut, peeled, sliced, grated, etc, before you start cooking. In the same light, *Mise UI* is a design system and component library for America's Test Kitchen.
+Mise en place is a French term for having all your ingredients measured, cut, peeled, sliced, grated, etc, before you start cooking. In the same light, *Mise UI* is a design system and component library for America’s Test Kitchen.
 
 The current state of the master branch can be viewed here: https://mise-ui.netlify.com
 
