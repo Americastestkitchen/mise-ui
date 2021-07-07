@@ -21,7 +21,7 @@ To review work with others, push your branch to `origin/staging`. Netlify will b
 
 #### Document your code
 
-add comments to your components which Storybook will use as documentation.
+Add comments to your components which Storybook will use as documentation.
 
 For example:
 
