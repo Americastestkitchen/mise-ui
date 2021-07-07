@@ -18,6 +18,10 @@ const ArticleFigcaptionWrapper = styled.figcaption`
     ${({ decorationPosition }) => (decorationPosition === 'bottom' ? 'padding-bottom: 0.8rem;' : 'padding-top: 0.8rem;')}
   `}
 
+  a {
+    ${mixins.styledLink(color.turquoise, color.seaSalt)}
+  }
+
   &::after {
     background-color: ${color.mint};
     content: '';
@@ -43,8 +47,8 @@ const ArticleFigcaptionWrapper = styled.figcaption`
 const ArticleFigcaption = ({ caption, decorationPosition }) => (
   <ArticleFigcaptionWrapper
     className="article-figcaption"
-    decorationPosition={decorationPosition}
     dangerouslySetInnerHTML={{ __html: caption }}
+    decorationPosition={decorationPosition}
   />
 );
 

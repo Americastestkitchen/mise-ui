@@ -8,9 +8,11 @@ export default {
     component: ArticlePhotoCollection,
 };
 
+const caption = 'The heat applied during pasteurization, a necessary step for all <a href="#">shelf-stable jars</a>, essentially cooks the pickles. Pickle spears (left) are especially vulnerable and often turn out soft and soggy. Shelf-stable whole pickles (right) are much more likely to stay firm and crunchy.';
+
 export const defaultTwoImages = () => (
   <ArticlePhotoCollection
-    caption={"The heat applied during pasteurization, a necessary step for all shelf-stable jars, essentially cooks the pickles. Pickle spears (left) are especially vulnerable and often turn out soft and soggy. Shelf-stable whole pickles (right) are much more likely to stay firm and crunchy."}
+    caption={caption}
     count={2}
     images={images.slice(0, 2)}
     title=""
@@ -19,8 +21,8 @@ export const defaultTwoImages = () => (
 );
 
 export const defaultThreeImagesWithTitle = () => (
-    <ArticlePhotoCollection
-    caption={"The heat applied during pasteurization, a necessary step for all shelf-stable jars, essentially cooks the pickles. Pickle spears (left) are especially vulnerable and often turn out soft and soggy. Shelf-stable whole pickles (right) are much more likely to stay firm and crunchy."}
+  <ArticlePhotoCollection
+    caption={caption}
     count={3}
     images={images}
     title="Collection of Pickle Photos"
@@ -29,8 +31,8 @@ export const defaultThreeImagesWithTitle = () => (
 );
 
 export const wideTwoImagesWithTitle = () => (
-    <ArticlePhotoCollection
-    caption={"The heat applied during pasteurization, a necessary step for all shelf-stable jars, essentially cooks the pickles. Pickle spears (left) are especially vulnerable and often turn out soft and soggy. Shelf-stable whole pickles (right) are much more likely to stay firm and crunchy."}
+  <ArticlePhotoCollection
+    caption={caption}
     count={2}
     images={images.slice(0, 2)}
     title="Collection of Pickle Photos"
