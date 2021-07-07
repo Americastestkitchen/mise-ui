@@ -22,6 +22,8 @@ const defaultProps = {
   buyNowOverrideAffiliateName: null,
   buyNowOverrideAffiliateActive: false,
   imageAltText: 'Buy me',
+  dek: 'It can\' hold enough small muffins! Sometimes there are just too many!!',
+  includeDek: true,
 };
 
 describe('ReviewableSummaryCard component should', () => {
@@ -38,6 +40,11 @@ describe('ReviewableSummaryCard component should', () => {
   it('render the name', () => {
     renderComponent();
     expect(screen.getByText(defaultProps.name));
+  });
+
+  it('renders the dek', () => {
+    renderComponent();
+    expect(screen.getByText(defaultProps.dek));
   });
 
   it('renders the winner sticker with custom text', () => {

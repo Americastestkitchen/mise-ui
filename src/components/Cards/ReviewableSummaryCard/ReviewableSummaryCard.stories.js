@@ -57,6 +57,8 @@ export const Default = () => {
             null)}
           cloudinaryId={text('Cloudinary ID', 'Equipment Images/SIL_CookwareSets_All-Clad1And1-2QTSaucepan_1746')}
           name={text('Product name', 'All-Clad Stainless 2Qt Saucepan')}
+          dek={text('Description', 'It can\' hold enough small muffins! Sometimes there are just too many!!')}
+          includeDek={boolean('Include Description', true)}
           price={text('Price', '$15.99')}
           recommendationStatus={text('Recommendation Status', 'Highly Recommended')}
           winner={boolean('Winner?', true)}
