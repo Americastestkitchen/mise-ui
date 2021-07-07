@@ -8,6 +8,7 @@ export default {
 };
 
 const caption = 'The heat applied during pasteurization, a necessary step for all shelf-stable jars, essentially cooks the pickles.';
+const linkCaption = 'The heat applied during pasteurization, a necessary step for all <a href="#">shelf-stable jars</a>, essentially cooks the pickles.';
 
 export const DecorationOnTop = () => (
   <ArticleFigcaption
@@ -19,6 +20,13 @@ export const DecorationOnTop = () => (
 export const DecorationOnBottom = () => (
   <ArticleFigcaption
     caption={caption}
+    decorationPosition="bottom"
+  />
+);
+
+export const WithLink = () => (
+  <ArticleFigcaption
+    caption={linkCaption}
     decorationPosition="bottom"
   />
 );
