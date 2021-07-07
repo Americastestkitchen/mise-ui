@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 
-import { color, font, fontSize } from '../../../../styles';
+import { color, font, fontSize, mixins } from '../../../../styles';
 
 const ArticleFigcaptionWrapper = styled.figcaption`
   color: ${color.mediumGray};
@@ -17,6 +17,10 @@ const ArticleFigcaptionWrapper = styled.figcaption`
   ${breakpoint('xlg')`
     ${({ decorationPosition }) => (decorationPosition === 'bottom' ? 'padding-bottom: 0.8rem;' : 'padding-top: 0.8rem;')}
   `}
+
+  a {
+    ${mixins.styledLink(color.turquoise, color.seaSalt)}
+  }
 
   &::after {
     background-color: ${color.mint};
@@ -39,10 +43,9 @@ const ArticleFigcaptionWrapper = styled.figcaption`
 const ArticleFigcaption = ({ caption, decorationPosition }) => (
   <ArticleFigcaptionWrapper
     className="article-figcaption"
+    dangerouslySetInnerHTML={{ __html: caption }}
     decorationPosition={decorationPosition}
-  >
-    {caption}
-  </ArticleFigcaptionWrapper>
+  />
 );
 
 ArticleFigcaption.propTypes = {
