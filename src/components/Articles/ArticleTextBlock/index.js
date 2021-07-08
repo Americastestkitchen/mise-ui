@@ -172,6 +172,7 @@ const ArticleTextBlock = ({
   content,
   displayOption,
   dropCap,
+  includeInTOC,
   photo,
   sidebarCard,
   title,
@@ -182,7 +183,11 @@ const ArticleTextBlock = ({
   const includePhoto = photo && photoPosition;
 
   return (
-    <ArticleTextBlockWrapper className={`article-text-block--${displayOption}${photoPosition ? ` has-img--${photoPosition}` : ''}`} width={width}>
+    <ArticleTextBlockWrapper
+      className={`article-text-block--${displayOption}${photoPosition ? ` has-img--${photoPosition}` : ''}`}
+      id={includeInTOC || null}
+      width={width}
+    >
       {
         title && (
           <ArticleTextBlockHeading className="article-text-block__heading">
@@ -213,6 +218,8 @@ ArticleTextBlock.propTypes = {
   displayOption: PropTypes.oneOf(['default', 'box']),
   /** Display drop cap styles? */
   dropCap: PropTypes.bool,
+  /** Sets id for link to text block in TOC */
+  includeInTOC: PropTypes.string,
   /** Photo configuration options */
   photo: PropTypes.shape({
     altText: PropTypes.string,
@@ -232,6 +239,7 @@ ArticleTextBlock.propTypes = {
 ArticleTextBlock.defaultProps = {
   displayOption: 'default',
   dropCap: false,
+  includeInTOC: null,
   photo: null,
   sidebarCard: null,
   title: null,
