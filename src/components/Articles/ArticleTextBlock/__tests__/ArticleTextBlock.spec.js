@@ -46,4 +46,9 @@ describe('ArticleTextBlock component should', () => {
     renderComponent({ ...storyProps.boxBottomImageDefaultWidth });
     expect(screen.getByAltText(storyProps.boxBottomImageDefaultWidth.photo.altText)).toHaveStyleRule('order: 3;');
   });
+
+  it('renders block with id for jumplink if includeInTOC', () => {
+    const { container } = renderComponent({ ...storyProps.includeInTOC });
+    expect(container.querySelector('#testingTOCTitle'));
+  });
 });
