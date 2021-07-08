@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { connectSortBy } from 'react-instantsearch-dom';
@@ -12,6 +12,13 @@ import {
   spacing,
   withThemes,
 } from '../../../../styles';
+
+const SearchSortByStatus = styled.div.attrs({
+  className: 'sort-by__status',
+  role: 'status',
+})`
+  ${mixins.visuallyHidden};
+`;
 
 const SearchSortByItemTheme = {
   default: css`
@@ -98,10 +105,6 @@ const SearchSortByLabelTheme = {
       ${mixins.focusIndicator()};
       outline-offset: 0;
     }
-
-    .sort-by__status {
-      ${mixins.visuallyHidden};
-    }
   `,
   kidsSearch: css`
     background-color: ${color.greySmoke};
@@ -143,9 +146,21 @@ const SearchSortByLabel = styled.label.attrs({
   className: 'search-sort-by__label',
 })`${withThemes(SearchSortByLabelTheme)}`;
 
-export const CustomSortBy = ({ items, refine }) => (
-  <>
-    {
+export const CustomSortBy = ({ items, refine }) => {
+  // determine if the status message should reflect a preselected refinement
+  const defaultRefinement = (items) => {
+    const refined = items.filter(el => el.isRefined);
+    return refined[0]?.label || null;
+  };
+
+  const [status, setStatus] = useState(defaultRefinement(items));
+
+  return (
+    <>
+      {status && (
+        <SearchSortByStatus>Results sorted by {status}</SearchSortByStatus>
+      )}
+      {
       items.map(({ isRefined, label, value }) => (
         <SearchSortByItem
           key={value}
@@ -156,7 +171,11 @@ export const CustomSortBy = ({ items, refine }) => (
             <SearchSortByRadioInput
               defaultChecked={isRefined}
               className={isRefined ? 'refined' : ''}
-              onClick={(e) => { e.preventDefault(); refine(value); }}
+              onClick={(e) => {
+                e.preventDefault();
+                refine(value);
+                setStatus(label);
+              }}
               type="radio"
             />
             <SearchSortByCircle
@@ -164,13 +183,13 @@ export const CustomSortBy = ({ items, refine }) => (
               isRefined={isRefined}
             />
             {label}
-            {isRefined ? <div className="sort-by__status" role="status">Results sorted by {label}</div> : null }
           </SearchSortByLabel>
         </SearchSortByItem>
       ))
     }
-  </>
-);
+    </>
+  );
+};
 
 CustomSortBy.propTypes = {
   items: PropTypes.array.isRequired,
