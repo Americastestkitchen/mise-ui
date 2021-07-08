@@ -21,7 +21,7 @@ describe('SearchSortBy component should', () => {
 
   it('render an Accordion with label \'Sort By\'', () => {
     renderComponent();
-    expect(screen.getByText('Sort By'));
+    expect(screen.getAllByText('Sort By'));
   });
 
   it('render a sorting filters with appropriate labels', () => {
