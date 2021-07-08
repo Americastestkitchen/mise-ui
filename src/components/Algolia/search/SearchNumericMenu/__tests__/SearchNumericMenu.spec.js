@@ -31,6 +31,6 @@ describe('SearchNumericMenu component should', () => {
 
   it('render an Accordion with label \'Overall Time\'', () => {
     renderComponent();
-    expect(screen.getByText('Overall Time'));
+    expect(screen.getAllByText('Overall Time'));
   });
 });
