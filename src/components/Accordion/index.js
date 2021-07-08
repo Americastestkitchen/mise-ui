@@ -5,9 +5,9 @@ import breakpoint from 'styled-components-breakpoint';
 
 import AccordionControl from '../AccordionControl';
 import { ChefHat, Content, Cookbook, Knife, Sort, Time } from '../DesignTokens/Icon/svgs';
-import { color, font, fontSize, letterSpacing, spacing, withThemes } from '../../styles';
+import { color, font, fontSize, letterSpacing, mixins, spacing, withThemes } from '../../styles';
 
-const AccordionDivWrapper = styled.div.attrs({
+const AccordionWrapper = styled.div.attrs({
   className: 'accordion-content-wrapper',
 })`
   &:focus-within {
@@ -18,10 +18,6 @@ const AccordionDivWrapper = styled.div.attrs({
     }
   }
 `;
-
-const AccordionFieldsetWrapper = styled.fieldset.attrs({
-  className: 'accordion-content-wrapper',
-})``;
 
 const AccordionButtonTheme = {
   default: css`
@@ -174,7 +170,15 @@ const AccordionLabelWrapper = styled.div.attrs({
   ${withThemes(AccordionLabelWrapperTheme)}
 `;
 
-const AccordionContent = styled.div`
+const AccordionFieldsetContent = styled.fieldset`
+  display: ${({ hidden }) => (hidden ? 'none' : 'block')};
+
+  @media print {
+    display: block !important;
+  }
+`;
+
+const AccordionDivContent = styled.div`
   display: ${({ hidden }) => (hidden ? 'none' : 'block')};
 
   @media print {
@@ -191,8 +195,12 @@ const icons = {
   time: Time,
 };
 
+const StyledLegend = styled.legend`
+  ${mixins.visuallyHidden};
+`;
+
 const Legend = ({ children }) => (
-  <legend>{children}</legend>
+  <StyledLegend>{children}</StyledLegend>
 );
 
 Legend.propTypes = {
@@ -214,7 +222,7 @@ function Accordion({
   onClick,
 }) {
   const [hidden, toggleHidden] = useState(isHidden);
-  const AccordionWrapper = isFieldset ? AccordionFieldsetWrapper : AccordionDivWrapper;
+  const AccordionContent = isFieldset ? AccordionFieldsetContent : AccordionDivContent;
   const Icon = icon ? icons[icon] : null;
   let idVal = id;
   if (!idVal && typeof Label === 'string') {
@@ -223,11 +231,7 @@ function Accordion({
 
   const isLabelString = typeof Label === 'string';
   let labelEl;
-  if (isFieldset) {
-    labelEl = isLabelString ? <Legend>{Label}</Legend> : <Label />;
-  } else {
-    labelEl = isLabelString ? Label : <Label />;
-  }
+  labelEl = isLabelString ? Label : <Label />;
 
   if (typeof Label === 'object') {
     labelEl = Label;
@@ -264,6 +268,7 @@ function Accordion({
           isExpanded={!hidden}
         />
       </AccordionButton>
+      {isFieldset ? <Legend>{Label}</Legend> : null}
       <AccordionContent
         data-testid="accordion-content"
         id={`show-hide--${idVal}`}
