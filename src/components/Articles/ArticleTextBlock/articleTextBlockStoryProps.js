@@ -141,6 +141,11 @@ const boxBottomImageWideWidth = {
   width: widthWide,
 };
 
+const includeInTOC = {
+  ...noImageDefaultWidth,
+  includeInTOC: 'testingTOCTitle',
+};
+
 export default {
   dropCap,
   noImageDefaultWidth,
@@ -159,4 +164,5 @@ export default {
   boxTopImageWideWidth,
   boxBottomImageDefaultWidth,
   boxBottomImageWideWidth,
+  includeInTOC,
 };
