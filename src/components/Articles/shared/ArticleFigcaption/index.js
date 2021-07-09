@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 
-import { color, font, fontSize } from '../../../../styles';
+import { color, font, fontSize, mixins } from '../../../../styles';
 
 const ArticleFigcaptionWrapper = styled.figcaption`
   color: ${color.mediumGray};
@@ -34,15 +34,18 @@ const ArticleFigcaptionWrapper = styled.figcaption`
       ${({ decorationPosition }) => (decorationPosition === 'bottom' ? 'bottom: 0;' : 'top: 0;')}
     `}
   }
+
+  a {
+    ${mixins.styledLink(color.turquoise, color.seaSalt)}
+  }
 `;
 
 const ArticleFigcaption = ({ caption, decorationPosition }) => (
   <ArticleFigcaptionWrapper
     className="article-figcaption"
     decorationPosition={decorationPosition}
-  >
-    {caption}
-  </ArticleFigcaptionWrapper>
+    dangerouslySetInnerHTML={{ __html: caption }}
+  />
 );
 
 ArticleFigcaption.propTypes = {
