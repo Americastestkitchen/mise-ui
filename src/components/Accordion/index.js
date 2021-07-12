@@ -17,6 +17,16 @@ const AccordionWrapper = styled.div.attrs({
       outline: none;
     }
   }
+
+  .search-page & {
+    &:focus-within {
+      box-shadow: none;
+
+      > button:focus {
+        ${mixins.focusIndicator(color.eclipse)};
+      }
+    }
+  }
 `;
 
 const AccordionButtonTheme = {
