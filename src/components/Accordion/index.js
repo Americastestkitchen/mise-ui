@@ -101,6 +101,12 @@ const AccordionButtonTheme = {
     text-align: inherit;
     text-transform: none;
 
+    [class*="Browse"] & {
+      color: ${color.eclipse};
+      letter-spacing: ${letterSpacing.md};
+      text-transform: uppercase;
+    }
+
     ${breakpoint('xlg')`
       width: 100%;
     `}
