@@ -12,7 +12,6 @@ const ImageListWrapper = styled.aside`
   padding: 2.4rem 1rem 2rem;
 
   ${breakpoint('md')`
-    max-width: 69.6rem;
     padding: 2.4rem;
   `}
 
@@ -36,7 +35,7 @@ const ImageListContainer = ({
   width,
 }) => (
   <ImageListWrapper className={className} width={width}>
-    <ImageListTitle>{title}</ImageListTitle>
+    {title && <ImageListTitle>{title}</ImageListTitle>}
     {children}
   </ImageListWrapper>
 );
@@ -47,12 +46,13 @@ ImageListContainer.propTypes = {
     PropTypes.node,
   ]).isRequired,
   className: PropTypes.string,
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   width: PropTypes.oneOf(['default', 'wide']).isRequired,
 };
 
 ImageListContainer.defaultProps = {
   className: '',
+  title: null,
 };
 
 export default ImageListContainer;

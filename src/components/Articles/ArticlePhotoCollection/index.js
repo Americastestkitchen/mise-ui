@@ -99,10 +99,6 @@ const CollectionPicture = styled.picture`
 const ImagesWrapper = styled.div`
   display: flex;
   margin: 0 0 1.2rem;
-
-  ${breakpoint('xlg')`
-    margin: 0 1.6rem 0;
-  `}
 `;
 
 const CollectionTitle = styled.h3`

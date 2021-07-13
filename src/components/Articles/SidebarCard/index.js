@@ -156,7 +156,9 @@ const SidebarCard = ({
     <SidebarTextContent photo={Boolean(photo)}>
       <HeadlineType>{type === 'HowTo' ? 'How to' : type}</HeadlineType>
       <SidebarTitle>{title}</SidebarTitle>
-      <SidebarDescription>{description}</SidebarDescription>
+      <SidebarDescription
+        dangerouslySetInnerHTML={{ __html: description }}
+      />
       <SidebarLink href={url}>read more</SidebarLink>
     </SidebarTextContent>
   </SidebarCardContainer>
