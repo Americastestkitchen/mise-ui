@@ -284,12 +284,12 @@ function Accordion({
           isExpanded={!hidden}
         />
       </AccordionButton>
-      {isFieldset ? <Legend>{Label}</Legend> : null}
       <AccordionContent
         data-testid="accordion-content"
         id={`show-hide--${idVal}`}
         hidden={hidden ? true : null}
       >
+        {isFieldset ? <Legend>{Label}</Legend> : null}
         {children}
       </AccordionContent>
     </AccordionWrapper>
