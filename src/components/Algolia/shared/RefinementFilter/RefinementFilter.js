@@ -190,7 +190,7 @@ const RefinementFilter = ({
       altFill={altFill}
       className={`${attribute}`}
       data-site-key={value}
-      htmlFor={label}
+      htmlFor={`${attribute}--${label}`}
       isRefined={isRefined || (currentRefinement && currentRefinement.length > 0)}
       onClick={(e) => {
         e.preventDefault();
@@ -215,7 +215,7 @@ const RefinementFilter = ({
       }
       <RefinementFilterCheckbox
         defaultChecked={isRefined}
-        id={label}
+        id={`${attribute}--${label}`}
         name={label}
         type="checkbox"
       />
