@@ -22,6 +22,11 @@ const SearchSortByStatus = styled.div.attrs({
 
 const SearchSortByItemTheme = {
   default: css`
+    align-items: center;
+    display: flex;
+    margin: ${spacing.xxsm} 0.25rem ${spacing.xsm} -${spacing.xxsm};
+    padding-left: ${spacing.xxsm};
+
     &:hover {
       cursor: pointer;
 
@@ -33,6 +38,10 @@ const SearchSortByItemTheme = {
       .search-sort-by__label {
         color: ${color.mint};
       }
+    }
+
+    &:focus-within {
+      ${mixins.focusIndicator()};
     }
   `,
   kidsSearch: css`
@@ -95,15 +104,9 @@ const SearchSortByLabelTheme = {
     font: ${fontSize.md}/1.38 ${font.pnr};
     font-size: ${fontSize.md};
     letter-spacing: normal;
-    margin: ${spacing.xxsm} 0.25rem ${spacing.xsm};
 
     &:hover {
       cursor: pointer;
-    }
-
-    &:focus-within {
-      ${mixins.focusIndicator()};
-      outline-offset: 0;
     }
   `,
   kidsSearch: css`
@@ -162,6 +165,10 @@ export const CustomSortBy = ({ items, refine }) => {
           <SearchSortByItem
             key={value}
           >
+            <SearchSortByCircle
+              data-testid="sort-by__radio"
+              isRefined={isRefined}
+            />
             <SearchSortByLabel
               isRefined={isRefined}
             >
@@ -175,10 +182,6 @@ export const CustomSortBy = ({ items, refine }) => {
                   setStatus(label);
                 }}
                 type="radio"
-              />
-              <SearchSortByCircle
-                data-testid="sort-by__radio"
-                isRefined={isRefined}
               />
               {label}
             </SearchSortByLabel>
