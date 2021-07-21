@@ -35,6 +35,7 @@ const SearchSortByItemTheme = {
 
     &:focus-within {
       ${mixins.focusIndicator()};
+      outline-offset: 0;
     }
   `,
   kidsSearch: css`
