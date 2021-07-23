@@ -86,6 +86,7 @@ const color = {
   bigStone: '#182d48',
   pictonBlue: '#3c9be2',
   morningGlory: '#a0dce2',
+  athensGray: '#f9f9fb',
 };
 
 export default color;
