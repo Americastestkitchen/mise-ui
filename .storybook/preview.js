@@ -20,6 +20,13 @@ export const parameters = {
   viewport: {
     viewports: INITIAL_VIEWPORTS,
   },
+  html: {
+    prettier: {
+      tabWidth: 4,
+      useTabs: false,
+      htmlWhiteSpaceSensitivity: 'strict'
+    }
+  }
 };
 
 const GlobalStyle = createGlobalStyle`${globalStyles}${carousel}`;
