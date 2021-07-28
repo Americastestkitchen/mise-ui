@@ -220,8 +220,9 @@ const ReviewableSummaryCard = React.memo(({
   const isDiscontinued = price?.toLowerCase()?.includes('discontinued') ?? false;
   const priceMarkup = price?.replace(parensRe, '<span>$1</span>') ?? null;
   let buyNowIcon = asin ? 'Amazon' : null;
-  if (buyNowOverrideAffiliateActive && buyNowOverrideAffiliateName) {
-    buyNowIcon = buyNowOverrideAffiliateName;
+
+  if (buyNowOverrideAffiliateActive) {
+    buyNowIcon = buyNowOverrideAffiliateName || null;
   }
   const sortOfWinner = winner || isShortList;
   const stickerText = sortOfWinner
