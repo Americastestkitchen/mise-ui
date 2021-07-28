@@ -1,5 +1,5 @@
 import React from 'react';
-import { withKnobs, text } from '@storybook/addon-knobs/react';
+import { withKnobs, text } from '@storybook/addon-knobs';
 
 import Badge from './index';
 import { color } from '../../styles';
