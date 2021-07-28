@@ -6,7 +6,7 @@ import AudioPlayer from '../../AudioPlayer';
 import { getImageUrl } from '../../../lib/cloudinary';
 
 export default {
-  title: 'Components|Cards/HeroCard',
+  title: 'Components/Cards/HeroCard',
   component: HeroCard,
 };
 

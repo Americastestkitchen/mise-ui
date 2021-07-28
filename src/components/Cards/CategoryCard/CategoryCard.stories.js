@@ -3,7 +3,7 @@ import React from 'react';
 import CategoryCard from './index';
 
 export default {
-  title: 'Components|Cards/CategoryCard',
+  title: 'Components/Cards/CategoryCard',
   component: CategoryCard,
 };
 

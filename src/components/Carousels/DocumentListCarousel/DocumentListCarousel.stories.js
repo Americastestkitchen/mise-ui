@@ -7,7 +7,7 @@ import DocumentListCarousel from './index';
 import { breakpoints, color, withThemes } from '../../../styles'
 
 export default {
-  title: 'Components|Carousels/DocumentListCarousel',
+  title: 'Components/Carousels/DocumentListCarousel',
   component: DocumentListCarousel,
   decorators: [withKnobs],
 };

@@ -8,7 +8,7 @@ import { breakpoints, color, spacing, withThemes } from '../../../../styles';
 import FreeTrialAd from './index';
 
 export default {
-  title: 'Components|Ads/ShowcaseAds/FreeTrialAd',
+  title: 'Components/Ads/ShowcaseAds/FreeTrialAd',
   component: FreeTrialAd,
   decorators: [withKnobs],
 };

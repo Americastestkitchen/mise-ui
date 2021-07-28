@@ -7,7 +7,7 @@ import SingleProductShowcaseAd from './index';
 import { breakpoints, color, spacing, withThemes } from '../../../../styles';
 
 export default {
-  title: 'Components|Ads/ShowcaseAds/SingleProductShowcaseAd',
+  title: 'Components/Ads/ShowcaseAds/SingleProductShowcaseAd',
   component: SingleProductShowcaseAd,
   decorators: [withKnobs],
 };

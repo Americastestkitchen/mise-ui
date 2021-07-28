@@ -6,7 +6,7 @@ import { breakpoints } from '../../../../styles';
 import CookingSchoolAd from './index';
 
 export default {
-  title: 'Components|Ads/ReviewsAds/CookingSchoolAd',
+  title: 'Components/Ads/ReviewsAds/CookingSchoolAd',
   component: CookingSchoolAd,
   decorators: [withKnobs],
 };

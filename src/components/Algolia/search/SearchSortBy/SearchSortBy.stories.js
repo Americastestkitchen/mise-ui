@@ -5,7 +5,7 @@ import MiseInstantSearch from '../../../../lib/algolia/MiseInstantSearch/MiseIns
 import SearchSortBy from './index';
 
 export default {
-  title: 'Components|Algolia/search/SearchSortBy',
+  title: 'Components/Algolia/search/SearchSortBy',
   component: SearchSortBy,
 };
 

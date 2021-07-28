@@ -5,7 +5,7 @@ import MiseInstantSearch from '../../../../lib/algolia/MiseInstantSearch/MiseIns
 import RefinementList2 from './index';
 
 export default {
-  title: 'Components|Algolia/shared/RefinementList2',
+  title: 'Components/Algolia/shared/RefinementList2',
   component: RefinementList2,
 };
 

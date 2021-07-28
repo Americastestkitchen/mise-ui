@@ -4,7 +4,7 @@ import { withKnobs, text } from '@storybook/addon-knobs';
 import ProgressBar from './index';
 
 export default {
-  title: 'Components|Cards/shared/ProgessBar',
+  title: 'Components/Cards/shared/ProgessBar',
   component: ProgressBar,
   decorators: [withKnobs],
 };

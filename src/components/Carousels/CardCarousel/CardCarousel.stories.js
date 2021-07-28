@@ -15,7 +15,7 @@ const CardCarousel = LoadableVisibility({
 });
 
 export default {
-  title: 'Components|Carousels/CardCarousel',
+  title: 'Components/Carousels/CardCarousel',
   component: CardCarousel,
   decorators: [withKnobs],
   parameters: {

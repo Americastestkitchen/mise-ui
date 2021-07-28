@@ -5,7 +5,7 @@ import { withKnobs, text } from '@storybook/addon-knobs';
 import TallCard from './index';
 
 export default {
-  title: 'Components|Cards/TallCard',
+  title: 'Components/Cards/TallCard',
   component: TallCard,
   decorators: [withKnobs],
 };

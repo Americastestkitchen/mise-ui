@@ -2,7 +2,7 @@ import React from 'react';
 import Title from './index';
 
 export default {
-  title: 'Components|Cards/shared/Title',
+  title: 'Components/Cards/shared/Title',
   component: Title,
 };
 

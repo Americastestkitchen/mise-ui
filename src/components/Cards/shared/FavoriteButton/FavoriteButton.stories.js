@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import FavoriteButton from './index';
 
 export default {
-  title: 'Components|Cards/shared/FavoriteButton',
+  title: 'Components/Cards/shared/FavoriteButton',
   component: FavoriteButton,
 };
 

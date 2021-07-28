@@ -14,7 +14,7 @@ import { getGifSrcSet } from '../../lib/cloudinary';
 import Gif from './index';
 
 export default {
-  title: 'Components|Gif',
+  title: 'Components/Gif',
   component: Gif,
   decorators: [withKnobs],
 };

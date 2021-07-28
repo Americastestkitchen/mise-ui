@@ -6,7 +6,7 @@ import { breakpoints } from '../../../../styles';
 import ReviewsMarketingHat from './index';
 
 export default {
-  title: 'Components|Ads/ReviewsAds/ReviewsMarketingHat',
+  title: 'Components/Ads/ReviewsAds/ReviewsMarketingHat',
   component: ReviewsMarketingHat,
   decorators: [withKnobs],
 };

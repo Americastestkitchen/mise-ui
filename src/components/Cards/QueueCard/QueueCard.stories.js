@@ -7,7 +7,7 @@ import { breakpoints, color, spacing, withThemes } from '../../../styles';
 import QueueCard from './index';
 
 export default {
-  title: 'Components|Cards/QueueCard',
+  title: 'Components/Cards/QueueCard',
   component: QueueCard,
   decorators: [withKnobs],
 };

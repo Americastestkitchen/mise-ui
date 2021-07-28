@@ -4,7 +4,7 @@ import { withKnobs, select } from '@storybook/addon-knobs';
 
 
 export default {
-  title: 'Components|Carousels/LoadingCarousel',
+  title: 'Components/Carousels/LoadingCarousel',
   component: LoadingCarousel,
   decorators: [withKnobs],
 };

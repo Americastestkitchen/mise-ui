@@ -13,7 +13,7 @@ import {
 import LoadingRelatedDocumentCard from './index';
 
 export default {
-  title: 'Components|Cards/LoadingCard/RelatedDocumentCard',
+  title: 'Components/Cards/LoadingCard/RelatedDocumentCard',
   component: LoadingRelatedDocumentCard,
   decorators: [withKnobs],
 };

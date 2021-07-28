@@ -13,7 +13,7 @@ import {
 import InlineNewsletter from './index';
 
 export default {
-  title: 'Components|Newsletters/InlineNewsletter',
+  title: 'Components/Newsletters/InlineNewsletter',
   component: InlineNewsletter,
   decorators: [withKnobs],
 };

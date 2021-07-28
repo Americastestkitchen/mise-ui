@@ -7,7 +7,7 @@ import { breakpoints } from '../../../../styles';
 import LandingEmailAd from './index';
 
 export default {
-  title: 'Components|Ads/ShowcaseAds/LandingEmailAd',
+  title: 'Components/Ads/ShowcaseAds/LandingEmailAd',
   component: LandingEmailAd,
   decorators: [withKnobs],
 };

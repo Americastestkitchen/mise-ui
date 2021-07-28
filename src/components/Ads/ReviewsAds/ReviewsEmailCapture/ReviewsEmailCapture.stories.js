@@ -6,7 +6,7 @@ import { breakpoints } from '../../../../styles';
 import ReviewsEmailCapture from './index';
 
 export default {
-  title: 'Components|Ads/ReviewsAds/ReviewsEmailCapture',
+  title: 'Components/Ads/ReviewsAds/ReviewsEmailCapture',
   component: ReviewsEmailCapture,
   decorators: [withKnobs],
 };

@@ -5,7 +5,7 @@ import { boolean, withKnobs, text } from '@storybook/addon-knobs';
 import FavoriteActionButton from './index';
 
 export default {
-  title: 'Components|Buttons/ActionButtons/FavoriteActionButton',
+  title: 'Components/Buttons/ActionButtons/FavoriteActionButton',
   component: FavoriteActionButton,
   decorators: [withKnobs],
 };

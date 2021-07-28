@@ -3,7 +3,7 @@ import Byline from './index';
 import { withKnobs, text } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Components|Byline',
+  title: 'Components/Byline',
   component: Byline,
   decorators: [withKnobs],
 };

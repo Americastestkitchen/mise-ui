@@ -6,7 +6,7 @@ import Carousel from './index';
 import CarouselNotes from './Carousel.md';
 
 export default {
-  title: 'Components|Carousels/Carousel',
+  title: 'Components/Carousels/Carousel',
   component: Carousel,
   decorators: [withKnobs],
   parameters: {

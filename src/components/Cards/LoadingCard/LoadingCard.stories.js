@@ -7,7 +7,7 @@ import LoadingCard from './index';
 import { breakpoints, color, spacing, withThemes } from '../../../styles';
 
 export default {
-  title: 'Components|Cards/LoadingCard',
+  title: 'Components/Cards/LoadingCard',
   component: LoadingCard,
 };
 

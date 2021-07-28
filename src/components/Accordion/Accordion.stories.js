@@ -7,7 +7,7 @@ import Accordion from './index';
 import { color } from '../../styles';
 
 export default {
-  title: 'Components|Accordion',
+  title: 'Components/Accordion',
   component: Accordion,
   decorators: [withKnobs],
 };

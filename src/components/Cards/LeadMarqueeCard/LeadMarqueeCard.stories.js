@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { withKnobs, select, text } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Components|Cards/LeadMarqueeCard',
+  title: 'Components/Cards/LeadMarqueeCard',
   component: LeadMarqueeCard,
   decorators: [withKnobs],
 };

@@ -5,7 +5,7 @@ import ResultsCount from './index';
 import MiseInstantSearch from '../../../../lib/algolia/MiseInstantSearch/MiseInstantSearch';
 
 export default {
-  title: 'Components|Algolia/shared/ResultsCount',
+  title: 'Components/Algolia/shared/ResultsCount',
   component: ResultsCount,
 };
 

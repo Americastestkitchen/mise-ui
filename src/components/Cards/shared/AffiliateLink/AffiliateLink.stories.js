@@ -4,7 +4,7 @@ import { boolean, withKnobs, select, text } from '@storybook/addon-knobs';
 import AffiliateLink from './index';
 
 export default {
-  title: 'Components|Cards/shared/AffiliateLink',
+  title: 'Components/Cards/shared/AffiliateLink',
   component: AffiliateLink,
   decorators: [withKnobs],
 };

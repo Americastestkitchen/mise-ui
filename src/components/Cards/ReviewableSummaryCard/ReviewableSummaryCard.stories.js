@@ -13,7 +13,7 @@ import {
 import ReviewableSummaryItem from './index';
 
 export default {
-  title: 'Components|Cards/ReviewableSummaryItem',
+  title: 'Components/Cards/ReviewableSummaryItem',
   component: ReviewableSummaryItem,
   decorators: [withKnobs],
 };

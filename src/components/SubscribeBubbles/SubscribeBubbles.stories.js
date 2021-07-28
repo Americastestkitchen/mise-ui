@@ -6,7 +6,7 @@ import SubscribeBubbles from './index';
 import { color, spacing } from '../../styles';
 
 export default {
-  title: 'Components|SubscribeBubbles',
+  title: 'Components/SubscribeBubbles',
   component: SubscribeBubbles,
 };
 
