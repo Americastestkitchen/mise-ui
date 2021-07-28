@@ -9,7 +9,7 @@ import { breakpoints, color, spacing, withThemes } from '../../../styles';
 import SingleProductAd from './index';
 
 export default {
-  title: 'Components|Ads/SingleProductAd',
+  title: 'Components/Ads/SingleProductAd',
   component: SingleProductAd,
   decorators: [withKnobs],
 };

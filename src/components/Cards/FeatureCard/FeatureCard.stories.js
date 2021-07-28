@@ -5,7 +5,7 @@ import { withKnobs, text } from '@storybook/addon-knobs';
 import FeatureCard from './index';
 
 export default {
-  title: 'Components|Cards/FeatureCard',
+  title: 'Components/Cards/FeatureCard',
   component: FeatureCard,
   decorators: [withKnobs],
 };

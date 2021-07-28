@@ -13,7 +13,7 @@ import {
 import EditorsNote from './index';
 
 export default {
-  title: 'Components|EditorsNote',
+  title: 'Components/EditorsNote',
   component: EditorsNote,
   decorators: [withKnobs],
 };

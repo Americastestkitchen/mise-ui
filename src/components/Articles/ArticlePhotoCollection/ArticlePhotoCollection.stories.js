@@ -4,7 +4,7 @@ import ArticlePhotoCollection from './index';
 import images from './imagesResponse';
 
 export default {
-    title: 'Components|Articles/ArticlePhotoCollection',
+    title: 'Components/Articles/ArticlePhotoCollection',
     component: ArticlePhotoCollection,
 };
 

@@ -3,7 +3,7 @@ import Color from './index';
 import { ImportCode } from '../components';
 
 export default {
-  title: 'Design Tokens|Colors',
+  title: 'Design Tokens/Colors',
   component: Color,
 };
 

@@ -13,7 +13,7 @@ import {
 import EmailForm from './index';
 
 export default {
-  title: 'Components|Forms/EmailForm',
+  title: 'Components/Forms/EmailForm',
   component: EmailForm,
   decorators: [withKnobs],
 };

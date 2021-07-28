@@ -5,7 +5,7 @@ import NumericMenu from './index';
 import MiseInstantSearch from '../../../../lib/algolia/MiseInstantSearch/MiseInstantSearch';
 
 export default {
-  title: 'Components|Algolia/shared/NumericMenu',
+  title: 'Components/Algolia/shared/NumericMenu',
   component: NumericMenu,
 };
 

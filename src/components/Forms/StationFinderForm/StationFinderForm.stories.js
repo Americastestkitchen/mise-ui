@@ -13,7 +13,7 @@ import {
 import StationFinderForm from './index';
 
 export default {
-  title: 'Components|Forms/StationFinderForm',
+  title: 'Components/Forms/StationFinderForm',
   component: StationFinderForm,
   decorators: [withKnobs],
 };

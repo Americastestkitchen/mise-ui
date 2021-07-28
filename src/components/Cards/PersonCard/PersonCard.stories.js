@@ -3,7 +3,7 @@ import React from 'react';
 import PersonCard from './index';
 
 export default {
-  title: 'Components|Cards/PersonCard',
+  title: 'Components/Cards/PersonCard',
   component: PersonCard,
 };
 

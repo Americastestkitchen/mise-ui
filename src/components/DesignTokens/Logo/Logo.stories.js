@@ -3,7 +3,7 @@ import React from 'react';
 import Logos from './index';
 
 export default {
-  title: 'Design Tokens|Logos',
+  title: 'Design Tokens/Logos',
   component: Logos,
 };
 

@@ -41,7 +41,7 @@ Default.defaultProps = {
 };
 
 export default {
-  title: 'Components|ShowMoreResults',
+  title: 'Components/ShowMoreResults',
   component: ShowMoreResults,
   decorators: [withKnobs],
 };

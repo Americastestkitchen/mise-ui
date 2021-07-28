@@ -5,7 +5,7 @@ import { color, spacing  } from '../../../styles';
 import { withKnobs, select, text } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Components|Cards/MarqueeCard',
+  title: 'Components/Cards/MarqueeCard',
   component: MarqueeCard,
   decorators: [withKnobs],
 };

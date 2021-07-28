@@ -7,7 +7,7 @@ import SchoolAd from './index';
 import { breakpoints, color, spacing, withThemes } from '../../../../styles';
 
 export default {
-  title: 'Components|Ads/ShowcaseAds/SchoolAd',
+  title: 'Components/Ads/ShowcaseAds/SchoolAd',
   component: SchoolAd,
   decorators: [withKnobs],
 };

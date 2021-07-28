@@ -3,7 +3,7 @@ import React from 'react';
 import PersonHeadShot from './index';
 
 export default {
-  title: 'Components|Cards/shared/PersonHeadShot',
+  title: 'Components/Cards/shared/PersonHeadShot',
   component: PersonHeadShot,
 };
 

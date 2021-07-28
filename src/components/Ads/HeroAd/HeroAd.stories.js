@@ -7,7 +7,7 @@ import HeroAd from './index';
 import { breakpoints, color, spacing, withThemes } from '../../../styles';
 
 export default {
-  title: 'Components|Ads/HeroAd',
+  title: 'Components/Ads/HeroAd',
   component: HeroAd,
   decorators: [withKnobs],
 };

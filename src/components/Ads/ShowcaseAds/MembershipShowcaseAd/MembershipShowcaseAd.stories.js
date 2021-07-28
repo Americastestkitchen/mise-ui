@@ -12,7 +12,7 @@ import TextDecorations, { UnderlinedText } from '../../../DesignTokens/TextDecor
 const Underline = TextDecorations.UnderlineThree;
 
 export default {
-  title: 'Components|Ads/ShowcaseAds/MembershipShowcaseAd',
+  title: 'Components/Ads/ShowcaseAds/MembershipShowcaseAd',
   component: MembershipShowcaseAd,
   decorators: [withKnobs],
 };

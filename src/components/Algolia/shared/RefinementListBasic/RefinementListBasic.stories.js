@@ -12,7 +12,7 @@ const DarkModeWrapper = styled.div`
 `;
 
 export default {
-  title: 'Components|Algolia/shared/RefinementListBasic',
+  title: 'Components/Algolia/shared/RefinementListBasic',
   component: RefinementListBasic,
 };
 

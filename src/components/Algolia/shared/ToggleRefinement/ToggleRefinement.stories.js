@@ -5,7 +5,7 @@ import MiseInstantSearch from '../../../../lib/algolia/MiseInstantSearch/MiseIns
 import ToggleRefinement from './index';
 
 export default {
-  title: 'Components|Algolia/shared/ToggleRefinement',
+  title: 'Components/Algolia/shared/ToggleRefinement',
   component: ToggleRefinement,
 };
 

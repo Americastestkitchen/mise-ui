@@ -3,7 +3,7 @@ import React from 'react';
 import ImageListItem from './index';
 
 export default {
-    title: 'Components|Articles/ImageListItem',
+    title: 'Components/Articles/ImageListItem',
     component: ImageListItem,
 };
 

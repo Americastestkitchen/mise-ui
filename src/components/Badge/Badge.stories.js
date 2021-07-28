@@ -5,7 +5,7 @@ import Badge from './index';
 import { color } from '../../styles';
 
 export default {
-  title: 'Components|Badge',
+  title: 'Components/Badge',
   component: Badge,
   decorators: [withKnobs],
 };

@@ -26,6 +26,6 @@ export const Default = () => (
 );
 
 export default {
-  title: 'Components|ShowMoreLess',
+  title: 'Components/ShowMoreLess',
   component: ShowMoreLess,
 };

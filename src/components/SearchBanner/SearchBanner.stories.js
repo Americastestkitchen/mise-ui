@@ -6,7 +6,7 @@ import SearchInput from '../SearchInput';
 import MiseInstantSearch from '../../lib/algolia/MiseInstantSearch/MiseInstantSearch';
 
 export default {
-  title: 'Components|SearchBanner',
+  title: 'Components/SearchBanner',
   component: SearchBanner,
 };
 
