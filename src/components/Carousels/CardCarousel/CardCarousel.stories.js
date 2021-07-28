@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css, ThemeProvider } from 'styled-components';
 import { action } from '@storybook/addon-actions';
-import { withKnobs, select , text } from '@storybook/addon-knobs/react';
+import { withKnobs, select , text } from '@storybook/addon-knobs';
 
 import CardCarouselNotes from './CardCarousel.md';
 import LoadingCarousel from '../LoadingCarousel';

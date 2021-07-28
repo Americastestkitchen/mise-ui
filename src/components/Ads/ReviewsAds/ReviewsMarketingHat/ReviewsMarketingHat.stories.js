@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css, ThemeProvider } from 'styled-components';
-import { withKnobs, select, text } from '@storybook/addon-knobs/react';
+import { withKnobs, select, text } from '@storybook/addon-knobs';
 
 import { breakpoints } from '../../../../styles';
 import ReviewsMarketingHat from './index';

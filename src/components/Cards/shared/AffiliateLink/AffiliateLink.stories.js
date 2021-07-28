@@ -1,5 +1,5 @@
 import React from 'react';
-import { boolean, withKnobs, select, text } from '@storybook/addon-knobs/react';
+import { boolean, withKnobs, select, text } from '@storybook/addon-knobs';
 
 import AffiliateLink from './index';
 
