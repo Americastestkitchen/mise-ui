@@ -2,7 +2,7 @@ import React from 'react';
 import Image from './index';
 
 export default {
-  title: 'Components|Cards/shared/Image',
+  title: 'Components/Cards/shared/Image',
   component: Image,
 };
 

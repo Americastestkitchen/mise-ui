@@ -4,7 +4,7 @@ import ImageListContainer from './index';
 import ImageListItem from '../ImageListItem/index';
 
 export default {
-    title: 'Components|Articles/ImageListContainer',
+    title: 'Components/Articles/ImageListContainer',
     component: ImageListContainer,
 };
 

@@ -3,7 +3,7 @@ import React from 'react';
 import MediaObjectCard from './index';
 
 export default {
-  title: 'Components|Cards/MediaObjectCard',
+  title: 'Components/Cards/MediaObjectCard',
   component: MediaObjectCard,
 };
 

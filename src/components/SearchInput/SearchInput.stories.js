@@ -5,7 +5,7 @@ import SearchInput from './index';
 import MiseInstantSearch from '../../lib/algolia/MiseInstantSearch/MiseInstantSearch';
 
 export default {
-  title: 'Components|SearchInput',
+  title: 'Components/SearchInput',
   component: SearchInput,
 };
 

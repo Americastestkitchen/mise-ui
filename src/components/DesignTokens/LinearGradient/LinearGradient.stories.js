@@ -14,7 +14,7 @@ const GradientContainer = styled.div`
 `;
 
 export default {
-  title: 'Design Tokens|Linear Gradient',
+  title: 'Design Tokens/Linear Gradient',
   component: LinearGradient,
   decorators: [withKnobs],
 };

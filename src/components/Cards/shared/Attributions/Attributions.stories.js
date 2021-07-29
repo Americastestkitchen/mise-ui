@@ -2,7 +2,7 @@ import React from 'react';
 import Attributions from './index';
 
 export default {
-  title: 'Components|Cards/shared/Attributions',
+  title: 'Components/Cards/shared/Attributions',
   component: Attributions,
 };
 

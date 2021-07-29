@@ -16,7 +16,7 @@ const headers = {
 const proxyUrl = 'https://www-staging.americastestkitchen.com/art19';
 
 export default {
-  title: 'Components|Cards/PodcastEpisodeCard',
+  title: 'Components/Cards/PodcastEpisodeCard',
   component: PodcastEpisodeCard,
   decorators: [withKnobs],
 };

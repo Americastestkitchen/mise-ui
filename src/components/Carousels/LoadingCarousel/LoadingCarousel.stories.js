@@ -1,10 +1,10 @@
 import React from 'react';
 import LoadingCarousel from './index';
-import { withKnobs, select } from '@storybook/addon-knobs/react';
+import { withKnobs, select } from '@storybook/addon-knobs';
 
 
 export default {
-  title: 'Components|Carousels/LoadingCarousel',
+  title: 'Components/Carousels/LoadingCarousel',
   component: LoadingCarousel,
   decorators: [withKnobs],
 };

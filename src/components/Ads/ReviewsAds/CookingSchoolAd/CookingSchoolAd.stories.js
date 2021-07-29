@@ -1,12 +1,12 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import { withKnobs } from '@storybook/addon-knobs/react';
+import { withKnobs } from '@storybook/addon-knobs';
 
 import { breakpoints } from '../../../../styles';
 import CookingSchoolAd from './index';
 
 export default {
-  title: 'Components|Ads/ReviewsAds/CookingSchoolAd',
+  title: 'Components/Ads/ReviewsAds/CookingSchoolAd',
   component: CookingSchoolAd,
   decorators: [withKnobs],
 };

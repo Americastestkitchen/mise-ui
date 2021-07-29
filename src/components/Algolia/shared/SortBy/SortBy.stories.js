@@ -5,7 +5,7 @@ import MiseInstantSearch from '../../../../lib/algolia/MiseInstantSearch/MiseIns
 import SortBy from './index';
 
 export default {
-  title: 'Components|Algolia/shared/SortBy',
+  title: 'Components/Algolia/shared/SortBy',
   component: SortBy,
 };
 const items = [

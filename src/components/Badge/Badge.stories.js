@@ -1,11 +1,11 @@
 import React from 'react';
-import { withKnobs, text } from '@storybook/addon-knobs/react';
+import { withKnobs, text } from '@storybook/addon-knobs';
 
 import Badge from './index';
 import { color } from '../../styles';
 
 export default {
-  title: 'Components|Badge',
+  title: 'Components/Badge',
   component: Badge,
   decorators: [withKnobs],
 };

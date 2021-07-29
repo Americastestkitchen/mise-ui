@@ -16,7 +16,7 @@ const StandardCard = LoadableVisibility({
 });
 
 export default {
-  title: 'Components|Cards/StandardCard',
+  title: 'Components/Cards/StandardCard',
   component: StandardCard,
   decorators: [withKnobs],
 };

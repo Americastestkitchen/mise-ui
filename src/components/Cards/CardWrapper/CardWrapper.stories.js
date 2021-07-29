@@ -8,7 +8,7 @@ import { breakpoints, color, withThemes } from '../../../styles'
 
 
 export default {
-  title: 'Components|Cards/CardWrapper',
+  title: 'Components/Cards/CardWrapper',
   component: CardWrapper,
   decorators: [withKnobs],
 };

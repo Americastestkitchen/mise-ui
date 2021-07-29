@@ -15,7 +15,7 @@ const ArticleTextBlockStoryWrapper = styled.div`
 `;
 
 export default {
-  title: 'Components|Articles/ArticleTextBlock',
+  title: 'Components/Articles/ArticleTextBlock',
   component: ArticleTextBlock,
 };
 

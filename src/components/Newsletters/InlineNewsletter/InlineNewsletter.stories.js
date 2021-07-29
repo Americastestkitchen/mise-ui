@@ -1,7 +1,7 @@
 import breakpoint from 'styled-components-breakpoint';
 import React, { useState } from 'react';
 import styled, { css, ThemeProvider } from 'styled-components';
-import { withKnobs, select , text } from '@storybook/addon-knobs/react';
+import { withKnobs, select , text } from '@storybook/addon-knobs';
 
 import {
   breakpoints,
@@ -13,7 +13,7 @@ import {
 import InlineNewsletter from './index';
 
 export default {
-  title: 'Components|Newsletters/InlineNewsletter',
+  title: 'Components/Newsletters/InlineNewsletter',
   component: InlineNewsletter,
   decorators: [withKnobs],
 };

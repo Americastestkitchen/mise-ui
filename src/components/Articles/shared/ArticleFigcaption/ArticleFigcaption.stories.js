@@ -3,7 +3,7 @@ import React from 'react';
 import ArticleFigcaption from './index';
 
 export default {
-  title: 'Components|Articles/shared/ArticleFigcaption',
+  title: 'Components/Articles/shared/ArticleFigcaption',
   component: ArticleFigcaption,
 };
 

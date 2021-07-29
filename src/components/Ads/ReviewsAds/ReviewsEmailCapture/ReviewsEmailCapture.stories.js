@@ -1,12 +1,12 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import { withKnobs } from '@storybook/addon-knobs/react';
+import { withKnobs } from '@storybook/addon-knobs';
 
 import { breakpoints } from '../../../../styles';
 import ReviewsEmailCapture from './index';
 
 export default {
-  title: 'Components|Ads/ReviewsAds/ReviewsEmailCapture',
+  title: 'Components/Ads/ReviewsAds/ReviewsEmailCapture',
   component: ReviewsEmailCapture,
   decorators: [withKnobs],
 };

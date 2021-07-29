@@ -6,7 +6,7 @@ import PairedProduct from './index';
 import { breakpoints, color, spacing, withThemes } from '../../../styles';
 
 export default {
-  title: 'Components|Ads/PairedProductAd',
+  title: 'Components/Ads/PairedProductAd',
   component: PairedProduct,
 };
 

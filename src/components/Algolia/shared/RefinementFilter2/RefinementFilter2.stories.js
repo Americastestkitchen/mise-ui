@@ -4,7 +4,7 @@ import LabelFrame from '../../../LabelFrame';
 import RefinementFilter2 from './index';
 
 export default {
-  title: 'Components|Algolia/shared/RefinementFilter2',
+  title: 'Components/Algolia/shared/RefinementFilter2',
   component: RefinementFilter2,
 };
 

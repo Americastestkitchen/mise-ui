@@ -7,7 +7,7 @@ import LabelFrame from '../LabelFrame';
 import ShowMoreResults from './index';
 import MiseInstantSearch from '../../lib/algolia/MiseInstantSearch/MiseInstantSearch';
 import PodcastEpisodeCard from '../Cards/PodcastEpisodeCard';
-import { withKnobs, text } from '@storybook/addon-knobs/react';
+import { withKnobs, text } from '@storybook/addon-knobs';
 
 import {
   color,
@@ -41,7 +41,7 @@ Default.defaultProps = {
 };
 
 export default {
-  title: 'Components|ShowMoreResults',
+  title: 'Components/ShowMoreResults',
   component: ShowMoreResults,
   decorators: [withKnobs],
 };

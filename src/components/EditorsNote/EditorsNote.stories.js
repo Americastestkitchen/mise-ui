@@ -1,7 +1,7 @@
 import breakpoint from 'styled-components-breakpoint';
 import React, { useState } from 'react';
 import styled, { css, ThemeProvider } from 'styled-components';
-import { boolean, withKnobs, select, text } from '@storybook/addon-knobs/react';
+import { boolean, withKnobs, select, text } from '@storybook/addon-knobs';
 
 import {
   breakpoints,
@@ -13,7 +13,7 @@ import {
 import EditorsNote from './index';
 
 export default {
-  title: 'Components|EditorsNote',
+  title: 'Components/EditorsNote',
   component: EditorsNote,
   decorators: [withKnobs],
 };

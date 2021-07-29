@@ -3,7 +3,7 @@ import React from 'react';
 import PullQuote from './index';
 
 export default {
-  title: 'Components|Articles/PullQuote',
+  title: 'Components/Articles/PullQuote',
   component: PullQuote,
 };
 

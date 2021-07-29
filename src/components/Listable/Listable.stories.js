@@ -5,7 +5,7 @@ import Listable from './index';
 import { color, grid } from '../../styles';
 
 export default {
-  title: 'Components|Listable',
+  title: 'Components/Listable',
   component: Listable,
 };
 

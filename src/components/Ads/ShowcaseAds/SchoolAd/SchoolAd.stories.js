@@ -1,13 +1,13 @@
 import breakpoint from 'styled-components-breakpoint';
 import React from 'react';
 import styled, { css, ThemeProvider } from 'styled-components';
-import { withKnobs, select , text } from '@storybook/addon-knobs/react';
+import { withKnobs, select , text } from '@storybook/addon-knobs';
 
 import SchoolAd from './index';
 import { breakpoints, color, spacing, withThemes } from '../../../../styles';
 
 export default {
-  title: 'Components|Ads/ShowcaseAds/SchoolAd',
+  title: 'Components/Ads/ShowcaseAds/SchoolAd',
   component: SchoolAd,
   decorators: [withKnobs],
 };

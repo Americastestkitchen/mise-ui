@@ -1,12 +1,12 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { withKnobs, boolean, select, text } from '@storybook/addon-knobs/react';
+import { withKnobs, boolean, select, text } from '@storybook/addon-knobs';
 
 import Carousel from './index';
 import CarouselNotes from './Carousel.md';
 
 export default {
-  title: 'Components|Carousels/Carousel',
+  title: 'Components/Carousels/Carousel',
   component: Carousel,
   decorators: [withKnobs],
   parameters: {

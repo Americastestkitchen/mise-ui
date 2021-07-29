@@ -1,7 +1,7 @@
 import breakpoint from 'styled-components-breakpoint';
 import React from 'react';
 import styled, { css, ThemeProvider } from 'styled-components';
-import { withKnobs, select , text } from '@storybook/addon-knobs/react';
+import { withKnobs, select , text } from '@storybook/addon-knobs';
 
 import {
   breakpoints,
@@ -14,7 +14,7 @@ import { getGifSrcSet } from '../../lib/cloudinary';
 import Gif from './index';
 
 export default {
-  title: 'Components|Gif',
+  title: 'Components/Gif',
   component: Gif,
   decorators: [withKnobs],
 };

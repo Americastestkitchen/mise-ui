@@ -1,13 +1,13 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
 import { ThemeProvider } from 'styled-components';
-import { withKnobs } from '@storybook/addon-knobs/react';
+import { withKnobs } from '@storybook/addon-knobs';
 import { breakpoints } from '../../../../styles';
 
 import LandingEmailAd from './index';
 
 export default {
-  title: 'Components|Ads/ShowcaseAds/LandingEmailAd',
+  title: 'Components/Ads/ShowcaseAds/LandingEmailAd',
   component: LandingEmailAd,
   decorators: [withKnobs],
 };

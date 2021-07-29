@@ -8,7 +8,7 @@ import SearchRefinementList from '../../search/SearchRefinementList';
 import MiseInstantSearch from '../../../../lib/algolia/MiseInstantSearch/MiseInstantSearch';
 
 export default {
-  title: 'Components|Algolia/shared/ClearRefinements',
+  title: 'Components/Algolia/shared/ClearRefinements',
   component: ClearRefinements,
 };
 

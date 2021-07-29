@@ -11,7 +11,7 @@ const DarkModeWrapper = styled.div`
 `;
 
 export default {
-  title: 'Components|FilterButton',
+  title: 'Components/FilterButton',
   component: FilterButton,
 };
 

@@ -12,7 +12,7 @@ const BC = styled.div`
 `;
 
 export default {
-  title: 'Design Tokens|Brands',
+  title: 'Design Tokens/Brands',
   component: Brands,
 };
 

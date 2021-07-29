@@ -3,7 +3,7 @@ import React from 'react';
 import ArticleImage from './index';
 
 export default {
-  title: 'Components|Articles/ArticleImage',
+  title: 'Components/Articles/ArticleImage',
   component: ArticleImage,
 };
 

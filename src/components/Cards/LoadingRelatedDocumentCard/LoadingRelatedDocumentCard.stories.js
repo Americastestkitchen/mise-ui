@@ -1,7 +1,7 @@
 import breakpoint from 'styled-components-breakpoint';
 import React, { useState } from 'react';
 import styled, { css, ThemeProvider } from 'styled-components';
-import { withKnobs, boolean, select } from '@storybook/addon-knobs/react';
+import { withKnobs, boolean, select } from '@storybook/addon-knobs';
 
 import {
   breakpoints,
@@ -13,7 +13,7 @@ import {
 import LoadingRelatedDocumentCard from './index';
 
 export default {
-  title: 'Components|Cards/LoadingCard/RelatedDocumentCard',
+  title: 'Components/Cards/LoadingCard/RelatedDocumentCard',
   component: LoadingRelatedDocumentCard,
   decorators: [withKnobs],
 };

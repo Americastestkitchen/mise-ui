@@ -5,7 +5,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import FinePrint from './index';
 
 export default {
-  title: 'Components|Articles/FinePrint',
+  title: 'Components/Articles/FinePrint',
   component: FinePrint,
 };
 

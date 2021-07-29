@@ -1,11 +1,11 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
-import { boolean, withKnobs, text } from '@storybook/addon-knobs/react';
+import { boolean, withKnobs, text } from '@storybook/addon-knobs';
 
 import FavoriteActionButton from './index';
 
 export default {
-  title: 'Components|Buttons/ActionButtons/FavoriteActionButton',
+  title: 'Components/Buttons/ActionButtons/FavoriteActionButton',
   component: FavoriteActionButton,
   decorators: [withKnobs],
 };

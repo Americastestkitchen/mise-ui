@@ -2,7 +2,7 @@ import React from 'react';
 import CtaLink from './index';
 
 export default {
-  title: 'Components|Cards/shared/CtaLink',
+  title: 'Components/Cards/shared/CtaLink',
   component: CtaLink,
 };
 

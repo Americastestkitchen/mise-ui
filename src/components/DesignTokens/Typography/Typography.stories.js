@@ -3,7 +3,7 @@ import Typography from './index';
 import { ImportCode } from '../components';
 
 export default {
-  title: 'Design Tokens|Typography',
+  title: 'Design Tokens/Typography',
   component: Typography,
 };
 

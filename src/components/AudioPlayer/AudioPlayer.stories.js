@@ -15,7 +15,7 @@ import {
 } from '../../styles';
 
 export default {
-  title: 'Components|AudioPlayer',
+  title: 'Components/AudioPlayer',
   component: AudioPlayer,
 };
 

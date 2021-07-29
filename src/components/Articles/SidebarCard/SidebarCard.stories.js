@@ -14,7 +14,7 @@ const SidebarCardStoryWrapper = styled.div`
 `;
 
 export default {
-    title: 'Components|Articles/SidebarCard',
+    title: 'Components/Articles/SidebarCard',
     component: SidebarCard,
 };
 
