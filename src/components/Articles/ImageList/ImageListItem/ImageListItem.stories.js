@@ -27,3 +27,19 @@ export const WideImageListItem = () => (
     width="wide"
   />
 )
+
+export const ImageListUlContent = () => (
+  <ImageListItem 
+    {...props}
+    content="<ul><li>item one</li><li>item two</li><li>item three</li></ul>"
+    width="default"
+  />
+);
+
+export const ImageListOlContent = () => (
+  <ImageListItem 
+    {...props}
+    content="<ol><li>item one</li><li>item two</li><li>item three</li></ol>"
+    width="default"
+  />
+);
