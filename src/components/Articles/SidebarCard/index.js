@@ -26,6 +26,7 @@ const SidebarCardContainer = styled.aside`
   picture {
     min-height: 14.5rem;
     min-width: 14.5rem;
+    max-width: 14.5rem;
 
     img {
       display: block;
@@ -36,11 +37,13 @@ const SidebarCardContainer = styled.aside`
     ${breakpoint('md')`
       min-height: 16.1rem;
       min-width: 16.1rem;
+      max-width: 16.1rem;
     `}
 
     ${breakpoint('xlg')`
       min-height: 20rem;
       min-width: 20rem;
+      max-width: 20rem;
     `}
   }
 `;
@@ -159,7 +162,13 @@ const SidebarCard = ({
       <SidebarDescription
         dangerouslySetInnerHTML={{ __html: description }}
       />
-      <SidebarLink href={url}>read more</SidebarLink>
+      <SidebarLink
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        read more
+      </SidebarLink>
     </SidebarTextContent>
   </SidebarCardContainer>
 );
