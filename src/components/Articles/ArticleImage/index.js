@@ -49,7 +49,10 @@ const ArticleImagePicture = styled.picture`
   &.article-image__picture--wide {
     img {
       margin-right: 0;
-      ${mixins.articlesWidth('wide')}
+
+      ${breakpoint('xlg')`
+        ${mixins.articlesWidth('wide')}
+      `}
     }
   }
 `;
