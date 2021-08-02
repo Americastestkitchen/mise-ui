@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { connectSortBy } from 'react-instantsearch-dom';
@@ -13,15 +13,13 @@ import {
   withThemes,
 } from '../../../../styles';
 
-const SearchSortByStatus = styled.div.attrs({
-  className: 'sort-by__status',
-  role: 'status',
-})`
-  ${mixins.visuallyHidden};
-`;
-
 const SearchSortByItemTheme = {
   default: css`
+    align-items: center;
+    display: flex;
+    margin: ${spacing.xxsm} 0.25rem ${spacing.xsm} -${spacing.xxsm};
+    padding-left: ${spacing.xxsm};
+
     &:hover {
       cursor: pointer;
 
@@ -33,6 +31,11 @@ const SearchSortByItemTheme = {
       .search-sort-by__label {
         color: ${color.mint};
       }
+    }
+
+    &:focus-within {
+      ${mixins.focusIndicator()};
+      outline-offset: 0;
     }
   `,
   kidsSearch: css`
@@ -95,15 +98,9 @@ const SearchSortByLabelTheme = {
     font: ${fontSize.md}/1.38 ${font.pnr};
     font-size: ${fontSize.md};
     letter-spacing: normal;
-    margin: ${spacing.xxsm} 0.25rem ${spacing.xsm};
 
     &:hover {
       cursor: pointer;
-    }
-
-    &:focus-within {
-      ${mixins.focusIndicator()};
-      outline-offset: 0;
     }
   `,
   kidsSearch: css`
@@ -146,52 +143,41 @@ const SearchSortByLabel = styled.label.attrs({
   className: 'search-sort-by__label',
 })`${withThemes(SearchSortByLabelTheme)}`;
 
-export const CustomSortBy = ({ items, refine }) => {
-  // determine if the status message should reflect a preselected refinement
-  const defaultRefinement = (items) => {
-    const refined = items.filter(el => el.isRefined);
-    return refined[0]?.label || null;
-  };
-
-  const [status, setStatus] = useState(defaultRefinement(items));
-
-  return (
-    <>
-      {status && (
-        <SearchSortByStatus>Results sorted by {status}</SearchSortByStatus>
-      )}
-      {
+export const CustomSortBy = ({ defaultRefinement, items, refine }) => (
+  <>
+    {
       items.map(({ isRefined, label, value }) => (
         <SearchSortByItem
           key={value}
         >
+          <SearchSortByCircle
+            data-testid="sort-by__radio"
+            isRefined={isRefined}
+          />
           <SearchSortByLabel
+            htmlFor={value}
             isRefined={isRefined}
           >
-            <SearchSortByRadioInput
-              defaultChecked={isRefined}
-              className={isRefined ? 'refined' : ''}
-              onClick={(e) => {
-                e.preventDefault();
-                refine(value);
-                setStatus(label);
-              }}
-              type="radio"
-            />
-            <SearchSortByCircle
-              data-testid="sort-by__radio"
-              isRefined={isRefined}
-            />
             {label}
           </SearchSortByLabel>
+          <SearchSortByRadioInput
+            className={isRefined ? 'refined' : ''}
+            defaultChecked={value.includes(defaultRefinement)}
+            id={value}
+            name="sortby"
+            onClick={() => {
+              refine(value);
+            }}
+            type="radio"
+          />
         </SearchSortByItem>
       ))
     }
-    </>
-  );
-};
+  </>
+);
 
 CustomSortBy.propTypes = {
+  defaultRefinement: PropTypes.string.isRequired,
   items: PropTypes.array.isRequired,
   refine: PropTypes.func.isRequired,
 };
