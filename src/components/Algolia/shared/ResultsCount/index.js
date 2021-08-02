@@ -40,7 +40,7 @@ const StatsWrapper = styled.p`
 `;
 
 export const Stats = ({ nbHits }) => (
-  <StatsWrapper className="search-results-count">
+  <StatsWrapper className="search-results-count" role="status">
     {`${nbHits.toLocaleString()} Result${nbHits !== 1 ? 's' : ''}`}
   </StatsWrapper>
 );

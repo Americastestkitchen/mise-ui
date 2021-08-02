@@ -190,10 +190,8 @@ const RefinementFilter = ({
       altFill={altFill}
       className={`${attribute}`}
       data-site-key={value}
-      htmlFor={`${attribute}--${label}`}
       isRefined={isRefined || (currentRefinement && currentRefinement.length > 0)}
       onClick={(e) => {
-        e.preventDefault();
         if (!isRefined && typeof handleClick === 'function') handleClick(e);
         if (filterType === 'refinementList') {
           refine(value);
@@ -214,9 +212,9 @@ const RefinementFilter = ({
         ) : null
       }
       <RefinementFilterCheckbox
-        id={`search-site-list--${value}`}
-        type="checkbox"
         defaultChecked={isRefined}
+        name={label}
+        type="checkbox"
       />
       {
         attribute === 'search_site_list' ? (

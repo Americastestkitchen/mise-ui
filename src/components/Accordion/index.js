@@ -17,6 +17,16 @@ const AccordionWrapper = styled.div.attrs({
       outline: none;
     }
   }
+
+  .search-page & {
+    &:focus-within {
+      box-shadow: none;
+
+      > button:focus {
+        ${mixins.focusIndicator(color.eclipse)};
+      }
+    }
+  }
 `;
 
 const AccordionButtonTheme = {
@@ -90,6 +100,12 @@ const AccordionButtonTheme = {
     position: relative;
     text-align: inherit;
     text-transform: none;
+
+    [class*="Browse"] & {
+      color: ${color.eclipse};
+      letter-spacing: ${letterSpacing.md};
+      text-transform: uppercase;
+    }
 
     ${breakpoint('xlg')`
       width: 100%;
@@ -268,12 +284,12 @@ function Accordion({
           isExpanded={!hidden}
         />
       </AccordionButton>
-      {isFieldset ? <Legend>{Label}</Legend> : null}
       <AccordionContent
         data-testid="accordion-content"
         id={`show-hide--${idVal}`}
         hidden={hidden ? true : null}
       >
+        {isFieldset ? <Legend>{Label}</Legend> : null}
         {children}
       </AccordionContent>
     </AccordionWrapper>
