@@ -8,8 +8,8 @@ import globalStyles from '../src/styles/global';
 const theme = { breakpoints };
 
 export const decorators = [
-  (Story) => (
-      <ThemeProvider theme={theme}>
+  (Story, { args }) => (
+      <ThemeProvider theme={{ ...theme, siteKey: args.siteKey || null }}>
         <GlobalStyle />
         <Story />
       </ThemeProvider>

@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 
 import ArticleFigcaption from '../shared/ArticleFigcaption';
 import { Quote } from '../../DesignTokens/Icon/svgs';
-import { color, font, fontSize, mixins } from '../../../styles';
+import { color, font, fontSize, mixins, withThemes } from '../../../styles';
 
 const PullQuoteWrapper = styled.div`
   display: flex;
@@ -23,20 +23,47 @@ const PullQuoteWrapper = styled.div`
   `}
 `;
 
+const PullQuoteIconTheme = {
+  default: css`
+    height: 3rem;
+    margin-bottom: 0.8rem;
+    min-width: 3rem;
+    width: 3rem;
+
+    svg {
+      height: 100%;
+      width: 100%;
+    }
+
+    ${breakpoint('md')`
+      margin-right: 1.6rem;
+    `}
+  `,
+  atk: css`
+    svg {
+      circle {
+        fill: ${color.mint};
+      }
+    }
+  `,
+  cco: css`
+    svg {
+      circle {
+        fill: ${color.denim};
+      }
+    }
+  `,
+  cio: css`
+    svg {
+      circle {
+        fill: ${color.squirrel};
+      }
+    }
+  `,
+};
+
 const PullQuoteIcon = styled.div`
-  height: 3rem;
-  margin-bottom: 0.8rem;
-  min-width: 3rem;
-  width: 3rem;
-
-  svg {
-    height: 100%;
-    width: 100%;
-  }
-
-  ${breakpoint('md')`
-    margin-right: 1.6rem;
-  `}
+  ${withThemes(PullQuoteIconTheme)}
 `;
 
 const PullQuoteFigure = styled.figure`
@@ -50,13 +77,33 @@ const PullQuoteFigure = styled.figure`
   `}
 `;
 
+const PullQuoteBlockQuoteTheme = {
+  default: css`
+    font-size: ${fontSize.xl};
+    line-height: 1.3;
+    margin: 0 0 1.2rem 0;
+    padding: 0;
+  `,
+  atk: css`
+    color: ${color.eclipse};
+    font-family: ${font.mwr};
+    font-style: italic;
+    font-weight: bold;
+  `,
+  cco: css`
+    color: ${color.black};
+    font-family: ${font.clb};
+  `,
+  cio: css`
+    color: ${color.cork};
+    font-family: ${font.mwr};
+    font-style: italic;
+    font-weight: bold;
+  `,
+};
+
 const PullQuoteBlockQuote = styled.blockquote`
-  color: ${color.eclipse};
-  font: ${fontSize.xl}/1.3 ${font.mwr};
-  font-style: italic;
-  font-weight: bold;
-  margin: 0 0 1.2rem 0;
-  padding: 0;
+  ${withThemes(PullQuoteBlockQuoteTheme)}
 `;
 
 const PullQuote = ({ attribution, includeIcon, quote, width }) => (
