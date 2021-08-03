@@ -61,7 +61,7 @@ const HeroHatBody = styled.div`
     padding: 0 1rem;
   }
 
-  #article-page-hat-form-submit {
+  .registrant-submit {
     align-items: center;
     background-color: ${color.frog};
     display: flex;
@@ -87,17 +87,19 @@ const HeroHatBody = styled.div`
     color: ${color.eclipse};
     font: ${fontSize.xsm}/1 ${font.pnr};
     left: 0;
+    letter-spacing: normal;
     padding-bottom: 0.2rem;
     position: absolute;
+    text-decoration: none;
     width: fit-content;
 
     &:hover {
-      color: ${color.darkSmog};
+      background-color: transparent;
     }
   }
 
   input::placeholder {
-    color: ${color.nobel};
+    color: ${color.shadyLady};
     font: ${fontSize.md}/1 ${font.mwr};
     font-style: italic;
     line-height: ${spacing.xlg};
@@ -161,6 +163,10 @@ const HeroHatBody = styled.div`
     max-width: 124rem;
     padding: 0 8.6rem;
 
+    .email-form-wrapper {
+      margin-bottom: 2rem;
+    }
+
     .email-form {
       flex-direction: row;
       width: 45.2rem;
@@ -220,9 +226,14 @@ const HeroHatDescription = styled.p`
 `;
 
 const RegistrantSubmit = styled.button`
+  background-color: ${color.frog};
   color: ${color.white};
   text-transform: uppercase;
   max-width: 25rem;
+
+  &:hover {
+    background-color: ${color.darkFrog};
+  }
 
   ${breakpoint('md')`
     max-width: 28rem;
@@ -261,6 +272,7 @@ const AtkMarketingHat = ({
           </HeroHatContent>
           {isRegistrant ? (
             <RegistrantSubmit
+              className="registrant-submit"
               data-testid="isRegistrant"
               id={`${inputId}-submit`}
               onClick={onSubmit}
