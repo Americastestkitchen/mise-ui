@@ -2415,6 +2415,7 @@
     util-deprecate "^1.0.2"
     uuid-browser "^3.1.0"
 
+<<<<<<< HEAD
 "@storybook/addon-backgrounds@6.3.10":
   version "6.3.10"
   resolved "https://registry.yarnpkg.com/@storybook/addon-backgrounds/-/addon-backgrounds-6.3.10.tgz#64db97ee88b6623f1d43adc06ddf3d290f824bf8"
@@ -2451,6 +2452,26 @@
   version "6.3.10"
   resolved "https://registry.yarnpkg.com/@storybook/addon-docs/-/addon-docs-6.3.10.tgz#5aed33df5b6a6b719fb85b9b215372ce5fdd0a56"
   integrity sha512-1JMl2E01sUwYlHgc2l+n1MDMSHbZNDPb4/DRpw2p4YZ8VSSOprA4Z4uHmFjabxyfnkv3Sz5isRVeaMqJzHMjdA==
+=======
+"@storybook/addon-controls@^6.3.6":
+  version "6.3.6"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-controls/-/addon-controls-6.3.6.tgz#2f8071e5b521375aace60af96e33a19f016581c9"
+  integrity sha512-wTWmnZl2qEAUqgLh8a7TL5f6w37Q51lAoJNlwxFFBSKtGS7xFUnou4qTUArNy5iKu1cWoVvofJ9RnP1maGByYA==
+  dependencies:
+    "@storybook/addons" "6.3.6"
+    "@storybook/api" "6.3.6"
+    "@storybook/client-api" "6.3.6"
+    "@storybook/components" "6.3.6"
+    "@storybook/node-logger" "6.3.6"
+    "@storybook/theming" "6.3.6"
+    core-js "^3.8.2"
+    ts-dedent "^2.0.0"
+
+"@storybook/addon-docs@^6.3.6":
+  version "6.3.6"
+  resolved "https://registry.npmjs.org/@storybook/addon-docs/-/addon-docs-6.3.6.tgz"
+  integrity sha512-/ZPB9u3lfc6ZUrgt9HENU1BxAHNfTbh9r2LictQ8o9gYE/BqvZutl2zqilTpVuutQtTgQ6JycVhxtpk9+TDcuA==
+>>>>>>> 09de667f (ARCHIE-2175: themeing PullQuote, adding control addon to storybook)
   dependencies:
     "@babel/core" "^7.12.10"
     "@babel/generator" "^7.12.11"
