@@ -93,47 +93,7 @@ const ArticleTextBlockContent = styled.div`
     }
   }
 
-  ol {
-    padding: 0;
-
-    li {
-      display: flex;
-      counter-increment: li;
-
-      &::before {
-        content: counter(li)".";
-        color: ${color.mediumGray};
-        font: ${fontSize.sm}/1.5 ${font.pnb};
-        display: inline-block;
-        margin-top: 0.2rem;
-        min-width: 1.8rem;
-      }
-    }
-  }
-
-  ul {
-    li {
-      align-items: flex-start;
-      margin-bottom: 1rem;
-      padding-left: 1.2rem;
-      position: relative;
-
-      &:last-child {
-        margin-bottom: 0;
-      }
-
-      &::before {
-        border-radius: 4px;
-        content: ' ';
-        background-color: ${color.eclipse};
-        left: 0;
-        margin: 1.2rem 0.8rem 0 0;
-        min-height: 4px;
-        min-width: 4px;
-        position: absolute;
-      }
-    }
-  }
+  ${mixins.articlesBoxLists()}
 
   &:last-child {
     margin-bottom: 0;

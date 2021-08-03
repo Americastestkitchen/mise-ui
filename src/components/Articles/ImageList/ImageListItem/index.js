@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 
-import { color, font, fontSize } from '../../../../styles';
+import { color, font, fontSize, mixins } from '../../../../styles';
 import { getImageUrl } from '../../../../lib/cloudinary';
 
 const ListItemWrapper = styled.div`
@@ -55,6 +55,7 @@ const ListItemContent = styled.p`
   .wide-content {
     width: 32.1rem;
   }
+  ${mixins.articlesBoxLists()}
 
   ${breakpoint('md')`
     .default-content {
