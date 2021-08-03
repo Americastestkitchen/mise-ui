@@ -9,5 +9,6 @@ module.exports = {
     '@storybook/addon-viewport/register',
     '@whitespace/storybook-addon-html',
     '@storybook/addon-notes/register',
+    '@storybook/addon-controls',
   ],
 };
