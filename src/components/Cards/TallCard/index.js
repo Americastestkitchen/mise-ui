@@ -84,6 +84,11 @@ const StyledSticker = styled(Sticker)`
 const TallCardLogo = styled.div`
   margin-bottom: ${spacing.sm};
   width: ${({ logoWidth }) => logoWidth};
+
+  img {
+    height: auto;
+    width: auto;
+  }
 `;
 
 const Dek = styled.div`
