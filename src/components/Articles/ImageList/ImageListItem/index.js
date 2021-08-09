@@ -1,9 +1,9 @@
 import breakpoint from 'styled-components-breakpoint';
 import PropTypes from 'prop-types';
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-import { color, font, fontSize, mixins } from '../../../../styles';
+import { color, font, fontSize, mixins, withThemes } from '../../../../styles';
 import { getImageUrl } from '../../../../lib/cloudinary';
 
 const ListItemWrapper = styled.div`
@@ -46,36 +46,49 @@ const ListItemWrapper = styled.div`
   }
 `;
 
-const ListItemContent = styled.p`
-  color: ${color.eclipse};
-  font: ${fontSize.md}/2.4rem ${font.pnr};
-  .default-content {
-    width: 32.1rem;
-  }
-  .wide-content {
-    width: 32.1rem;
-  }
-  ${mixins.articlesBoxLists()}
-
-  ${breakpoint('md')`
+const ListItemContentTheme = {
+  default: css`
+    font: ${fontSize.md}/2.4rem ${font.pnr};
     .default-content {
-      width: 35.6rem;
+      width: 32.1rem;
     }
     .wide-content {
-      width: 35.6rem;
+      width: 32.1rem;
     }
-  `}    
+    ${mixins.articlesBoxLists()}
 
-  ${breakpoint('xlg')`
-    .default-content {
-      width: 29.2rem;
-    }
-    .wide-content {
-      margin-right: 0.9rem;
-      width: 49.9rem; 
-    }
-  `}
+    ${breakpoint('md')`
+      .default-content {
+        width: 35.6rem;
+      }
+      .wide-content {
+        width: 35.6rem;
+      }
+    `}    
 
+    ${breakpoint('xlg')`
+      .default-content {
+        width: 29.2rem;
+      }
+      .wide-content {
+        margin-right: 0.9rem;
+        width: 49.9rem; 
+      }
+    `}
+  `,
+  atk: css`
+    color: ${color.eclipse};
+  `,
+  cco: css`
+    color: ${color.black};
+  `,
+  cio: css`
+    color: ${color.cork};
+  `,
+};
+
+const ListItemContent = styled.div`
+  ${withThemes(ListItemContentTheme)}
 `;
 
 const ImageListItem = ({

@@ -1,11 +1,13 @@
 import React from 'react';
 
 import PullQuote from './index';
-import { siteKey } from '../../../argTypes';
+import { siteKey } from '../../../config/argTypes';
+import { addThemedWrapper } from '../../../config/decorators';
 
 export default {
   title: 'Components/Articles/PullQuote',
   component: PullQuote,
+  decorators: [ addThemedWrapper() ],
   argTypes: { siteKey },
 };
 

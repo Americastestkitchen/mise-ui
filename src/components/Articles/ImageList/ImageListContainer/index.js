@@ -1,9 +1,10 @@
 import breakpoint from 'styled-components-breakpoint';
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-import { color, font, fontSize, mixins } from '../../../../styles';
+import ImageListItem from '../ImageListItem';
+import { color, font, fontSize, mixins, withThemes } from '../../../../styles';
 
 const ImageListWrapper = styled.aside`
   background-color: ${color.white};
@@ -20,31 +21,50 @@ const ImageListWrapper = styled.aside`
   `}
 `;
 
+const ImageListTitleTheme = {
+  default: css`
+    font: ${fontSize.xl}/2.6rem ${font.pnb};
+    height: 3.3rem;
+    letter-spacing: normal;
+    margin-bottom: 0.4rem;
+  `,
+  atk: css`
+    color: ${color.eclipse};
+  `,
+  cco: css`
+    color: ${color.black};
+  `,
+  cio: css`
+    color: ${color.cork};
+  `,
+};
+
 const ImageListTitle = styled.h3`
-  color: ${color.eclipse};
-  font: ${fontSize.xl}/2.6rem ${font.pnb};
-  height: 3.3rem;
-  letter-spacing: normal;
-  margin-bottom: 0.4rem;
+  ${withThemes(ImageListTitleTheme)}
 `;
 
 const ImageListContainer = ({
-  children,
+  images,
   className,
   title,
   width,
 }) => (
   <ImageListWrapper className={className} width={width}>
     {title && <ImageListTitle>{title}</ImageListTitle>}
-    {children}
+    {
+      images.map(image => (
+        <ImageListItem
+          key={image.cloudinaryId}
+          width={width}
+          {...image}
+        />
+      ))
+    }
   </ImageListWrapper>
 );
 
 ImageListContainer.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]).isRequired,
+  images: PropTypes.array.isRequired,
   className: PropTypes.string,
   title: PropTypes.string,
   width: PropTypes.oneOf(['default', 'wide']).isRequired,
