@@ -127,6 +127,74 @@ const AccordionButtonTheme = {
       }
     }
   `,
+  cco: css`
+    display: block;
+    letter-spacing: inherit;
+    padding: 0;
+    position: relative;
+    text-align: inherit;
+    text-transform: none;
+
+    [class*="Browse"] & {
+      color: ${color.black};
+      letter-spacing: ${letterSpacing.md};
+      text-transform: uppercase;
+    }
+
+    ${breakpoint('xlg')`
+      width: 100%;
+    `}
+
+    @media(hover: hover) {
+      &:hover {
+        .accordion-item__icon {
+          border-color: ${color.denim};
+          height:3.6rem;
+          width: 3.6rem;
+          max-height:3.6rem;
+          max-width: 3.6rem;
+
+          svg {
+            fill: ${color.denim};
+          }
+        }
+      }
+    }
+  `,
+  cio: css`
+    display: block;
+    letter-spacing: inherit;
+    padding: 0;
+    position: relative;
+    text-align: inherit;
+    text-transform: none;
+
+    [class*="Browse"] & {
+      color: ${color.cork};
+      letter-spacing: ${letterSpacing.md};
+      text-transform: uppercase;
+    }
+
+    ${breakpoint('xlg')`
+      width: 100%;
+    `}
+
+    @media(hover: hover) {
+      &:hover {
+        .accordion-item__icon {
+          border-color: ${color.squirrel};
+          height:3.6rem;
+          width: 3.6rem;
+          max-height:3.6rem;
+          max-width: 3.6rem;
+
+          svg {
+            fill: ${color.squirrel};
+          }
+        }
+      }
+    }
+  `,
   light: css`
   `,
 };

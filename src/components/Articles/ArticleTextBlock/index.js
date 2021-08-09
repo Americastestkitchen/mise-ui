@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 
 import ArticleTextBlockFloatImage from './components/ArticleTextBlockFloatImage';
 import SidebarCard from '../SidebarCard';
-import { color, font, fontSize, lineHeight, mixins } from '../../../styles';
+import { color, font, fontSize, lineHeight, mixins, withThemes } from '../../../styles';
 
 const ArticleTextBlockWrapper = styled.div`
   margin-bottom: 2.4rem;
@@ -70,53 +70,90 @@ const ArticleTextBlockCopy = styled.div`
   `}
 `;
 
+const ArticleTextBlockHeadingTheme = {
+  default: css`
+    font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb};
+    margin-bottom: 0.8rem;
+  `,
+  atk: css`
+    color: ${color.eclipse};
+  `,
+  cco: css`
+    color: ${color.black};
+  `,
+  cio: css`
+    color: ${color.cork};
+  `,
+};
+
 const ArticleTextBlockHeading = styled.h3`
-  color: ${color.eclipse};
-  font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb};
-  margin-bottom: 0.8rem;
+  ${withThemes(ArticleTextBlockHeadingTheme)}
 `;
 
-const ArticleTextBlockContent = styled.div`
-  color: ${color.eclipse};
-  font: ${fontSize.md}/${lineHeight.lg} ${font.mwr};
-  margin-bottom: 2.4rem;
-
-  a {
-    ${mixins.styledLink(color.turquoise, color.seaSalt)}
-  }
-
-  > p {
+const ArticleTextBlockContentTheme = {
+  default: css`
+    font: ${fontSize.md}/${lineHeight.lg} ${font.mwr};
     margin-bottom: 2.4rem;
+
+    > p {
+      margin-bottom: 2.4rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    ${mixins.articlesBoxLists()}
 
     &:last-child {
       margin-bottom: 0;
     }
-  }
 
-  ${mixins.articlesBoxLists()}
+    &.drop-cap {
+      > p {
+        &:first-child {
+          font-size: 2rem;
+          ${mixins.articlesWidth('wide')}
 
-  &:last-child {
-    margin-bottom: 0;
-  }
-
-  &.drop-cap {
-    > p {
-      &:first-child {
-        font-size: 2rem;
-        ${mixins.articlesWidth('wide')}
-
-        &:first-letter {
-          float: left;
-          font-size: 6rem;
-          font-weight: bold;
-          line-height: 5rem;
-          padding: 0.6rem 0.8rem 0 0;
+          &:first-letter {
+            float: left;
+            font-size: 6rem;
+            font-weight: bold;
+            line-height: 5rem;
+            padding: 0.6rem 0.8rem 0 0;
+          }
         }
-      }
 
-      ${mixins.articlesWidth('default')}
+        ${mixins.articlesWidth('default')}
+      }
     }
-  }
+  `,
+  atk: css`
+    color: ${color.eclipse};
+
+    a {
+      ${mixins.styledLink(color.turquoise, color.seaSalt)}
+    }
+
+  `,
+  cco: css`
+    color: ${color.black};
+
+    a {
+      ${mixins.styledLink(color.malibu, color.cornflower)}
+    }
+  `,
+  cio: css`
+    color: ${color.cork};
+
+    a {
+      ${mixins.styledLink(color.dijon, color.sand)}
+    }
+  `,
+};
+
+const ArticleTextBlockContent = styled.div`
+  ${withThemes(ArticleTextBlockContentTheme)}
 `;
 
 const ArticleTextBlockImageWrapper = styled.div`
