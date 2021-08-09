@@ -1,6 +1,6 @@
 export const siteKey = {
   options: ['atk', 'cco', 'cio'],
-  control: { type: 'radio' },
+  control: { type: 'inline-radio' },
 };
 
 export default {

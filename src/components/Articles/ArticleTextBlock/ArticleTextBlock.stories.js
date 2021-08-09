@@ -1,22 +1,24 @@
 import React from 'react';
-import styled from 'styled-components';
-import breakpoint from 'styled-components-breakpoint';
 
-import ArticleTextBlock from './index';
 import storyProps from './articleTextBlockStoryProps';
-
-const ArticleTextBlockStoryWrapper = styled.div`
-  background-color: #F5F5F5;
-  padding: 1.6rem;
-
-  ${breakpoint('md')`
-    padding: 3.6rem;
-  `}
-`;
+import ArticleTextBlock from './index';
+import { siteKey } from '../../../config/argTypes';
+import { addThemedWrapper } from '../../../config/decorators';
 
 export default {
   title: 'Components/Articles/ArticleTextBlock',
   component: ArticleTextBlock,
+  decorators: [ addThemedWrapper() ],
+  argTypes: { siteKey },
+};
+
+const Template = (args) => <ArticleTextBlock {...args} />;
+
+export const WithTheme = Template.bind({});
+WithTheme.args = {
+  ...storyProps.floatImageWithCaption,
+  content: `${storyProps.floatImageWithCaption.content}${storyProps.floatImageSupplement.content}`,
+  siteKey: 'atk'
 };
 
 export const DropCap = () => <ArticleTextBlock {...storyProps.dropCap} />;
@@ -108,3 +110,4 @@ export const BoxBottomImageWideWidth = () => (
     <ArticleTextBlock {...storyProps.boxBottomImageWideWidth} />
   </ArticleTextBlockStoryWrapper>
 );
+ 

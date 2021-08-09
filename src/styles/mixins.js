@@ -10,7 +10,18 @@ export default {
     return widthType === 'default' ? 'max-width: 63.2rem;' : 'max-width: 84.8rem;';
   },
 
-  articlesBoxLists() {
+  articlesBoxLists(siteKey = '') {
+    let numberColor = color.mediumGray;
+    let bulletColor = color.eclipse;
+
+    if (siteKey === 'cco') {
+      numberColor = color.black;
+      bulletColor = color.black;
+    } else if (siteKey === 'cio') {
+      numberColor = color.cork;
+      bulletColor = color.cork;
+    }
+
     return `
       ol {
         padding: 0;
@@ -21,7 +32,7 @@ export default {
 
           &::before {
             content: counter(li)".";
-            color: ${color.mediumGray};
+            color: ${numberColor};
             font: ${fontSize.sm}/1.5 ${font.pnb};
             display: inline-block;
             margin-top: 0.2rem;
@@ -44,9 +55,9 @@ export default {
           &::before {
             border-radius: 4px;
             content: ' ';
-            background-color: ${color.eclipse};
+            background-color: ${bulletColor};
             left: 0;
-            margin: 1.2rem 0.8rem 0 0;
+            margin: 1rem 0.8rem 0 0;
             min-height: 4px;
             min-width: 4px;
             position: absolute;
