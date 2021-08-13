@@ -1,70 +1,62 @@
-import breakpoint from 'styled-components-breakpoint';
-import React, { useState } from 'react';
-import styled, { css, ThemeProvider } from 'styled-components';
-import { boolean, withKnobs, select, text } from '@storybook/addon-knobs';
-
-import {
-  breakpoints,
-  color,
-  spacing,
-  withThemes,
-} from '../../../styles';
+import React from 'react';
 
 import ReviewableSummaryItem from './index';
+import { siteKey } from '../../../config/argTypes';
+import { addThemedWrapper } from '../../../config/decorators';
+
+const affiliateCategory = { table: { category: 'Affiliate' } };
+const ctaCategory = { table: { category: 'CTA' } };
+const recommendationCategory = { table: { category: 'Recommendation Status' } };
 
 export default {
   title: 'Components/Cards/ReviewableSummaryItem',
   component: ReviewableSummaryItem,
-  decorators: [withKnobs],
+  decorators: [ addThemedWrapper() ],
+  argTypes: {
+    recommendationStatus: { ...recommendationCategory },
+    winner: { ...recommendationCategory },
+    winnerHeader: { ...recommendationCategory },
+    buyNowOverrideAffiliateActive: {
+      ...affiliateCategory,
+    },
+    buyNowOverrideAffiliateName: {
+      control: {
+        options: [
+          'Amazon',
+          'BlueApron',
+          'Houzz',
+          'KingArthur',
+          'SurLaTable',
+          'ThermoWorks',
+          'Victorinox',
+          'WilliamsSonoma',
+        ],
+        type: 'select',
+      },
+      ...affiliateCategory,
+    },
+    asin: { ...ctaCategory },
+    buyNowLink: { ...ctaCategory },
+    displayPrice: { ...ctaCategory },
+    price: { ...ctaCategory },
+    siteKey,
+  },
 };
 
-const StoryWrapperTheme = {
-  default: css`
-    background-color: ${color.whiteSmoke};
-    padding: ${spacing.xxlg};
-    width: 600px;
-  `,
-}
+const Template = (args) => <ReviewableSummaryItem {...args} />;
 
-const StoryWrapper = styled.div`
-  ${withThemes(StoryWrapperTheme)}
-`;
-
-export const Default = () => {
-  const [success, setSuccess] = useState(false);
-  return (
-    <ThemeProvider theme={{
-      breakpoints,
-      siteKey: 'atk',
-    }}>
-      <StoryWrapper>
-        <ReviewableSummaryItem
-          asin={text('ASIN', 'B004T6M702')}
-          buyNowLink={text('Buy Now Link', 'https://www.amazon.com/dp/B004T6M702/?tag=akoequippilot-20')}
-          buyNowOverrideAffiliateActive={boolean('Buy Now Affiliate Active', false)}
-          buyNowOverrideAffiliateName={select(
-            'Affiliate Override',
-            [
-              'Amazon',
-              'BlueApron',
-              'Houzz',
-              'KingArthur',
-              'SurLaTable',
-              'ThermoWorks',
-              'Victorinox',
-              'WilliamsSonoma',
-            ],
-            null)}
-          cloudinaryId={text('Cloudinary ID', 'Equipment Images/SIL_CookwareSets_All-Clad1And1-2QTSaucepan_1746')}
-          name={text('Product name', 'All-Clad Stainless 2Qt Saucepan')}
-          dek={text('Description', 'It can\' hold enough small muffins! Sometimes there are just too many!!')}
-          includeDek={boolean('Include Description', true)}
-          price={text('Price', '$15.99')}
-          recommendationStatus={text('Recommendation Status', 'Highly Recommended')}
-          winner={boolean('Winner?', true)}
-          winnerHeader={text('Winner Header', 'winner')}
-        />
-      </StoryWrapper>
-    </ThemeProvider>
-  );
-}
+export const Standard = Template.bind({});
+Standard.args = {
+  asin: 'B004T6M702',
+  buyNowLink: 'https://www.amazon.com/dp/B004T6M702/?tag=akoequippilot-20',
+  buyNowOverrideAffiliateActive: false,
+  buyNowOverrideAffiliateName: 'Amazon',
+  cloudinaryId: 'Equipment Images/SIL_CookwareSets_All-Clad1And1-2QTSaucepan_1746',
+  displayPrice: true,
+  name: 'All-Clad Stainless 2Qt Saucepan',
+  price: '$15.99',
+  recommendationStatus: 'Highly Recommended',
+  siteKey: 'atk',
+  winner: true,
+  winnerHeader: 'winner',
+};

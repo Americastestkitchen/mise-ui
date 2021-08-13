@@ -88,6 +88,10 @@ const color = {
   morningGlory: '#a0dce2',
   athensGray: '#f9f9fb',
   suvaGray: '#8E8E8E',
+  burgundy: '#5C303E',
+  caramel: '#6E562A',
+  deepPlumb: '#3E285C',
+  doveGray: '#6e6e6e',
 };
 
 export default color;

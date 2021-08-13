@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import PersonHeadShot from '../shared/PersonHeadShot';
-import { color, font, fontSize, lineHeight, mixins, spacing } from '../../../styles';
+import { color, font, fontSize, lineHeight, mixins, spacing, withThemes } from '../../../styles';
 
 const PersonCardWrapper = styled.div`
   align-items: center;
@@ -20,22 +20,49 @@ const PersonCardWrapper = styled.div`
   .person-head-shot {
     margin-bottom: ${spacing.md};
   }
-
-  a {
-    ${mixins.styledLink(color.turquoise, color.darkerMint)};
-  }
 `;
+
+const PersonCardNameTheme = {
+  default: css`
+    font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb};
+    margin-bottom: ${spacing.sm};
+  `,
+  atk: css`
+    color: ${({ mode }) => (mode === 'dark' ? color.white : color.eclipse)};
+  `,
+  cco: css`
+    color: ${color.black};
+  `,
+  cio: css`
+    color: ${color.cork};
+  `,
+};
 
 const PersonCardName = styled.h3`
-  color: ${({ mode }) => (mode === 'dark' ? color.white : color.eclipse)};
-  font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb};
-  margin-bottom: ${spacing.sm};
+  ${withThemes(PersonCardNameTheme)}
 `;
 
+const PersonCardDescriptionTheme = {
+  default: css`
+    font: ${fontSize.md}/${lineHeight.md} ${font.pnr};
+    text-align: center;
+    a {
+      ${({ theme }) => (theme?.siteKey ? mixins.styledLinkWithSiteKey(theme.siteKey) : '')}
+    }
+  `,
+  atk: css`
+    color: ${({ mode }) => (mode === 'dark' ? color.white : color.eclipse)};
+  `,
+  cco: css`
+    color: ${color.black};
+  `,
+  cio: css`
+    color: ${color.black};
+  `,
+};
+
 const PersonCardDescription = styled.div`
-  color: ${({ mode }) => (mode === 'dark' ? color.white : color.eclipse)};
-  font: ${fontSize.md}/${lineHeight.md} ${font.pnr};
-  text-align: center;
+  ${withThemes(PersonCardDescriptionTheme)}
 `;
 
 const PersonCard = ({ description, imgAlt, imgCloudinaryId, mode, name }) => (

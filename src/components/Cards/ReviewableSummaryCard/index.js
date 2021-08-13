@@ -55,6 +55,23 @@ const ReviewableSummaryItemTheme = {
       width: 100%;
     }
   `,
+  atk: css`
+    h3 {
+      color: ${color.eclipse};
+    }
+  `,
+  cco: css`
+    border: solid 0.4rem #F7F7F7;
+
+    h3 {
+      color: ${color.black};
+    }
+  `,
+  cio: css`
+    h3 {
+      color: ${color.cork};
+    }
+  `,
 };
 
 const ReviewableSummaryItemEl = styled.div.attrs({
