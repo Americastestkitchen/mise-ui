@@ -91,6 +91,8 @@ const EditorNoteTheme = {
     }
   `,
   cco: css`
+    border-color: ${color.denim};
+
     &.note-retention {
       background-color: ${color.aliceBlue};
       color: ${color.black};
@@ -101,6 +103,8 @@ const EditorNoteTheme = {
     }
   `,
   cio: css`
+    border-color: ${color.squirrel};
+
     &.note-retention {
       background-color: ${color.ivory};
       color: ${color.cork};
@@ -152,6 +156,12 @@ const EditorNoteIconTheme = {
     }
   `,
   cco: css`
+    background-color: ${color.denim};
+
+    svg circle {
+      fill: ${color.denim};
+    }
+
     ${breakpoint('md', 'xlg')`
       left: 0;
     `}
@@ -161,11 +171,29 @@ const EditorNoteIconTheme = {
         fill: ${color.wedgewood};
       }
     }
+
+    .note-alert & {
+      svg circle {
+        fill: ${color.tabasco};
+      }
+    }
   `,
   cio: css`
+    background-color: ${color.squirrel};
+
+    svg circle {
+      fill: ${color.squirrel};
+    }
+
     .note-retention & {
       svg circle {
         fill: ${color.arrowTown};
+      }
+    }
+
+    .note-alert & {
+      svg circle {
+        fill: ${color.tabasco};
       }
     }
   `,
@@ -197,6 +225,12 @@ const EditorNoteTitleTheme = {
       }
     }
   `,
+  cco: css`
+    color: ${color.denim};
+  `,
+  cio: css`
+    color: ${color.cork};
+  `,
 };
 
 const EditorNoteTitle = styled.span`
@@ -213,6 +247,15 @@ const EditorNoteSubtitleTheme = {
       font: ${fontSize.md}/${lineHeight.lg} ${font.pnr};
     `}
   `,
+  atk: css`
+    color: ${color.eclipse};
+  `,
+  cco: css`
+    color: ${color.black};
+  `,
+  cio: css`
+    color: ${color.cork};
+  `,
 };
 
 const EditorNoteSubtitle = styled.span`
@@ -226,6 +269,15 @@ const EditorNoteTextTheme = {
     .note-retention & {
       line-height: 2.6rem;
     }
+  `,
+  atk: css`
+    color: ${color.eclipse};
+  `,
+  cco: css`
+    color: ${color.black};
+  `,
+  cio: css`
+    color: ${color.cork};
   `,
 };
 

@@ -87,6 +87,10 @@ const color = {
   pictonBlue: '#3c9be2',
   morningGlory: '#a0dce2',
   athensGray: '#f9f9fb',
+  burgundy: '#5C303E',
+  caramel: '#6E562A',
+  deepPlumb: '#3E285C',
+  doveGray: '#6e6e6e',
 };
 
 export default color;

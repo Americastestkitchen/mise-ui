@@ -9,7 +9,7 @@ const theme = { breakpoints };
 
 export const decorators = [
   (Story, { args }) => (
-      <ThemeProvider theme={{ ...theme, siteKey: args.siteKey || null }}>
+      <ThemeProvider theme={{ ...theme, mode: args.mode || null, siteKey: args.siteKey || null }}>
         <GlobalStyle />
         <Story />
       </ThemeProvider>
