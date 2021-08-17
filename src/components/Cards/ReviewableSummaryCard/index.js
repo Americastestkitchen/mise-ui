@@ -216,7 +216,6 @@ const ReviewableSummaryCard = React.memo(({
   href,
   hrefDataAttrs,
   imageAltText,
-  includeDek,
   isShortList,
   name,
   price,
@@ -255,7 +254,7 @@ const ReviewableSummaryCard = React.memo(({
           )}
           <ReviewableLink href={href} hrefDataAttrs={hrefDataAttrs}>
             <h3>{name}</h3>
-            {includeDek && (<p>{dek}</p>)}
+            {dek && (<p>{dek}</p>)}
           </ReviewableLink>
           {!buyNowLink && priceMarkup && (
             <ItemPrice dangerouslySetInnerHTML={{ __html: priceMarkup }} />
@@ -311,7 +310,6 @@ ReviewableSummaryCard.propTypes = {
   href: PropTypes.string,
   hrefDataAttrs: PropTypes.object,
   imageAltText: PropTypes.string,
-  includeDek: PropTypes.bool,
   isShortList: PropTypes.bool,
   name: PropTypes.string.isRequired,
   price: PropTypes.string,
@@ -326,12 +324,11 @@ ReviewableSummaryCard.defaultProps = {
   buyNowOnClick: null,
   buyNowOverrideAffiliateName: null,
   cloudinaryId: null,
-  dek: '',
+  dek: null,
   displayPrice: false,
   href: null,
   hrefDataAttrs: {},
   imageAltText: '',
-  includeDek: false,
   isShortList: false,
   price: null,
   recommendationStatus: null,
