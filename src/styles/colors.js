@@ -87,6 +87,7 @@ const color = {
   pictonBlue: '#3c9be2',
   morningGlory: '#a0dce2',
   athensGray: '#f9f9fb',
+  suvaGray: '#8E8E8E',
 };
 
 export default color;
