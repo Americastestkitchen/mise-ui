@@ -7,7 +7,7 @@ import SuggestionCard from '../index';
 import breakpoints from '../../../../styles/breakpoints';
 
 const baseRecipe = {
-  description: 'More flavorful and less prone to overcooking than lean breasts, chicken thighs are a perfect weeknight dinner.',
+  dek: 'More flavorful and less prone to overcooking than lean breasts, chicken thighs are a perfect weeknight dinner.',
   href: '/recipes/6832',
   imageAlt: 'alternate-text',
   imageUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/ar_16:9,c_fill,dpr_2.0,f_auto,fl_lossy,g_faces:auto,w_300,q_auto:low/9704_sfs-easy-roast-chicken-thighs-clr-8-article',
@@ -70,9 +70,9 @@ describe('SuggestionCard component', () => {
     expect(screen.queryByTestId('suggestion-sub-title')).toBeNull();
   });
 
-  it('does renders a description', () => {
+  it('does renders a dek', () => {
     renderComponent(baseRecipe);
-    expect(screen.getByTestId('suggestion-description'));
+    expect(screen.getByTestId('suggestion-dek'));
   });
 
   it('does not render a description', () => {

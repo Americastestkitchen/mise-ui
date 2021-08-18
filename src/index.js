@@ -23,6 +23,7 @@ import ClearRefinements from './components/Algolia/shared/ClearRefinements';
 import CookingSchoolAd from './components/Ads/ReviewsAds/CookingSchoolAd';
 import CurrentRefinements from './components/Algolia/shared/CurrentRefinements';
 import DocumentListCarousel from './components/Carousels/DocumentListCarousel';
+import DocumentSuggestionCarousel from './components/Carousels/DocumentSuggestionCarousel';
 import FavoriteActionButton from './components/Buttons/ActionButtons/FavoriteActionButton';
 import EditorsNote from './components/EditorsNote';
 import EmailForm from './components/Forms/EmailForm';
@@ -108,6 +109,7 @@ export {
   CookingSchoolAd,
   CurrentRefinements,
   DocumentListCarousel,
+  DocumentSuggestionCarousel,
   EditorsNote,
   EmailForm,
   FavoriteActionButton,

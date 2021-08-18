@@ -11,6 +11,7 @@ import LinearGradient from '../../DesignTokens/LinearGradient';
 import PersonCard from '../../Cards/PersonCard';
 import ReviewableSummaryCard from '../../Cards/ReviewableSummaryCard';
 import StandardCard from '../../Cards/StandardCard';
+import SuggestionCard from '../../Cards/SuggestionCard';
 import TallCard from '../../Cards/TallCard';
 import { cards, spacing, withThemes } from '../../../styles';
 
@@ -18,6 +19,7 @@ const typeWidths = {
   default: {
     hero: '100%',
     default: cards.standard.width.lg,
+    suggestion: 'calc(100% - 6.4rem)',
   },
   sm: {
     hero: '100%',
@@ -149,6 +151,14 @@ const CardCarouselTheme = {
         }
       }
 
+      &.card-carousel--suggestion {
+        max-width: 85rem;
+
+        .carousel {
+          max-width: 88rem;
+        }
+      }
+
       &.card-carousel--hero {
         .linear-gradient {
           &:last-child {
@@ -171,6 +181,7 @@ const typeMap = {
   person: PersonCard,
   reviewable: ReviewableSummaryCard,
   standard: StandardCard,
+  suggestion: SuggestionCard,
   tall: TallCard,
 };
 
@@ -262,6 +273,7 @@ CardCarousel.propTypes = {
     'person',
     'reviewable',
     'standard',
+    'suggestion',
     'tall',
   ]).isRequired,
 };
