@@ -8,7 +8,7 @@ import AffiliateLink from '../shared/AffiliateLink';
 import Image from '../shared/Image';
 import Sticker from '../shared/Sticker';
 import { getImageUrl } from '../../../lib/cloudinary';
-import { color, font, fontSize, lineHeight, withThemes } from '../../../styles';
+import { color, font, fontSize, lineHeight, spacing, withThemes } from '../../../styles';
 
 const ReviewableSummaryItemTheme = {
   default: css`
@@ -72,6 +72,11 @@ const TitleImageWrapper = styled.div.attrs({
   h3 {
     font: ${fontSize.xl} / ${lineHeight.sm} ${font.pnb};
     margin-bottom: 1.4rem;
+  }
+
+  p {
+    font: ${fontSize.lg}/${lineHeight.lg} ${font.mwr};
+    margin-bottom: ${spacing.md};
   }
 
   .reviewable-img {
@@ -206,6 +211,7 @@ const ReviewableSummaryCard = React.memo(({
   buyNowOverrideAffiliateActive,
   buyNowOverrideAffiliateName,
   cloudinaryId,
+  dek,
   displayPrice,
   href,
   hrefDataAttrs,
@@ -220,8 +226,9 @@ const ReviewableSummaryCard = React.memo(({
   const isDiscontinued = price?.toLowerCase()?.includes('discontinued') ?? false;
   const priceMarkup = price?.replace(parensRe, '<span>$1</span>') ?? null;
   let buyNowIcon = asin ? 'Amazon' : null;
-  if (buyNowOverrideAffiliateActive && buyNowOverrideAffiliateName) {
-    buyNowIcon = buyNowOverrideAffiliateName;
+
+  if (buyNowOverrideAffiliateActive) {
+    buyNowIcon = buyNowOverrideAffiliateName || null;
   }
   const sortOfWinner = winner || isShortList;
   const stickerText = sortOfWinner
@@ -247,6 +254,7 @@ const ReviewableSummaryCard = React.memo(({
           )}
           <ReviewableLink href={href} hrefDataAttrs={hrefDataAttrs}>
             <h3>{name}</h3>
+            {dek && (<p>{dek}</p>)}
           </ReviewableLink>
           {!buyNowLink && priceMarkup && (
             <ItemPrice dangerouslySetInnerHTML={{ __html: priceMarkup }} />
@@ -297,6 +305,7 @@ ReviewableSummaryCard.propTypes = {
   buyNowOverrideAffiliateActive: PropTypes.bool.isRequired,
   buyNowOverrideAffiliateName: PropTypes.string,
   cloudinaryId: PropTypes.string,
+  dek: PropTypes.string,
   displayPrice: PropTypes.bool,
   href: PropTypes.string,
   hrefDataAttrs: PropTypes.object,
@@ -315,6 +324,7 @@ ReviewableSummaryCard.defaultProps = {
   buyNowOnClick: null,
   buyNowOverrideAffiliateName: null,
   cloudinaryId: null,
+  dek: null,
   displayPrice: false,
   href: null,
   hrefDataAttrs: {},
