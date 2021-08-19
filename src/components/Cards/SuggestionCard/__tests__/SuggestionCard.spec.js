@@ -34,7 +34,15 @@ describe('SuggestionCard component', () => {
 
   it('does renders an image', () => {
     renderComponent(baseRecipe);
-    expect(screen.getByAltText('alternate-text'));
+    expect(screen.getByTestId('suggestion-img-true'));
+  });
+
+  it('does not render an image', () => {
+    renderComponent({
+      ...baseRecipe,
+      imageUrl: null,
+    });
+    expect(screen.getByTestId('suggestion-img-false'));
   });
 
   it('does renders a badge', () => {

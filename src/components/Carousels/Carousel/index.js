@@ -264,7 +264,9 @@ const Carousel = ({
    * When cell changes, trigger event
    */
   const handleCellChange = useCallback((idx) => {
-    publishEvent('flickity:change', flktyRef.current.cells[idx]);
+    const cell = flktyRef.current.cells[idx].element;
+    const node = cell.cloneNode(true);
+    publishEvent('flickity:change', node);
   }, [publishEvent]);
 
   /**
@@ -275,8 +277,9 @@ const Carousel = ({
     if (removeButton) {
       evt.preventDefault();
       const cell = evt.target.closest('.carousel-cell');
-      publishEvent('flickity:remove', cell.cloneNode());
-      flktyRef.current.remove(cell);
+      const node = cell.cloneNode(true);
+      publishEvent('flickity:remove', node);
+      if (cell) flktyRef.current.remove(cell);
     }
   }, [publishEvent]);
 
@@ -287,7 +290,7 @@ const Carousel = ({
   useEffect(() => {
     if (flktyRef.current) flktyRef.current.destroy();
     if (items.length > 1 && elRef?.current) {
-      const opts = { ...defaultOptions, ...options };
+      const opts = { ...defaultOptions, ...options, on: { ready: () => handleCellChange(0) } };
       const flkty = getFlickityInstance(elRef.current, opts);
       const isEnabled = flkty.slides.length > 1;
       if (isEnabled === false) {

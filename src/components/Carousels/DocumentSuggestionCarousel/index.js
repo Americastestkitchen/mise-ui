@@ -1,3 +1,4 @@
+import breakpoint from 'styled-components-breakpoint';
 import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { css } from 'styled-components';
@@ -12,6 +13,10 @@ const TitleTheme = {
     letter-spacing: 1.28px;
     margin-bottom: ${spacing.xsm};
     text-transform: uppercase;
+
+    ${breakpoint('xs', 'md')`
+      padding-right: ${spacing.md};
+    `}
   `,
   dark: css``,
 };
@@ -27,6 +32,10 @@ const SubtitleTheme = {
     letter-spacing: ${letterSpacing.md};
     margin-bottom: ${spacing.sm};
     text-transform: uppercase;
+
+    ${breakpoint('xs', 'md')`
+      padding-right: ${spacing.md};
+    `}
   `,
 };
 
@@ -41,6 +50,20 @@ const DocumentListCarouselTheme = {
     .carousel {
       padding-top: 0;
     }
+
+    .carousel-cell {
+      &:not(.is-selected) {
+        opacity: 0.5;
+      }
+    }
+
+    ${breakpoint('xs', 'md')`
+      margin-left: ${spacing.sm};
+
+      .carousel-cell {
+        width: calc(100% - ${spacing.sm});
+      }
+    `}
   `,
 };
 
