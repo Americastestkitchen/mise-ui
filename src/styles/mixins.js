@@ -113,6 +113,19 @@ export default {
     `;
   },
 
+  styledLinkWithSiteKey(siteKey) {
+    if (siteKey === 'atk') {
+      return this.styledLink(color.turquoise, color.seaSalt);
+    }
+    if (siteKey === 'cco') {
+      return this.styledLink(color.malibu, color.cornflower);
+    }
+    if (siteKey === 'cio') {
+      return this.styledLink(color.dijon, color.sand);
+    }
+    return '';
+  },
+
   /**
    * Truncates text with ellipsis
    * @param  {Number} width optional - set the width of the element
