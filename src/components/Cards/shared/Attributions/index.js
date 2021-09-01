@@ -1,3 +1,4 @@
+import breakpoint from 'styled-components-breakpoint';
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -16,6 +17,17 @@ const StyledAttributions = styled.div`
   .attributions__content-type-wrapper {
     display: inline-block;
   }
+
+  ${breakpoint('xs', 'lg')`
+    .attributions__bullet {
+      display: none;
+    }
+
+    .attributions__secondary {
+      display: block;
+    }
+  `}
+
 `;
 
 const StyledLock = styled(Lock)`
