@@ -21,7 +21,7 @@ const TitleTheme = {
   dark: css``,
 };
 
-const Title = styled.h2.attrs({
+export const Title = styled.h2.attrs({
   className: 'document-suggestion-carousel__title',
 })`${withThemes(TitleTheme)}`;
 
@@ -39,7 +39,7 @@ const SubtitleTheme = {
   `,
 };
 
-const Subtitle = styled.h3.attrs({
+export const Subtitle = styled.h3.attrs({
   className: 'document-suggestion-carousel__subtitle',
 })`${withThemes(SubtitleTheme)}`;
 

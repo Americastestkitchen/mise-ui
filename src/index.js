@@ -74,6 +74,7 @@ import StandardCard from './components/Cards/StandardCard';
 import StationFinderForm from './components/Forms/StationFinderForm';
 import Sticker from './components/Cards/shared/Sticker';
 import SubscribeBubbles from './components/SubscribeBubbles';
+import SuggestionCard from './components/Cards/SuggestionCard';
 import TallCard from './components/Cards/TallCard';
 import TextDecorations, { CircledText, SquiggledText, UnderlinedText } from './components/DesignTokens/TextDecoration';
 import ToggleRefinement from './components/Algolia/shared/ToggleRefinement';
@@ -161,6 +162,7 @@ export {
   ShowMoreLess,
   ShowMoreResults,
   SquiggledText,
+  SuggestionCard,
   StandardCard,
   StationFinderForm,
   Sticker,

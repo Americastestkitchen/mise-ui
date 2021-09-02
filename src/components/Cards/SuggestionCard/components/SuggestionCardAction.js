@@ -30,13 +30,15 @@ const SuggestionCardAction = styled.button.attrs({
     border: 1px solid ${color.suvaGray};
     color: ${color.eclipse};
 
-    &:hover {
-      background-color: ${color.eclipse};
-      border: 1px solid ${color.eclipse};
-      color: ${color.white};
-
-      svg g {
-        stroke: ${color.white};
+    @media(hover: hover) {
+      &:hover {
+        background-color: ${color.eclipse};
+        border: 1px solid ${color.eclipse};
+        color: ${color.white};
+  
+        svg g {
+          stroke: ${color.white};
+        }
       }
     }
   }
@@ -46,9 +48,11 @@ const SuggestionCardAction = styled.button.attrs({
     border: 1px solid ${color.mint};
     color: ${color.white};
 
-    &:hover {
-      background-color: ${color.darkerMint};
-      border: 1px solid ${color.darkerMint};
+    @media(hover: hover) {
+      &:hover {
+        background-color: ${color.darkerMint};
+        border: 1px solid ${color.darkerMint};
+      }
     }
 
     &:not(.favorited) {

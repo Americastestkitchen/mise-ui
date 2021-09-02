@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import LoadingSuggestionCard from './components/LoadingSuggestionCard';
 import SuggestionCardAction from './components/SuggestionCardAction';
 import SuggestionCardActions from './components/SuggestionCardActions';
 import SuggestionCardBadge from './components/SuggestionCardBadge';
@@ -61,6 +62,7 @@ const SuggestionCard = ({
           <SuggestionCardAction
             className="skip remove-cell"
             data-document-title={title}
+            data-event-name="RECOMMENDATION_REJECTED"
             data-href={href}
             data-object-id={objectId}
             data-testid="suggestion-action__skip"
@@ -73,9 +75,11 @@ const SuggestionCard = ({
             Not for me
           </SuggestionCardAction>
           <SuggestionCardAction
-            className="favorite-action"
+            className="favorite-action remove-cell"
+            data-event-name="RECOMMENDATION_ADDED"
             data-document-title={title}
             data-favoritable-id={objectId}
+            data-object-id={objectId}
             data-origin-site={siteKey}
             data-testid="suggestion-action__favorite"
           >
@@ -108,5 +112,7 @@ SuggestionCard.defaultProps = {
   imageUrl: null,
   subtitle: null,
 };
+
+SuggestionCard.Loading = LoadingSuggestionCard;
 
 export default SuggestionCard;

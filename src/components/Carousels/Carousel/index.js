@@ -273,13 +273,29 @@ const Carousel = ({
    * Handle click requests to remove a slide
    */
   const handleCellClick = useCallback((evt) => {
-    const removeButton = evt.target.closest('.remove-cell');
-    if (removeButton) {
-      evt.preventDefault();
-      const cell = evt.target.closest('.carousel-cell');
-      const node = cell.cloneNode(true);
-      publishEvent('flickity:remove', node);
-      if (cell) flktyRef.current.remove(cell);
+    const button = evt.target.closest('button');
+    if (button) {
+      const list = button.classList;
+      if (list.contains('remove-cell')) {
+        evt.preventDefault();
+        if (flktyRef.current.slides.length > 1) {
+          flktyRef.current.next();
+          setTimeout(() => {
+            publishEvent('flickity:remove', { ...button.dataset });
+            const cell = button.closest('.carousel-cell');
+            if (cell) flktyRef.current.remove(cell);
+          }, 500);
+        } else {
+          publishEvent('flickity:remove', { ...button.dataset });
+          flktyRef.current.destroy();
+        }
+      } else if (list.contains('next-cell')) {
+        flktyRef.current.next(true);
+        publishEvent('flickity:next');
+      } else if (list.contains('previous-cell')) {
+        flktyRef.current.previous(true);
+        publishEvent('flickity:previous');
+      }
     }
   }, [publishEvent]);
 
