@@ -227,37 +227,65 @@ const CtaLink = styled.div`
   ${withThemes(CtaLinkTheme)}
 `;
 
+const DescriptionTheme = {
+  default: css`
+    font: ${fontSize.lg}/2.1rem ${font.pnb};
+    letter-spacing: normal;
+
+    ${breakpoint('md')`
+      font: 2.1rem/2.4rem ${font.pnb};
+    `}
+
+    ${breakpoint('xlg')`
+      font: 2.1rem/2.6rem ${font.pnb};
+    `}
+  `,
+  atk: css`
+    color: ${color.eclipse};
+  `,
+  cco: css`
+    color: ${color.black};
+  `,
+  cio: css`
+    color: ${color.cork};
+  `,
+};
+
 const Description = styled.span`
-  color: ${color.eclipse};
-  font: ${fontSize.lg}/2.1rem ${font.pnb};
-  letter-spacing: normal;
-
-  ${breakpoint('md')`
-    font: 2.1rem/2.4rem ${font.pnb};
-  `}
-
-  ${breakpoint('xlg')`
-    font: 2.1rem/2.6rem ${font.pnb};
-  `}
+  ${withThemes(DescriptionTheme)}
 `;
 
+const HeadlineTheme = {
+  default: css`
+    font: ${fontSize.sm}/1.6rem ${font.pnr};
+    letter-spacing: 1.4px;
+    margin-bottom: ${spacing.xsm};
+    text-transform: uppercase;
+
+    ${breakpoint('md')`
+      font: ${fontSize.md}/2.6rem ${font.pnr};
+      letter-spacing: ${letterSpacing.md};
+      margin-bottom: ${spacing.xxsm};
+      min-width: 31.7rem;
+    `}
+
+    ${breakpoint('xlg')`
+      margin-top: ${spacing.xsm};
+    `}
+  `,
+  atk: css`
+    color: ${color.eclipse};
+  `,
+  cco: css`
+    color: ${color.black};
+  `,
+  cio: css`
+    color: ${color.cork};
+  `,
+};
+
 const Headline = styled.span`
-  color: ${color.eclipse};
-  font: ${fontSize.sm}/1.6rem ${font.pnr};
-  letter-spacing: 1.4px;
-  margin-bottom: ${spacing.xsm};
-  text-transform: uppercase;
-
-  ${breakpoint('md')`
-    font: ${fontSize.md}/2.6rem ${font.pnr};
-    letter-spacing: ${letterSpacing.md};
-    margin-bottom: ${spacing.xxsm};
-    min-width: 31.7rem;
-  `}
-
-  ${breakpoint('xlg')`
-    margin-top: ${spacing.xsm};
-  `}
+  ${withThemes(HeadlineTheme)}
 `;
 
 const MainContent = styled.div`
