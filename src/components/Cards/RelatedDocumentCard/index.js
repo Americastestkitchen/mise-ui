@@ -31,7 +31,6 @@ const RelatedDocumentCardEl = styled.a.attrs({
 /** CONTENT */
 const RelatedDocumentCardContentTheme = {
   default: css`
-    color: ${color.eclipse};
     display: flex;
     flex-direction: column;
     flex: 1 0 0;
@@ -41,6 +40,15 @@ const RelatedDocumentCardContentTheme = {
     ${breakpoint('md')`
       padding: ${spacing.md} ${spacing.xlg} ${spacing.sm};
     `}
+  `,
+  atk: css`
+    color: ${color.eclipse};
+  `,
+  cco: css`
+    color: ${color.black};
+  `,
+  cio: css`
+    color: ${color.cork};
   `,
 };
 const RelatedDocumentCardContent = styled.div.attrs({
@@ -100,7 +108,17 @@ const RelatedDocumentCardTitleTheme = {
   `,
   atk: css`
     span {
-      ${mixins.styledLink(color.turquoise, color.seaSalt)}
+      ${mixins.styledLinkWithSiteKey('atk')}
+    }
+  `,
+  cco: css`
+    span {
+      ${mixins.styledLinkWithSiteKey('cco')}
+    }
+  `,
+  cio: css`
+    span {
+      ${mixins.styledLinkWithSiteKey('cio')}
     }
   `,
 };
