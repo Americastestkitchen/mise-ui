@@ -1,6 +1,6 @@
 import breakpoint from 'styled-components-breakpoint';
 import PropTypes from 'prop-types';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 
 import { color, spacing, withThemes } from '../../../styles';
@@ -250,10 +250,63 @@ const Carousel = ({
   const [enabled, setEnabled] = useState(false);
   const slideshow = options.slideshow || defaultOptions.slideshow;
 
+  /**
+   * Notify dry.events of various actions
+   */
+  const publishEvent = useCallback((evt, data) => {
+    if (typeof dry !== 'undefined') {
+      // eslint-disable-next-line no-undef
+      dry.events.publish(evt, data);
+    }
+  }, []);
+
+  /**
+   * When cell changes, trigger event
+   */
+  const handleCellChange = useCallback((idx) => {
+    const cell = flktyRef.current.cells[idx].element;
+    const node = cell.cloneNode(true);
+    publishEvent('flickity:change', node);
+  }, [publishEvent]);
+
+  /**
+   * Handle click requests to remove a slide
+   */
+  const handleCellClick = useCallback((evt) => {
+    const button = evt.target.closest('button');
+    if (button) {
+      const list = button.classList;
+      if (list.contains('remove-cell')) {
+        evt.preventDefault();
+        if (flktyRef.current.slides.length > 1) {
+          flktyRef.current.next();
+          setTimeout(() => {
+            publishEvent('flickity:remove', { ...button.dataset });
+            const cell = button.closest('.carousel-cell');
+            if (cell) flktyRef.current.remove(cell);
+          }, 500);
+        } else {
+          publishEvent('flickity:remove', { ...button.dataset });
+          flktyRef.current.destroy();
+        }
+      } else if (list.contains('next-cell')) {
+        flktyRef.current.next(true);
+        publishEvent('flickity:next');
+      } else if (list.contains('previous-cell')) {
+        flktyRef.current.previous(true);
+        publishEvent('flickity:previous');
+      }
+    }
+  }, [publishEvent]);
+
+  /**
+   * Setup a flickity instance, register a change handler.
+   * On unmount, destroy flickity instance
+   */
   useEffect(() => {
     if (flktyRef.current) flktyRef.current.destroy();
     if (items.length > 1 && elRef?.current) {
-      const opts = { ...defaultOptions, ...options };
+      const opts = { ...defaultOptions, ...options, on: { ready: () => handleCellChange(0) } };
       const flkty = getFlickityInstance(elRef.current, opts);
       const isEnabled = flkty.slides.length > 1;
       if (isEnabled === false) {
@@ -262,6 +315,7 @@ const Carousel = ({
         [...cells].forEach(el => el.removeAttribute('aria-hidden'));
       } else {
         flktyRef.current = flkty;
+        flktyRef.current.on('change', handleCellChange);
       }
       setEnabled(isEnabled);
     }
@@ -269,7 +323,16 @@ const Carousel = ({
       try { if (flktyRef.current) flktyRef.current.destroy(); } // eslint-disable-line
       catch (err) {}; // eslint-disable-line
     };
-  }, [items, options]);
+  }, [items, options, handleCellChange]);
+
+  /**
+   * Listen for click events on our carousel container
+   */
+  useEffect(() => {
+    const container = elRef.current;
+    container.addEventListener('click', handleCellClick);
+    return () => container.removeEventListener('click', handleCellClick);
+  }, [handleCellClick]);
 
   return (
     <CarouselWrapper
