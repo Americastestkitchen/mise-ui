@@ -1,16 +1,10 @@
 import React from 'react';
 import styled, { css, ThemeProvider } from 'styled-components';
-import { withKnobs, select, text } from '@storybook/addon-knobs';
 
 import data from './__tests__/data';
 import DocumentListCarousel from './index';
 import { breakpoints, color, withThemes } from '../../../styles'
-
-export default {
-  title: 'Components/Carousels/DocumentListCarousel',
-  component: DocumentListCarousel,
-  decorators: [withKnobs],
-};
+import { disable, mode } from '../../../config/argTypes';
 
 const StoryWrapperTheme = {
   default: css`
@@ -25,57 +19,53 @@ const StoryWrapper = styled.div`
   ${withThemes(StoryWrapperTheme)}
 `;
 
-const ThemedComponent = ({
-  adSourceKey,
-  ctaText,
-  ctaUrl,
-  includesAdType,
-  mode,
-  intro,
-  title,
-  type 
-}) => {
+const ThemedDocumentListCarousel = ({ mode, ...props }) => {
   return (
     <ThemeProvider theme={{
       breakpoints,
-      mode: 'dark'
+      mode,
     }}>
       <StoryWrapper className="story-wrapper">
         <DocumentListCarousel
-          adSourceKey={adSourceKey}
-          ctaText={ctaText}
-          ctaUrl={ctaUrl}
-          includesAdType={includesAdType}
-          intro={intro}
-          items={type === 'standard' ? data.standardItems : data.featureItems}
-          title={title}
-          type={type}
+          {...props}
         />
       </StoryWrapper>
     </ThemeProvider>
   );
 }
 
-export const Default = () => (
-  <ThemedComponent
-    mode={select('Theme', ['default', 'dark'], 'dark')}
-    intro={text('Intro', 'For folks who always want to know why?')}
-    ctaText={text('CTA Text', 'Explore 20 Seasons')}
-    ctaUrl={text('CTA URL', 'https://www.americastestkitchen.com')}
-    title="America's Test Kitchen"
-    type={select('Card Type', ['standard', 'feature'], 'feature')}
-  />
-);
+export default {
+  title: 'Components/Carousels/DocumentListCarousel',
+  component: DocumentListCarousel,
+  argTypes: {
+    mode,
+    options: disable,
+    adSourceKey: disable,
+    ctaDataAttrs: disable,
+    ctaTarget: disable,
+    renderItem: disable,
+    gradient: disable,
+    items: disable,
+  },
+};
 
-export const withBookAd = () => (
-  <ThemedComponent
-    adSourceKey="CARDDTVAA"
-    ctaText={text('CTA Text', 'Explore 20 Seasons')}
-    ctaUrl={text('CTA URL', 'https://www.americastestkitchen.com')}
-    includesAdType='book'
-    intro={text('Intro', 'For folks who always want to know why?')}
-    mode={select('Theme', ['default', 'dark'], 'dark')}
-    title="America's Test Kitchen"
-    type={select('Card Type', ['standard', 'feature'], 'feature')}
-  />
-)
+const Template = (args) => <DocumentListCarousel {...args} />;
+
+export const Default = Template.bind({});
+Default.args = {
+  mode: 'dark',
+  intro: 'For folks who always want to know why?',
+  ctaText: 'Explore 20 Seasons',
+  ctaUrl: 'https://www.americastestkitchen.com',
+  title: "America's Test Kitchen",
+  type: 'feature',
+  items: data.featureItems,
+};
+
+export const withBookAd = Template.bind({});
+withBookAd.args = {
+  ...Default.args,
+  adSourceKey: 'CARDDTVAA',
+  includesAdType: 'book',
+  items: data.standardItems,
+};

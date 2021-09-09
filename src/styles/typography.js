@@ -16,6 +16,7 @@ const font = {
   pnr: 'proximaNovaRegular, sans-serif',
   cwf: 'chippewa-falls, sans-serif',
   gdn: 'gooddog-new, sans-serif',
+  msr: 'Montserrat, sans-serif',
 };
 
 const lineHeight = {

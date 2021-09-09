@@ -23,7 +23,7 @@ const FavoriteRibbon = ({
     <g>
       <path className="outer-stroke" d="M8.483 16.809L1 22V1h15v21z" fill="none" stroke={fill} strokeMiterlimit="10" strokeWidth="2" />
       <path className={`${className}__ribbon`} d="M0 0v23.91L8.48 18 17 23.91V0zm13.5 10h-4v4a1 1 0 01-2 0v-4h-4a1 1 0 010-2h4V4a1 1 0 012 0v4h4a1 1 0 010 2z" fill={fill} />
-      <g strokeWidth="3">
+      <g className="lines" strokeWidth="3">
         <path className={`${className}__horizontal-line`} strokeLinecap="round" d="M3.5 9h10" />
         <path className={`${className}__vertical-line`} strokeLinecap="flat" d="M8.5 2v6" />
         <path className={`${className}__vertical-line`} strokeLinecap="flat" d="M8.5 10v6" />

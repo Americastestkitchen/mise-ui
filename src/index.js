@@ -23,6 +23,7 @@ import ClearRefinements from './components/Algolia/shared/ClearRefinements';
 import CookingSchoolAd from './components/Ads/ReviewsAds/CookingSchoolAd';
 import CurrentRefinements from './components/Algolia/shared/CurrentRefinements';
 import DocumentListCarousel from './components/Carousels/DocumentListCarousel';
+import DocumentSuggestionCarousel from './components/Carousels/DocumentSuggestionCarousel';
 import FavoriteActionButton from './components/Buttons/ActionButtons/FavoriteActionButton';
 import EditorsNote from './components/EditorsNote';
 import EmailForm from './components/Forms/EmailForm';
@@ -73,6 +74,7 @@ import StandardCard from './components/Cards/StandardCard';
 import StationFinderForm from './components/Forms/StationFinderForm';
 import Sticker from './components/Cards/shared/Sticker';
 import SubscribeBubbles from './components/SubscribeBubbles';
+import SuggestionCard from './components/Cards/SuggestionCard';
 import TallCard from './components/Cards/TallCard';
 import TextDecorations, { CircledText, SquiggledText, UnderlinedText } from './components/DesignTokens/TextDecoration';
 import ToggleRefinement from './components/Algolia/shared/ToggleRefinement';
@@ -108,6 +110,7 @@ export {
   CookingSchoolAd,
   CurrentRefinements,
   DocumentListCarousel,
+  DocumentSuggestionCarousel,
   EditorsNote,
   EmailForm,
   FavoriteActionButton,
@@ -159,6 +162,7 @@ export {
   ShowMoreLess,
   ShowMoreResults,
   SquiggledText,
+  SuggestionCard,
   StandardCard,
   StationFinderForm,
   Sticker,
