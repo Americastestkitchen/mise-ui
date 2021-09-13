@@ -306,7 +306,7 @@ const Carousel = ({
   useEffect(() => {
     if (flktyRef.current) flktyRef.current.destroy();
     if (items.length > 1 && elRef?.current) {
-      const opts = { ...defaultOptions, ...options, on: { ready: () => handleCellChange(0) } };
+      const opts = { ...defaultOptions, ...options };
       const flkty = getFlickityInstance(elRef.current, opts);
       const isEnabled = flkty.slides.length > 1;
       if (isEnabled === false) {
@@ -316,6 +316,8 @@ const Carousel = ({
       } else {
         flktyRef.current = flkty;
         flktyRef.current.on('change', handleCellChange);
+        // workaround for flickity 'ready' event not working
+        setTimeout(() => handleCellChange(0), 0);
       }
       setEnabled(isEnabled);
     }
