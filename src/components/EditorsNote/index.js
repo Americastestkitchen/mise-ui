@@ -37,10 +37,6 @@ const EditorNoteTheme = {
       margin-bottom: ${spacing.xxsm};
     }
 
-    a {
-      ${mixins.styledLink(color.turquoise, color.seaSalt)}
-    }
-
     strong {
       font-weight: normal;
       font-family: ${font.pnb};
@@ -82,6 +78,10 @@ const EditorNoteTheme = {
     }
   `,
   atk: css`
+    a {
+      ${mixins.styledLinkWithSiteKey('atk')}
+    }
+
     &.note-retention {
       background-color: ${color.solitude};
 
@@ -93,25 +93,25 @@ const EditorNoteTheme = {
   cco: css`
     border-color: ${color.denim};
 
+    a {
+      ${mixins.styledLinkWithSiteKey('cco')}
+    }
+
     &.note-retention {
       background-color: ${color.aliceBlue};
       color: ${color.black};
-
-      a {
-        ${mixins.styledLink(color.malibu, color.cornflower)};
-      }
     }
   `,
   cio: css`
     border-color: ${color.squirrel};
 
+    a {
+      ${mixins.styledLinkWithSiteKey('cio')}
+    }
+
     &.note-retention {
       background-color: ${color.ivory};
       color: ${color.cork};
-
-      a {
-        ${mixins.styledLink(color.dijon, color.sand)};
-      }
     }
   `,
 };
