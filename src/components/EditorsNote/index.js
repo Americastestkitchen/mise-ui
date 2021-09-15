@@ -174,7 +174,7 @@ const EditorNoteIconTheme = {
 
     .note-alert & {
       svg circle {
-        fill: ${color.tabasco};
+        fill: ${color.rust};
       }
     }
   `,
@@ -193,7 +193,7 @@ const EditorNoteIconTheme = {
 
     .note-alert & {
       svg circle {
-        fill: ${color.tabasco};
+        fill: ${color.rust};
       }
     }
   `,
@@ -210,7 +210,7 @@ const EditorNoteTitleTheme = {
     margin-right: ${spacing.sm};
 
     .note-alert & {
-      color: ${color.tabasco};
+      color: ${color.rust};
     }
 
     .note-retention & {
