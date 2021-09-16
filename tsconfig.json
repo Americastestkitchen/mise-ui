@@ -1,14 +1,18 @@
 {
-    "compilerOptions": {
-      "target": "esnext",
-      "moduleResolution": "node",
-      "noEmit": true,
-      "strict": true,
-      "esModuleInterop": true,
-      "allowJs": true,
-      "jsx": "react"
-    },
-    "include": [
-      "src"
-    ]
-  }
+  "compilerOptions": {
+    "outDir": "dist",
+    "target": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "esModuleInterop": true,
+    "allowJs": true,
+    "jsx": "react",
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "isolatedModules": true
+  },
+  "include": ["src"],
+  "exclude": [
+    "dist",
+  ]
+}
