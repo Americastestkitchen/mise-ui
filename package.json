@@ -29,14 +29,15 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "cross-env BABEL_ENV=production babel src -d dist --ignore 'src/**/*.stories.js','src/**/*.spec.js','src/setupTests.js','src/serviceWorker.js'",
+    "build": "cross-env BABEL_ENV=production babel src -d dist --ignore 'src/**/*.stories.js','src/**/*.spec.js','src/setupTests.js','src/serviceWorker.js' --extensions '.js,.ts,.tsx,.jsx'",
     "watch": "watch 'yarn run build' ./src",
     "test": "jest",
     "lint": "./node_modules/.bin/eslint .",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
-    "release": "auto shipit"
+    "release": "auto shipit",
+    "tsc": "tsc"
   },
   "files": [
     "dist"
@@ -76,6 +77,7 @@
     "@testing-library/user-event": "^12.7.2",
     "@types/node": "^16.4.3",
     "@types/react": "^17.0.15",
+    "@types/react-dom": "^17.0.9",
     "@types/styled-components": "^5.1.11",
     "@whitespace/storybook-addon-html": "^5.0.0",
     "all-contributors-cli": "^6.20.0",
