@@ -52,7 +52,7 @@
   },
   "extends": [
     "airbnb",
-    "plugin:react-hooks/recommended",
+    "plugin:react-hooks/recommended"
   ],
   "plugins": [
     "import",
