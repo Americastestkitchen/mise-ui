@@ -10,9 +10,21 @@
     "jest": true,
     "IntersectionObserver": true
   },
-  "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
   "rules": {
     // Soft some rules.
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": ["error"],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+   ],
     "default-case": 0, // Required default case is nonsense.
     "new-cap": [2, {"capIsNew": false, "newIsCap": true}], // For Record() etc.
     "no-nested-ternary": 0, // It's nice for JSX.
@@ -52,11 +64,15 @@
   },
   "extends": [
     "airbnb",
-    "plugin:react-hooks/recommended"
+    "plugin:react-hooks/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript"
   ],
   "plugins": [
     "import",
-    "react"
+    "react",
+    "@typescript-eslint"
   ],
   "settings": {
     "import/parser": "babel-eslint"
