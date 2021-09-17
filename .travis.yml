@@ -12,6 +12,7 @@ script:
   - yarn lint
   - yarn test
   - yarn build
+  - yarn tsc
 
 deploy:
   - provider: script
