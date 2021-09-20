@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import PropTypes, { InferProps } from 'prop-types';
+import styled, { css, StyledComponent } from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 
 import AccordionControl from '../AccordionControl';
@@ -131,7 +131,8 @@ const AccordionButtonTheme = {
   `,
 };
 
-const AccordionButton = styled.button.attrs({
+// Seems to pass through className that is normally an ommitted type.
+const AccordionButton = styled.button.attrs<{}>({
   className: 'accordion-item__button',
 })`
   ${withThemes(AccordionButtonTheme)}
@@ -142,7 +143,7 @@ const AccordionLabelWrapperTheme = {
     align-items: flex-end;
     display: flex;
 
-    ${({ hasIcon }) => (
+    ${({ hasIcon }: { hasIcon: boolean }) => (
     hasIcon ? `
       .show-hide__button-label {
         display: inline-block;
@@ -182,7 +183,7 @@ const AccordionLabelWrapperTheme = {
 
 const AccordionLabelWrapper = styled.div.attrs({
   className: 'accordion-item__label',
-})`
+})<{ hasIcon: (typeof iconKeys[number] | null | undefined)}>`
   ${withThemes(AccordionLabelWrapperTheme)}
 `;
 
@@ -202,6 +203,8 @@ const AccordionDivContent = styled.div`
   }
 `;
 
+const iconKeys = ['chefHat', 'content', 'cookbook', 'knife', 'sort', 'time'] as const;
+
 const icons = {
   chefHat: ChefHat,
   content: Content,
@@ -209,13 +212,13 @@ const icons = {
   knife: Knife,
   sort: Sort,
   time: Time,
-};
+} as const;
 
 const StyledLegend = styled.legend`
   ${mixins.visuallyHidden};
 `;
 
-const Legend = ({ children }) => (
+const Legend: React.FC = ({ children }) => (
   <StyledLegend>{children}</StyledLegend>
 );
 
@@ -227,7 +230,34 @@ Legend.propTypes = {
   ]).isRequired,
 };
 
-function Accordion({
+const AccordionProps = {
+  /** Content that will be hidden by expand collapse behavior. */
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
+  /** Unique id string for svg icon to render next to label */
+  icon: PropTypes.oneOf(iconKeys),
+  /* Size of icon */
+  iconSize: PropTypes.oneOf(['default', 'large', 'extraLarge']),
+  /** HTML attribute */
+  id: PropTypes.string,
+  /** For accessability we need a fieldset version of this component. */
+  isFieldset: PropTypes.bool,
+  /** Sets initial state of the hidden content. */
+  isHidden: PropTypes.bool,
+  /** Clickable text that appears in button next to plus/minus icon. */
+  label: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.func,
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
+  /** for mixpanel purposes */
+  onClick: PropTypes.func,
+};
+
+const Accordion: React.FC<InferProps<typeof AccordionProps>> = ({
   children,
   icon,
   iconSize,
@@ -236,18 +266,24 @@ function Accordion({
   isHidden,
   label: Label,
   onClick,
-}) {
+}) => {
   const [hidden, toggleHidden] = useState(isHidden);
-  const AccordionContent = isFieldset ? AccordionFieldsetContent : AccordionDivContent;
+  const AccordionContent = (isFieldset
+    ? AccordionFieldsetContent : AccordionDivContent) as StyledComponent<'div', any, {}, never>;
   const Icon = icon ? icons[icon] : null;
   let idVal = id;
   if (!idVal && typeof Label === 'string') {
     idVal = Label?.split(' ')?.join('');
   }
 
-  const isLabelString = typeof Label === 'string';
   let labelEl;
-  labelEl = isLabelString ? Label : <Label />;
+  if (typeof Label === 'string') {
+    labelEl = Label;
+  } else {
+    // TODO: non function types not type guarded exhaustively.
+    const L = Label as Function;
+    labelEl = <L />;
+  }
 
   if (typeof Label === 'object') {
     labelEl = Label;
@@ -256,7 +292,7 @@ function Accordion({
   useEffect(() => {
     if (typeof dry !== 'undefined') {
       // eslint-disable-next-line no-undef
-      dry.events.subscribe('accordion:toggle', val => toggleHidden(val));
+      dry.events.subscribe('accordion:toggle', (val: any) => toggleHidden(val));
     }
   }, []);
 
@@ -287,41 +323,16 @@ function Accordion({
       <AccordionContent
         data-testid="accordion-content"
         id={`show-hide--${idVal}`}
-        hidden={hidden ? true : null}
+        hidden={hidden ? true : undefined}
       >
         {isFieldset ? <Legend>{Label}</Legend> : null}
         {children}
       </AccordionContent>
     </AccordionWrapper>
   );
-}
-
-Accordion.propTypes = {
-  /** Content that will be hidden by expand collapse behavior. */
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]).isRequired,
-  /** Unique id string for svg icon to render next to label */
-  icon: PropTypes.string,
-  /* Size of icon */
-  iconSize: PropTypes.oneOf(['default', 'large', 'extraLarge']),
-  /** HTML attribute */
-  id: PropTypes.string,
-  /** For accessability we need a fieldset version of this component. */
-  isFieldset: PropTypes.bool,
-  /** Sets initial state of the hidden content. */
-  isHidden: PropTypes.bool,
-  /** Clickable text that appears in button next to plus/minus icon. */
-  label: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.func,
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]).isRequired,
-  /** for mixpanel purposes */
-  onClick: PropTypes.func,
 };
+
+Accordion.propTypes = AccordionProps;
 
 Accordion.defaultProps = {
   icon: null,
