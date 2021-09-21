@@ -1,5 +1,5 @@
 import breakpoint from 'styled-components-breakpoint';
-import PropTypes from 'prop-types';
+import PropTypes, { InferProps } from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -76,7 +76,7 @@ const AdTitle = styled.h2`
   `}
 `;
 
-const AdWrapper = styled.div`
+const AdWrapper = styled.div<{success: boolean | null | undefined}>`
   background-color: ${color.frost};
   display: flex;
   flex-direction: column;
@@ -202,7 +202,21 @@ const MainContent = styled.div`
   `}
 `;
 
-const ReviewsEmailCapture = ({
+const ReviewsEmailCaptureProps = {
+  buttonTextColor: PropTypes.string,
+  buttonText: PropTypes.string,
+  description: PropTypes.string.isRequired,
+  errorText: PropTypes.string,
+  inputLabel: PropTypes.string,
+  inputId: PropTypes.string.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  placeholder: PropTypes.string,
+  success: PropTypes.bool,
+  successText: PropTypes.string,
+  title: PropTypes.string.isRequired,
+};
+
+const ReviewsEmailCapture: React.FC<InferProps<typeof ReviewsEmailCaptureProps>> = ({
   description,
   onSubmit,
   success,
@@ -235,19 +249,7 @@ const ReviewsEmailCapture = ({
   </AdWrapper>
 );
 
-ReviewsEmailCapture.propTypes = {
-  buttonTextColor: PropTypes.string,
-  buttonText: PropTypes.string,
-  description: PropTypes.string.isRequired,
-  errorText: PropTypes.string,
-  inputLabel: PropTypes.string,
-  inputId: PropTypes.string.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  placeholder: PropTypes.string,
-  success: PropTypes.bool,
-  successText: PropTypes.string,
-  title: PropTypes.string.isRequired,
-};
+ReviewsEmailCapture.propTypes = ReviewsEmailCaptureProps;
 
 ReviewsEmailCapture.defaultProps = {
   success: false,

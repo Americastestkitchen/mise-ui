@@ -1,5 +1,5 @@
 import breakpoint from 'styled-components-breakpoint';
-import PropTypes from 'prop-types';
+import PropTypes, { InferProps } from 'prop-types';
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { getImageUrl } from '../../../lib/cloudinary';
@@ -35,7 +35,7 @@ const HeroAdWrapper = styled.div.attrs({
  * Wrapper inner (background-color)
  */
 const HeroAdInnerWrapperTheme = {
-  default: css`
+  default: css<{ backgroundColor: keyof typeof color }>`
     background-color: ${({ backgroundColor }) => `${color[backgroundColor] || 'transparent'}`};
     padding: 0 ${spacing.sm};
     position: relative;
@@ -54,7 +54,7 @@ const HeroAdInnerWrapperTheme = {
 
 const HeroAdInnerWrapper = styled.div.attrs({
   className: 'hero-ad__inner',
-})`${withThemes(HeroAdInnerWrapperTheme)}`;
+})<{ backgroundColor: string | null | undefined }>`${withThemes(HeroAdInnerWrapperTheme)}`;
 
 /**
  * Content (title, subtitle, button, cta)
@@ -164,7 +164,7 @@ const HeroAdImage = styled.img.attrs({
  * Hero ad cta button
  */
 const HeroAdCtaTheme = {
-  default: css`
+  default: css<{ backgroundColor: keyof typeof color, hoverColor: keyof typeof color}>`
     color: ${color.white};
     background-color: ${({ backgroundColor }) => `${color[backgroundColor || 'eclipse']}`};
     display: block;
@@ -187,9 +187,25 @@ const HeroAdCtaTheme = {
 
 const HeroAdCta = styled.span.attrs({
   className: 'hero-ad__cta',
-})`${withThemes(HeroAdCtaTheme)}`;
+})<{
+  backgroundColor: string | null | undefined,
+  hoverColor: string | null | undefined
+}>`${withThemes(HeroAdCtaTheme)}`;
 
-const HeroAds = ({
+const HeroAdsProps = {
+  backgroundColor: PropTypes.string,
+  buttonHoverColor: PropTypes.string,
+  buttonColor: PropTypes.string,
+  cloudinaryId: PropTypes.string.isRequired,
+  cta: PropTypes.string.isRequired,
+  ctaHref: PropTypes.string.isRequired,
+  ctaTarget: PropTypes.string,
+  onClick: PropTypes.func,
+  subtitle: PropTypes.string,
+  title: PropTypes.string.isRequired,
+};
+
+const HeroAds: React.FC<InferProps<typeof HeroAdsProps>> = ({
   backgroundColor,
   buttonColor,
   buttonHoverColor,
@@ -204,8 +220,8 @@ const HeroAds = ({
   <HeroAdWrapper>
     <a
       href={ctaHref}
-      target={ctaTarget}
-      onClick={onClick}
+      target={ctaTarget ?? undefined}
+      onClick={onClick ?? undefined}
       title={cta}
     >
       <HeroAdInnerWrapper
@@ -231,8 +247,8 @@ const HeroAds = ({
           />
           <HeroAdCta
             backgroundColor={buttonColor}
-            data-testid="hero-ad__cta"
             hoverColor={buttonHoverColor}
+            data-testid="hero-ad__cta"
           >
             {cta}
           </HeroAdCta>

@@ -88,6 +88,6 @@ const color = {
   morningGlory: '#a0dce2',
   athensGray: '#f9f9fb',
   suvaGray: '#8E8E8E',
-};
+} as const;
 
 export default color;

@@ -1,5 +1,5 @@
 // import breakpoint from 'styled-components-breakpoint';
-import PropTypes from 'prop-types';
+import PropTypes, { InferProps } from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -65,7 +65,15 @@ const AdWrapper = styled.div`
   }
 `;
 
-const BookCarouselAd = ({
+const BookCarouselAdProps = {
+  cloudinaryId: PropTypes.string,
+  ctaLinkText: PropTypes.string,
+  hrefUrl: PropTypes.string,
+  sourceKey: PropTypes.string.isRequired,
+  title: PropTypes.string,
+};
+
+const BookCarouselAd: React.FC<InferProps<typeof BookCarouselAdProps>> = ({
   cloudinaryId,
   ctaLinkText,
   hrefUrl,
@@ -77,19 +85,13 @@ const BookCarouselAd = ({
     <Image
       className="book-carousel-ad__image"
       imageAlt="The Complete America's Test Kitchen TV Show Cookbook"
-      imageUrl={getImageUrl(cloudinaryId, { aspectRatio: '816:1200', width: 272, height: 400 })}
+      imageUrl={cloudinaryId ? getImageUrl(cloudinaryId, { aspectRatio: '816:1200', width: 272, height: 400 }) : ''}
     />
     <AdCtaLink href={`${hrefUrl}?sourcekey=${sourceKey}`} target="_blank">{ctaLinkText}</AdCtaLink>
   </AdWrapper>
 );
 
-BookCarouselAd.propTypes = {
-  cloudinaryId: PropTypes.string,
-  ctaLinkText: PropTypes.string,
-  hrefUrl: PropTypes.string,
-  sourceKey: PropTypes.string.isRequired,
-  title: PropTypes.string,
-};
+BookCarouselAd.propTypes = BookCarouselAdProps;
 
 BookCarouselAd.defaultProps = {
   cloudinaryId: 'ATK Reviews Ads/Mask_Group_49066_3x.jpg',

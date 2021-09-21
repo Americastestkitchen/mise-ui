@@ -1,5 +1,5 @@
 import breakpoint from 'styled-components-breakpoint';
-import PropTypes from 'prop-types';
+import PropTypes, { InferProps } from 'prop-types';
 import React from 'react';
 import styled, { css } from 'styled-components';
 
@@ -146,7 +146,16 @@ const SingleProductCta = styled.a.attrs({
   className: 'single-product-ad__cta',
 })`${withThemes(SingleProductCtaTheme)}`;
 
-const SingleProductAd = ({
+const SingleProductAdProps = {
+  cloudinaryId: PropTypes.string.isRequired,
+  cta: PropTypes.string.isRequired,
+  ctaHref: PropTypes.string.isRequired,
+  ctaTarget: PropTypes.string,
+  onClick: PropTypes.func,
+  title: PropTypes.string.isRequired,
+};
+
+const SingleProductAd: React.FC<InferProps<typeof SingleProductAdProps>> = ({
   cloudinaryId,
   cta,
   ctaHref,
@@ -163,8 +172,8 @@ const SingleProductAd = ({
           </SingleProductTitle>
           <SingleProductCta
             href={ctaHref}
-            onClick={onClick}
-            target={ctaTarget}
+            onClick={onClick ?? undefined}
+            target={ctaTarget ?? undefined}
             title={cta}
           >
             {cta}
@@ -199,14 +208,7 @@ const SingleProductAd = ({
   </SingleProductWrapper>
 );
 
-SingleProductAd.propTypes = {
-  cloudinaryId: PropTypes.string.isRequired,
-  cta: PropTypes.string.isRequired,
-  ctaHref: PropTypes.string.isRequired,
-  ctaTarget: PropTypes.string,
-  onClick: PropTypes.func,
-  title: PropTypes.string.isRequired,
-};
+SingleProductAd.propTypes = SingleProductAdProps;
 
 SingleProductAd.defaultProps = {
   ctaTarget: null,

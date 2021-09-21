@@ -1,9 +1,25 @@
 /* eslint-disable no-unused-vars */
 
 /** quick blackbox typing for 'styled-components-breakpoint'  */
-type ThemeBreakpoint = 'xs' | 'sm' | 'smmd' | 'md' | 'lg' | 'xlg'
+type ThemeBreakpoint = 'xs' | 'sm' | 'smmd' | 'md' | 'lg' | 'xlg';
 declare module 'styled-components-breakpoint' {
-    function templateFunction(strings: TemplateStringsArray): string;
+
+    type StyledComponentsTemplateLiteral = (
+        strings: string[],
+        ...interpolations: StyledComponentsInterpolation[]
+    ) => StyledComponentsInterpolation[];
+
+    type StyledComponentsInterpolation =
+        | ((
+            /** TODO: should infer context from styled components */
+            executionContext: Record<string, any>) => StyledComponentsInterpolation)
+        | string
+        | number
+        | StyledComponentsInterpolation[];
+
+    function templateFunction(
+        strings: TemplateStringsArray,
+        ...interpolations: StyledComponentsInterpolation[]): string;
     /** theme breakpoints defined in 'src/styles/breakpoints' */
     function styledBreakpoint(gte: ThemeBreakpoint, lt?: ThemeBreakpoint): typeof templateFunction;
     export default styledBreakpoint;

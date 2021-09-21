@@ -1,5 +1,5 @@
 import breakpoint from 'styled-components-breakpoint';
-import PropTypes from 'prop-types';
+import PropTypes, { InferProps } from 'prop-types';
 import React from 'react';
 import styled, { css } from 'styled-components';
 
@@ -127,7 +127,15 @@ const deviceIdMap = {
   phone: 'mise-play/membership-showcase-tablet-3',
 };
 
-const MembershipShowcaseAd = ({
+const MembershipShowcaseAdProps = {
+  cta: PropTypes.string.isRequired,
+  ctaHref: PropTypes.string.isRequired,
+  deviceType: PropTypes.oneOf(['desktop', 'phone', 'tablet'] as const).isRequired,
+  onClick: PropTypes.func,
+  title: PropTypes.func.isRequired,
+};
+
+const MembershipShowcaseAd: React.FC<InferProps<typeof MembershipShowcaseAdProps>> = ({
   cta,
   ctaHref,
   deviceType,
@@ -152,7 +160,7 @@ const MembershipShowcaseAd = ({
       />
       <MembershipCta
         href={ctaHref}
-        onClick={onClick}
+        onClick={onClick ?? undefined}
         title={cta}
       >
         {cta}
@@ -161,13 +169,7 @@ const MembershipShowcaseAd = ({
   </MembershipShowcase>
 );
 
-MembershipShowcaseAd.propTypes = {
-  cta: PropTypes.string.isRequired,
-  ctaHref: PropTypes.string.isRequired,
-  deviceType: PropTypes.oneOf(['desktop', 'phone', 'tablet']).isRequired,
-  onClick: PropTypes.func,
-  title: PropTypes.func.isRequired,
-};
+MembershipShowcaseAd.propTypes = MembershipShowcaseAdProps;
 
 MembershipShowcaseAd.defaultProps = {
   onClick: null,

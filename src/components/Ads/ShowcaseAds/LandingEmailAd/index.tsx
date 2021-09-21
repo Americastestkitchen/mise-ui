@@ -1,5 +1,5 @@
 import breakpoint from 'styled-components-breakpoint';
-import PropTypes from 'prop-types';
+import PropTypes, { InferProps } from 'prop-types';
 import React from 'react';
 import styled, { css } from 'styled-components';
 
@@ -17,7 +17,7 @@ import EmailForm from '../../../Forms/EmailForm';
 import Image from '../../../Cards/shared/Image';
 
 const LandingEmailTheme = {
-  default: css`
+  default: css<{ success: boolean }>`
     align-items: center;
     background-color: ${color.white};
     display: flex;
@@ -87,7 +87,7 @@ const LandingEmailTheme = {
 
 const LandingEmailWrapper = styled.div.attrs({
   className: 'landing-email-ad-wrapper',
-})`${withThemes(LandingEmailTheme)}`;
+})<{ success: boolean | null | undefined }>`${withThemes(LandingEmailTheme)}`;
 
 const ImageWrapper = styled.div`
   background-size: cover;    
@@ -111,7 +111,7 @@ const ImageWrapper = styled.div`
   }
 `;
 
-const FormColumnWrapper = styled.div`
+const FormColumnWrapper = styled.div<{ success: boolean | null | undefined }>`
   display: flex;
   justify-content: center;
   margin-bottom: ${({ success }) => (success ? '10%' : '0')};
@@ -121,7 +121,7 @@ const FormColumnWrapper = styled.div`
   `} 
 `;
 
-const FormBodyContent = styled.div`
+const FormBodyContent = styled.div<{ success: boolean | null | undefined }>`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -234,7 +234,20 @@ const ContentTitle = styled.p.attrs({
   className: 'landing-ad-content-title',
 })`${withThemes(ContentTitleTheme)}`;
 
-const LandingEmailAd = ({
+const LandingEmailAdProps = {
+  buttonText: PropTypes.string,
+  desktopImageUrl: PropTypes.string.isRequired,
+  errorText: PropTypes.string,
+  inputId: PropTypes.string.isRequired,
+  headline: PropTypes.string,
+  onSubmit: PropTypes.func.isRequired,
+  tabletImageUrl: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  success: PropTypes.bool,
+  successText: PropTypes.string,
+};
+
+const LandingEmailAd: React.FC<InferProps<typeof LandingEmailAdProps>> = ({
   buttonText,
   desktopImageUrl,
   errorText,
@@ -286,18 +299,7 @@ const LandingEmailAd = ({
   </LandingEmailWrapper>
 );
 
-LandingEmailAd.propTypes = {
-  buttonText: PropTypes.string,
-  desktopImageUrl: PropTypes.string.isRequired,
-  errorText: PropTypes.string,
-  inputId: PropTypes.string.isRequired,
-  headline: PropTypes.string,
-  onSubmit: PropTypes.func.isRequired,
-  tabletImageUrl: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  success: PropTypes.bool,
-  successText: PropTypes.string,
-};
+LandingEmailAd.propTypes = LandingEmailAdProps;
 
 LandingEmailAd.defaultProps = {
   buttonText: 'Sign me up',

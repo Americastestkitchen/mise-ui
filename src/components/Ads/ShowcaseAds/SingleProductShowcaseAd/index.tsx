@@ -1,5 +1,5 @@
 import breakpoint from 'styled-components-breakpoint';
-import PropTypes from 'prop-types';
+import PropTypes, { InferProps } from 'prop-types';
 import React from 'react';
 import styled, { css } from 'styled-components';
 
@@ -165,7 +165,18 @@ const ProductCta = styled.a.attrs({
   className: 'product__cta',
 })`${withThemes(ProductCtaTheme)}`;
 
-const SingleProductShowcaseAd = ({
+const SingleProductShowcaseAdProps = {
+  cloudinaryId: PropTypes.string.isRequired,
+  cta: PropTypes.string.isRequired,
+  ctaHref: PropTypes.string.isRequired,
+  ctaTarget: PropTypes.string,
+  onClick: PropTypes.func,
+  siteKey: PropTypes.oneOf(['atk', 'cio', 'cco', 'kids', 'school', 'shop']).isRequired,
+  subtitle: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+};
+
+const SingleProductShowcaseAd: React.FC<InferProps<typeof SingleProductShowcaseAdProps>> = ({
   cloudinaryId,
   cta,
   ctaHref,
@@ -210,8 +221,8 @@ const SingleProductShowcaseAd = ({
         </ProductSubtitle>
         <ProductCta
           href={ctaHref}
-          onClick={onClick}
-          target={ctaTarget}
+          onClick={onClick ?? undefined}
+          target={ctaTarget ?? undefined}
           title={cta}
         >
           {cta}
@@ -224,16 +235,7 @@ const SingleProductShowcaseAd = ({
   </Product>
 );
 
-SingleProductShowcaseAd.propTypes = {
-  cloudinaryId: PropTypes.string.isRequired,
-  cta: PropTypes.string.isRequired,
-  ctaHref: PropTypes.string.isRequired,
-  ctaTarget: PropTypes.string,
-  onClick: PropTypes.func,
-  siteKey: PropTypes.oneOf(['atk', 'cio', 'cco', 'kids', 'school', 'shop']).isRequired,
-  subtitle: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-};
+SingleProductShowcaseAd.propTypes = SingleProductShowcaseAdProps;
 
 SingleProductShowcaseAd.defaultProps = {
   ctaTarget: null,

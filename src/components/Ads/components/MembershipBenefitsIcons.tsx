@@ -4,7 +4,19 @@ import styled, { css } from 'styled-components';
 import { Cookbook, Phone, RecipeCard, RibbonAward, Videos } from '../../DesignTokens/Icon/svgs';
 import { color, font, withThemes } from '../../../styles';
 
-const benefits = [
+const icons = {
+  card: RecipeCard,
+  cookbook: Cookbook,
+  watch: Videos,
+  ratings: RibbonAward,
+  mobile: Phone,
+} as const;
+
+type IconKeys = keyof typeof icons;
+
+type BenefitShape = { icon: IconKeys, desc: string };
+
+const benefits: BenefitShape[] = [
   {
     icon: 'card',
     desc: '12,000 + recipes',
@@ -34,16 +46,8 @@ const MembershipBenefitsIconsWrapper = styled.div.attrs({
   justify-content: space-between;
 `;
 
-const icons = {
-  card: RecipeCard,
-  cookbook: Cookbook,
-  watch: Videos,
-  ratings: RibbonAward,
-  mobile: Phone,
-};
-
-const renderIcon = (icon) => {
-  const Icon = icon ? icons[icon] : null;
+const renderIcon = (icon: keyof typeof icons) => {
+  const Icon = (icon ? icons[icon] : null) as Function;
   return <Icon fill={color.white} />;
 };
 
@@ -53,7 +57,7 @@ const BenefitTheme = {
     display: flex;
     flex-direction: column;
     max-width: 6rem;
-    ${({ animated }) => (animated ? 'animation: pulse 8s infinite ease-in-out;' : '')}
+    ${({ animated }: { animated: boolean }) => (animated ? 'animation: pulse 8s infinite ease-in-out;' : '')}
 
     &:nth-child(1) { animation-delay: 1.2s; }
     &:nth-child(2) { animation-delay: 2.4s; }
@@ -89,7 +93,7 @@ const BenefitTheme = {
   `,
 };
 
-const Benefit = styled.div`
+const Benefit = styled.div<{ animated: boolean }>`
   ${withThemes(BenefitTheme)}
 `;
 
@@ -129,7 +133,7 @@ const CircularIcon = styled.div`
   ${withThemes(CircularIconTheme)}
 `;
 
-const MembershipBenefitsIcons = ({ animated }) => (
+const MembershipBenefitsIcons = ({ animated }: { animated: boolean }) => (
   <MembershipBenefitsIconsWrapper
     data-testid="benefit-icons"
   >

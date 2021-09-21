@@ -1,5 +1,5 @@
 import breakpoint from 'styled-components-breakpoint';
-import PropTypes from 'prop-types';
+import PropTypes, { InferProps } from 'prop-types';
 import React from 'react';
 import styled, { css } from 'styled-components';
 
@@ -177,7 +177,14 @@ const SingleMembershipCta = styled.a.attrs({
   className: 'single-membership-ad__cta',
 })`${withThemes(SingleMembershipCtaTheme)}`;
 
-const SingleMembershipAd = ({
+const SingleMembershipAdProps = {
+  cta: PropTypes.string.isRequired,
+  ctaHref: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
+  title: PropTypes.func.isRequired,
+};
+
+const SingleMembershipAd: React.FC<InferProps<typeof SingleMembershipAdProps>> = ({
   cta,
   ctaHref,
   onClick,
@@ -191,7 +198,7 @@ const SingleMembershipAd = ({
         </SingleMembershipTitle>
         <SingleMembershipCta
           href={ctaHref}
-          onClick={onClick}
+          onClick={onClick ?? undefined}
           title={cta}
         >
           {cta}
@@ -202,12 +209,7 @@ const SingleMembershipAd = ({
   </SingleMembership>
 );
 
-SingleMembershipAd.propTypes = {
-  cta: PropTypes.string.isRequired,
-  ctaHref: PropTypes.string.isRequired,
-  onClick: PropTypes.func,
-  title: PropTypes.func.isRequired,
-};
+SingleMembershipAd.propTypes = SingleMembershipAdProps;
 
 SingleMembershipAd.defaultProps = {
   onClick: null,

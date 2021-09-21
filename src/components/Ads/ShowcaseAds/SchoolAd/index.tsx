@@ -1,5 +1,5 @@
 import breakpoint from 'styled-components-breakpoint';
-import PropTypes from 'prop-types';
+import PropTypes, { InferProps } from 'prop-types';
 import React from 'react';
 import styled, { css } from 'styled-components';
 
@@ -188,7 +188,17 @@ const deviceIdMap = {
   phone: 'mise-play/school-showcase-tablet-3',
 };
 
-const SchoolAd = ({
+const SchoolAdProps = {
+  cta: PropTypes.string.isRequired,
+  ctaHref: PropTypes.string.isRequired,
+  ctaTarget: PropTypes.string,
+  deviceType: PropTypes.oneOf(['desktop', 'phone', 'tablet'] as const).isRequired,
+  onClick: PropTypes.func,
+  subtitle: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+};
+
+const SchoolAd: React.FC<InferProps<typeof SchoolAdProps>> = ({
   cta,
   ctaHref,
   ctaTarget,
@@ -223,8 +233,8 @@ const SchoolAd = ({
         </SchoolSubtitle>
         <SchoolCta
           href={ctaHref}
-          target={ctaTarget}
-          onClick={onClick}
+          target={ctaTarget ?? undefined}
+          onClick={onClick ?? undefined}
           title={cta}
         >
           {cta}
@@ -234,15 +244,7 @@ const SchoolAd = ({
   </School>
 );
 
-SchoolAd.propTypes = {
-  cta: PropTypes.string.isRequired,
-  ctaHref: PropTypes.string.isRequired,
-  ctaTarget: PropTypes.string,
-  deviceType: PropTypes.oneOf(['desktop', 'phone', 'tablet']).isRequired,
-  onClick: PropTypes.func,
-  subtitle: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-};
+SchoolAd.propTypes = SchoolAdProps;
 
 SchoolAd.defaultProps = {
   ctaTarget: null,

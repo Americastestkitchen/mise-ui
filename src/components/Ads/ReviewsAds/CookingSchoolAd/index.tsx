@@ -1,5 +1,5 @@
 import breakpoint from 'styled-components-breakpoint';
-import PropTypes from 'prop-types';
+import PropTypes, { InferProps } from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -225,7 +225,20 @@ const MainContent = styled.div`
   `}
 `;
 
-const CookingSchoolAd = ({
+const CookingSchoolAdProps = {
+  cloudinaryId: PropTypes.string,
+  description: PropTypes.string,
+  deviceType: PropTypes.string.isRequired,
+  headline: PropTypes.string,
+  identifier: PropTypes.oneOf(['landing', 'detail']).isRequired,
+  incode: PropTypes.string.isRequired,
+  linkCta: PropTypes.string,
+  mdc: PropTypes.string.isRequired,
+  mobileLinkCta: PropTypes.string,
+  onClick: PropTypes.func.isRequired,
+};
+
+const CookingSchoolAd: React.FC<InferProps<typeof CookingSchoolAdProps>> = ({
   linkCta,
   cloudinaryId,
   description,
@@ -246,13 +259,13 @@ const CookingSchoolAd = ({
       <MainContent className={`cooking-school-ad__${identifier}`}>
         <AdPicture className={`cooking-school-ad__${identifier}`}>
           <source
-            src={getImageUrl(cloudinaryId, { aspectRatio: '1:1', width: 500 })}
+            src={cloudinaryId ? getImageUrl(cloudinaryId, { aspectRatio: '1:1', width: 500 }) : ''}
             media="(min-width: 768)"
           />
           <img
             alt=""
             className="cooking-school-ad__image"
-            src={getImageUrl(cloudinaryId, { aspectRatio: '1:1', width: 400 })}
+            src={cloudinaryId ? getImageUrl(cloudinaryId, { aspectRatio: '1:1', width: 400 }) : ''}
           />
         </AdPicture>
         <ContentWrapper className={`cooking-school-ad__${identifier}`}>
@@ -267,18 +280,7 @@ const CookingSchoolAd = ({
   </AdWrapper>
 );
 
-CookingSchoolAd.propTypes = {
-  cloudinaryId: PropTypes.string,
-  description: PropTypes.string,
-  deviceType: PropTypes.string.isRequired,
-  headline: PropTypes.string,
-  identifier: PropTypes.oneOf(['landing', 'detail']).isRequired,
-  incode: PropTypes.string.isRequired,
-  linkCta: PropTypes.string,
-  mdc: PropTypes.string.isRequired,
-  mobileLinkCta: PropTypes.string,
-  onClick: PropTypes.func.isRequired,
-};
+CookingSchoolAd.propTypes = CookingSchoolAdProps;
 
 CookingSchoolAd.defaultProps = {
   cloudinaryId: 'ATK Reviews Ads/CAN_CookingSchoolGeneralCandids-9031_3x.png',

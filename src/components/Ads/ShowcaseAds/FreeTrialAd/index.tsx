@@ -1,5 +1,5 @@
 import breakpoint from 'styled-components-breakpoint';
-import PropTypes from 'prop-types';
+import PropTypes, { InferProps } from 'prop-types';
 import React from 'react';
 import styled, { css } from 'styled-components';
 
@@ -135,7 +135,16 @@ const FreeTrialCta = styled.a.attrs({
   className: 'free-trial-ad__cta',
 })`${withThemes(FreeTrialCtaTheme)}`;
 
-const FreeTrialAd = ({
+const FreeTrialAdProps = {
+  cloudinaryId: PropTypes.string.isRequired,
+  cta: PropTypes.string.isRequired,
+  ctaHref: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
+};
+
+const FreeTrialAd: React.FC<InferProps<typeof FreeTrialAdProps>> = ({
   cloudinaryId,
   cta,
   ctaHref,
@@ -178,7 +187,7 @@ const FreeTrialAd = ({
         </FreeTrialSubtitle>
         <FreeTrialCta
           href={ctaHref}
-          onClick={onClick}
+          onClick={onClick ?? undefined}
           title={cta}
         >
           {cta}
@@ -188,14 +197,7 @@ const FreeTrialAd = ({
   </FreeTrialWrapper>
 );
 
-FreeTrialAd.propTypes = {
-  cloudinaryId: PropTypes.string.isRequired,
-  cta: PropTypes.string.isRequired,
-  ctaHref: PropTypes.string.isRequired,
-  onClick: PropTypes.func,
-  title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string.isRequired,
-};
+FreeTrialAd.propTypes = FreeTrialAdProps;
 
 FreeTrialAd.defaultProps = {
   onClick: null,
