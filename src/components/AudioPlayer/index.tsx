@@ -1,6 +1,6 @@
 import breakpoint from 'styled-components-breakpoint';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { InferProps } from 'prop-types';
 import styled from 'styled-components';
 import plyrStyles from './plyrStyles';
 
@@ -155,7 +155,20 @@ display: none;
 
 const plyrOptions = { controls: ['progress', 'current-time', 'duration'], invertTime: false, displayDuration: true };
 
-const AudioPlayer = ({
+const AudioPlayerProps = {
+  /** id of the episode */
+  id: PropTypes.string.isRequired,
+  /** title of the episode */
+  title: PropTypes.string.isRequired,
+  /** episode number */
+  episode: PropTypes.number,
+  /** link to page with more episode details */
+  href: PropTypes.string,
+  imageAlt: PropTypes.string,
+  imageUrl: PropTypes.string,
+};
+
+const AudioPlayer: React.FC<InferProps<typeof AudioPlayerProps>> = ({
   id,
   title,
   episode,
@@ -163,8 +176,8 @@ const AudioPlayer = ({
   imageUrl,
   href,
 }) => {
-  const playerEl = useRef(null);
-  const playerInstance = useRef(null);
+  const playerEl = useRef<any>(null);
+  const playerInstance = useRef<Record<string, any> | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
   // update player information when a new episode is selected
@@ -278,8 +291,8 @@ const AudioPlayer = ({
       <LinkWrapper className="player__more-info">
         <div className="player__image">
           <Image
-            imageAlt={imageAlt}
-            imageUrl={imageUrl}
+            imageAlt={imageAlt ?? ''}
+            imageUrl={imageUrl ?? ''}
           />
         </div>
         {
@@ -290,18 +303,7 @@ const AudioPlayer = ({
   );
 };
 
-AudioPlayer.propTypes = {
-  /** id of the episode */
-  id: PropTypes.string.isRequired,
-  /** title of the episode */
-  title: PropTypes.string.isRequired,
-  /** episode number */
-  episode: PropTypes.number,
-  /** link to page with more episode details */
-  href: PropTypes.string,
-  imageAlt: PropTypes.string,
-  imageUrl: PropTypes.string,
-};
+AudioPlayer.propTypes = AudioPlayerProps;
 
 AudioPlayer.defaultProps = {
   episode: null,

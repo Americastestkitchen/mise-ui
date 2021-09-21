@@ -7,7 +7,7 @@ import { color, withThemes } from '../../styles';
 import { Plus } from '../DesignTokens/Icon/svgs';
 
 const AccordionSvgWrapperTheme = {
-  default: css`
+  default: css<{ isExpanded: boolean }>`
     height: 2rem;
     max-height: 2rem;
     max-width: 2rem;
@@ -18,7 +18,7 @@ const AccordionSvgWrapperTheme = {
       transition: all 0.2s ease;
       width: 100%;
 
-      ${({ isExpanded }: { isExpanded: boolean }) => (isExpanded ? `
+      ${({ isExpanded }) => (isExpanded ? `
         transform: rotate(90deg);
 
         rect {

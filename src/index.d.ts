@@ -3,12 +3,6 @@
 /** quick blackbox typing for 'styled-components-breakpoint'  */
 type ThemeBreakpoint = 'xs' | 'sm' | 'smmd' | 'md' | 'lg' | 'xlg';
 declare module 'styled-components-breakpoint' {
-
-    type StyledComponentsTemplateLiteral = (
-        strings: string[],
-        ...interpolations: StyledComponentsInterpolation[]
-    ) => StyledComponentsInterpolation[];
-
     type StyledComponentsInterpolation =
         | ((
             /** TODO: should infer context from styled components */
@@ -27,3 +21,7 @@ declare module 'styled-components-breakpoint' {
 
 /** dry type placeholder */
 declare const dry: any;
+
+declare class Plyr {
+  constructor(...args: any);
+}
