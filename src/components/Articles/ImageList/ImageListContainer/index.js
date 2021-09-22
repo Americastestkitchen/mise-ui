@@ -24,7 +24,6 @@ const ImageListWrapper = styled.aside`
 const ImageListTitleTheme = {
   default: css`
     font: ${fontSize.xl}/2.6rem ${font.pnb};
-    height: 3.3rem;
     letter-spacing: normal;
     margin-bottom: 0.4rem;
   `,
