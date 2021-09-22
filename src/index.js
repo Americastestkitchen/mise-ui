@@ -3,6 +3,7 @@ import AudioPlayer from './components/AudioPlayer';
 import Accordion from './components/Accordion';
 import AccordionControl from './components/AccordionControl';
 import AccordionRefinementList from './components/Algolia/shared/AccordionRefinementList';
+import ActionSummaryItem from './components/ActionSummaryItem';
 import ArticleFigcaption from './components/Articles/shared/ArticleFigcaption';
 import ArticleImage from './components/Articles/ArticleImage';
 import ArticlePhotoCollection from './components/Articles/ArticlePhotoCollection';
@@ -89,6 +90,7 @@ export {
   Accordion,
   AccordionControl,
   AccordionRefinementList,
+  ActionSummaryItem,
   ArticleFigcaption,
   ArticleImage,
   ArticlePhotoCollection,

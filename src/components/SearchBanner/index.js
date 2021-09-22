@@ -99,6 +99,19 @@ const QueryRules = ({ items, isAnonymous, handleClickBanner, handleViewBanner })
   return [];
 };
 
+QueryRules.propTypes = {
+  items: PropTypes.array.isRequired,
+  isAnonymous: PropTypes.bool,
+  handleClickBanner: PropTypes.func,
+  handleViewBanner: PropTypes.func,
+};
+
+QueryRules.defaultProps = {
+  isAnonymous: true,
+  handleClickBanner: undefined,
+  handleViewBanner: undefined,
+};
+
 const CustomQueryRules = connectQueryRules(QueryRules);
 
 export default CustomQueryRules;

@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import styled, { css, ThemeProvider } from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import { cards, color, fontSize, mixins, spacing, withThemes } from '../../../styles';
-import Badge from '../../Badge';
+import ActionSummaryItem from '../../ActionSummaryItem';
 import Attributions from '../shared/Attributions';
+import Badge from '../../Badge';
 import CtaLink from '../shared/CtaLink';
 import FavoriteButton from '../shared/FavoriteButton';
 import Image from '../shared/Image';
@@ -40,6 +41,20 @@ const StandardCardTheme = {
     }
   `,
 };
+
+const RecipeAttribution = styled.div`
+  color: ${color.eclipse};
+  display: flex;
+  margin-bottom: 0.6rem;
+
+  .icon--star {
+    margin-right: 1.6rem;
+  }
+
+  .icon--comment {
+    margin-top: 0.3rem;
+  }
+`;
 
 const StyledStandardCard = styled.article`
   ${withThemes(StandardCardTheme)}
@@ -163,6 +178,7 @@ export const StyledBadge = styled(Badge)`
 `;
 
 function StandardCard({
+  avgRating,
   className,
   contentType,
   contentTypeFormatted,
@@ -171,6 +187,7 @@ function StandardCard({
   ctaUrl,
   dataAttrs,
   displayCookbook,
+  displayRecipeAttribution,
   displaySecondaryAttribution,
   displayFavoritesButton,
   displayLockIcon,
@@ -179,8 +196,11 @@ function StandardCard({
   imageAlt,
   imageUrl,
   isFavorited,
+  numRatings,
   objectId,
   onClick,
+  searchAttribution,
+  searchComments,
   secondaryAttribution,
   shopPrices,
   siteKey,
@@ -254,6 +274,24 @@ function StandardCard({
           ) : null }
         </TitleWrapper>
       </>
+      {searchAttribution && (
+        <RecipeAttribution>
+          {avgRating && displayRecipeAttribution && (
+            <ThemeProvider theme={{ siteKey: 'atk' }}>
+              <ActionSummaryItem icon="star">
+                <><strong>{avgRating}</strong>&nbsp;<span>{`(${numRatings})`}</span></>
+              </ActionSummaryItem>
+            </ThemeProvider>
+          )}
+          {searchComments && (
+            <ThemeProvider theme={{ siteKey: 'atk' }}>
+              <ActionSummaryItem icon="comment">
+                <strong>{searchComments}</strong>
+              </ActionSummaryItem>
+            </ThemeProvider>
+          )}
+        </RecipeAttribution>
+      )}
       <StyledAttributions
         displayCookbook={displayCookbook}
         displayLockIcon={displayLockIcon}
@@ -277,6 +315,7 @@ function StandardCard({
 }
 
 StandardCard.propTypes = {
+  avgRating: PropTypes.number,
   displayFavoritesButton: PropTypes.bool,
   className: PropTypes.string,
   contentType: PropTypes.string.isRequired,
@@ -287,6 +326,7 @@ StandardCard.propTypes = {
   /** document data attributes */
   dataAttrs: PropTypes.object,
   displayCookbook: PropTypes.bool,
+  displayRecipeAttribution: PropTypes.bool,
   displaySecondaryAttribution: PropTypes.bool,
   displayLockIcon: PropTypes.bool,
   favoriteRibbonColor: PropTypes.string,
@@ -294,8 +334,11 @@ StandardCard.propTypes = {
   imageAlt: PropTypes.string,
   imageUrl: PropTypes.string,
   isFavorited: PropTypes.bool,
+  numRatings: PropTypes.number,
   objectId: PropTypes.string.isRequired,
   onClick: PropTypes.func,
+  searchAttribution: PropTypes.bool,
+  searchComments: PropTypes.number,
   secondaryAttribution: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
@@ -309,6 +352,7 @@ StandardCard.propTypes = {
 };
 
 StandardCard.defaultProps = {
+  avgRating: null,
   className: null,
   contentTypeFormatted: null,
   ctaDataAttrs: null,
@@ -316,6 +360,7 @@ StandardCard.defaultProps = {
   ctaUrl: '',
   dataAttrs: null,
   displayCookbook: false,
+  displayRecipeAttribution: false,
   displaySecondaryAttribution: false,
   displayFavoritesButton: false,
   displayLockIcon: false,
@@ -323,7 +368,10 @@ StandardCard.defaultProps = {
   imageAlt: '',
   imageUrl: '',
   isFavorited: false,
+  numRatings: null,
   onClick: null,
+  searchComments: null,
+  searchAttribution: false,
   secondaryAttribution: null,
   shopPrices: null,
   siteKeyFavorites: null,
