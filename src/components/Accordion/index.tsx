@@ -131,19 +131,18 @@ const AccordionButtonTheme = {
   `,
 };
 
-// Seems to pass through className that is normally an ommitted type.
-const AccordionButton = styled.button.attrs<{}>({
-  className: 'accordion-item__button',
+const AccordionButton = styled.button.attrs({
+  className: 'accordion-item__button' as string,
 })`
   ${withThemes(AccordionButtonTheme)}
 `;
 
 const AccordionLabelWrapperTheme = {
-  default: css`
+  default: css<{ hasIcon: boolean }>`
     align-items: flex-end;
     display: flex;
 
-    ${({ hasIcon }: { hasIcon: boolean }) => (
+    ${({ hasIcon }) => (
     hasIcon ? `
       .show-hide__button-label {
         display: inline-block;
