@@ -126,6 +126,10 @@ export default {
     return '';
   },
 
+  ccoReviewSetBorder() {
+    return 'border: solid 4px #F7F7F7;';
+  },
+
   /**
    * Truncates text with ellipsis
    * @param  {Number} width optional - set the width of the element

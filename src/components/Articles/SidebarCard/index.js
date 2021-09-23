@@ -65,7 +65,7 @@ const SidebarTextContentTheme = {
     `}
   `,
   cco: css`
-    border: solid 4px #F7F7F7;
+    ${mixins.ccoReviewSetBorder()}
   `,
 };
 

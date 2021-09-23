@@ -23,6 +23,9 @@ const RelatedDocumentCardTheme = {
     background-color: ${color.white};
     display: flex;
   `,
+  cco: css`
+    ${mixins.ccoReviewSetBorder()}
+  `,
 };
 const RelatedDocumentCardEl = styled.a.attrs({
   className: 'related-document-card',

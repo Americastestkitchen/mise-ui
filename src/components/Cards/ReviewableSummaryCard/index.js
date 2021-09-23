@@ -8,7 +8,7 @@ import AffiliateLink from '../shared/AffiliateLink';
 import Image from '../shared/Image';
 import Sticker from '../shared/Sticker';
 import { getImageUrl } from '../../../lib/cloudinary';
-import { color, font, fontSize, lineHeight, spacing, withThemes } from '../../../styles';
+import { color, font, fontSize, lineHeight, mixins, spacing, withThemes } from '../../../styles';
 
 const ReviewableSummaryItemTheme = {
   default: css`
@@ -61,7 +61,11 @@ const ReviewableSummaryItemTheme = {
     }
   `,
   cco: css`
-    border: solid 0.4rem #F7F7F7;
+    ${mixins.ccoReviewSetBorder()}
+
+    button[aria-expanded='true'] & {
+      border-bottom: none;
+    }
 
     h3 {
       color: ${color.black};
