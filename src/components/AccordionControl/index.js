@@ -81,6 +81,10 @@ const AccordionSvgWrapperTheme = {
     transform: translate(50%, -50%);
     width: 3rem;
 
+    svg {
+      fill: ${color.black};
+    }
+
     @media(hover: hover) {
       &:hover {
         max-height: 3.6rem;

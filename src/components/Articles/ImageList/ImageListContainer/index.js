@@ -6,19 +6,28 @@ import styled, { css } from 'styled-components';
 import ImageListItem from '../ImageListItem';
 import { color, font, fontSize, mixins, withThemes } from '../../../../styles';
 
+const ImageListWrapperTheme = {
+  default: css`
+    background-color: ${color.white};
+    margin: 3rem 0 2.7rem;
+    max-width: 100%;
+    padding: 2.4rem 1rem 2rem;
+
+    ${breakpoint('md')`
+      padding: 2.4rem;
+    `}
+
+    ${breakpoint('xlg')`
+      ${({ width }) => (mixins.articlesWidth(width))};
+    `}
+  `,
+  cco: css`
+    ${mixins.ccoReviewSetBorder()}
+  `,
+};
+
 const ImageListWrapper = styled.aside`
-  background-color: ${color.white};
-  margin: 3rem 0 2.7rem;
-  max-width: 100%;
-  padding: 2.4rem 1rem 2rem;
-
-  ${breakpoint('md')`
-    padding: 2.4rem;
-  `}
-
-  ${breakpoint('xlg')`
-    ${({ width }) => (mixins.articlesWidth(width))};
-  `}
+  ${withThemes(ImageListWrapperTheme)}
 `;
 
 const ImageListTitleTheme = {

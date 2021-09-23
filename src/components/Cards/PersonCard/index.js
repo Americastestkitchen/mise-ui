@@ -5,21 +5,30 @@ import styled, { css } from 'styled-components';
 import PersonHeadShot from '../shared/PersonHeadShot';
 import { color, font, fontSize, lineHeight, mixins, spacing, withThemes } from '../../../styles';
 
+const PersonCardWrapperTheme = {
+  default: css`
+    align-items: center;
+    background-color: ${color.smokeyQuartz};
+    display: flex;
+    flex-direction: column;
+    height: 27.2rem;
+    justify-content: flex-start;
+    padding: 2rem 0.8rem 2rem;
+    width: 27.2rem;
+
+    background-color: ${({ mode }) => (mode === 'dark' ? color.smokeyQuartz : color.white)};
+
+    .person-head-shot {
+      margin-bottom: ${spacing.md};
+    }
+  `,
+  cco: css`
+    ${mixins.ccoReviewSetBorder()}
+  `,
+};
+
 const PersonCardWrapper = styled.div`
-  align-items: center;
-  background-color: ${color.smokeyQuartz};
-  display: flex;
-  flex-direction: column;
-  height: 27.2rem;
-  justify-content: flex-start;
-  padding: 2rem 0.8rem 2rem;
-  width: 27.2rem;
-
-  background-color: ${({ mode }) => (mode === 'dark' ? color.smokeyQuartz : color.white)};
-
-  .person-head-shot {
-    margin-bottom: ${spacing.md};
-  }
+  ${withThemes(PersonCardWrapperTheme)}
 `;
 
 const PersonCardNameTheme = {
