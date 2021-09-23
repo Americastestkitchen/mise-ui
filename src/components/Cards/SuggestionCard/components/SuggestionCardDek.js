@@ -6,6 +6,8 @@ const SuggestionCardDek = styled.div.attrs({
   className: 'suggestion-card__dek',
 })`
   margin-bottom: ${spacing.sm};
+  max-height: 60px;
+  overflow: hidden;
 `;
 
 export default SuggestionCardDek;

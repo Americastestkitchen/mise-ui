@@ -9,6 +9,7 @@ const SuggestionCardAction = styled.button.attrs({
   display: flex;
   height: 4rem;
   justify-content: center;
+  padding: 0;
   vertical-align: middle;
   width: calc(50% - ${spacing.xsm});
 
@@ -16,8 +17,11 @@ const SuggestionCardAction = styled.button.attrs({
     margin-right: ${spacing.sm};
   }
 
+  span {
+    padding-left: ${spacing.sm};
+  }
+
   svg {
-    margin-right: ${spacing.xsm};
 
     &.close {
       height: 1.2rem;
