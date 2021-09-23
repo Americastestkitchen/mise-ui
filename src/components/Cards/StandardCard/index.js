@@ -229,7 +229,7 @@ function StandardCard({
             </StickerGroup>
           ) : null }
         </ImageWrapper>
-        <TitleWrapper displayFavoritesButton={displayFavoritesButton} className="standard-card__title-wrapper">
+        <TitleWrapper className="standard-card__title-wrapper">
           <a
             className="standard-card__anchor"
             href={href}
