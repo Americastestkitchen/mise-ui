@@ -48,7 +48,7 @@ function Button({
   onClick,
   type,
   ...restProps
-}) {
+}: React.ComponentPropsWithoutRef<"button">) {
   return (
     <StyledButton
       className={className}
