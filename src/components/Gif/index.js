@@ -39,7 +39,8 @@ const checkElementsInViewport = throttle(() => {
     const options = elements[id];
     if (verge.inViewport(options.element, options.cushion)) {
       if (options.callback) options.callback();
-      checkUnbind(); // eslint-disable-line no-use-before-define
+      // eslint-disable-next-line @typescript-eslint/no-use-before-define
+      checkUnbind();
     } else {
       newObj[id] = options;
     }

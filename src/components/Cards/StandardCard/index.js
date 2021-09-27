@@ -78,7 +78,6 @@ const TitleWrapperTheme = {
     align-items: flex-start;
     justify-content: space-between;
     padding-top: ${spacing.xsm};
-    margin-right: ${props => [props.displayFavoritesButton ? spacing.md : 'none']};
   `,
 };
 
@@ -100,21 +99,7 @@ export const StyledTitle = styled(Title)`
 `;
 
 export const StyledFavoriteButton = styled(FavoriteButton)`
-  position: absolute;
-  top: 17rem;
-  right: 0;
-
-  .no-image & {
-    top: 3.5rem;
-  }
-
-  ${breakpoint('lg')`
-    top: 28rem;
-
-    .no-image & {
-      top: 3.5rem;
-    }
-  `}
+  flex-shrink: 0;
 `;
 
 export const StickerGroup = styled.div`
@@ -208,20 +193,23 @@ function StandardCard({
       className={`standard-card${imageUrl ? '' : ' no-image'}`}
       {...dataAttrs}
     >
-      <a
-        className="standard-card__anchor"
-        href={href}
-        onClick={onClick}
-        rel={target && target === '_blank' ? 'noopener noreferrer' : null}
-        target={target}
-      >
+      <>
         <ImageWrapper className="standard-card__image-wrapper">
           { imageUrl ? (
-            <Image
-              aria-hidden="true"
-              imageAlt={imageAlt}
-              imageUrl={imageUrl}
-            />
+            <a
+              tabIndex="-1"
+              className="standard-card__anchor"
+              href={href}
+              onClick={onClick}
+              rel={target && target === '_blank' ? 'noopener noreferrer' : null}
+              target={target}
+            >
+              <Image
+                aria-hidden="true"
+                imageAlt={imageAlt}
+                imageUrl={imageUrl}
+              />
+            </a>
           ) : null }
           <StyledBadge
             className={className}
@@ -241,21 +229,29 @@ function StandardCard({
             </StickerGroup>
           ) : null }
         </ImageWrapper>
-        <TitleWrapper displayFavoritesButton={displayFavoritesButton} className="standard-card__title-wrapper">
-          <StyledTitle className={className} title={title} />
+        <TitleWrapper className="standard-card__title-wrapper">
+          <a
+            className="standard-card__anchor"
+            href={href}
+            onClick={onClick}
+            rel={target && target === '_blank' ? 'noopener noreferrer' : null}
+            target={target}
+          >
+            <StyledTitle className={className} title={title} />
+          </a>
+          { displayFavoritesButton ? (
+            <StyledFavoriteButton
+              className={className}
+              fill={favoriteRibbonColor}
+              role="button"
+              isFavorited={isFavorited}
+              objectId={objectId}
+              siteKey={siteKeyFavorites}
+              title={title}
+            />
+          ) : null }
         </TitleWrapper>
-      </a>
-      { displayFavoritesButton ? (
-        <StyledFavoriteButton
-          className={className}
-          fill={favoriteRibbonColor}
-          role="button"
-          isFavorited={isFavorited}
-          objectId={objectId}
-          siteKey={siteKeyFavorites}
-          title={title}
-        />
-      ) : null }
+      </>
       <StyledAttributions
         displayCookbook={displayCookbook}
         displayLockIcon={displayLockIcon}
