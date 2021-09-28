@@ -66,7 +66,7 @@ const PersonCardDescriptionTheme = {
     color: ${color.black};
   `,
   cio: css`
-    color: ${color.black};
+    color: ${color.cork};
   `,
 };
 

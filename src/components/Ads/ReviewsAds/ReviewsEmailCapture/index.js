@@ -210,6 +210,7 @@ const AdWrapperTheme = {
 
     .email-form {
       .form-input input {
+        border: solid 1px #D8D8D8;
         color: ${color.eclipse};
 
         &::placeholder {
@@ -235,6 +236,7 @@ const AdWrapperTheme = {
 
     .email-form {
       .form-input input {
+        border: solid 1px #E5E5E5;
         color: ${color.black};
 
         &::placeholder {
@@ -260,6 +262,7 @@ const AdWrapperTheme = {
 
     .email-form {
       .form-input input {
+        border: solid 1px #858585;
         color: ${color.cork};
 
         &::placeholder {
