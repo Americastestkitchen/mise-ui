@@ -1,7 +1,7 @@
 import breakpoint from 'styled-components-breakpoint';
 import PropTypes from 'prop-types';
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import {
   color,
@@ -9,6 +9,7 @@ import {
   fontSize,
   letterSpacing,
   spacing,
+  withThemes,
 } from '../../../../styles';
 import { getImageUrl } from '../../../../lib/cloudinary';
 
@@ -64,147 +65,231 @@ const AdPicture = styled.picture`
 
 `;
 
-const AdWrapper = styled.div`
-  background-color: ${color.solitude};
-  padding: 1.9rem 1.9rem ${spacing.md} 1.8rem;
+const AdWrapperTheme = {
+  default: css`
+    padding: 1.9rem 1.9rem ${spacing.md} 1.8rem;
 
-  @media print {
-    display: none;
-  }
+    @media print {
+      display: none;
+    }
 
-  &.cooking-school-ad__detail {
-    margin: 3.2rem -1.6rem;
-    margin-bottom: 2.2rem;
-    width: calc(100% + 3.2rem);
-  }
-
-  &.cooking-school-ad__landing {
-    margin-bottom: ${spacing.xlg};
-    width: 100%;
-  }
-
-  ${breakpoint('md')`
-    align-items: center;
-    flex-direction: row;
-    padding: 2.2rem 3.6rem;
-    text-align: left;
-    
     &.cooking-school-ad__detail {
-      margin: ${spacing.xlg} -3.6rem 0;
-      width: calc(100% + 7.2rem);
+      margin: 3.2rem -1.6rem;
+      margin-bottom: 2.2rem;
+      width: calc(100% + 3.2rem);
     }
 
     &.cooking-school-ad__landing {
-      margin-bottom: 3.4rem;
-    }
-  `}
-
-  ${breakpoint('lg')`
-    &.cooking-school-ad__detail {
-      margin: ${spacing.xlg} 0 2.2rem;
-      min-width: 66.7rem;
-      padding: 2.2rem 3.6rem 2.2rem 2.3rem;
+      margin-bottom: ${spacing.xlg};
       width: 100%;
     }
-  `}
 
-  ${breakpoint('xlg')`
-    &.cooking-school-ad__detail {
-      margin: ${spacing.xlg} 0 0;
-      max-height: 14.4rem;
+    ${breakpoint('md')`
+      align-items: center;
+      flex-direction: row;
       padding: 2.2rem 3.6rem;
-      width: 84.8rem;
+      text-align: left;
+      
+      &.cooking-school-ad__detail {
+        margin: ${spacing.xlg} -3.6rem 0;
+        width: calc(100% + 7.2rem);
+      }
+
+      &.cooking-school-ad__landing {
+        margin-bottom: 3.4rem;
+      }
+    `}
+
+    ${breakpoint('lg')`
+      &.cooking-school-ad__detail {
+        margin: ${spacing.xlg} 0 2.2rem;
+        min-width: 66.7rem;
+        padding: 2.2rem 3.6rem 2.2rem 2.3rem;
+        width: 100%;
+      }
+    `}
+
+    ${breakpoint('xlg')`
+      &.cooking-school-ad__detail {
+        margin: ${spacing.xlg} 0 0;
+        max-height: 14.4rem;
+        padding: 2.2rem 3.6rem;
+        width: 84.8rem;
+      }
+
+      &.cooking-school-ad__landing {
+        margin-bottom: 1.8rem;
+      }
+    `}
+  `,
+  atk: css`
+    background-color: ${color.solitude};
+  `,
+  cco: css`
+    background-color: ${color.aliceBlue};
+  `,
+  cio: css`
+    background-color: ${color.ivory};
+  `,
+};
+
+const AdWrapper = styled.div`
+  ${withThemes(AdWrapperTheme)}
+`;
+
+const ContentWrapperTheme = {
+  default: css`
+    display: flex;
+    flex-direction: column;
+
+    .review-ad-trial-em {
+      letter-spacing: 0.84px;
     }
 
-    &.cooking-school-ad__landing {
-      margin-bottom: 1.8rem;
-    }
-  `}
-`;
+    ${breakpoint('lg')`
+      &.cooking-school-ad__detail {
+        max-width: 26rem;
+      }
+    `}
+
+    ${breakpoint('xlg')`
+      max-width: 63.5rem;
+
+      &.cooking-school-ad__detail {
+        margin-right: 4.3rem;
+        max-width: 41.9rem;
+        min-width: 41.9rem;
+      }
+    `}
+  `,
+  cio: css`
+    ${breakpoint('xlg')`
+      &.cooking-school-ad__detail {
+        margin-right: 2.4rem;
+        max-width: 44.5rem;
+        width: 44.5rem;
+      }
+    `}
+
+  `,
+};
 
 const ContentWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  ${breakpoint('lg')`
-    &.cooking-school-ad__detail {
-      max-width: 26rem;
-    }
-  `}
-
-  ${breakpoint('xlg')`
-    max-width: 63.5rem;
-
-    &.cooking-school-ad__detail {
-      margin-right: 4.3rem;
-      max-width: 41.9rem;
-      min-width: 41.9rem;
-    }
-  `}
+  ${withThemes(ContentWrapperTheme)}
 `;
+
+const CtaLinkTheme = {
+  default: css`
+    align-items: center;
+    color: ${color.white};
+    display: flex;
+    font: ${fontSize.lg}/1.2rem ${font.pnb};
+    justify-content: center;
+    letter-spacing: ${letterSpacing.cta};
+    min-height: ${spacing.xlg};
+    text-transform: uppercase;
+
+    ${breakpoint('md')`
+      min-width: 19.7rem;
+    `}
+
+    ${breakpoint('lg')`
+      min-width: 17.7rem;
+      margin-left: 2.5rem;
+    `}
+
+    ${breakpoint('xlg')`
+      margin-left: 0;
+      margin-right: ${spacing.xlg};
+      min-width: 19.7rem;
+    `}
+  `,
+  atk: css`
+    background-color: ${color.coldPool};
+
+    &:hover {
+      background-color: ${color.darkColdPool};
+    }
+  `,
+  cco: css`
+    background-color: ${color.denim};
+
+    &:hover {
+      background-color: ${color.arapawa};
+    }
+  `,
+  cio: css`
+    background-color: ${color.squirrel};
+
+    &:hover {
+      background-color: ${color.cork};
+    }
+  `,
+};
 
 const CtaLink = styled.div`
-  align-items: center;
-  background-color: ${color.coldPool};
-  color: ${color.white};
-  display: flex;
-  font: ${fontSize.lg}/1.2rem ${font.pnb};
-  justify-content: center;
-  letter-spacing: ${letterSpacing.cta};
-  min-height: ${spacing.xlg};
-  text-transform: uppercase;
-
-  &:hover {
-    background-color: ${color.darkColdPool};
-  }
-
-  ${breakpoint('md')`
-    min-width: 19.7rem;
-  `}
-
-  ${breakpoint('lg')`
-    min-width: 17.7rem;
-    margin-left: 2.5rem;
-  `}
-
-  ${breakpoint('xlg')`
-    margin-left: 0;
-    margin-right: ${spacing.xlg};
-    min-width: 19.7rem;
-  `}
+  ${withThemes(CtaLinkTheme)}
 `;
+
+const DescriptionTheme = {
+  default: css`
+    font: ${fontSize.lg}/2.1rem ${font.pnb};
+    letter-spacing: normal;
+
+    ${breakpoint('md')`
+      font: 2.1rem/2.4rem ${font.pnb};
+    `}
+
+    ${breakpoint('xlg')`
+      font: 2.1rem/2.6rem ${font.pnb};
+    `}
+  `,
+  atk: css`
+    color: ${color.eclipse};
+  `,
+  cco: css`
+    color: ${color.black};
+  `,
+  cio: css`
+    color: ${color.cork};
+  `,
+};
 
 const Description = styled.span`
-  color: ${color.eclipse};
-  font: ${fontSize.lg}/2.1rem ${font.pnb};
-  letter-spacing: normal;
-
-  ${breakpoint('md')`
-    font: 2.1rem/2.4rem ${font.pnb};
-  `}
-
-  ${breakpoint('xlg')`
-    font: 2.1rem/2.6rem ${font.pnb};
-  `}
+  ${withThemes(DescriptionTheme)}
 `;
 
+const HeadlineTheme = {
+  default: css`
+    font: ${fontSize.sm}/1.6rem ${font.pnr};
+    letter-spacing: 1.4px;
+    margin-bottom: ${spacing.xsm};
+    text-transform: uppercase;
+
+    ${breakpoint('md')`
+      font: ${fontSize.md}/2.6rem ${font.pnr};
+      letter-spacing: ${letterSpacing.md};
+      margin-bottom: ${spacing.xxsm};
+      min-width: 31.7rem;
+    `}
+
+    ${breakpoint('xlg')`
+      margin-top: ${spacing.xsm};
+    `}
+  `,
+  atk: css`
+    color: ${color.eclipse};
+  `,
+  cco: css`
+    color: ${color.black};
+  `,
+  cio: css`
+    color: ${color.cork};
+  `,
+};
+
 const Headline = styled.span`
-  color: ${color.eclipse};
-  font: ${fontSize.sm}/1.6rem ${font.pnr};
-  letter-spacing: 1.4px;
-  margin-bottom: ${spacing.xsm};
-  text-transform: uppercase;
-
-  ${breakpoint('md')`
-    font: ${fontSize.md}/2.6rem ${font.pnr};
-    letter-spacing: ${letterSpacing.md};
-    margin-bottom: ${spacing.xxsm};
-    min-width: 31.7rem;
-  `}
-
-  ${breakpoint('xlg')`
-    margin-top: ${spacing.xsm};
-  `}
+  ${withThemes(HeadlineTheme)}
 `;
 
 const MainContent = styled.div`
@@ -231,16 +316,15 @@ const CookingSchoolAd = ({
   description,
   deviceType,
   headline,
+  href,
   identifier,
-  incode,
-  mdc,
   mobileLinkCta,
   onClick,
 }) => (
   <AdWrapper className={`cooking-school-ad__${identifier}`}>
     <AdDimensions
       className={`cooking-school-ad__${identifier}`}
-      href={`https://school.americastestkitchen.com/order?mdc=${mdc}&incode=${incode}`}
+      href={href}
       onClick={onClick}
     >
       <MainContent className={`cooking-school-ad__${identifier}`}>
@@ -257,7 +341,9 @@ const CookingSchoolAd = ({
         </AdPicture>
         <ContentWrapper className={`cooking-school-ad__${identifier}`}>
           <Headline>{headline}</Headline>
-          <Description>{description}</Description>
+          <Description
+            dangerouslySetInnerHTML={{ __html: description }}
+          />
         </ContentWrapper>
       </MainContent>
       <CtaLink className={`cooking-school-ad__${identifier}`}>
@@ -272,10 +358,9 @@ CookingSchoolAd.propTypes = {
   description: PropTypes.string,
   deviceType: PropTypes.string.isRequired,
   headline: PropTypes.string,
+  href: PropTypes.string.isRequired,
   identifier: PropTypes.oneOf(['landing', 'detail']).isRequired,
-  incode: PropTypes.string.isRequired,
   linkCta: PropTypes.string,
-  mdc: PropTypes.string.isRequired,
   mobileLinkCta: PropTypes.string,
   onClick: PropTypes.func.isRequired,
 };

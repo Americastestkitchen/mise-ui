@@ -15,6 +15,8 @@ const noImageContent = 'After crunching our way through dozens and dozens of who
 
 const noImageDefaultWidth = {
   content: noImageContent,
+  displayOption: 'default',
+  dropCap: false,
   title: noImageTitle,
 };
 

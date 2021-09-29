@@ -37,10 +37,6 @@ const EditorNoteTheme = {
       margin-bottom: ${spacing.xxsm};
     }
 
-    a {
-      ${mixins.styledLink(color.turquoise, color.seaSalt)}
-    }
-
     strong {
       font-weight: normal;
       font-family: ${font.pnb};
@@ -82,6 +78,10 @@ const EditorNoteTheme = {
     }
   `,
   atk: css`
+    a {
+      ${mixins.styledLinkWithSiteKey('atk')}
+    }
+
     &.note-retention {
       background-color: ${color.solitude};
 
@@ -91,23 +91,27 @@ const EditorNoteTheme = {
     }
   `,
   cco: css`
+    border-color: ${color.denim};
+
+    a {
+      ${mixins.styledLinkWithSiteKey('cco')}
+    }
+
     &.note-retention {
       background-color: ${color.aliceBlue};
       color: ${color.black};
-
-      a {
-        ${mixins.styledLink(color.malibu, color.cornflower)};
-      }
     }
   `,
   cio: css`
+    border-color: ${color.squirrel};
+
+    a {
+      ${mixins.styledLinkWithSiteKey('cio')}
+    }
+
     &.note-retention {
       background-color: ${color.ivory};
       color: ${color.cork};
-
-      a {
-        ${mixins.styledLink(color.dijon, color.sand)};
-      }
     }
   `,
 };
@@ -152,6 +156,12 @@ const EditorNoteIconTheme = {
     }
   `,
   cco: css`
+    background-color: ${color.denim};
+
+    svg circle {
+      fill: ${color.denim};
+    }
+
     ${breakpoint('md', 'xlg')`
       left: 0;
     `}
@@ -161,11 +171,29 @@ const EditorNoteIconTheme = {
         fill: ${color.wedgewood};
       }
     }
+
+    .note-alert & {
+      svg circle {
+        fill: ${color.rust};
+      }
+    }
   `,
   cio: css`
+    background-color: ${color.squirrel};
+
+    svg circle {
+      fill: ${color.squirrel};
+    }
+
     .note-retention & {
       svg circle {
         fill: ${color.arrowTown};
+      }
+    }
+
+    .note-alert & {
+      svg circle {
+        fill: ${color.rust};
       }
     }
   `,
@@ -182,7 +210,7 @@ const EditorNoteTitleTheme = {
     margin-right: ${spacing.sm};
 
     .note-alert & {
-      color: ${color.tabasco};
+      color: ${color.rust};
     }
 
     .note-retention & {
@@ -196,6 +224,12 @@ const EditorNoteTitleTheme = {
         color: ${color.black};
       }
     }
+  `,
+  cco: css`
+    color: ${color.denim};
+  `,
+  cio: css`
+    color: ${color.cork};
   `,
 };
 
@@ -213,6 +247,15 @@ const EditorNoteSubtitleTheme = {
       font: ${fontSize.md}/${lineHeight.lg} ${font.pnr};
     `}
   `,
+  atk: css`
+    color: ${color.eclipse};
+  `,
+  cco: css`
+    color: ${color.black};
+  `,
+  cio: css`
+    color: ${color.cork};
+  `,
 };
 
 const EditorNoteSubtitle = styled.span`
@@ -226,6 +269,15 @@ const EditorNoteTextTheme = {
     .note-retention & {
       line-height: 2.6rem;
     }
+  `,
+  atk: css`
+    color: ${color.eclipse};
+  `,
+  cco: css`
+    color: ${color.black};
+  `,
+  cio: css`
+    color: ${color.cork};
   `,
 };
 

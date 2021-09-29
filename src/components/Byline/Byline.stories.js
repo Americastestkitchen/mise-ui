@@ -1,31 +1,28 @@
 import React from 'react';
+
 import Byline from './index';
-import { withKnobs, text } from '@storybook/addon-knobs';
+import { siteKey } from '../../config/argTypes';
+import { addThemedWrapper } from '../../config/decorators';
 
 export default {
   title: 'Components/Byline',
   component: Byline,
-  decorators: [withKnobs],
+  decorators: [ addThemedWrapper() ],
+  argTypes: { siteKey },
 };
 
-export const Default = () => (
-  <Byline
-    author={text('Author Name', 'Kevin Pang')}
-    authorImageCloudinaryId={text('Author Image', 'AKO%20Articles/Author_Headshots/staff_kevin_pang')}
-    attribution={text('Attribution', 'Yesterday')}
-  />
-);
+const Template = (args) => <Byline {...args} />;
 
-export const NoImage = () => (
-  <Byline
-    author={text('Author Name', 'Kevin Pang')}
-    attribution={text('Attribution', 'Digital Editorial Director')}
-  />
-);
+export const WithoutPhoto = Template.bind({});
+WithoutPhoto.args = {
+  author: 'Kevin Pang',
+  attribution: 'Digital Editorial Director',
+  imgAlt: 'Kevin Pang',
+  siteKey: 'atk',
+};
 
-export const NoAttribution = () => (
-  <Byline
-    author={text('Author Name', 'Kevin Pang')}
-    authorImageCloudinaryId={text('Author Image', 'AKO%20Articles/Author_Headshots/staff_kevin_pang')}
-  />
-);
+export const WithPhoto = Template.bind({});
+WithPhoto.args = {
+  ...WithoutPhoto.args,
+  authorImageCloudinaryId: 'AKO%20Articles/Author_Headshots/staff_kevin_pang',
+};

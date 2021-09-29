@@ -2,50 +2,40 @@ import React from 'react';
 
 import ArticlePhotoCollection from './index';
 import images from './imagesResponse';
+import { siteKey } from '../../../config/argTypes';
+import { addThemedWrapper } from '../../../config/decorators';
 
 export default {
-    title: 'Components/Articles/ArticlePhotoCollection',
-    component: ArticlePhotoCollection,
+  title: 'Components/Articles/ArticlePhotoCollection',
+  component: ArticlePhotoCollection,
+  decorators: [ addThemedWrapper() ],
+  argTypes: {
+    siteKey,
+    count: { table: { disable: true } },
+  },
 };
 
 const caption = 'The heat applied during pasteurization, a necessary step for all <a href="#">shelf-stable jars</a>, essentially cooks the pickles. Pickle spears (left) are especially vulnerable and often turn out soft and soggy. Shelf-stable whole pickles (right) are much more likely to stay firm and crunchy.';
+const title = 'Collection of Pickle Photos';
 
-export const defaultTwoImages = () => (
-  <ArticlePhotoCollection
-    caption={caption}
-    count={2}
-    images={images.slice(0, 2)}
-    title=""
-    width="default"
-  />
-);
+const Template = (args) => <ArticlePhotoCollection {...args} />;
 
-export const defaultThreeImagesWithTitle = () => (
-  <ArticlePhotoCollection
-    caption={caption}
-    count={3}
-    images={images}
-    title="Collection of Pickle Photos"
-    width="default"
-  />
-);
+export const TwoUp = Template.bind({});
+TwoUp.args = {
+  caption,
+  count: 2,
+  images: images.slice(0, 2),
+  siteKey: 'atk',
+  title,
+  width: 'default',
+};
 
-export const wideTwoImagesWithTitle = () => (
-  <ArticlePhotoCollection
-    caption={caption}
-    count={2}
-    images={images.slice(0, 2)}
-    title="Collection of Pickle Photos"
-    width="wide"
-  />
-);
-
-export const wideThreeImages = () => (
-    <ArticlePhotoCollection
-    caption={"The heat applied during pasteurization, a necessary step for all shelf-stable jars, essentially cooks the pickles. Pickle spears (left) are especially vulnerable and often turn out soft and soggy. Shelf-stable whole pickles (right) are much more likely to stay firm and crunchy."}
-    count={3}
-    items={images}
-    title=""
-    width="wide"
-  />
-);
+export const ThreeUp = Template.bind({});
+ThreeUp.args = {
+  caption,
+  count: 3,
+  images,
+  siteKey: 'atk',
+  title,
+  width: 'default',
+};
