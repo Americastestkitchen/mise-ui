@@ -142,6 +142,10 @@ const ContentWrapperTheme = {
     display: flex;
     flex-direction: column;
 
+    .review-ad-trial-em {
+      letter-spacing: 0.84px;
+    }
+
     ${breakpoint('lg')`
       &.cooking-school-ad__detail {
         max-width: 26rem;
@@ -159,7 +163,7 @@ const ContentWrapperTheme = {
     `}
   `,
   cio: css`
-    ${breakpoint('lg')`
+    ${breakpoint('xlg')`
       &.cooking-school-ad__detail {
         margin-right: 2.4rem;
         max-width: 44.5rem;

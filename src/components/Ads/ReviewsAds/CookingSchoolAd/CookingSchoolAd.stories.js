@@ -13,8 +13,8 @@ export default {
   decorators: [withKnobs],
 };
 
+// mixpanel & processing from espresso
 const onClick = () => {
-  // mixpanel & processing from espresso
 };
 
 export const ReviewsLanding = () => (
@@ -75,7 +75,7 @@ CcoDetailPage.decorators = [
 export const CioDetailPage = Template.bind({});
 CioDetailPage.args = {
   ...CcoDetailPage.args,
-  description: 'Get a FREE TRIAL ISSUE of <em>Cook’s Illustrated Magazine!</em>',
+  description: 'Get a <span class="review-ad-trial-em">FREE TRIAL ISSUE</span> of <em>Cook’s Illustrated Magazine!</em>',
   siteKey: 'cio',
 };
 CioDetailPage.argTypes = {
