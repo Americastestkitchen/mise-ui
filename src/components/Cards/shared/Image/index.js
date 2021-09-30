@@ -24,12 +24,13 @@ const Image = ({
 }) => {
   const intersectionRef = useRef(null);
   const isPrint = useMedia('print');
+  const [imageLoaded, setImageLoaded] = useState(!lazy);
 
   const { isIntersecting } = useIntersection(intersectionRef, {
     root: null,
     rootMargin: lowQualityImageUrl ? '0px' : '30px',
     threshold: 0,
-  }) || { isIntersecting: false };
+  }, imageLoaded) || { isIntersecting: false };
 
   let initSrc = lazy ? inlineSrc : imageUrl;
   if (lazy && lowQualityImageUrl) {
@@ -39,6 +40,7 @@ const Image = ({
 
   const loadImage = useCallback(() => {
     setSrc(imageUrl);
+    setImageLoaded(true);
   }, [imageUrl]);
 
   useEffect(() => {

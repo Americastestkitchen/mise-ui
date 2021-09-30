@@ -1,10 +1,10 @@
 import breakpoint from 'styled-components-breakpoint';
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import ArticleFigcaption from '../shared/ArticleFigcaption';
-import { color, font, fontSize, mixins } from '../../../styles';
+import { color, font, fontSize, mixins, withThemes } from '../../../styles';
 import { getImageUrl } from '../../../lib/cloudinary';
 
 const PhotoCollectionWrapper = styled.div`
@@ -26,6 +26,7 @@ const PhotoCollectionWrapper = styled.div`
       ${mixins.articlesWidth('default')}
 
         figcaption {
+          margin-left: 1.6rem;
           min-width: 20rem;
           width: 100%;
         }
@@ -101,10 +102,24 @@ const ImagesWrapper = styled.div`
   margin: 0 0 1.2rem;
 `;
 
+const CollectionTitleTheme = {
+  default: css`
+    font: ${fontSize.xl}/2.6rem ${font.pnb};
+    margin-bottom: 0.7rem;
+  `,
+  atk: css`
+    color: ${color.eclipse};
+  `,
+  cco: css`
+    color: ${color.black};
+  `,
+  cio: css`
+    color: ${color.cork};
+  `,
+};
+
 const CollectionTitle = styled.h3`
-  color: ${color.eclipse};
-  font: ${fontSize.xl}/2.6rem ${font.pnb};
-  margin-bottom: 0.7rem;
+  ${withThemes(CollectionTitleTheme)}
 `;
 
 const cropMap = {

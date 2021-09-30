@@ -106,12 +106,19 @@ export const WhatsEatingDan = ({
   </Logo>
 );
 
+export const GearHeads = () => (
+  <Logo>
+    <Logos.GearHeads />
+  </Logo>
+);
+
 WhatsEatingDan.propTypes = Logos.WhatsEatingDan.propTypes;
 
 export const keyToLogo = key => ({
   atk: ATK,
   cco: CCO,
   cio: CIO,
+  gearHeads: GearHeads,
   mysteryRecipe: MysteryRecipe,
   perfectlySeasonal: PerfectlySeasonal,
   proof: Proof,

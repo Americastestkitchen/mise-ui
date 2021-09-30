@@ -23,7 +23,7 @@ const LinkToBrowse = styled.a`
 
   &:focus {
     outline: none;
-    border: 0.5rem solid ${color.danube};
+    border: 3px solid ${color.danube};
     border-radius: 5px;
   }
 

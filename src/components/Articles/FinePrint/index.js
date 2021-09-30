@@ -1,27 +1,36 @@
 import breakpoint from 'styled-components-breakpoint';
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import Accordion from '../../Accordion';
 import FinePrintContent from './FinePrintContent';
 import FinePrintLabel from './FinePrintLabel';
 
-import { color, mixins } from '../../../styles';
+import { color, mixins, withThemes } from '../../../styles';
+
+const FinePrintContainerTheme = {
+  default: css`
+    background-color: ${color.white};
+    margin-bottom: 3rem;
+    max-width: 100%;
+
+    ${breakpoint('xlg')`
+      ${mixins.articlesWidth('default')};
+    `}
+
+    .accordion-item__button {
+      position: relative;
+      width: 100%;
+    }
+  `,
+  cco: css`
+    ${mixins.ccoReviewSetBorder()}
+  `,
+};
 
 const FinePrintContainer = styled.div`
-  background-color: ${color.white};
-  margin-bottom: 3rem;
-  max-width: 100%;
-
-  ${breakpoint('xlg')`
-    ${mixins.articlesWidth('default')};
-  `}
-
-  .accordion-item__button {
-    position: relative;
-    width: 100%;
-  }
+  ${withThemes(FinePrintContainerTheme)}
 `;
 
 const FinePrint = ({

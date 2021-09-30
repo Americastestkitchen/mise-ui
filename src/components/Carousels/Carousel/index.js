@@ -317,7 +317,7 @@ const Carousel = ({
         flktyRef.current = flkty;
         flktyRef.current.on('change', handleCellChange);
         // workaround for flickity 'ready' event not working
-        setTimeout(() => handleCellChange(0), 0);
+        handleCellChange(0);
       }
       setEnabled(isEnabled);
     }

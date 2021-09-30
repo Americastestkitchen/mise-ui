@@ -68,6 +68,71 @@ const AccordionSvgWrapperTheme = {
       right: 0;
     `}
   `,
+  cco: css`
+    background-color: ${color.white};
+    border: 2px solid ${color.black};
+    border-radius: 50%;
+    height: 3rem;
+    max-height: 3rem;
+    max-width: 3rem;
+    position: absolute;
+    right: 2.5rem;
+    top: 50%;
+    transform: translate(50%, -50%);
+    width: 3rem;
+
+    svg {
+      fill: ${color.black};
+    }
+
+    @media(hover: hover) {
+      &:hover {
+        max-height: 3.6rem;
+        max-width: 3.6rem;
+
+        svg {
+          fill: ${color.nobel};
+        }
+      }
+    }
+
+    ${breakpoint('md')`
+      right: 0;
+    `}
+  `,
+  cio: css`
+    background-color: ${color.white};
+    border: 2px solid ${color.cork};
+    border-radius: 50%;
+    height: 3rem;
+    max-height: 3rem;
+    max-width: 3rem;
+    position: absolute;
+    right: 2.5rem;
+    top: 50%;
+    transform: translate(50%, -50%);
+    width: 3rem;
+    
+    svg {
+      fill: ${color.cork};
+    }
+
+    @media(hover: hover) {
+      &:hover {
+        border-color: ${color.squirrel};
+        max-height: 3.6rem;
+        max-width: 3.6rem;
+
+        svg {
+          fill: ${color.squirrel};
+        }
+      }
+    }
+
+    ${breakpoint('md')`
+      right: 0;
+    `}
+  `,
 };
 
 const AccordionSvgWrapperEl = styled.div.attrs({
