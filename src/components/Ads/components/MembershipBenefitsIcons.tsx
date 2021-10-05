@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { ComponentType, ReactElement } from 'react';
 import styled, { css } from 'styled-components';
 import { Cookbook, Phone, RecipeCard, RibbonAward, Videos } from '../../DesignTokens/Icon/svgs';
 import { color, font, withThemes } from '../../../styles';
@@ -46,18 +46,18 @@ const MembershipBenefitsIconsWrapper = styled.div.attrs({
   justify-content: space-between;
 `;
 
-const renderIcon = (icon: keyof typeof icons) => {
-  const Icon = (icon ? icons[icon] : null) as Function;
+const renderIcon = (icon?: keyof typeof icons) => {
+  const Icon = (icon ? icons[icon] : null) as ComponentType<{ fill: string }>;
   return <Icon fill={color.white} />;
 };
 
 const BenefitTheme = {
-  default: css`
+  default: css<{ animated: boolean }>`
     align-items: center;
     display: flex;
     flex-direction: column;
     max-width: 6rem;
-    ${({ animated }: { animated: boolean }) => (animated ? 'animation: pulse 8s infinite ease-in-out;' : '')}
+    ${({ animated }) => (animated ? 'animation: pulse 8s infinite ease-in-out;' : '')}
 
     &:nth-child(1) { animation-delay: 1.2s; }
     &:nth-child(2) { animation-delay: 2.4s; }
@@ -93,7 +93,7 @@ const BenefitTheme = {
   `,
 };
 
-const Benefit = styled.div<{ animated: boolean }>`
+const Benefit = styled.div<{ animated: boolean | null | undefined }>`
   ${withThemes(BenefitTheme)}
 `;
 
@@ -133,7 +133,13 @@ const CircularIcon = styled.div`
   ${withThemes(CircularIconTheme)}
 `;
 
-const MembershipBenefitsIcons = ({ animated }: { animated: boolean }) => (
+type MembershipBenefitsIconsProps = {
+  animated?: boolean;
+};
+
+const MembershipBenefitsIcons = ({
+  animated = true,
+}: MembershipBenefitsIconsProps): ReactElement => (
   <MembershipBenefitsIconsWrapper
     data-testid="benefit-icons"
   >
@@ -157,12 +163,9 @@ const MembershipBenefitsIcons = ({ animated }: { animated: boolean }) => (
   </MembershipBenefitsIconsWrapper>
 );
 
+// TODO: remove when fully typescript
 MembershipBenefitsIcons.propTypes = {
   animated: PropTypes.bool,
-};
-
-MembershipBenefitsIcons.defaultProps = {
-  animated: true,
 };
 
 export default MembershipBenefitsIcons;

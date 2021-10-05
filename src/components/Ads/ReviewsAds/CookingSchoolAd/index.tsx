@@ -1,6 +1,6 @@
 import breakpoint from 'styled-components-breakpoint';
-import PropTypes, { InferProps } from 'prop-types';
-import React from 'react';
+import PropTypes from 'prop-types';
+import React, { ReactElement } from 'react';
 import styled, { css } from 'styled-components';
 
 import {
@@ -310,29 +310,37 @@ const MainContent = styled.div`
   `}
 `;
 
-const CookingSchoolAdProps = {
-  cloudinaryId: PropTypes.string,
-  description: PropTypes.string,
-  deviceType: PropTypes.string.isRequired,
-  headline: PropTypes.string,
-  href: PropTypes.string.isRequired,
-  identifier: PropTypes.oneOf(['landing', 'detail']).isRequired,
-  linkCta: PropTypes.string,
-  mobileLinkCta: PropTypes.string,
-  onClick: PropTypes.func.isRequired,
+const CookingSchoolAdDefaults = {
+  cloudinaryId: 'ATK Reviews Ads/CAN_CookingSchoolGeneralCandids-9031_3x.png',
+  description: 'Take your skills to the next level with 320+ courses led by our expert test cooks.',
+  headline: 'Try our online cooking school',
+  linkCta: 'Try for Free',
+  mobileLinkCta: 'Try Now',
 };
 
-const CookingSchoolAd: React.FC<InferProps<typeof CookingSchoolAdProps>> = ({
-  linkCta,
-  cloudinaryId,
-  description,
+type CookingSchoolAdProps = {
+  cloudinaryId?: string;
+  description?: string;
+  deviceType: string;
+  headline?: string;
+  href: string;
+  identifier: 'landing' | 'detail';
+  linkCta?: string;
+  mobileLinkCta?: string;
+  onClick: () => void;
+};
+
+const CookingSchoolAd = ({
+  linkCta = CookingSchoolAdDefaults.linkCta,
+  cloudinaryId = CookingSchoolAdDefaults.cloudinaryId,
+  description = CookingSchoolAdDefaults.description,
   deviceType,
-  headline,
+  headline = CookingSchoolAdDefaults.headline,
   href,
   identifier,
-  mobileLinkCta,
+  mobileLinkCta = CookingSchoolAdDefaults.mobileLinkCta,
   onClick,
-}) => (
+}: CookingSchoolAdProps): ReactElement => (
   <AdWrapper className={`cooking-school-ad__${identifier}`}>
     <AdDimensions
       className={`cooking-school-ad__${identifier}`}
@@ -365,14 +373,16 @@ const CookingSchoolAd: React.FC<InferProps<typeof CookingSchoolAdProps>> = ({
   </AdWrapper>
 );
 
-CookingSchoolAd.propTypes = CookingSchoolAdProps;
-
-CookingSchoolAd.defaultProps = {
-  cloudinaryId: 'ATK Reviews Ads/CAN_CookingSchoolGeneralCandids-9031_3x.png',
-  description: 'Take your skills to the next level with 320+ courses led by our expert test cooks.',
-  headline: 'Try our online cooking school',
-  linkCta: 'Try for Free',
-  mobileLinkCta: 'Try Now',
+CookingSchoolAd.propTypes = {
+  cloudinaryId: PropTypes.string,
+  description: PropTypes.string,
+  deviceType: PropTypes.string.isRequired,
+  headline: PropTypes.string,
+  href: PropTypes.string.isRequired,
+  identifier: PropTypes.oneOf(['landing', 'detail']).isRequired,
+  linkCta: PropTypes.string,
+  mobileLinkCta: PropTypes.string,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default CookingSchoolAd;

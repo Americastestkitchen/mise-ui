@@ -1,6 +1,6 @@
 import breakpoint from 'styled-components-breakpoint';
-import PropTypes, { InferProps } from 'prop-types';
-import React from 'react';
+import PropTypes from 'prop-types';
+import React, { ReactElement } from 'react';
 import styled, { css } from 'styled-components';
 
 import { getImageUrl } from '../../../../lib/cloudinary';
@@ -135,23 +135,23 @@ const FreeTrialCta = styled.a.attrs({
   className: 'free-trial-ad__cta',
 })`${withThemes(FreeTrialCtaTheme)}`;
 
-const FreeTrialAdProps = {
-  cloudinaryId: PropTypes.string.isRequired,
-  cta: PropTypes.string.isRequired,
-  ctaHref: PropTypes.string.isRequired,
-  onClick: PropTypes.func,
-  title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string.isRequired,
+type FreeTrialAdProps = {
+  cloudinaryId: string;
+  cta: string;
+  ctaHref: string;
+  onClick: () => void;
+  title: string;
+  subtitle: string;
 };
 
-const FreeTrialAd: React.FC<InferProps<typeof FreeTrialAdProps>> = ({
+const FreeTrialAd = ({
   cloudinaryId,
   cta,
   ctaHref,
   onClick,
   subtitle,
   title,
-}) => (
+}: FreeTrialAdProps): ReactElement => (
   <FreeTrialWrapper>
     <FreeTrialPicture>
       <source
@@ -187,7 +187,7 @@ const FreeTrialAd: React.FC<InferProps<typeof FreeTrialAdProps>> = ({
         </FreeTrialSubtitle>
         <FreeTrialCta
           href={ctaHref}
-          onClick={onClick ?? undefined}
+          onClick={onClick}
           title={cta}
         >
           {cta}
@@ -197,10 +197,13 @@ const FreeTrialAd: React.FC<InferProps<typeof FreeTrialAdProps>> = ({
   </FreeTrialWrapper>
 );
 
-FreeTrialAd.propTypes = FreeTrialAdProps;
-
-FreeTrialAd.defaultProps = {
-  onClick: null,
+FreeTrialAd.propTypes = {
+  cloudinaryId: PropTypes.string.isRequired,
+  cta: PropTypes.string.isRequired,
+  ctaHref: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
 };
 
 export default FreeTrialAd;

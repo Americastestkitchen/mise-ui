@@ -1,6 +1,6 @@
 import breakpoint from 'styled-components-breakpoint';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
-import PropTypes, { InferProps } from 'prop-types';
+import React, { ReactElement, useCallback, useEffect, useRef, useState } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import plyrStyles from './plyrStyles';
 
@@ -155,28 +155,30 @@ display: none;
 
 const plyrOptions = { controls: ['progress', 'current-time', 'duration'], invertTime: false, displayDuration: true };
 
-const AudioPlayerProps = {
+type AudioPlayerProps = {
   /** id of the episode */
-  id: PropTypes.string.isRequired,
+  id: string;
   /** title of the episode */
-  title: PropTypes.string.isRequired,
+  title: string;
   /** episode number */
-  episode: PropTypes.number,
+  episode?: number;
   /** link to page with more episode details */
-  href: PropTypes.string,
-  imageAlt: PropTypes.string,
-  imageUrl: PropTypes.string,
+  href?: string;
+  imageAlt?: string;
+  imageUrl?: string;
 };
 
-const AudioPlayer: React.FC<InferProps<typeof AudioPlayerProps>> = ({
+const AudioPlayer = ({
   id,
   title,
   episode,
-  imageAlt,
-  imageUrl,
-  href,
-}) => {
+  imageAlt = '',
+  imageUrl = '',
+  href = '',
+}: AudioPlayerProps): ReactElement => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const playerEl = useRef<any>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const playerInstance = useRef<Record<string, any> | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -303,13 +305,17 @@ const AudioPlayer: React.FC<InferProps<typeof AudioPlayerProps>> = ({
   );
 };
 
-AudioPlayer.propTypes = AudioPlayerProps;
-
-AudioPlayer.defaultProps = {
-  episode: null,
-  href: '',
-  imageAlt: '',
-  imageUrl: '',
+AudioPlayer.propTypes = {
+  /** id of the episode */
+  id: PropTypes.string.isRequired,
+  /** title of the episode */
+  title: PropTypes.string.isRequired,
+  /** episode number */
+  episode: PropTypes.number,
+  /** link to page with more episode details */
+  href: PropTypes.string,
+  imageAlt: PropTypes.string,
+  imageUrl: PropTypes.string,
 };
 
 export default React.memo(AudioPlayer);

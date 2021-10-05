@@ -1,6 +1,6 @@
 import breakpoint from 'styled-components-breakpoint';
-import PropTypes, { InferProps } from 'prop-types';
-import React from 'react';
+import PropTypes from 'prop-types';
+import React, { ReactElement } from 'react';
 import styled, { css } from 'styled-components';
 
 import { getImageUrl } from '../../../lib/cloudinary';
@@ -146,23 +146,23 @@ const SingleProductCta = styled.a.attrs({
   className: 'single-product-ad__cta',
 })`${withThemes(SingleProductCtaTheme)}`;
 
-const SingleProductAdProps = {
-  cloudinaryId: PropTypes.string.isRequired,
-  cta: PropTypes.string.isRequired,
-  ctaHref: PropTypes.string.isRequired,
-  ctaTarget: PropTypes.string,
-  onClick: PropTypes.func,
-  title: PropTypes.string.isRequired,
+type SingleProductAdProps = {
+  cloudinaryId: string;
+  cta: string;
+  ctaHref: string;
+  ctaTarget?: string;
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
+  title: string;
 };
 
-const SingleProductAd: React.FC<InferProps<typeof SingleProductAdProps>> = ({
+const SingleProductAd = ({
   cloudinaryId,
   cta,
   ctaHref,
   ctaTarget,
   onClick,
   title,
-}) => (
+}: SingleProductAdProps): ReactElement => (
   <SingleProductWrapper>
     <SingleProductInner>
       <SingleProductContent>
@@ -172,8 +172,8 @@ const SingleProductAd: React.FC<InferProps<typeof SingleProductAdProps>> = ({
           </SingleProductTitle>
           <SingleProductCta
             href={ctaHref}
-            onClick={onClick ?? undefined}
-            target={ctaTarget ?? undefined}
+            onClick={onClick}
+            target={ctaTarget}
             title={cta}
           >
             {cta}
@@ -208,11 +208,13 @@ const SingleProductAd: React.FC<InferProps<typeof SingleProductAdProps>> = ({
   </SingleProductWrapper>
 );
 
-SingleProductAd.propTypes = SingleProductAdProps;
-
-SingleProductAd.defaultProps = {
-  ctaTarget: null,
-  onClick: null,
+SingleProductAd.propTypes = {
+  cloudinaryId: PropTypes.string.isRequired,
+  cta: PropTypes.string.isRequired,
+  ctaHref: PropTypes.string.isRequired,
+  ctaTarget: PropTypes.string,
+  onClick: PropTypes.func,
+  title: PropTypes.string.isRequired,
 };
 
 export default SingleProductAd;

@@ -1,6 +1,6 @@
 import breakpoint from 'styled-components-breakpoint';
-import PropTypes, { InferProps } from 'prop-types';
-import React from 'react';
+import PropTypes from 'prop-types';
+import React, { ReactElement } from 'react';
 import styled, { css } from 'styled-components';
 
 import Badge from '../../../Badge';
@@ -165,18 +165,18 @@ const ProductCta = styled.a.attrs({
   className: 'product__cta',
 })`${withThemes(ProductCtaTheme)}`;
 
-const SingleProductShowcaseAdProps = {
-  cloudinaryId: PropTypes.string.isRequired,
-  cta: PropTypes.string.isRequired,
-  ctaHref: PropTypes.string.isRequired,
-  ctaTarget: PropTypes.string,
-  onClick: PropTypes.func,
-  siteKey: PropTypes.oneOf(['atk', 'cio', 'cco', 'kids', 'school', 'shop']).isRequired,
-  subtitle: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+type SingleProductShowcaseAdProps = {
+  cloudinaryId: string;
+  cta: string;
+  ctaHref: string;
+  ctaTarget?: string;
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
+  siteKey: 'atk' | 'cio' | 'cco' | 'kids' | 'school' | 'shop';
+  subtitle: string;
+  title: string;
 };
 
-const SingleProductShowcaseAd: React.FC<InferProps<typeof SingleProductShowcaseAdProps>> = ({
+const SingleProductShowcaseAd = ({
   cloudinaryId,
   cta,
   ctaHref,
@@ -185,7 +185,7 @@ const SingleProductShowcaseAd: React.FC<InferProps<typeof SingleProductShowcaseA
   siteKey,
   subtitle,
   title,
-}) => (
+}: SingleProductShowcaseAdProps): ReactElement => (
   <Product>
     <ProductPicture>
       <source
@@ -221,8 +221,8 @@ const SingleProductShowcaseAd: React.FC<InferProps<typeof SingleProductShowcaseA
         </ProductSubtitle>
         <ProductCta
           href={ctaHref}
-          onClick={onClick ?? undefined}
-          target={ctaTarget ?? undefined}
+          onClick={onClick}
+          target={ctaTarget}
           title={cta}
         >
           {cta}
@@ -235,11 +235,15 @@ const SingleProductShowcaseAd: React.FC<InferProps<typeof SingleProductShowcaseA
   </Product>
 );
 
-SingleProductShowcaseAd.propTypes = SingleProductShowcaseAdProps;
-
-SingleProductShowcaseAd.defaultProps = {
-  ctaTarget: null,
-  onClick: null,
+SingleProductShowcaseAd.propTypes = {
+  cloudinaryId: PropTypes.string.isRequired,
+  cta: PropTypes.string.isRequired,
+  ctaHref: PropTypes.string.isRequired,
+  ctaTarget: PropTypes.string,
+  onClick: PropTypes.func,
+  siteKey: PropTypes.oneOf(['atk', 'cio', 'cco', 'kids', 'school', 'shop']).isRequired,
+  subtitle: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default SingleProductShowcaseAd;

@@ -1,6 +1,6 @@
 import breakpoint from 'styled-components-breakpoint';
-import PropTypes, { InferProps } from 'prop-types';
-import React from 'react';
+import PropTypes from 'prop-types';
+import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 
 // grab email for for bottom logic
@@ -267,37 +267,37 @@ const Title = styled.h3`
   `}
 `;
 
-const ReviewsMarketingHatProps = {
-  buttonText: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  desktopAsset: PropTypes.string,
-  headline: PropTypes.string.isRequired,
-  incode: PropTypes.string.isRequired,
+type ReviewsMarketingHatProps = {
+  buttonText: string;
+  description: string;
+  desktopAsset?: string;
+  headline: string;
+  incode: string;
   /** Input Id used in email form to shift focus on error */
-  inputId: PropTypes.string.isRequired,
+  inputId: string;
   /** Remove Email Capture in instances where user is not anon */
-  isAnonymous: PropTypes.bool.isRequired,
-  mdc: PropTypes.string.isRequired,
-  mobileAsset: PropTypes.string,
+  isAnonymous: boolean;
+  mdc: string;
+  mobileAsset?: string;
   /** Function that redirects & fires mixpanel w/ corresponding incodes */
-  onSubmit: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired,
+  onSubmit: (e: React.MouseEvent<HTMLAnchorElement>) => void;
+  title: string;
   /** Object used to prevent marketing hat flashing while user is being defined */
 };
 
-const ReviewsMarketingHat: React.FC<InferProps<typeof ReviewsMarketingHatProps>> = ({
+const ReviewsMarketingHat = ({
   buttonText,
   description,
-  desktopAsset,
+  desktopAsset = 'ATK Reviews Ads/PansHat_Desktop_3x.jpg',
   headline,
   incode,
   inputId,
   isAnonymous,
   mdc,
-  mobileAsset,
+  mobileAsset = 'ATK Reviews Ads/PansHat_Mobile_3x.jpg',
   onSubmit,
   title,
-}) => (
+}: ReviewsMarketingHatProps): ReactElement => (
   <MarketingHatWrapper className={isAnonymous ? 'anon-user' : ''}>
     <AdImage>
       <source
@@ -340,11 +340,22 @@ const ReviewsMarketingHat: React.FC<InferProps<typeof ReviewsMarketingHatProps>>
   </MarketingHatWrapper>
 );
 
-ReviewsMarketingHat.propTypes = ReviewsMarketingHatProps;
-
-ReviewsMarketingHat.defaultProps = {
-  desktopAsset: 'ATK Reviews Ads/PansHat_Desktop_3x.jpg',
-  mobileAsset: 'ATK Reviews Ads/PansHat_Mobile_3x.jpg',
+ReviewsMarketingHat.propTypes = {
+  buttonText: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  desktopAsset: PropTypes.string,
+  headline: PropTypes.string.isRequired,
+  incode: PropTypes.string.isRequired,
+  /** Input Id used in email form to shift focus on error */
+  inputId: PropTypes.string.isRequired,
+  /** Remove Email Capture in instances where user is not anon */
+  isAnonymous: PropTypes.bool.isRequired,
+  mdc: PropTypes.string.isRequired,
+  mobileAsset: PropTypes.string,
+  /** Function that redirects & fires mixpanel w/ corresponding incodes */
+  onSubmit: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+  /** Object used to prevent marketing hat flashing while user is being defined */
 };
 
 export default ReviewsMarketingHat;

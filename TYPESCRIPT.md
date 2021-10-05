@@ -2,10 +2,7 @@
 
 ## Prop Types
 
-1. Move the component prop type definition to a constant above the functional component.
-2. Add `as const` after array literals in prop types like `oneOf`. This tells typescript the value is readonly and thus a tuple, which allows typescript to infer the string literal values instead of being any string.
-3. Use the `InferProps` type utility from the prop-types package to infer the type definition from existing prop types values. Pass that type as the generic to React's type for functional components. (`React.FC`). To keep the formatting from wrapping, you can extract that type as shown. (`BadgeFC`)
-4. Make sure to replace the component's propTypes value with the constant moved above the component. 
+1. Because of an issue with InferProps, Typescript props should be declared in addition to propType definitions. This will let us migrate to es6 default parameters, which are deprecated in react because of future limitations.
 
 Badge.js
 
@@ -23,28 +20,39 @@ Badge.js
         type: PropTypes.oneOf(['atk', 'cio', 'cco', 'kids', 'school', 'shop']).isRequired,
     };
 
+    Badge.defaultProps = {
+        className: '',
+        fill: '#000000',
+    };
+
     export default Badge;
 ```
 
 Badge.tsx
 
 ```typescript
-    import React from 'react';
-    import PropTypes, { InferProps } from 'prop-types';
+    import React, { ReactElement } from 'react';
+    import PropTypes from 'prop-types';
 
     const BadgeProps = {
-        className: PropTypes.string,
-        fill: PropTypes.string,
-        type: PropTypes.oneOf(['atk', 'cio', 'cco', 'kids', 'school', 'shop'] as const).isRequired,
+        className?: string;
+        fill?: string;
+        type: 'atk' | 'cio' | 'cco' | 'kids' | 'school' | 'shop';
     };
 
-    type BadgeFC = React.FC<InferProps<typeof BadgeProps>>;
-
-    const Badge: BadgeFC = ({ className, fill, type }) => {
+    const Badge = ({ 
+        className, 
+        fill = '#000000', 
+        type 
+    }: BadgeProps): ReactElement => {
         return <div>{...}</div>
     }
 
-    Badge.propTypes = BadgeProps;
+    Badge.propTypes = {
+        className: PropTypes.string,
+        fill: PropTypes.string,
+        type: PropTypes.oneOf(['atk', 'cio', 'cco', 'kids', 'school', 'shop']).isRequired,
+    };
 
     export default Badge;
 ```
@@ -82,7 +90,7 @@ Badge.tsx
     ```typescript
     const AccordionButton = styled.button.attrs({
         className: 'accordion-item__button' as string,
-    })<{ hasIcon: (typeof iconKeys[number] | null | undefined)}>`
+    })<{ hasIcon: keyof typeof icons | null | undefined}>`
     ```
 3. I ran into issues with merging the DefaultTheme definition for styled components. For now explicitly defining types is more than acceptable. Put you object definition between `css` and `.
 
@@ -94,19 +102,6 @@ Badge.tsx
     }
     ```
 
-## Dom Typings
-
-1. The strict null checks compiler option has a lot of benefit, but one of the downsides is some extra noise when passing values to dom types. Many DOM types type error when null is passed as a value. You can quickly silence this with nullish coalescing to undefined with `?? undefined`.
-
-    ```tsx
-    <a
-        href={ctaHref}
-        target={ctaTarget ?? undefined}
-        onClick={onClick ?? undefined}
-        title={cta}
-    >...</a>
-    ```
-
 ## Misc
 
 1. Pass through with ...restProps.
@@ -114,8 +109,14 @@ Badge.tsx
     If you run into a component that passes through properties. These are often used to point to a dom element directly and may expect those dom typings. While many will get inferred through styled components, there are some that need explicit definitions. Use `React.ComponentPropsWithoutRef` for element definitions, and combine with either interface extension or unions with types to add on new properties.
 
     ```typescript
-        type MyButtonFC = React.FC<React.ComponentPropsWithoutRef<'button'>>
-        const MyButton: MyButtonFC = ({ children, ...restProps }) => {
-            return <button {...restProps}>{children}</button>
-        }
+        import React, { 
+            ReactElement, 
+            ComponentPropsWithoutRef 
+        } from 'react';
+
+        type MyButtonProps = ComponentPropsWithoutRef<'button'>;
+
+        const MyButton = ({ children, type, ...restProps }: MyButtonProps): ReactElement => (
+            <button type={type === 'submit' ? 'submit' : 'button'} {...restProps}>{children}</button>
+        );
     ```

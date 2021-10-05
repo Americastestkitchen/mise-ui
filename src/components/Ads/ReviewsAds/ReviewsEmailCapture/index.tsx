@@ -1,6 +1,6 @@
 import breakpoint from 'styled-components-breakpoint';
-import PropTypes, { InferProps } from 'prop-types';
-import React from 'react';
+import PropTypes from 'prop-types';
+import React, { ReactElement } from 'react';
 import styled, { css } from 'styled-components';
 
 import {
@@ -306,28 +306,33 @@ const MainContent = styled.div`
   `}
 `;
 
-const ReviewsEmailCaptureProps = {
-  buttonTextColor: PropTypes.string,
-  buttonText: PropTypes.string,
-  description: PropTypes.string.isRequired,
-  errorText: PropTypes.string,
-  inputLabel: PropTypes.string,
-  inputId: PropTypes.string.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  placeholder: PropTypes.string,
-  success: PropTypes.bool,
-  successText: PropTypes.string,
-  title: PropTypes.string.isRequired,
+const ReviewsEmailCaptureDefaults = {
+  success: false,
+  successText: 'Thank you! Get ready for Well-Equipped Cook in your inbox on Wednesdays!',
 };
 
-const ReviewsEmailCapture: React.FC<InferProps<typeof ReviewsEmailCaptureProps>> = ({
+type ReviewsEmailCaptureProps = {
+  buttonTextColor?: string;
+  buttonText?: string;
+  description: string;
+  errorText?: string;
+  inputLabel?: string;
+  inputId: string;
+  onSubmit: (email: string) => void;
+  placeholder?: string;
+  success?: boolean;
+  successText?: string;
+  title: string;
+};
+
+const ReviewsEmailCapture = ({
   description,
   onSubmit,
-  success,
-  successText,
+  success = ReviewsEmailCaptureDefaults.success,
+  successText = ReviewsEmailCaptureDefaults.successText,
   title,
-  ...emailFormProps
-}) => (
+  ...restProps
+}: ReviewsEmailCaptureProps): ReactElement => (
   <AdWrapper success={success}>
     <MainContent>
       <AdTitle>{title}</AdTitle>
@@ -344,7 +349,7 @@ const ReviewsEmailCapture: React.FC<InferProps<typeof ReviewsEmailCaptureProps>>
       )
       : (
         <EmailForm
-          {...emailFormProps}
+          {...restProps}
           optionalIcon="‣"
           onSubmit={onSubmit}
           howWeUseText="How we use your email"
@@ -353,12 +358,18 @@ const ReviewsEmailCapture: React.FC<InferProps<typeof ReviewsEmailCaptureProps>>
   </AdWrapper>
 );
 
-ReviewsEmailCapture.propTypes = ReviewsEmailCaptureProps;
-
-ReviewsEmailCapture.defaultProps = {
-  success: false,
-  successText: 'Thank you! Get ready for Well-Equipped Cook in your inbox on Wednesdays!',
-  ...EmailForm.defaultProps,
+ReviewsEmailCapture.propTypes = {
+  buttonTextColor: PropTypes.string,
+  buttonText: PropTypes.string,
+  description: PropTypes.string.isRequired,
+  errorText: PropTypes.string,
+  inputLabel: PropTypes.string,
+  inputId: PropTypes.string.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  placeholder: PropTypes.string,
+  success: PropTypes.bool,
+  successText: PropTypes.string,
+  title: PropTypes.string.isRequired,
 };
 
 export default ReviewsEmailCapture;

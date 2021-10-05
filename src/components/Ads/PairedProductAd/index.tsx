@@ -1,6 +1,6 @@
 import breakpoint from 'styled-components-breakpoint';
-import PropTypes, { InferProps } from 'prop-types';
-import React from 'react';
+import PropTypes from 'prop-types';
+import React, { ReactElement } from 'react';
 import styled, { css } from 'styled-components';
 
 import { getImageUrl } from '../../../lib/cloudinary';
@@ -236,26 +236,26 @@ const PairedProductCta = styled.a.attrs({
   className: 'paired-product__cta',
 })`${withThemes(PairedProductCtaTheme)}`;
 
-const PairedProductsProps = {
-  title: PropTypes.string.isRequired,
-  onClick: PropTypes.func,
-  products: PropTypes.arrayOf(
-    PropTypes.shape({
-      cloudinaryId: PropTypes.string.isRequired,
-      cta: PropTypes.string.isRequired,
-      ctaHref: PropTypes.string.isRequired,
-      ctaTarget: PropTypes.string,
-      subtitle: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-    } as const).isRequired,
-  ).isRequired,
+type Product = {
+  cloudinaryId: string;
+  cta: string;
+  ctaHref: string;
+  ctaTarget?: string;
+  subtitle: string;
+  title: string;
+}
+
+type PairedProductsProps = {
+  title: string;
+  onClick?: () => void;
+  products: Product[];
 };
 
-const PairedProducts: React.FC<InferProps<typeof PairedProductsProps>> = ({
+const PairedProducts = ({
   onClick,
   products,
   title,
-}) => (
+}: PairedProductsProps): ReactElement => (
   <PairedProductWrapper>
     <PairedProductInnerWrapper>
       <PairedProductMainTitle>
@@ -290,8 +290,8 @@ const PairedProducts: React.FC<InferProps<typeof PairedProductsProps>> = ({
           </PairedProductInfo>
           <PairedProductCta
             href={ctaHref}
-            onClick={onClick ?? undefined}
-            target={ctaTarget ?? undefined}
+            onClick={onClick}
+            target={ctaTarget}
             title={cta}
           >
             {cta}
@@ -302,10 +302,19 @@ const PairedProducts: React.FC<InferProps<typeof PairedProductsProps>> = ({
   </PairedProductWrapper>
 );
 
-PairedProducts.propTypes = PairedProductsProps;
-
-PairedProducts.defaultProps = {
-  onClick: null,
+PairedProducts.propTypes = {
+  title: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
+  products: PropTypes.arrayOf(
+    PropTypes.shape({
+      cloudinaryId: PropTypes.string.isRequired,
+      cta: PropTypes.string.isRequired,
+      ctaHref: PropTypes.string.isRequired,
+      ctaTarget: PropTypes.string,
+      subtitle: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+    } as const).isRequired,
+  ).isRequired,
 };
 
 export default PairedProducts;

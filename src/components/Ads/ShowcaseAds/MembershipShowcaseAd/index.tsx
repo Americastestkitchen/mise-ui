@@ -1,6 +1,6 @@
 import breakpoint from 'styled-components-breakpoint';
-import PropTypes, { InferProps } from 'prop-types';
-import React from 'react';
+import PropTypes from 'prop-types';
+import React, { ReactElement, ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 
 import Gif from '../../../Gif';
@@ -127,21 +127,21 @@ const deviceIdMap = {
   phone: 'mise-play/membership-showcase-tablet-3',
 };
 
-const MembershipShowcaseAdProps = {
-  cta: PropTypes.string.isRequired,
-  ctaHref: PropTypes.string.isRequired,
-  deviceType: PropTypes.oneOf(['desktop', 'phone', 'tablet'] as const).isRequired,
-  onClick: PropTypes.func,
-  title: PropTypes.func.isRequired,
+type MembershipShowcaseAdProps = {
+  cta: string;
+  ctaHref: string;
+  deviceType: 'desktop' | 'phone' | 'tablet';
+  onClick: (e: React.MouseEvent<HTMLAnchorElement>) => void;
+  title: () => ReactNode;
 };
 
-const MembershipShowcaseAd: React.FC<InferProps<typeof MembershipShowcaseAdProps>> = ({
+const MembershipShowcaseAd = ({
   cta,
   ctaHref,
   deviceType,
   onClick,
   title,
-}) => (
+}: MembershipShowcaseAdProps): ReactElement => (
   <MembershipShowcase>
     <MembershipShowcaseFigure>
       <Gif
@@ -160,7 +160,7 @@ const MembershipShowcaseAd: React.FC<InferProps<typeof MembershipShowcaseAdProps
       />
       <MembershipCta
         href={ctaHref}
-        onClick={onClick ?? undefined}
+        onClick={onClick}
         title={cta}
       >
         {cta}
@@ -169,10 +169,12 @@ const MembershipShowcaseAd: React.FC<InferProps<typeof MembershipShowcaseAdProps
   </MembershipShowcase>
 );
 
-MembershipShowcaseAd.propTypes = MembershipShowcaseAdProps;
-
-MembershipShowcaseAd.defaultProps = {
-  onClick: null,
+MembershipShowcaseAd.propTypes = {
+  cta: PropTypes.string.isRequired,
+  ctaHref: PropTypes.string.isRequired,
+  deviceType: PropTypes.oneOf(['desktop', 'phone', 'tablet'] as const).isRequired,
+  onClick: PropTypes.func,
+  title: PropTypes.func.isRequired,
 };
 
 export default MembershipShowcaseAd;

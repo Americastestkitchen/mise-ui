@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes, { InferProps } from 'prop-types';
+import React, { ReactElement } from 'react';
+import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 
@@ -141,15 +141,15 @@ const AccordionSvgWrapperEl = styled.div.attrs({
   ${withThemes(AccordionSvgWrapperTheme)}
 `;
 
-const AccordionControlProps = {
-  iconSize: PropTypes.oneOf(['default', 'large', 'extraLarge']),
-  isExpanded: PropTypes.bool.isRequired,
+type AccordionControlProps = {
+  iconSize?: 'default' | 'large' | 'extraLarge';
+  isExpanded: boolean;
 };
 
-const AccordionControl: React.FC<InferProps<typeof AccordionControlProps>> = ({
-  iconSize,
+const AccordionControl = ({
+  iconSize = 'default',
   isExpanded,
-}) => (
+}: AccordionControlProps): ReactElement => (
   <AccordionSvgWrapperEl
     isExpanded={isExpanded}
   >
@@ -157,10 +157,10 @@ const AccordionControl: React.FC<InferProps<typeof AccordionControlProps>> = ({
   </AccordionSvgWrapperEl>
 );
 
-AccordionControl.propTypes = AccordionControlProps;
-
-AccordionControl.defaultProps = {
-  iconSize: 'default',
+// TODO: remove when fully typescript
+AccordionControl.propTypes = {
+  iconSize: PropTypes.oneOf(['default', 'large', 'extraLarge']),
+  isExpanded: PropTypes.bool.isRequired,
 };
 
 export default AccordionControl;

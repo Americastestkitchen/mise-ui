@@ -1,6 +1,5 @@
-// import breakpoint from 'styled-components-breakpoint';
-import PropTypes, { InferProps } from 'prop-types';
-import React from 'react';
+import PropTypes from 'prop-types';
+import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 
 import Image from '../../../Cards/shared/Image';
@@ -65,21 +64,28 @@ const AdWrapper = styled.div`
   }
 `;
 
-const BookCarouselAdProps = {
-  cloudinaryId: PropTypes.string,
-  ctaLinkText: PropTypes.string,
-  hrefUrl: PropTypes.string,
-  sourceKey: PropTypes.string.isRequired,
-  title: PropTypes.string,
+const BookCarouselAdDefaults = {
+  cloudinaryId: 'ATK Reviews Ads/Mask_Group_49066_3x.jpg',
+  ctaLinkText: 'Save 56% Now',
+  hrefUrl: 'https://shop.americastestkitchen.com/complete-atk-21.html',
+  title: 'Every Recipe (1,670!) From All 21 Seasons',
 };
 
-const BookCarouselAd: React.FC<InferProps<typeof BookCarouselAdProps>> = ({
-  cloudinaryId,
-  ctaLinkText,
-  hrefUrl,
+type BookCarouselAdProps = {
+  cloudinaryId?: string;
+  ctaLinkText?: string;
+  hrefUrl?: string;
+  sourceKey: string;
+  title?: string;
+};
+
+const BookCarouselAd = ({
+  cloudinaryId = BookCarouselAdDefaults.cloudinaryId,
+  ctaLinkText = BookCarouselAdDefaults.ctaLinkText,
+  hrefUrl = BookCarouselAdDefaults.hrefUrl,
   sourceKey,
-  title,
-}) => (
+  title = BookCarouselAdDefaults.title,
+}: BookCarouselAdProps): ReactElement => (
   <AdWrapper>
     <AdTitle>{title}</AdTitle>
     <Image
@@ -91,13 +97,12 @@ const BookCarouselAd: React.FC<InferProps<typeof BookCarouselAdProps>> = ({
   </AdWrapper>
 );
 
-BookCarouselAd.propTypes = BookCarouselAdProps;
-
-BookCarouselAd.defaultProps = {
-  cloudinaryId: 'ATK Reviews Ads/Mask_Group_49066_3x.jpg',
-  ctaLinkText: 'Save 56% Now',
-  hrefUrl: 'https://shop.americastestkitchen.com/complete-atk-21.html',
-  title: 'Every Recipe (1,670!) From All 21 Seasons',
+BookCarouselAd.propTypes = {
+  cloudinaryId: PropTypes.string,
+  ctaLinkText: PropTypes.string,
+  hrefUrl: PropTypes.string,
+  sourceKey: PropTypes.string.isRequired,
+  title: PropTypes.string,
 };
 
 export default BookCarouselAd;

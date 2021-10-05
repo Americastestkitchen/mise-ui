@@ -1,6 +1,6 @@
 import breakpoint from 'styled-components-breakpoint';
-import PropTypes, { InferProps } from 'prop-types';
-import React from 'react';
+import PropTypes from 'prop-types';
+import React, { ReactElement } from 'react';
 import styled, { css } from 'styled-components';
 
 import {
@@ -234,31 +234,31 @@ const ContentTitle = styled.p.attrs({
   className: 'landing-ad-content-title',
 })`${withThemes(ContentTitleTheme)}`;
 
-const LandingEmailAdProps = {
-  buttonText: PropTypes.string,
-  desktopImageUrl: PropTypes.string.isRequired,
-  errorText: PropTypes.string,
-  inputId: PropTypes.string.isRequired,
-  headline: PropTypes.string,
-  onSubmit: PropTypes.func.isRequired,
-  tabletImageUrl: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  success: PropTypes.bool,
-  successText: PropTypes.string,
+type LandingEmailAdProps = {
+  buttonText?: string;
+  desktopImageUrl: string;
+  errorText?: string;
+  inputId: string;
+  headline?: string;
+  onSubmit: (email: string) => void;
+  tabletImageUrl: string;
+  title: string;
+  success?: boolean;
+  successText?: string;
 };
 
-const LandingEmailAd: React.FC<InferProps<typeof LandingEmailAdProps>> = ({
-  buttonText,
+const LandingEmailAd = ({
+  buttonText = 'Sign me up',
   desktopImageUrl,
-  errorText,
-  headline,
+  errorText = 'Invalid email address',
+  headline = '',
   inputId,
   onSubmit,
-  success,
-  successText,
+  success = false,
+  successText = 'Thank you! Get ready for watch and cook newsletter in your inbox.',
   tabletImageUrl,
   title,
-}) => (
+}: LandingEmailAdProps): ReactElement => (
   <LandingEmailWrapper success={success}>
     <ImageWrapper>
       <Image
@@ -299,14 +299,17 @@ const LandingEmailAd: React.FC<InferProps<typeof LandingEmailAdProps>> = ({
   </LandingEmailWrapper>
 );
 
-LandingEmailAd.propTypes = LandingEmailAdProps;
-
-LandingEmailAd.defaultProps = {
-  buttonText: 'Sign me up',
-  errorText: 'Invalid email address',
-  headline: '',
-  success: false,
-  successText: 'Thank you! Get ready for watch and cook newsletter in your inbox.',
+LandingEmailAd.propTypes = {
+  buttonText: PropTypes.string,
+  desktopImageUrl: PropTypes.string.isRequired,
+  errorText: PropTypes.string,
+  inputId: PropTypes.string.isRequired,
+  headline: PropTypes.string,
+  onSubmit: PropTypes.func.isRequired,
+  tabletImageUrl: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  success: PropTypes.bool,
+  successText: PropTypes.string,
 };
 
 export default LandingEmailAd;

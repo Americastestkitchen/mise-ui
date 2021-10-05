@@ -1,6 +1,6 @@
 import breakpoint from 'styled-components-breakpoint';
-import PropTypes, { InferProps } from 'prop-types';
-import React from 'react';
+import PropTypes from 'prop-types';
+import React, { ReactElement } from 'react';
 import styled, { css } from 'styled-components';
 
 import Gif from '../../../Gif';
@@ -188,17 +188,17 @@ const deviceIdMap = {
   phone: 'mise-play/school-showcase-tablet-3',
 };
 
-const SchoolAdProps = {
-  cta: PropTypes.string.isRequired,
-  ctaHref: PropTypes.string.isRequired,
-  ctaTarget: PropTypes.string,
-  deviceType: PropTypes.oneOf(['desktop', 'phone', 'tablet'] as const).isRequired,
-  onClick: PropTypes.func,
-  subtitle: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+type SchoolAdProps = {
+  cta: string;
+  ctaHref: string;
+  ctaTarget?: string;
+  deviceType: 'desktop' | 'phone' | 'tablet';
+  onClick: (e: React.MouseEvent<HTMLAnchorElement>) => void;
+  subtitle: string;
+  title: string;
 };
 
-const SchoolAd: React.FC<InferProps<typeof SchoolAdProps>> = ({
+const SchoolAd = ({
   cta,
   ctaHref,
   ctaTarget,
@@ -206,7 +206,7 @@ const SchoolAd: React.FC<InferProps<typeof SchoolAdProps>> = ({
   onClick,
   subtitle,
   title,
-}) => (
+}: SchoolAdProps): ReactElement => (
   <School>
     <SchoolFigure>
       <Gif
@@ -233,8 +233,8 @@ const SchoolAd: React.FC<InferProps<typeof SchoolAdProps>> = ({
         </SchoolSubtitle>
         <SchoolCta
           href={ctaHref}
-          target={ctaTarget ?? undefined}
-          onClick={onClick ?? undefined}
+          target={ctaTarget}
+          onClick={onClick}
           title={cta}
         >
           {cta}
@@ -244,11 +244,14 @@ const SchoolAd: React.FC<InferProps<typeof SchoolAdProps>> = ({
   </School>
 );
 
-SchoolAd.propTypes = SchoolAdProps;
-
-SchoolAd.defaultProps = {
-  ctaTarget: null,
-  onClick: null,
+SchoolAd.propTypes = {
+  cta: PropTypes.string.isRequired,
+  ctaHref: PropTypes.string.isRequired,
+  ctaTarget: PropTypes.string,
+  deviceType: PropTypes.oneOf(['desktop', 'phone', 'tablet']).isRequired,
+  onClick: PropTypes.func,
+  subtitle: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default SchoolAd;

@@ -1,6 +1,6 @@
 import breakpoint from 'styled-components-breakpoint';
-import PropTypes, { InferProps } from 'prop-types';
-import React from 'react';
+import PropTypes from 'prop-types';
+import React, { ReactElement } from 'react';
 import styled, { css } from 'styled-components';
 import { getImageUrl } from '../../../lib/cloudinary';
 import {
@@ -192,22 +192,22 @@ const HeroAdCta = styled.span.attrs({
   hoverColor: string | null | undefined
 }>`${withThemes(HeroAdCtaTheme)}`;
 
-const HeroAdsProps = {
-  backgroundColor: PropTypes.string,
-  buttonHoverColor: PropTypes.string,
-  buttonColor: PropTypes.string,
-  cloudinaryId: PropTypes.string.isRequired,
-  cta: PropTypes.string.isRequired,
-  ctaHref: PropTypes.string.isRequired,
-  ctaTarget: PropTypes.string,
-  onClick: PropTypes.func,
-  subtitle: PropTypes.string,
-  title: PropTypes.string.isRequired,
+type HeroAdsProps = {
+  backgroundColor?: string;
+  buttonHoverColor?: string;
+  buttonColor?: string;
+  cloudinaryId: string;
+  cta: string;
+  ctaHref: string,
+  ctaTarget?: string,
+  onClick?: () => void,
+  subtitle?: string;
+  title: string;
 };
 
-const HeroAds: React.FC<InferProps<typeof HeroAdsProps>> = ({
-  backgroundColor,
-  buttonColor,
+const HeroAds = ({
+  backgroundColor = 'transparent',
+  buttonColor = 'tomato',
   buttonHoverColor,
   cloudinaryId,
   cta,
@@ -216,12 +216,12 @@ const HeroAds: React.FC<InferProps<typeof HeroAdsProps>> = ({
   onClick,
   subtitle,
   title,
-}) => (
+}: HeroAdsProps): ReactElement => (
   <HeroAdWrapper>
     <a
       href={ctaHref}
-      target={ctaTarget ?? undefined}
-      onClick={onClick ?? undefined}
+      target={ctaTarget}
+      onClick={onClick}
       title={cta}
     >
       <HeroAdInnerWrapper
@@ -258,6 +258,7 @@ const HeroAds: React.FC<InferProps<typeof HeroAdsProps>> = ({
   </HeroAdWrapper>
 );
 
+// TODO: remove when fully typescript
 HeroAds.propTypes = {
   backgroundColor: PropTypes.string,
   buttonColor: PropTypes.string,
@@ -269,15 +270,6 @@ HeroAds.propTypes = {
   onClick: PropTypes.func,
   subtitle: PropTypes.string,
   title: PropTypes.string.isRequired,
-};
-
-HeroAds.defaultProps = {
-  backgroundColor: 'transparent',
-  buttonColor: 'tomato',
-  buttonHoverColor: null,
-  ctaTarget: null,
-  onClick: null,
-  subtitle: null,
 };
 
 export default HeroAds;
