@@ -81,7 +81,7 @@ import ToggleRefinement from './components/Algolia/shared/ToggleRefinement';
 import * as Icons from './components/DesignTokens/Icon';
 import fonts from './styles/fonts';
 import globalStyle from './styles/global';
-import { color, mixins, spacing } from './styles';
+import { color, font, fontSize, mixins, spacing } from './styles';
 
 export {
   Accordion,
@@ -118,7 +118,9 @@ export {
   FilterButton,
   FinePrint,
   FreeTrialAd,
+  font,
   fonts,
+  fontSize,
   Icons,
   InlineNewsletter,
   globalStyle,

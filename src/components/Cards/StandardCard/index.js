@@ -8,6 +8,7 @@ import Attributions from '../shared/Attributions';
 import CtaLink from '../shared/CtaLink';
 import FavoriteButton from '../shared/FavoriteButton';
 import Image from '../shared/Image';
+import ImageCollage from '../shared/ImageCollage';
 import Sticker from '../shared/Sticker';
 import Title from '../shared/Title';
 
@@ -188,6 +189,7 @@ function StandardCard({
   title,
   href,
 }) {
+  const ImageItem = Array.isArray(imageUrl) ? ImageCollage : Image;
   return (
     <StyledStandardCard
       className={`standard-card${imageUrl ? '' : ' no-image'}`}
@@ -204,7 +206,7 @@ function StandardCard({
               rel={target && target === '_blank' ? 'noopener noreferrer' : null}
               target={target}
             >
-              <Image
+              <ImageItem
                 aria-hidden="true"
                 imageAlt={imageAlt}
                 imageUrl={imageUrl}
