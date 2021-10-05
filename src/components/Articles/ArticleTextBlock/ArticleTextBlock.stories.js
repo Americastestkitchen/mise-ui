@@ -1,4 +1,6 @@
 import React from 'react';
+import styled from 'styled-components';
+import breakpoint from 'styled-components-breakpoint';
 
 import storyProps from './articleTextBlockStoryProps';
 import ArticleTextBlock from './index';
@@ -10,7 +12,15 @@ export default {
   component: ArticleTextBlock,
   decorators: [ addThemedWrapper() ],
   argTypes: { siteKey },
-};
+}; 
+
+const ArticleTextBlockStoryWrapper = styled.div`
+  background-color: #F5F5F5;
+  padding: 1.6rem;
+  ${breakpoint('md')`
+    padding: 3.6rem;
+  `}
+`;
 
 const Template = (args) => <ArticleTextBlock {...args} />;
 
