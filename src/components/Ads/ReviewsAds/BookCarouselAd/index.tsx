@@ -1,6 +1,5 @@
-// import breakpoint from 'styled-components-breakpoint';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 
 import Image from '../../../Cards/shared/Image';
@@ -65,19 +64,34 @@ const AdWrapper = styled.div`
   }
 `;
 
+const BookCarouselAdDefaults = {
+  cloudinaryId: 'ATK Reviews Ads/Mask_Group_49066_3x.jpg',
+  ctaLinkText: 'Save 56% Now',
+  hrefUrl: 'https://shop.americastestkitchen.com/complete-atk-21.html',
+  title: 'Every Recipe (1,670!) From All 21 Seasons',
+};
+
+type BookCarouselAdProps = {
+  cloudinaryId?: string;
+  ctaLinkText?: string;
+  hrefUrl?: string;
+  sourceKey: string;
+  title?: string;
+};
+
 const BookCarouselAd = ({
-  cloudinaryId,
-  ctaLinkText,
-  hrefUrl,
+  cloudinaryId = BookCarouselAdDefaults.cloudinaryId,
+  ctaLinkText = BookCarouselAdDefaults.ctaLinkText,
+  hrefUrl = BookCarouselAdDefaults.hrefUrl,
   sourceKey,
-  title,
-}) => (
+  title = BookCarouselAdDefaults.title,
+}: BookCarouselAdProps): ReactElement => (
   <AdWrapper>
     <AdTitle>{title}</AdTitle>
     <Image
       className="book-carousel-ad__image"
       imageAlt="The Complete America's Test Kitchen TV Show Cookbook"
-      imageUrl={getImageUrl(cloudinaryId, { aspectRatio: '816:1200', width: 272, height: 400 })}
+      imageUrl={cloudinaryId ? getImageUrl(cloudinaryId, { aspectRatio: '816:1200', width: 272, height: 400 }) : ''}
     />
     <AdCtaLink href={`${hrefUrl}?sourcekey=${sourceKey}`} target="_blank">{ctaLinkText}</AdCtaLink>
   </AdWrapper>
@@ -89,13 +103,6 @@ BookCarouselAd.propTypes = {
   hrefUrl: PropTypes.string,
   sourceKey: PropTypes.string.isRequired,
   title: PropTypes.string,
-};
-
-BookCarouselAd.defaultProps = {
-  cloudinaryId: 'ATK Reviews Ads/Mask_Group_49066_3x.jpg',
-  ctaLinkText: 'Save 56% Now',
-  hrefUrl: 'https://shop.americastestkitchen.com/complete-atk-21.html',
-  title: 'Every Recipe (1,670!) From All 21 Seasons',
 };
 
 export default BookCarouselAd;

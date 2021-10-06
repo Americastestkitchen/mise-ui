@@ -1,6 +1,6 @@
 import breakpoint from 'styled-components-breakpoint';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { ReactElement } from 'react';
 import styled, { css } from 'styled-components';
 
 import Gif from '../../../Gif';
@@ -188,6 +188,16 @@ const deviceIdMap = {
   phone: 'mise-play/school-showcase-tablet-3',
 };
 
+type SchoolAdProps = {
+  cta: string;
+  ctaHref: string;
+  ctaTarget?: string;
+  deviceType: 'desktop' | 'phone' | 'tablet';
+  onClick: (e: React.MouseEvent<HTMLAnchorElement>) => void;
+  subtitle: string;
+  title: string;
+};
+
 const SchoolAd = ({
   cta,
   ctaHref,
@@ -196,7 +206,7 @@ const SchoolAd = ({
   onClick,
   subtitle,
   title,
-}) => (
+}: SchoolAdProps): ReactElement => (
   <School>
     <SchoolFigure>
       <Gif
@@ -242,11 +252,6 @@ SchoolAd.propTypes = {
   onClick: PropTypes.func,
   subtitle: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-};
-
-SchoolAd.defaultProps = {
-  ctaTarget: null,
-  onClick: null,
 };
 
 export default SchoolAd;

@@ -1,6 +1,6 @@
 import breakpoint from 'styled-components-breakpoint';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { ReactElement } from 'react';
 import styled, { css } from 'styled-components';
 
 import {
@@ -285,7 +285,7 @@ const AdWrapperTheme = {
   `,
 };
 
-const AdWrapper = styled.div`
+const AdWrapper = styled.div<{ success?: boolean }>`
   ${withThemes(AdWrapperTheme)}
 `;
 
@@ -306,14 +306,33 @@ const MainContent = styled.div`
   `}
 `;
 
+const ReviewsEmailCaptureDefaults = {
+  success: false,
+  successText: 'Thank you! Get ready for Well-Equipped Cook in your inbox on Wednesdays!',
+};
+
+type ReviewsEmailCaptureProps = {
+  buttonTextColor?: string;
+  buttonText?: string;
+  description: string;
+  errorText?: string;
+  inputLabel?: string;
+  inputId: string;
+  onSubmit: (email: string) => void;
+  placeholder?: string;
+  success?: boolean;
+  successText?: string;
+  title: string;
+};
+
 const ReviewsEmailCapture = ({
   description,
   onSubmit,
-  success,
-  successText,
+  success = ReviewsEmailCaptureDefaults.success,
+  successText = ReviewsEmailCaptureDefaults.successText,
   title,
-  ...emailFormProps
-}) => (
+  ...restProps
+}: ReviewsEmailCaptureProps): ReactElement => (
   <AdWrapper success={success}>
     <MainContent>
       <AdTitle>{title}</AdTitle>
@@ -330,7 +349,7 @@ const ReviewsEmailCapture = ({
       )
       : (
         <EmailForm
-          {...emailFormProps}
+          {...restProps}
           optionalIcon="‣"
           onSubmit={onSubmit}
           howWeUseText="How we use your email"
@@ -351,12 +370,6 @@ ReviewsEmailCapture.propTypes = {
   success: PropTypes.bool,
   successText: PropTypes.string,
   title: PropTypes.string.isRequired,
-};
-
-ReviewsEmailCapture.defaultProps = {
-  success: false,
-  successText: 'Thank you! Get ready for Well-Equipped Cook in your inbox on Wednesdays!',
-  ...EmailForm.defaultProps,
 };
 
 export default ReviewsEmailCapture;

@@ -1,6 +1,6 @@
 import breakpoint from 'styled-components-breakpoint';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { ReactElement } from 'react';
 import styled, { css } from 'styled-components';
 
 import { getImageUrl } from '../../../lib/cloudinary';
@@ -236,7 +236,26 @@ const PairedProductCta = styled.a.attrs({
   className: 'paired-product__cta',
 })`${withThemes(PairedProductCtaTheme)}`;
 
-const PairedProducts = ({ onClick, products, title }) => (
+type Product = {
+  cloudinaryId: string;
+  cta: string;
+  ctaHref: string;
+  ctaTarget?: string;
+  subtitle: string;
+  title: string;
+}
+
+type PairedProductsProps = {
+  title: string;
+  onClick?: () => void;
+  products: Product[];
+};
+
+const PairedProducts = ({
+  onClick,
+  products,
+  title,
+}: PairedProductsProps): ReactElement => (
   <PairedProductWrapper>
     <PairedProductInnerWrapper>
       <PairedProductMainTitle>
@@ -294,12 +313,8 @@ PairedProducts.propTypes = {
       ctaTarget: PropTypes.string,
       subtitle: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
-    }),
+    } as const).isRequired,
   ).isRequired,
-};
-
-PairedProducts.defaultProps = {
-  onClick: null,
 };
 
 export default PairedProducts;

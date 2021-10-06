@@ -1,6 +1,6 @@
 import breakpoint from 'styled-components-breakpoint';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { ReactElement } from 'react';
 import styled, { css } from 'styled-components';
 import { getImageUrl } from '../../../lib/cloudinary';
 import {
@@ -35,7 +35,7 @@ const HeroAdWrapper = styled.div.attrs({
  * Wrapper inner (background-color)
  */
 const HeroAdInnerWrapperTheme = {
-  default: css`
+  default: css<{ backgroundColor: keyof typeof color }>`
     background-color: ${({ backgroundColor }) => `${color[backgroundColor] || 'transparent'}`};
     padding: 0 ${spacing.sm};
     position: relative;
@@ -54,7 +54,7 @@ const HeroAdInnerWrapperTheme = {
 
 const HeroAdInnerWrapper = styled.div.attrs({
   className: 'hero-ad__inner',
-})`${withThemes(HeroAdInnerWrapperTheme)}`;
+})<{ backgroundColor?: string }>`${withThemes(HeroAdInnerWrapperTheme)}`;
 
 /**
  * Content (title, subtitle, button, cta)
@@ -164,7 +164,7 @@ const HeroAdImage = styled.img.attrs({
  * Hero ad cta button
  */
 const HeroAdCtaTheme = {
-  default: css`
+  default: css<{ backgroundColor: keyof typeof color, hoverColor: keyof typeof color}>`
     color: ${color.white};
     background-color: ${({ backgroundColor }) => `${color[backgroundColor || 'eclipse']}`};
     display: block;
@@ -187,11 +187,27 @@ const HeroAdCtaTheme = {
 
 const HeroAdCta = styled.span.attrs({
   className: 'hero-ad__cta',
-})`${withThemes(HeroAdCtaTheme)}`;
+})<{
+  backgroundColor?: string,
+  hoverColor?: string
+}>`${withThemes(HeroAdCtaTheme)}`;
+
+type HeroAdsProps = {
+  backgroundColor?: string;
+  buttonHoverColor?: string;
+  buttonColor?: string;
+  cloudinaryId: string;
+  cta: string;
+  ctaHref: string,
+  ctaTarget?: string,
+  onClick?: () => void,
+  subtitle?: string;
+  title: string;
+};
 
 const HeroAds = ({
-  backgroundColor,
-  buttonColor,
+  backgroundColor = 'transparent',
+  buttonColor = 'tomato',
   buttonHoverColor,
   cloudinaryId,
   cta,
@@ -200,7 +216,7 @@ const HeroAds = ({
   onClick,
   subtitle,
   title,
-}) => (
+}: HeroAdsProps): ReactElement => (
   <HeroAdWrapper>
     <a
       href={ctaHref}
@@ -231,8 +247,8 @@ const HeroAds = ({
           />
           <HeroAdCta
             backgroundColor={buttonColor}
-            data-testid="hero-ad__cta"
             hoverColor={buttonHoverColor}
+            data-testid="hero-ad__cta"
           >
             {cta}
           </HeroAdCta>
@@ -242,6 +258,7 @@ const HeroAds = ({
   </HeroAdWrapper>
 );
 
+// TODO: remove when fully typescript
 HeroAds.propTypes = {
   backgroundColor: PropTypes.string,
   buttonColor: PropTypes.string,
@@ -253,15 +270,6 @@ HeroAds.propTypes = {
   onClick: PropTypes.func,
   subtitle: PropTypes.string,
   title: PropTypes.string.isRequired,
-};
-
-HeroAds.defaultProps = {
-  backgroundColor: 'transparent',
-  buttonColor: 'tomato',
-  buttonHoverColor: null,
-  ctaTarget: null,
-  onClick: null,
-  subtitle: null,
 };
 
 export default HeroAds;

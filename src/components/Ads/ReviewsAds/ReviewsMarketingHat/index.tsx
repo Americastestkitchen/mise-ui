@@ -1,6 +1,6 @@
 import breakpoint from 'styled-components-breakpoint';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 
 // grab email for for bottom logic
@@ -73,7 +73,7 @@ const ContentSection = styled.div`
   `}
 `;
 
-const ContentWrapper = styled.div`
+const ContentWrapper = styled.div<{ isAnonymous: boolean }>`
   display: flex;
   flex-direction: column;
 
@@ -267,33 +267,51 @@ const Title = styled.h3`
   `}
 `;
 
+type ReviewsMarketingHatProps = {
+  buttonText: string;
+  description: string;
+  desktopAsset?: string;
+  headline: string;
+  incode: string;
+  /** Input Id used in email form to shift focus on error */
+  inputId: string;
+  /** Remove Email Capture in instances where user is not anon */
+  isAnonymous: boolean;
+  mdc: string;
+  mobileAsset?: string;
+  /** Function that redirects & fires mixpanel w/ corresponding incodes */
+  onSubmit: (e: React.MouseEvent<HTMLAnchorElement>) => void;
+  title: string;
+  /** Object used to prevent marketing hat flashing while user is being defined */
+};
+
 const ReviewsMarketingHat = ({
   buttonText,
   description,
-  desktopAsset,
+  desktopAsset = 'ATK Reviews Ads/PansHat_Desktop_3x.jpg',
   headline,
   incode,
   inputId,
   isAnonymous,
   mdc,
-  mobileAsset,
+  mobileAsset = 'ATK Reviews Ads/PansHat_Mobile_3x.jpg',
   onSubmit,
   title,
-}) => (
+}: ReviewsMarketingHatProps): ReactElement => (
   <MarketingHatWrapper className={isAnonymous ? 'anon-user' : ''}>
     <AdImage>
       <source
-        srcSet={getImageUrl(desktopAsset, 'reviewsMarketingHat', 307, 'fit')}
+        srcSet={desktopAsset ? getImageUrl(desktopAsset, 'reviewsMarketingHat', 307, 'fit') : ''}
         media="(min-width: 1136px)"
       />
       <source
-        srcSet={getImageUrl(mobileAsset, 'reviewsMarketingHat', 307, 'fit', 512)}
+        srcSet={mobileAsset ? getImageUrl(mobileAsset, 'reviewsMarketingHat', 307, 'fit', 512) : ''}
         media="(min-width: 768px)"
       />
       <img
         alt=""
         className="marketing-hat__image"
-        src={getImageUrl(mobileAsset, 'reviewsMarketingHat', 267, 'fit', 450)}
+        src={mobileAsset ? getImageUrl(mobileAsset, 'reviewsMarketingHat', 267, 'fit', 450) : ''}
       />
     </AdImage>
     <ContentSection className={isAnonymous ? 'anon-user' : ''}>
@@ -338,11 +356,6 @@ ReviewsMarketingHat.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   /** Object used to prevent marketing hat flashing while user is being defined */
-};
-
-ReviewsMarketingHat.defaultProps = {
-  desktopAsset: 'ATK Reviews Ads/PansHat_Desktop_3x.jpg',
-  mobileAsset: 'ATK Reviews Ads/PansHat_Mobile_3x.jpg',
 };
 
 export default ReviewsMarketingHat;

@@ -1,5 +1,5 @@
 import breakpoint from 'styled-components-breakpoint';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { ReactElement, useCallback, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import plyrStyles from './plyrStyles';
@@ -155,16 +155,31 @@ display: none;
 
 const plyrOptions = { controls: ['progress', 'current-time', 'duration'], invertTime: false, displayDuration: true };
 
+type AudioPlayerProps = {
+  /** id of the episode */
+  id: string;
+  /** title of the episode */
+  title: string;
+  /** episode number */
+  episode?: number;
+  /** link to page with more episode details */
+  href?: string;
+  imageAlt?: string;
+  imageUrl?: string;
+};
+
 const AudioPlayer = ({
   id,
   title,
   episode,
-  imageAlt,
-  imageUrl,
-  href,
-}) => {
-  const playerEl = useRef(null);
-  const playerInstance = useRef(null);
+  imageAlt = '',
+  imageUrl = '',
+  href = '',
+}: AudioPlayerProps): ReactElement => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const playerEl = useRef<any>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const playerInstance = useRef<Record<string, any> | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
   // update player information when a new episode is selected
@@ -278,8 +293,8 @@ const AudioPlayer = ({
       <LinkWrapper className="player__more-info">
         <div className="player__image">
           <Image
-            imageAlt={imageAlt}
-            imageUrl={imageUrl}
+            imageAlt={imageAlt ?? ''}
+            imageUrl={imageUrl ?? ''}
           />
         </div>
         {
@@ -301,13 +316,6 @@ AudioPlayer.propTypes = {
   href: PropTypes.string,
   imageAlt: PropTypes.string,
   imageUrl: PropTypes.string,
-};
-
-AudioPlayer.defaultProps = {
-  episode: null,
-  href: '',
-  imageAlt: '',
-  imageUrl: '',
 };
 
 export default React.memo(AudioPlayer);

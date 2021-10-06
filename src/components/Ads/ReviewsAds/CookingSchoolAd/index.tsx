@@ -1,6 +1,6 @@
 import breakpoint from 'styled-components-breakpoint';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { ReactElement } from 'react';
 import styled, { css } from 'styled-components';
 
 import {
@@ -310,17 +310,37 @@ const MainContent = styled.div`
   `}
 `;
 
+const CookingSchoolAdDefaults = {
+  cloudinaryId: 'ATK Reviews Ads/CAN_CookingSchoolGeneralCandids-9031_3x.png',
+  description: 'Take your skills to the next level with 320+ courses led by our expert test cooks.',
+  headline: 'Try our online cooking school',
+  linkCta: 'Try for Free',
+  mobileLinkCta: 'Try Now',
+};
+
+type CookingSchoolAdProps = {
+  cloudinaryId?: string;
+  description?: string;
+  deviceType: string;
+  headline?: string;
+  identifier: 'landing' | 'detail';
+  href: string;
+  linkCta?: string;
+  mobileLinkCta?: string;
+  onClick: () => void;
+};
+
 const CookingSchoolAd = ({
-  linkCta,
-  cloudinaryId,
-  description,
+  linkCta = CookingSchoolAdDefaults.linkCta,
+  cloudinaryId = CookingSchoolAdDefaults.cloudinaryId,
+  description = CookingSchoolAdDefaults.description,
   deviceType,
-  headline,
+  headline = CookingSchoolAdDefaults.headline,
   href,
   identifier,
-  mobileLinkCta,
+  mobileLinkCta = CookingSchoolAdDefaults.mobileLinkCta,
   onClick,
-}) => (
+}: CookingSchoolAdProps): ReactElement => (
   <AdWrapper className={`cooking-school-ad__${identifier}`}>
     <AdDimensions
       className={`cooking-school-ad__${identifier}`}
@@ -330,13 +350,13 @@ const CookingSchoolAd = ({
       <MainContent className={`cooking-school-ad__${identifier}`}>
         <AdPicture className={`cooking-school-ad__${identifier}`}>
           <source
-            src={getImageUrl(cloudinaryId, { aspectRatio: '1:1', width: 500 })}
+            src={cloudinaryId ? getImageUrl(cloudinaryId, { aspectRatio: '1:1', width: 500 }) : ''}
             media="(min-width: 768)"
           />
           <img
             alt=""
             className="cooking-school-ad__image"
-            src={getImageUrl(cloudinaryId, { aspectRatio: '1:1', width: 400 })}
+            src={cloudinaryId ? getImageUrl(cloudinaryId, { aspectRatio: '1:1', width: 400 }) : ''}
           />
         </AdPicture>
         <ContentWrapper className={`cooking-school-ad__${identifier}`}>
@@ -363,14 +383,6 @@ CookingSchoolAd.propTypes = {
   linkCta: PropTypes.string,
   mobileLinkCta: PropTypes.string,
   onClick: PropTypes.func.isRequired,
-};
-
-CookingSchoolAd.defaultProps = {
-  cloudinaryId: 'ATK Reviews Ads/CAN_CookingSchoolGeneralCandids-9031_3x.png',
-  description: 'Take your skills to the next level with 320+ courses led by our expert test cooks.',
-  headline: 'Try our online cooking school',
-  linkCta: 'Try for Free',
-  mobileLinkCta: 'Try Now',
 };
 
 export default CookingSchoolAd;

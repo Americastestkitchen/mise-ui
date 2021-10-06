@@ -1,6 +1,6 @@
 import breakpoint from 'styled-components-breakpoint';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { ReactElement, ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 
 import Gif from '../../../Gif';
@@ -127,13 +127,21 @@ const deviceIdMap = {
   phone: 'mise-play/membership-showcase-tablet-3',
 };
 
+type MembershipShowcaseAdProps = {
+  cta: string;
+  ctaHref: string;
+  deviceType: 'desktop' | 'phone' | 'tablet';
+  onClick: (e: React.MouseEvent<HTMLAnchorElement>) => void;
+  title: () => ReactNode;
+};
+
 const MembershipShowcaseAd = ({
   cta,
   ctaHref,
   deviceType,
   onClick,
   title,
-}) => (
+}: MembershipShowcaseAdProps): ReactElement => (
   <MembershipShowcase>
     <MembershipShowcaseFigure>
       <Gif
@@ -164,13 +172,9 @@ const MembershipShowcaseAd = ({
 MembershipShowcaseAd.propTypes = {
   cta: PropTypes.string.isRequired,
   ctaHref: PropTypes.string.isRequired,
-  deviceType: PropTypes.oneOf(['desktop', 'phone', 'tablet']).isRequired,
+  deviceType: PropTypes.oneOf(['desktop', 'phone', 'tablet'] as const).isRequired,
   onClick: PropTypes.func,
   title: PropTypes.func.isRequired,
-};
-
-MembershipShowcaseAd.defaultProps = {
-  onClick: null,
 };
 
 export default MembershipShowcaseAd;

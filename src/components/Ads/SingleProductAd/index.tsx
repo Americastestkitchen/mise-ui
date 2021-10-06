@@ -1,6 +1,6 @@
 import breakpoint from 'styled-components-breakpoint';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { ReactElement } from 'react';
 import styled, { css } from 'styled-components';
 
 import { getImageUrl } from '../../../lib/cloudinary';
@@ -146,6 +146,15 @@ const SingleProductCta = styled.a.attrs({
   className: 'single-product-ad__cta',
 })`${withThemes(SingleProductCtaTheme)}`;
 
+type SingleProductAdProps = {
+  cloudinaryId: string;
+  cta: string;
+  ctaHref: string;
+  ctaTarget?: string;
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
+  title: string;
+};
+
 const SingleProductAd = ({
   cloudinaryId,
   cta,
@@ -153,7 +162,7 @@ const SingleProductAd = ({
   ctaTarget,
   onClick,
   title,
-}) => (
+}: SingleProductAdProps): ReactElement => (
   <SingleProductWrapper>
     <SingleProductInner>
       <SingleProductContent>
@@ -206,11 +215,6 @@ SingleProductAd.propTypes = {
   ctaTarget: PropTypes.string,
   onClick: PropTypes.func,
   title: PropTypes.string.isRequired,
-};
-
-SingleProductAd.defaultProps = {
-  ctaTarget: null,
-  onClick: null,
 };
 
 export default SingleProductAd;

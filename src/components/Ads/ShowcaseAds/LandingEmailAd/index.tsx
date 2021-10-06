@@ -1,6 +1,6 @@
 import breakpoint from 'styled-components-breakpoint';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { ReactElement } from 'react';
 import styled, { css } from 'styled-components';
 
 import {
@@ -17,7 +17,7 @@ import EmailForm from '../../../Forms/EmailForm';
 import Image from '../../../Cards/shared/Image';
 
 const LandingEmailTheme = {
-  default: css`
+  default: css<{ success: boolean }>`
     align-items: center;
     background-color: ${color.white};
     display: flex;
@@ -87,7 +87,7 @@ const LandingEmailTheme = {
 
 const LandingEmailWrapper = styled.div.attrs({
   className: 'landing-email-ad-wrapper',
-})`${withThemes(LandingEmailTheme)}`;
+})<{ success?: boolean }>`${withThemes(LandingEmailTheme)}`;
 
 const ImageWrapper = styled.div`
   background-size: cover;    
@@ -111,7 +111,7 @@ const ImageWrapper = styled.div`
   }
 `;
 
-const FormColumnWrapper = styled.div`
+const FormColumnWrapper = styled.div<{ success?: boolean }>`
   display: flex;
   justify-content: center;
   margin-bottom: ${({ success }) => (success ? '10%' : '0')};
@@ -121,7 +121,7 @@ const FormColumnWrapper = styled.div`
   `} 
 `;
 
-const FormBodyContent = styled.div`
+const FormBodyContent = styled.div<{ success?: boolean }>`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -234,18 +234,31 @@ const ContentTitle = styled.p.attrs({
   className: 'landing-ad-content-title',
 })`${withThemes(ContentTitleTheme)}`;
 
+type LandingEmailAdProps = {
+  buttonText?: string;
+  desktopImageUrl: string;
+  errorText?: string;
+  inputId: string;
+  headline?: string;
+  onSubmit: (email: string) => void;
+  tabletImageUrl: string;
+  title: string;
+  success?: boolean;
+  successText?: string;
+};
+
 const LandingEmailAd = ({
-  buttonText,
+  buttonText = 'Sign me up',
   desktopImageUrl,
-  errorText,
-  headline,
+  errorText = 'Invalid email address',
+  headline = '',
   inputId,
   onSubmit,
-  success,
-  successText,
+  success = false,
+  successText = 'Thank you! Get ready for watch and cook newsletter in your inbox.',
   tabletImageUrl,
   title,
-}) => (
+}: LandingEmailAdProps): ReactElement => (
   <LandingEmailWrapper success={success}>
     <ImageWrapper>
       <Image
@@ -297,14 +310,6 @@ LandingEmailAd.propTypes = {
   title: PropTypes.string.isRequired,
   success: PropTypes.bool,
   successText: PropTypes.string,
-};
-
-LandingEmailAd.defaultProps = {
-  buttonText: 'Sign me up',
-  errorText: 'Invalid email address',
-  headline: '',
-  success: false,
-  successText: 'Thank you! Get ready for watch and cook newsletter in your inbox.',
 };
 
 export default LandingEmailAd;

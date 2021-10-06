@@ -1,6 +1,6 @@
 import breakpoint from 'styled-components-breakpoint';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { ReactElement } from 'react';
 import styled, { css } from 'styled-components';
 
 import { getImageUrl } from '../../../../lib/cloudinary';
@@ -135,6 +135,15 @@ const FreeTrialCta = styled.a.attrs({
   className: 'free-trial-ad__cta',
 })`${withThemes(FreeTrialCtaTheme)}`;
 
+type FreeTrialAdProps = {
+  cloudinaryId: string;
+  cta: string;
+  ctaHref: string;
+  onClick: () => void;
+  title: string;
+  subtitle: string;
+};
+
 const FreeTrialAd = ({
   cloudinaryId,
   cta,
@@ -142,7 +151,7 @@ const FreeTrialAd = ({
   onClick,
   subtitle,
   title,
-}) => (
+}: FreeTrialAdProps): ReactElement => (
   <FreeTrialWrapper>
     <FreeTrialPicture>
       <source
@@ -195,10 +204,6 @@ FreeTrialAd.propTypes = {
   onClick: PropTypes.func,
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
-};
-
-FreeTrialAd.defaultProps = {
-  onClick: null,
 };
 
 export default FreeTrialAd;

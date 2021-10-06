@@ -1,6 +1,6 @@
 import breakpoint from 'styled-components-breakpoint';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { ReactElement } from 'react';
 import styled, { css } from 'styled-components';
 
 import Badge from '../../../Badge';
@@ -165,6 +165,17 @@ const ProductCta = styled.a.attrs({
   className: 'product__cta',
 })`${withThemes(ProductCtaTheme)}`;
 
+type SingleProductShowcaseAdProps = {
+  cloudinaryId: string;
+  cta: string;
+  ctaHref: string;
+  ctaTarget?: string;
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
+  siteKey: 'atk' | 'cio' | 'cco' | 'kids' | 'school' | 'shop';
+  subtitle: string;
+  title: string;
+};
+
 const SingleProductShowcaseAd = ({
   cloudinaryId,
   cta,
@@ -174,7 +185,7 @@ const SingleProductShowcaseAd = ({
   siteKey,
   subtitle,
   title,
-}) => (
+}: SingleProductShowcaseAdProps): ReactElement => (
   <Product>
     <ProductPicture>
       <source
@@ -233,11 +244,6 @@ SingleProductShowcaseAd.propTypes = {
   siteKey: PropTypes.oneOf(['atk', 'cio', 'cco', 'kids', 'school', 'shop']).isRequired,
   subtitle: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-};
-
-SingleProductShowcaseAd.defaultProps = {
-  ctaTarget: null,
-  onClick: null,
 };
 
 export default SingleProductShowcaseAd;

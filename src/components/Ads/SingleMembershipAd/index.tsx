@@ -1,6 +1,6 @@
 import breakpoint from 'styled-components-breakpoint';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { ReactElement, ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 
 import MembershipBenefitIcons from '../components/MembershipBenefitsIcons';
@@ -177,12 +177,19 @@ const SingleMembershipCta = styled.a.attrs({
   className: 'single-membership-ad__cta',
 })`${withThemes(SingleMembershipCtaTheme)}`;
 
+type SingleMembershipAdProps = {
+  cta: string;
+  ctaHref: string;
+  onClick: () => void;
+  title: () => ReactNode;
+};
+
 const SingleMembershipAd = ({
   cta,
   ctaHref,
   onClick,
   title,
-}) => (
+}: SingleMembershipAdProps): ReactElement => (
   <SingleMembership>
     <SingleMembershipInner>
       <SingleMembershipContent>
@@ -207,10 +214,6 @@ SingleMembershipAd.propTypes = {
   ctaHref: PropTypes.string.isRequired,
   onClick: PropTypes.func,
   title: PropTypes.func.isRequired,
-};
-
-SingleMembershipAd.defaultProps = {
-  onClick: null,
 };
 
 export default SingleMembershipAd;

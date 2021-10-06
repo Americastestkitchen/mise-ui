@@ -48,7 +48,7 @@ function Button({
   onClick,
   type,
   ...restProps
-}: React.ComponentPropsWithoutRef<"button">) {
+}: React.ComponentPropsWithoutRef<'button'>) {
   return (
     <StyledButton
       className={className}
@@ -66,12 +66,6 @@ Button.propTypes = {
   children: PropTypes.node.isRequired,
   onClick: PropTypes.func,
   type: PropTypes.oneOf(['submit', 'reset', 'button']),
-};
-
-Button.defaultProps = {
-  className: '',
-  onClick: () => {},
-  type: 'button',
 };
 
 export default Button;
