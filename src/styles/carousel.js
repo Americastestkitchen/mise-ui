@@ -60,7 +60,7 @@ export default css`
 
   .flickity-button:focus {
     outline: none;
-    box-shadow: 0 0 0 5px #19F;
+    box-shadow: 0 0 0 3px #19F;
   }
 
   .flickity-button:active {
