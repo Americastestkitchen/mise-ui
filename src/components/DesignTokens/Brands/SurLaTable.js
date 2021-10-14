@@ -1,12 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const SurLaTable = () => (
+const SurLaTable = ({ alt }) => (
   <img
-    alt="SurLaTable Logo"
+    alt={alt}
     className="brand-surlatable"
     src="https://res.cloudinary.com/hksqkdlah/image/upload/v1620154961/Brands/SurLaTable.svg"
   />
 );
+SurLaTable.propTypes = {
+  alt: PropTypes.string,
+};
+
+SurLaTable.defaultProps = {
+  alt: 'SurLaTable Logo',
+};
 
 SurLaTable.displayName = 'SurLaTable';
 
