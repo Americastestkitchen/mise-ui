@@ -13,6 +13,7 @@ import ReviewableSummaryCard from '../../Cards/ReviewableSummaryCard';
 import StandardCard from '../../Cards/StandardCard';
 import SuggestionCard from '../../Cards/SuggestionCard';
 import TallCard from '../../Cards/TallCard';
+import TallToSquareCard from '../../Cards/TallToSquareCard';
 import { cards, spacing, withThemes } from '../../../styles';
 
 const typeWidths = {
@@ -183,6 +184,7 @@ const typeMap = {
   standard: StandardCard,
   suggestion: SuggestionCard,
   tall: TallCard,
+  tallToSquare: TallToSquareCard,
 };
 
 const CardCarousel = ({
