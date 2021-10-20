@@ -15,6 +15,7 @@ import SuggestionCard from '../../Cards/SuggestionCard';
 import TallCard from '../../Cards/TallCard';
 import TallToSquareCard from '../../Cards/TallToSquareCard';
 import { cards, spacing, withThemes } from '../../../styles';
+import RelatedSmallCard from '../../Cards/RelatedSmallCard';
 
 const typeWidths = {
   default: {
@@ -185,6 +186,7 @@ const typeMap = {
   suggestion: SuggestionCard,
   tall: TallCard,
   tallToSquare: TallToSquareCard,
+  relatedsmall: RelatedSmallCard,
 };
 
 const CardCarousel = ({
@@ -277,6 +279,7 @@ CardCarousel.propTypes = {
     'standard',
     'suggestion',
     'tall',
+    'relatedsmall',
   ]).isRequired,
 };
 

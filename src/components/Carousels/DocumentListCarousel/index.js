@@ -217,6 +217,7 @@ DocumentListCarousel.propTypes = {
     'reviewable',
     'standard',
     'tall',
+    'relatedsmall',
   ]).isRequired,
 };
 
