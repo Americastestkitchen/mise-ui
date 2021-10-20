@@ -170,6 +170,12 @@ const StyledLoadingCardTheme = {
         width: ${cards.tallWide.width.lg};
       `}
     }
+
+    &.related-small-card {
+      ${mixins.loadingGradientAnimation(cards.tallWide.width.base)};
+      height: 7.6rem;
+      width: ${cards.standard.width.lg};
+    }
   `,
 
   dark: css`
@@ -284,6 +290,7 @@ LoadingCard.propTypes = {
     'standard',
     'tall',
     'tall-wide',
+    'related-small'
   ]).isRequired,
 };
 

@@ -96,3 +96,11 @@ export const PodcastEpisodeCard = () => (
     </StoryWrapper>
   </ThemeProvider>
 );
+
+export const RelatedSmallCard = () => (
+  <ThemeProvider theme={{breakpoints, mode: 'dark'}}>
+    <StoryWrapper>
+      <LoadingCard type="related-small" />
+    </StoryWrapper>
+  </ThemeProvider>
+);

@@ -21,6 +21,10 @@ export const TallCardCarousel = () => (
   <LoadingCarousel type="tall" />
 )
 
+export const RelatedSmallCarousel = () => (
+  <LoadingCarousel type="related-small" />
+)
+
 export const DocumentListCarousel = () => (
   <LoadingCarousel
     intro='For folks who always want to know why?'
