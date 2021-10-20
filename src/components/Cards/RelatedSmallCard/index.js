@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { cards, color, fontSize, spacing } from '../../../styles';
 import Image from '../shared/Image';
 
@@ -13,15 +13,12 @@ const RelatedSmallCardWrapper = styled.article`
   display: flex;
   align-items: center;
   background-color: ${color.gunmetal};
-  padding: 0 ${spacing.xsm} 0 0;
-
 `;
 
 const ImageWrapper = styled.div`
   width: 7.6rem;
   max-width: 7.6rem;
   height: 100%;
-
   margin-right: ${spacing.sm};
 
   a img {
@@ -32,13 +29,10 @@ const ImageWrapper = styled.div`
 `;
 
 const TitleWrapper = styled.div`
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  padding-top: ${spacing.xsm};
+  max-width: 17rem;
 
   .no-image & {
-    padding-left: ${spacing.xsm};;
+    padding-left: ${spacing.sm};
   }
 `;
 
@@ -55,45 +49,44 @@ const RelatedSmallCard = ({
   target,
   title,
   href,
-}) => {
-  return (
-    <RelatedSmallCardWrapper
-      className={`related__small-card${imageUrl ? '' : ' no-image'}`}
-      {...dataAttrs}
-    >
-      { imageUrl ? (
-        <ImageWrapper>
-          <a
-            tabIndex="-1"
-            href={href}
-            onClick={onClick}
-            rel={target && target === '_blank' ? 'noopener noreferrer' : null}
-            target={target}
-          >
-            <Image
-              aria-hidden="true"
-              imageAlt={imageAlt}
-              imageUrl={imageUrl}
-            />
-          </a>
-        </ImageWrapper>
-      ) : null }
-      <TitleWrapper>
+}) => (
+  <RelatedSmallCardWrapper
+    data-testid="related-small-card"
+    className={`related__small-card${imageUrl ? '' : ' no-image'}`}
+    {...dataAttrs}
+  >
+    { imageUrl ? (
+      <ImageWrapper>
         <a
+          tabIndex="-1"
           href={href}
           onClick={onClick}
           rel={target && target === '_blank' ? 'noopener noreferrer' : null}
           target={target}
         >
-          <StyledTitle title={title} />
+          <Image
+            aria-hidden="true"
+            imageAlt={imageAlt}
+            imageUrl={imageUrl}
+          />
         </a>
-      </TitleWrapper>
-    </RelatedSmallCardWrapper>
-  );
-};
-
+      </ImageWrapper>
+    ) : null }
+    <TitleWrapper>
+      <a
+        href={href}
+        onClick={onClick}
+        rel={target && target === '_blank' ? 'noopener noreferrer' : null}
+        target={target}
+      >
+        <StyledTitle title={title} />
+      </a>
+    </TitleWrapper>
+  </RelatedSmallCardWrapper>
+);
 
 RelatedSmallCard.propTypes = {
+  dataAttrs: PropTypes.object,
   href: PropTypes.string.isRequired,
   imageAlt: PropTypes.string,
   imageUrl: PropTypes.string,
@@ -102,7 +95,13 @@ RelatedSmallCard.propTypes = {
   title: PropTypes.string.isRequired,
 };
 
-
+RelatedSmallCard.defaultProps = {
+  dataAttrs: null,
+  imageAlt: '',
+  imageUrl: '',
+  target: null,
+  onClick: null,
+};
 
 export default React.memo(RelatedSmallCard, (prev, next) => (
   prev.href === next.href

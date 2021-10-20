@@ -290,7 +290,7 @@ LoadingCard.propTypes = {
     'standard',
     'tall',
     'tall-wide',
-    'related-small'
+    'related-small',
   ]).isRequired,
 };
 
