@@ -118,6 +118,7 @@ LoadingCarousel.propTypes = {
     'reviewable',
     'standard',
     'tall',
+    'related-small',
   ]).isRequired,
 };
 

@@ -57,6 +57,7 @@ import ResultsCount from './components/Algolia/shared/ResultsCount';
 import ReviewableSummaryCard from './components/Cards/ReviewableSummaryCard';
 import ReviewsEmailCapture from './components/Ads/ReviewsAds/ReviewsEmailCapture';
 import ReviewsMarketingHat from './components/Ads/ReviewsAds/ReviewsMarketingHat';
+import RelatedSmallCard from './components/Cards/RelatedSmallCard';
 import SchoolAd from './components/Ads/ShowcaseAds/SchoolAd';
 import SearchBanner from './components/SearchBanner';
 import SearchInput from './components/SearchInput';
@@ -151,6 +152,7 @@ export {
   ReviewableSummaryCard,
   ReviewsEmailCapture,
   ReviewsMarketingHat,
+  RelatedSmallCard,
   SchoolAd,
   SearchBanner,
   SearchInput,

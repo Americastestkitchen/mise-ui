@@ -366,10 +366,26 @@ export const CategoryCard = () => (
     breakpoints
   }}>
     <StoryWrapper>
-      <CardCarousel 
+      <CardCarousel
         dotPosition={{ sm: { bottom: `-${spacing.lg}`, right: '50%' }}}
         items={categoryItems}
         type="category"
+      />
+    </StoryWrapper>
+  </ThemeProvider>
+);
+
+
+export const RelatedSmallCard = () => (
+  <ThemeProvider theme={{
+    breakpoints,
+    mode: 'dark'
+  }}>
+    <StoryWrapper>
+      <CardCarousel
+        dotPosition={{ sm: { top: `-${spacing.lg}`, right: '50%' }}}
+        items={items}
+        type="relatedsmall"
       />
     </StoryWrapper>
   </ThemeProvider>
