@@ -59,10 +59,9 @@ const HeroHatBody = styled.div.attrs({
   .email-form__how {
     color: ${color.eclipse};
     font: ${fontSize.xsm}/1 ${font.pnr};
-    left: 0;
     letter-spacing: normal;
+    margin-right: auto;
     padding-bottom: 0.2rem;
-    position: absolute;
     text-decoration: none;
     width: fit-content;
 
@@ -91,12 +90,18 @@ const HeroHatBody = styled.div.attrs({
     top: 2rem;
   }
 
+  ${breakpoint('xs', 'md')`
+    .thanksgiving-hat & {
+      background-color: ${color.chablis};
+    }
+  `}
+
   ${breakpoint('md')`
     align-items: center;
     background-color: transparent;
     flex-direction: row;
     max-width: 77rem;
-    padding: 0 5.6rem 0 8.6rem;
+    padding: 0 5.6rem 0 7.6rem;
     width: 100%;
 
     .form-control {
@@ -121,19 +126,17 @@ const HeroHatBody = styled.div.attrs({
   `}
 
   ${breakpoint('lg')`
-    width: 135rem;
+    max-width: 124rem;
 
     .email-form__form {
       display: flex;
       flex-direction: column;
       width: 100%;
     }
-
   `}
 
   ${breakpoint('xlg')`
     justify-content: space-between;
-    max-width: 124rem;
     padding: 0 8.6rem;
 
     .email-form-wrapper {
@@ -151,8 +154,13 @@ const HeroHatBody = styled.div.attrs({
       }
 
       input {
+        border-right-width: 0;
         max-width: 22.6rem;
       }
+    }
+
+    .thanksgiving-hat & {
+      padding: 0 7.6rem;
     }
   `}
 `;

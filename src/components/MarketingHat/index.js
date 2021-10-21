@@ -17,6 +17,7 @@ import {
 import Checkmark from '../DesignTokens/Icon/svgs/Checkmark2';
 
 const AtkMarketingHat = ({
+  className,
   cta,
   description,
   errorText,
@@ -32,6 +33,7 @@ const AtkMarketingHat = ({
   <>
     {Object.entries(user).length > 0 ? (
       <HeroHatWrapper
+        className={className}
         heroImages={heroImages}
       >
         <HeroHatBody>
@@ -75,6 +77,7 @@ const AtkMarketingHat = ({
 );
 
 AtkMarketingHat.propTypes = {
+  className: PropTypes.string,
   cta: PropTypes.string,
   description: PropTypes.string,
   errorText: PropTypes.string,
@@ -93,6 +96,7 @@ AtkMarketingHat.propTypes = {
 };
 
 AtkMarketingHat.defaultProps = {
+  className: null,
   cta: 'Get Free Access',
   description: 'Start your 2-week free trial and get instant access to everything.',
   errorText: 'Invalid email address',

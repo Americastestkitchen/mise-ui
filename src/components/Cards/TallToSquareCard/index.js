@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
@@ -11,7 +11,8 @@ const baseClassName = 'tall-to-square-card';
 const TallToSquareCardWrapper = styled.div.attrs({
   className: baseClassName,
 })`
-  ${({ backgroundImageIds }) => (backgroundImageIds ? `background-image: url(${getImageUrl(backgroundImageIds.square)});` : '')}
+  background-color: ${color.frost};
+  ${({ backgroundImageIds }) => (backgroundImageIds ? `background-image: url(${getImageUrl(backgroundImageIds.square, { width: 220 })});` : '')}
   background-size: cover;
   background-position: center;
   display: flex;
@@ -32,7 +33,7 @@ const TallToSquareCardWrapper = styled.div.attrs({
   }
 
   ${breakpoint('md')`
-    ${({ backgroundImageIds }) => (backgroundImageIds ? `background-image: url(${getImageUrl(backgroundImageIds.tall)});` : '')}
+    ${({ backgroundImageIds }) => (backgroundImageIds ? `background-image: url(${getImageUrl(backgroundImageIds.tall, { width: 220 })});` : '')}
     height: 59.6rem;
     max-width: 27.2rem;
     width: 27.2rem;
@@ -108,9 +109,15 @@ const TallToSquareCard = ({
   textShadowColor,
   title,
 }) => {
+  const [bgImages, setBgImages] = useState(null);
   const anchorProps = newTab ? { rel: 'noopener noreferrer', target: '_blank' } : {};
+
+  useEffect(() => {
+    setBgImages(backgroundImageIds);
+  }, [backgroundImageIds]);
+
   return (
-    <TallToSquareCardWrapper backgroundImageIds={backgroundImageIds}>
+    <TallToSquareCardWrapper backgroundImageIds={bgImages}>
       {
         stickerText && (
           <Sticker
