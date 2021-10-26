@@ -292,6 +292,7 @@ const ReviewableSummaryCard = React.memo(({
               icon={buyNowIcon}
               name={name}
               onClick={buyNowOnClick}
+              readerLabel={buyNowIcon || 'our affiliate partner'}
               url={buyNowLink}
             />
           )}
