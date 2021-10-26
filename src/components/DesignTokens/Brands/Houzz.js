@@ -1,12 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Houzz = () => (
+const Houzz = ({ alt }) => (
   <img
-    alt="Houzz Logo"
+    alt={alt}
     className="brand-houzz"
     src="https://res.cloudinary.com/hksqkdlah/image/upload/v1620154963/Brands/Houzz.svg"
   />
 );
+Houzz.propTypes = {
+  alt: PropTypes.string,
+};
+
+Houzz.defaultProps = {
+  alt: 'Houzz Logo',
+};
 
 Houzz.displayName = 'Houzz';
 

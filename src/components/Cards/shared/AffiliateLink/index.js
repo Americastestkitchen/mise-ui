@@ -66,6 +66,7 @@ const AffiliateLinkEl = styled.a.attrs({
 const AffiliateLink = ({
   dataAttrs,
   icon,
+  readerLabel,
   name,
   onClick,
   text,
@@ -83,11 +84,10 @@ const AffiliateLink = ({
         {...dataAttrs}
       >
         {text}
+        {readerLabel && <span className="visually-hidden">From {readerLabel}</span>}
         <Icons.TriangleRight />
       </AffiliateLinkEl>
-      {Icon && (
-        <Icon />
-      )}
+      {Icon && <Icon alt="" />}
     </AffiliateLinkWrapper>
   );
 };
@@ -95,6 +95,7 @@ const AffiliateLink = ({
 AffiliateLink.propTypes = {
   dataAttrs: PropTypes.object,
   icon: PropTypes.any,
+  readerLabel: PropTypes.string.isRequired,
   name: PropTypes.string,
   /** for mixpanel purposes */
   onClick: PropTypes.func,
