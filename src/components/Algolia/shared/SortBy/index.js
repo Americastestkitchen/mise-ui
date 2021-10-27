@@ -53,6 +53,19 @@ const SearchSortByItem = styled.div`
   ${withThemes(SearchSortByItemTheme)}
 `;
 
+const SearchSortByNew = styled.span`
+  background-color: ${color.tomato};
+  border-radius: 0.5rem;
+  color: ${color.white};
+  font: ${fontSize.xsm}/1.2rem ${font.pnb};
+  letter-spacing: 1.25px;
+  margin-left: ${spacing.xsm};
+  padding: 2px 0px 1px 2px;
+  text-align: center;
+  text-transform: uppercase;
+  width: 3.4rem;
+`;
+
 const SearchSortByRadioInputTheme = {
   default: css`
     position: absolute;
@@ -146,7 +159,7 @@ const SearchSortByLabel = styled.label.attrs({
 export const CustomSortBy = ({ defaultRefinement, items, refine }) => (
   <>
     {
-      items.map(({ isRefined, label, value }) => (
+      items.map(({ isRefined, label, isNew, value }) => (
         <SearchSortByItem
           key={value}
         >
@@ -170,6 +183,7 @@ export const CustomSortBy = ({ defaultRefinement, items, refine }) => (
             }}
             type="radio"
           />
+          {isNew && <SearchSortByNew>New</SearchSortByNew>}
         </SearchSortByItem>
       ))
     }

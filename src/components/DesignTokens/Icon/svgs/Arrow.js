@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { color } from '../../../../styles';
 
-const Arrow = ({ ariaHidden, fill, focusable }) => (
+const Arrow = ({ ariaHidden, ariaLabel, fill, focusable }) => (
   <svg
     aria-hidden={ariaHidden}
+    aria-label={ariaLabel}
     focusable={focusable}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 17.553 13.419"
@@ -15,12 +16,14 @@ const Arrow = ({ ariaHidden, fill, focusable }) => (
 
 Arrow.propTypes = {
   ariaHidden: PropTypes.bool,
+  ariaLabel: PropTypes.string,
   fill: PropTypes.string,
   focusable: PropTypes.bool,
 };
 
 Arrow.defaultProps = {
   ariaHidden: true,
+  ariaLabel: null,
   fill: `${color.eclipse}`,
   focusable: false,
 };

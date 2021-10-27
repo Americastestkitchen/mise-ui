@@ -8,6 +8,7 @@ import ChefHat from './ChefHat';
 import ChevronThinDown from './ChevronThinDown';
 import Close from './Close';
 import Collection from './Collection';
+import Comment from './Comment';
 import Content from './Content';
 import Cookbook from './Cookbook';
 import FastForward from './FastForward';
@@ -50,6 +51,7 @@ export {
   ChefHat,
   ChevronThinDown,
   Close,
+  Comment,
   Content,
   Collection,
   Cookbook,

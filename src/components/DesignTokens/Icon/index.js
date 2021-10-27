@@ -105,6 +105,19 @@ export const Cookbook = ({ className }) => (
 
 Cookbook.propTypes = Icons.Cookbook.propTypes;
 
+export const Comment = ({ ariaHidden, ariaLabel, fill, focusable }) => (
+  <Icon>
+    <Icons.Comment
+      ariaHidden={ariaHidden}
+      ariaLabel={ariaLabel}
+      fill={fill}
+      focusable={focusable}
+    />
+  </Icon>
+);
+
+Comment.propTypes = Icons.Comment.propTypes;
+
 export const FastForward = ({ fill }) => (
   <Icon>
     <Icons.FastForward
@@ -319,10 +332,18 @@ export const StarHalf = ({ color }) => (
 
 StarHalf.propTypes = Icons.StarHalf.propTypes;
 
-export const StarFull = ({ color }) => (
+export const StarFull = ({
+  ariaHidden,
+  ariaLabel,
+  color,
+  focusable,
+}) => (
   <Icon>
     <Icons.StarFull
+      ariaHidden={ariaHidden}
+      ariaLabel={ariaLabel}
       color={color}
+      focusable={focusable}
     />
   </Icon>
 );

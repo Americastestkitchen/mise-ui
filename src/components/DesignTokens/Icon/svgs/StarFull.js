@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 
 import { color } from '../../../../styles';
 
-const StarFull = ({ ariaHidden, color, focusable }) => (
+const StarFull = ({ ariaHidden, ariaLabel, color, focusable }) => (
   <svg
     aria-hidden={ariaHidden}
+    aria-label={ariaLabel}
     focusable={focusable}
     xmlns="http://www.w3.org/2000/svg"
     className="icon-star-full"
@@ -18,12 +19,14 @@ const StarFull = ({ ariaHidden, color, focusable }) => (
 
 StarFull.propTypes = {
   ariaHidden: PropTypes.bool,
+  ariaLabel: PropTypes.string,
   color: PropTypes.string,
   focusable: PropTypes.bool,
 };
 
 StarFull.defaultProps = {
   ariaHidden: true,
+  ariaLabel: null,
   color: `${color.eclipse}`,
   focusable: false,
 };

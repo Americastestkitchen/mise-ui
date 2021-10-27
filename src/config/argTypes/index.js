@@ -8,8 +8,10 @@ export const siteKey = {
   control: { type: 'inline-radio' },
 };
 
+export const disable = { control: { disable: true } };
+
 export default {
-  disable: { control: { disable: true } },
+  disable,
   mode,
   siteKey,
 };
