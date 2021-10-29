@@ -16,6 +16,10 @@ const HeroHatWrapper = styled.div.attrs({
   margin-bottom: 2rem;
   padding-top: 7.6rem;
 
+  &.thanksgiving-hat {
+    margin-bottom: 0;
+  }
+
   ${breakpoint('md')`
     align-items: center;
     ${({ heroImages }) => (

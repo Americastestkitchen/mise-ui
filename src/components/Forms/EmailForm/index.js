@@ -40,6 +40,7 @@ const EmailFormTheme = {
 
     button[type="submit"] {
       background-color: ${({ buttonColor }) => color[buttonColor]};
+      border: none;
       color: ${({ buttonTextColor }) => color[buttonTextColor]};
 
       @media(hover: hover) {

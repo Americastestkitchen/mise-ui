@@ -21,6 +21,10 @@ const HeroHatHeading = styled.h2.attrs({
   ${breakpoint('xlg')`
     line-height: 4.6rem;
     white-space: nowrap;
+
+    .hero-hat.thanksgiving-hat & {
+      white-space: normal;
+    }
   `}
 `;
 

@@ -7,11 +7,18 @@ const HeroHatContent = styled.div.attrs({
 })`
   color: ${color.eclipse};
   flex: 1 0 0;
-  max-width: 25rem;
 
   ${breakpoint('md')`
-    max-width: 32.5rem;
+    max-width: 35.5rem;
     padding-right: 2rem;
+  `}
+
+  ${breakpoint('lg')`
+    max-width: calc(100% - 20rem);
+  `}
+
+  ${breakpoint('xlg')`
+    max-width: calc(100% - 42rem);
   `}
 `;
 

@@ -11,6 +11,12 @@ const HeroHatDescription = styled.p.attrs({
   font: ${fontSize.md}/1.22 ${font.pnr};
   margin-bottom: 1rem;
 
+  ${breakpoint('sm', 'smmd')`
+    .thanksgiving-hat & {
+      padding-right: 1rem;
+    }
+  `}
+
   ${breakpoint('md')`
     margin-bottom: 0;
     font-size: ${fontSize.lg};
