@@ -17,7 +17,7 @@ export const WithoutPhoto = Template.bind({});
 WithoutPhoto.args = {
   author: 'Kevin Pang',
   attribution: 'Digital Editorial Director',
-  imgAlt: 'Kevin Pang',
+  imgAlt: 'This is Kevin Pang',
   siteKey: 'atk',
 };
 
