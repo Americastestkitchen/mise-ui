@@ -20,3 +20,11 @@ export const Default = () => (
     title={text('Title', 'Congee (Chinese Rice Porridge) with Stir-Fried Ground Pork')}
   />
 );
+
+export const RelatedSmallNoImage = () => (
+  <RelatedSmallCard
+    href="https://www.google.com"
+    onClick={action('result-click')}
+    title={text('Title', 'Congee (Chinese Rice Porridge) with Stir-Fried Ground Pork')}
+  />
+);
