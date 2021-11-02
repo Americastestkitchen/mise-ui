@@ -45,14 +45,14 @@ const StandardCardTheme = {
 const RecipeAttribution = styled.div`
   color: ${color.eclipse};
   display: flex;
-  margin-bottom: 0.6rem;
+  margin: 0.3rem 0 0.6rem 0;
+
+  .action-summary {
+    color: ${color.eclipse};
+  }
 
   .icon--star {
     margin-right: 1.6rem;
-  }
-
-  .icon--comment {
-    margin-top: 0.3rem;
   }
 `;
 
@@ -275,18 +275,24 @@ function StandardCard({
         </TitleWrapper>
       </>
       {searchAttribution && (
-        <RecipeAttribution>
+        <RecipeAttribution
+          // eslint-disable-next-line
+          aria-label={`${avgRating > 0 ? `${avgRating} star${avgRating === 1 ? '' : 's'} ${numRatings} rating${numRatings === 1 ? '' : 's'}` : ''} ${searchComments ? `${searchComments} comment${searchComments === 1 ? '' : 's'}` : ''}`}
+          aria-hidden={!avgRating && !searchComments}
+          role="presentation"
+          tabIndex={!avgRating && !searchComments ? '-1' : '0'}
+        >
           {avgRating && displayRecipeAttribution && (
             <ThemeProvider theme={{ siteKey: 'atk' }}>
               <ActionSummaryItem icon="star">
-                <><strong>{avgRating}</strong>&nbsp;<span>{`(${numRatings})`}</span></>
+                <div aria-hidden="true"><strong>{avgRating}</strong>&nbsp;<span>{`(${numRatings})`}</span></div>
               </ActionSummaryItem>
             </ThemeProvider>
           )}
           {searchComments && (
             <ThemeProvider theme={{ siteKey: 'atk' }}>
               <ActionSummaryItem icon="comment">
-                <strong>{searchComments}</strong>
+                <strong aria-hidden="true">{searchComments}</strong>
               </ActionSummaryItem>
             </ThemeProvider>
           )}
