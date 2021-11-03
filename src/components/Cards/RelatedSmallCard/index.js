@@ -28,17 +28,18 @@ const ImageWrapper = styled.div`
   }
 `;
 
-const TitleWrapper = styled.div`
+const TitleWrapper = styled.a`
   max-width: 17rem;
 
   .no-image & {
-    padding-left: ${spacing.sm};
+    padding-left: ${spacing.xsm};
   }
 `;
 
 const StyledTitle = styled(Title)`
   font-size: ${fontSize.md};
   color: ${color.white};
+  line-height: 1.44;
 `;
 
 const RelatedSmallCard = ({
@@ -51,6 +52,8 @@ const RelatedSmallCard = ({
   href,
 }) => (
   <RelatedSmallCardWrapper
+    itemScope
+    itemType="https://schema.org/Recipe"
     data-testid="related-small-card"
     className={`related__small-card${imageUrl ? '' : ' no-image'}`}
     {...dataAttrs}
@@ -65,22 +68,24 @@ const RelatedSmallCard = ({
           target={target}
         >
           <Image
+            itemProp="image"
             aria-hidden="true"
             imageAlt={imageAlt}
             imageUrl={imageUrl}
+            height="76px"
+            width="76px"
           />
         </a>
       </ImageWrapper>
     ) : null }
-    <TitleWrapper>
-      <a
-        href={href}
-        onClick={onClick}
-        rel={target && target === '_blank' ? 'noopener noreferrer' : null}
-        target={target}
-      >
-        <StyledTitle title={title} />
-      </a>
+    <TitleWrapper
+      href={href}
+      onClick={onClick}
+      rel={target && target === '_blank' ? 'noopener noreferrer' : null}
+      target={target}
+      itemProp="name"
+    >
+      <StyledTitle title={title} />
     </TitleWrapper>
   </RelatedSmallCardWrapper>
 );
