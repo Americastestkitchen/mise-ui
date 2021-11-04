@@ -19,6 +19,12 @@ const HeroHatContent = styled.div.attrs({
 
   ${breakpoint('xlg')`
     max-width: calc(100% - 42rem);
+
+    .holiday-hat & {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    }
   `}
 `;
 

@@ -94,6 +94,9 @@ const HeroHatBody = styled.div.attrs({
     .thanksgiving-hat & {
       background-color: ${color.chablis};
     }
+    .holiday-hat & {
+      background-color: ${color.greenWhite};
+    }
   `}
 
   ${breakpoint('md')`
@@ -103,6 +106,11 @@ const HeroHatBody = styled.div.attrs({
     max-width: 77rem;
     padding: 0 5.6rem 0 7.6rem;
     width: 100%;
+
+    .holiday-hat & {
+      padding: 0 1.9rem 0 11rem
+    }
+
 
     .form-control {
       display: flex;
@@ -133,6 +141,10 @@ const HeroHatBody = styled.div.attrs({
       flex-direction: column;
       width: 100%;
     }
+
+    .holiday-hat & {
+      padding: 0 10rem 0 12.5%;
+    }
   `}
 
   ${breakpoint('xlg')`
@@ -159,7 +171,10 @@ const HeroHatBody = styled.div.attrs({
       }
     }
 
-    .thanksgiving-hat & {
+    .thanksgiving-hat &  {
+      padding: 0 7.6rem;
+    }
+    .holiday-hat & {
       padding: 0 7.6rem;
     }
   `}
