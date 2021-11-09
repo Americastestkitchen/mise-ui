@@ -37,6 +37,7 @@ import HeroCard from './components/Cards/HeroCard';
 import InlineNewsletter from './components/Newsletters/InlineNewsletter';
 import ImageListContainer from './components/Articles/ImageList/ImageListContainer';
 import ImageListItem from './components/Articles/ImageList/ImageListItem';
+import Image from './components/Cards/shared/Image';
 import Listable from './components/Listable';
 import LandingEmailAd from './components/Ads/ShowcaseAds/LandingEmailAd';
 import LeadMarqueeCard from './components/Cards/LeadMarqueeCard';
@@ -132,6 +133,7 @@ export {
   HeroCard,
   ImageListContainer,
   ImageListItem,
+  Image,
   LandingEmailAd,
   Listable,
   LeadMarqueeCard,
