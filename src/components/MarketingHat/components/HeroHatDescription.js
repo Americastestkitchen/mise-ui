@@ -15,6 +15,9 @@ const HeroHatDescription = styled.p.attrs({
     .thanksgiving-hat & {
       padding-right: 1rem;
     }
+    .holiday-hat & {
+      padding-right: 1rem;
+    }
   `}
 
   ${breakpoint('md')`

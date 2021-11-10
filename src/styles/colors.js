@@ -93,6 +93,7 @@ const color = {
   deepPlumb: '#3E285C',
   doveGray: '#6e6e6e',
   chablis: '#fef1e9',
+  greenWhite: '#e7eae1',
 };
 
 export default color;

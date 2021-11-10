@@ -16,7 +16,7 @@ const HeroHatWrapper = styled.div.attrs({
   margin-bottom: 2rem;
   padding-top: 7.6rem;
 
-  &.thanksgiving-hat {
+  &.thanksgiving-hat, &.holiday-hat {
     margin-bottom: 0;
   }
 
@@ -34,11 +34,15 @@ const HeroHatWrapper = styled.div.attrs({
 
   ${breakpoint('xlg')`
     ${({ heroImages }) => (
-      `background-image:url("${getImageUrl(heroImages.desktop, { width: 1600 })}");`
+      `background-image: url("${getImageUrl(heroImages.desktop, { width: 1600 })}");`
     )}
     background-position: center center;
     margin-bottom: ${spacing.lg};
+    
   `}
+
+  
+
 `;
 
 export default HeroHatWrapper;

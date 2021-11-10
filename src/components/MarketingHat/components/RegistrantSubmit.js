@@ -24,6 +24,10 @@ const RegistrantSubmit = styled.button.attrs({
     margin-right: 19%;
     max-width: 22.6rem;
     min-width: 22.6rem;
+
+    .holiday-hat & {
+      margin: auto 19% auto 4%;
+    }
   `}
 `;
 
