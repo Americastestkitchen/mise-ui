@@ -7,6 +7,7 @@ import AccordionControl from '../AccordionControl';
 import { ChefHat, Content, Cookbook, Knife, Sort, Time } from '../DesignTokens/Icon/svgs';
 import { color, font, fontSize, letterSpacing, mixins, spacing, withThemes } from '../../styles';
 
+// AccordionWrapper
 const AccordionWrapper = styled.div.attrs({
   className: 'accordion-content-wrapper',
 })`
