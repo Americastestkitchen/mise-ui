@@ -365,7 +365,7 @@ const Carousel = ({
           <div
             className="carousel-cell"
             data-idx={idx}
-            key={`carousel-cell-${item.uniqueId || item.id}`}
+            key={`carousel-cell-${item.uniqueId || item.id || item.objectId}`}
           >
             {idx === 0 && includesAdType
               ? renderAd(adSourceKey)

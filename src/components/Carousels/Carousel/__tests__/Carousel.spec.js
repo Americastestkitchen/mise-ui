@@ -9,7 +9,7 @@ import Carousel from '../index';
 
 const images = new Array(5)
   .fill('http://placeimg.com/250/250/nature')
-  .map((i, idx) => `${i}?i=${idx}`);
+  .map((i, idx) => ({ src: `${i}?i=${idx}`, id: idx }));
 
 describe('Carousel component should', () => {
   const renderComponent = () => (
@@ -17,7 +17,7 @@ describe('Carousel component should', () => {
       <ThemeProvider theme={{ breakpoints }}>
         <Carousel
           items={images}
-          renderItem={i => <img data-testid={i} src={i} alt="" />}
+          renderItem={({ id, src }) => <img data-testid={id} src={src} alt="" />}
         />
       </ThemeProvider>,
     )
@@ -25,10 +25,10 @@ describe('Carousel component should', () => {
 
   it('render all slides', () => {
     renderComponent();
-    expect(screen.getByTestId(images[0]));
-    expect(screen.getByTestId(images[1]));
-    expect(screen.getByTestId(images[2]));
-    expect(screen.getByTestId(images[3]));
-    expect(screen.getByTestId(images[4]));
+    expect(screen.getByTestId(images[0].id));
+    expect(screen.getByTestId(images[1].id));
+    expect(screen.getByTestId(images[2].id));
+    expect(screen.getByTestId(images[3].id));
+    expect(screen.getByTestId(images[4].id));
   });
 });

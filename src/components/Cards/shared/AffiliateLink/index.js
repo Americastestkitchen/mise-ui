@@ -95,7 +95,7 @@ const AffiliateLink = ({
 AffiliateLink.propTypes = {
   dataAttrs: PropTypes.object,
   icon: PropTypes.any,
-  readerLabel: PropTypes.string.isRequired,
+  readerLabel: PropTypes.string,
   name: PropTypes.string,
   /** for mixpanel purposes */
   onClick: PropTypes.func,
@@ -109,6 +109,7 @@ AffiliateLink.defaultProps = {
   icon: null,
   name: null,
   onClick: null,
+  readerLabel: null,
   title: null,
 };
 
