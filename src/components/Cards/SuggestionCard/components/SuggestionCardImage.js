@@ -16,10 +16,12 @@ const SuggestionCardImg = styled.a.attrs({
 
   ${breakpoint('md', 'lg')`
     flex: 0 0 25rem;
+    width: 25rem;
   `}
 
   ${breakpoint('lg')`
     flex: 0 0 41rem;
+    width: 41rem;
   `}
 `;
 

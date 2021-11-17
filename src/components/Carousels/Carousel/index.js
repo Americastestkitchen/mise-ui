@@ -186,6 +186,7 @@ function getFlickityInstance(el, options) {
     autoPlay = false,
     cellAlign = 'center',
     freeScroll,
+    initialIndex,
     imagesLoaded,
     slideshow,
     navigationArrows,
@@ -198,12 +199,14 @@ function getFlickityInstance(el, options) {
     autoPlay,
     cellAlign,
     dragThreshold: 10,
+    initialIndex,
     imagesLoaded,
     groupCells,
     prevNextButtons: navigationArrows,
     pageDots: navigationDots,
     wrapAround,
   };
+
   if (isPhone && freeScroll) {
     temporaryCarouselFix();
     cOptions.freeScroll = true;
@@ -279,9 +282,10 @@ const Carousel = ({
       if (list.contains('remove-cell')) {
         evt.preventDefault();
         if (flktyRef.current.slides.length > 1) {
-          flktyRef.current.next();
+          const { selectedIndex } = flktyRef.current;
+          flktyRef.current.next(true);
+          publishEvent('flickity:remove', { ...button.dataset, selectedIndex });
           setTimeout(() => {
-            publishEvent('flickity:remove', { ...button.dataset });
             const cell = button.closest('.carousel-cell');
             if (cell) flktyRef.current.remove(cell);
           }, 500);
@@ -290,7 +294,7 @@ const Carousel = ({
           flktyRef.current.destroy();
         }
       } else if (list.contains('next-cell')) {
-        flktyRef.current.next(true);
+        flktyRef.current.next();
         publishEvent('flickity:next');
       } else if (list.contains('previous-cell')) {
         flktyRef.current.previous(true);
@@ -304,7 +308,12 @@ const Carousel = ({
    * On unmount, destroy flickity instance
    */
   useEffect(() => {
-    if (flktyRef.current) flktyRef.current.destroy();
+    if (flktyRef.current) {
+      delete elRef.current.flkty;
+      flktyRef.current.destroy();
+      const cells = elRef.current.querySelectorAll('.carousel-cell');
+      [...cells].forEach(el => el.removeAttribute('style'));
+    }
     if (items.length > 1 && elRef?.current) {
       const opts = { ...defaultOptions, ...options };
       const flkty = getFlickityInstance(elRef.current, opts);
@@ -316,8 +325,11 @@ const Carousel = ({
       } else {
         flktyRef.current = flkty;
         flktyRef.current.on('change', handleCellChange);
-        // workaround for flickity 'ready' event not working
-        handleCellChange(0);
+        elRef.current.flkty = flktyRef.current;
+        if (!opts.initialIndex) {
+          // workaround for flickity 'ready' event not working
+          setTimeout(() => handleCellChange(0), 0);
+        }
       }
       setEnabled(isEnabled);
     }
@@ -345,14 +357,15 @@ const Carousel = ({
       ].join(' ')}
     >
       <CarouselEl
-        className={className}
+        className={`${className} flkty-ref`}
         dotPosition={dotPosition}
         ref={elRef}
       >
         {items.map((item, idx) => (
           <div
             className="carousel-cell"
-            key={`carousel-cell-${item.id}-${idx}`}
+            data-idx={idx}
+            key={`carousel-cell-${item.uniqueId || item.id}`}
           >
             {idx === 0 && includesAdType
               ? renderAd(adSourceKey)

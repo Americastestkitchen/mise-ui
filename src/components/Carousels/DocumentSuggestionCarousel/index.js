@@ -4,6 +4,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 import CardCarousel from '../CardCarousel';
+import SuggestionCard from '../../Cards/SuggestionCard';
 import { color, font, fontSize, letterSpacing, lineHeight, spacing, withThemes } from '../../../styles';
 
 const TitleTheme = {
@@ -49,9 +50,16 @@ const DocumentListCarouselTheme = {
 
     .carousel {
       padding-top: 0;
+
+      &:not(.flickity-enabled) {
+        .carousel-cell {
+          flex: 0 0 auto;
+          width: calc(100% - 6.4rem);
+        }
+      }
     }
 
-    .carousel-cell {
+    div.carousel-cell {
       &:not(.is-selected) {
         opacity: 0.5;
       }
@@ -72,7 +80,9 @@ const DocumentListCarouselWrapper = styled.div`
 `;
 
 const DocumentSuggestionCarousel = ({
+  initialIndex,
   items,
+  loading,
   subtitle,
   title,
 }) => (
@@ -85,21 +95,29 @@ const DocumentSuggestionCarousel = ({
         {subtitle}
       </Subtitle>
     )}
-    <CardCarousel
-      cellAlign="left"
-      extraOptions={{ slideshow: true }}
-      items={items}
-      gradient={{
-        endColor: 'transparent',
-        startColor: 'transparent',
-      }}
-      title={title}
-      type="suggestion"
-    />
+    {loading ? (
+      <SuggestionCard.Loading />
+    ) : (
+      <CardCarousel
+        cellAlign="left"
+        className="document-suggestion-carousel"
+        extraOptions={{ initialIndex, slideshow: true, wrapAround: true }}
+        items={items}
+        gradient={{
+          endColor: 'transparent',
+          startColor: 'transparent',
+        }}
+        title={title}
+        type="suggestion"
+      />
+    )}
   </DocumentListCarouselWrapper>
 );
 
 DocumentSuggestionCarousel.propTypes = {
+  /** Index of the slide to display upon initialization */
+  initialIndex: PropTypes.number,
+  loading: PropTypes.bool,
   /** List of items for the carousel */
   items: PropTypes.array.isRequired,
   /** Larger title displayed above carousel */
@@ -109,6 +127,8 @@ DocumentSuggestionCarousel.propTypes = {
 };
 
 DocumentSuggestionCarousel.defaultProps = {
+  initialIndex: 0,
+  loading: false,
   subtitle: null,
 };
 

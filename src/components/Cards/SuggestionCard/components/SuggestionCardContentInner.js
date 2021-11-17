@@ -9,7 +9,7 @@ const SuggestionCardContentInner = styled.div.attrs({
   padding: ${spacing.sm};
 
   ${breakpoint('lg')`
-    padding-right: 4.2rem;
+    width: calc(100% - 4.2rem);
   `}
 `;
 

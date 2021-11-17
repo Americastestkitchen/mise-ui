@@ -11,7 +11,7 @@ export default {
   argTypes: { siteKey },
 };
 
-const Template = (args) => <PullQuote {...args} />;
+const Template = args => <PullQuote {...args} />;
 
 const sharedArgs = {
   attribution: 'First Last',

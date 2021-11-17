@@ -72,7 +72,7 @@ const SuggestionCard = ({
               ariaLabel=" "
               fill={color.eclipse}
             />
-            Not for me
+            <span>Not for me</span>
           </SuggestionCardAction>
           <SuggestionCardAction
             className="favorite-action remove-cell"
@@ -89,7 +89,7 @@ const SuggestionCard = ({
               className="favorite-ribbon"
               fill={color.white}
             />
-            I like it, save it
+            <span>I like it, save it</span>
           </SuggestionCardAction>
         </SuggestionCardActions>`
       </SuggestionCardContentInner>
