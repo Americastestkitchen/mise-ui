@@ -19,9 +19,9 @@ describe('SortBy component should', () => {
 
   it('render filled in radio for refined value', () => {
     renderComponent({
+      defaultRefinement: 'published_date_desc',
       items: [
         {
-          isRefined: true,
           label: 'Published Date',
           value: 'published_Date',
         },
@@ -32,6 +32,7 @@ describe('SortBy component should', () => {
 
   it('render empty radio for unrefined value', () => {
     renderComponent({
+      defaultRefinement: 'published_date_desc',
       items: [
         {
           isRefined: false,
