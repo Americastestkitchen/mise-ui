@@ -76,5 +76,6 @@
   ],
   "settings": {
     "import/parser": "babel-eslint"
-  }
+  },
+  "ignorePatterns": ["dist/*", "scripts/*"]
 }

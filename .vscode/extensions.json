@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "editorconfig.editorconfig",
+    "dbaeumer.vscode-eslint",
+    // "esbenp.prettier-vscode",
+    "jpoissonnier.vscode-styled-components",
+    "wix.vscode-import-cost"
+  ]
+}
