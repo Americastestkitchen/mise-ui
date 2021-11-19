@@ -103,23 +103,14 @@ If you are making changes in `mise-ui` and would like to preview those changes i
 The following commands assume your local repos are stored in `/src`, adjust the commands to suite the location you have selected on your computer.
 
 ```
--$ cd /src/mise-ui
+Add @atk/mise-ui link
+-$ cd /src/mise-ui/dist
 -$ yarn link
--$ npm link ../jarvis/node_modules/react-instantsearch-dom
--$ npm link ../jarvis/node_modules/react
--$ npm link ../jarvis/node_modules/styled-components
--$ npm link ../jarvis/node_modules/styled-components-breakpoint
+
+Use @atk/mise-ui link
 -$ cd ../jarvis
 -$ yarn link @atk/mise-ui
--$ cd node_modules/styled-components
--$ npm link ../react
 ```
-
-Note that two of the above commands use `yarn` and two use `npm`. The order of the `npm` commands is important. Make sure you link `react-instantsearch-dom` and then `react`. If you see 'Invalid Hook Call' errors, you might need to re-run these commands with the correct order.
-
-The `link` commands create symlinks between your local `mise-ui` and `jarvis` so that the `node_modules` folder in `jarvis` points to your local `mise-ui` codebase. The `npm link` commands make it so that `jarvis` uses its local copies of the packages (`react` and `react-instantsearch-dom`) instead of using the versions in the `mise-ui/node_modules` folder.
-
-Read [Invalid Hook Call Warning](https://reactjs.org/warnings/invalid-hook-call-warning.html) for more details.
 
 After each change that you make in `mise-ui`, you will need to compile your code since `jarvis` looks at the files in `./dist`, not in `./src`.
 ```
@@ -135,6 +126,9 @@ When you are done working on `mise-ui` changes, you might want to 'unlink' jarvi
 -$ yarn add @atk/mise-ui
 ```
 Your `jarvis` branch should now be pointing to the lastest NPM version of `atk/mise-ui`.
+
+Espresso won't need to be restarted, but if mise-ui/dist folder is cleaned you can
+run `yarn link @atk/mise-ui` in espresso to relink, re-registring mise-ui is not necessary.
 
 ## Contributors ✨
 

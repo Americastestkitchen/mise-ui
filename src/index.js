@@ -1,4 +1,3 @@
-import * as styles from './styles';
 import AudioPlayer from './components/AudioPlayer';
 import Accordion from './components/Accordion';
 import AccordionControl from './components/AccordionControl';
@@ -11,11 +10,9 @@ import ArticleTextBlock from './components/Articles/ArticleTextBlock';
 import AtkMarketingHat from './components/MarketingHat';
 import Badge from './components/Badge';
 import BookCarouselAd from './components/Ads/ReviewsAds/BookCarouselAd';
-import breakpoints from './styles/breakpoints';
 import Brands from './components/DesignTokens/Brands';
 import Button from './components/Buttons/Button';
 import Byline from './components/Byline';
-import carousel from './styles/carousel';
 import Carousel from './components/Carousels/Carousel';
 import CardCarousel from './components/Carousels/CardCarousel';
 import CardWrapper from './components/Cards/CardWrapper';
@@ -83,9 +80,10 @@ import TallToSquareCard from './components/Cards/TallToSquareCard';
 import TextDecorations, { CircledText, SquiggledText, UnderlinedText } from './components/DesignTokens/TextDecoration';
 import ToggleRefinement from './components/Algolia/shared/ToggleRefinement';
 import * as Icons from './components/DesignTokens/Icon';
-import fonts from './styles/fonts';
-import globalStyle from './styles/global';
-import { color, font, fontSize, mixins, spacing } from './styles';
+
+import * as styles from './styles';
+
+export * from './styles';
 
 export {
   Accordion,
@@ -100,17 +98,14 @@ export {
   AudioPlayer,
   Badge,
   BookCarouselAd,
-  breakpoints,
   Brands,
   Button,
   Byline,
   CardCarousel,
   CardWrapper,
-  carousel,
   Carousel,
   CategoryCard,
   CircledText,
-  color,
   ClearRefinements,
   CookingSchoolAd,
   CurrentRefinements,
@@ -123,12 +118,8 @@ export {
   FilterButton,
   FinePrint,
   FreeTrialAd,
-  font,
-  fonts,
-  fontSize,
   Icons,
   InlineNewsletter,
-  globalStyle,
   HeroAd,
   HeroCard,
   ImageListContainer,
@@ -147,7 +138,6 @@ export {
   QueueCard,
   MarqueeCard,
   MembershipShowcaseAd,
-  mixins,
   PersonCard,
   RefinementListBasic,
   RefinementList,
@@ -181,6 +171,5 @@ export {
   ToggleRefinement,
   SubscribeBubbles,
   styles,
-  spacing,
   UnderlinedText,
 };

@@ -27,7 +27,7 @@ const StyledButtonTheme = {
     transition: 0.2s all ease;
     white-space: nowrap;
 
-    @media(hover: hover) {
+    @media (hover: hover) {
       &:hover {
         background-color: ${color.mint};
       }
@@ -39,7 +39,7 @@ const StyledButtonTheme = {
 };
 
 const StyledButton = styled.button`
-${withThemes(StyledButtonTheme)}
+  ${withThemes(StyledButtonTheme)}
 `;
 
 function Button({
@@ -48,7 +48,7 @@ function Button({
   onClick,
   type,
   ...restProps
-}: React.ComponentPropsWithoutRef<"button">) {
+}: React.ComponentPropsWithoutRef<'button'>) {
   return (
     <StyledButton
       className={className}

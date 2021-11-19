@@ -8,7 +8,7 @@
     "@babel/plugin-proposal-class-properties",
     [
       "babel-plugin-styled-components",
-      { "ssr": false, "displayName": false, "namespace": "sc" }
+      { "ssr": false, "displayName": true, "namespace": "mise-dev" }
     ]
   ]
 }

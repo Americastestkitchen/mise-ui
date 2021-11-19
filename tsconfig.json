@@ -14,5 +14,11 @@
   "include": ["src"],
   "exclude": [
     "dist",
+    "scripts",
+    "src/setupTests.js",
+    "**/*.stories.js",
+    "**/*.stories.tsx",
+    "**/*.stories.ts",
+    "**/*.spec.js"
   ]
 }
