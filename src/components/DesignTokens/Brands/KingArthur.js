@@ -5,6 +5,8 @@ const KingArthur = ({ alt }) => (
   <img
     alt={alt}
     className="brand-king-arthur"
+    crossOrigin="anonymous"
+    decoding="async"
     src="https://res.cloudinary.com/hksqkdlah/image/upload/v1620154961/Brands/KingArthur.svg"
   />
 );

@@ -181,6 +181,8 @@ const ArticlePhotoCollection = ({
               <img
                 alt={alt}
                 className={`photo-${imageClass}`}
+                crossOrigin="anonymous"
+                decoding="async"
                 src={getImageUrl(publicId, { aspectRatio: ar, ...cropMap.mobile[imageClass], crop: 'fill' })}
               />
             </CollectionPicture>

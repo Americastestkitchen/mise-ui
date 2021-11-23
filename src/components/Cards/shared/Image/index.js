@@ -67,6 +67,8 @@ const Image = ({
     <StyledImage
       alt={imageAlt}
       className={className}
+      crossOrigin="anonymous"
+      decoding="async"
       data-testid={testId}
       height={height}
       ref={intersectionRef}

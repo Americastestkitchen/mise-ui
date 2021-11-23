@@ -5,6 +5,8 @@ const ThermoWorks = ({ alt }) => (
   <img
     alt={alt}
     className="brand-thermoworks"
+    crossOrigin="anonymous"
+    decoding="async"
     src="https://res.cloudinary.com/hksqkdlah/image/upload/v1620154961/Brands/ThermoWorks.svg"
   />
 );

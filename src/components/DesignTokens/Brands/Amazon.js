@@ -5,6 +5,8 @@ const Amazon = ({ alt }) => (
   <img
     alt={alt}
     className="brand-amazon"
+    crossOrigin="anonymous"
+    decoding="async"
     src="https://res.cloudinary.com/hksqkdlah/image/upload/v1620155553/Brands/Amazon.svg"
   />
 );

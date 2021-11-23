@@ -101,6 +101,8 @@ const LoadingSuggestionCard = ({
       <div className="img-holder">
         <img
           alt=""
+          crossOrigin="anonymous"
+          decoding="async"
           src={getBlankImage('4:3')}
         />
       </div>

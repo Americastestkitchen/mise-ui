@@ -108,6 +108,8 @@ const ImageListItem = ({
       <img
         alt={altText}
         className="list-item__image"
+        crossOrigin="anonymous"
+        decoding="async"
         src={getImageUrl(cloudinaryId, { aspectRatio: '16:9', width: 321 })}
       />
     </picture>
