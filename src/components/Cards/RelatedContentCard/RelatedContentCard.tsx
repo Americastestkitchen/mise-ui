@@ -1,63 +1,63 @@
 import React, { ComponentPropsWithoutRef, PropsWithChildren, useContext } from 'react';
 import styled, { css, ThemeContext } from 'styled-components';
-import { withThemes } from '../../../styles';
+import { font, color, withThemes, mixins } from '../../../styles';
 import AffiliateLink from '../shared/AffiliateLink';
 import Image from '../shared/Image';
 
 const themeHighlight = css`
   ${withThemes({
-    default: css`background-color: rgb(209, 252, 255);`,
-    atk: css`background-color: rgb(209, 252, 255);`,
-    cco: css`background-color: rgb(230, 241, 255);`,
-    cio: css`background-color: rgb(255, 245, 194);`,
+    default: css`background-color: ${color.seaSalt};`,
+    atk: css`background-color: ${color.seaSalt};`,
+    cco: css`background-color: ${color.cornflower};`,
+    cio: css`background-color: ${color.sand};`,
   })}
 `;
 
 const themedUnderline = css`
   ${withThemes({
-    default: css`background-image: linear-gradient(transparent 91%, rgb(143, 222, 227) 91%);`,
-    atk: css`background-image: linear-gradient(transparent 91%, rgb(143, 222, 227) 91%);`,
-    cco: css`background-image: linear-gradient(transparent 91%, rgb(104, 158, 223) 91%);`,
-    cio: css`background-image: linear-gradient(transparent 91%, rgb(238, 214, 129) 91%);`,
+    default: css`background-image: linear-gradient(transparent 91%, ${color.turquoise} 91%);`,
+    atk: css`background-image: linear-gradient(transparent 91%, ${color.turquoise} 91%);`,
+    cco: css`background-image: linear-gradient(transparent 91%, ${color.havelockBlue} 91%);`,
+    cio: css`background-image: linear-gradient(transparent 91%, ${color.dijon} 91%);`,
   })}
 `;
 
 const cssHeadlineFont = css`
-  font-family: 'proximaNovaBold', sans-serif;
+  font-family: ${font.pnb};
   font-size: 12px;
   line-height: 1.17;
   letter-spacing: 1.92px;
   text-transform: uppercase;
   ${withThemes({
-    default: css`color: #4d7a7c;`,
-    atk: css`color: #4d7a7c;`,
-    cco: css`color: #416490;`,
-    cio: css`color: #94856b;`,
+    default: css`color: ${color.darkTeal};`,
+    atk: css`color: ${color.darkTeal};`,
+    cco: css`color: ${color.denim};`,
+    cio: css`color: ${color.squirrel};`,
   })}
 `;
 
 const cssTitleFont = css`
-  font-family: 'proximaNovaBold', sans-serif;
+  font-family: ${font.pnb};
   font-size: 18px;
   line-height: 1.17;
-  color: #3d3d3d;
+  color: ${color.eclipse};
 `;
 
 const cssBodyFont = css`
-  font-family: 'proximaNovaRegular', sans-serif;
+  font-family: ${font.pnr};
   font-size: 16px;
   line-height: 1.25;
   ${withThemes({
-    default: css`color: #3d3d3d;`,
-    cio: css`color: #3f2b1e;`,
+    default: css`color: ${color.eclipse};`,
+    cio: css`color: ${color.cork};`,
   })}
 `;
 
 const cssLinkTextFont = css`
-  font-family: 'proximaNovaBold', sans-serif;
+  font-family: ${font.pnb};
   font-size: 16px;
   line-height: 1.13;
-  color: #3d3d3d;
+  color: ${color.eclipse};
   transition: background-color 0.2s ease-in-out 0s;
   ${themedUnderline}
   &:hover {
@@ -78,13 +78,6 @@ const cssCenter = css`
   align-items: center;
 `;
 
-const cssLineClamp = (lines = 1) => css`
-  display: -webkit-box;
-  -webkit-line-clamp: ${lines};
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-`;
-
 const Headline = styled.span`
   ${cssHeadlineFont}
   margin-bottom: 8px;
@@ -97,7 +90,7 @@ const Title = styled.span`
 
 const Body = styled.span`
   ${cssBodyFont}
-  ${cssLineClamp(3)}
+  ${mixins.truncateLineClamp(3)}
   margin-bottom: 8px;
 `;
 
@@ -124,11 +117,11 @@ const Content = styled.div`
 
 const Card = styled.a`
   ${cssCenter}
-  background-color: #fff;
+  background-color: ${color.white};
   ${withThemes({
     cco: css`
       box-sizing: border-box;
-      border: solid 3px #f4f4f4;
+      border: solid 3px ${color.wildSand};
     `,
   })}
 `;
