@@ -17,7 +17,7 @@ const themedUnderline = css`
   ${withThemes({
     default: css`background-image: linear-gradient(transparent 91%, ${color.turquoise} 91%);`,
     atk: css`background-image: linear-gradient(transparent 91%, ${color.turquoise} 91%);`,
-    cco: css`background-image: linear-gradient(transparent 91%, ${color.havelockBlue} 91%);`,
+    cco: css`background-image: linear-gradient(transparent 91%, ${color.havelockBlueLight} 91%);`,
     cio: css`background-image: linear-gradient(transparent 91%, ${color.dijon} 91%);`,
   })}
 `;
@@ -65,16 +65,17 @@ const cssLinkTextFont = css`
   }
 `;
 
-const cssLeadingCenter = css`
+const cssCenterColumn = css`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
 `;
 
-const cssCenter = css`
+const cssCenterRow = css`
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
 `;
 
@@ -104,19 +105,19 @@ const LinkWrapper = styled.div`
 `;
 
 const ImageWrapper = styled.div`
-  ${cssCenter}
+  ${cssCenterRow}
   flex-shrink: 0;
   height: 200px;
   width: 200px;
 `;
 
 const Content = styled.div`
-  ${cssLeadingCenter}
+  ${cssCenterColumn}
   padding: 16px;
 `;
 
 const Card = styled.a`
-  ${cssCenter}
+  ${cssCenterRow}
   background-color: ${color.white};
   ${withThemes({
     cco: css`
