@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { withKnobs, text, boolean } from '@storybook/addon-knobs';
+import { withKnobs, text, boolean, object } from '@storybook/addon-knobs';
 import breakpoints from '../styles/breakpoints';
 
 export const storybookParameters = {
@@ -21,6 +21,7 @@ export const defaultTheme = { breakpoints, mode: 'light', siteKey: 'atk' };
 const getKnob = (key: any, value: any): any => {
   if (typeof value === 'string') return text(key, value);
   if (typeof value === 'boolean') return boolean(key, value);
+  if (typeof value === 'object') return object(key, value);
   return value;
 };
 

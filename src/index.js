@@ -90,6 +90,9 @@ import { color, font, fontSize, mixins, spacing } from './styles';
 export { default as RelatedContentCard } from './components/Cards/RelatedContentCard';
 export * from './components/Cards/RelatedContentCard';
 
+export { default as PhotoCarousel } from './components/Carousels/PhotoCarousel';
+export * from './components/Carousels/PhotoCarousel';
+
 export {
   Accordion,
   AccordionControl,

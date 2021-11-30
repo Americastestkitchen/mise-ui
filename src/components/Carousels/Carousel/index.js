@@ -247,6 +247,7 @@ const Carousel = ({
   items,
   options,
   renderItem,
+  onChange,
 }) => {
   const elRef = useRef(null);
   const flktyRef = useRef();
@@ -267,10 +268,11 @@ const Carousel = ({
    * When cell changes, trigger event
    */
   const handleCellChange = useCallback((idx) => {
+    if (onChange) onChange(idx);
     const cell = flktyRef.current.cells[idx].element;
     const node = cell.cloneNode(true);
     publishEvent('flickity:change', node);
-  }, [publishEvent]);
+  }, [onChange, publishEvent]);
 
   /**
    * Handle click requests to remove a slide
@@ -413,6 +415,8 @@ Carousel.propTypes = {
   }),
   /** Callback for rendering each carousel item */
   renderItem: PropTypes.func.isRequired,
+  /** Callback for flickity change event */
+  onChange: PropTypes.func,
 };
 
 Carousel.defaultProps = {
@@ -438,6 +442,7 @@ Carousel.defaultProps = {
   },
   includesAdType: null,
   options: {},
+  onChange: undefined,
 };
 
 export default Carousel;

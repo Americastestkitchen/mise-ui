@@ -1,10 +1,11 @@
 import cloudinary from 'cloudinary-core';
 
+/** @type {import('cloudinary-core').Cloudinary} */
 const cloudinaryInstance = cloudinary.Cloudinary.new({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME || 'hksqkdlah',
 });
 
-const baseImageConfig = {
+export const baseImageConfig = {
   crop: 'fill',
   dpr: 2.0,
   fetch_format: 'auto',
