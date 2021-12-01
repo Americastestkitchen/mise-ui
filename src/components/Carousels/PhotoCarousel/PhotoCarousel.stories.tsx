@@ -1,4 +1,3 @@
-/* eslint-disable react/require-default-props */
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import PhotoCarousel, { PhotoCarouselProps } from './PhotoCarousel';
@@ -10,6 +9,7 @@ export default {
   ...storybookParameters,
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type PreviewProps = { theme?: any, props?: Partial<PhotoCarouselProps> };
 
 const items: PhotoCarouselProps['items'] = [

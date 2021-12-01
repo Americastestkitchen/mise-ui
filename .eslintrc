@@ -60,14 +60,19 @@
     "arrow-parens": [2, "as-needed", { "requireForBlockBody": true }],
     "react/jsx-props-no-spreading": 0,
     "react/jsx-fragments": 0,
-    "import/no-cycle": 0
+    "import/no-cycle": 0,
+    "react/require-default-props": [2, { "forbidDefaultForRequired": true, "ignoreFunctionalComponents": true }],
+    "@typescript-eslint/explicit-module-boundary-types": 0,
+    "@typescript-eslint/no-empty-function": 0
   },
   "extends": [
     "airbnb",
     "plugin:react-hooks/recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
-    "plugin:import/typescript"
+    "plugin:import/typescript",
+    "eslint:recommended", 
+    "plugin:@typescript-eslint/recommended"
   ],
   "plugins": [
     "import",
