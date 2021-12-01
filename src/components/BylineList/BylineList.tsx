@@ -136,6 +136,8 @@ const BylineList = ({ className, authors, attribution }: BylineListProps): React
     <Wrapper className={className} ref={ref} refHeight={height ?? 0}>
       {authorImage && (
         <AuthorAvatarImage
+          crossOrigin="anonymous"
+          decoding="async"
           width={avatarSideLength}
           height={avatarSideLength}
           src={authorImage}
