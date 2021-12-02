@@ -5,6 +5,8 @@ const Victorinox = ({ alt }) => (
   <img
     alt={alt}
     className="brand-victorinox"
+    crossOrigin="anonymous"
+    decoding="async"
     src="https://res.cloudinary.com/hksqkdlah/image/upload/v1620154961/Brands/Victorinox.svg"
   />
 );

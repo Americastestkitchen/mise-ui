@@ -219,6 +219,8 @@ const SidebarCard = ({
         <img
           alt={altText}
           className="sidebar-image"
+          crossOrigin="anonymous"
+          decoding="async"
           src={getImageUrl(photo, { aspectRatio: '1:1', height: 145, width: 145 })}
         />
       </picture>

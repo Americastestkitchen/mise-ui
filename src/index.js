@@ -96,6 +96,9 @@ export * from './components/Carousels/PhotoCarousel';
 export { default as BylineList } from './components/BylineList';
 export * from './components/BylineList';
 
+export { default as Chip } from './components/Chip';
+export * from './components/Chip';
+
 export {
   Accordion,
   AccordionControl,

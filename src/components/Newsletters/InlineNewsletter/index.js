@@ -159,6 +159,10 @@ const InlineNewsletterWrapper = styled.div.attrs({
   className: 'inline-newsletter',
 })`${withThemes(InlineNewsletterWrapperTheme)}`;
 
+/**
+ * A site themed version of this component is available under a different name
+ * ReviewsEmailCapture src/components/Ads/ReviewsAds/ReviewsEmailCapture/index.js
+ */
 const InlineNewsletter = ({
   onSubmit,
   success,

@@ -293,6 +293,8 @@ const ReviewsMarketingHat = ({
       <img
         alt=""
         className="marketing-hat__image"
+        crossOrigin="anonymous"
+        decoding="async"
         src={getImageUrl(mobileAsset, 'reviewsMarketingHat', 267, 'fit', 450)}
       />
     </AdImage>

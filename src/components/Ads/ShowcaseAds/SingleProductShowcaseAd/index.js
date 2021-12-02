@@ -193,6 +193,8 @@ const SingleProductShowcaseAd = ({
       />
       <img
         alt=""
+        crossOrigin="anonymous"
+        decoding="async"
         data-testid="product-img"
         src={getImageUrl(
           cloudinaryId,

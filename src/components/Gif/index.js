@@ -164,6 +164,7 @@ class Gif extends Component {
       <img
         crossOrigin="anonymous"
         className={`${lazy ? 'img-lazy ' : ''}img`}
+        decoding="async"
         alt={alt}
         src={getBlankImage(aspectRatio)}
         ref={(node) => { this.node = node; }}
@@ -181,6 +182,7 @@ class Gif extends Component {
           <img
             crossOrigin="anonymous"
             className="img"
+            decoding="async"
             alt="${alt}"
             src="${getBlankImage(aspectRatio)}"
           />

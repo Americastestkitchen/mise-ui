@@ -78,6 +78,8 @@ const ArticleImage = ({ alt, caption, desktopSrc, imgSrc, tabletSrc, width }) =>
       }
       <img
         alt={alt}
+        crossOrigin="anonymous"
+        decoding="async"
         src={imgSrc}
       />
     </ArticleImagePicture>
