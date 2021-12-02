@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { withKnobs, text, boolean, object } from '@storybook/addon-knobs';
 import breakpoints from '../styles/breakpoints';
@@ -18,7 +19,7 @@ export const storybookParameters = {
 
 export const defaultTheme = { breakpoints, mode: 'light', siteKey: 'atk' };
 
-const getKnob = (key: any, value: any): any => {
+const getKnob = (key: string, value: unknown): any => {
   if (typeof value === 'string') return text(key, value);
   if (typeof value === 'boolean') return boolean(key, value);
   if (typeof value === 'object') return object(key, value);
@@ -32,5 +33,11 @@ export const wrapKnobs = (args: any): any => Object.fromEntries(
 export const setBackground = (elements: any[], background: string): void => {
   elements.forEach((el: any) => {
     el.parameters = { ...el.parameters, backgrounds: { default: background } };
+  });
+};
+
+export const setViewport = (elements: any[], viewport: string): void => {
+  elements.forEach((el: any) => {
+    el.parameters = { ...el.parameters, viewport: { defaultViewport: viewport } };
   });
 };

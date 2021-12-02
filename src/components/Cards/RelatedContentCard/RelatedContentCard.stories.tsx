@@ -1,4 +1,3 @@
-/* eslint-disable react/require-default-props */
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import RelatedContentCard, { RelatedContentCardProps } from './RelatedContentCard';
@@ -10,7 +9,7 @@ export default {
   ...storybookParameters,
 };
 
-type PreviewProps = { theme?: any, props?: Partial<RelatedContentCardProps> };
+type PreviewProps = { theme?: Record<string, unknown>, props?: Partial<RelatedContentCardProps> };
 
 const defaultArgs = {
   href: '/',

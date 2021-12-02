@@ -17,6 +17,7 @@
     "react-loadable-visibility": "^3.0.2",
     "styled-components-breakpoint": "2.1.1",
     "styled-normalize": "^8.0.7",
+    "use-resize-observer": "^8.0.0",
     "verge": "^1.10.2"
   },
   "peerDependencies": {
@@ -56,10 +57,6 @@
     ]
   },
   "devDependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "3.3.1",
-    "styled-components": "5.3.0",
     "@auto-it/all-contributors": "^10.29.3",
     "@auto-it/released": "^10.29.3",
     "@babel/cli": "^7.14.5",
@@ -104,7 +101,11 @@
     "jest": "26.6.3",
     "jest-environment-jsdom-fifteen": "^1.0.2",
     "jest-styled-components": "^7.0.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "3.3.1",
     "react-test-renderer": "^17.0.2",
+    "styled-components": "5.3.0",
     "typescript": "^4.3.5",
     "watch": "^1.0.2"
   },
