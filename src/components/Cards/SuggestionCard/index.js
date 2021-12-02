@@ -60,21 +60,6 @@ const SuggestionCard = ({
         )}
         <SuggestionCardActions>
           <SuggestionCardAction
-            className="skip remove-cell"
-            data-document-title={title}
-            data-event-name="RECOMMENDATION_REJECTED"
-            data-href={href}
-            data-object-id={objectId}
-            data-testid="suggestion-action__skip"
-          >
-            <Close
-              ariaHidden
-              ariaLabel=" "
-              fill={color.eclipse}
-            />
-            <span>Not for me</span>
-          </SuggestionCardAction>
-          <SuggestionCardAction
             className="favorite-action remove-cell"
             data-event-name="RECOMMENDATION_ADDED"
             data-document-title={title}
@@ -91,7 +76,22 @@ const SuggestionCard = ({
             />
             <span>I like it, save it</span>
           </SuggestionCardAction>
-        </SuggestionCardActions>`
+          <SuggestionCardAction
+            className="skip remove-cell"
+            data-document-title={title}
+            data-event-name="RECOMMENDATION_REJECTED"
+            data-href={href}
+            data-object-id={objectId}
+            data-testid="suggestion-action__skip"
+          >
+            <Close
+              ariaHidden
+              ariaLabel=" "
+              fill={color.eclipse}
+            />
+            <span>Not for me</span>
+          </SuggestionCardAction>
+        </SuggestionCardActions>
       </SuggestionCardContentInner>
     </SuggestionCardContent>
   </SuggestionCardWrapper>
