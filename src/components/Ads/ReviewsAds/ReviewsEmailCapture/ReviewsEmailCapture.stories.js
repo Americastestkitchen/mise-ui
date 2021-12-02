@@ -21,3 +21,21 @@ Default.args = {
   siteKey: 'atk',
   title: 'Sign up for the Well-Equipped Cook Newsletter',
 };
+
+export const Cio = Template.bind({});
+Cio.args = {
+  description: 'Shop smarter with our ATK Reviews team\'s expert guides and top picks',
+  inputId: 'review-email-capture__detail',
+  onSubmit: () => {},
+  siteKey: 'cio',
+  title: 'Sign up for the Well-Equipped Cook Newsletter',
+};
+
+export const Cco = Template.bind({});
+Cco.args = {
+  description: 'Shop smarter with our ATK Reviews team\'s expert guides and top picks',
+  inputId: 'review-email-capture__detail',
+  onSubmit: () => {},
+  siteKey: 'cco',
+  title: 'Sign up for the Well-Equipped Cook Newsletter',
+};
