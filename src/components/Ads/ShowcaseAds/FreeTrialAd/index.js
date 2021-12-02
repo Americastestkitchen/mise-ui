@@ -161,6 +161,8 @@ const FreeTrialAd = ({
       />
       <img
         alt=""
+        crossOrigin="anonymous"
+        decoding="async"
         data-testid="showcase-ad-img"
         src={getImageUrl(
           cloudinaryId,

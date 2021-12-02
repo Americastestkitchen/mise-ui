@@ -336,6 +336,8 @@ const CookingSchoolAd = ({
           <img
             alt=""
             className="cooking-school-ad__image"
+            crossOrigin="anonymous"
+            decoding="async"
             src={getImageUrl(cloudinaryId, { aspectRatio: '1:1', width: 400 })}
           />
         </AdPicture>

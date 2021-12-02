@@ -5,6 +5,8 @@ const WilliamsSonoma = ({ alt }) => (
   <img
     alt={alt}
     className="brand-williams-sonoma"
+    crossOrigin="anonymous"
+    decoding="async"
     src="https://res.cloudinary.com/hksqkdlah/image/upload/v1620154961/Brands/WilliamsSonoma.svg"
   />
 );

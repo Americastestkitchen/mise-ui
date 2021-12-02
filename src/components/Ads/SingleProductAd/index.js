@@ -188,6 +188,8 @@ const SingleProductAd = ({
         />
         <img
           alt=""
+          crossOrigin="anonymous"
+          decoding="async"
           data-testid="single-product-ad-img"
           src={getImageUrl(
             cloudinaryId,
