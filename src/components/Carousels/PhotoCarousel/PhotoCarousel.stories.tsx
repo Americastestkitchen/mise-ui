@@ -46,10 +46,10 @@ const PreviewPhotoCarousel = ({ theme, props }: PreviewProps) => (
 export const AtkPhotoCarousel = () => <PreviewPhotoCarousel theme={{ siteKey: 'atk' }} />;
 
 export const CcoPhotoCarousel = () => <PreviewPhotoCarousel theme={{ siteKey: 'cco' }} />;
-setBackground([CcoPhotoCarousel], 'cco');
+setBackground('cco', CcoPhotoCarousel);
 
 export const CioPhotoCarousel = () => <PreviewPhotoCarousel theme={{ siteKey: 'cio' }} />;
-setBackground([CioPhotoCarousel], 'cio');
+setBackground('cio', CioPhotoCarousel);
 
 export const AtkPhotoCarouselOneItem = () => <PreviewPhotoCarousel theme={{ siteKey: 'atk' }} props={{ items: [items[0]] }} />;
 
