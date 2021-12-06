@@ -62,16 +62,16 @@ export const ThreeAuthors = () => <Preview props={authorProp.threeAuthors} />;
 
 // Theming
 export const CCOTheme = () => <Preview theme={{ siteKey: 'cco' }} props={authorProp.oneAuthor} />;
-setBackground([CCOTheme], 'cco');
+setBackground('cco', CCOTheme);
 export const CIOTheme = () => <Preview theme={{ siteKey: 'cio' }} props={authorProp.oneAuthor} />;
-setBackground([CIOTheme], 'cio');
+setBackground('cio', CIOTheme);
 
 // Viewport Styles
 export const NoAuthorMobile = () => <Preview />;
 export const OneAuthorMobile = () => <Preview props={authorProp.oneAuthor} />;
 export const OneAuthorMobileNoPhoto = () => <Preview props={authorProp.oneAuthorNoPhoto} />;
 export const ThreeAuthorsMobile = () => <Preview props={authorProp.threeAuthors} />;
-setViewport([NoAuthorMobile, OneAuthorMobile, OneAuthorMobileNoPhoto, ThreeAuthorsMobile], 'iphone5');
+setViewport('iphone5', NoAuthorMobile, OneAuthorMobile, OneAuthorMobileNoPhoto, ThreeAuthorsMobile);
 
 const DesktopFlexLayout = styled.div<{width: number}>`
   width: ${props => props.width}px;

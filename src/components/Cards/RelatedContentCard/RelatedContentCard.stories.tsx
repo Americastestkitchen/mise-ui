@@ -32,9 +32,9 @@ export const AtkWithButton = () => <PreviewRelatedContentCard theme={{ siteKey: 
 export const CcoNoLink = () => <PreviewRelatedContentCard theme={{ siteKey: 'cco' }} />;
 export const CcoWithLink = () => <PreviewRelatedContentCard theme={{ siteKey: 'cco' }} props={{ link: 'Save 26% Right Now' }} />;
 export const CcoWithButton = () => <PreviewRelatedContentCard theme={{ siteKey: 'cco' }} props={{ link: 'Save 26% Right Now', withButton: true }} />;
-setBackground([CcoNoLink, CcoWithLink, CcoWithButton], 'cco');
+setBackground('cco', CcoNoLink, CcoWithLink, CcoWithButton);
 
 export const CioNoLink = () => <PreviewRelatedContentCard theme={{ siteKey: 'cio' }} />;
 export const CioWithLink = () => <PreviewRelatedContentCard theme={{ siteKey: 'cio' }} props={{ link: 'Save 26% Right Now' }} />;
 export const CioWithButton = () => <PreviewRelatedContentCard theme={{ siteKey: 'cio' }} props={{ link: 'Save 26% Right Now', withButton: true }} />;
-setBackground([CioNoLink, CioWithLink, CioWithButton], 'cio');
+setBackground('cio', CioNoLink, CioWithLink, CioWithButton);
