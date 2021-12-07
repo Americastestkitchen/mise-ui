@@ -103,7 +103,7 @@ export const formatAuthorNames = (authors: Author[]): string => {
 };
 
 export type BylineListProps = {
-  className: string;
+  className?: string;
   authors: Author[];
   attribution: string;
 }
