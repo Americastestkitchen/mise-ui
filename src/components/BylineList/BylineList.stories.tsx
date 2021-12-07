@@ -1,6 +1,8 @@
 import React from 'react';
 import styled, { css, ThemeProvider } from 'styled-components';
 import type { ComponentMeta } from '@storybook/react';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { action } from '@storybook/addon-actions';
 import BylineList, { BylineListProps } from './BylineList';
 import { defaultTheme, setBackground, setViewport, storybookParameters, wrapKnobs } from '../../config/shared.stories';
 import { untilMd, md } from '../../styles/breakpoints';
@@ -45,6 +47,23 @@ export const OneAuthorMobile = () => <Preview props={exampleAuthorsProp.oneAutho
 export const OneAuthorMobileNoPhoto = () => <Preview props={exampleAuthorsProp.oneAuthorNoPhoto} />;
 export const ThreeAuthorsMobile = () => <Preview props={exampleAuthorsProp.threeAuthors} />;
 setViewport('iphone5', NoAuthorMobile, OneAuthorMobile, OneAuthorMobileNoPhoto, ThreeAuthorsMobile);
+
+// Link Styles
+export const PhotoAuthorsClickable = () => (
+  <Preview props={{ ...exampleAuthorsProp.oneAuthor, onClick: action('onClick') }} />
+);
+export const AtkAuthorsClickable = () => (
+  <Preview props={{ ...exampleAuthorsProp.threeAuthors, onClick: action('onClick') }} />
+);
+export const CcoAuthorsClickable = () => (
+  <Preview theme={{ siteKey: 'cco' }} props={{ ...exampleAuthorsProp.threeAuthors, onClick: action('onClick') }} />
+);
+setBackground('cco', CcoAuthorsClickable);
+
+export const CioAuthorsClickable = () => (
+  <Preview theme={{ siteKey: 'cio' }} props={{ ...exampleAuthorsProp.threeAuthors, onClick: action('onClick') }} />
+);
+setBackground('cio', CioAuthorsClickable);
 
 const DesktopFlexLayout = styled.div<{width: number}>`
   width: ${props => props.width}px;
