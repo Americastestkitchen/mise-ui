@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { CSSProperties } from 'react';
 import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import { color, font, fontSize, lineHeight, spacing } from '../../../styles';
@@ -7,6 +6,7 @@ import Badge from '../../Badge';
 import Byline from '../../Byline';
 import Image from '../shared/Image';
 import Sticker from '../shared/Sticker';
+import BylineList, { Author } from '../../BylineList';
 
 const LeadMarqueeCardWrapper = styled.article.attrs({
   className: 'lead-marquee-card',
@@ -64,7 +64,7 @@ export const StyledBadge = styled(Badge)`
   z-index: 1;
 `;
 
-const ContentWrapper = styled.div`
+const ContentWrapper = styled.div<{ backgroundColor: CSSProperties['backgroundColor'] }>`
   align-items: center;
   background-color: ${props => props.backgroundColor};
   display: flex;
@@ -109,6 +109,10 @@ const Title = styled.h1`
   `};
 `;
 
+const BylineListSC = styled(BylineList)`
+  color: white;
+`;
+
 const Description = styled.p`
   color: ${color.white};
   display: none;
@@ -124,19 +128,48 @@ const Description = styled.p`
   `}
 `;
 
+type LeadMarqueeCardProps = {
+  /**
+   * Author Name
+   * @deprecated, ignored if LeadMarqueeCardProps['authors provided']
+   */
+  author: string;
+  /**
+   * Image id for author
+   * @deprecated, ignored if LeadMarqueeCardProps['authors provided']
+   */
+  authorImageCloudinaryId: string;
+  /** Display one or more authors */
+  authors?: Author[];
+  /** Background color for content wrapper */
+  backgroundColor?: CSSProperties['backgroundColor'];
+  description?: string;
+  imageAlt?: string;
+  /** Image for card. */
+  imageUrl: string;
+  href: string;
+  siteKey: 'atk' | 'cco' | 'cio' | 'kids' | 'school' | 'shop'
+  /** Optional: Data used to render stickers */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  stickers: any[];
+  title: string;
+  onClick: (e: React.MouseEvent<HTMLAnchorElement>) => void;
+};
+
 const LeadMarqueeCard = ({
   author,
-  authorImageCloudinaryId,
-  backgroundColor,
-  description,
-  imageAlt,
+  authorImageCloudinaryId = '',
+  authors = [],
+  backgroundColor = '#783681',
+  description = '',
+  imageAlt = '',
   imageUrl,
   href,
   siteKey,
   stickers,
   title,
-  onClick,
-}) => (
+  onClick = () => {},
+}: LeadMarqueeCardProps) => (
   <LeadMarqueeCardWrapper>
     <a
       href={href}
@@ -167,42 +200,17 @@ const LeadMarqueeCard = ({
           ) : null }
           <Title dangerouslySetInnerHTML={{ __html: title }} />
           <Description dangerouslySetInnerHTML={{ __html: description }} />
-          <Byline
-            author={`By ${author}`}
-            authorImageCloudinaryId={authorImageCloudinaryId}
-          />
+          {authors.length ? <BylineListSC authors={authors} attribution="" /> : (
+            <Byline
+              author={`By ${author}`}
+              authorImageCloudinaryId={authorImageCloudinaryId}
+            />
+          )}
+
         </div>
       </ContentWrapper>
     </a>
   </LeadMarqueeCardWrapper>
 );
-
-LeadMarqueeCard.propTypes = {
-  /** Author Name */
-  author: PropTypes.string.isRequired,
-  /** Image id for author */
-  authorImageCloudinaryId: PropTypes.string,
-  /** Background color for content wrapper */
-  backgroundColor: PropTypes.string,
-  description: PropTypes.string,
-  imageAlt: PropTypes.string,
-  /** Image for card. */
-  imageUrl: PropTypes.string.isRequired,
-  href: PropTypes.string.isRequired,
-  siteKey: PropTypes.oneOf(['atk', 'cco', 'cio', 'kids', 'school', 'shop']).isRequired,
-  /** Optional: Data used to render stickers */
-  stickers: PropTypes.array,
-  title: PropTypes.string.isRequired,
-  onClick: PropTypes.func,
-};
-
-LeadMarqueeCard.defaultProps = {
-  authorImageCloudinaryId: '',
-  backgroundColor: '#783681',
-  description: null,
-  imageAlt: '',
-  stickers: null,
-  onClick: () => {},
-};
 
 export default LeadMarqueeCard;
