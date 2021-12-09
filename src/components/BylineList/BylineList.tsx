@@ -1,10 +1,10 @@
 import React, { ReactElement } from 'react';
 import styled, { css } from 'styled-components';
 import useResizeObserver from 'use-resize-observer/polyfilled';
-import { color, font, fontSize, spacing, withThemes } from '../../styles';
+import { font, fontSize, spacing } from '../../styles';
 import { md, untilMd } from '../../styles/breakpoints';
 import cloudinaryInstance from '../../lib/cloudinary';
-import { cssThemedLink } from '../../styles/mixins';
+import { cssThemedColor, cssThemedLink } from '../../styles/mixins';
 
 export type Author = {
   id: number;
@@ -20,13 +20,6 @@ const cssStackedBreakpoint = untilMd;
 
 /** Inline author names and attribution in tablet and above. */
 const cssInlineBreakpoint = md;
-
-/** Site key theming */
-const cssSiteColor = () => withThemes({
-  atk: css`color: ${color.eclipse};`,
-  cco: css`color: ${color.black};`,
-  cio: css`color: ${color.cork};`,
-});
 
 /** cloudinary and image tag height & width number for avatar */
 const avatarSideLength = 40;
@@ -48,7 +41,7 @@ const AuthorList = styled.span`
   font-family: ${font.pnb};
   font-size: ${fontSize.md};
   line-height: 1.44;
-  ${cssSiteColor()}
+  ${cssThemedColor}
 `;
 
 /** Attribution (i.e. Published on / Updated on) */
@@ -57,7 +50,7 @@ const Attribution = styled.span<{ atLeastOneAuthor: boolean }>`
   font-family: ${font.pnr};
   font-size: ${fontSize.md};
   line-height: 1.44;
-  ${cssSiteColor()}
+  ${cssThemedColor}
 
   /* tablet and above is divided with | character. If no authors, don't show | character even on desktop. */
   ${props => props.atLeastOneAuthor

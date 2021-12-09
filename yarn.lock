@@ -5041,6 +5041,11 @@ alphanum-sort@^1.0.0:
   resolved "https://registry.yarnpkg.com/alphanum-sort/-/alphanum-sort-1.0.2.tgz#97a1119649b211ad33691d9f9f486a8ec9fbe0a3"
   integrity sha1-l6ERlkmyEa0zaR2fn0hqjsn74KM=
 
+animation-frame@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/animation-frame/-/animation-frame-0.3.0.tgz#3bb3f446ba53da38bba345582f435be3ab8aee29"
+  integrity sha1-O7P0RrpT2ji7o0VYL0Nb46uK7ik=
+
 ansi-align@^3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/ansi-align/-/ansi-align-3.0.1.tgz#0cdf12e111ace773a86e9a1fad1225c43cb19a59"
@@ -16289,6 +16294,13 @@ schema-utils@^3.0.0:
     "@types/json-schema" "^7.0.8"
     ajv "^6.12.5"
     ajv-keywords "^3.5.2"
+
+scrollto-with-animation@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/scrollto-with-animation/-/scrollto-with-animation-3.0.4.tgz#514b8203bc30643894c4910ac4a775a951bd0558"
+  integrity sha512-1Wh6O/Eq137hHmoGwkastS8Fo6Ax7daFoer0y1Yv2kMkBrVD5WrLoq7UhXetpzlVJP2CiIipCEEjvgvJ/w5wkQ==
+  dependencies:
+    animation-frame "^0.3.0"
 
 select-hose@^2.0.0:
   version "2.0.0"

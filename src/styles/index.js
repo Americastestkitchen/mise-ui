@@ -5,6 +5,8 @@ import { fontSize, font, lineHeight, letterSpacing } from './typography';
 import { grid, spacing } from './layout';
 import mixins, { themeValue, withThemes } from './mixins';
 
+export * from './ux-utilities';
+
 export {
   breakpoints,
   cards,
