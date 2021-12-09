@@ -13,3 +13,10 @@ declare module 'styled-components-breakpoint' {
         lt?: ThemeBreakpoint
     ): CSSFunction;
 }
+
+interface Window {
+    /**
+     * undefined if `//www.instagram.com/embed.js` not or not yet loaded
+     */
+    instgrm?: { Embeds: { process: () => void } };
+}
