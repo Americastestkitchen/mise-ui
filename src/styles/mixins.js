@@ -1,6 +1,24 @@
+import { css } from 'styled-components';
 import { cards, color, font, fontSize } from './index';
 
+export const themeValue = (prop, val) => props => (props.theme[prop] && props.theme[prop][val])
+ || val;
+
+export const withThemes = siteTheme => (
+  css`${() => siteTheme.default || ''};${props => siteTheme[props.theme.siteKey]};${props => siteTheme[props.theme.mode]}`
+);
+
+function focusIndicator(outlineColor = color.eclipse) {
+  return css`
+    outline: 2px dotted ${outlineColor};
+    outline-offset: 3px;
+  `;
+}
+
 export default {
+  themeValue,
+  withThemes,
+  focusIndicator,
   /**
    * Handles max-width style for Articles components.
    * @param  {String} widthType ['default', 'wide']
@@ -194,13 +212,6 @@ export default {
     `;
   },
 
-  focusIndicator(outlineColor = color.eclipse) {
-    return `
-      outline: 2px dotted ${outlineColor};
-      outline-offset: 3px;
-    `;
-  },
-
   visuallyHidden() {
     return `
       border: 0;
@@ -214,3 +225,50 @@ export default {
     `;
   },
 };
+
+export const cssReduceColor = css`
+  background-image: none !important;
+  background-color: transparent !important;
+  color-adjust: exact !important;
+`;
+
+export const cssThemedHighlight = css`
+  ${withThemes({
+    default: css`background-color: ${color.seaSalt};`,
+    atk: css`background-color: ${color.seaSalt};`,
+    cco: css`background-color: ${color.cornflower};`,
+    cio: css`background-color: ${color.sand};`,
+  })}
+`;
+
+export const cssThemedUnderline = css`
+  ${withThemes({
+    default: css`background-image: linear-gradient(transparent 91%, ${color.turquoise} 91%);`,
+    atk: css`background-image: linear-gradient(transparent 91%, ${color.turquoise} 91%);`,
+    cco: css`background-image: linear-gradient(transparent 91%, ${color.havelockBlueLight} 91%);`,
+    cio: css`background-image: linear-gradient(transparent 91%, ${color.dijon} 91%);`,
+  })}
+`;
+
+/**
+ * Updated version of styledLinkWithSiteKey.
+ */
+export const cssThemedLink = css`
+  ${cssThemedUnderline}
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out 0s;
+
+  &:focus, &:active {
+    ${focusIndicator()}
+  }
+
+  @media(hover: hover) {
+    &:hover {
+      ${cssThemedHighlight}
+    }
+  }
+
+  @media print {
+    ${cssReduceColor}
+  }
+`;

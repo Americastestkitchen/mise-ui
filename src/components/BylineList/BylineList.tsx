@@ -4,8 +4,10 @@ import useResizeObserver from 'use-resize-observer/polyfilled';
 import { color, font, fontSize, spacing, withThemes } from '../../styles';
 import { md, untilMd } from '../../styles/breakpoints';
 import cloudinaryInstance from '../../lib/cloudinary';
+import { cssThemedLink } from '../../styles/mixins';
 
 export type Author = {
+  id: number;
   firstName: string;
   lastName: string;
   photo?: { publicId?: string };
@@ -85,25 +87,47 @@ const Wrapper = styled.span<{ refHeight: number }>`
   `)}
 `;
 
-/**
- * Format mutiple authors "By x, y, and z".
- * @param authors List of authors.
- * @returns punctuated listing of authors full names.
- */
-export const formatAuthorNames = (authors: Author[]): string => {
+const Author = styled.span.attrs({ rel: 'author' })<{ underline?: boolean }>`
+  ${props => props.underline && cssThemedLink}
+`;
+
+type AuthorListInnerProps = {authors: Author[], onClick?: (id: number) => void};
+
+const AuthorListInner = ({ authors, onClick }: AuthorListInnerProps) => {
   const fullNames = authors.map(
-    author => `${author.firstName} ${author.lastName}`,
+    (author, idx) => {
+      if (!!onClick && !author?.inactive) {
+        return (
+          <Author
+            as="button"
+            role="link"
+            aria-label={`${author.firstName} ${author.lastName}: Go to author page`}
+            key={author.id}
+            underline
+            onClick={() => onClick(author.id)}
+          >
+            {author.firstName} {author.lastName}
+          </Author>
+        );
+      }
+      return <Author key={author.id || idx}>{author.firstName} {author.lastName}</Author>;
+    },
   );
   switch (fullNames.length) {
-    case 0: return '';
-    case 1: return `By ${fullNames[0]}`;
-    case 2: return `By ${fullNames.join(' and ')}`;
-    default: return `By ${[fullNames.slice(0, -1).join(', '), ...fullNames.slice(-1)].join(', and ')}`;
+    case 0: return <></>;
+    case 1: return <span>By {fullNames[0]}</span>;
+    case 2: return <span>By {fullNames[0]} and {fullNames[1]}</span>;
+    default: {
+      const firstPart = fullNames.slice(0, -1).reduce((acc, item) => [...acc, item, ', '], [] as (string | JSX.Element)[]);
+      return <span>By {firstPart}and {fullNames.slice(-1)}</span>;
+    }
   }
 };
 
 export type BylineListProps = {
   className?: string;
+  /** When defined, add link styles and sends id from author that is active */
+  onClick?: (id: number) => void;
   authors: Author[];
   attribution: string;
 }
@@ -112,7 +136,12 @@ export type BylineListProps = {
  * BylineList Component - replacement of Byline Component.
  * resize observer is for multiline requirements inside of a flexbox parent.
  */
-const BylineList = ({ className, authors, attribution }: BylineListProps): ReactElement => {
+const BylineList = ({
+  className,
+  onClick,
+  authors,
+  attribution,
+}: BylineListProps): ReactElement => {
   const { ref, height = null } = useResizeObserver();
 
   const authorImage = (() => {
@@ -144,7 +173,9 @@ const BylineList = ({ className, authors, attribution }: BylineListProps): React
         />
       )}
       <MiddleAlignment>
-        <AuthorList>{formatAuthorNames(authors)}</AuthorList>
+        <AuthorList>
+          <AuthorListInner authors={authors} onClick={onClick} />
+        </AuthorList>
         {attribution && (
           <Attribution atLeastOneAuthor={atLeastOneAuthor}>
             {attribution}

@@ -1,26 +1,9 @@
 import React, { ComponentPropsWithoutRef, PropsWithChildren, useContext } from 'react';
 import styled, { css, ThemeContext } from 'styled-components';
 import { font, color, withThemes, mixins } from '../../../styles';
+import { cssThemedLink } from '../../../styles/mixins';
 import AffiliateLink from '../shared/AffiliateLink';
 import Image from '../shared/Image';
-
-const themeHighlight = css`
-  ${withThemes({
-    default: css`background-color: ${color.seaSalt};`,
-    atk: css`background-color: ${color.seaSalt};`,
-    cco: css`background-color: ${color.cornflower};`,
-    cio: css`background-color: ${color.sand};`,
-  })}
-`;
-
-const themedUnderline = css`
-  ${withThemes({
-    default: css`background-image: linear-gradient(transparent 91%, ${color.turquoise} 91%);`,
-    atk: css`background-image: linear-gradient(transparent 91%, ${color.turquoise} 91%);`,
-    cco: css`background-image: linear-gradient(transparent 91%, ${color.havelockBlueLight} 91%);`,
-    cio: css`background-image: linear-gradient(transparent 91%, ${color.dijon} 91%);`,
-  })}
-`;
 
 const cssHeadlineFont = css`
   font-family: ${font.pnb};
@@ -58,11 +41,7 @@ const cssLinkTextFont = css`
   font-size: 16px;
   line-height: 1.13;
   color: ${color.eclipse};
-  transition: background-color 0.2s ease-in-out 0s;
-  ${themedUnderline}
-  &:hover {
-    ${themeHighlight}
-  }
+  ${cssThemedLink}
 `;
 
 const cssCenterColumn = css`
