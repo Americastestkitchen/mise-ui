@@ -8,12 +8,15 @@ export const prefersReducedMotion = () => window.matchMedia('(prefers-reduced-mo
  */
 export function onClickHashLink(ev, safeArea = 40, durationMs = 500) {
   if (prefersReducedMotion()) { return; }
-  if (!('href' in ev.currentTarget)) { return; }
-  if (!(ev.currentTarget.href.startsWith('#'))) { return; }
 
-  const url = new URL(ev.currentTarget.href);
-  const scrollToId = url.hash.slice(1);
-  const scrollTarget = document.getElementById(scrollToId);
+  const { target } = ev;
+  if (!('href' in target)) { return; }
+
+  const { hash } = new URL(target.href);
+  if (!hash.startsWith('#')) { return; }
+
+  const scrollTarget = document.getElementById(decodeURI(hash.slice(1)));
+  if (!scrollTarget) { return; }
 
   scrollToWithAnimation(
     document.documentElement,
