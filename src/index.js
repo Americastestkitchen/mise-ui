@@ -102,6 +102,9 @@ export * from './components/Chip';
 export * from './components/MediaEmbed';
 export { default as MediaEmbed } from './components/MediaEmbed';
 
+export * from './components/TableOfContents';
+export { default as TableOfContents } from './components/TableOfContents';
+
 export {
   Accordion,
   AccordionControl,
