@@ -232,23 +232,19 @@ export const cssReduceColor = css`
   color-adjust: exact !important;
 `;
 
-export const cssThemedHighlight = css`
-  ${withThemes({
-    default: css`background-color: ${color.seaSalt};`,
-    atk: css`background-color: ${color.seaSalt};`,
-    cco: css`background-color: ${color.cornflower};`,
-    cio: css`background-color: ${color.sand};`,
-  })}
-`;
+export const cssThemedHighlight = withThemes({
+  default: css`background-color: ${color.seaSalt};`,
+  atk: css`background-color: ${color.seaSalt};`,
+  cco: css`background-color: ${color.cornflower};`,
+  cio: css`background-color: ${color.sand};`,
+});
 
-export const cssThemedUnderline = css`
-  ${withThemes({
-    default: css`background-image: linear-gradient(transparent 91%, ${color.turquoise} 91%);`,
-    atk: css`background-image: linear-gradient(transparent 91%, ${color.turquoise} 91%);`,
-    cco: css`background-image: linear-gradient(transparent 91%, ${color.havelockBlueLight} 91%);`,
-    cio: css`background-image: linear-gradient(transparent 91%, ${color.dijon} 91%);`,
-  })}
-`;
+export const cssThemedUnderline = withThemes({
+  default: css`background-image: linear-gradient(transparent 91%, ${color.turquoise} 91%);`,
+  atk: css`background-image: linear-gradient(transparent 91%, ${color.turquoise} 91%);`,
+  cco: css`background-image: linear-gradient(transparent 91%, ${color.havelockBlueLight} 91%);`,
+  cio: css`background-image: linear-gradient(transparent 91%, ${color.dijon} 91%);`,
+});
 
 /**
  * Updated version of styledLinkWithSiteKey.
@@ -272,3 +268,13 @@ export const cssThemedLink = css`
     ${cssReduceColor}
   }
 `;
+
+/**
+ * Commonly themed font color
+ */
+export const cssThemedColor = withThemes({
+  default: css`color: ${color.eclipse};`,
+  atk: css`color: ${color.eclipse};`,
+  cco: css`color: ${color.black};`,
+  cio: css`color: ${color.cork};`,
+});
