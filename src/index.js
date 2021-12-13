@@ -99,6 +99,9 @@ export * from './components/BylineList';
 export { default as Chip } from './components/Chip';
 export * from './components/Chip';
 
+export * from './components/MediaEmbed';
+export { default as MediaEmbed } from './components/MediaEmbed';
+
 export {
   Accordion,
   AccordionControl,
