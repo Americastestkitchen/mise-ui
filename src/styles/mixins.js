@@ -226,6 +226,27 @@ export default {
   },
 };
 
+export const cssThemedFont = withThemes({
+  default: css`font-family: ${font.pnb};`,
+  atk: css`font-family: ${font.pnb};`,
+  cco: css`font-family: ${font.clb};`,
+  cio: css`font-family: ${font.mwr};`,
+});
+
+export const cssThemedColor = withThemes({
+  default: css`color: ${color.eclipse};`,
+  atk: css`color: ${color.eclipse};`,
+  cco: css`color: ${color.black};`,
+  cio: css`color: ${color.cork};`,
+});
+
+export const cssThemedFontAccentColor = withThemes({
+  default: css`color: ${color.tomato};`,
+  atk: css`color: ${color.tomato};`,
+  cco: css`color: ${color.denim};`,
+  cio: css`color: ${color.squirrel};`,
+});
+
 export const cssReduceColor = css`
   background-image: none !important;
   background-color: transparent !important;
@@ -268,13 +289,3 @@ export const cssThemedLink = css`
     ${cssReduceColor}
   }
 `;
-
-/**
- * Commonly themed font color
- */
-export const cssThemedColor = withThemes({
-  default: css`color: ${color.eclipse};`,
-  atk: css`color: ${color.eclipse};`,
-  cco: css`color: ${color.black};`,
-  cio: css`color: ${color.cork};`,
-});
