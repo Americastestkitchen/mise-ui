@@ -106,6 +106,9 @@ export { default as MediaEmbed } from './components/MediaEmbed';
 export * from './components/TableOfContents';
 export { default as TableOfContents } from './components/TableOfContents';
 
+export * from './components/Articles/LinkFarm';
+export { default as LinkFarm } from './components/Articles/LinkFarm';
+
 export {
   Accordion,
   AccordionControl,
