@@ -1,9 +1,14 @@
 import React, { ComponentPropsWithoutRef, PropsWithChildren, useContext } from 'react';
 import styled, { css, ThemeContext } from 'styled-components';
 import { font, color, withThemes, mixins } from '../../../styles';
+import { md, untilMd } from '../../../styles/breakpoints';
 import { cssThemedLink } from '../../../styles/mixins';
+import useMedia from '../../hooks/useMedia';
 import AffiliateLink from '../shared/AffiliateLink';
 import Image from '../shared/Image';
+
+const mobileCard = untilMd;
+const desktopCard = md;
 
 const cssHeadlineFont = css`
   font-family: ${font.pnb};
@@ -65,12 +70,21 @@ const Headline = styled.span`
 
 const Title = styled.span`
   ${cssTitleFont}
+  ${mobileCard(css`
+    ${mixins.truncateLineClamp(3)}
+  `)}
+  ${desktopCard(css`
+    ${mixins.truncateLineClamp(1)}
+  `)}
   margin-bottom: 8px;
 `;
 
 const Body = styled.span`
   ${cssBodyFont}
   ${mixins.truncateLineClamp(3)}
+  ${mobileCard(css`
+    display: none;
+  `)}
   margin-bottom: 8px;
 `;
 
@@ -80,19 +94,41 @@ const LinkText = styled.a`
 `;
 
 const LinkWrapper = styled.div`
-  padding-top: 8px;
+  ${LinkText}, .partner-link__anchor {
+    ${mixins.truncateLineClamp(1)}
+    white-space: normal;
+    line-height: 2;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .partner-link__anchor {
+    margin-top: 4px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
 `;
 
 const ImageWrapper = styled.div`
   ${cssCenterRow}
   flex-shrink: 0;
-  height: 200px;
-  width: 200px;
+  ${mobileCard(css`
+    height: 145px;
+    width: 145px;
+  `)}
+  ${desktopCard(css`
+    height: 200px;
+    width: 200px;
+  `)}
 `;
 
 const Content = styled.div`
   ${cssCenterColumn}
-  padding: 16px;
+  ${mobileCard(css`
+    padding: 8px 12px;
+  `)}
+  ${desktopCard(css`
+    padding: 16px;
+  `)}
 `;
 
 const Card = styled.a`
@@ -110,7 +146,10 @@ type WideCardWrapperProps = PropsWithChildren<{src: string}> & ComponentPropsWit
 
 export function Wrapper({ src, children, ...anchorProps }: WideCardWrapperProps) {
   const theme = useContext(ThemeContext);
-  const imageSize = theme.siteKey === 'cco' ? 180 : 200;
+  const isMobile = useMedia('(max-width: 767px)');
+  const base = isMobile ? 145 : 200;
+  const offset = theme.siteKey === 'cco' ? -20 : 0;
+  const imageSize = base + offset;
 
   return (
     <Card {...anchorProps}>
