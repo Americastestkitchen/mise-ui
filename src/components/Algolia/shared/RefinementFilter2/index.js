@@ -34,6 +34,12 @@ const RefinementFilterLabelTheme = {
 
     ${({ isRefined }) => (isRefined ? `color: ${color.mint}; font: ${fontSize.md}/1.38 ${font.pnb};` : '')}
   `,
+  cco: css`
+    color: ${color.black};
+  `,
+  cio: css`
+    color: ${color.cork};
+  `,
 };
 
 const RefinementFilterLabel = styled.label.attrs({
