@@ -40,9 +40,8 @@ const AdTitle = styled.p`
   font-weight: bold;
   letter-spacing: normal;
   margin-bottom: ${spacing.xxsm};
-  max-width: 24rem;
   position: absolute;
-  top: 2rem;
+  top: 1.5rem;
   text-align: center;
 `;
 
@@ -93,10 +92,10 @@ BookCarouselAd.propTypes = {
 };
 
 BookCarouselAd.defaultProps = {
-  cloudinaryId: 'ATKTV22Book_Mise_ReviewsBookCarouselAd_816x1200.jpg',
+  cloudinaryId: 'ATK Reviews Ads/Mask_Group_49066_3x.jpg',
   ctaLinkText: 'Save 56% Now',
-  hrefUrl: 'https://shop.americastestkitchen.com/complete-atk-22.html',
-  title: 'Get 1,727 recipes from all 22 seasons!',
+  hrefUrl: 'https://shop.americastestkitchen.com/complete-atk-21.html',
+  title: 'Every Recipe (1,670!) From All 21 Seasons',
 };
 
 export default BookCarouselAd;

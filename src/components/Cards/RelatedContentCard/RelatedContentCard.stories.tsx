@@ -1,7 +1,7 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import RelatedContentCard, { RelatedContentCardProps } from './RelatedContentCard';
-import { defaultTheme, setBackground, storybookParameters, wrapKnobs } from '../../../config/shared.stories';
+import { defaultTheme, setBackground, setViewport, storybookParameters, wrapKnobs } from '../../../config/shared.stories';
 
 export default {
   title: 'Components/Cards/RelatedContentCard',
@@ -15,7 +15,7 @@ const defaultArgs = {
   href: '/',
   src: 'https://res.cloudinary.com/hksqkdlah/image/upload/c_fill,f_auto,g_faces:auto,q_auto:low,w_200,ar_1:1/v1592840035/mise-play/feature-card-wide.jpg',
   headline: 'Recipe',
-  title: 'Whole Roast Snapper with Citrus Vinaigrette',
+  title: 'Whole Roast Snapper with Citrus Vinaigrette Vinaigrette',
   body: 'To serve up an impressive dish of roasted red snapper, we started by making shallow slashes in the skin to ensure even cooking and seasoning; this step also allowed us to gauge the doneness of the fish easily.',
 };
 
@@ -38,3 +38,9 @@ export const CioNoLink = () => <PreviewRelatedContentCard theme={{ siteKey: 'cio
 export const CioWithLink = () => <PreviewRelatedContentCard theme={{ siteKey: 'cio' }} props={{ link: 'Save 26% Right Now' }} />;
 export const CioWithButton = () => <PreviewRelatedContentCard theme={{ siteKey: 'cio' }} props={{ link: 'Save 26% Right Now', withButton: true }} />;
 setBackground('cio', CioNoLink, CioWithLink, CioWithButton);
+
+export const MobileNoLink = () => <PreviewRelatedContentCard theme={{ siteKey: 'atk' }} />;
+export const MobileWithLink = () => <PreviewRelatedContentCard theme={{ siteKey: 'atk' }} props={{ link: 'Save 26% Right Now' }} />;
+export const MobileWithButton = () => <PreviewRelatedContentCard theme={{ siteKey: 'atk' }} props={{ link: 'Save 26% Right Now', withButton: true }} />;
+export const MobileCioWithLink = () => <PreviewRelatedContentCard theme={{ siteKey: 'cio' }} props={{ link: 'Save 26% Right Now' }} />;
+setViewport('iphone6', MobileNoLink, MobileWithLink, MobileWithButton, MobileCioWithLink);
