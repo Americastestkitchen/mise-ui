@@ -39,7 +39,7 @@ const cssBodyFont = css`
 const cssLinkTextFont = css`
   font-family: ${font.pnb};
   font-size: 16px;
-  line-height: 1.13;
+  line-height: 1.13!important;
   color: ${color.eclipse};
   ${cssThemedLink}
 `;
