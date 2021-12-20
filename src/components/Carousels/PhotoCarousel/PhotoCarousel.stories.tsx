@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import PhotoCarousel, { PhotoCarouselProps } from './PhotoCarousel';
-import { defaultTheme, setBackground, storybookParameters, wrapKnobs } from '../../../config/shared.stories';
+import { defaultTheme, setBackground, setViewport, storybookParameters, wrapKnobs } from '../../../config/shared.stories';
 
 export default {
   title: 'Components/Carousels/PhotoCarousel',
@@ -61,3 +61,9 @@ const Container = styled.div`
 `;
 
 export const AtkPhotoCarouselInContainer = () => <Container><PreviewPhotoCarousel theme={{ siteKey: 'atk' }} /></Container>;
+
+export const TabletPhotoCarousel = () => <PreviewPhotoCarousel theme={{ siteKey: 'atk' }} />;
+setViewport('ipad', TabletPhotoCarousel);
+
+export const MobilePhotoCarousel = () => <PreviewPhotoCarousel theme={{ siteKey: 'atk' }} />;
+setViewport('iphone6', MobilePhotoCarousel);
