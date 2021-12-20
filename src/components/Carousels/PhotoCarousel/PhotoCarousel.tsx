@@ -62,12 +62,9 @@ const Wrapper = styled.div<{ maxWidth: string }>`
     margin-right: 5%;
   }
   .flickity-button {
+    background: ${color.gray20};
     display: block;
-    ${withThemes({
-    default: css`background: ${color.gray20};`,
-    cco: css`background: ${color.queenBlue};`,
-    cio: css`background: ${color.squirrel};`,
-  })}
+  }
   .flickity-button:hover {
     ${withThemes({
     default: css`background: ${color.nobel}; opacity: 1;`,
@@ -167,7 +164,7 @@ const Title = styled.div`
   font-size: 26px;
   line-height: 1.15;
   // depends on .flickity-prev-next-button.previous
-  padding-right: 72px;
+  padding-right: calc(5% + 72px);
   ${cssThemedColor}
   ${cssThemedFont}
 `;
