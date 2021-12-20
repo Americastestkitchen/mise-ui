@@ -43,7 +43,8 @@ const longArgs = {
   ],
 };
 
-export const Hidden = () => Preview({ ids: [] }, 'atk');
+// @ts-expect-error handle bad values
+export const Hidden = () => Preview({ ids: ['', undefined, null] }, 'atk');
 
 export const Atk = () => Preview(args, 'atk');
 
