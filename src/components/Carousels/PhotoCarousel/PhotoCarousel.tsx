@@ -4,6 +4,7 @@ import React, { useRef } from 'react';
 import styled, { css } from 'styled-components';
 import cloudinaryInstance, { baseImageConfig } from '../../../lib/cloudinary';
 import { withThemes, color, font } from '../../../styles';
+import { cssThemedColor, cssThemedFont } from '../../../styles/mixins';
 import Carousel from '../Carousel';
 
 export type PhotoCarouselCellProps = {
@@ -57,12 +58,12 @@ const Wrapper = styled.div<{ maxWidth: string }>`
     overflow: hidden;
   }
   .carousel-cell {
-    width: 95%;
+    width: 100%;
     margin-right: 5%;
   }
   .flickity-button {
     background: ${color.gray20};
-    /* display: block; // uncomment to show flickity buttons in all viewports */
+    display: block;
   }
   .flickity-button:hover {
     background: ${color.nobel};
@@ -157,14 +158,10 @@ const Title = styled.div`
   margin: 12px 0;
   font-size: 26px;
   line-height: 1.15;
-  color: ${color.black};
-
-  ${withThemes({
-    default: css`font-family: ${font.pnb};`,
-    atk: css`font-family: ${font.pnb};`,
-    cco: css`font-family: ${font.clb};`,
-    cio: css`font-family: ${font.mwr};`,
-  })}
+  // depends on .flickity-prev-next-button.previous
+  padding-right: calc(5% + 72px);
+  ${cssThemedColor}
+  ${cssThemedFont}
 `;
 
 /** Composable component API or references for styled components classNames. */
