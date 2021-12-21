@@ -1,6 +1,6 @@
 import React, { ComponentPropsWithoutRef, PropsWithChildren, useContext } from 'react';
 import styled, { css, ThemeContext } from 'styled-components';
-import { font, color, withThemes } from '../../../styles';
+import { font, color, withThemes, mixins } from '../../../styles';
 import { md, untilMd } from '../../../styles/breakpoints';
 import { cssThemedLink } from '../../../styles/mixins';
 import useMedia from '../../hooks/useMedia';
@@ -59,18 +59,31 @@ const cssCenterColumn = css`
 const cssCenterRow = css`
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 `;
 
 const Headline = styled.span`
   ${cssHeadlineFont}
-  margin-bottom: 8px;
+  ${mobileCard(css`
+    margin-bottom: 4px;
+  `)}
+  ${desktopCard(css`
+    margin-bottom: 8px;
+  `)}
 `;
 
 const Title = styled.span`
   ${cssTitleFont}
-  margin-bottom: 8px;
+  ${mobileCard(css`
+    ${mixins.truncateLineClamp(3)}
+    margin-bottom: 4px;
+  `)}
+  ${desktopCard(css`
+    ${mixins.truncateLineClamp(1)}
+    margin-bottom: 8px;
+  `)}
+
 `;
 
 const Body = styled.span`
