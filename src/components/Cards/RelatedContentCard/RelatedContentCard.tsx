@@ -59,24 +59,31 @@ const cssCenterColumn = css`
 const cssCenterRow = css`
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 `;
 
 const Headline = styled.span`
   ${cssHeadlineFont}
-  margin-bottom: 8px;
+  ${mobileCard(css`
+    margin-bottom: 4px;
+  `)}
+  ${desktopCard(css`
+    margin-bottom: 8px;
+  `)}
 `;
 
 const Title = styled.span`
   ${cssTitleFont}
   ${mobileCard(css`
     ${mixins.truncateLineClamp(3)}
+    margin-bottom: 4px;
   `)}
   ${desktopCard(css`
     ${mixins.truncateLineClamp(1)}
+    margin-bottom: 8px;
   `)}
-  margin-bottom: 8px;
+
 `;
 
 const Body = styled.span`
