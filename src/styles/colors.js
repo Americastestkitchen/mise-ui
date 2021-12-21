@@ -99,6 +99,7 @@ const color = {
   doveGray: '#6e6e6e',
   chablis: '#fef1e9',
   greenWhite: '#e7eae1',
+  queenBlue: '#426491',
 };
 
 export default color;
