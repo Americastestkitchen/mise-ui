@@ -1,7 +1,7 @@
 /* eslint-disable react/require-default-props */
 /* eslint-disable no-undef */ // missing eslint typescript compat rules.
-import React, { useRef } from 'react';
-import styled, { css } from 'styled-components';
+import React, { useContext, useRef } from 'react';
+import styled, { css, ThemeContext } from 'styled-components';
 import cloudinaryInstance, { baseImageConfig } from '../../../lib/cloudinary';
 import { withThemes, color, font } from '../../../styles';
 import { cssThemedColor, cssThemedFont } from '../../../styles/mixins';
@@ -62,11 +62,20 @@ const Wrapper = styled.div<{ maxWidth: string }>`
     margin-right: 5%;
   }
   .flickity-button {
-    background: ${color.gray20};
     display: block;
+    ${withThemes({
+    default: css`background: ${color.gray20};`,
+    cco: css`background: ${color.queenBlue};`,
+    cio: css`background: ${color.squirrel};`,
+  })}
   }
   .flickity-button:hover {
-    background: ${color.nobel};
+    ${withThemes({
+    default: css`background: ${color.nobel}; opacity: 1;`,
+    cco: css`background: ${color.queenBlue}; opacity: 0.6;`,
+    cio: css`background: ${color.squirrel}; opacity: 0.6;`,
+  })}
+  }
   }
   .flickity-prev-next-button {
     width: 28px;
@@ -81,13 +90,13 @@ const Wrapper = styled.div<{ maxWidth: string }>`
     top: 25% !important;
   }
   .flickity-prev-next-button.previous {
-    right: calc(5% + 38px);
+    right: 38px;
     .flickity-button-icon {
       left: 16% !important;
     }
   }
   .flickity-prev-next-button.next {
-    right: 5%;
+    right: 0;
     .flickity-button-icon {
       left: 25% !important;
     }
@@ -159,7 +168,7 @@ const Title = styled.div`
   font-size: 26px;
   line-height: 1.15;
   // depends on .flickity-prev-next-button.previous
-  padding-right: calc(5% + 72px);
+  padding-right: 72px;
   ${cssThemedColor}
   ${cssThemedFont}
 `;
@@ -172,6 +181,7 @@ export const SingleCarousel = {
 };
 
 export default function PhotoCarousel({ as, title, items, maxWidth = '1400px' } : PhotoCarouselProps) {
+  const { siteKey } = useContext(ThemeContext);
   const itemsId = items.map((item, index) => ({ ...item, id: index }));
   const ref = useRef<HTMLDivElement | null>(null);
 
@@ -187,7 +197,11 @@ export default function PhotoCarousel({ as, title, items, maxWidth = '1400px' } 
         onChange={(data) => {
           const button = ref.current?.querySelector<HTMLButtonElement>('.flickity-prev-next-button.previous');
           if (!button) return;
-          button.style.background = data === 0 ? `${color.nobel}` : '';
+          if (siteKey === 'atk') {
+            button.style.background = data === 0 ? `${color.nobel}` : '';
+          } else {
+            button.style.opacity = data === 0 ? '0.6' : '1';
+          }
         }}
       />
     </SingleCarousel.Wrapper>

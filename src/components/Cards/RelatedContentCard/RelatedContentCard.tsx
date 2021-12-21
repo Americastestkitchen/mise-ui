@@ -1,6 +1,6 @@
 import React, { ComponentPropsWithoutRef, PropsWithChildren, useContext } from 'react';
 import styled, { css, ThemeContext } from 'styled-components';
-import { font, color, withThemes } from '../../../styles';
+import { font, color, withThemes, mixins } from '../../../styles';
 import { md, untilMd } from '../../../styles/breakpoints';
 import { cssThemedLink } from '../../../styles/mixins';
 import useMedia from '../../hooks/useMedia';
@@ -69,11 +69,18 @@ const Headline = styled.span`
 
 const Title = styled.span`
   ${cssTitleFont}
+  ${mobileCard(css`
+    ${mixins.truncateLineClamp(3)}
+  `)}
+  ${desktopCard(css`
+    ${mixins.truncateLineClamp(1)}
+  `)}
   margin-bottom: 8px;
 `;
 
 const Body = styled.span`
   ${cssBodyFont}
+  ${mixins.truncateLineClamp(3)}
   ${mobileCard(css`
     display: none;
   `)}
@@ -86,16 +93,6 @@ const LinkText = styled.a`
 `;
 
 const LinkWrapper = styled.div`
-  ${LinkText}, .partner-link__anchor {
-    white-space: normal;
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-  .partner-link__anchor {
-    margin-top: 4px;
-    padding-top: 4px;
-    padding-bottom: 4px;
-  }
 `;
 
 const ImageWrapper = styled.div`
