@@ -81,13 +81,13 @@ const Wrapper = styled.div<{ maxWidth: string }>`
     top: 25% !important;
   }
   .flickity-prev-next-button.previous {
-    right: calc(5% + 38px);
+    right: 38px;
     .flickity-button-icon {
       left: 16% !important;
     }
   }
   .flickity-prev-next-button.next {
-    right: 5%;
+    right: 0;
     .flickity-button-icon {
       left: 25% !important;
     }
@@ -159,7 +159,7 @@ const Title = styled.div`
   font-size: 26px;
   line-height: 1.15;
   // depends on .flickity-prev-next-button.previous
-  padding-right: calc(5% + 72px);
+  padding-right: 72px;
   ${cssThemedColor}
   ${cssThemedFont}
 `;
