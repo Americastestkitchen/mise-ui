@@ -68,6 +68,7 @@ const Wrapper = styled.div<{ maxWidth: string }>`
     cco: css`background: ${color.queenBlue};`,
     cio: css`background: ${color.squirrel};`,
   })}
+  }
   .flickity-button:hover {
     ${withThemes({
     default: css`background: ${color.nobel}; opacity: 1;`,

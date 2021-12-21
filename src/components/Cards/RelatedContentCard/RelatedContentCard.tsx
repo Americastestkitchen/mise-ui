@@ -34,7 +34,6 @@ const cssTitleFont = css`
 const cssBodyFont = css`
   font-family: ${font.pnr};
   font-size: 16px;
-  line-height: 1.25;
   ${withThemes({
     default: css`color: ${color.eclipse};`,
     cio: css`color: ${color.cork};`,
@@ -44,7 +43,7 @@ const cssBodyFont = css`
 const cssLinkTextFont = css`
   font-family: ${font.pnb};
   font-size: 16px;
-  line-height: 1.13;
+  line-height: 1.3;
   color: ${color.eclipse};
   ${cssThemedLink}
 `;
@@ -94,18 +93,6 @@ const LinkText = styled.a`
 `;
 
 const LinkWrapper = styled.div`
-  ${LinkText}, .partner-link__anchor {
-    ${mixins.truncateLineClamp(1)}
-    white-space: normal;
-    line-height: 2;
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-  .partner-link__anchor {
-    margin-top: 4px;
-    padding-top: 4px;
-    padding-bottom: 4px;
-  }
 `;
 
 const ImageWrapper = styled.div`
