@@ -65,14 +65,14 @@ const Wrapper = styled.div<{ maxWidth: string }>`
     display: block;
     ${withThemes({
     default: css`background: ${color.gray20};`,
-    cco: css`background: #426491;`,
-    cio: css`background: #94856b;`,
+    cco: css`background: ${color.queenBlue};`,
+    cio: css`background: ${color.squirrel};`,
   })}
   .flickity-button:hover {
     ${withThemes({
     default: css`background: ${color.nobel}; opacity: 1;`,
-    cco: css`background: #426491; opacity: 0.6;`,
-    cio: css`background: #94856b; opacity: 0.6;`,
+    cco: css`background: ${color.queenBlue}; opacity: 0.6;`,
+    cio: css`background: ${color.squirrel}; opacity: 0.6;`,
   })}
   }
   }
