@@ -76,7 +76,6 @@ const Wrapper = styled.div<{ maxWidth: string }>`
     cio: css`background: ${color.squirrel}; opacity: 0.6;`,
   })}
   }
-  }
   .flickity-prev-next-button {
     width: 28px;
     height: 28px;
