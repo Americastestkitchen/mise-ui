@@ -34,6 +34,7 @@ const cssTitleFont = css`
 const cssBodyFont = css`
   font-family: ${font.pnr};
   font-size: 16px;
+  line-height: 1.25;
   ${withThemes({
     default: css`color: ${color.eclipse};`,
     cio: css`color: ${color.cork};`,
@@ -43,7 +44,7 @@ const cssBodyFont = css`
 const cssLinkTextFont = css`
   font-family: ${font.pnb};
   font-size: 16px;
-  line-height: 1.3;
+  line-height: 1.13;
   color: ${color.eclipse};
   ${cssThemedLink}
 `;
@@ -92,8 +93,7 @@ const LinkText = styled.a`
   padding: 4px 0;
 `;
 
-const LinkWrapper = styled.div`
-`;
+const LinkWrapper = styled.div``;
 
 const ImageWrapper = styled.div`
   ${cssCenterRow}
