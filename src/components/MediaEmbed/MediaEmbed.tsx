@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import useResizeObserver from 'use-resize-observer/polyfilled';
 import { useOEmbed, useScript } from './utilities';
 
 /** Aspect ratio component for iframe child components */
@@ -32,14 +33,33 @@ export function YoutubeEmbed({ source }: { source: string }) {
   ) : null;
 }
 
+const OverridesTikTokEmbed = styled.div<{lessThan542: boolean}>`
+  blockquote.tiktok-embed {
+    margin: 0;
+    iframe {
+      // since we can't change cross-origin background color of iframe.
+      //  we are using the iframe's content breakpoints and matching the 
+      //  iframe size to the content size.
+      width: ${({ lessThan542 }) => (lessThan542 ? '323px' : '542px')} !important;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+  }
+`;
+
 export function TikTokEmbed({ source }: { source: string }) {
+  const { width = 0, ref } = useResizeObserver();
   const embed = useOEmbed({
     baseUrl: 'https://www.tiktok.com/oembed?url=',
     script: 'https://www.tiktok.com/embed.js',
     source,
   });
   return (
-    <div dangerouslySetInnerHTML={{ __html: embed?.html ?? '' }} />
+    <OverridesTikTokEmbed
+      ref={ref}
+      lessThan542={width < 542}
+      dangerouslySetInnerHTML={{ __html: embed?.html ?? '' }}
+    />
   );
 }
 
