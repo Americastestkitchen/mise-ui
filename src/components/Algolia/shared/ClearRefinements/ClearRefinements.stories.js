@@ -1,35 +1,33 @@
 import React from 'react';
-import styled from 'styled-components';
 
 import LabelFrame from '../../../LabelFrame';
-import CurrentRefinements from '../CurrentRefinements';
 import ClearRefinements from './index';
-import SearchRefinementList from '../../search/SearchRefinementList';
 import MiseInstantSearch from '../../../../lib/algolia/MiseInstantSearch/MiseInstantSearch';
+import SearchRefinementList from '../../search/SearchRefinementList';
+import { siteKey } from '../../../../config/argTypes';
+import { addThemedWrapper } from '../../../../config/decorators';
 
 export default {
   title: 'Components/Algolia/shared/ClearRefinements',
   component: ClearRefinements,
+  decorators: [ addThemedWrapper() ],
+  argTypes: { siteKey },
 };
 
-const StyledWrapper = styled.div`
-  margin-bottom: 2.4rem;
-`;
-
-export const Default = () => (
+const Template = (args) => (
   <MiseInstantSearch>
     <LabelFrame label="Component">
       <ClearRefinements />
     </LabelFrame>
-    <LabelFrame label="Supplemental Components">
-      <StyledWrapper>
-        <CurrentRefinements />
-      </StyledWrapper>
+    <LabelFrame label="Supplemental Component">
       <SearchRefinementList
-        attribute="search_cuisine_list"
-        operator="and"
-        showHideLabel="CUISINE"
+        attribute="search_review_type_list"
+        operator="or"
+        showHideLabel="Equipment"
       />
     </LabelFrame>
   </MiseInstantSearch>
 );
+
+export const Default = Template.bind({});
+Default.args = { siteKey: 'atk' };

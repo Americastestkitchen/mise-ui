@@ -21,7 +21,8 @@ const RefinementTheme = {
     & > button {
       pointer-events: auto;
     }
-
+  `,
+  atk: css`
     /* Change color of p child to mint when hovered. */
     &:hover > p {
       color: ${color.mint}
@@ -31,6 +32,32 @@ const RefinementTheme = {
     &:hover > button:hover {
       svg g {
         stroke: ${color.mint};
+      }
+    }
+  `,
+  cco: css`
+    /* Change color of p child to mint when hovered. */
+    &:hover > p {
+      color: ${color.denim}
+    }
+
+    /* Change svg stroke color when parent and 'x' button child are hovered. */
+    &:hover > button:hover {
+      svg g {
+        stroke: ${color.denim};
+      }
+    }
+  `,
+  cio: css`
+    /* Change color of p child to mint when hovered. */
+    &:hover > p {
+      color: ${color.squirrel}
+    }
+
+    /* Change svg stroke color when parent and 'x' button child are hovered. */
+    &:hover > button:hover {
+      svg g {
+        stroke: ${color.squirrel};
       }
     }
   `,
@@ -61,8 +88,16 @@ const Refinement = styled.div`
 const RefinementLabelTheme = {
   default: css`
     font: ${fontSize.md}/${lineHeight.sm} ${font.pnr};
-    color: ${color.eclipse};
     margin-right: ${spacing.xsm};
+  `,
+  atk: css`
+    color: ${color.eclipse};
+  `,
+  cco: css`
+    color: ${color.black};
+  `,
+  cio: css`
+    color: ${color.cork};
   `,
   kidsSearch: css`
     color: ${color.black};
@@ -81,11 +116,25 @@ const RefinementLabel = styled.p`
 const RefinementClearButtonTheme = {
   default: css`
     font: ${fontSize.md}/${lineHeight.sm} ${font.pnr};
-    color: ${color.nobel};
     width: 0.8rem;
 
     svg {
       height: 0.8rem;
+    }
+  `,
+  atk: css`
+    svg g {
+      stroke: ${color.eclipse};
+    }
+  `,
+  cco: css`
+    svg g {
+      stroke: ${color.black};
+    }
+  `,
+  cio: css`
+    svg g {
+      stroke: ${color.cork};
     }
   `,
   kidsSearch: css`

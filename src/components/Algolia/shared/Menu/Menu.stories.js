@@ -2,13 +2,13 @@ import React from 'react';
 
 import LabelFrame from '../../../LabelFrame';
 import MiseInstantSearch from '../../../../lib/algolia/MiseInstantSearch/MiseInstantSearch';
-import ToggleRefinement from './index';
+import Menu from './index';
 import { siteKey } from '../../../../config/argTypes';
 import { addThemedWrapper } from '../../../../config/decorators';
 
 export default {
-  title: 'Components/Algolia/shared/ToggleRefinement',
-  component: ToggleRefinement,
+  title: 'Components/Algolia/shared/Menu',
+  component: Menu,
   decorators: [ addThemedWrapper() ],
   argTypes: { siteKey },
 };
@@ -16,15 +16,10 @@ export default {
 const Template = (args) => (
   <MiseInstantSearch>
     <LabelFrame label="Component">
-      <ToggleRefinement
-        attribute="search_document_klass"
-        label="Equipment Reivew"
-        value="equipment_review"
-        {...args}
-      />
+      <Menu attribute="search_review_type_list" />
     </LabelFrame>
   </MiseInstantSearch>
 );
 
-export const Trending = Template.bind({});
-Trending.args = {siteKey: 'atk' };
+export const Default = Template.bind({});
+Default.args = { siteKey: 'atk' };
