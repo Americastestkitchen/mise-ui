@@ -210,7 +210,7 @@ export default function RelatedContentCard({
   withButton,
 }: RelatedContentCardProps) {
   return (
-    <WideCard.Wrapper href={href} src={src}>
+    <WideCard.Wrapper href={href} src={src} target="_blank" rel="noopener noreferrer">
       <WideCard.Headline>{headline}</WideCard.Headline>
       <WideCard.Title as="h4" withButton={withButton}>{title}</WideCard.Title>
       <WideCard.Body>{body}</WideCard.Body>
