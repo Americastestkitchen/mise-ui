@@ -15,13 +15,21 @@ import {
 
 const StatsWrapperTheme = {
   default: css`
-    color: ${color.eclipse};
     font: ${fontSize.md}/${lineHeight.sm} ${font.pnb};
     margin-bottom: ${spacing.xsm};
 
     ${breakpoint('md')`
       float: left;
     `}
+  `,
+  atk: css`
+    color: ${color.eclipse};
+  `,
+  cco: css`
+    color: ${color.black};
+  `,
+  cio: css`
+    color: ${color.cork};
   `,
   kidsSearch: css`
     color: ${color.black};

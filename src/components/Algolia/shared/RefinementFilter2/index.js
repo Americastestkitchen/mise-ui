@@ -5,40 +5,73 @@ import styled, { css } from 'styled-components';
 import { Checkmark } from '../../../DesignTokens/Icon/svgs';
 import { color, font, fontSize, spacing, withThemes } from '../../../../styles';
 
-const RefinementFilterWrapper = styled.div`
-  align-items: center;
-  display: flex;
+const RefinementFilterWrapperTheme = {
+  default: css`
+    align-items: center;
+    display: flex;
 
-  &:focus-within {
-    box-shadow: 0 0 0 2px ${color.focusRing};
-  }
-
-  &:hover {
-    cursor: pointer;
-
-    .search-refinement-list__label {
-      color: ${color.mint};
+    &:focus-within {
+      box-shadow: 0 0 0 2px ${color.focusRing};
     }
-  }
+
+    &:hover {
+      cursor: pointer;
+    }
+  `,
+  atk: css`
+    &:hover {
+      .search-refinement-list__label {
+        color: ${color.mint};
+      }
+    }
+  `,
+  cco: css`
+    &:hover {
+      .search-refinement-list__label {
+        color: ${color.denim};
+      }
+    }
+  `,
+  cio: css`
+    &:hover {
+      .search-refinement-list__label {
+        color: ${color.squirrel};
+      }
+    }
+  `,
+};
+
+const RefinementFilterWrapper = styled.div`
+  ${withThemes(RefinementFilterWrapperTheme)}
 `;
 
 const RefinementFilterLabelTheme = {
   default: css`
     color: ${color.eclipse};
     font: ${fontSize.md}/1.38 ${font.pnr};
-
+    ${({ isRefined }) => (isRefined ? `font: ${fontSize.md}/1.38 ${font.pnb};` : '')}
+  `,
+  atk: css`
     &:hover {
       color: ${color.mint};
       cursor: pointer;
     }
-
-    ${({ isRefined }) => (isRefined ? `color: ${color.mint}; font: ${fontSize.md}/1.38 ${font.pnb};` : '')}
   `,
   cco: css`
     color: ${color.black};
+
+    &:hover {
+      color: ${color.denim};
+      cursor: pointer;
+    }
   `,
   cio: css`
     color: ${color.cork};
+
+    &:hover {
+      color: ${color.squirrel};
+      cursor: pointer;
+    }
   `,
 };
 

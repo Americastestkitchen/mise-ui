@@ -20,22 +20,48 @@ const SearchSortByItemTheme = {
     margin: ${spacing.xxsm} 0.25rem ${spacing.xsm} -${spacing.xxsm};
     padding-left: ${spacing.xxsm};
 
+    &:focus-within {
+      ${mixins.focusIndicator()};
+      outline-offset: 0;
+    }
+  `,
+  atk: css`
     &:hover {
       cursor: pointer;
 
       .search-sort-by__circle {
         background-color: ${color.mint};
-        border-color: ${color.mint};
       }
 
       .search-sort-by__label {
         color: ${color.mint};
       }
     }
+  `,
+  cco: css`
+    &:hover {
+      cursor: pointer;
 
-    &:focus-within {
-      ${mixins.focusIndicator()};
-      outline-offset: 0;
+      .search-sort-by__circle {
+        background-color: ${color.denim};
+      }
+
+      .search-sort-by__label {
+        color: ${color.denim};
+      }
+    }
+  `,
+  cio: css`
+    &:hover {
+      cursor: pointer;
+
+      .search-sort-by__circle {
+        background-color: ${color.squirrel};
+      }
+
+      .search-sort-by__label {
+        color: ${color.squirrel};
+      }
     }
   `,
   kidsSearch: css`
@@ -81,17 +107,37 @@ const SearchSortByRadioInput = styled.input`
 
 const SearchSortByCircleTheme = {
   default: css`
-    ${({ isRefined }) => (isRefined ? `
-        background-color: ${color.mint};
-        border: solid 1px ${color.mint};
-    ` : `
-        background-color: transparent;
-        border: solid 1px ${color.nobel};
-    `)}
     border-radius: 1.2rem;
     height: 1.2rem;
     margin-right: 0.6rem;
     width: 1.2rem;
+  `,
+  atk: css`
+    border: solid 1px ${color.nobel};
+
+    ${({ isRefined }) => (isRefined ? `
+        background-color: ${color.mint};
+    ` : `
+        background-color: transparent;
+    `)}
+  `,
+  cco: css`
+    border: solid 1px ${color.black};
+
+    ${({ isRefined }) => (isRefined ? `
+        background-color: ${color.denim};
+    ` : `
+        background-color: transparent;
+    `)}
+  `,
+  cio: css`
+    border: solid 1px #D3C5A0;
+
+    ${({ isRefined }) => (isRefined ? `
+        background-color: ${color.squirrel};
+    ` : `
+        background-color: transparent;
+    `)}
   `,
   kidsSearch: css`
     display: none;
@@ -106,7 +152,6 @@ const SearchSortByLabelTheme = {
   default: css`
     align-items: center;
     border: 1px dashed transparent;
-    color: ${color.eclipse};
     display: flex;
     font: ${fontSize.md}/1.38 ${font.pnr};
     font-size: ${fontSize.md};
@@ -115,6 +160,15 @@ const SearchSortByLabelTheme = {
     &:hover {
       cursor: pointer;
     }
+  `,
+  atk: css`
+    color: ${color.eclipse};
+  `,
+  cco: css`
+    color: ${color.black};
+  `,
+  cio: css`
+    color: ${color.cork};
   `,
   kidsSearch: css`
     background-color: ${color.greySmoke};
