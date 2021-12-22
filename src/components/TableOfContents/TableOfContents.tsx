@@ -6,15 +6,15 @@ import { cssThemedColor, cssThemedLink } from '../../styles/mixins';
 const Title = styled.div`
   font-family: ${font.pnb};
   font-size: 26px;
-  line-height: 1.57;
-  margin-bottom: 4px;
+  line-height: 30px;
+  margin-bottom: 12px;
   ${cssThemedColor}
 `;
 
 const JumpLink = styled.a`
-  font-family: ${font.pnb};
+  font-family: ${font.mwr};
   font-size: 23px;
-  line-height: 1.57;
+  line-height: 36px;
   ${cssThemedColor}
   ${cssThemedLink}
 `;
