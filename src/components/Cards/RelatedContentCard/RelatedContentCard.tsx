@@ -63,27 +63,28 @@ const cssCenterRow = css`
   align-items: center;
 `;
 
-const Headline = styled.span`
-  ${cssHeadlineFont}
-  ${mobileCard(css`
-    margin-bottom: 4px;
-  `)}
-  ${desktopCard(css`
-    margin-bottom: 8px;
-  `)}
+const cssCenterLeadingRow = css`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
 `;
 
-const Title = styled.span`
+const Headline = styled.span`
+  ${cssHeadlineFont}
+  margin-bottom: 8px;
+`;
+
+const Title = styled.span<{withButton?: boolean}>`
   ${cssTitleFont}
-  ${mobileCard(css`
-    ${mixins.truncateLineClamp(3)}
-    margin-bottom: 4px;
+  margin-bottom: 8px;
+  ${({ withButton }) => mobileCard(css`
+    /* only room for 2 lines of title when using the button styles */
+    ${mixins.truncateLineClamp(withButton ? 2 : 3)}
   `)}
   ${desktopCard(css`
     ${mixins.truncateLineClamp(1)}
-    margin-bottom: 8px;
   `)}
-
 `;
 
 const Body = styled.span`
@@ -97,10 +98,11 @@ const Body = styled.span`
 
 const LinkText = styled.a`
   ${cssLinkTextFont}
-  padding: 4px 0;
 `;
 
-const LinkWrapper = styled.div``;
+const LinkWrapper = styled.div`
+  padding-top: 8px;
+`;
 
 const ImageWrapper = styled.div`
   ${cssCenterRow}
@@ -126,7 +128,7 @@ const Content = styled.div`
 `;
 
 const Card = styled.a`
-  ${cssCenterRow}
+  ${cssCenterLeadingRow}
   background-color: ${color.white};
   ${withThemes({
     cco: css`
@@ -208,9 +210,9 @@ export default function RelatedContentCard({
   withButton,
 }: RelatedContentCardProps) {
   return (
-    <WideCard.Wrapper href={href} src={src}>
+    <WideCard.Wrapper href={href} src={src} target="_blank" rel="noopener noreferrer">
       <WideCard.Headline>{headline}</WideCard.Headline>
-      <WideCard.Title as="h4">{title}</WideCard.Title>
+      <WideCard.Title as="h4" withButton={withButton}>{title}</WideCard.Title>
       <WideCard.Body>{body}</WideCard.Body>
       <WideCard.LinkWrapper>
         {!!link && !!withButton ? (

@@ -26,6 +26,8 @@ const PreviewRelatedContentCard = ({ theme, props }: PreviewProps) => (
 );
 
 export const AtkNoLink = () => <PreviewRelatedContentCard theme={{ siteKey: 'atk' }} />;
+export const AtkWithoutTextWrap = () => <PreviewRelatedContentCard theme={{ siteKey: 'atk' }} props={{ title: 'short title', body: 'short body' }} />;
+
 export const AtkWithLink = () => <PreviewRelatedContentCard theme={{ siteKey: 'atk' }} props={{ link: 'Save 26% Right Now' }} />;
 export const AtkWithButton = () => <PreviewRelatedContentCard theme={{ siteKey: 'atk' }} props={{ link: 'Save 26% Right Now', withButton: true }} />;
 
