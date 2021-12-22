@@ -63,6 +63,13 @@ const cssCenterRow = css`
   align-items: center;
 `;
 
+const cssCenterLeadingRow = css`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
 const Headline = styled.span`
   ${cssHeadlineFont}
   ${mobileCard(css`
@@ -125,7 +132,7 @@ const Content = styled.div`
 `;
 
 const Card = styled.a`
-  ${cssCenterRow}
+  ${cssCenterLeadingRow}
   background-color: ${color.white};
   ${withThemes({
     cco: css`
