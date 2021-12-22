@@ -166,6 +166,8 @@ const Title = styled.div`
   margin: 12px 0;
   font-size: 26px;
   line-height: 1.15;
+  // in order for consistent spacing, arrow buttons overlap above otherwise.
+  min-height: 32px;
   // depends on .flickity-prev-next-button.previous
   padding-right: 72px;
   ${cssThemedColor}
