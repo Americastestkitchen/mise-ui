@@ -21,10 +21,7 @@ const FormInputTheme = {
       color: ${color.eclipse};
       font: ${fontSize.lg}/1 ${font.pnr};
     }
-
-    &:focus {
-      outline: ${({ error }) => (error ? 'red auto 1px' : '')}
-    }
+    outline: ${({ error }) => (error ? 'red auto 1px' : '')};
   `,
 };
 
