@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import { font, onClickHashLink } from '../../styles';
-import { cssThemedColor, cssThemedLink } from '../../styles/mixins';
+import { cssThemedColor, cssThemedFont, cssThemedLink } from '../../styles/mixins';
 
 const Title = styled.div`
-  font-family: ${font.pnb};
   font-size: 26px;
   line-height: 30px;
   margin-bottom: 12px;
+  ${cssThemedFont}
   ${cssThemedColor}
 `;
 
