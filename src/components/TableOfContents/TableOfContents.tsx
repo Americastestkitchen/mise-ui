@@ -12,9 +12,9 @@ const Title = styled.div`
 `;
 
 const JumpLink = styled.a`
-  font-family: ${font.mwr};
   font-size: 23px;
   line-height: 36px;
+  font-family: ${font.pnb};
   ${cssThemedColor}
   ${cssThemedLink}
 `;
