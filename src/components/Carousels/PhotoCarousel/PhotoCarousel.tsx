@@ -1,9 +1,10 @@
 /* eslint-disable react/require-default-props */
 /* eslint-disable no-undef */ // missing eslint typescript compat rules.
-import React, { useRef } from 'react';
-import styled, { css } from 'styled-components';
+import React, { useContext, useRef } from 'react';
+import styled, { css, ThemeContext } from 'styled-components';
 import cloudinaryInstance, { baseImageConfig } from '../../../lib/cloudinary';
 import { withThemes, color, font } from '../../../styles';
+import { cssThemedColor, cssThemedFont } from '../../../styles/mixins';
 import Carousel from '../Carousel';
 
 export type PhotoCarouselCellProps = {
@@ -57,15 +58,23 @@ const Wrapper = styled.div<{ maxWidth: string }>`
     overflow: hidden;
   }
   .carousel-cell {
-    width: 95%;
+    width: 100%;
     margin-right: 5%;
   }
   .flickity-button {
-    background: ${color.gray20};
-    /* display: block; // uncomment to show flickity buttons in all viewports */
+    display: block;
+    ${withThemes({
+    default: css`background: ${color.gray20};`,
+    cco: css`background: ${color.queenBlue};`,
+    cio: css`background: ${color.squirrel};`,
+  })}
   }
   .flickity-button:hover {
-    background: ${color.nobel};
+    ${withThemes({
+    default: css`background: ${color.nobel}; opacity: 1;`,
+    cco: css`background: ${color.queenBlue}; opacity: 0.6;`,
+    cio: css`background: ${color.squirrel}; opacity: 0.6;`,
+  })}
   }
   .flickity-prev-next-button {
     width: 28px;
@@ -80,13 +89,13 @@ const Wrapper = styled.div<{ maxWidth: string }>`
     top: 25% !important;
   }
   .flickity-prev-next-button.previous {
-    right: calc(5% + 38px);
+    right: 38px;
     .flickity-button-icon {
       left: 16% !important;
     }
   }
   .flickity-prev-next-button.next {
-    right: 5%;
+    right: 0;
     .flickity-button-icon {
       left: 25% !important;
     }
@@ -157,14 +166,12 @@ const Title = styled.div`
   margin: 12px 0;
   font-size: 26px;
   line-height: 1.15;
-  color: ${color.black};
-
-  ${withThemes({
-    default: css`font-family: ${font.pnb};`,
-    atk: css`font-family: ${font.pnb};`,
-    cco: css`font-family: ${font.clb};`,
-    cio: css`font-family: ${font.mwr};`,
-  })}
+  // in order for consistent spacing, arrow buttons overlap above otherwise.
+  min-height: 32px;
+  // depends on .flickity-prev-next-button.previous
+  padding-right: 72px;
+  ${cssThemedColor}
+  ${cssThemedFont}
 `;
 
 /** Composable component API or references for styled components classNames. */
@@ -175,6 +182,7 @@ export const SingleCarousel = {
 };
 
 export default function PhotoCarousel({ as, title, items, maxWidth = '1400px' } : PhotoCarouselProps) {
+  const { siteKey } = useContext(ThemeContext);
   const itemsId = items.map((item, index) => ({ ...item, id: index }));
   const ref = useRef<HTMLDivElement | null>(null);
 
@@ -190,7 +198,11 @@ export default function PhotoCarousel({ as, title, items, maxWidth = '1400px' } 
         onChange={(data) => {
           const button = ref.current?.querySelector<HTMLButtonElement>('.flickity-prev-next-button.previous');
           if (!button) return;
-          button.style.background = data === 0 ? `${color.nobel}` : '';
+          if (siteKey === 'atk') {
+            button.style.background = data === 0 ? `${color.nobel}` : '';
+          } else {
+            button.style.opacity = data === 0 ? '0.6' : '1';
+          }
         }}
       />
     </SingleCarousel.Wrapper>
