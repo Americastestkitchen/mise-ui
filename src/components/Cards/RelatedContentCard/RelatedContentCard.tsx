@@ -58,6 +58,13 @@ const cssCenterColumn = css`
 const cssCenterRow = css`
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
+
+const cssCenterLeadingRow = css`
+  display: flex;
+  flex-direction: row;
   justify-content: flex-start;
   align-items: center;
 `;
@@ -67,7 +74,7 @@ const Headline = styled.span`
   margin-bottom: 8px;
 `;
 
-const Title = styled.span`
+const Title = styled.span<{withButton?: boolean}>`
   ${cssTitleFont}
   margin-bottom: 8px;
 `;
@@ -82,7 +89,6 @@ const Body = styled.span`
 
 const LinkText = styled.a`
   ${cssLinkTextFont}
-  padding: 4px 0;
 `;
 
 const LinkWrapper = styled.div`
@@ -122,7 +128,7 @@ const Content = styled.div`
 `;
 
 const Card = styled.a`
-  ${cssCenterRow}
+  ${cssCenterLeadingRow}
   background-color: ${color.white};
   ${withThemes({
     cco: css`
@@ -204,9 +210,9 @@ export default function RelatedContentCard({
   withButton,
 }: RelatedContentCardProps) {
   return (
-    <WideCard.Wrapper href={href} src={src}>
+    <WideCard.Wrapper href={href} src={src} target="_blank" rel="noopener noreferrer">
       <WideCard.Headline>{headline}</WideCard.Headline>
-      <WideCard.Title as="h4">{title}</WideCard.Title>
+      <WideCard.Title as="h4" withButton={withButton}>{title}</WideCard.Title>
       <WideCard.Body>{body}</WideCard.Body>
       <WideCard.LinkWrapper>
         {!!link && !!withButton ? (
