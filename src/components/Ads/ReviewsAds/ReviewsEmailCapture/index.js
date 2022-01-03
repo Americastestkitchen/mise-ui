@@ -49,11 +49,12 @@ const AdDescription = styled.p`
   ${withThemes(AdDescriptionTheme)}
 `;
 
-const AdSuccess = styled.div`
+const AdSuccessSuccessTheme = {
+  default: css`
+  color: ${color.email};
   display: flex;
   margin-top: 1rem;
   width: 100%;
-
   svg {
     display: inline-block;
     height: 1.4rem;
@@ -70,6 +71,14 @@ const AdSuccess = styled.div`
   span {
     font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb};
   }
+  `,
+  cco: css`
+    color: ${color.email};
+  `,
+};
+
+const AdSuccess = styled.div`
+  ${withThemes(AdSuccessSuccessTheme)}
 `;
 
 const AdTitleTheme = {
