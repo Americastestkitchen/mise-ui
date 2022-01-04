@@ -91,6 +91,14 @@ const HeroHatBody = styled.div.attrs({
   }
 
   ${breakpoint('xs', 'md')`
+    .dollarOffer-hat & {
+      background-color: ${color.dawnPink};
+      .email-form {
+        button {
+          padding: 0;
+        }
+      }
+    }
     .thanksgiving-hat & {
       background-color: ${color.chablis};
     }
@@ -108,6 +116,10 @@ const HeroHatBody = styled.div.attrs({
     width: 100%;
 
     .holiday-hat & {
+      padding: 0 1.9rem 0 11rem
+    }
+
+    .dollarOffer-hat & {
       padding: 0 1.9rem 0 11rem
     }
 
@@ -145,6 +157,22 @@ const HeroHatBody = styled.div.attrs({
     .holiday-hat & {
       padding: 0 10rem 0 12.5%;
     }
+
+    .dollarOffer-hat & {
+      padding: 0 10rem 0 12.5%;
+      .email-form {
+        button {
+          max-width: 26.2rem;
+          padding: 0 1rem;
+        }
+        svg {
+          fill: ${color.white};
+          height: 1rem;
+          margin-left: 1rem;
+          width: 1rem; 
+        }
+      }
+    }
   `}
 
   ${breakpoint('xlg')`
@@ -170,7 +198,9 @@ const HeroHatBody = styled.div.attrs({
         max-width: 22.6rem;
       }
     }
-
+    .dollarOffer-hat &  {
+      padding: 0 7.6rem;
+    }
     .thanksgiving-hat &  {
       padding: 0 7.6rem;
     }

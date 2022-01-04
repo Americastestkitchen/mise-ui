@@ -15,6 +15,9 @@ const HeroHatContent = styled.div.attrs({
 
   ${breakpoint('lg')`
     max-width: calc(100% - 20rem);
+    .dollarOffer-hat & {
+      padding-left: 2.5rem;
+    }
   `}
 
   ${breakpoint('xlg')`
@@ -24,6 +27,10 @@ const HeroHatContent = styled.div.attrs({
     display: flex;
     flex-direction: column;
     align-items: center;
+    }
+
+    .dollarOffer-hat & {
+      padding-left: 0;
     }
   `}
 `;

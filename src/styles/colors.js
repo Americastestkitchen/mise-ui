@@ -11,6 +11,7 @@ const color = {
   mint: '#6ba6aa',
   darkerMint: '#5a8e91',
   darkTeal: '#4D7A7C',
+  dawnPink: '#f2e4e4',
   turquoise: '#8fdee3',
   seaSalt: '#d1fcff',
   regentGray: '#767f81',

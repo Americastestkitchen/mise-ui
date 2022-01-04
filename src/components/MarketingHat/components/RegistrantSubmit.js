@@ -28,6 +28,11 @@ const RegistrantSubmit = styled.button.attrs({
     .holiday-hat & {
       margin: auto 19% auto 4%;
     }
+    .dollarOffer-hat & {
+      min-width: 26.2rem;
+      max-width: 26.2rem;
+      padding: 0 1rem;
+    }
   `}
 `;
 
