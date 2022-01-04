@@ -86,7 +86,7 @@ const Wrapper = styled.div<{ maxWidth: string }>`
   .flickity-button-icon {
     fill: ${color.white};
     height: 14px !important;
-    top: 25% !important;
+    top: 6px !important;
   }
   .flickity-prev-next-button.previous {
     right: 35px;
