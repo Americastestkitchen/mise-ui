@@ -13,6 +13,12 @@ const HeroHatHeading = styled.h2.attrs({
   font-weight: 600;
   margin-bottom: 0.6rem;
 
+  ${breakpoint('sm', 'smmd')`
+    .dollarOffer-hat & {
+      padding-right: 1rem;
+    }
+  `}
+
   ${breakpoint('md')`
     font-size: ${fontSize.xxl};
     line-height: 3.9rem;

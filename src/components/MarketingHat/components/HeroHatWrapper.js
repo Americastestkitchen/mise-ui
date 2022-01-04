@@ -16,7 +16,7 @@ const HeroHatWrapper = styled.div.attrs({
   margin-bottom: 2rem;
   padding-top: 7.6rem;
 
-  &.thanksgiving-hat, &.holiday-hat {
+  &.thanksgiving-hat, &.holiday-hat , &.dollarOffer-hat {
     margin-bottom: 0;
   }
 
