@@ -1,7 +1,6 @@
 /* eslint-disable react/require-default-props */
-/* eslint-disable no-undef */ // missing eslint typescript compat rules.
-import React, { useContext, useRef } from 'react';
-import styled, { css, ThemeContext } from 'styled-components';
+import React from 'react';
+import styled, { css } from 'styled-components';
 import cloudinaryInstance, { baseImageConfig } from '../../../lib/cloudinary';
 import { withThemes, color, font } from '../../../styles';
 import { cssThemedColor, cssThemedFont } from '../../../styles/mixins';
@@ -64,21 +63,22 @@ const Wrapper = styled.div<{ maxWidth: string }>`
   .flickity-button {
     display: block;
     ${withThemes({
-    default: css`background: ${color.gray20};`,
+    default: css`background: ${color.wintergreenDream};`,
     cco: css`background: ${color.queenBlue};`,
     cio: css`background: ${color.squirrel};`,
   })}
   }
   .flickity-button:hover {
     ${withThemes({
-    default: css`background: ${color.nobel}; opacity: 1;`,
-    cco: css`background: ${color.queenBlue}; opacity: 0.6;`,
-    cio: css`background: ${color.squirrel}; opacity: 0.6;`,
+    default: css`box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);`,
+    atk: css`background: ${color.eclipse};`,
+    cco: css`background: ${color.black};`,
+    cio: css`background: ${color.cork};`,
   })}
   }
   .flickity-prev-next-button {
-    width: 28px;
-    height: 28px;
+    width: 25px;
+    height: 25px;
     border-radius: 100%;
     top: -28px !important;
     left: unset !important;
@@ -89,7 +89,7 @@ const Wrapper = styled.div<{ maxWidth: string }>`
     top: 25% !important;
   }
   .flickity-prev-next-button.previous {
-    right: 38px;
+    right: 35px;
     .flickity-button-icon {
       left: 16% !important;
     }
@@ -182,12 +182,10 @@ export const SingleCarousel = {
 };
 
 export default function PhotoCarousel({ as, title, items, maxWidth = '1400px' } : PhotoCarouselProps) {
-  const { siteKey } = useContext(ThemeContext);
   const itemsId = items.map((item, index) => ({ ...item, id: index }));
-  const ref = useRef<HTMLDivElement | null>(null);
 
   return (
-    <SingleCarousel.Wrapper ref={ref} maxWidth={maxWidth}>
+    <SingleCarousel.Wrapper maxWidth={maxWidth}>
       <SingleCarousel.Title as={as}>{title}</SingleCarousel.Title>
       <Carousel
         items={itemsId}
@@ -195,15 +193,6 @@ export default function PhotoCarousel({ as, title, items, maxWidth = '1400px' } 
           <SingleCarousel.PhotoCarouselCell {...args} />
         )}
         options={flickityOptions}
-        onChange={(data) => {
-          const button = ref.current?.querySelector<HTMLButtonElement>('.flickity-prev-next-button.previous');
-          if (!button) return;
-          if (siteKey === 'atk') {
-            button.style.background = data === 0 ? `${color.nobel}` : '';
-          } else {
-            button.style.opacity = data === 0 ? '0.6' : '1';
-          }
-        }}
       />
     </SingleCarousel.Wrapper>
   );

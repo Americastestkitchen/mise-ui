@@ -83,6 +83,7 @@ const color = {
   goldClay: '#857351',
   darkMagenta: '#521A2D',
   timber: '#405700',
+  wintergreenDream: '#4D7A7C',
   blueLagoon: '#005E71',
   teal: '#167A7A',
   deepSea: '#0B3C3D',
