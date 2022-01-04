@@ -2,7 +2,7 @@ import React, { ComponentPropsWithoutRef, PropsWithChildren, useContext } from '
 import styled, { css, ThemeContext } from 'styled-components';
 import { font, color, withThemes, mixins } from '../../../styles';
 import { md, untilMd } from '../../../styles/breakpoints';
-import { cssThemedLink } from '../../../styles/mixins';
+import { cssThemedColor, cssThemedFontAccentColorAlt, cssThemedLink } from '../../../styles/mixins';
 import useMedia from '../../hooks/useMedia';
 import AffiliateLink from '../shared/AffiliateLink';
 import Image from '../shared/Image';
@@ -16,36 +16,28 @@ const cssHeadlineFont = css`
   line-height: 1.17;
   letter-spacing: 1.92px;
   text-transform: uppercase;
-  ${withThemes({
-    default: css`color: ${color.darkTeal};`,
-    atk: css`color: ${color.darkTeal};`,
-    cco: css`color: ${color.denim};`,
-    cio: css`color: ${color.squirrel};`,
-  })}
+  ${cssThemedFontAccentColorAlt}
 `;
 
 const cssTitleFont = css`
   font-family: ${font.pnb};
   font-size: 18px;
   line-height: 1.17;
-  color: ${color.eclipse};
+  ${cssThemedColor}
 `;
 
 const cssBodyFont = css`
   font-family: ${font.pnr};
   font-size: 16px;
   line-height: 1.25;
-  ${withThemes({
-    default: css`color: ${color.eclipse};`,
-    cio: css`color: ${color.cork};`,
-  })}
+  ${cssThemedColor}
 `;
 
 const cssLinkTextFont = css`
   font-family: ${font.pnb};
   font-size: 16px;
   line-height: 1.13;
-  color: ${color.eclipse};
+  ${cssThemedColor}
   ${cssThemedLink}
 `;
 
