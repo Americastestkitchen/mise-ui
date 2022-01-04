@@ -11,6 +11,7 @@ export default {
 
 const tiktokUrl = 'https://www.tiktok.com/@scout2015/video/6718335390845095173';
 const youtubeUrl = 'https://www.youtube.com/watch?v=jP8iCuXeM3g';
+const youtubeOtherUrl = 'https://www.youtu.be/jP8iCuXeM3g';
 const instagramUrl = 'https://www.instagram.com/p/CXM58mVgJF0/';
 const stackblitzUrl = 'https://stackblitz.com/edit/react?embed=1&file=src/App.js';
 const zypeVideoId = '5b400b9f4b32992a310627f6';
@@ -45,6 +46,11 @@ export const MediaEmbeds = () => (
     <MediaEmbed
       source={tiktokUrl}
       site="TikTok"
+      caption=""
+    />
+    <MediaEmbed
+      source={youtubeOtherUrl}
+      site="YouTube"
       caption=""
     />
     <MediaEmbed
