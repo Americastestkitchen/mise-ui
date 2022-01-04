@@ -17,9 +17,20 @@ const AspectRatio = styled.div<{ children?: JSX.IntrinsicElements['iframe'] }>`
   }
 `;
 
+function getYoutubeId(source: string): string | null {
+  const { searchParams, hostname, pathname } = new URL(source);
+  if (hostname.endsWith('youtu.be')) {
+    return pathname.replace('/', '');
+  }
+  if (hostname.endsWith('youtube.com')) {
+    return searchParams.get('v');
+  }
+  return null;
+}
+
+// https://youtu.be/pgHCA1MUAxE and https://www.youtube.com/watch?v=pgHCA1MUAxE
 export function YoutubeEmbed({ source }: { source: string }) {
-  const { searchParams } = new URL(source);
-  const videoId = searchParams.get('v');
+  const videoId = getYoutubeId(source);
   return videoId ? (
     <AspectRatio>
       <iframe
