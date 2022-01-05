@@ -146,8 +146,10 @@ export function InstagramEmbed({ source, caption }: EmbedProps) {
   );
 }
 
-export function ZypeEmbed({ source, caption, token }: EmbedProps & { token: string; }) {
-  useScript(`https://player.zype.com/embed/${source}.js?api_key=${token}&controls=true&da=true`);
+export function ZypeEmbed({
+  source, caption, autoplay = false, token,
+}: EmbedProps & { autoplay?: boolean; token: string; }) {
+  useScript(`https://player.zype.com/embed/${source}.js?api_key=${token}&autoplay=${autoplay}&controls=true&da=true`);
   return (
     <div>
       <AspectRatio>
