@@ -202,10 +202,10 @@ export default function MediaEmbed(
 ) {
   switch (site) {
     case 'TikTok': return <TikTokEmbed source={source} caption={caption} />;
-    case 'YouTube': return <YoutubeEmbed source={source} />;
+    case 'YouTube': return <YoutubeEmbed source={source} caption={caption} />;
     case 'Instagram': return <InstagramEmbed source={source} caption={caption} />;
     case 'Zype': return tokens?.zype ? (
-      <ZypeEmbed source={source} token={tokens.zype} />
+      <ZypeEmbed source={source} token={tokens.zype} caption={caption} />
     ) : (
       // eslint-disable-next-line no-console
       <>{console.warn('Zype client token is missing!')}</>
