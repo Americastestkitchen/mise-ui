@@ -108,6 +108,9 @@ export { default as TableOfContents } from './components/TableOfContents';
 export * from './components/Articles/LinkFarm';
 export { default as LinkFarm } from './components/Articles/LinkFarm';
 
+export * from './components/Carousels/StandardCarousel';
+export { default as StandardCarousel } from './components/Carousels/StandardCarousel';
+
 export {
   Accordion,
   AccordionControl,
