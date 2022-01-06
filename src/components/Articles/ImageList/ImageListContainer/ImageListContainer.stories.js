@@ -36,8 +36,20 @@ DefaultWidth.args = {
   width: 'default',
 };
 
+export const DefaultWidthBorder = Template.bind({});
+DefaultWidthBorder.args = {
+  ...DefaultWidth.args,
+  borderWith: 4
+};
+
 export const WideWidth = Template.bind({});
 WideWidth.args = {
   ...DefaultWidth.args,
   width: 'width',
+};
+
+export const WideWidthBorder = Template.bind({});
+WideWidthBorder.args = {
+  ...DefaultWidth.args,
+  borderWith: 4,
 };

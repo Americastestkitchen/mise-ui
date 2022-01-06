@@ -12,7 +12,7 @@ const ImageListWrapperTheme = {
     margin: 3rem 0 2.7rem;
     max-width: 100%;
     padding: 2.4rem 1rem 2rem;
-
+    border: ${({ borderWith }) => (borderWith ? `solid ${borderWith}px ${color.borderGray}` : '')};
     ${breakpoint('md')`
       padding: 2.4rem;
     `}
@@ -56,8 +56,9 @@ const ImageListContainer = ({
   className,
   title,
   width,
+  borderWith,
 }) => (
-  <ImageListWrapper className={className} width={width}>
+  <ImageListWrapper className={className} width={width} borderWith={borderWith}>
     {title && <ImageListTitle>{title}</ImageListTitle>}
     {
       images.map(image => (
@@ -76,6 +77,7 @@ ImageListContainer.propTypes = {
   className: PropTypes.string,
   title: PropTypes.string,
   width: PropTypes.oneOf(['default', 'wide']).isRequired,
+  borderWith: PropTypes.number,
 };
 
 ImageListContainer.defaultProps = {

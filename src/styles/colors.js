@@ -16,6 +16,7 @@ const color = {
   regentGray: '#767f81',
   mediumGray: '#6E6E6E',
   bermudaGray: '#6e89aa',
+  borderGray: '#f7f7f7',
   silver: '#c2c2c2',
   gunmetal: '#262626',
   gray20: '#333333',
