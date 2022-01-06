@@ -76,6 +76,10 @@ const Wrapper = styled.div<{ maxWidth: string }>`
     cco: css`background: ${color.black};`,
     cio: css`background: ${color.cork};`,
   })}
+    svg {
+      opacity: 1 !important;
+      transform: scale(1.0) !important;
+    }
   }
   .flickity-prev-next-button {
     width: 25px;
