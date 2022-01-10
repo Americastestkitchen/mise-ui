@@ -56,7 +56,7 @@ const AtkMarketingHat = ({
                 className="registrant-submit"
                 data-testid="isRegistrant"
                 id={`${inputId}-submit`}
-                onClick={onSubmit}
+                onSubmit={onSubmit}
               >
                 {cta}
               </RegistrantSubmit>

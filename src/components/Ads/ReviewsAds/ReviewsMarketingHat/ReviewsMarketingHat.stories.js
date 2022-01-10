@@ -17,7 +17,7 @@ const handleSubmit = () => {
 
 export const DefaultFormer = () => (
 <ThemeProvider theme={{ breakpoints }}>
-  <ReviewsMarketingHat 
+  <ReviewsMarketingHat
     buttonText="Rejoin Now"
     description="Would you cook 700 eggs to find the best nonstick skillet? We did, so you don't have to. Rejoin now to buy the best products."
     headline="Get instant access to all ratings & recipes"
@@ -33,23 +33,23 @@ export const DefaultFormer = () => (
 
 export const DefaultAnonymous = () => (
 <ThemeProvider theme={{ breakpoints }}>
-  <ReviewsMarketingHat 
-    buttonText="Get Free Access"
-    description="Would you cook 700 eggs to find the best nonstick skillet? We did, so you don't have to. Rejoin now to buy the best products."
-    headline="Get instant access to all ratings & recipes"
+  <ReviewsMarketingHat
+    buttonText="GET ACCESS FOR $1 ▸"
+    description="All the reliably perfect recipes. All the most-trusted product reviews. Three sites. No paywalls. Just confident cooking."
+    headline="LIMITED-TIME OFFER"
     incode="MAR2DAA1A"
     inputId="email-form__input"
     isAnonymous={true}
     mdc='AF0150MA1D'
     onSubmit={handleSubmit}
-    title="2-Week Free Trial"
+    title="All Access for 2 Months. Just $1."
   />
 </ThemeProvider>
   )
 
 export const DefaultRegistrant = () => (
 <ThemeProvider theme={{ breakpoints }}>
-  <ReviewsMarketingHat 
+  <ReviewsMarketingHat
     buttonText="Get Free Access"
     description="Would you cook 700 eggs to find the best nonstick skillet? We did, so you don't have to. Rejoin now to buy the best products."
     headline="Get instant access to all ratings & recipes"
@@ -65,7 +65,7 @@ export const DefaultRegistrant = () => (
 
 export const DefaultSingleSite = () => (
 <ThemeProvider theme={{ breakpoints }}>
-  <ReviewsMarketingHat 
+  <ReviewsMarketingHat
     buttonText="Upgrade Now"
     description="Would you cook 700 eggs to find the best nonstick skillet? We did, so you don't have to. Rejoin now to buy the best products."
     headline="Get instant access to all ratings & recipes"
