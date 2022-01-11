@@ -78,7 +78,7 @@ const Wrapper = styled.div<{ maxWidth: string }>`
   })}
     svg {
       opacity: 1 !important;
-      transform: scale(1.0) !important;
+      transform: none !important;
     }
   }
   .flickity-prev-next-button {
