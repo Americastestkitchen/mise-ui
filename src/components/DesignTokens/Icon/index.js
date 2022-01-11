@@ -105,14 +105,9 @@ export const Cookbook = ({ className }) => (
 
 Cookbook.propTypes = Icons.Cookbook.propTypes;
 
-export const Comment = ({ ariaHidden, ariaLabel, fill, focusable }) => (
+export const Comment = props => (
   <Icon>
-    <Icons.Comment
-      ariaHidden={ariaHidden}
-      ariaLabel={ariaLabel}
-      fill={fill}
-      focusable={focusable}
-    />
+    <Icons.Comment {...props} />
   </Icon>
 );
 
@@ -140,6 +135,18 @@ export const FavoriteRibbon = ({ ariaHidden, ariaLabel, className, fill }) => (
 );
 
 FavoriteRibbon.propTypes = Icons.FavoriteRibbon.propTypes;
+
+export const FavoriteRibbonWithBg = ({ ariaLabel, className, fill }) => (
+  <Icon>
+    <Icons.FavoriteRibbonWithBg
+      className={className}
+      ariaLabel={ariaLabel}
+      fill={fill}
+    />
+  </Icon>
+);
+
+FavoriteRibbonWithBg.propTypes = Icons.FavoriteRibbonWithBg.propTypes;
 
 export const Folder = ({
   ariaHidden,

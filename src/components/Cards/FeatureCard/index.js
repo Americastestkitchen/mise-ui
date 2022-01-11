@@ -4,11 +4,12 @@ import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import { color, font, fontSize, grid, lineHeight, mixins, spacing } from '../../../styles';
 import Badge from '../../Badge';
-import FavoriteButton from '../shared/FavoriteButton';
+import FavoriteRibbonWithBg from '../shared/FavoriteRibbonWithBg';
 import Image from '../shared/Image';
 import PersonHeadShot from '../shared/PersonHeadShot';
 import Sticker from '../shared/Sticker';
 import Title from '../shared/Title';
+import { Comment as CommentIcon } from '../../DesignTokens/Icon';
 
 const featureCardWidth = grid.columnWidth;
 const featureCardWideWidth = `${parseFloat(grid.columnWidth) * 2 + parseFloat(grid.gutterWidth)}rem`;
@@ -104,14 +105,20 @@ const StyledSticker = styled(Sticker)`
 
 const StickerGroup = styled.div``;
 
-const StyledFavoriteButton = styled(FavoriteButton)`
+const StyledFavoriteButtonWithBg = styled(FavoriteRibbonWithBg)`
   position: absolute;
-  top: ${spacing.xsm};
-  right: ${spacing.xsm};
+  top: 0.6rem;
+  right: 0.6rem;
 `;
 
 const Attributions = styled.p.attrs({
   className: 'feature-card__attributions',
+})`
+  font: ${fontSize.md}/${lineHeight.md} ${font.pnb};
+`;
+
+const Comments = styled.p.attrs({
+  className: 'feature-card__num-comments',
 })`
   font: ${fontSize.md}/${lineHeight.md} ${font.pnb};
 `;
@@ -157,6 +164,7 @@ function FeatureCard({
   isFavorited,
   isWide,
   lazyImage,
+  commentsCount,
   objectId,
   onClick,
   originalPrice,
@@ -190,13 +198,12 @@ function FeatureCard({
         />
         <StyledBadge className={className} type={siteKey} />
         {displayFavoritesButton && siteKeyFavorites ? (
-          <StyledFavoriteButton
+          <StyledFavoriteButtonWithBg
             className={className}
-            fill={`${color.white}`}
+            siteKey={siteKeyFavorites}
             role="button"
             isFavorited={isFavorited}
             objectId={objectId}
-            siteKey={siteKeyFavorites}
             title={title}
           />
         ) : null}
@@ -216,6 +223,12 @@ function FeatureCard({
               </StickerGroup>
             ) : null}
             <StyledTitle className={className} title={title} />
+            {commentsCount ? (
+              <Comments>
+                <CommentIcon fill="white" style={{ width: '16px', height: '16px' }} />
+                &nbsp;{commentsCount}
+              </Comments>
+            ) : null}
             {attributions ? <Attributions>{attributions}</Attributions> : null}
             {originalPrice && discountedPrice ? (
               <PricingWrapper>
@@ -269,6 +282,7 @@ FeatureCard.propTypes = {
   isFavorited: PropTypes.bool,
   isWide: PropTypes.bool,
   lazyImage: PropTypes.bool,
+  commentsCount: PropTypes.number,
   objectId: PropTypes.string.isRequired,
   onClick: PropTypes.func,
   originalPrice: PropTypes.string,
@@ -296,6 +310,7 @@ FeatureCard.defaultProps = {
   isFavorited: false,
   isWide: false,
   lazyImage: true,
+  commentsCount: 0,
   onClick: null,
   originalPrice: null,
   personHeadShot: null,

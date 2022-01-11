@@ -13,6 +13,7 @@ import Content from './Content';
 import Cookbook from './Cookbook';
 import FastForward from './FastForward';
 import FavoriteRibbon from './FavoriteRibbon';
+import FavoriteRibbonWithBg from './FavoriteRibbonWithBg';
 import Folder from './Folder';
 import Filter from './Filter';
 import Knife from './Knife';
@@ -57,6 +58,7 @@ export {
   Cookbook,
   FastForward,
   FavoriteRibbon,
+  FavoriteRibbonWithBg,
   Folder,
   Filter,
   Knife,
