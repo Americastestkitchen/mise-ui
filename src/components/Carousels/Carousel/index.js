@@ -6,6 +6,7 @@ import styled, { css } from 'styled-components';
 import { color, spacing, withThemes } from '../../../styles';
 
 import BookCarouselAd from '../../Ads/ReviewsAds/BookCarouselAd';
+import LinearGradient from '../../DesignTokens/LinearGradient';
 
 const generatePositionStyles = (positions, breakpoint) => {
   const breakpointPositions = positions[breakpoint];
@@ -67,6 +68,10 @@ const CarouselTheme = {
           margin: 0 auto;
         }
       }
+    }
+
+    .linear-gradient {
+      display: none;
     }
 
     ${({ dotPosition }) => (dotPosition ? `
@@ -241,8 +246,10 @@ const renderAd = key => (
 
 const Carousel = ({
   adSourceKey,
+  cellAlign,
   className,
   dotPosition,
+  gradient,
   includesAdType,
   items,
   options,
@@ -253,7 +260,6 @@ const Carousel = ({
   const flktyRef = useRef();
   const [enabled, setEnabled] = useState(false);
   const slideshow = options.slideshow || defaultOptions.slideshow;
-
   /**
    * Notify dry.events of various actions
    */
@@ -341,6 +347,22 @@ const Carousel = ({
     };
   }, [items, options, handleCellChange]);
 
+  function renderGradient() {
+    let gradientElement;
+    if (enabled && cellAlign === 'center') {
+      gradientElement = (
+        <>
+          <LinearGradient angle="-90" position="left" />
+          <LinearGradient angle="90" position="right" {...gradient} />
+        </>
+      );
+    } else if (enabled) {
+      gradientElement = (
+        <LinearGradient angle="90" position="right" {...gradient} />
+      );
+    }
+    return gradientElement;
+  }
   /**
    * Listen for click events on our carousel container
    */
@@ -375,6 +397,7 @@ const Carousel = ({
           </div>
         ))}
       </CarouselEl>
+      {renderGradient()}
     </CarouselWrapper>
   );
 };
@@ -383,6 +406,7 @@ Carousel.propTypes = {
   /** SourceKey Included in Ad Link */
   adSourceKey: PropTypes.string,
   /** Additional classname */
+  cellAlign: PropTypes.oneOf(['center', 'left']),
   className: PropTypes.string,
   /** List of items for the carousel */
   items: PropTypes.array.isRequired,
@@ -391,6 +415,10 @@ Carousel.propTypes = {
     left: PropTypes.string,
     right: PropTypes.string,
     top: PropTypes.string,
+  }),
+  gradient: PropTypes.shape({
+    endColor: PropTypes.string,
+    startColor: PropTypes.string,
   }),
   /** Optional prop for Ad Placement */
   includesAdType: PropTypes.oneOf(['book']),

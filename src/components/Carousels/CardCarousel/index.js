@@ -7,7 +7,6 @@ import Carousel from '../Carousel';
 import CategoryCard from '../../Cards/CategoryCard';
 import FeatureCard from '../../Cards/FeatureCard';
 import HeroCard from '../../Cards/HeroCard';
-import LinearGradient from '../../DesignTokens/LinearGradient';
 import PersonCard from '../../Cards/PersonCard';
 import ReviewableSummaryCard from '../../Cards/ReviewableSummaryCard';
 import StandardCard from '../../Cards/StandardCard';
@@ -56,9 +55,6 @@ const CardCarouselTheme = {
       display: ${({ type }) => (type === 'category' ? 'none' : '')}
     }
 
-    .linear-gradient {
-      display: none;
-    }
 
     .carousel {
       ${({ type }) => (carouselTypeStyles[type] || '')};
@@ -223,23 +219,14 @@ const CardCarousel = ({
     >
       <Carousel
         adSourceKey={adSourceKey}
+        cellAlign={cellAlign}
         className={className}
         dotPosition={dotPosition}
+        gradient={gradient}
         includesAdType={includesAdType}
         items={items}
         renderItem={doRenderItem}
         options={options}
-      />
-      {cellAlign === 'center' && (
-        <LinearGradient
-          angle="-90"
-          position="left"
-        />
-      )}
-      <LinearGradient
-        angle="90"
-        position="right"
-        {...gradient}
       />
     </CardCarouselWrapper>
   );
