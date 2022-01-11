@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import useResizeObserver from 'use-resize-observer/polyfilled';
 import { font, fontSize, spacing } from '../../styles';
 import { md, untilMd } from '../../styles/breakpoints';
-import cloudinaryInstance from '../../lib/cloudinary';
+import cloudinaryInstance, { baseImageConfig } from '../../lib/cloudinary';
 import { cssThemedColor, cssThemedLink } from '../../styles/mixins';
 
 export type Author = {
@@ -144,6 +144,7 @@ const BylineList = ({
 
     if (onlyOneAuthor && !!authorPublicId) {
       return cloudinaryInstance.url(authorPublicId, {
+        ...baseImageConfig,
         width: avatarSideLength,
         height: avatarSideLength,
       });
