@@ -1,5 +1,7 @@
 import React from 'react';
 
+import styled from 'styled-components';
+import breakpoint from 'styled-components-breakpoint';
 import ImageListContainer from './index';
 import { siteKey } from '../../../../config/argTypes';
 import { addThemedWrapper } from '../../../../config/decorators';
@@ -10,6 +12,14 @@ export default {
   decorators: [ addThemedWrapper() ],
   argTypes: { siteKey, },
 };
+
+const ImageListStoryWrapper = styled.div`
+  background-color: #FFFFFF;
+  padding: 1.6rem;
+  ${breakpoint('md')`
+    padding: 3.6rem;
+  `}
+`;
 
 const images = [
   {
@@ -28,6 +38,12 @@ const images = [
 
 const Template = (args) => <ImageListContainer {...args} />;
 
+const TemplateWrapper = (args) => (
+  <ImageListStoryWrapper>
+    <ImageListContainer {...args} />;
+  </ImageListStoryWrapper>
+)
+
 export const DefaultWidth = Template.bind({});
 DefaultWidth.args = {
   images,
@@ -36,7 +52,7 @@ DefaultWidth.args = {
   width: 'default',
 };
 
-export const DefaultWidthBorder = Template.bind({});
+export const DefaultWidthBorder = TemplateWrapper.bind({});
 DefaultWidthBorder.args = {
   ...DefaultWidth.args,
   borderWith: 4
@@ -48,7 +64,7 @@ WideWidth.args = {
   width: 'width',
 };
 
-export const WideWidthBorder = Template.bind({});
+export const WideWidthBorder = TemplateWrapper.bind({});
 WideWidthBorder.args = {
   ...DefaultWidth.args,
   borderWith: 4,

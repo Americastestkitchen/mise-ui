@@ -7,40 +7,42 @@ import ArticleTextBlockFloatImage from './components/ArticleTextBlockFloatImage'
 import SidebarCard from '../SidebarCard';
 import { color, font, fontSize, lineHeight, mixins, withThemes } from '../../../styles';
 
-const ArticleTextBlockWrapper = styled.div`
-  margin-bottom: 2.4rem;
-  width: 100%;
+const ArticleTextBlockWrapperTheme = {
+  default: css`
+    margin-bottom: 2.4rem;
+    width: 100%;
+    border: ${({ borderWith }) => (borderWith ? `solid ${borderWith}px ${color.borderGray}` : '')};
+    padding: 5px;
+    &.article-text-block--box {
+      background-color: ${color.white};
+      padding: 2.4rem 1rem;
 
-  &.article-text-block--box {
-    background-color: ${color.white};
-    padding: 2.4rem 1rem;
-
-    .article-text-block__p {
-      font: ${fontSize.md}/1.5 ${font.pnr};
-    }
-  }
-
-  &.has-img--top,
-  &.has-img--bottom {
-    order: 0;
-
-    .article-text-block__p {
-      order: 2;
+      .article-text-block__p {
+        font: ${fontSize.md}/1.5 ${font.pnr};
+      }
     }
 
-    .article-text-block__copy {
-      display: flex;
-      flex-direction: column;
-    }
-  }
+    &.has-img--top,
+    &.has-img--bottom {
+      order: 0;
 
-  &.has-img--float {
-    ${breakpoint('xs', 'md')`
+      .article-text-block__p {
+        order: 2;
+      }
+
       .article-text-block__copy {
         display: flex;
         flex-direction: column;
       }
-    `}
+    }
+
+    &.has-img--float {
+      ${breakpoint('xs', 'md')`
+        .article-text-block__copy {
+          display: flex;
+          flex-direction: column;
+        }
+      `}
 
   }
 
@@ -62,6 +64,20 @@ const ArticleTextBlockWrapper = styled.div`
   ${breakpoint('xlg')`
     ${({ width }) => (mixins.articlesWidth(width))}
   `}
+  `,
+  atk: css`
+    border: ${({ borderWith }) => (borderWith ? `solid ${borderWith}px ${color.borderGray}` : '')};
+  `,
+  cco: css`
+    border: ${({ borderWith }) => (borderWith ? `solid ${borderWith}px ${color.borderGray}` : '')};
+  `,
+  cio: css`
+    border: ${({ borderWith }) => (borderWith ? `solid ${borderWith}px ${color.borderGray}` : '')};
+  `,
+};
+
+const ArticleTextBlockWrapper = styled.div`
+  ${withThemes(ArticleTextBlockWrapperTheme)}
 `;
 
 const ArticleTextBlockCopy = styled.div`
@@ -214,6 +230,7 @@ const ArticleTextBlock = ({
   sidebarCard,
   title,
   width,
+  borderWith,
 }) => {
   let photoPosition = null;
   if (photo) photoPosition = photo.photoDisplayOption;
@@ -224,6 +241,7 @@ const ArticleTextBlock = ({
       className={`article-text-block--${displayOption}${photoPosition ? ` has-img--${photoPosition}` : ''}`}
       id={includeInTOC || null}
       width={width}
+      borderWith={borderWith}
     >
       {
         title && (
@@ -271,6 +289,8 @@ ArticleTextBlock.propTypes = {
   title: PropTypes.string,
   /** Width configuration for PullQuote */
   width: PropTypes.oneOf(['default', 'wide']),
+
+  borderWith: PropTypes.number,
 };
 
 ArticleTextBlock.defaultProps = {

@@ -22,7 +22,8 @@ const ImageListWrapperTheme = {
     `}
   `,
   cco: css`
-    ${mixins.ccoReviewSetBorder()}
+    ${mixins.ccoReviewSetBorder()};
+    border: ${({ borderWith }) => (borderWith ? `solid ${borderWith}px ${color.borderGray}` : '')};
   `,
 };
 
