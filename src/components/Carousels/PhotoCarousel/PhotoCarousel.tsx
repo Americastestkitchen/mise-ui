@@ -161,8 +161,12 @@ const PhotoCarouselCell = ({
       />
     )}
 
-    <Description>{description}</Description>
-    <AccentRectangle />
+    {!!description && (
+      <>
+        <Description>{description}</Description>
+        <AccentRectangle />
+      </>
+    )}
   </>
 );
 
