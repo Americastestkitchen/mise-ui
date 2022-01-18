@@ -12,7 +12,6 @@ const ArticleTextBlockWrapperTheme = {
     margin-bottom: 2.4rem;
     width: 100%;
     border: ${({ borderWith }) => (borderWith ? `solid ${borderWith}px ${color.borderGray}` : '')};
-    padding: 5px;
     &.article-text-block--box {
       background-color: ${color.white};
       padding: 2.4rem 1rem;
@@ -64,16 +63,14 @@ const ArticleTextBlockWrapperTheme = {
   ${breakpoint('xlg')`
     ${({ width }) => (mixins.articlesWidth(width))}
   `}
+
+${withThemes({
+    cco: css`
+      ${mixins.ccoReviewSetBorder()}
+    `,
+  })}
   `,
-  atk: css`
-    border: ${({ borderWith }) => (borderWith ? `solid ${borderWith}px ${color.borderGray}` : '')};
-  `,
-  cco: css`
-    border: ${({ borderWith }) => (borderWith ? `solid ${borderWith}px ${color.borderGray}` : '')};
-  `,
-  cio: css`
-    border: ${({ borderWith }) => (borderWith ? `solid ${borderWith}px ${color.borderGray}` : '')};
-  `,
+
 };
 
 const ArticleTextBlockWrapper = styled.div`
