@@ -35,13 +35,9 @@ export const DropCap = () => <ArticleTextBlock {...storyProps.dropCap} />;
 
 export const NoImageDefaultWidth = () => <ArticleTextBlock {...storyProps.noImageDefaultWidth} />;
 
-const NoImageDefaultWidthBorderProps = { ...storyProps.noImageDefaultWidth, borderWith: 4 }
-export const NoImageDefaultWidthBorder = () => <ArticleTextBlock { ...NoImageDefaultWidthBorderProps } />;
-
 export const NoImageWideWidth = () => <ArticleTextBlock {...storyProps.noImageWideWidth} />;
 
 const NoImageWideWidthBorderProps = { ...storyProps.noImageWideWidth, borderWith: 4  }
-export const NoImageWideWidthBorder = () => <ArticleTextBlock {...NoImageWideWidthBorderProps} />;
 
 export const FloatImageWithoutCaption = () => (
   <ArticleTextBlockStoryWrapper>
