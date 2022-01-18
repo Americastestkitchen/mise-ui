@@ -4070,6 +4070,11 @@
   resolved "https://registry.yarnpkg.com/@types/eslint-visitor-keys/-/eslint-visitor-keys-1.0.0.tgz#1ee30d79544ca84d68d4b3cdb0af4f205663dd2d"
   integrity sha512-OCutwjDZ4aFS6PB1UZ988C4YgwlBHJd6wCeQqaLdmadZ/7e+w79+hbMUFC1QXDNCmdyoRfAFdm0RypzwR+Qpag==
 
+"@types/flickity@^2.2.6":
+  version "2.2.6"
+  resolved "https://registry.yarnpkg.com/@types/flickity/-/flickity-2.2.6.tgz#720673bfae791a862a6798f2564ba77d3deb8621"
+  integrity sha512-jzJ+Lpc41MmjG1SxWS60lTGFXvd45yaO1ZC0qNkfWaZzu1PrykLIHw4KzHA/eGJDG2k/s57IHMgMLdvSAulfkw==
+
 "@types/glob-base@^0.3.0":
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@types/glob-base/-/glob-base-0.3.0.tgz#a581d688347e10e50dd7c17d6f2880a10354319d"
