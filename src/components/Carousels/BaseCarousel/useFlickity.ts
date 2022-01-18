@@ -1,0 +1,127 @@
+// flickity.d.ts and inferred types are outdated with methods required in utility methods
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useCallback, useState, useEffect, useRef, MutableRefObject, Dispatch, SetStateAction } from 'react';
+import Flickity from 'flickity';
+import 'flickity-imagesloaded';
+import useResizeObserver from 'use-resize-observer';
+
+function isAllSlidesVisible(flkty: any): boolean {
+  const slideableWidth = flkty?.slideableWidth;
+  const availableWidth = flkty?.size?.innerWidth;
+  return availableWidth >= slideableWidth;
+}
+
+/**
+ * If carousel viewport is larger than area to slide, there
+ *  is a bunch of weird ui rendering bugs. Therefore interaction
+ *  is disabled
+ * @param flkty flickity instance
+ */
+function disableFlickity(flkty: any): void {
+  flkty.options.wrapAround = false;
+  flkty.options.draggable = false;
+  flkty.updateDraggable();
+  flkty.select(0);
+}
+
+/**
+ * Inverse of disableFlickity. Enables the disabled options.
+ * @param flkty flickity instance
+ */
+function enableFlickity(flkty: any): void {
+  flkty.options.wrapAround = true;
+  flkty.options.draggable = true;
+  flkty.updateDraggable();
+}
+
+/**
+ * Watch changes in width of container to run checks for
+ *  if slide features should be disabled to avoid flickity
+ *  related bugs for sliding with not enough items. Only
+ *  applicable for carousels not using groups.
+ */
+function useResizeFlickity(
+  flickity: MutableRefObject<Flickity | null>,
+  setHideButtons: Dispatch<SetStateAction<boolean>>,
+  width: number | undefined,
+) {
+  useEffect(() => {
+    if (flickity.current) {
+      const allSlidesVisible = isAllSlidesVisible(flickity.current);
+      if (allSlidesVisible) {
+        disableFlickity(flickity.current);
+        setHideButtons(true);
+      } else {
+        enableFlickity(flickity.current);
+        setHideButtons(false);
+      }
+      flickity.current.resize();
+    }
+  }, [flickity, setHideButtons, width]);
+}
+
+/**
+ * Callback ref to initialize flickity on an element
+ */
+function useFlickityCallbackRef(flickity: MutableRefObject<Flickity | null>) {
+  return useCallback((elem) => {
+    const flkty = new Flickity(elem, {
+      imagesLoaded: true,
+      wrapAround: true,
+      cellAlign: 'left',
+      pageDots: false,
+      prevNextButtons: false,
+    });
+    flkty.resize();
+    flickity.current = flkty;
+  }, [flickity]);
+}
+
+export type FlickityState = {
+  ref: (instance: HTMLElement | null) => void,
+  flickity: React.MutableRefObject<Flickity | null>,
+  flickityRef: (elem: any) => void,
+  /**
+   * Exposed state for when flickity behaviors are disabled.
+   * Used on navigation buttons that are ouside of prevNextButtons option.
+   */
+  hideButtons: boolean,
+}
+
+/** Hook to manage flickity instance. */
+export default function useFlickity(): FlickityState {
+  const { ref, width } = useResizeObserver();
+  const flickity = useRef<Flickity | null>(null);
+  const [hideButtons, setHideButtons] = useState<boolean>(false);
+  const flickityRef = useFlickityCallbackRef(flickity);
+  useResizeFlickity(flickity, setHideButtons, width);
+  return { ref, flickity, flickityRef, hideButtons };
+}
+
+/**
+ * Callback ref to initialize flickity on an element
+ */
+function useFlickityCallbackRefGroup(flickity: MutableRefObject<Flickity | null>) {
+  return useCallback((elem) => {
+    const flkty = new Flickity(elem, {
+      imagesLoaded: true,
+      wrapAround: true,
+      cellAlign: 'left',
+      groupCells: true,
+      pageDots: false,
+      prevNextButtons: false,
+    });
+    flkty.resize();
+    flickity.current = flkty;
+  }, [flickity]);
+}
+
+/** Hook to manage flickity instance. */
+export function useFlickityGroup(): FlickityState {
+  const { ref, width } = useResizeObserver();
+  const flickity = useRef<Flickity | null>(null);
+  const [hideButtons, setHideButtons] = useState<boolean>(false);
+  const flickityRef = useFlickityCallbackRefGroup(flickity);
+  useResizeFlickity(flickity, setHideButtons, width);
+  return { ref, flickity, flickityRef, hideButtons };
+}
