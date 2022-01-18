@@ -49,9 +49,8 @@ const ImageListContainer = ({
   title,
   intro,
   width,
-  borderWith,
 }) => (
-  <ImageListWrapper className={className} width={width} borderWith={borderWith}>
+  <ImageListWrapper className={className} width={width}>
     {title && <ImageListTitle>{title}</ImageListTitle>}
     {!!intro && <Intro>{intro}</Intro> }
     {
@@ -72,7 +71,6 @@ ImageListContainer.propTypes = {
   title: PropTypes.string,
   intro: PropTypes.string,
   width: PropTypes.oneOf(['default', 'wide']).isRequired,
-  borderWith: PropTypes.number,
 };
 
 ImageListContainer.defaultProps = {

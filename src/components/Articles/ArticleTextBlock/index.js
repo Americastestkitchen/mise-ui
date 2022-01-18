@@ -11,7 +11,13 @@ const ArticleTextBlockWrapperTheme = {
   default: css`
     margin-bottom: 2.4rem;
     width: 100%;
-    border: ${({ borderWith }) => (borderWith ? `solid ${borderWith}px ${color.borderGray}` : '')};
+
+    ${withThemes({
+    cco: css`
+      ${mixins.ccoReviewSetBorder()}
+    `,
+  })}
+
     &.article-text-block--box {
       background-color: ${color.white};
       padding: 2.4rem 1rem;
@@ -228,7 +234,6 @@ const ArticleTextBlock = ({
   sidebarCard,
   title,
   width,
-  borderWith,
 }) => {
   let photoPosition = null;
   if (photo) photoPosition = photo.photoDisplayOption;
@@ -239,7 +244,6 @@ const ArticleTextBlock = ({
       className={`article-text-block--${displayOption}${photoPosition ? ` has-img--${photoPosition}` : ''}`}
       id={includeInTOC || null}
       width={width}
-      borderWith={borderWith}
     >
       {
         title && (
@@ -289,8 +293,6 @@ ArticleTextBlock.propTypes = {
   title: PropTypes.string,
   /** Width configuration for PullQuote */
   width: PropTypes.oneOf(['default', 'wide']),
-
-  borderWith: PropTypes.number,
 };
 
 ArticleTextBlock.defaultProps = {

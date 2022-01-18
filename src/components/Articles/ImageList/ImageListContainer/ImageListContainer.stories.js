@@ -52,22 +52,10 @@ DefaultWidth.args = {
   width: 'default',
 };
 
-export const DefaultWidthBorder = TemplateWrapper.bind({});
-DefaultWidthBorder.args = {
-  ...DefaultWidth.args,
-  borderWith: 4
-};
-
 export const WideWidth = Template.bind({});
 WideWidth.args = {
   ...DefaultWidth.args,
   width: 'width',
-};
-
-export const WideWidthBorder = TemplateWrapper.bind({});
-WideWidthBorder.args = {
-  ...DefaultWidth.args,
-  borderWith: 4,
 };
 
 export const WithIntroField = Template.bind({})
