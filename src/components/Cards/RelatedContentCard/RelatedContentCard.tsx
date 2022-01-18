@@ -1,5 +1,5 @@
-import React, { ComponentPropsWithoutRef, PropsWithChildren, useContext } from 'react';
-import styled, { css, ThemeContext } from 'styled-components';
+import React, { ComponentProps, PropsWithChildren, useContext } from 'react';
+import styled, { css, DefaultTheme, ThemeContext, ThemeProvider } from 'styled-components';
 import { font, color, withThemes, mixins } from '../../../styles';
 import { md, untilMd } from '../../../styles/breakpoints';
 import { cssThemedColor, cssThemedFontAccentColorAlt, cssThemedLink } from '../../../styles/mixins';
@@ -9,6 +9,12 @@ import Image from '../shared/Image';
 
 const mobileCard = untilMd;
 const desktopCard = md;
+
+const mapPropsToThemeContext = (
+  props: Partial<RelatedContentCardProps>,
+) => (
+  theme: DefaultTheme,
+) => ({ ...theme, props });
 
 const cssHeadlineFont = css`
   font-family: ${font.pnb};
@@ -62,14 +68,14 @@ const cssCenterLeadingRow = css`
   align-items: center;
 `;
 
-const Headline = styled.span<{withButton?: boolean}>`
+const Headline = styled.span`
   ${cssHeadlineFont}
-  margin-bottom: ${({ withButton }) => (withButton ? '6px' : '8px')};
+  margin-bottom: ${({ theme }) => (theme.props.withButton ? '4px' : '8px')};
 `;
 
-const Title = styled.span<{withButton?: boolean}>`
+const Title = styled.span`
   ${cssTitleFont}
-  margin-bottom: ${({ withButton }) => (withButton ? '6px' : '8px')};
+  margin-bottom: 8px;
   ${mobileCard(css`
     ${mixins.truncateLineClamp(3)}
   `)}
@@ -91,9 +97,9 @@ const LinkText = styled.a`
   ${cssLinkTextFont}
 `;
 
-const LinkWrapper = styled.div<{withButton?: boolean}>`
+const LinkWrapper = styled.div`
   padding-top: 8px;
-  ${({ withButton }) => withButton && mobileCard(css`
+  ${({ theme }) => theme.props.withButton && mobileCard(css`
     padding-top: 0;
   `)}
 `;
@@ -134,7 +140,7 @@ const Card = styled.a`
   })}
 `;
 
-type WideCardWrapperProps = PropsWithChildren<{src: string}> & ComponentPropsWithoutRef<'a'>;
+type WideCardWrapperProps = PropsWithChildren<{src: string}> & ComponentProps<typeof Card>
 
 export function Wrapper({ src, children, ...anchorProps }: WideCardWrapperProps) {
   const theme = useContext(ThemeContext);
@@ -206,17 +212,24 @@ export default function RelatedContentCard({
   withButton,
 }: RelatedContentCardProps) {
   return (
-    <WideCard.Wrapper href={href} src={src} target="_blank" rel="noopener noreferrer">
-      <WideCard.Headline withButton={withButton}>{headline}</WideCard.Headline>
-      <WideCard.Title as="h4" withButton={withButton}>{title}</WideCard.Title>
-      <WideCard.Body>{body}</WideCard.Body>
-      <WideCard.LinkWrapper withButton={withButton}>
-        {!!link && !!withButton ? (
-          <WideCard.AffiliateLink text={link} url={buttonHref || href} />
-        ) : (
-          <WideCard.LinkText>{link}</WideCard.LinkText>
-        )}
-      </WideCard.LinkWrapper>
+    <WideCard.Wrapper
+      href={href}
+      src={src}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <ThemeProvider theme={mapPropsToThemeContext({ withButton })}>
+        <WideCard.Headline>{headline}</WideCard.Headline>
+        <WideCard.Title as="h4">{title}</WideCard.Title>
+        <WideCard.Body>{body}</WideCard.Body>
+        <WideCard.LinkWrapper>
+          {!!link && !!withButton ? (
+            <WideCard.AffiliateLink text={link} url={buttonHref || href} />
+          ) : (
+            <WideCard.LinkText>{link}</WideCard.LinkText>
+          )}
+        </WideCard.LinkWrapper>
+      </ThemeProvider>
     </WideCard.Wrapper>
   );
 }
