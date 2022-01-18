@@ -240,6 +240,13 @@ export const cssThemedColor = withThemes({
   cio: css`color: ${color.cork};`,
 });
 
+export const cssThemedBackground = withThemes({
+  default: css`background: ${color.eclipse};`,
+  atk: css`background: ${color.eclipse};`,
+  cco: css`background: ${color.black};`,
+  cio: css`background: ${color.cork};`,
+});
+
 export const cssThemedFontAccentColor = withThemes({
   default: css`color: ${color.tomato};`,
   atk: css`color: ${color.tomato};`,
