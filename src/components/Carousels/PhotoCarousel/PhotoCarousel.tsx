@@ -75,6 +75,10 @@ const Wrapper = styled.div<{ maxWidth: string }>`
     cco: css`background: ${color.black};`,
     cio: css`background: ${color.cork};`,
   })}
+    svg {
+      opacity: 1 !important;
+      transform: none !important;
+    }
   }
   .flickity-prev-next-button {
     width: 25px;
@@ -157,8 +161,12 @@ const PhotoCarouselCell = ({
       />
     )}
 
-    <Description>{description}</Description>
-    <AccentRectangle />
+    {!!description && (
+      <>
+        <Description>{description}</Description>
+        <AccentRectangle />
+      </>
+    )}
   </>
 );
 

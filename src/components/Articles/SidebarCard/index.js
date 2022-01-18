@@ -5,6 +5,7 @@ import styled, { css } from 'styled-components';
 
 import { color, font, fontSize, letterSpacing, mixins, withThemes } from '../../../styles';
 import { getImageUrl } from '../../../lib/cloudinary';
+import { untilMd } from '../../../styles/breakpoints';
 
 const SidebarCardContainer = styled.aside`
   background-color: ${color.white};
@@ -135,6 +136,7 @@ const SidebarTitleTheme = {
 };
 
 const SidebarTitle = styled.h3`
+  ${untilMd(css`${mixins.truncateLineClamp(3)}`)}
   ${withThemes(SidebarTitleTheme)}
 `;
 

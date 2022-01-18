@@ -43,6 +43,6 @@ setBackground('cio', CioNoLink, CioWithLink, CioWithButton);
 
 export const MobileNoLink = () => <PreviewRelatedContentCard theme={{ siteKey: 'atk' }} />;
 export const MobileWithLink = () => <PreviewRelatedContentCard theme={{ siteKey: 'atk' }} props={{ link: 'Save 26% Right Now' }} />;
-export const MobileWithButton = () => <PreviewRelatedContentCard theme={{ siteKey: 'atk' }} props={{ link: 'Save 26% Right Now', withButton: true }} />;
+export const MobileWithButton = () => <PreviewRelatedContentCard theme={{ siteKey: 'atk' }} props={{ title: 'Toaster Oven Perfection — Save 26%', link: 'Save Now', withButton: true }} />;
 export const MobileCioWithLink = () => <PreviewRelatedContentCard theme={{ siteKey: 'cio' }} props={{ link: 'Save 26% Right Now' }} />;
 setViewport('iphone6', MobileNoLink, MobileWithLink, MobileWithButton, MobileCioWithLink);

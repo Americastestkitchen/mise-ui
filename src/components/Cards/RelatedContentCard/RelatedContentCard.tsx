@@ -62,17 +62,16 @@ const cssCenterLeadingRow = css`
   align-items: center;
 `;
 
-const Headline = styled.span`
+const Headline = styled.span<{withButton?: boolean}>`
   ${cssHeadlineFont}
-  margin-bottom: 8px;
+  margin-bottom: ${({ withButton }) => (withButton ? '6px' : '8px')};
 `;
 
 const Title = styled.span<{withButton?: boolean}>`
   ${cssTitleFont}
-  margin-bottom: 8px;
-  ${({ withButton }) => mobileCard(css`
-    /* only room for 2 lines of title when using the button styles */
-    ${mixins.truncateLineClamp(withButton ? 2 : 3)}
+  margin-bottom: ${({ withButton }) => (withButton ? '6px' : '8px')};
+  ${mobileCard(css`
+    ${mixins.truncateLineClamp(3)}
   `)}
   ${desktopCard(css`
     ${mixins.truncateLineClamp(1)}
@@ -92,13 +91,15 @@ const LinkText = styled.a`
   ${cssLinkTextFont}
 `;
 
-const LinkWrapper = styled.div`
+const LinkWrapper = styled.div<{withButton?: boolean}>`
   padding-top: 8px;
+  ${({ withButton }) => withButton && mobileCard(css`
+    padding-top: 0;
+  `)}
 `;
 
 const ImageWrapper = styled.div`
   ${cssCenterRow}
-  flex-shrink: 0;
   ${mobileCard(css`
     height: 145px;
     width: 145px;
@@ -107,14 +108,17 @@ const ImageWrapper = styled.div`
     height: 200px;
     width: 200px;
   `)}
+  flex-shrink: 0;
 `;
 
 const Content = styled.div`
   ${cssCenterColumn}
   ${mobileCard(css`
+    height: 145px;
     padding: 8px 12px;
   `)}
   ${desktopCard(css`
+    height: 200px;
     padding: 16px;
   `)}
 `;
@@ -203,10 +207,10 @@ export default function RelatedContentCard({
 }: RelatedContentCardProps) {
   return (
     <WideCard.Wrapper href={href} src={src} target="_blank" rel="noopener noreferrer">
-      <WideCard.Headline>{headline}</WideCard.Headline>
+      <WideCard.Headline withButton={withButton}>{headline}</WideCard.Headline>
       <WideCard.Title as="h4" withButton={withButton}>{title}</WideCard.Title>
       <WideCard.Body>{body}</WideCard.Body>
-      <WideCard.LinkWrapper>
+      <WideCard.LinkWrapper withButton={withButton}>
         {!!link && !!withButton ? (
           <WideCard.AffiliateLink text={link} url={buttonHref || href} />
         ) : (
