@@ -37,8 +37,6 @@ export const NoImageDefaultWidth = () => <ArticleTextBlock {...storyProps.noImag
 
 export const NoImageWideWidth = () => <ArticleTextBlock {...storyProps.noImageWideWidth} />;
 
-const NoImageWideWidthBorderProps = { ...storyProps.noImageWideWidth, borderWith: 4  }
-
 export const FloatImageWithoutCaption = () => (
   <ArticleTextBlockStoryWrapper>
     <ArticleTextBlock {...storyProps.floatImageWithoutCaption} />
