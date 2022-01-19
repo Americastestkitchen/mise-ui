@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-import { defaultTheme, setBackground, storybookParameters } from '../../../config/shared.stories';
+import { defaultTheme, setBackground, setViewport, storybookParameters } from '../../../config/shared.stories';
 import BaseCarousel, { useCarouselContext } from './BaseCarousel';
 import StandardCard from '../../Cards/StandardCard';
 import { LinkCarouselHeader } from './Headers';
@@ -199,13 +199,10 @@ export const PhotoCarouselExample = () => (
 
 type ActionProps = { onClick: (ev: React.MouseEvent<HTMLButtonElement>) => void };
 
-export const RecipeCarouselExample = ({ onClick }: ActionProps) => (
+const RecipeCarouselExampleTemplate = ({ onClick }: ActionProps) => (
   <PreviewProvider siteKey="atk">
-    <CarouselWidthWrapper
-      maxCardCount={3}
-      cardWidthPx={272}
-      cardMarginRightPx={16}
-    >
+    {/* Max width of article page */}
+    <div style={{ maxWidth: '847px' }}>
       <BaseCarousel
         useFlickityHook={useFlickityGroup}
         title="Recipe Carousel"
@@ -215,14 +212,22 @@ export const RecipeCarouselExample = ({ onClick }: ActionProps) => (
             subtitle="BROWSE ALL"
             onClick={onClick}
           />
-      )}
+        )}
+        showDivider
+        withBreakpointWidth
       >
         {recipeItems.map(item => (
           <StandardSlide key={item.objectId}>
-            <StandardCard key={item.objectId} {...item} />
+            <StandardCard key={item.objectId} {...item} displayFavoritesButton />
           </StandardSlide>
         ))}
       </BaseCarousel>
-    </CarouselWidthWrapper>
+    </div>
   </PreviewProvider>
 );
+
+export const RecipeCarouselExample = RecipeCarouselExampleTemplate.bind({});
+export const RecipeCarouselExampleTablet = RecipeCarouselExampleTemplate.bind({});
+export const RecipeCarouselExampleMobile = RecipeCarouselExampleTemplate.bind({});
+setViewport('ipad', RecipeCarouselExampleTablet);
+setViewport('iphone6', RecipeCarouselExampleMobile);
