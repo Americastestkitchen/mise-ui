@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import { Carousel } from './styled-elements';
 
 export type ArgsProps = {
   maxCardCount: number;
@@ -8,9 +9,11 @@ export type ArgsProps = {
 }
 
 const CarouselWrapperSC = styled.div<ArgsProps>`
-  ${({ maxCardCount, cardWidthPx, cardMarginRightPx }) => css`
-    max-width: calc((${maxCardCount} * ${cardWidthPx}px) + (${maxCardCount - 1} * ${cardMarginRightPx}px));
-  `}
+  &, ${Carousel} {
+    ${({ maxCardCount, cardWidthPx, cardMarginRightPx }) => css`
+      max-width: calc((${maxCardCount} * ${cardWidthPx}px) + (${maxCardCount - 1} * ${cardMarginRightPx}px));
+    `}
+  }
 `;
 
 export function CarouselWidthWrapper({

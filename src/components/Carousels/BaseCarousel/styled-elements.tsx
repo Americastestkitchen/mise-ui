@@ -1,9 +1,19 @@
 import styled, { css } from 'styled-components';
 import { withThemes, color, font } from '../../../styles';
+import { untilLg } from '../../../styles/breakpoints';
 import { cssThemedBackground, cssThemedColor, cssThemedFont } from '../../../styles/mixins';
 
-export const Carousel = styled.div`
+const cssBreakpointWidth = css`
+  ${untilLg(css`
+    --side-margin: calc((100vw - 100%) / 2);
+    width: calc(100% + var(--side-margin, calc((100vw - 100%) / 2)));
+    margin-right: calc(-1 * var(--side-margin, calc((100vw - 100%) / 2)));
+  `)}
+`;
+
+export const Carousel = styled.div <{withBreakpointWidth?: boolean}>`
   width: 100%;
+  ${({ withBreakpointWidth }) => withBreakpointWidth && cssBreakpointWidth}
   .flickity-viewport {
     /* 100% slides vertical scrollbar bug */
     overflow: hidden;
@@ -14,21 +24,21 @@ export const Carousel = styled.div`
 `;
 
 export const Divider = styled.div<{showDivider?: boolean}>`
-  width: 100%;
+  margin-right: 1px;
   margin-bottom: ${({ showDivider }) => (showDivider ? '12px' : '8px')};
 
   ${({ showDivider }) => !!showDivider && withThemes({
     default: css`
       background-color: ${color.silver};
-      height: 2px;
+      height: 1px;
     `,
     cco: css`
       background-color: ${color.whiteSmoke};
-      height: 4px;
+      height: 6px;
     `,
     cio: css`
       background-color: ${color.bone};
-      height: 2px;
+      height: 1px;
     `,
   })}
 `;
@@ -78,7 +88,7 @@ export const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  padding: 4px;
+  padding: 4px 0;
 `;
 
 export const Title = styled.h2`

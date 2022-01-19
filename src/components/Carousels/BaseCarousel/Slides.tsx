@@ -15,8 +15,7 @@ export function FullWidthSlide({ children }: SlideProps) {
 export function StandardSlide({ children }: SlideProps) {
   const { onFocus } = useCarouselContext();
   return (
-    // articles max-width 847 and favorite icon overflowing 272 requires lower margin.
-    <div style={{ width: '272px', marginRight: '14px' }} onFocus={onFocus}>
+    <div style={{ width: '272px', marginRight: '16px' }} onFocus={onFocus}>
       {children}
     </div>
   );
