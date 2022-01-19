@@ -50,7 +50,7 @@ const cssLinkTextFont = css`
 const cssCenterColumn = css`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: flex-start;
 `;
 
@@ -119,11 +119,15 @@ const ImageWrapper = styled.div`
 const Content = styled.div`
   ${cssCenterColumn}
   ${mobileCard(css`
-    height: 145px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 135px;
+    max-height: 145px;
     padding: 8px 12px;
   `)}
   ${desktopCard(css`
-    height: 200px;
+    max-height: 200px;
     padding: 16px;
   `)}
 `;
@@ -160,7 +164,9 @@ export function Wrapper({ src, children, ...anchorProps }: WideCardWrapperProps)
           lazy={false}
         />
       </ImageWrapper>
-      <Content>{children}</Content>
+      <Content>
+        {children}
+      </Content>
     </Card>
   );
 }
