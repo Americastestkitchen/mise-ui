@@ -111,7 +111,7 @@ const Img = styled.img`
   margin-bottom: 14px;
 `;
 
-const Description = styled.span`
+const Description = styled.div`
   font-family: ${font.pnb};
   font-size: 16px;
   line-height: 1.5;
