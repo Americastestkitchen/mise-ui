@@ -1,6 +1,6 @@
 // flickity.d.ts and inferred types are outdated with methods required in utility methods
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useCallback, useState, useEffect, useRef, MutableRefObject, Dispatch, SetStateAction } from 'react';
+import React, { useCallback, useState, useEffect, useRef, MutableRefObject, Dispatch, SetStateAction } from 'react';
 import useResizeObserver from 'use-resize-observer';
 
 function isAllSlidesVisible(flkty: any): boolean {
@@ -70,6 +70,8 @@ function useFlickityCallbackRef(flickity: MutableRefObject<Flickity | null>) {
       cellAlign: 'left',
       pageDots: false,
       prevNextButtons: false,
+      friction: 0.7,
+      selectedAttraction: 0.08,
     });
     flkty.resize();
     flickity.current = flkty;
@@ -113,6 +115,8 @@ function useFlickityCallbackRefGroup(flickity: MutableRefObject<Flickity | null>
       groupCells: true,
       pageDots: false,
       prevNextButtons: false,
+      friction: 0.7,
+      selectedAttraction: 0.08,
     });
     flkty.resize();
     flickity.current = flkty;

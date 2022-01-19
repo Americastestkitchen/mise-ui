@@ -5,9 +5,9 @@ import BaseCarousel, { useCarouselContext } from './BaseCarousel';
 import StandardCard from '../../Cards/StandardCard';
 import { LinkCarouselHeader } from './Headers';
 import { useFlickityGroup } from './useFlickity';
-import { CarouselWidthWrapper } from './Wrappers';
 import { PhotoCarouselCell, PhotoCarouselCellProps } from '../PhotoCarousel';
 import { FullWidthSlide, StandardSlide } from './Slides';
+import { CarouselWidthWrapper } from '.';
 
 export default {
   title: 'Components/Carousels/BaseCarousel',
@@ -201,8 +201,11 @@ type ActionProps = { onClick: (ev: React.MouseEvent<HTMLButtonElement>) => void 
 
 const RecipeCarouselExampleTemplate = ({ onClick }: ActionProps) => (
   <PreviewProvider siteKey="atk">
-    {/* Max width of article page */}
-    <div style={{ maxWidth: '847px' }}>
+    <CarouselWidthWrapper
+      cardMarginRightPx={16}
+      cardWidthPx={272}
+      maxCardCount={3}
+    >
       <BaseCarousel
         useFlickityHook={useFlickityGroup}
         title="Recipe Carousel"
@@ -222,7 +225,7 @@ const RecipeCarouselExampleTemplate = ({ onClick }: ActionProps) => (
           </StandardSlide>
         ))}
       </BaseCarousel>
-    </div>
+    </CarouselWidthWrapper>
   </PreviewProvider>
 );
 
