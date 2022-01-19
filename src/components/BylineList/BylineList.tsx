@@ -84,7 +84,7 @@ const Author = styled.span.attrs({ rel: 'author' })<{ underline?: boolean }>`
   ${props => props.underline && cssThemedLink}
 `;
 
-type AuthorListInnerProps = {authors: Author[], onClick?: (id: number) => void};
+type AuthorListInnerProps = {authors: Author[], onClick?: (id: number, name: string) => void};
 
 const AuthorListInner = ({ authors, onClick }: AuthorListInnerProps) => {
   const fullNames = authors.map(
@@ -97,7 +97,7 @@ const AuthorListInner = ({ authors, onClick }: AuthorListInnerProps) => {
             aria-label={`${author.firstName} ${author.lastName}: Go to author page`}
             key={author.id}
             underline
-            onClick={() => onClick(author.id)}
+            onClick={() => onClick(author.id, `${author.firstName.toLowerCase()}-${author.lastName.toLowerCase()}`)}
           >
             {author.firstName} {author.lastName}
           </Author>
