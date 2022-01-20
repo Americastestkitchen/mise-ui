@@ -3,6 +3,15 @@
 import React, { useCallback, useState, useEffect, useRef, MutableRefObject, Dispatch, SetStateAction } from 'react';
 import useResizeObserver from 'use-resize-observer';
 
+function fixIosScrollBehavior(flkty: any): void {
+  flkty.on('dragStart', () => {
+    document.ontouchmove = e => e.preventDefault();
+  });
+  flkty.on('dragEnd', () => {
+    document.ontouchmove = () => true;
+  });
+}
+
 function isAllSlidesVisible(flkty: any): boolean {
   const slideableWidth = flkty?.slideableWidth;
   const availableWidth = flkty?.size?.innerWidth;
@@ -73,6 +82,7 @@ function useFlickityCallbackRef(flickity: MutableRefObject<Flickity | null>) {
       friction: 0.7,
       selectedAttraction: 0.08,
     });
+    fixIosScrollBehavior(flkty);
     flkty.resize();
     flickity.current = flkty;
   }, [flickity]);
@@ -118,6 +128,7 @@ function useFlickityCallbackRefGroup(flickity: MutableRefObject<Flickity | null>
       friction: 0.7,
       selectedAttraction: 0.08,
     });
+    fixIosScrollBehavior(flkty);
     flkty.resize();
     flickity.current = flkty;
   }, [flickity]);
