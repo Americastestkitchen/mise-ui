@@ -7,7 +7,7 @@ import { LinkCarouselHeader } from './Headers';
 import { useFlickityGroup } from './useFlickity';
 import { PhotoCarouselCell, PhotoCarouselCellProps } from '../PhotoCarousel';
 import { FullWidthSlide, StandardSlide } from './Slides';
-import { CarouselWidthWrapper } from '.';
+import { CarouselWidthWrapper, IntroCarouselHeader } from '.';
 
 export default {
   title: 'Components/Carousels/BaseCarousel',
@@ -188,6 +188,23 @@ const recipeItems = [
 export const PhotoCarouselExample = () => (
   <PreviewProvider siteKey="atk">
     <BaseCarousel title="The Latest &amp; Best from Our Brands The Latest &amp; Best from Our Brands">
+      {items.map(item => (
+        <FullWidthSlide key={item.id}>
+          <PhotoCarouselCell {...item} />
+        </FullWidthSlide>
+      ))}
+    </BaseCarousel>
+  </PreviewProvider>
+);
+
+export const PhotoCarouselIntroExample = () => (
+  <PreviewProvider siteKey="atk">
+    <BaseCarousel
+      title="Recipe Carousel"
+      header={
+        <IntroCarouselHeader title="Recipe Carousel Title" intro="Recipe Carousel Intro" />
+      }
+    >
       {items.map(item => (
         <FullWidthSlide key={item.id}>
           <PhotoCarouselCell {...item} />

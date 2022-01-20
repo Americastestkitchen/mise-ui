@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { withThemes, color, font } from '../../../styles';
 import { untilLg } from '../../../styles/breakpoints';
-import { cssThemedBackground, cssThemedColor, cssThemedFont } from '../../../styles/mixins';
+import { cssThemedBackground, cssThemedColor, cssThemedFont, cssThemedLink } from '../../../styles/mixins';
 
 const cssBreakpointWidth = css`
   ${untilLg(css`
@@ -97,6 +97,17 @@ export const Title = styled.h2`
   font-size: 26px;
   line-height: 1.15;
   margin: 0;
+`;
+
+export const Intro = styled.div`
+  ${cssThemedColor}
+  font-family: ${font.mwr};
+  font-size: 16px;
+  line-height: 1.63;
+  padding: 3px 0;
+  a {
+    ${cssThemedLink}
+  }
 `;
 
 export const Subtitle = styled.span`
