@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components';
 
 import { color, font, fontSize, withThemes } from '../../../../styles';
 import { getImageUrl } from '../../../../lib/cloudinary';
-import { cssArticleBoxStyles } from '../../../../styles/mixins';
+import { cssArticleBoxStyles, cssThemedLink } from '../../../../styles/mixins';
 
 const ListItemWrapper = styled.div`
   background-color: ${color.white};
@@ -90,6 +90,9 @@ const ListItemContentTheme = {
 
 const ListItemContent = styled.div`
   ${withThemes(ListItemContentTheme)}
+  a {
+    ${cssThemedLink}
+  }
 `;
 
 const ImageListItem = ({
