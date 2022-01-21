@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 import useResizeObserver from 'use-resize-observer/polyfilled';
 import { withThemes, color, font } from '../../styles';
@@ -92,36 +92,68 @@ export function YoutubeEmbed({ source, caption }: EmbedProps) {
   ) : null;
 }
 
-const OverridesTikTokEmbed = styled.div<{lessThan542: boolean}>`
-  blockquote.tiktok-embed {
-    margin: 0;
-    iframe {
-      // since we can't change cross-origin background color of iframe.
-      //  we are using the iframe's content breakpoints and matching the 
-      //  iframe size to the content size.
-      width: ${({ lessThan542 }) => (lessThan542 ? '323px' : '544px')} !important;
-      border-radius: 8px;
-      overflow: hidden;
-    }
+const cssResolved = css`
+  height: 100%;
+  left: 50%;
+  /* TODO: make 100vw and query selector 100% elsewhere to apply mobile viewport styles as mobile */
+  width: 1000px;
+  transform: translateX(calc(-50% - 1px));
+  position: absolute;
+`;
+
+const Trim = styled.div<{trim: number, recieved: number}>`
+  position: relative;
+  width: ${({ trim = 325 }) => `${trim}px`};
+  height: ${({ recieved = 680 }) => `${recieved}px`};
+  overflow: hidden;
+`;
+
+const Wrapper = styled.div`
+  ${cssResolved}
+  blockquote {
+    margin-top: 0 !important;
+    max-width: auto !important;
   }
 `;
 
-export function TikTokEmbed({ source, caption }: EmbedProps) {
-  const { width = 0, ref } = useResizeObserver();
+export function TikTokEmbed({ source, caption, deviceType }: EmbedProps & { deviceType: string}) {
   const embed = useOEmbed({
     baseUrl: 'https://www.tiktok.com/oembed?url=',
     script: 'https://www.tiktok.com/embed.js',
     source,
   });
+
+  const [height, setHeight] = useState(0);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    window.addEventListener(
+      'message',
+      (event) => {
+        if (
+          event.origin !== 'https://www.tiktok.com'
+          || event.source !== ref.current?.querySelector('iframe')?.contentWindow
+        ) { return; }
+
+        try {
+          const { height } = JSON.parse(event.data);
+          if (height !== 1) setHeight(height);
+        } catch { /** */ }
+      },
+      false,
+    );
+  }, []);
+
+  const trim = deviceType === 'desktop' ? 538 : 322;
+
   return (
-    <div ref={ref}>
-      <EmbedWrapperInner>
-        <OverridesTikTokEmbed
-          lessThan542={width < 542}
-          dangerouslySetInnerHTML={{ __html: embed?.html ?? '' }}
-        />
+    <div>
+      <Trim trim={trim} recieved={height}>
+        <Wrapper ref={ref} dangerouslySetInnerHTML={{ __html: embed?.html ?? '' }} />
+      </Trim>
+      <div style={{ width: trim }}>
         <Caption caption={caption} />
-      </EmbedWrapperInner>
+      </div>
     </div>
   );
 }
@@ -202,10 +234,12 @@ type MediaTokens = {
  * Embedded content component for render maps.
  */
 export default function MediaEmbed(
-  { caption, site, source, tokens = {} }: MediaEmbedProps & { tokens?: MediaTokens },
+  { caption, site, source, deviceType = 'desktop', tokens = {} }: MediaEmbedProps & {
+    deviceType?: string; tokens?: MediaTokens
+  },
 ) {
   switch (site) {
-    case 'TikTok': return <TikTokEmbed source={source} caption={caption} />;
+    case 'TikTok': return <TikTokEmbed source={source} caption={caption} deviceType={deviceType} />;
     case 'YouTube': return <YoutubeEmbed source={source} caption={caption} />;
     case 'Instagram': return <InstagramEmbed source={source} caption={caption} />;
     case 'Zype': return tokens?.zype ? (
