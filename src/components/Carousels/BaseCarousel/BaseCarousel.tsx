@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useCallback, createContext, useContext, useEffect } from 'react';
+import React, { PropsWithChildren, useCallback, createContext, useContext } from 'react';
 import ArrowButton from './ArrowButton';
 
 import { Title, Header, Navigation, Divider, Carousel } from './styled-elements';
