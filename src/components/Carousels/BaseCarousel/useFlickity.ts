@@ -81,6 +81,7 @@ function useFlickityCallbackRef(flickity: MutableRefObject<Flickity | null>) {
       prevNextButtons: false,
       friction: 0.7,
       selectedAttraction: 0.08,
+      accessibility: false,
     });
     fixIosScrollBehavior(flkty);
     flkty.resize();
@@ -127,6 +128,7 @@ function useFlickityCallbackRefGroup(flickity: MutableRefObject<Flickity | null>
       prevNextButtons: false,
       friction: 0.7,
       selectedAttraction: 0.08,
+      accessibility: false,
     });
     fixIosScrollBehavior(flkty);
     flkty.resize();
