@@ -8,10 +8,10 @@ export const withThemes = siteTheme => (
   css`${() => siteTheme.default || ''};${props => siteTheme[props.theme.siteKey]};${props => siteTheme[props.theme.mode]}`
 );
 
-function focusIndicator(outlineColor = color.eclipse) {
+function focusIndicator(outlineColor = color.eclipse, outlineOffset = '3px') {
   return css`
     outline: 2px dotted ${outlineColor};
-    outline-offset: 3px;
+    outline-offset: ${outlineOffset};
   `;
 }
 
