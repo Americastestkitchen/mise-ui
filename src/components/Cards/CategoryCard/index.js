@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import IconMap from './iconMap';
 import Image from '../shared/Image';
-import { color, font, fontSize } from '../../../styles';
+import { color, font, fontSize, mixins } from '../../../styles';
 import { getImageUrl } from '../../../lib/cloudinary';
 
 const CarouselContainer = styled.div`
@@ -22,9 +22,7 @@ const LinkToBrowse = styled.a`
   width: 9.4rem;
 
   &:focus {
-    outline: none;
-    border: 3px solid ${color.danube};
-    border-radius: 5px;
+    ${mixins.focusIndicator(color.eclipse, '-5px')}
   }
 
   ${breakpoint('xlg')`

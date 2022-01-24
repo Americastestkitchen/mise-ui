@@ -65,6 +65,7 @@ function useFlickityCallbackRef(flickity: MutableRefObject<Flickity | null>) {
   return useCallback((elem) => {
     const Flickity = require('flickity-imagesloaded'); // eslint-disable-line
     const flkty = new Flickity(elem, {
+      accessibility: false,
       imagesLoaded: true,
       wrapAround: true,
       cellAlign: 'left',
@@ -107,6 +108,7 @@ function useFlickityCallbackRefGroup(flickity: MutableRefObject<Flickity | null>
   return useCallback((elem) => {
     const Flickity = require('flickity-imagesloaded'); // eslint-disable-line
     const flkty = new Flickity(elem, {
+      accessibility: false,
       imagesLoaded: true,
       wrapAround: true,
       cellAlign: 'left',
