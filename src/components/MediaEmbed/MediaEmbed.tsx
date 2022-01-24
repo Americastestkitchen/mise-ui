@@ -144,7 +144,7 @@ export function TikTokEmbed({ source, caption, deviceType }: EmbedProps & { devi
     );
   }, []);
 
-  const trim = deviceType === 'desktop' ? 538 : 322;
+  const trim = deviceType === 'phone' ? 322 : 538;
 
   return (
     <div>
