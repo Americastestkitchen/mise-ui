@@ -8,6 +8,7 @@ import {
   font,
   fontSize,
   lineHeight,
+  mixins,
   spacing,
   withThemes,
 } from '../../../styles';
@@ -92,6 +93,19 @@ const InlineNewsletterContent = styled.div`
 
     .email-form-wrapper {
       width: 100%;
+    }
+
+    button:focus {
+      ${mixins.focusIndicator(color.white, '-4px')}
+    }
+
+    .how-we-use__link {
+      margin-top: 0.8rem;
+      padding: 0;
+
+      &:focus {
+        ${mixins.focusIndicator(color.eclipse, '2px')}
+      }
     }
   `}
 
