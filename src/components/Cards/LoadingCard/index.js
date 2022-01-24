@@ -280,6 +280,7 @@ const LoadingCard = ({ type }) => (
 
 LoadingCard.propTypes = {
   type: PropTypes.oneOf([
+    'category',
     'feature',
     'feature-wide',
     'hero',
