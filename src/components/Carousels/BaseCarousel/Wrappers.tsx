@@ -1,29 +1,45 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import { untilLg } from '../../../styles/breakpoints';
 import { Carousel } from './styled-elements';
 
+const cssAuto = css`
+  ${untilLg(css`
+    --side-margin: calc((100vw - 100%) / 2);
+    width: calc(100% + var(--side-margin, calc((100vw - 100%) / 2)));
+    margin-right: calc(-1 * var(--side-margin, calc((100vw - 100%) / 2)));
+  `)}
+`;
+
+const mixinOverflowManual = (overflowPx: number) => css`
+  width: calc(100% + ${overflowPx}px);
+  margin-right: calc(-1 * ${overflowPx}px);
+`;
+
 export type ArgsProps = {
-  maxCardCount: number;
-  cardWidthPx: number;
-  cardMarginRightPx: number;
+  maxWidthPx: number;
+  overflowAuto?: boolean;
+  overflowManualPx?: number;
 }
 
 const CarouselWrapperSC = styled.div<ArgsProps>`
   &, ${Carousel} {
-    ${({ maxCardCount, cardWidthPx, cardMarginRightPx }) => css`
-      max-width: calc((${maxCardCount} * ${cardWidthPx}px) + (${maxCardCount - 1} * ${cardMarginRightPx}px));
-    `}
+    max-width: ${({ maxWidthPx }) => `${maxWidthPx}px`};
+  }
+  ${Carousel} {
+    ${({ overflowAuto }) => overflowAuto && cssAuto};
+  }
+  ${Carousel} {
+    ${({ overflowManualPx }) => overflowManualPx && mixinOverflowManual(overflowManualPx)};
   }
 `;
 
 export function CarouselWidthWrapper({
-  maxCardCount,
-  cardWidthPx,
-  cardMarginRightPx,
   children,
+  ...args
 }: React.PropsWithChildren<ArgsProps>) {
   return (
-    <CarouselWrapperSC {... { maxCardCount, cardWidthPx, cardMarginRightPx }}>
+    <CarouselWrapperSC {... args}>
       {children}
     </CarouselWrapperSC>
   );

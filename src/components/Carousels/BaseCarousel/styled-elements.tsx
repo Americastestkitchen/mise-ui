@@ -1,19 +1,9 @@
 import styled, { css } from 'styled-components';
 import { withThemes, color, font } from '../../../styles';
-import { untilLg } from '../../../styles/breakpoints';
 import { cssThemedBackground, cssThemedColor, cssThemedFont, cssThemedLink } from '../../../styles/mixins';
 
-const cssBreakpointWidth = css`
-  ${untilLg(css`
-    --side-margin: calc((100vw - 100%) / 2);
-    width: calc(100% + var(--side-margin, calc((100vw - 100%) / 2)));
-    margin-right: calc(-1 * var(--side-margin, calc((100vw - 100%) / 2)));
-  `)}
-`;
-
-export const Carousel = styled.div <{withBreakpointWidth?: boolean}>`
+export const Carousel = styled.div`
   width: 100%;
-  ${({ withBreakpointWidth }) => withBreakpointWidth && cssBreakpointWidth}
   .flickity-viewport {
     /* 100% slides vertical scrollbar bug */
     overflow: hidden;
@@ -79,6 +69,8 @@ export const Svg = styled.svg`
 
 export const Navigation = styled.nav`
   flex-shrink: 0;
+  display: flex;
+  padding-left: 20px;
   padding-bottom: 4px;
   ${Button}:first-child {
     margin-right: 8px;
