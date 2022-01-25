@@ -14,12 +14,12 @@ function useTikTokOEmbed(source: string): { html?: string | undefined; } | undef
 /**
  * https://lf16-tiktok-web.ttwstatic.com/obj/tiktok-web-us/tiktok/web/node/_next/static/chunks/pages/embed-4054b9635841fc9131d0.js
  */
-function useTikTokIframeSize(): 322 | 538 {
-  const [iframeWidth, setIframeWidth] = useState<322 | 538>(538);
+function useTikTokIframeSize(): 325 | 542 {
+  const [iframeWidth, setIframeWidth] = useState<325 | 542>(542);
   // useEffect for ssr
   useEffect(() => {
     const isMobile = /Android|webOS|iPhone|iPod|BlackBerry|Windows Phone/i.test(navigator.userAgent);
-    setIframeWidth(isMobile ? 322 : 538);
+    setIframeWidth(isMobile ? 325 : 542);
   }, []);
   return iframeWidth;
 }
