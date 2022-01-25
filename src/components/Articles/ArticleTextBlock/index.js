@@ -15,6 +15,8 @@ const ArticleTextBlockWrapper = styled.div`
     background-color: ${color.white};
     padding: 2.4rem 1rem;
 
+    ${withThemes({ cco: mixins.ccoReviewSetBorder() })}
+
     .article-text-block__p {
       font: ${fontSize.md}/1.5 ${font.pnr};
     }
