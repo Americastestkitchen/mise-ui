@@ -1,48 +1,13 @@
-import React, { useEffect, useRef, useState } from 'react';
-import styled, { css } from 'styled-components';
+import React from 'react';
+import styled from 'styled-components';
 import useResizeObserver from 'use-resize-observer/polyfilled';
-import { withThemes, color, font } from '../../styles';
-import { useOEmbed, useScript } from './utilities';
-
-type EmbedProps = { source: string; caption?: string };
+import Caption from './Caption';
+import TikTokEmbed from './TikTokEmbed';
+import { EmbedProps, useScript } from './utilities';
 
 const EmbedWrapperInner = styled.div`
   width: min-content;
 `;
-
-const DescriptionWrapper = styled.div`
-  padding-top: 16px;
-`;
-
-const Description = styled.span`
-  font-family: ${font.pnb};
-  font-size: 16px;
-  line-height: 1.5;
-  color: ${color.doveGray};
-`;
-
-const AccentRectangle = styled.div`
-  width: 19.5px;
-  height: 7px;
-  margin-top: 8px;
-  ${withThemes({
-    default: css`background-color: ${color.mint};`,
-    atk: css`background-color: ${color.mint};`,
-    cco: css`background-color: ${color.bermudaGray};`,
-    cio: css`background-color: ${color.squirrel};`,
-  })}
-`;
-
-function Caption({ caption }: { caption?: string }) {
-  return caption ? (
-    <DescriptionWrapper>
-      <Description>
-        {caption}
-      </Description>
-      <AccentRectangle />
-    </DescriptionWrapper>
-  ) : null;
-}
 
 /** Aspect ratio component for iframe child components */
 const AspectRatio = styled.div<{ children?: JSX.IntrinsicElements['iframe'] }>`
@@ -90,88 +55,6 @@ export function YoutubeEmbed({ source, caption }: EmbedProps) {
       <Caption caption={caption} />
     </div>
   ) : null;
-}
-
-const cssResolved = css`
-  height: 1000px;
-  left: 50%;
-  /* TODO: make 100vw and query selector 100% elsewhere to apply mobile viewport styles as mobile */
-  width: 1000px;
-  transform: translateX(calc(-50% - 1px));
-  position: absolute;
-`;
-
-const Trim = styled.div<{trim: number, recieved?: number}>`
-  position: relative;
-  width: ${({ trim = 325 }) => `${trim}px`};
-  height: ${({ recieved = 680 }) => `${recieved}px`};
-  /* ios not sending right heights in iframe messages? default to larger value if not desktop */
-  min-height: 680px !important;
-  overflow: hidden;
-`;
-
-const Wrapper = styled.div`
-  ${cssResolved}
-  blockquote {
-    margin-top: 0 !important;
-    max-width: 1000px !important;
-    height: 1000px !important;
-  }
-  iframe {
-    max-height: 1000px !important;
-  }
-`;
-
-export function TikTokEmbed({ source, caption, deviceType }: EmbedProps & { deviceType: string}) {
-  const embed = useOEmbed({
-    baseUrl: 'https://www.tiktok.com/oembed?url=',
-    script: 'https://www.tiktok.com/embed.js',
-    source,
-  });
-
-  const [height, setHeight] = useState(undefined);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    window.addEventListener(
-      'message',
-      (event) => {
-        if (
-          event.origin !== 'https://www.tiktok.com'
-          || event.source !== ref.current?.querySelector('iframe')?.contentWindow
-        ) { return; }
-
-        try {
-          const { height: tHeight } = JSON.parse(event.data);
-          if (tHeight > 1) {
-            setHeight(tHeight);
-            // tiktok script watches iframe size change, we need this to trigger
-            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-            setTimeout(() => {
-              const iframe = ref.current?.querySelector('iframe');
-              if (iframe) {
-                iframe.style.width = '1001px';
-              }
-            }, 1000);
-          }
-        } catch { /** */ }
-      },
-      false,
-    );
-  }, []);
-
-  const trim = deviceType === 'phone' ? 322 : 538;
-
-  return (
-    <div>
-      <Trim trim={trim} recieved={height}>
-        <Wrapper ref={ref} dangerouslySetInnerHTML={{ __html: embed?.html ?? '' }} />
-      </Trim>
-      <div style={{ width: trim }}>
-        <Caption caption={caption} />
-      </div>
-    </div>
-  );
 }
 
 const loadingTextLink = "A post shared by America's Test Kitchen";
@@ -249,13 +132,11 @@ type MediaTokens = {
 /**
  * Embedded content component for render maps.
  */
-export default function MediaEmbed(
-  { caption, site, source, deviceType = 'desktop', tokens = {} }: MediaEmbedProps & {
-    deviceType?: string; tokens?: MediaTokens
-  },
-) {
+export default function MediaEmbed({
+  caption, site, source, tokens = {},
+}: MediaEmbedProps & { tokens?: MediaTokens }) {
   switch (site) {
-    case 'TikTok': return <TikTokEmbed source={source} caption={caption} deviceType={deviceType} />;
+    case 'TikTok': return <TikTokEmbed source={source} caption={caption} />;
     case 'YouTube': return <YoutubeEmbed source={source} caption={caption} />;
     case 'Instagram': return <InstagramEmbed source={source} caption={caption} />;
     case 'Zype': return tokens?.zype ? (

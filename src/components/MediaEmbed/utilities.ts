@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
+export type EmbedProps = { source: string; caption?: string };
+
 /**
  * Attach async script tag. Do nothing when src is undefined.
  * @param src script src to load async.
