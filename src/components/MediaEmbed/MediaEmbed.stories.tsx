@@ -1,8 +1,9 @@
 import React from 'react';
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import { setViewport, storybookParameters } from '../../config/shared.stories';
-import MediaEmbed, { TikTokEmbed, YoutubeEmbed, ZypeEmbed } from './MediaEmbed';
+import MediaEmbed, { YoutubeEmbed, ZypeEmbed } from './MediaEmbed';
 import { InstagramEmbed } from '.';
+import TikTokEmbed from './TikTokEmbed';
 
 export default {
   title: 'Components/MediaEmbed',
@@ -19,11 +20,11 @@ const zypeVideoId = '5b400b9f4b32992a310627f6';
 
 const longCaptionText = 'Both our winning products had simple ingredient lists with a noticeable lack of additives, such as food colorings and preservatives. In contrast, our least favorite sticks had a slew of additives, including titanium dioxide, a food coloring that is no longer considered safe for consumption by the European Food Safety Authority.';
 
-export const TikTok: ComponentStory<typeof TikTokEmbed> = () => <TikTokEmbed source={tiktokUrl} deviceType="desktop" />;
+export const TikTok: ComponentStory<typeof TikTokEmbed> = () => <TikTokEmbed source={tiktokUrl} />;
 TikTok.storyName = 'TikTok';
 
 export const TikTokWithCaption: ComponentStory<typeof TikTokEmbed> = () => (
-  <TikTokEmbed source={tiktokUrl} caption={longCaptionText} deviceType="desktop" />
+  <TikTokEmbed source={tiktokUrl} caption={longCaptionText} />
 );
 TikTokWithCaption.storyName = 'TikTok With Caption';
 
