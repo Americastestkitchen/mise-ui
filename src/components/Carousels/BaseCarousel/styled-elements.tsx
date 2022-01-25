@@ -44,8 +44,9 @@ export const Divider = styled.div<{showDivider?: boolean}>`
 `;
 
 export const Button = styled.button`
-  width: 25px;
-  height: 25px;
+  display: block !important;;
+  width: 25px !important;
+  height: 25px !important;
   border-radius: 100%;
   border: 0;
   position: relative;
