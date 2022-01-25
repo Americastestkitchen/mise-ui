@@ -22,12 +22,6 @@ export type StandardCarouselProps = PropsWithChildren<{
   title: string;
   /** Add site themed horizontal line below carousel title */
   showDivider?: boolean;
-  /**
-   * Add to enable mobile and tablet breakpoints to overflow margin.
-   * --side-margin: <value> !important; can be used to override this value
-   *  if necessary.
-   */
-  withBreakpointWidth?: boolean;
   /** Pass a node to replace title section, reused components in ./Headers */
   header?: React.ReactNode;
   /** Pass a hook returning flickity state, choose from hooks in ./useFlickity */
@@ -36,7 +30,6 @@ export type StandardCarouselProps = PropsWithChildren<{
 export default function StandardCarousel({
   title,
   showDivider,
-  withBreakpointWidth,
   children,
   header,
   useFlickityHook = useFlickity,
@@ -69,7 +62,7 @@ export default function StandardCarousel({
       </Header>
       <Divider showDivider={showDivider} />
       {/* IMPORTANT: Cards use this internally `.carousel & {}` to avoid breakpoint styles */}
-      <Carousel ref={flickityRef} className="carousel" withBreakpointWidth={withBreakpointWidth}>
+      <Carousel ref={flickityRef} className="carousel">
         <context.Provider value={{ onFocus, resize }}>
           {children}
         </context.Provider>

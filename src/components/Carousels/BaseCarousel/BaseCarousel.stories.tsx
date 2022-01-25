@@ -219,9 +219,8 @@ type ActionProps = { onClick: (ev: React.MouseEvent<HTMLButtonElement>) => void 
 const RecipeCarouselExampleTemplate = ({ onClick }: ActionProps) => (
   <PreviewProvider siteKey="atk">
     <CarouselWidthWrapper
-      cardMarginRightPx={16}
-      cardWidthPx={272}
-      maxCardCount={3}
+      maxWidthPx={847}
+      overflowAuto
     >
       <BaseCarousel
         useFlickityHook={useFlickityGroup}
@@ -234,7 +233,7 @@ const RecipeCarouselExampleTemplate = ({ onClick }: ActionProps) => (
           />
         )}
         showDivider
-        withBreakpointWidth
+
       >
         {recipeItems.map(item => (
           <StandardSlide key={item.objectId}>
