@@ -113,6 +113,7 @@ LoadingCarousel.propTypes = {
   title: PropTypes.string,
   /** Sets the carousel-item styles for a particular card style */
   type: PropTypes.oneOf([
+    'category',
     'feature',
     'person',
     'reviewable',

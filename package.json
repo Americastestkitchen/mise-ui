@@ -30,7 +30,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "cross-env BABEL_ENV=production babel src -d dist --ignore 'src/**/*.stories.js','src/**/*.spec.js','src/setupTests.js','src/serviceWorker.js' --extensions '.js,.ts,.tsx,.jsx'",
-    "watch": "watch 'yarn run build' ./src",
+    "watch": "watch 'yarn run build && yalc push --changed' ./src",
     "test": "jest",
     "lint": "./node_modules/.bin/eslint .",
     "eject": "react-scripts eject",
@@ -78,6 +78,7 @@
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.7.2",
+    "@types/flickity": "^2.2.6",
     "@types/node": "^16.4.3",
     "@types/react": "^17.0.15",
     "@types/react-dom": "^17.0.9",

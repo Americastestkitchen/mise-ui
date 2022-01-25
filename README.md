@@ -96,7 +96,41 @@ Labels are located in the right hand column of the PR.
 
 Next, merge your PR, and navigate to your package on npm and hang tight for a few minutes while the package is updated.
 
-## Previewing in `jarvis`, or other ATK repos
+## Previewing in `jarvis`, or other ATK repos with yalc
+
+When developing and authoring multiple packages (private or public), you often find yourself in need of using the latest/WIP versions in other projects that you are working on in your local environment without publishing those packages to the remote registry.
+
+See [documentation](https://github.com/wclr/yalc) for more info
+
+Install `yalc` globally
+
+```
+yarn global add yalc
+```
+Now run publish, it will copy all the files that should be published in remote NPM registry
+```
+yalc publish
+```
+With yalc puclished in remote NPM registry, it's already visible to other repos. But if you want to continue the changes in mise-ui run the following
+```
+yarn watch
+```
+
+Then add the following to any other **ATK repos** that would want to see the changes. It will automatically see the changes and update in the application(It might take some seconds)
+```
+cd ../jarvis
+yalc link @atk/mise-ui
+```
+
+Now just start the repo's development server and it's all set.
+
+When you are done working on `mise-ui` changes, you might want to 'remove' jarvis.
+```
+cd ../jarvis
+yalc remove @atk/mise-ui
+```
+
+## DEPRECATED - Previewing in `jarvis`, or other ATK repos
 
 If you are making changes in `mise-ui` and would like to preview those changes immediately in `jarvis`, you will need to link your local copy of `mise-ui` to your local `jarvis`.
 
