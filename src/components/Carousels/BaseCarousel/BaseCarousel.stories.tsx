@@ -89,6 +89,7 @@ const recipeItems = [
     contentType: 'recipe',
     contentTypeFormatted: 'Recipe',
     commentCount: 23,
+    searchComments: 23,
     ctaText: '',
     ctaUrl: '',
     href: '/recipes/8125',
@@ -103,6 +104,7 @@ const recipeItems = [
     contentType: 'recipe',
     contentTypeFormatted: 'Recipe',
     commentCount: 23,
+    searchComments: 23,
     ctaText: '',
     ctaUrl: '',
     href: '/recipes/8125',
@@ -117,6 +119,7 @@ const recipeItems = [
     contentType: 'recipe',
     contentTypeFormatted: 'Recipe',
     commentCount: 23,
+    searchComments: 23,
     ctaText: '',
     ctaUrl: '',
     href: '/recipes/8125',
@@ -131,6 +134,7 @@ const recipeItems = [
     contentType: 'recipe',
     contentTypeFormatted: 'Recipe',
     commentCount: 23,
+    searchComments: 23,
     ctaText: '',
     ctaUrl: '',
     href: '/recipes/8125',
@@ -145,6 +149,7 @@ const recipeItems = [
     contentType: 'recipe',
     contentTypeFormatted: 'Recipe',
     commentCount: 23,
+    searchComments: 23,
     ctaText: '',
     ctaUrl: '',
     href: '/recipes/8125',
@@ -159,6 +164,7 @@ const recipeItems = [
     contentType: 'recipe',
     contentTypeFormatted: 'Recipe',
     commentCount: 23,
+    searchComments: 23,
     ctaText: '',
     ctaUrl: '',
     href: '/recipes/8125',
@@ -173,6 +179,7 @@ const recipeItems = [
     contentType: 'recipe',
     contentTypeFormatted: 'Recipe',
     commentCount: 23,
+    searchComments: 23,
     ctaText: '',
     ctaUrl: '',
     href: '/recipes/8125',
@@ -214,10 +221,13 @@ export const PhotoCarouselIntroExample = () => (
   </PreviewProvider>
 );
 
-type ActionProps = { onClick: (ev: React.MouseEvent<HTMLButtonElement>) => void };
+type ActionProps = {
+  siteKey: 'atk' | 'cio' | 'cco';
+  onClick: (ev: React.MouseEvent<HTMLButtonElement>) => void
+};
 
-const RecipeCarouselExampleTemplate = ({ onClick }: ActionProps) => (
-  <PreviewProvider siteKey="atk">
+const RecipeCarouselExampleTemplate = ({ siteKey = 'atk', onClick }: ActionProps) => (
+  <PreviewProvider siteKey={siteKey}>
     <CarouselWidthWrapper
       maxWidthPx={847}
       overflowAuto
@@ -237,7 +247,7 @@ const RecipeCarouselExampleTemplate = ({ onClick }: ActionProps) => (
       >
         {recipeItems.map(item => (
           <StandardSlide key={item.objectId}>
-            <StandardCard key={item.objectId} {...item} displayFavoritesButton />
+            <StandardCard key={item.objectId} {...item} displayFavoritesButton searchAttribution />
           </StandardSlide>
         ))}
       </BaseCarousel>
@@ -246,6 +256,12 @@ const RecipeCarouselExampleTemplate = ({ onClick }: ActionProps) => (
 );
 
 export const RecipeCarouselExample = RecipeCarouselExampleTemplate.bind({});
+export const RecipeCarouselCIO: any = RecipeCarouselExampleTemplate.bind({});
+RecipeCarouselCIO.args = { siteKey: 'cio' };
+setBackground('cio', RecipeCarouselCIO);
+export const RecipeCarouselCCO: any = RecipeCarouselExampleTemplate.bind({});
+RecipeCarouselCCO.args = { siteKey: 'cco' };
+setBackground('cco', RecipeCarouselCCO);
 export const RecipeCarouselExampleTablet = RecipeCarouselExampleTemplate.bind({});
 export const RecipeCarouselExampleMobile = RecipeCarouselExampleTemplate.bind({});
 setViewport('ipad', RecipeCarouselExampleTablet);

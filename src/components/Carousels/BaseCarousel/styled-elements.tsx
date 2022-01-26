@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { withThemes, color, font } from '../../../styles';
-import { cssThemedBackground, cssThemedColor, cssThemedFont, cssThemedLink } from '../../../styles/mixins';
+import { cssThemedBackground, cssThemedColor, cssThemedFontBold, cssThemedLink } from '../../../styles/mixins';
 
 export const Carousel = styled.div`
   width: 100%;
@@ -86,7 +86,7 @@ export const Header = styled.header`
 
 export const Title = styled.h2`
   ${cssThemedColor}
-  ${cssThemedFont}
+  ${cssThemedFontBold}
   font-size: 26px;
   line-height: 1.15;
   margin: 0;
