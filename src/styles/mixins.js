@@ -2,7 +2,7 @@ import { css } from 'styled-components';
 import { cards, color, font, fontSize } from './index';
 
 export const themeValue = (prop, val) => props => (props.theme[prop] && props.theme[prop][val])
- || val;
+  || val;
 
 export const withThemes = siteTheme => (
   css`${() => siteTheme.default || ''};${props => siteTheme[props.theme.siteKey]};${props => siteTheme[props.theme.mode]}`
@@ -231,6 +231,17 @@ export const cssThemedFont = withThemes({
   atk: css`font-family: ${font.pnb};`,
   cco: css`font-family: ${font.clb};`,
   cio: css`font-family: ${font.mwr};`,
+});
+
+/** Headers */
+export const cssThemedFontBold = withThemes({
+  default: css`font-family: ${font.pnb};`,
+  atk: css`font-family: ${font.pnb};`,
+  cco: css`font-family: ${font.clb};`,
+  cio: css`
+    font-family: ${font.mwr};
+    font-weight: 700;
+  `,
 });
 
 export const cssThemedColor = withThemes({
