@@ -101,6 +101,8 @@ const color = {
   chablis: '#fef1e9',
   greenWhite: '#e7eae1',
   queenBlue: '#426491',
+  pearlBush: '#ede8de',
+  alabaster: '#f7f7f7',
 };
 
 export default color;
