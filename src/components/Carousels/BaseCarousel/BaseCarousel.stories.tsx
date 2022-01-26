@@ -1,5 +1,7 @@
 import React, { PropsWithChildren } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { ComponentStory } from '@storybook/react';
 import { defaultTheme, setBackground, setViewport, storybookParameters } from '../../../config/shared.stories';
 import BaseCarousel, { useCarouselContext } from './BaseCarousel';
 import StandardCard from '../../Cards/StandardCard';
@@ -247,22 +249,32 @@ const RecipeCarouselExampleTemplate = ({ siteKey = 'atk', onClick }: ActionProps
       >
         {recipeItems.map(item => (
           <StandardSlide key={item.objectId}>
-            <StandardCard key={item.objectId} {...item} displayFavoritesButton searchAttribution />
+            <StandardCard
+              key={item.objectId}
+              {...item}
+              displayFavoritesButton
+              searchAttribution
+              displayRecipeAttribution
+              numRatings={4}
+              avgRating={4}
+            />
           </StandardSlide>
         ))}
       </BaseCarousel>
     </CarouselWidthWrapper>
   </PreviewProvider>
 );
+type RCStory = ComponentStory<typeof RecipeCarouselExampleTemplate>
 
 export const RecipeCarouselExample = RecipeCarouselExampleTemplate.bind({});
-export const RecipeCarouselCIO: any = RecipeCarouselExampleTemplate.bind({});
+export const RecipeCarouselCIO: RCStory = RecipeCarouselExampleTemplate.bind({});
 RecipeCarouselCIO.args = { siteKey: 'cio' };
-setBackground('cio', RecipeCarouselCIO);
-export const RecipeCarouselCCO: any = RecipeCarouselExampleTemplate.bind({});
+export const RecipeCarouselCCO: RCStory = RecipeCarouselExampleTemplate.bind({});
 RecipeCarouselCCO.args = { siteKey: 'cco' };
-setBackground('cco', RecipeCarouselCCO);
 export const RecipeCarouselExampleTablet = RecipeCarouselExampleTemplate.bind({});
 export const RecipeCarouselExampleMobile = RecipeCarouselExampleTemplate.bind({});
+
+setBackground('cio', RecipeCarouselCIO);
+setBackground('cco', RecipeCarouselCCO);
 setViewport('ipad', RecipeCarouselExampleTablet);
 setViewport('iphone6', RecipeCarouselExampleMobile);
