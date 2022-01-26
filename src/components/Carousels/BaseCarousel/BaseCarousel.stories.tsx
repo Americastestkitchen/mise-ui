@@ -7,9 +7,9 @@ import BaseCarousel, { useCarouselContext } from './BaseCarousel';
 import StandardCard from '../../Cards/StandardCard';
 import { LinkCarouselHeader } from './Headers';
 import { useFlickityGroup } from './useFlickity';
-import { PhotoCarouselCell, PhotoCarouselCellProps } from '../PhotoCarousel';
 import { FullWidthSlide, StandardSlide } from './Slides';
 import { CarouselWidthWrapper, IntroCarouselHeader } from '.';
+import PhotoCarouselCell, { PhotoCarouselCellProps } from './Cells/PhotoCarouselCell';
 
 export default {
   title: 'Components/Carousels/BaseCarousel',
