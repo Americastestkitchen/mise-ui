@@ -88,6 +88,7 @@ const items: PhotoCarouselCellProps[] = [
 
 const recipeItems = [
   {
+    isFavorited: true,
     contentType: 'recipe',
     contentTypeFormatted: 'Recipe',
     commentCount: 23,
