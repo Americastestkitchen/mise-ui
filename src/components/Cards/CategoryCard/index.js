@@ -113,6 +113,13 @@ const ImageWrapperTheme = {
     svg path {
       fill: ${color.white};
     }
+    .rooster {
+      svg {
+        path:nth-child(2n+1) {
+          fill: none;
+        }
+      }
+    }
   `,
 };
 
@@ -174,6 +181,14 @@ const SvgWrapper = styled.div`
   .trending-icon {
     width: 100%;
   }
+
+  &.recipeCard {
+    width: 62%;
+  }
+
+  &.latest, &.cookbook {
+    width: 64%;
+  }
 `;
 
 const CategoryCard = ({
@@ -189,7 +204,7 @@ const CategoryCard = ({
   svgId,
   tagline,
 }) => {
-  const CategoryIcon = IconMap?.[svgId] || IconMap.star;
+  const CategoryIcon = IconMap?.[svgId] || IconMap.reviews;
   const backgroundClass = cloudinaryId
     ? 'product-img-wrapper'
     : 'svg-wrapper';
@@ -217,7 +232,7 @@ const CategoryCard = ({
               width={60}
             />
           ) : (
-            <SvgWrapper className={`svg-${page}`}>
+            <SvgWrapper className={`svg-${page} ${svgId}`}>
               <CategoryIcon />
             </SvgWrapper>
           )}
@@ -238,7 +253,18 @@ CategoryCard.propTypes = {
   lazy: PropTypes.bool,
   onClick: PropTypes.func,
   page: PropTypes.oneOf(['reviews', 'recipes']),
-  svgId: PropTypes.oneOf(['shoppingCart', 'star', 'reviews', 'trendingArrow', 'play', '']),
+  svgId: PropTypes.oneOf([
+    'cookbook',
+    'latest',
+    'recipeCard',
+    'reviews',
+    'rooster',
+    'shoppingCart',
+    'star',
+    'trendingArrow',
+    'play',
+    '',
+  ]),
   tagline: PropTypes.string.isRequired,
 };
 
