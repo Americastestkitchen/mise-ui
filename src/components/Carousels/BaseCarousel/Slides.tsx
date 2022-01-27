@@ -52,6 +52,14 @@ const StandardSlideThemed = styled.div`
     color: ${colorValue} !important;
   }
   button.favorite-action {
+    &.favorited {
+      [class*="ribbon"] {
+        fill: ${colorValue} !important;
+      }
+      [class*="vertical-line"], [class*="horizontal-line"] {
+        stroke: ${colorValue} !important;
+      }
+    }
     .outer-stroke {
       stroke: ${colorValue} !important;
     }
