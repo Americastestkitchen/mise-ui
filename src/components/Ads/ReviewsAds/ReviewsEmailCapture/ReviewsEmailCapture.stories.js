@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ReviewsEmailCapture from './index';
+import ReviewsEmailCapture, { ProvideKidsNewsletterVariant, variantTheme } from './index';
 import { siteKey } from '../../../../config/argTypes';
 import { addThemedWrapper } from '../../../../config/decorators';
 
@@ -53,3 +53,6 @@ Cco.args = {
 
 export const CcoSuccess = Template.bind({});
 CcoSuccess.args = { ...Cco.args, success: true };
+
+export const DefaultWithKidsVariant = Template.bind({});
+DefaultWithKidsVariant.args = { ...Default.args, variant: 'kidsVariant' };

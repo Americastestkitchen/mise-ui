@@ -5,7 +5,6 @@ import { md, untilMd } from '../../../styles/breakpoints';
 import { cssThemedColor, cssThemedFontAccentColorAlt, cssThemedLink } from '../../../styles/mixins';
 import useMedia from '../../hooks/useMedia';
 import AffiliateLink from '../shared/AffiliateLink';
-import Image from '../shared/Image';
 
 const mobileCard = untilMd;
 const desktopCard = md;
@@ -155,13 +154,12 @@ export function Wrapper({ src, children, ...anchorProps }: WideCardWrapperProps)
   return (
     <Card {...anchorProps}>
       <ImageWrapper>
-        <Image
+        <img
           width={imageSize}
           height={imageSize}
           aria-hidden="true"
-          imageUrl={src}
-          imageAlt=""
-          lazy={false}
+          src={src || undefined}
+          alt=""
         />
       </ImageWrapper>
       <Content>
