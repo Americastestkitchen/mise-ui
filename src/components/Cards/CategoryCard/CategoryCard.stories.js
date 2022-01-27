@@ -29,7 +29,18 @@ export default {
   title: 'Components/Cards/CategoryCard',
   component: CategoryCard,
   argTypes: {
-    siteKey
+    siteKey,
+    svgId: {
+      options: [
+        'cookbook',
+        'latest',
+        'recipeCard',
+        'play',
+        'reviews',
+        'rooster',
+        'trendingArrow',
+      ]
+    }
   }
 };
 
