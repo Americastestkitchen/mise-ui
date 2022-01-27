@@ -272,6 +272,13 @@ export const cssThemedFontAccentColorAlt = withThemes({
   cio: css`color: ${color.squirrel};`,
 });
 
+export const cssThemedBackgroundAccentColorAlt = withThemes({
+  default: css`background: ${color.darkTeal};`,
+  atk: css`background: ${color.darkTeal};`,
+  cco: css`background: ${color.queenBlue};`,
+  cio: css`background: ${color.squirrel};`,
+});
+
 export const cssReduceColor = css`
   background-image: none !important;
   background-color: transparent !important;
