@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { withThemes, color, font } from '../../../styles';
-import { cssThemedBackground, cssThemedColor, cssThemedFontBold, cssThemedLink } from '../../../styles/mixins';
+import { cssThemedBackground, cssThemedColor, cssThemedFontAccentColorAlt, cssThemedFontBold, cssThemedLink } from '../../../styles/mixins';
 
 export const Carousel = styled.div`
   width: 100%;
@@ -41,11 +41,7 @@ export const Button = styled.button`
   border: 0;
   position: relative;
 
-  ${withThemes({
-    default: css`background: ${color.wintergreenDream};`,
-    cco: css`background: ${color.queenBlue};`,
-    cio: css`background: ${color.squirrel};`,
-  })}
+  ${cssThemedFontAccentColorAlt}
 
   &:hover {
     ${cssThemedBackground}
