@@ -275,7 +275,7 @@ export const cssThemedFontAccentColorAlt = withThemes({
 export const cssThemedBackgroundAccentColorAlt = withThemes({
   default: css`background: ${color.darkTeal};`,
   atk: css`background: ${color.darkTeal};`,
-  cco: css`background: ${color.queenBlue};`,
+  cco: css`background: ${color.denim};`,
   cio: css`background: ${color.squirrel};`,
 });
 
