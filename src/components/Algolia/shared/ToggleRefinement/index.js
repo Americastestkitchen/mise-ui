@@ -5,15 +5,18 @@ import { connectRefinementList } from 'react-instantsearch-dom';
 
 import RefinementFilter2 from '../RefinementFilter2';
 import mixins from '../../../../styles/mixins';
-import { color, withThemes } from '../../../../styles';
+import { color, font, fontSize, withThemes } from '../../../../styles';
 
 const ToggleRefinementWrapperTheme = {
   default: css`
     .refinement-filter__wrapper label {
+      font: ${fontSize.md}/1.38 ${font.pnb};
       ${({ theme }) => (theme && theme.siteKey ? mixins.styledLinkWithSiteKey(theme.siteKey) : '')}
     }
   `,
   atk: css`
+    color: ${color.eclipse};
+
     .refinement-filter__wrapper label {
       &:hover {
         color: ${color.eclipse};
@@ -21,6 +24,8 @@ const ToggleRefinementWrapperTheme = {
     }
   `,
   cco: css`
+    color: ${color.eclipse};
+
     .refinement-filter__wrapper label {
       &:hover {
         color: ${color.black};
@@ -28,6 +33,8 @@ const ToggleRefinementWrapperTheme = {
     }
   `,
   cio: css`
+    color: ${color.eclipse};
+
     .refinement-filter__wrapper label {
       &:hover {
         color: ${color.cork};
