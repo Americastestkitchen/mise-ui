@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { color, font, fontSize, letterSpacing, lineHeight, spacing, withThemes } from '../../styles';
+import { cssThemedColor } from '../../styles/mixins';
 import Filter from '../DesignTokens/Icon/svgs/Filter';
 
 const StyledFilterButtonTheme = {
   default: css`
-    color: ${color.eclipse};
     font: ${fontSize.md}/${lineHeight.sm} ${font.pnb};
     padding: ${spacing.xsm};
   `,
@@ -26,6 +26,7 @@ const StyledFilterButtonTheme = {
 };
 
 const StyledFilterButton = styled.button`
+  ${cssThemedColor}
   ${withThemes(StyledFilterButtonTheme)}
 `;
 
@@ -34,6 +35,16 @@ const StyledFilterTheme = {
     height: 1rem;
     margin-left: ${spacing.xsm};
     width: 1.7rem;
+  `,
+  cco: css`
+   g line {
+     stroke: ${color.black};
+   }
+  `,
+  cio: css`
+    g line {
+      stroke: ${color.cork};
+    }
   `,
   dark: css`
     g {

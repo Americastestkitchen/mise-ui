@@ -16,6 +16,9 @@ export const addThemedWrapper = () => {
     cio: css`
       background-color: ${color.linen};
     `,
+    dark: css`
+      background-color: ${color.eclipse};
+    `,
   };
 
   const ThemedWrapper = styled.div`
