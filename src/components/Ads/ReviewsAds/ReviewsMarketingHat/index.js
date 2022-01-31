@@ -5,7 +5,6 @@ import styled from 'styled-components';
 
 // grab email for for bottom logic
 import EmailForm from '../../../Forms/EmailForm';
-import { getImageUrl } from '../../../../lib/cloudinary';
 import { color, font, fontSize, letterSpacing, spacing } from '../../../../styles';
 
 const AdImage = styled.div`
