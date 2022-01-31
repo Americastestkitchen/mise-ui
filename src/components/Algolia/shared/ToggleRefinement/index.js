@@ -1,8 +1,51 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled, { css } from 'styled-components';
 import { connectRefinementList } from 'react-instantsearch-dom';
 
 import RefinementFilter2 from '../RefinementFilter2';
+import mixins from '../../../../styles/mixins';
+import { color, font, fontSize, withThemes } from '../../../../styles';
+
+const ToggleRefinementWrapperTheme = {
+  default: css`
+    .refinement-filter__wrapper label {
+      font: ${fontSize.md}/1.38 ${font.pnb};
+      ${({ theme }) => (theme && theme.siteKey ? mixins.styledLinkWithSiteKey(theme.siteKey) : '')}
+    }
+  `,
+  atk: css`
+    color: ${color.eclipse};
+
+    .refinement-filter__wrapper label {
+      &:hover {
+        color: ${color.eclipse};
+      }
+    }
+  `,
+  cco: css`
+    color: ${color.eclipse};
+
+    .refinement-filter__wrapper label {
+      &:hover {
+        color: ${color.black};
+      }
+    }
+  `,
+  cio: css`
+    color: ${color.eclipse};
+
+    .refinement-filter__wrapper label {
+      &:hover {
+        color: ${color.cork};
+      }
+    }
+  `,
+};
+
+const ToggleRefinementWrapper = styled.div`
+  ${withThemes(ToggleRefinementWrapperTheme)}
+`;
 
 const ToggleRefinement = ({
   attribute,
@@ -10,7 +53,7 @@ const ToggleRefinement = ({
   value,
   ...restProps
 }) => (
-  <div className="toggle-refinement">
+  <ToggleRefinementWrapper className="toggle-refinement">
     <RefinementFilter2
       attribute={attribute}
       filterType="toggleRefinement"
@@ -19,7 +62,7 @@ const ToggleRefinement = ({
       value={value}
       {...restProps}
     />
-  </div>
+  </ToggleRefinementWrapper>
 );
 
 ToggleRefinement.propTypes = {
