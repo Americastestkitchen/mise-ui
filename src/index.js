@@ -82,6 +82,7 @@ import TallCard from './components/Cards/TallCard';
 import TallToSquareCard from './components/Cards/TallToSquareCard';
 import TextDecorations, { CircledText, SquiggledText, UnderlinedText } from './components/DesignTokens/TextDecoration';
 import ToggleRefinement from './components/Algolia/shared/ToggleRefinement';
+import ToggleRefinementMenu from './components/Algolia/shared/ToggleRefinementMenu';
 import * as Icons from './components/DesignTokens/Icon';
 import fonts from './styles/fonts';
 import globalStyle from './styles/global';
@@ -197,6 +198,7 @@ export {
   TallToSquareCard,
   TextDecorations,
   ToggleRefinement,
+  ToggleRefinementMenu,
   SubscribeBubbles,
   styles,
   spacing,

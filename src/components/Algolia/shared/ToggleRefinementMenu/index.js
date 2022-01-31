@@ -13,6 +13,8 @@ const ToggleRefinementMenuWrapper = styled.div`
 
 const ToggleRefinementMenu = ({
   menuAttribute,
+  menuOnClickItem,
+  menuTransformItems,
   toggleRefinementAttribute,
   toggleRefinementLabel,
   toggleRefinementValue,
@@ -23,15 +25,25 @@ const ToggleRefinementMenu = ({
       label={toggleRefinementLabel}
       value={toggleRefinementValue}
     />
-    <Menu attribute={menuAttribute} />
+    <Menu
+      attribute={menuAttribute}
+      onClickItem={menuOnClickItem}
+      transformItems={menuTransformItems}
+    />
   </ToggleRefinementMenuWrapper>
 );
 
 ToggleRefinementMenu.propTypes = {
   menuAttribute: PropTypes.string.isRequired,
+  menuOnClickItem: PropTypes.func,
+  menuTransformItems: PropTypes.func,
   toggleRefinementAttribute: PropTypes.string.isRequired,
   toggleRefinementLabel: PropTypes.string.isRequired,
   toggleRefinementValue: PropTypes.string.isRequired,
 };
 
+ToggleRefinementMenu.defaultProps = {
+  menuTransformItems: null,
+  menuOnClickItem: null,
+};
 export default ToggleRefinementMenu;

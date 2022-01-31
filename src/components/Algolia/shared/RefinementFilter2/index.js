@@ -139,39 +139,45 @@ const RefinementFilter = ({
   label,
   refine,
   value,
-}) => (
-  <RefinementFilterWrapper
-    className="refinement-filter__wrapper"
-    onClick={(e) => {
-      e.preventDefault();
-      if (!isRefined && typeof handleClick === 'function') handleClick(e);
-      if (filterType === 'refinementList') {
-        refine(value);
-      } else if (filterType === 'toggleRefinement') {
-        if (currentRefinement.length > 0) {
-          refine(false);
-        } else {
+}) => {
+  let isActuallyRefined = isRefined;
+  if (filterType === 'toggleRefinement') {
+    isActuallyRefined = currentRefinement.length > 0 && currentRefinement.includes(value);
+  }
+  return (
+    <RefinementFilterWrapper
+      className="refinement-filter__wrapper"
+      onClick={(e) => {
+        e.preventDefault();
+        if (!isActuallyRefined && typeof handleClick === 'function') handleClick(e);
+        if (filterType === 'refinementList') {
           refine(value);
+        } else if (filterType === 'toggleRefinement') {
+          if (isActuallyRefined) {
+            refine(false);
+          } else {
+            refine(value);
+          }
         }
-      }
-    }}
-  >
-    {
-      isRefined || (filterType === 'toggleRefinement' && currentRefinement.length > 0) ? (
-        <RefinementFilterCheck data-testid="refinement-filter__checkmark">
-          <Checkmark />
-        </RefinementFilterCheck>
-      ) : null
-    }
-    <RefinementFilterCheckbox defaultChecked={isRefined} id={`${attribute}-${value}-filter`} type="checkbox" />
-    <RefinementFilterLabel
-      htmlFor={`${attribute}-${value}-filter`}
-      isRefined={isRefined}
+      }}
     >
-      {label}{includeCount && count ? <RefinementFilterCount>{` (${count})`}</RefinementFilterCount> : null}
-    </RefinementFilterLabel>
-  </RefinementFilterWrapper>
-);
+      {
+        isActuallyRefined ? (
+          <RefinementFilterCheck data-testid="refinement-filter__checkmark">
+            <Checkmark />
+          </RefinementFilterCheck>
+        ) : null
+      }
+      <RefinementFilterCheckbox defaultChecked={isActuallyRefined} id={`${attribute}-${value}-filter`} type="checkbox" />
+      <RefinementFilterLabel
+        htmlFor={`${attribute}-${value}-filter`}
+        isRefined={isActuallyRefined}
+      >
+        {label}{includeCount && count ? <RefinementFilterCount>{` (${count})`}</RefinementFilterCount> : null}
+      </RefinementFilterLabel>
+    </RefinementFilterWrapper>
+  );
+};
 
 RefinementFilter.propTypes = {
   /** Algolia attribute used to filter results. */
