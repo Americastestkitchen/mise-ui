@@ -1,16 +1,9 @@
 // flickity.d.ts and inferred types are outdated with methods required in utility methods
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import Flickity from 'flickity';
 import React, { useCallback, useState, useEffect, useRef, MutableRefObject, Dispatch, SetStateAction } from 'react';
 import useResizeObserver from 'use-resize-observer';
-
-function fixIosScrollBehavior(flkty: any): void {
-  flkty.on('dragStart', () => {
-    document.ontouchmove = e => e.preventDefault();
-  });
-  flkty.on('dragEnd', () => {
-    document.ontouchmove = () => true;
-  });
-}
+import { fixIosScrollBehavior, fixLeftOverflow } from './bug-fixes';
 
 function isAllSlidesVisible(flkty: any): boolean {
   const slideableWidth = flkty?.slideableWidth;
@@ -82,8 +75,14 @@ function useFlickityCallbackRef(flickity: MutableRefObject<Flickity | null>) {
       friction: 0.7,
       selectedAttraction: 0.08,
       accessibility: false,
+      on: {
+        // eslint-disable-next-line object-shorthand, func-names
+        ready: function (this: Flickity) {
+          fixIosScrollBehavior.call(this);
+          fixLeftOverflow.call(this);
+        },
+      },
     });
-    fixIosScrollBehavior(flkty);
     flkty.resize();
     flickity.current = flkty;
   }, [flickity]);
@@ -129,8 +128,14 @@ function useFlickityCallbackRefGroup(flickity: MutableRefObject<Flickity | null>
       friction: 0.7,
       selectedAttraction: 0.08,
       accessibility: false,
+      on: {
+        // eslint-disable-next-line object-shorthand, func-names
+        ready: function (this: Flickity) {
+          fixIosScrollBehavior.call(this);
+          fixLeftOverflow.call(this);
+        },
+      },
     });
-    fixIosScrollBehavior(flkty);
     flkty.resize();
     flickity.current = flkty;
   }, [flickity]);

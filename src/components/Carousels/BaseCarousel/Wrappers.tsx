@@ -12,14 +12,28 @@ const cssAuto = css`
 `;
 
 const mixinOverflowManual = (overflowPx: number) => css`
-  width: calc(100% + ${overflowPx}px);
-  margin-right: calc(-1 * ${overflowPx}px);
+  ${Carousel} {
+    width: calc(100% + ${overflowPx}px);
+    margin-right: calc(-1 * ${overflowPx}px);
+  }
+`;
+
+const mixinOverflowHorizontal = (overflowHorizontalPx: number) => css`
+  ${Carousel} {
+    width: calc(100% + (${2 * overflowHorizontalPx}px));
+    margin-left: -${overflowHorizontalPx}px;
+    margin-right: -${overflowHorizontalPx}px;
+    .flickity-slider {
+      margin-left: ${overflowHorizontalPx}px;
+    }
+  }
 `;
 
 export type ArgsProps = {
   maxWidthPx: number;
   overflowAuto?: boolean;
   overflowManualPx?: number;
+  overflowHorizontalPx?: number;
 }
 
 const CarouselWrapperSC = styled.div<ArgsProps>`
@@ -29,9 +43,9 @@ const CarouselWrapperSC = styled.div<ArgsProps>`
   ${Carousel} {
     ${({ overflowAuto }) => overflowAuto && cssAuto};
   }
-  ${Carousel} {
-    ${({ overflowManualPx }) => overflowManualPx && mixinOverflowManual(overflowManualPx)};
-  }
+  
+  ${({ overflowManualPx }) => overflowManualPx && mixinOverflowManual(overflowManualPx)};
+  ${({ overflowHorizontalPx }) => overflowHorizontalPx && mixinOverflowHorizontal(overflowHorizontalPx)};
 `;
 
 export function CarouselWidthWrapper({

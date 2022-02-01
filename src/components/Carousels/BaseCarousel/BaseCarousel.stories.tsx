@@ -5,10 +5,10 @@ import { ComponentStory } from '@storybook/react';
 import { defaultTheme, setBackground, setViewport, storybookParameters } from '../../../config/shared.stories';
 import BaseCarousel, { useCarouselContext } from './BaseCarousel';
 import StandardCard from '../../Cards/StandardCard';
-import { LinkCarouselHeader } from './Headers';
+import { LinkCarouselHeader, IntroCarouselHeader } from './Headers';
 import { useFlickityGroup } from './useFlickity';
 import { FullWidthSlide, StandardSlide } from './Slides';
-import { CarouselWidthWrapper, IntroCarouselHeader } from '.';
+import { CarouselWidthWrapper } from './Wrappers';
 import PhotoCarouselCell, { PhotoCarouselCellProps } from './Cells/PhotoCarouselCell';
 
 export default {
@@ -279,3 +279,50 @@ setBackground('cio', RecipeCarouselCIO);
 setBackground('cco', RecipeCarouselCCO);
 setViewport('ipad', RecipeCarouselExampleTablet);
 setViewport('iphone6', RecipeCarouselExampleMobile);
+
+const TestHighlight = styled.div`
+  border: 3px solid red;
+`;
+
+const TestMargin = styled.div`
+  margin: 36px;
+`;
+
+const LeftOffsetExampleTemplate = ({ siteKey = 'atk' }: ActionProps) => (
+  <PreviewProvider siteKey={siteKey}>
+    <TestHighlight>
+      <TestMargin>
+        <CarouselWidthWrapper
+          maxWidthPx={847}
+          overflowHorizontalPx={36}
+        >
+          <BaseCarousel
+            useFlickityHook={useFlickityGroup}
+            title="Left Offset Carousel"
+            showDivider
+          >
+            {recipeItems.map(item => (
+              <StandardSlide key={item.objectId}>
+                <StandardCard
+                  key={item.objectId}
+                  {...item}
+                  displayFavoritesButton
+                  searchAttribution
+                  displayRecipeAttribution
+                  numRatings={4}
+                  avgRating={4}
+                />
+              </StandardSlide>
+            ))}
+          </BaseCarousel>
+        </CarouselWidthWrapper>
+      </TestMargin>
+    </TestHighlight>
+  </PreviewProvider>
+);
+
+export const LeftOverflowOffsetM = LeftOffsetExampleTemplate.bind({});
+export const LeftOverflowOffsetT = LeftOffsetExampleTemplate.bind({});
+export const LeftOverflowOffsetD = LeftOffsetExampleTemplate.bind({});
+setViewport('iphone6', LeftOverflowOffsetM);
+setViewport('ipad', LeftOverflowOffsetT);
