@@ -3,6 +3,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import cloudinaryInstance, { baseImageConfig } from '../../../../lib/cloudinary';
 import { withThemes, color, font } from '../../../../styles';
+import { cssThemedLink } from '../../../../styles/mixins';
 
 export type PhotoCarouselCellProps = {
   /** Carousel uses id value for reconciliation of its cell items. */
@@ -29,6 +30,9 @@ const Description = styled.div`
   font-size: 16px;
   line-height: 1.5;
   color: ${color.doveGray};
+  a {
+    ${cssThemedLink}
+  }
 `;
 
 const AccentRectangle = styled.div`
@@ -78,7 +82,9 @@ export default function PhotoCarouselCell({
 
       {!!description && (
       <>
-        <Description>{description}</Description>
+        <Description
+          dangerouslySetInnerHTML={{ __html: description }}
+        />
         <AccentRectangle />
       </>
       )}
