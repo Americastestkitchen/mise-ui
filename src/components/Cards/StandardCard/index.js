@@ -30,6 +30,12 @@ const StandardCardTheme = {
       }
     }
   `,
+  cco: css`
+    color: ${color.black};
+  `,
+  cio: css`
+    color: ${color.cork};
+  `,
   dark: css`
     color: ${color.white};
 
@@ -43,13 +49,8 @@ const StandardCardTheme = {
 };
 
 const RecipeAttribution = styled.div`
-  color: ${color.eclipse};
   display: flex;
   margin: 0.3rem 0 0.6rem 0;
-
-  .action-summary {
-    color: ${color.eclipse};
-  }
 
   .icon--star {
     margin-right: 1.6rem;
@@ -290,11 +291,9 @@ function StandardCard({
             </ThemeProvider>
           )}
           {searchComments && (
-            <ThemeProvider theme={{ siteKey: 'atk' }}>
-              <ActionSummaryItem icon="comment">
-                <strong aria-hidden="true">{searchComments}</strong>
-              </ActionSummaryItem>
-            </ThemeProvider>
+            <ActionSummaryItem icon="comment">
+              <strong aria-hidden="true">{searchComments}</strong>
+            </ActionSummaryItem>
           )}
         </RecipeAttribution>
       )}

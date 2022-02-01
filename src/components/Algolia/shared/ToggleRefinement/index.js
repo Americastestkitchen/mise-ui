@@ -24,7 +24,7 @@ const ToggleRefinementWrapperTheme = {
     }
   `,
   cco: css`
-    color: ${color.eclipse};
+    color: ${color.black};
 
     .refinement-filter__wrapper label {
       &:hover {
@@ -33,7 +33,7 @@ const ToggleRefinementWrapperTheme = {
     }
   `,
   cio: css`
-    color: ${color.eclipse};
+    color: ${color.cork};
 
     .refinement-filter__wrapper label {
       &:hover {
