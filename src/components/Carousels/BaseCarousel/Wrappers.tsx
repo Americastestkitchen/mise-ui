@@ -4,11 +4,13 @@ import { untilLg } from '../../../styles/breakpoints';
 import { Carousel } from './styled-elements';
 
 const cssAuto = css`
-  ${untilLg(css`
-    --side-margin: calc((100vw - 100%) / 2);
-    width: calc(100% + var(--side-margin, calc((100vw - 100%) / 2)));
-    margin-right: calc(-1 * var(--side-margin, calc((100vw - 100%) / 2)));
-  `)}
+  ${Carousel} {
+    ${untilLg(css`
+      --side-margin: calc((100vw - 100%) / 2);
+      width: calc(100% + var(--side-margin, calc((100vw - 100%) / 2)));
+      margin-right: calc(-1 * var(--side-margin, calc((100vw - 100%) / 2)));
+    `)}
+  }
 `;
 
 const mixinOverflowManual = (overflowPx: number) => css`
@@ -37,13 +39,10 @@ export type ArgsProps = {
 }
 
 const CarouselWrapperSC = styled.div<ArgsProps>`
-  &, ${Carousel} {
+  & {
     max-width: ${({ maxWidthPx }) => `${maxWidthPx}px`};
   }
-  ${Carousel} {
-    ${({ overflowAuto }) => overflowAuto && cssAuto};
-  }
-  
+  ${({ overflowAuto }) => overflowAuto && cssAuto};
   ${({ overflowManualPx }) => overflowManualPx && mixinOverflowManual(overflowManualPx)};
   ${({ overflowHorizontalPx }) => overflowHorizontalPx && mixinOverflowHorizontal(overflowHorizontalPx)};
 `;
