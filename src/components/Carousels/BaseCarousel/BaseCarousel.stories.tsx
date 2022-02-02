@@ -1,13 +1,15 @@
 import React, { PropsWithChildren } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-import { defaultTheme, setBackground, storybookParameters } from '../../../config/shared.stories';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { ComponentStory } from '@storybook/react';
+import { defaultTheme, setBackground, setViewport, storybookParameters } from '../../../config/shared.stories';
 import BaseCarousel, { useCarouselContext } from './BaseCarousel';
 import StandardCard from '../../Cards/StandardCard';
-import { LinkCarouselHeader } from './Headers';
+import { LinkCarouselHeader, IntroCarouselHeader } from './Headers';
 import { useFlickityGroup } from './useFlickity';
-import { CarouselWidthWrapper } from './Wrappers';
-import { PhotoCarouselCell, PhotoCarouselCellProps } from '../PhotoCarousel';
 import { FullWidthSlide, StandardSlide } from './Slides';
+import { CarouselWidthWrapper } from './Wrappers';
+import PhotoCarouselCell, { PhotoCarouselCellProps } from './Cells/PhotoCarouselCell';
 
 export default {
   title: 'Components/Carousels/BaseCarousel',
@@ -86,9 +88,11 @@ const items: PhotoCarouselCellProps[] = [
 
 const recipeItems = [
   {
+    isFavorited: true,
     contentType: 'recipe',
     contentTypeFormatted: 'Recipe',
     commentCount: 23,
+    searchComments: 23,
     ctaText: '',
     ctaUrl: '',
     href: '/recipes/8125',
@@ -103,6 +107,7 @@ const recipeItems = [
     contentType: 'recipe',
     contentTypeFormatted: 'Recipe',
     commentCount: 23,
+    searchComments: 23,
     ctaText: '',
     ctaUrl: '',
     href: '/recipes/8125',
@@ -117,6 +122,7 @@ const recipeItems = [
     contentType: 'recipe',
     contentTypeFormatted: 'Recipe',
     commentCount: 23,
+    searchComments: 23,
     ctaText: '',
     ctaUrl: '',
     href: '/recipes/8125',
@@ -131,6 +137,7 @@ const recipeItems = [
     contentType: 'recipe',
     contentTypeFormatted: 'Recipe',
     commentCount: 23,
+    searchComments: 23,
     ctaText: '',
     ctaUrl: '',
     href: '/recipes/8125',
@@ -145,6 +152,7 @@ const recipeItems = [
     contentType: 'recipe',
     contentTypeFormatted: 'Recipe',
     commentCount: 23,
+    searchComments: 23,
     ctaText: '',
     ctaUrl: '',
     href: '/recipes/8125',
@@ -159,6 +167,7 @@ const recipeItems = [
     contentType: 'recipe',
     contentTypeFormatted: 'Recipe',
     commentCount: 23,
+    searchComments: 23,
     ctaText: '',
     ctaUrl: '',
     href: '/recipes/8125',
@@ -173,6 +182,7 @@ const recipeItems = [
     contentType: 'recipe',
     contentTypeFormatted: 'Recipe',
     commentCount: 23,
+    searchComments: 23,
     ctaText: '',
     ctaUrl: '',
     href: '/recipes/8125',
@@ -197,14 +207,32 @@ export const PhotoCarouselExample = () => (
   </PreviewProvider>
 );
 
-type ActionProps = { onClick: (ev: React.MouseEvent<HTMLButtonElement>) => void };
-
-export const RecipeCarouselExample = ({ onClick }: ActionProps) => (
+export const PhotoCarouselIntroExample = () => (
   <PreviewProvider siteKey="atk">
+    <BaseCarousel
+      title="Recipe Carousel"
+      header={
+        <IntroCarouselHeader title="Recipe Carousel Title" intro="Recipe Carousel Intro" />
+      }
+    >
+      {items.map(item => (
+        <FullWidthSlide key={item.id}>
+          <PhotoCarouselCell {...item} />
+        </FullWidthSlide>
+      ))}
+    </BaseCarousel>
+  </PreviewProvider>
+);
+
+type ActionProps = {
+  siteKey: 'atk' | 'cio' | 'cco';
+};
+
+const RecipeCarouselExampleTemplate = ({ siteKey = 'atk' }: ActionProps) => (
+  <PreviewProvider siteKey={siteKey}>
     <CarouselWidthWrapper
-      maxCardCount={3}
-      cardWidthPx={272}
-      cardMarginRightPx={16}
+      maxWidthPx={847}
+      overflowAuto
     >
       <BaseCarousel
         useFlickityHook={useFlickityGroup}
@@ -212,17 +240,88 @@ export const RecipeCarouselExample = ({ onClick }: ActionProps) => (
         header={(
           <LinkCarouselHeader
             title="Recipe Carousel"
-            subtitle="BROWSE ALL"
-            onClick={onClick}
+            linkText="BROWSE ALL"
+            linkProps={{ href: '/#' }}
           />
-      )}
+        )}
+        showDivider
+
       >
         {recipeItems.map(item => (
           <StandardSlide key={item.objectId}>
-            <StandardCard key={item.objectId} {...item} />
+            <StandardCard
+              key={item.objectId}
+              {...item}
+              displayFavoritesButton
+              searchAttribution
+              displayRecipeAttribution
+              numRatings={4}
+              avgRating={4}
+            />
           </StandardSlide>
         ))}
       </BaseCarousel>
     </CarouselWidthWrapper>
   </PreviewProvider>
 );
+type RCStory = ComponentStory<typeof RecipeCarouselExampleTemplate>
+
+export const RecipeCarouselExample = RecipeCarouselExampleTemplate.bind({});
+export const RecipeCarouselCIO: RCStory = RecipeCarouselExampleTemplate.bind({});
+RecipeCarouselCIO.args = { siteKey: 'cio' };
+export const RecipeCarouselCCO: RCStory = RecipeCarouselExampleTemplate.bind({});
+RecipeCarouselCCO.args = { siteKey: 'cco' };
+export const RecipeCarouselExampleTablet = RecipeCarouselExampleTemplate.bind({});
+export const RecipeCarouselExampleMobile = RecipeCarouselExampleTemplate.bind({});
+
+setBackground('cio', RecipeCarouselCIO);
+setBackground('cco', RecipeCarouselCCO);
+setViewport('ipad', RecipeCarouselExampleTablet);
+setViewport('iphone6', RecipeCarouselExampleMobile);
+
+const TestHighlight = styled.div`
+  border: 3px solid red;
+`;
+
+const TestMargin = styled.div`
+  margin: 36px;
+`;
+
+const LeftOffsetExampleTemplate = ({ siteKey = 'atk' }: ActionProps) => (
+  <PreviewProvider siteKey={siteKey}>
+    <TestHighlight>
+      <TestMargin>
+        <CarouselWidthWrapper
+          maxWidthPx={847}
+          overflowHorizontalPx={36}
+        >
+          <BaseCarousel
+            useFlickityHook={useFlickityGroup}
+            title="Left Offset Carousel"
+            showDivider
+          >
+            {recipeItems.map(item => (
+              <StandardSlide key={item.objectId}>
+                <StandardCard
+                  key={item.objectId}
+                  {...item}
+                  displayFavoritesButton
+                  searchAttribution
+                  displayRecipeAttribution
+                  numRatings={4}
+                  avgRating={4}
+                />
+              </StandardSlide>
+            ))}
+          </BaseCarousel>
+        </CarouselWidthWrapper>
+      </TestMargin>
+    </TestHighlight>
+  </PreviewProvider>
+);
+
+export const LeftOverflowOffsetM = LeftOffsetExampleTemplate.bind({});
+export const LeftOverflowOffsetT = LeftOffsetExampleTemplate.bind({});
+export const LeftOverflowOffsetD = LeftOffsetExampleTemplate.bind({});
+setViewport('iphone6', LeftOverflowOffsetM);
+setViewport('ipad', LeftOverflowOffsetT);

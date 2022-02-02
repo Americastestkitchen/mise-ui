@@ -1,7 +1,9 @@
 // flickity.d.ts and inferred types are outdated with methods required in utility methods
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useCallback, useState, useEffect, useRef, MutableRefObject, Dispatch, SetStateAction } from 'react';
+import Flickity from 'flickity';
+import React, { useCallback, useState, useEffect, useRef, MutableRefObject, Dispatch, SetStateAction } from 'react';
 import useResizeObserver from 'use-resize-observer';
+import { fixIosScrollBehavior, fixLeftOverflow } from './bug-fixes';
 
 function isAllSlidesVisible(flkty: any): boolean {
   const slideableWidth = flkty?.slideableWidth;
@@ -65,12 +67,21 @@ function useFlickityCallbackRef(flickity: MutableRefObject<Flickity | null>) {
   return useCallback((elem) => {
     const Flickity = require('flickity-imagesloaded'); // eslint-disable-line
     const flkty = new Flickity(elem, {
-      accessibility: false,
       imagesLoaded: true,
       wrapAround: true,
       cellAlign: 'left',
       pageDots: false,
       prevNextButtons: false,
+      friction: 0.7,
+      selectedAttraction: 0.08,
+      accessibility: false,
+      on: {
+        // eslint-disable-next-line object-shorthand, func-names
+        ready: function (this: Flickity) {
+          fixIosScrollBehavior.call(this);
+          fixLeftOverflow.call(this);
+        },
+      },
     });
     flkty.resize();
     flickity.current = flkty;
@@ -108,13 +119,22 @@ function useFlickityCallbackRefGroup(flickity: MutableRefObject<Flickity | null>
   return useCallback((elem) => {
     const Flickity = require('flickity-imagesloaded'); // eslint-disable-line
     const flkty = new Flickity(elem, {
-      accessibility: false,
       imagesLoaded: true,
       wrapAround: true,
       cellAlign: 'left',
       groupCells: true,
       pageDots: false,
       prevNextButtons: false,
+      friction: 0.7,
+      selectedAttraction: 0.08,
+      accessibility: false,
+      on: {
+        // eslint-disable-next-line object-shorthand, func-names
+        ready: function (this: Flickity) {
+          fixIosScrollBehavior.call(this);
+          fixLeftOverflow.call(this);
+        },
+      },
     });
     flkty.resize();
     flickity.current = flkty;
