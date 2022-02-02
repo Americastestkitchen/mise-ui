@@ -1,6 +1,12 @@
 import styled, { css } from 'styled-components';
 import { withThemes, color, font } from '../../../styles';
-import { cssThemedBackground, cssThemedColor, cssThemedFont } from '../../../styles/mixins';
+import {
+  cssThemedBackground,
+  cssThemedBackgroundAccentColorAlt,
+  cssThemedColor,
+  cssThemedFontBold,
+  cssThemedLink,
+} from '../../../styles/mixins';
 
 export const Carousel = styled.div`
   width: 100%;
@@ -14,37 +20,34 @@ export const Carousel = styled.div`
 `;
 
 export const Divider = styled.div<{showDivider?: boolean}>`
-  width: 100%;
+  margin-right: 1px;
   margin-bottom: ${({ showDivider }) => (showDivider ? '12px' : '8px')};
 
   ${({ showDivider }) => !!showDivider && withThemes({
     default: css`
       background-color: ${color.silver};
-      height: 2px;
+      height: 1px;
     `,
     cco: css`
       background-color: ${color.whiteSmoke};
-      height: 4px;
+      height: 6px;
     `,
     cio: css`
       background-color: ${color.bone};
-      height: 2px;
+      height: 1px;
     `,
   })}
 `;
 
 export const Button = styled.button`
-  width: 25px;
-  height: 25px;
+  display: block !important;;
+  width: 25px !important;
+  height: 25px !important;
   border-radius: 100%;
   border: 0;
   position: relative;
 
-  ${withThemes({
-    default: css`background: ${color.wintergreenDream};`,
-    cco: css`background: ${color.queenBlue};`,
-    cio: css`background: ${color.squirrel};`,
-  })}
+  ${cssThemedBackgroundAccentColorAlt}
 
   &:hover {
     ${cssThemedBackground}
@@ -68,6 +71,8 @@ export const Svg = styled.svg`
 
 export const Navigation = styled.nav`
   flex-shrink: 0;
+  display: flex;
+  padding-left: 20px;
   padding-bottom: 4px;
   ${Button}:first-child {
     margin-right: 8px;
@@ -78,22 +83,24 @@ export const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  padding: 4px;
+  padding: 4px 0;
 `;
 
 export const Title = styled.h2`
   ${cssThemedColor}
-  ${cssThemedFont}
+  ${cssThemedFontBold}
   font-size: 26px;
-  line-height: 1.15;
+  line-height: 1.2;
   margin: 0;
 `;
 
-export const Subtitle = styled.span`
+export const Intro = styled.div`
   ${cssThemedColor}
-  font-family: ${font.pnr};
-  font-size: 18px;
-  line-height: 1.48;
-  letter-spacing: 2.88px;
-  margin: 0;
+  font-family: ${font.mwr};
+  font-size: 16px;
+  line-height: 1.6;
+  padding: 3px 0;
+  a {
+    ${cssThemedLink}
+  }
 `;

@@ -8,4 +8,5 @@ export * from './BaseCarousel';
 export * from './Wrappers';
 export * from './Headers';
 export * from './Slides';
+export * from './Cells';
 export * from './useFlickity';
