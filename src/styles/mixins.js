@@ -254,11 +254,11 @@ export const cssThemedColor = withThemes({
   cio: css`color: ${color.cork};`,
 });
 
-export const cssThemedBackground = withThemes({
-  default: css`background: ${color.eclipse};`,
-  atk: css`background: ${color.eclipse};`,
-  cco: css`background: ${color.black};`,
-  cio: css`background: ${color.cork};`,
+export const cssThemedFill = withThemes({
+  default: css`fill: ${color.eclipse};`,
+  atk: css`fill: ${color.eclipse};`,
+  cco: css`fill: ${color.black};`,
+  cio: css`fill: ${color.cork};`,
 });
 
 export const cssThemedFontAccentColor = withThemes({
@@ -275,18 +275,26 @@ export const cssThemedFontAccentColorAlt = withThemes({
   cio: css`color: ${color.squirrel};`,
 });
 
+export const cssThemedFillAccentAlt = withThemes({
+  default: css`fill: ${color.darkTeal};`,
+  atk: css`fill: ${color.darkTeal};`,
+  cco: css`fill: ${color.denim};`,
+  cio: css`fill: ${color.squirrel};`,
+});
+
+export const cssThemedBackground = withThemes({
+  default: css`background: ${color.eclipse};`,
+  atk: css`background: ${color.eclipse};`,
+  cco: css`background: ${color.black};`,
+  cio: css`background: ${color.cork};`,
+});
+
 export const cssThemedBackgroundAccentColorAlt = withThemes({
   default: css`background: ${color.darkTeal};`,
   atk: css`background: ${color.darkTeal};`,
   cco: css`background: ${color.denim};`,
   cio: css`background: ${color.squirrel};`,
 });
-
-export const cssReduceColor = css`
-  background-image: none !important;
-  background-color: transparent !important;
-  color-adjust: exact !important;
-`;
 
 export const cssThemedHighlight = withThemes({
   default: css`background-color: ${color.seaSalt};`,
@@ -301,6 +309,12 @@ export const cssThemedUnderline = withThemes({
   cco: css`background-image: linear-gradient(transparent 91%, ${color.malibu} 91%);`,
   cio: css`background-image: linear-gradient(transparent 91%, ${color.dijon} 91%);`,
 });
+
+export const cssReduceColor = css`
+  background-image: none !important;
+  background-color: transparent !important;
+  color-adjust: exact !important;
+`;
 
 /**
  * Updated version of styledLinkWithSiteKey.
