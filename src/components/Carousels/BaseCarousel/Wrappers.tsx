@@ -1,26 +1,58 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import { untilLg } from '../../../styles/breakpoints';
+import { Carousel } from './styled-elements';
+
+const cssAuto = css`
+  ${Carousel} {
+    ${untilLg(css`
+      --side-margin: calc((100vw - 100%) / 2);
+      width: calc(100% + var(--side-margin, calc((100vw - 100%) / 2)));
+      margin-right: calc(-1 * var(--side-margin, calc((100vw - 100%) / 2)));
+    `)}
+  }
+`;
+
+const mixinOverflowManual = (overflowPx: number) => css`
+  ${Carousel} {
+    width: calc(100% + ${overflowPx}px);
+    margin-right: calc(-1 * ${overflowPx}px);
+  }
+`;
+
+const mixinOverflowHorizontal = (overflowHorizontalPx: number) => css`
+  ${Carousel} {
+    width: calc(100% + (${2 * overflowHorizontalPx}px));
+    margin-left: -${overflowHorizontalPx}px;
+    margin-right: -${overflowHorizontalPx}px;
+    .flickity-slider {
+      margin-left: ${overflowHorizontalPx}px;
+    }
+  }
+`;
 
 export type ArgsProps = {
-  maxCardCount: number;
-  cardWidthPx: number;
-  cardMarginRightPx: number;
+  maxWidthPx: number;
+  overflowAuto?: boolean;
+  overflowManualPx?: number;
+  overflowHorizontalPx?: number;
 }
 
 const CarouselWrapperSC = styled.div<ArgsProps>`
-  ${({ maxCardCount, cardWidthPx, cardMarginRightPx }) => css`
-    max-width: calc((${maxCardCount} * ${cardWidthPx}px) + (${maxCardCount - 1} * ${cardMarginRightPx}px));
-  `}
+  & {
+    max-width: ${({ maxWidthPx }) => `${maxWidthPx}px`};
+  }
+  ${({ overflowAuto }) => overflowAuto && cssAuto};
+  ${({ overflowManualPx }) => overflowManualPx && mixinOverflowManual(overflowManualPx)};
+  ${({ overflowHorizontalPx }) => overflowHorizontalPx && mixinOverflowHorizontal(overflowHorizontalPx)};
 `;
 
 export function CarouselWidthWrapper({
-  maxCardCount,
-  cardWidthPx,
-  cardMarginRightPx,
   children,
+  ...args
 }: React.PropsWithChildren<ArgsProps>) {
   return (
-    <CarouselWrapperSC {... { maxCardCount, cardWidthPx, cardMarginRightPx }}>
+    <CarouselWrapperSC {... args}>
       {children}
     </CarouselWrapperSC>
   );
