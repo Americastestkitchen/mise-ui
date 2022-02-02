@@ -27,7 +27,7 @@ export type StandardCarouselProps = PropsWithChildren<{
   /** Pass a hook returning flickity state, choose from hooks in ./useFlickity */
   useFlickityHook?: () => FlickityState;
 }>
-export default function StandardCarousel({
+export default function BaseCarousel({
   title,
   showDivider,
   children,
