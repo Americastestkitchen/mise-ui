@@ -81,6 +81,7 @@ const Wrapper = styled.span<{ refHeight: number }>`
 `;
 
 const Author = styled.span.attrs({ rel: 'author' })<{ underline?: boolean }>`
+  font-family: inherit !important; // espresso
   ${props => props.underline && cssThemedLink}
 `;
 
