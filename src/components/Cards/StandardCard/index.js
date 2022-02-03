@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styled, { css, ThemeProvider } from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import { cards, color, fontSize, mixins, spacing, withThemes } from '../../../styles';
-import ActionSummaryItem from '../../ActionSummaryItem';
 import Attributions from '../shared/Attributions';
 import Badge from '../../Badge';
 import CtaLink from '../shared/CtaLink';
@@ -12,6 +11,7 @@ import Image from '../shared/Image';
 import ImageCollage from '../shared/ImageCollage';
 import Sticker from '../shared/Sticker';
 import Title from '../shared/Title';
+import { RecipeUserAttributions } from '../shared/UserAttributions/UserAttributions';
 
 const StandardCardTheme = {
   default: css`
@@ -275,28 +275,13 @@ function StandardCard({
         </TitleWrapper>
       </>
       {searchAttribution && (
-        <RecipeAttribution
-          // eslint-disable-next-line
-          aria-label={`${avgRating > 0 ? `${avgRating} star${avgRating === 1 ? '' : 's'} ${numRatings} rating${numRatings === 1 ? '' : 's'}` : ''} ${searchComments ? `${searchComments} comment${searchComments === 1 ? '' : 's'}` : ''}`}
-          aria-hidden={!avgRating && !searchComments}
-          role="presentation"
-          tabIndex={!avgRating && !searchComments ? '-1' : '0'}
-        >
-          {avgRating && displayRecipeAttribution && (
-            <ThemeProvider theme={{ siteKey: 'atk' }}>
-              <ActionSummaryItem icon="star">
-                <div aria-hidden="true"><strong>{avgRating}</strong>&nbsp;<span>{`(${numRatings})`}</span></div>
-              </ActionSummaryItem>
-            </ThemeProvider>
-          )}
-          {searchComments && (
-            <ThemeProvider theme={{ siteKey: 'atk' }}>
-              <ActionSummaryItem icon="comment">
-                <strong aria-hidden="true">{searchComments}</strong>
-              </ActionSummaryItem>
-            </ThemeProvider>
-          )}
-        </RecipeAttribution>
+        <ThemeProvider theme={{ siteKey: 'atk' }}>
+          <RecipeUserAttributions
+            commentsCount={searchComments}
+            numRatings={displayRecipeAttribution ? numRatings : null}
+            avgRating={displayRecipeAttribution ? avgRating : null}
+          />
+        </ThemeProvider>
       )}
       <StyledAttributions
         displayCookbook={displayCookbook}

@@ -165,3 +165,41 @@ export const DarkTheme = () => (
     href="https://www.americastestkitchen.com/equipment_reviews/1879-plastic-food-storage-containers?ref=new_search_experience_2"
   />
 )
+
+const StandardCardTemplate = (args) => (
+  <StandardCard
+    contentType="review"
+    commentCount={5}
+    ctaText={text('CTA text', 'Buy the Winner')}
+    ctaUrl="https://www.amazon.com/dp/B01JCNEJSO/?tag=ciosearchresult-20"
+    displayCommentCount
+    displayFavoritesButton
+    displayLockIcon={false}
+    favoriteRibbonColor={color.white}
+    imageAlt={text('Image alt text', '')}
+    imageUrl={text('Image url', 'https://res.cloudinary.com/hksqkdlah/image/upload/s--bab2_EML--/c_scale,dpr_2.0,f_auto,h_172,q_auto:low,w_172/40784_sil-food-storage-containers-rubbermaid-brilliance-food-storage-container-large-96-cup-1991158')}
+    isFavorited={false}
+    siteKey="atk"
+    siteKeyFavorites="atk"
+    stickers={[{ type: 'priority', text: 'New' }, { type: 'editorial', text: 'Trending' }]}
+    objectId=""
+    onClick={action('result-click')}
+    title={text('Title', 'Plastic Food Storage Containers')}
+    href="https://www.americastestkitchen.com/equipment_reviews/1879-plastic-food-storage-containers?ref=new_search_experience_2"
+    { ...args }
+  />
+)
+
+export const RecipeUserAttributionsComments = StandardCardTemplate.bind({});
+RecipeUserAttributionsComments.args = {
+  searchAttribution: true,
+  searchComments: 10
+}
+
+export const RecipeUserAttributionsRatings = StandardCardTemplate.bind({});
+RecipeUserAttributionsRatings.args = {
+  searchAttribution: true,
+  displayRecipeAttribution: true,
+  avgRating: 4.23,
+  numRatings: 3,
+}
