@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { color } from '../../../../styles';
+import { color, fontSize, lineHeight, font } from '../../../../styles';
 import type { InferStyledTypes } from '../../../../styles/utility-types';
 import ActionSummaryItem from '../../../ActionSummaryItem';
 
@@ -60,5 +60,18 @@ export const RecipeUserAttributions = styled(UserAttributions)`
 
   .action-summary {
     color: ${color.eclipse};
+  }
+`;
+
+export const FeatureCardUserAttributions = styled(UserAttributions)`
+  color: ${color.white};
+  margin: 0.3rem 0 0.6rem 0;
+  font: ${fontSize.md}/${lineHeight.md} ${font.pnb};
+
+  .action-summary {
+    color: ${color.white};
+    path {
+      fill: white !important;
+    }
   }
 `;

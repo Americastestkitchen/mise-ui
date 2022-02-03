@@ -9,7 +9,7 @@ import Image from '../shared/Image';
 import PersonHeadShot from '../shared/PersonHeadShot';
 import Sticker from '../shared/Sticker';
 import Title from '../shared/Title';
-import { Comment as CommentIcon } from '../../DesignTokens/Icon';
+import { FeatureCardUserAttributions } from '../shared/UserAttributions';
 
 const featureCardWidth = grid.columnWidth;
 const featureCardWideWidth = `${parseFloat(grid.columnWidth) * 2 + parseFloat(grid.gutterWidth)}rem`;
@@ -117,12 +117,6 @@ const Attributions = styled.p.attrs({
   font: ${fontSize.md}/${lineHeight.md} ${font.pnb};
 `;
 
-const Comments = styled.p.attrs({
-  className: 'feature-card__num-comments',
-})`
-  font: ${fontSize.md}/${lineHeight.md} ${font.pnb};
-`;
-
 const CtaLink = styled.a`
   ${mixins.styledLink(color.tomato, color.rust, color.white)};
   bottom: ${spacing.sm};
@@ -150,7 +144,9 @@ const OriginalPricing = styled.p`
 
 function FeatureCard({
   attributions,
+  avgRating,
   className,
+  commentsCount,
   contentType,
   ctaDataAttrs,
   ctaText,
@@ -164,7 +160,7 @@ function FeatureCard({
   isFavorited,
   isWide,
   lazyImage,
-  commentsCount,
+  numRatings,
   objectId,
   onClick,
   originalPrice,
@@ -223,12 +219,11 @@ function FeatureCard({
               </StickerGroup>
             ) : null}
             <StyledTitle className={className} title={title} />
-            {commentsCount ? (
-              <Comments>
-                <CommentIcon fill="white" style={{ width: '16px', height: '16px' }} />
-                &nbsp;{commentsCount}
-              </Comments>
-            ) : null}
+            <FeatureCardUserAttributions
+              avgRating={avgRating}
+              numRatings={numRatings}
+              commentsCount={commentsCount || null}
+            />
             {attributions ? <Attributions>{attributions}</Attributions> : null}
             {originalPrice && discountedPrice ? (
               <PricingWrapper>
@@ -283,6 +278,8 @@ FeatureCard.propTypes = {
   isWide: PropTypes.bool,
   lazyImage: PropTypes.bool,
   commentsCount: PropTypes.number,
+  avgRating: PropTypes.number,
+  numRatings: PropTypes.number,
   objectId: PropTypes.string.isRequired,
   onClick: PropTypes.func,
   originalPrice: PropTypes.string,
@@ -311,6 +308,8 @@ FeatureCard.defaultProps = {
   isWide: false,
   lazyImage: true,
   commentsCount: 0,
+  avgRating: null,
+  numRatings: null,
   onClick: null,
   originalPrice: null,
   personHeadShot: null,
