@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import { ThemeProvider } from 'styled-components';
 import { storybookParameters } from '../../../../config/shared.stories';
-import UserAttributions, { UserAttributionsProps } from './UserAttributions';
+import UserAttributions, { UserAttributionsProps, FeatureCardUserAttributions, RecipeUserAttributions } from './UserAttributions';
 
 export default {
   title: 'Components/Cards/shared/UserAttributions',
@@ -37,3 +38,15 @@ Default.args = {
   numRatings: 10,
   commentsCount: 3,
 };
+
+export const recipeUserAttributions = () => (
+  <ThemeProvider theme={{ siteKey: 'atk' }}>
+    <RecipeUserAttributions {...Default.args} />
+  </ThemeProvider>
+);
+
+export const featureCardUserAttributions = () => (
+  <div style={{ background: 'black', padding: '16px' }}>
+    <FeatureCardUserAttributions {...Default.args} />;
+  </div>
+);
