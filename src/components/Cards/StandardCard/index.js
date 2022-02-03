@@ -42,20 +42,6 @@ const StandardCardTheme = {
   `,
 };
 
-const RecipeAttribution = styled.div`
-  color: ${color.eclipse};
-  display: flex;
-  margin: 0.3rem 0 0.6rem 0;
-
-  .action-summary {
-    color: ${color.eclipse};
-  }
-
-  .icon--star {
-    margin-right: 1.6rem;
-  }
-`;
-
 const StyledStandardCard = styled.article`
   ${withThemes(StandardCardTheme)}
   margin-bottom: ${spacing.xsm};
