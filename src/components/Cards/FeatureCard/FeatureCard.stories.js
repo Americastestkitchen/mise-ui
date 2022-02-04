@@ -100,6 +100,9 @@ export const WideWithCTA = () => (
     imageAlt={text('Image alt text', 'Lorem ipsum')}
     imageUrl={text('Image url', 'https://res.cloudinary.com/hksqkdlah/image/upload/v1592916093/mise-play/feature-card-wide-cta.jpg')}
     isWide
+    commentsCount={5}
+    numRatings={4}
+    avgRating={3.66}
     siteKey="atk"
     siteKeyFavorites="atk"
     stickers={[{ type: 'editorial', text: 'Popular'}]}
