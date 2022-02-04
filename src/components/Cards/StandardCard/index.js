@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css, ThemeProvider } from 'styled-components';
+import styled, { css } from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import { cards, color, fontSize, mixins, spacing, withThemes } from '../../../styles';
-import ActionSummaryItem from '../../ActionSummaryItem';
+import { StandardUserAttributions } from '../shared/UserAttributions/UserAttributions';
 import Attributions from '../shared/Attributions';
 import Badge from '../../Badge';
 import CtaLink from '../shared/CtaLink';
@@ -47,15 +47,6 @@ const StandardCardTheme = {
     }
   `,
 };
-
-const RecipeAttribution = styled.div`
-  display: flex;
-  margin: 0.3rem 0 0.6rem 0;
-
-  .icon--star {
-    margin-right: 1.6rem;
-  }
-`;
 
 const StyledStandardCard = styled.article`
   ${withThemes(StandardCardTheme)}
@@ -276,26 +267,11 @@ function StandardCard({
         </TitleWrapper>
       </>
       {searchAttribution && (
-        <RecipeAttribution
-          // eslint-disable-next-line
-          aria-label={`${avgRating > 0 ? `${avgRating} star${avgRating === 1 ? '' : 's'} ${numRatings} rating${numRatings === 1 ? '' : 's'}` : ''} ${searchComments ? `${searchComments} comment${searchComments === 1 ? '' : 's'}` : ''}`}
-          aria-hidden={!avgRating && !searchComments}
-          role="presentation"
-          tabIndex={!avgRating && !searchComments ? '-1' : '0'}
-        >
-          {avgRating && displayRecipeAttribution && (
-            <ThemeProvider theme={{ siteKey: 'atk' }}>
-              <ActionSummaryItem icon="star">
-                <div aria-hidden="true"><strong>{avgRating}</strong>&nbsp;<span>{`(${numRatings})`}</span></div>
-              </ActionSummaryItem>
-            </ThemeProvider>
-          )}
-          {searchComments && (
-            <ActionSummaryItem icon="comment">
-              <strong aria-hidden="true">{searchComments}</strong>
-            </ActionSummaryItem>
-          )}
-        </RecipeAttribution>
+        <StandardUserAttributions
+          commentsCount={searchComments}
+          numRatings={displayRecipeAttribution ? numRatings : null}
+          avgRating={displayRecipeAttribution ? avgRating : null}
+        />
       )}
       <StyledAttributions
         displayCookbook={displayCookbook}
