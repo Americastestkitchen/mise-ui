@@ -3,11 +3,20 @@ import React from 'react';
 import styled, { css, ThemeProvider } from 'styled-components';
 
 import PairedProduct from './index';
+import { textInput, mode } from '../../../config/argTypes';
 import { breakpoints, color, spacing, withThemes } from '../../../styles';
 
 export default {
   title: 'Components/Ads/PairedProductAd',
   component: PairedProduct,
+  argTypes: {
+    onClick: {action: 'onClick callback'}, 
+    products: {
+      control: {type: 'object'}
+    },
+    title: textInput,
+    mode: mode,
+  }
 };
 
 const StoryWrapperTheme = {
@@ -27,38 +36,45 @@ const StoryWrapper = styled.div`
   ${withThemes(StoryWrapperTheme)}
 `;
 
-const defaultData = {
-  title: 'Cook with Confidence',
-  products: [
-    {
-      cloudinaryId: 'atk-20th-anniversary-tv-show-cookbook-header_u6komg',
-      cta: 'START FREE TRIAL',
-      ctaHref: 'https://www.americastestkitchen.com',
-      ctaTarget: '_blank',
-      subtitle: 'DIGITAL ALL ACCESS',
-      title: 'Every recipe, rating & video',
-    },
-    {
-      cloudinaryId: 'atk-20th-anniversary-tv-show-cookbook-header_u6komg',
-      cta: 'SAVE NOW',
-      ctaHref: 'https://www.americastestkitchen.com',
-      ctaTarget: '_blank',
-      subtitle: 'COOKBOOKS',
-      title: 'Cook along with our TV Shows',
-    },
-  ],
-};
 
-export const Default = () => (
+const defaultData =  [
+  {
+    cloudinaryId: 'atk-20th-anniversary-tv-show-cookbook-header_u6komg',
+    cta: 'START FREE TRIAL',
+    ctaHref: 'https://www.americastestkitchen.com',
+    ctaTarget: '_blank',
+    subtitle: 'DIGITAL ALL ACCESS',
+    title: 'Every recipe, rating & video',
+  },
+  {
+    cloudinaryId: 'atk-20th-anniversary-tv-show-cookbook-header_u6komg',
+    cta: 'SAVE NOW',
+    ctaHref: 'https://www.americastestkitchen.com',
+    ctaTarget: '_blank',
+    subtitle: 'COOKBOOKS',
+    title: 'Cook along with our TV Shows',
+  },
+];
+
+
+
+const ThemedPairedProductAd = ({...args}) => (
   <ThemeProvider theme={{
     breakpoints,
-    mode: 'dark',
   }}>
     <StoryWrapper>
-      <PairedProduct
-        title={defaultData.title}
-        products={defaultData.products}
-      />
+      <PairedProduct {...args}/>
     </StoryWrapper>
   </ThemeProvider>
 );
+
+const Template = ({...args}) => (
+  <ThemedPairedProductAd {...args} />
+);
+
+export const Default = Template.bind({});
+Default.args = {
+  products: defaultData,
+  title: 'Cook with Confidence',
+  mode: 'dark',
+}

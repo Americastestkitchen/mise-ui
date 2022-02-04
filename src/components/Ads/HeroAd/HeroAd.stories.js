@@ -1,15 +1,37 @@
 import breakpoint from 'styled-components-breakpoint';
 import React from 'react';
 import styled, { css, ThemeProvider } from 'styled-components';
-import { withKnobs, select , text } from '@storybook/addon-knobs';
+
 
 import HeroAd from './index';
 import { breakpoints, color, spacing, withThemes } from '../../../styles';
+import { disable, mode, textInput } from '../../../config/argTypes';
 
 export default {
   title: 'Components/Ads/HeroAd',
   component: HeroAd,
-  decorators: [withKnobs],
+  argTypes: {
+    mode: mode,
+    backgroundColor: {
+      options: ['darkSlate', 'bluewood', 'squirrel', 'slate'],
+      control: {type: 'select'}
+    },
+    buttonColor: {
+      options: ['coldPool', 'tomato', 'eclipse'],
+      control: {type: 'select'}
+    },
+    buttonHoverColor: textInput,
+    cloudinaryId: {
+      options: ['mise-play/ATK-COMPLETE-SHOW-COVER', 'mise-play/CCO-SHOW-COVER'],
+      control: {type: 'select'}
+    },
+    cta: textInput,
+    ctaHref: textInput,
+    ctaTarget: disable,
+    onClick: disable,
+    subtitle: textInput,
+    title: textInput
+  }
 };
 
 const StoryWrapperTheme = {
@@ -27,22 +49,27 @@ const StoryWrapper = styled.div`
   ${withThemes(StoryWrapperTheme)}
 `;
 
-export const Default = () => (
+
+const Template = ({...args}) => (
   <ThemeProvider theme={{
     breakpoints,
-    mode: 'dark',
   }}>
     <StoryWrapper>
-      <HeroAd
-        backgroundColor={select('Background Color', ['darkSlate', 'bluewood', 'squirrel', 'slate'], 'darkSlate')}
-        buttonColor={select('Button Color', ['coldPool', 'tomato', 'eclipse'], 'coldPool')}
-        buttonHoverColor="darkColdPool"
-        cloudinaryId={select('Image', ['mise-play/ATK-COMPLETE-SHOW-COVER', 'mise-play/CCO-SHOW-COVER'], 'mise-play/ATK-COMPLETE-SHOW-COVER')}
-        cta={text('CTA Text', 'Save 56% Now')}
-        ctaHref="https://shop.americastestkitchen.com"
-        subtitle={text('Subtitle', '')}
-        title={text('Title', 'Get 1,670+ Recipes from all 21 seasons!')}
-      />
+      <HeroAd {...args}/>
     </StoryWrapper>
   </ThemeProvider>
-);
+)
+
+export const Default = Template.bind({});
+Default.args = {
+  backgroundColor: 'darkSlate',
+  buttonColor: 'coldPool',
+  buttonHoverColor: 'darkColdPool',
+  cloudinaryId: 'mise-play/ATK-COMPLETE-SHOW-COVER',
+  cta: 'Save 56% Now',
+  ctaHref: 'https://shop.americastestkitchen.com',
+  mode: 'dark',
+  subtitle: '',
+  title: 'Get 1,670+ Recipes from all 21 seasons!'
+}
+
