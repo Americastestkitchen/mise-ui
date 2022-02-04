@@ -21,7 +21,7 @@ const ActionSummaryTheme = {
     }
 
     svg {
-      height  1.6rem;
+      height: 1.6rem;
       margin-right: ${spacing.xxsm};
       position: relative;
       top: -1px;
