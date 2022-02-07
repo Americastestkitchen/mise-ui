@@ -104,3 +104,20 @@ export const Intro = styled.div`
     ${cssThemedLink}
   }
 `;
+
+export const Topic = styled.div`
+  ${cssThemedColor}
+  font-family: ${font.pnb};
+  font-size: 16px;
+  line-height: 1.1666;
+  margin: 0 0 18px;
+`;
+
+export const Subtitle = styled.span`
+  ${cssThemedColor}
+  font-family: ${font.pnr};
+  font-size: 18px;
+  line-height: 1.48;
+  letter-spacing: 2.88px;
+  margin: 0;
+`;
