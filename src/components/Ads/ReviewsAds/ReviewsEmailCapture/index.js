@@ -1,7 +1,6 @@
-import breakpoint from 'styled-components-breakpoint';
 import PropTypes from 'prop-types';
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled, { css, ThemeProvider } from 'styled-components';
 
 import {
   color,
@@ -14,46 +13,74 @@ import {
 
 import Checkmark from '../../../DesignTokens/Icon/svgs/Checkmark2';
 import EmailForm from '../../../Forms/EmailForm';
+import { cssThemedColor } from '../../../../styles/mixins';
+import { lg, md, xlg } from '../../../../styles/breakpoints';
 
-const AdDescriptionTheme = {
-  default: css`
-    font: ${fontSize.md}/2.1rem ${font.mwr};
-    letter-spacing: normal;
-    margin-bottom: ${spacing.sm};
+const variantTheme = variant => theme => (variant ? ({ ...theme, [variant]: true }) : theme);
 
-    ${breakpoint('md')`
-      font: ${fontSize.md}/2.6rem ${font.mwr};
-      min-width: 35rem;
-    `}
+const kidsVariant = interp => css`${({ theme }) => theme.kidsVariant && interp}`;
 
-    ${breakpoint('lg')`
-      min-width: 34rem;
-    `}
+const cssThemedBackground = withThemes({
+  atk: css`background-color: ${color.frost};`,
+  cco: css`background-color: ${color.aliceBlue};`,
+  cio: css`background-color: ${color.ivory};`,
+});
 
-    ${breakpoint('xlg')`
-      min-width: 35rem;
-    `}
-  `,
+const cssThemedBorder = withThemes({
+  atk: css`border: solid 1px #D8D8D8;`,
+  cco: css`border: solid 1px #E5E5E5;`,
+  cio: css`border: solid 1px #858585;`,
+});
+
+const cssThemedButtonBackground = withThemes({
   atk: css`
-    color: ${color.eclipse};
+    background-color: ${color.coldPool};
+    &:hover {
+      background-color: ${color.darkColdPool};
+    }
   `,
   cco: css`
-    color: ${color.black};
+    background-color: ${color.denim};
+    &:hover {
+      background-color: ${color.arapawa};
+    }
   `,
   cio: css`
-    color: ${color.cork};
+    background-color: ${color.squirrel};
+    &:hover {
+      background-color: ${color.cork};
+    }
   `,
-};
+});
 
 const AdDescription = styled.p`
-  ${withThemes(AdDescriptionTheme)}
+  font: ${fontSize.md}/2.1rem ${font.mwr};
+  letter-spacing: normal;
+  margin-bottom: ${spacing.sm};
+  ${md(css`
+    font: ${fontSize.md}/2.6rem ${font.mwr};
+    min-width: 35rem;
+  `)}
+  ${lg(css`
+    min-width: 34rem;
+  `)}
+  ${xlg(css`
+    min-width: 35rem;
+  `)}
+  ${cssThemedColor}
+  ${kidsVariant(css`
+    font: ${fontSize.xl}/2.6rem ${font.pnr} !important;
+    ${md(css`
+      font: ${fontSize.md}/2.6rem ${font.pnr} !important;
+    `)}
+  `)}
 `;
 
 const AdSuccess = styled.div`
   display: flex;
   margin-top: 1rem;
   width: 100%;
-
+  ${cssThemedColor}
   svg {
     display: inline-block;
     height: 1.4rem;
@@ -61,252 +88,166 @@ const AdSuccess = styled.div`
     margin-top: 0.5rem;
     width: 7.1rem;
 
-    ${breakpoint('md')`
+    ${md(css`
       margin-right: ${spacing.xsm};
       width: 2.1rem;
-    `}  
+    `)}  
   }
-
   span {
     font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb};
   }
 `;
 
-const AdTitleTheme = {
-  default: css`
-    font: ${fontSize.xl}/2.6rem ${font.pnb};
-    letter-spacing: normal;
-    margin-bottom: 1rem;
-
-    ${breakpoint('md')`
-      margin-bottom: ${spacing.xxsm};
-    `}
-
-    ${breakpoint('lg')`
-      max-width: 32rem;
-    `}
-
-    ${breakpoint('xlg')`
-      max-width: none;
-    `}
-  `,
-  atk: css`
-    color: ${color.eclipse};
-  `,
-  cco: css`
-    color: ${color.black};
-  `,
-  cio: css`
-    color: ${color.cork};
-  `,
-};
-
 const AdTitle = styled.h2`
-  ${withThemes(AdTitleTheme)}
+  font: ${fontSize.xl}/2.6rem ${font.pnb};
+  letter-spacing: normal;
+  margin-bottom: 1rem;
+  ${cssThemedColor}
+  ${kidsVariant(css`
+    font: ${fontSize.xl}/2.6rem ${font.gdn} !important;
+  `)}
+  ${md(css`
+    margin-bottom: ${spacing.xxsm};
+  `)}
+  ${lg(css`
+    max-width: 32rem;
+  `)}
+  ${xlg(css`
+    max-width: none;
+  `)}
 `;
 
-const AdWrapperTheme = {
-  default: css`
+const AdWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 3.6rem -${spacing.sm} 0;
+  padding: ${spacing.md} ${spacing.sm} 2.2rem;
+  text-align: left;
+  width: calc(100% + ${spacing.lg});
+
+  @media print {
+    display: none;
+  }
+
+  .email-form {
     display: flex;
-    flex-direction: column;
-    margin: 3.6rem -${spacing.sm} 0;
-    padding: ${spacing.md} ${spacing.sm} 2.2rem;
-    text-align: left;
-    width: calc(100% + ${spacing.lg});
-  
-    @media print {
-      display: none;
+    justify-content: center;
+
+    .form-input input {
+      background-color: ${color.white};
+      border: none;
+      ${cssThemedBorder}
+      ${cssThemedColor}
+
+      &::placeholder {
+        font: ${fontSize.md}/2.6rem ${font.pnr};
+        ${cssThemedColor}
+      }
     }
-  
-    .email-form {
+
+    button {
       display: flex;
       justify-content: center;
-  
-      .form-input input {
-        background-color: ${color.white};
-        border: none;
-  
-        &::placeholder {
-          font: ${fontSize.md}/2.6rem ${font.pnr};
+      letter-spacing: 1.6px;
+      ${cssThemedButtonBackground}
+      ${kidsVariant(css`
+        background-color: ${color.frog} !important;
+        &:hover {
+          background-color: ${color.darkFrog} !important;
         }
-      }
-  
-      button {
-        display: flex;
-        justify-content: center;
-        letter-spacing: 1.6px;
-  
-        span {
-          font-size: 3.1rem;
-          margin: 0.15rem 0 0 0.8rem;
-        }
-      }
-    }
-  
-    .email-form__how-we-use-text {
-      top: 2rem;
-    }
-  
-    .email-form__how {
-      left: 0;
-      padding: 0;
-      position: absolute;
-  
-      ${breakpoint('md')`
-        margin-top: 0.3rem;
-      `}
-    }
-  
-    .email-form button {
-      ${breakpoint('md')`
+      `)}
+      ${md(css`
         margin-top: 1rem;
-      `}
+      `)}
+
+      span {
+        font-size: 3.1rem;
+        margin: 0.15rem 0 0 0.8rem;
+      }
     }
-  
-    ${breakpoint('md')`
-      ${({ success }) => (success ? 'flex-direction: column; align-items: flex-start;' : 'flex-direction: row; justify-content: space-between;')}
-      margin: ${spacing.xlg} -3.6rem 0;
-      max-height: 17.7rem;
-      padding: 3.5rem 3.65rem 3.45rem 3.6rem;
-      width: calc(100% + ${spacing.xxxlg});
-  
-      .email-form {
-        flex-direction: column;
-        min-width: 34rem;
-      }
-  
-      .email-form__how-we-use-text {
-        left: 0;
-        top: 2.5rem;
-      }
-    `}
-  
-    ${breakpoint('lg')`
-      margin: ${spacing.xlg} 0 0;
-      min-width: 66.7rem;
-      padding: 2.5rem 3.65rem 3.45rem 3rem;
-      width: 100%;
-  
-      .email-form {
-        margin-top: 1.5rem;
-        min-width: 27rem;
-      }
-  
-    `}
-  
-    ${breakpoint('xlg')`
-      margin: 4.4rem 0 0;
-      padding: 3.4rem 5.3rem;
-      width: 84.8rem;
-  
-      .email-form {
-        margin-top: 0;
-        min-width: 34rem;
-      }
-    `}
-  `,
-  atk: css`
-    background-color: ${color.frost};
+  }
+
+  .email-form__how-we-use-text {
+    top: 2rem;
+  }
+
+  .email-form__how {
+    left: 0;
+    padding: 0;
+    position: absolute;
+    ${cssThemedColor}
+
+    ${md(css`
+      margin-top: 0.3rem;
+    `)}
+  }
+
+  ${md(css`
+    ${({ success }) => (success ? css`
+      flex-direction: column; align-items: flex-start;
+    ` : css`
+      flex-direction: row; justify-content: space-between;
+    `)}
+    margin: ${spacing.xlg} -3.6rem 0;
+    max-height: 17.7rem;
+    padding: 3.5rem 3.65rem 3.45rem 3.6rem;
+    width: calc(100% + ${spacing.xxxlg});
 
     .email-form {
-      .form-input input {
-        border: solid 1px #D8D8D8;
-        color: ${color.eclipse};
-
-        &::placeholder {
-          ${color.eclipse};
-        }
-      }
+      flex-direction: column;
+      min-width: 34rem;
     }
 
-    .email-form__how {
-      color: ${color.eclipse};
+    .email-form__how-we-use-text {
+      left: 0;
+      top: 2.5rem;
     }
+  `)}
 
-    .email-form button {
-      background-color: ${color.coldPool};
-  
-      &:hover {
-        background-color: ${color.darkColdPool};
-      }
-    }
-  `,
-  cco: css`
-    background-color: ${color.aliceBlue};
+  ${lg(css`
+    margin: ${spacing.xlg} 0 0;
+    min-width: 66.7rem;
+    padding: 2.5rem 3.65rem 3.45rem 3rem;
+    width: 100%;
 
     .email-form {
-      .form-input input {
-        border: solid 1px #E5E5E5;
-        color: ${color.black};
-
-        &::placeholder {
-          ${color.black};
-        }
-      }
+      margin-top: 1.5rem;
+      min-width: 27rem;
     }
 
-    .email-form__how {
-      color: ${color.black};
-    }
+  `)}
 
-    .email-form button {
-      background-color: ${color.denim};
-  
-      &:hover {
-        background-color: ${color.arapawa};
-      }
-    }
-  `,
-  cio: css`
-    background-color: ${color.ivory};
+  ${xlg(css`
+    margin: 4.4rem 0 0;
+    padding: 3.4rem 5.3rem;
+    width: 84.8rem;
 
     .email-form {
-      .form-input input {
-        border: solid 1px #858585;
-        color: ${color.cork};
-
-        &::placeholder {
-          ${color.cork};
-        }
-      }
+      margin-top: 0;
+      min-width: 34rem;
     }
+  `)}
 
-    .email-form__how {
-      color: ${color.cork};
-    }
-
-    .email-form button {
-      background-color: ${color.squirrel};
-  
-      &:hover {
-        background-color: ${color.cork};
-      }
-    }
-  `,
-};
-
-const AdWrapper = styled.div`
-  ${withThemes(AdWrapperTheme)}
+  ${cssThemedBackground}
 `;
 
 const MainContent = styled.div`
   width: 100%;
 
-  ${breakpoint('md')`
+  ${md(css`
     margin-right: 1.65rem;
     max-width: 34rem;
-  `}
-
-  ${breakpoint('lg')`
+  `)}
+  ${lg(css`
     margin-right: 0;
-  `}
-
-  ${breakpoint('xlg')`
+  `)}
+  ${xlg(css`
     margin-right: 1.65rem;
-  `}
+  `)}
 `;
 
 const ReviewsEmailCapture = ({
+  variant,
   description,
   onSubmit,
   success,
@@ -314,32 +255,35 @@ const ReviewsEmailCapture = ({
   title,
   ...emailFormProps
 }) => (
-  <AdWrapper success={success}>
-    <MainContent>
-      <AdTitle>{title}</AdTitle>
-      {!success && (
+  <ThemeProvider theme={variantTheme(variant)}>
+    <AdWrapper success={success}>
+      <MainContent>
+        <AdTitle>{title}</AdTitle>
+        {!success && (
         <AdDescription>{description}</AdDescription>
-      )}
-    </MainContent>
-    {success
-      ? (
-        <AdSuccess>
-          <Checkmark fill={color.mint} />
-          <span>{successText}</span>
-        </AdSuccess>
-      )
-      : (
-        <EmailForm
-          {...emailFormProps}
-          optionalIcon="‣"
-          onSubmit={onSubmit}
-          howWeUseText="How we use your email"
-        />
-      )}
-  </AdWrapper>
+        )}
+      </MainContent>
+      {success
+        ? (
+          <AdSuccess>
+            <Checkmark fill={color.mint} />
+            <span>{successText}</span>
+          </AdSuccess>
+        )
+        : (
+          <EmailForm
+            {...emailFormProps}
+            optionalIcon="‣"
+            onSubmit={onSubmit}
+            howWeUseText="How we use your email"
+          />
+        )}
+    </AdWrapper>
+  </ThemeProvider>
 );
 
 ReviewsEmailCapture.propTypes = {
+  variant: PropTypes.string,
   buttonTextColor: PropTypes.string,
   buttonText: PropTypes.string,
   description: PropTypes.string.isRequired,
@@ -354,6 +298,7 @@ ReviewsEmailCapture.propTypes = {
 };
 
 ReviewsEmailCapture.defaultProps = {
+  variant: null,
   success: false,
   successText: 'Thank you! Get ready for Well-Equipped Cook in your inbox on Wednesdays!',
   ...EmailForm.defaultProps,

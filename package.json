@@ -34,8 +34,8 @@
     "test": "jest",
     "lint": "./node_modules/.bin/eslint .",
     "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public",
+    "storybook": "start-storybook -p 9009",
+    "build-storybook": "build-storybook",
     "release": "auto shipit",
     "tsc": "tsc"
   },
@@ -78,6 +78,7 @@
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.7.2",
+    "@types/flickity": "^2.2.6",
     "@types/node": "^16.4.3",
     "@types/react": "^17.0.15",
     "@types/react-dom": "^17.0.9",

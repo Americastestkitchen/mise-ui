@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import { color, font, fontSize, mixins, withThemes } from '../../../../styles';
+import { color, font, fontSize, withThemes } from '../../../../styles';
 import { getImageUrl } from '../../../../lib/cloudinary';
+import { cssArticleBoxStyles, cssThemedLink } from '../../../../styles/mixins';
 
 const ListItemWrapper = styled.div`
   background-color: ${color.white};
@@ -55,7 +56,7 @@ const ListItemContentTheme = {
     .wide-content {
       width: 32.1rem;
     }
-    ${mixins.articlesBoxLists()}
+    ${cssArticleBoxStyles}
 
     ${breakpoint('md')`
       .default-content {
@@ -89,6 +90,9 @@ const ListItemContentTheme = {
 
 const ListItemContent = styled.div`
   ${withThemes(ListItemContentTheme)}
+  a {
+    ${cssThemedLink}
+  }
 `;
 
 const ImageListItem = ({

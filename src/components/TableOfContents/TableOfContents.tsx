@@ -1,36 +1,33 @@
 import React from 'react';
 import styled from 'styled-components';
-import { font, color, mixins, onClickHashLink } from '../../styles';
-import { cssThemedColor, cssThemedUnderline } from '../../styles/mixins';
+import { font, onClickHashLink } from '../../styles';
+import { cssThemedColor, cssThemedFontBold, cssThemedLink } from '../../styles/mixins';
 
 const Title = styled.div`
-  font-family: ${font.mwr};
   font-size: 26px;
-  line-height: 1.57;
-  color: ${color.cork};
-  margin-bottom: 4px;
+  line-height: 30px;
+  margin-bottom: 12px;
+  ${cssThemedFontBold}
+  ${cssThemedColor}
 `;
 
 const JumpLink = styled.a`
-  font-family: ${font.pnb};
   font-size: 23px;
-  line-height: 1.57;
-  color: ${color.cork};
+  line-height: 36px;
+  font-family: ${font.pnb};
   ${cssThemedColor}
-  ${cssThemedUnderline}
-  &:focus-within {
-    ${mixins.focusIndicator()}
-  }
+  ${cssThemedLink}
 `;
 
 export type TableOfContentsProps = { ids: string[] } & React.ComponentPropsWithoutRef<'button'>;
 
 export default function TableOfContents({ ids, ...sectionProps }: TableOfContentsProps) {
-  return ids?.length > 0 ? (
+  const truthyIds = ids.filter(Boolean);
+  return truthyIds?.length > 0 ? (
     <section {...sectionProps}>
       <Title>Jump to a Section</Title>
       <ul>
-        {ids.map(id => (
+        {truthyIds.map(id => (
           <li key={id}>
             <JumpLink href={`#${id}`} onClick={onClickHashLink}>
               {id}

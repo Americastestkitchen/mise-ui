@@ -41,3 +41,10 @@ WideWidth.args = {
   ...DefaultWidth.args,
   width: 'width',
 };
+
+
+export const WithIntroField = Template.bind({})
+WithIntroField.args = {
+  ...DefaultWidth.args,
+  intro: 'New text between header and items'
+}

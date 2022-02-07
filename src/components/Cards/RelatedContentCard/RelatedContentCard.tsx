@@ -1,9 +1,20 @@
-import React, { ComponentPropsWithoutRef, PropsWithChildren, useContext } from 'react';
-import styled, { css, ThemeContext } from 'styled-components';
+import React, { ComponentProps, PropsWithChildren, useContext, useEffect, useMemo, useState } from 'react';
+import styled, { css, DefaultTheme, ThemeContext, ThemeProvider } from 'styled-components';
 import { font, color, withThemes, mixins } from '../../../styles';
-import { cssThemedLink } from '../../../styles/mixins';
+import { md, untilMd } from '../../../styles/breakpoints';
+import { cssThemedColor, cssThemedFontAccentColorAlt, cssThemedLink } from '../../../styles/mixins';
+import useMedia from '../../hooks/useMedia';
 import AffiliateLink from '../shared/AffiliateLink';
 import Image from '../shared/Image';
+
+const mobileCard = untilMd;
+const desktopCard = md;
+
+const mapPropsToThemeContext = (
+  props: Partial<RelatedContentCardProps>,
+) => (
+  theme: DefaultTheme,
+) => ({ ...theme, props });
 
 const cssHeadlineFont = css`
   font-family: ${font.pnb};
@@ -11,47 +22,46 @@ const cssHeadlineFont = css`
   line-height: 1.17;
   letter-spacing: 1.92px;
   text-transform: uppercase;
-  ${withThemes({
-    default: css`color: ${color.darkTeal};`,
-    atk: css`color: ${color.darkTeal};`,
-    cco: css`color: ${color.denim};`,
-    cio: css`color: ${color.squirrel};`,
-  })}
+  ${cssThemedFontAccentColorAlt}
 `;
 
 const cssTitleFont = css`
   font-family: ${font.pnb};
   font-size: 18px;
   line-height: 1.17;
-  color: ${color.eclipse};
+  ${cssThemedColor}
 `;
 
 const cssBodyFont = css`
   font-family: ${font.pnr};
   font-size: 16px;
   line-height: 1.25;
-  ${withThemes({
-    default: css`color: ${color.eclipse};`,
-    cio: css`color: ${color.cork};`,
-  })}
+  ${cssThemedColor}
 `;
 
 const cssLinkTextFont = css`
   font-family: ${font.pnb};
   font-size: 16px;
   line-height: 1.13;
-  color: ${color.eclipse};
+  ${cssThemedColor}
   ${cssThemedLink}
 `;
 
 const cssCenterColumn = css`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: flex-start;
 `;
 
 const cssCenterRow = css`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
+
+const cssCenterLeadingRow = css`
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -60,43 +70,70 @@ const cssCenterRow = css`
 
 const Headline = styled.span`
   ${cssHeadlineFont}
-  margin-bottom: 8px;
+  margin-bottom: ${({ theme }) => (theme.props.withButton ? '4px' : '8px')};
 `;
 
 const Title = styled.span`
   ${cssTitleFont}
   margin-bottom: 8px;
+  ${mobileCard(css`
+    ${mixins.truncateLineClamp(3)}
+  `)}
+  ${desktopCard(css`
+    ${mixins.truncateLineClamp(1)}
+  `)}
 `;
 
 const Body = styled.span`
   ${cssBodyFont}
-  ${mixins.truncateLineClamp(3)}
+  ${mobileCard(css`
+    display: none;
+  `)}
   margin-bottom: 8px;
 `;
 
 const LinkText = styled.a`
   ${cssLinkTextFont}
-  padding: 4px 0;
 `;
 
 const LinkWrapper = styled.div`
   padding-top: 8px;
+  ${({ theme }) => theme.props.withButton && mobileCard(css`
+    padding-top: 0;
+  `)}
 `;
 
 const ImageWrapper = styled.div`
   ${cssCenterRow}
+  ${mobileCard(css`
+    height: 145px;
+    width: 145px;
+  `)}
+  ${desktopCard(css`
+    height: 200px;
+    width: 200px;
+  `)}
   flex-shrink: 0;
-  height: 200px;
-  width: 200px;
 `;
 
 const Content = styled.div`
   ${cssCenterColumn}
-  padding: 16px;
+  ${mobileCard(css`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 135px;
+    max-height: 145px;
+    padding: 8px 12px;
+  `)}
+  ${desktopCard(css`
+    max-height: 200px;
+    padding: 16px;
+  `)}
 `;
 
 const Card = styled.a`
-  ${cssCenterRow}
+  ${cssCenterLeadingRow}
   background-color: ${color.white};
   ${withThemes({
     cco: css`
@@ -106,25 +143,36 @@ const Card = styled.a`
   })}
 `;
 
-type WideCardWrapperProps = PropsWithChildren<{src: string}> & ComponentPropsWithoutRef<'a'>;
+type WideCardWrapperProps = PropsWithChildren<{src: string}> & ComponentProps<typeof Card>
 
 export function Wrapper({ src, children, ...anchorProps }: WideCardWrapperProps) {
   const theme = useContext(ThemeContext);
-  const imageSize = theme.siteKey === 'cco' ? 180 : 200;
+  const isMobile = useMedia('(max-width: 767px)');
+  // const base = isMobile ? 145 : 200;
+  const offset = theme.siteKey === 'cco' ? -20 : 0;
+  const [imageSize, setImageSize] = useState(200);
+  useEffect(() => {
+    if (isMobile) {
+      setImageSize(145 + offset);
+    } else {
+      setImageSize(200 + offset);
+    }
+  }, [isMobile]);
 
   return (
     <Card {...anchorProps}>
       <ImageWrapper>
-        <Image
+        <img
           width={imageSize}
           height={imageSize}
           aria-hidden="true"
-          imageUrl={src}
-          imageAlt=""
-          lazy={false}
+          src={src || undefined}
+          alt=""
         />
       </ImageWrapper>
-      <Content>{children}</Content>
+      <Content>
+        {children}
+      </Content>
     </Card>
   );
 }
@@ -175,17 +223,24 @@ export default function RelatedContentCard({
   withButton,
 }: RelatedContentCardProps) {
   return (
-    <WideCard.Wrapper href={href} src={src}>
-      <WideCard.Headline>{headline}</WideCard.Headline>
-      <WideCard.Title as="h4">{title}</WideCard.Title>
-      <WideCard.Body>{body}</WideCard.Body>
-      <WideCard.LinkWrapper>
-        {!!link && !!withButton ? (
-          <WideCard.AffiliateLink text={link} url={buttonHref || href} />
-        ) : (
-          <WideCard.LinkText>{link}</WideCard.LinkText>
-        )}
-      </WideCard.LinkWrapper>
+    <WideCard.Wrapper
+      href={href}
+      src={src}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <ThemeProvider theme={mapPropsToThemeContext({ withButton })}>
+        <WideCard.Headline>{headline}</WideCard.Headline>
+        <WideCard.Title as="h4">{title}</WideCard.Title>
+        <WideCard.Body>{body}</WideCard.Body>
+        <WideCard.LinkWrapper>
+          {!!link && !!withButton ? (
+            <WideCard.AffiliateLink text={link} url={buttonHref || href} />
+          ) : (
+            <WideCard.LinkText>{link}</WideCard.LinkText>
+          )}
+        </WideCard.LinkWrapper>
+      </ThemeProvider>
     </WideCard.Wrapper>
   );
 }
