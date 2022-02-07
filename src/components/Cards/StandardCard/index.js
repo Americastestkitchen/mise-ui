@@ -289,13 +289,13 @@ function StandardCard({
               </ActionSummaryItem>
             </ThemeProvider>
           )}
-          {searchComments && (
+          {searchComments ? (
             <ThemeProvider theme={{ siteKey: 'atk' }}>
               <ActionSummaryItem icon="comment">
                 <strong aria-hidden="true">{searchComments}</strong>
               </ActionSummaryItem>
             </ThemeProvider>
-          )}
+          ) : null}
         </RecipeAttribution>
       )}
       <StyledAttributions

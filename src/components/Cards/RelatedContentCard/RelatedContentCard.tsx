@@ -1,11 +1,10 @@
-import React, { ComponentProps, PropsWithChildren, useContext, useEffect, useMemo, useState } from 'react';
+import React, { ComponentProps, PropsWithChildren, useContext, useEffect, useState } from 'react';
 import styled, { css, DefaultTheme, ThemeContext, ThemeProvider } from 'styled-components';
 import { font, color, withThemes, mixins } from '../../../styles';
 import { md, untilMd } from '../../../styles/breakpoints';
 import { cssThemedColor, cssThemedFontAccentColorAlt, cssThemedLink } from '../../../styles/mixins';
 import useMedia from '../../hooks/useMedia';
 import AffiliateLink from '../shared/AffiliateLink';
-import Image from '../shared/Image';
 
 const mobileCard = untilMd;
 const desktopCard = md;
@@ -157,7 +156,7 @@ export function Wrapper({ src, children, ...anchorProps }: WideCardWrapperProps)
     } else {
       setImageSize(200 + offset);
     }
-  }, [isMobile]);
+  }, [isMobile, offset]);
 
   return (
     <Card {...anchorProps}>

@@ -26,7 +26,7 @@ export function fixLeftOverflow(this: any): void {
     apply(fnTarget, thisArg, [x, is3d]) {
       // TODO: needs better utility for changing this value.
       const offset = thisArg.options.offset ?? 100;
-      const newX = x > -offset ? x - thisArg.slideableWidth : x;
+      const newX = x > -offset && thisArg.options.wrapAround ? x - thisArg.slideableWidth : x;
       const result = fnTarget.apply(thisArg, [newX, is3d]);
       return result;
     },

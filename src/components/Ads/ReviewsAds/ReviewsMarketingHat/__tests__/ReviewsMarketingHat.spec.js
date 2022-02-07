@@ -13,6 +13,7 @@ const defaultResponse = {
   incode: 'MAR2DAA1A',
   inputId: 'email-form__input',
   mdc: 'AF0150MA1D',
+  promoId: 'a-promo-about-700-eggs',
   subdomain: 'www-test',
   title: 'Rejoin Now',
   user: { testing: true },
