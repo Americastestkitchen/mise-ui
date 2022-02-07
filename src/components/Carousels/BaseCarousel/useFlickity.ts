@@ -5,10 +5,16 @@ import React, { useCallback, useState, useEffect, useRef, MutableRefObject, Disp
 import useResizeObserver from 'use-resize-observer';
 import { fixIosScrollBehavior, fixLeftOverflow, fixOverflowGroups } from './bug-fixes';
 
+/**
+ * Allow for slight overflow related to margin on the last slide.
+ * @param flkty Flickity instance
+ * @returns Boolean if all slides are visible
+ */
 function isAllSlidesVisible(flkty: any): boolean {
   const slideableWidth = flkty?.slideableWidth;
   const availableWidth = flkty?.size?.innerWidth;
-  return availableWidth >= slideableWidth;
+  const overflowPercent = (slideableWidth - availableWidth) / slideableWidth;
+  return (availableWidth >= slideableWidth) || (overflowPercent <= 0.05);
 }
 
 /**

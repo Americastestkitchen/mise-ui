@@ -5,7 +5,7 @@ import { ComponentStory } from '@storybook/react';
 import { defaultTheme, setBackground, setViewport, storybookParameters } from '../../../config/shared.stories';
 import BaseCarousel, { useCarouselContext } from './BaseCarousel';
 import StandardCard from '../../Cards/StandardCard';
-import { LinkCarouselHeader, IntroCarouselHeader } from './Headers';
+import { LinkCarouselHeader, IntroCarouselHeader, TopicCarouselHeader } from './Headers';
 import { useFlickityGroup } from './useFlickity';
 import { FullWidthSlide, StandardSlide } from './Slides';
 import { CarouselWidthWrapper } from './Wrappers';
@@ -98,6 +98,7 @@ const recipeItems = [
     href: '/recipes/8125',
     imageAlt: 'Chocolate Crinkle Cookies',
     imageUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/ar_1:1,c_fill,dpr_2.0,f_auto,fl_lossy.progressive.strip_profile,g_faces:auto,q_auto:low,w_344/22391_sfs-chocolate-crinkle-cookies-35',
+    id: 'recipe_8125',
     objectId: 'recipe_8125',
     siteKey: 'atk',
     siteKeyFavorites: 'atk',
@@ -113,6 +114,7 @@ const recipeItems = [
     href: '/recipes/8125',
     imageAlt: 'Chocolate Crinkle Cookies',
     imageUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/ar_1:1,c_fill,dpr_2.0,f_auto,fl_lossy.progressive.strip_profile,g_faces:auto,q_auto:low,w_344/22391_sfs-chocolate-crinkle-cookies-35',
+    id: 'recipe_8125-2',
     objectId: 'recipe_8125',
     siteKey: 'atk',
     siteKeyFavorites: 'atk',
@@ -128,6 +130,7 @@ const recipeItems = [
     href: '/recipes/8125',
     imageAlt: 'Chocolate Crinkle Cookies',
     imageUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/ar_1:1,c_fill,dpr_2.0,f_auto,fl_lossy.progressive.strip_profile,g_faces:auto,q_auto:low,w_344/22391_sfs-chocolate-crinkle-cookies-35',
+    id: 'recipe_8125-2.5',
     objectId: 'recipe_8125',
     siteKey: 'atk',
     siteKeyFavorites: 'atk',
@@ -143,6 +146,7 @@ const recipeItems = [
     href: '/recipes/8125',
     imageAlt: 'Chocolate Crinkle Cookies',
     imageUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/ar_1:1,c_fill,dpr_2.0,f_auto,fl_lossy.progressive.strip_profile,g_faces:auto,q_auto:low,w_344/22391_sfs-chocolate-crinkle-cookies-35',
+    id: 'recipe_8125-3',
     objectId: 'recipe_8125',
     siteKey: 'atk',
     siteKeyFavorites: 'atk',
@@ -158,6 +162,7 @@ const recipeItems = [
     href: '/recipes/8125',
     imageAlt: 'Chocolate Crinkle Cookies',
     imageUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/ar_1:1,c_fill,dpr_2.0,f_auto,fl_lossy.progressive.strip_profile,g_faces:auto,q_auto:low,w_344/22391_sfs-chocolate-crinkle-cookies-35',
+    id: 'recipe_8125-4',
     objectId: 'recipe_8125',
     siteKey: 'atk',
     siteKeyFavorites: 'atk',
@@ -173,6 +178,7 @@ const recipeItems = [
     href: '/recipes/8125',
     imageAlt: 'Chocolate Crinkle Cookies',
     imageUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/ar_1:1,c_fill,dpr_2.0,f_auto,fl_lossy.progressive.strip_profile,g_faces:auto,q_auto:low,w_344/22391_sfs-chocolate-crinkle-cookies-35',
+    id: 'recipe_8125-5',
     objectId: 'recipe_8125',
     siteKey: 'atk',
     siteKeyFavorites: 'atk',
@@ -188,6 +194,7 @@ const recipeItems = [
     href: '/recipes/8125',
     imageAlt: 'Chocolate Crinkle Cookies',
     imageUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/ar_1:1,c_fill,dpr_2.0,f_auto,fl_lossy.progressive.strip_profile,g_faces:auto,q_auto:low,w_344/22391_sfs-chocolate-crinkle-cookies-35',
+    id: 'recipe_8125-6',
     objectId: 'recipe_8125',
     siteKey: 'atk',
     siteKeyFavorites: 'atk',
@@ -221,6 +228,29 @@ export const PhotoCarouselIntroExample = () => (
         </FullWidthSlide>
       ))}
     </BaseCarousel>
+  </PreviewProvider>
+);
+
+export const RecipeCarouselTopicExample = () => (
+  <PreviewProvider siteKey="atk">
+    <CarouselWidthWrapper
+      maxWidthPx={847}
+      overflowAuto
+    >
+      <BaseCarousel
+        useFlickityHook={useFlickityGroup}
+        title="Recipe Carousel"
+        header={
+          <TopicCarouselHeader title="Recipe Carousel Title" topic="Recipe Carousel Title" />
+        }
+      >
+        {recipeItems.map(item => (
+          <StandardSlide key={item.id}>
+            <StandardCard key={item.objectId} {...item} />
+          </StandardSlide>
+        ))}
+      </BaseCarousel>
+    </CarouselWidthWrapper>
   </PreviewProvider>
 );
 

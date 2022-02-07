@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { mixins, font, withThemes, color } from '../../../styles';
-import { Intro, Title } from './styled-elements';
+import { Intro, Title, Topic } from './styled-elements';
 import { cssThemedColor, cssThemedFontAccentColorAlt } from '../../../styles/mixins';
 import { InferStyledTypes } from '../../../styles/utility-types';
 
@@ -104,6 +104,24 @@ export function IntroCarouselHeader({ title, intro }: IntroCarouselHeaderProps) 
     <div>
       <Title>{title}</Title>
       {!!intro && <Intro dangerouslySetInnerHTML={{ __html: intro }} />}
+    </div>
+  );
+}
+
+type TopicCarouselHeaderProps = {
+  title: string;
+  topic?: string;
+}
+
+export function TopicCarouselHeader({ title, topic }: TopicCarouselHeaderProps) {
+  return (
+    <div>
+      {!!topic && (
+        <Topic>
+          {topic}
+        </Topic>
+      )}
+      <Title>{title}</Title>
     </div>
   );
 }
