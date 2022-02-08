@@ -82,6 +82,7 @@ import TallCard from './components/Cards/TallCard';
 import TallToSquareCard from './components/Cards/TallToSquareCard';
 import TextDecorations, { CircledText, SquiggledText, UnderlinedText } from './components/DesignTokens/TextDecoration';
 import ToggleRefinement from './components/Algolia/shared/ToggleRefinement';
+import ToggleRefinementMenu from './components/Algolia/shared/ToggleRefinementMenu';
 import * as Icons from './components/DesignTokens/Icon';
 import fonts from './styles/fonts';
 import globalStyle from './styles/global';
@@ -89,9 +90,6 @@ import { color, font, fontSize, mixins, spacing } from './styles';
 
 export { default as RelatedContentCard } from './components/Cards/RelatedContentCard';
 export * from './components/Cards/RelatedContentCard';
-
-export { default as PhotoCarousel } from './components/Carousels/PhotoCarousel';
-export * from './components/Carousels/PhotoCarousel';
 
 export { default as BylineList } from './components/BylineList';
 export * from './components/BylineList';
@@ -104,6 +102,12 @@ export { default as MediaEmbed } from './components/MediaEmbed';
 
 export * from './components/TableOfContents';
 export { default as TableOfContents } from './components/TableOfContents';
+
+export * from './components/Articles/LinkFarm';
+export { default as LinkFarm } from './components/Articles/LinkFarm';
+
+export * from './components/Carousels/BaseCarousel';
+export { default as BaseCarousel } from './components/Carousels/BaseCarousel';
 
 export {
   Accordion,
@@ -197,6 +201,7 @@ export {
   TallToSquareCard,
   TextDecorations,
   ToggleRefinement,
+  ToggleRefinementMenu,
   SubscribeBubbles,
   styles,
   spacing,

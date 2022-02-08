@@ -7,16 +7,34 @@ import { color, font, fontSize, lineHeight, spacing, withThemes } from '../../..
 
 const StyledClearRefinementsTheme = {
   default: css`
-    color: ${color.eclipse};
     font: ${fontSize.md}/${lineHeight.sm} ${font.pnr};
     margin-bottom: ${spacing.xsm};
 
     &[disabled] {
       display: none;
     }
+  `,
+  atk: css`
+    color: ${color.eclipse};
 
     &:hover {
       color: ${color.mint};
+      cursor: pointer;
+    }
+  `,
+  cco: css`
+    color: ${color.black};
+
+    &:hover {
+      color: ${color.denim};
+      cursor: pointer;
+    }
+  `,
+  cio: css`
+    color: ${color.cork};
+
+    &:hover {
+      color: ${color.squirrel};
       cursor: pointer;
     }
   `,

@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { color } from '../../../../styles';
 
-const Comment = ({ ariaHidden, ariaLabel, fill, focusable }) => (
+const Comment = ({ ariaHidden, ariaLabel, fill, focusable, style }) => (
   <svg
     aria-hidden={ariaHidden}
     aria-label={ariaLabel}
     focusable={focusable}
+    style={style}
     height="13.284"
     viewBox="0 0 13.279 13.284"
     xmlns="http://www.w3.org/2000/svg"
@@ -26,6 +27,7 @@ Comment.propTypes = {
   ariaLabel: PropTypes.string,
   fill: PropTypes.string,
   focusable: PropTypes.bool,
+  style: PropTypes.object,
 };
 
 Comment.defaultProps = {
@@ -33,6 +35,7 @@ Comment.defaultProps = {
   ariaLabel: null,
   fill: `${color.mint}`,
   focusable: false,
+  style: null,
 };
 
 export default Comment;

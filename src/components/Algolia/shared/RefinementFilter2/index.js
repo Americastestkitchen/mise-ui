@@ -5,34 +5,73 @@ import styled, { css } from 'styled-components';
 import { Checkmark } from '../../../DesignTokens/Icon/svgs';
 import { color, font, fontSize, spacing, withThemes } from '../../../../styles';
 
-const RefinementFilterWrapper = styled.div`
-  align-items: center;
-  display: flex;
+const RefinementFilterWrapperTheme = {
+  default: css`
+    align-items: center;
+    display: flex;
 
-  &:focus-within {
-    box-shadow: 0 0 0 2px ${color.focusRing};
-  }
-
-  &:hover {
-    cursor: pointer;
-
-    .search-refinement-list__label {
-      color: ${color.mint};
+    &:focus-within {
+      box-shadow: 0 0 0 2px ${color.focusRing};
     }
-  }
+
+    &:hover {
+      cursor: pointer;
+    }
+  `,
+  atk: css`
+    &:hover {
+      .search-refinement-list__label {
+        color: ${color.mint};
+      }
+    }
+  `,
+  cco: css`
+    &:hover {
+      .search-refinement-list__label {
+        color: ${color.denim};
+      }
+    }
+  `,
+  cio: css`
+    &:hover {
+      .search-refinement-list__label {
+        color: ${color.squirrel};
+      }
+    }
+  `,
+};
+
+const RefinementFilterWrapper = styled.div`
+  ${withThemes(RefinementFilterWrapperTheme)}
 `;
 
 const RefinementFilterLabelTheme = {
   default: css`
     color: ${color.eclipse};
     font: ${fontSize.md}/1.38 ${font.pnr};
-
+    ${({ isRefined }) => (isRefined ? `font: ${fontSize.md}/1.38 ${font.pnb};` : '')}
+  `,
+  atk: css`
     &:hover {
       color: ${color.mint};
       cursor: pointer;
     }
+  `,
+  cco: css`
+    color: ${color.black};
 
-    ${({ isRefined }) => (isRefined ? `color: ${color.mint}; font: ${fontSize.md}/1.38 ${font.pnb};` : '')}
+    &:hover {
+      color: ${color.denim};
+      cursor: pointer;
+    }
+  `,
+  cio: css`
+    color: ${color.cork};
+
+    &:hover {
+      color: ${color.squirrel};
+      cursor: pointer;
+    }
   `,
 };
 
@@ -100,39 +139,45 @@ const RefinementFilter = ({
   label,
   refine,
   value,
-}) => (
-  <RefinementFilterWrapper
-    className="refinement-filter__wrapper"
-    onClick={(e) => {
-      e.preventDefault();
-      if (!isRefined && typeof handleClick === 'function') handleClick(e);
-      if (filterType === 'refinementList') {
-        refine(value);
-      } else if (filterType === 'toggleRefinement') {
-        if (currentRefinement.length > 0) {
-          refine(false);
-        } else {
+}) => {
+  let isActuallyRefined = isRefined;
+  if (filterType === 'toggleRefinement') {
+    isActuallyRefined = currentRefinement.length > 0 && currentRefinement.includes(value);
+  }
+  return (
+    <RefinementFilterWrapper
+      className="refinement-filter__wrapper"
+      onClick={(e) => {
+        e.preventDefault();
+        if (!isActuallyRefined && typeof handleClick === 'function') handleClick(e);
+        if (filterType === 'refinementList') {
           refine(value);
+        } else if (filterType === 'toggleRefinement') {
+          if (isActuallyRefined) {
+            refine(false);
+          } else {
+            refine(value);
+          }
         }
-      }
-    }}
-  >
-    {
-      isRefined || (filterType === 'toggleRefinement' && currentRefinement.length > 0) ? (
-        <RefinementFilterCheck data-testid="refinement-filter__checkmark">
-          <Checkmark />
-        </RefinementFilterCheck>
-      ) : null
-    }
-    <RefinementFilterCheckbox defaultChecked={isRefined} id={`${attribute}-${value}-filter`} type="checkbox" />
-    <RefinementFilterLabel
-      htmlFor={`${attribute}-${value}-filter`}
-      isRefined={isRefined}
+      }}
     >
-      {label}{includeCount && count ? <RefinementFilterCount>{` (${count})`}</RefinementFilterCount> : null}
-    </RefinementFilterLabel>
-  </RefinementFilterWrapper>
-);
+      {
+        isActuallyRefined ? (
+          <RefinementFilterCheck data-testid="refinement-filter__checkmark">
+            <Checkmark />
+          </RefinementFilterCheck>
+        ) : null
+      }
+      <RefinementFilterCheckbox defaultChecked={isActuallyRefined} id={`${attribute}-${value}-filter`} type="checkbox" />
+      <RefinementFilterLabel
+        htmlFor={`${attribute}-${value}-filter`}
+        isRefined={isActuallyRefined}
+      >
+        {label}{includeCount && count ? <RefinementFilterCount>{` (${count})`}</RefinementFilterCount> : null}
+      </RefinementFilterLabel>
+    </RefinementFilterWrapper>
+  );
+};
 
 RefinementFilter.propTypes = {
   /** Algolia attribute used to filter results. */

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ReviewsEmailCapture from './index';
+import ReviewsEmailCapture, { ProvideKidsNewsletterVariant, variantTheme } from './index';
 import { siteKey } from '../../../../config/argTypes';
 import { addThemedWrapper } from '../../../../config/decorators';
 
@@ -9,33 +9,50 @@ export default {
   component: ReviewsEmailCapture,
   decorators: [ addThemedWrapper() ],
   argTypes: { siteKey },
+  onSubmit: () => {},
+  success: false
 };
 
-const Template = (args) => <ReviewsEmailCapture {...args} />;
+const Template = (args) => <ReviewsEmailCapture {...args} />
 
 export const Default = Template.bind({});
 Default.args = {
   description: 'Shop smarter with our ATK Reviews team\'s expert guides and top picks',
   inputId: 'review-email-capture__detail',
-  onSubmit: () => {},
   siteKey: 'atk',
   title: 'Sign up for the Well-Equipped Cook Newsletter',
+  onSubmit: () => {},
+  success: false
 };
+
+export const DefaultSuccess = Template.bind({});
+DefaultSuccess.args = { ...Default.args, success: true };
 
 export const Cio = Template.bind({});
 Cio.args = {
   description: 'Shop smarter with our ATK Reviews team\'s expert guides and top picks',
   inputId: 'review-email-capture__detail',
-  onSubmit: () => {},
   siteKey: 'cio',
   title: 'Sign up for the Well-Equipped Cook Newsletter',
+  onSubmit: () => {},
+  success: false
 };
+
+export const CioSuccess = Template.bind({});
+CioSuccess.args = { ...Cio.args, success: true };
 
 export const Cco = Template.bind({});
 Cco.args = {
   description: 'Shop smarter with our ATK Reviews team\'s expert guides and top picks',
   inputId: 'review-email-capture__detail',
-  onSubmit: () => {},
   siteKey: 'cco',
   title: 'Sign up for the Well-Equipped Cook Newsletter',
+  onSubmit: () => {},
+  success: false
 };
+
+export const CcoSuccess = Template.bind({});
+CcoSuccess.args = { ...Cco.args, success: true };
+
+export const DefaultWithKidsVariant = Template.bind({});
+DefaultWithKidsVariant.args = { ...Default.args, variant: 'kidsVariant' };

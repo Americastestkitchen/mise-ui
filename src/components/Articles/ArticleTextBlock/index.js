@@ -15,6 +15,8 @@ const ArticleTextBlockWrapper = styled.div`
     background-color: ${color.white};
     padding: 2.4rem 1rem;
 
+    ${withThemes({ cco: mixins.ccoReviewSetBorder() })}
+
     .article-text-block__p {
       font: ${fontSize.md}/1.5 ${font.pnr};
     }
@@ -206,6 +208,7 @@ const generateImageElAndPosition = (photo) => {
 };
 
 const ArticleTextBlock = ({
+  as,
   content,
   displayOption,
   dropCap,
@@ -227,7 +230,7 @@ const ArticleTextBlock = ({
     >
       {
         title && (
-          <ArticleTextBlockHeading className="article-text-block__heading">
+          <ArticleTextBlockHeading className="article-text-block__heading" as={as}>
             {title}
           </ArticleTextBlockHeading>
         )
@@ -249,6 +252,8 @@ const ArticleTextBlock = ({
 };
 
 ArticleTextBlock.propTypes = {
+  /** styled-components as prop on heading, defaults h3 */
+  as: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']),
   /** Text content */
   content: PropTypes.string.isRequired,
   /** Default: no extra styles, box: wrap TextBlock in padded box */
@@ -274,6 +279,7 @@ ArticleTextBlock.propTypes = {
 };
 
 ArticleTextBlock.defaultProps = {
+  as: 'h3',
   displayOption: 'default',
   dropCap: false,
   includeInTOC: null,

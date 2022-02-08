@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import useResizeObserver from 'use-resize-observer/polyfilled';
 import { font, fontSize, spacing } from '../../styles';
 import { md, untilMd } from '../../styles/breakpoints';
-import cloudinaryInstance from '../../lib/cloudinary';
+import cloudinaryInstance, { baseImageConfig } from '../../lib/cloudinary';
 import { cssThemedColor, cssThemedLink } from '../../styles/mixins';
 
 export type Author = {
@@ -81,10 +81,11 @@ const Wrapper = styled.span<{ refHeight: number }>`
 `;
 
 const Author = styled.span.attrs({ rel: 'author' })<{ underline?: boolean }>`
+  font-family: inherit !important; // espresso
   ${props => props.underline && cssThemedLink}
 `;
 
-type AuthorListInnerProps = {authors: Author[], onClick?: (id: number) => void};
+type AuthorListInnerProps = {authors: Author[], onClick?: (id: number, name: string) => void};
 
 const AuthorListInner = ({ authors, onClick }: AuthorListInnerProps) => {
   const fullNames = authors.map(
@@ -97,7 +98,7 @@ const AuthorListInner = ({ authors, onClick }: AuthorListInnerProps) => {
             aria-label={`${author.firstName} ${author.lastName}: Go to author page`}
             key={author.id}
             underline
-            onClick={() => onClick(author.id)}
+            onClick={() => onClick(author.id, `${author.firstName.toLowerCase()}-${author.lastName.toLowerCase()}`)}
           >
             {author.firstName} {author.lastName}
           </Author>
@@ -144,6 +145,7 @@ const BylineList = ({
 
     if (onlyOneAuthor && !!authorPublicId) {
       return cloudinaryInstance.url(authorPublicId, {
+        ...baseImageConfig,
         width: avatarSideLength,
         height: avatarSideLength,
       });

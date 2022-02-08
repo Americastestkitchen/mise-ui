@@ -7,6 +7,7 @@ import Byline from '../../Byline';
 import Image from '../shared/Image';
 import Sticker from '../shared/Sticker';
 import BylineList, { Author } from '../../BylineList';
+import { Comment as CommentIcon } from '../../DesignTokens/Icon';
 
 const LeadMarqueeCardWrapper = styled.article.attrs({
   className: 'lead-marquee-card',
@@ -128,6 +129,15 @@ const Description = styled.p`
   `}
 `;
 
+const Comments = styled.p`
+  align-items: center;
+  color: ${color.white};
+  display: flex;
+  justify-content: center;
+  font: ${fontSize.md} ${font.pnb};
+  line-height: 1;
+`;
+
 type LeadMarqueeCardProps = {
   /**
    * Author Name
@@ -144,6 +154,7 @@ type LeadMarqueeCardProps = {
   /** Background color for content wrapper */
   backgroundColor?: CSSProperties['backgroundColor'];
   description?: string;
+  commentsCount?: number;
   imageAlt?: string;
   /** Image for card. */
   imageUrl: string;
@@ -161,6 +172,7 @@ const LeadMarqueeCard = ({
   authorImageCloudinaryId = '',
   authors = [],
   backgroundColor = '#783681',
+  commentsCount,
   description = '',
   imageAlt = '',
   imageUrl,
@@ -199,13 +211,22 @@ const LeadMarqueeCard = ({
             </StickerGroup>
           ) : null }
           <Title dangerouslySetInnerHTML={{ __html: title }} />
+          {
+            commentsCount ? (
+              <Comments>
+                <CommentIcon fill="white" style={{ width: '16px', height: '16px' }} />&nbsp;{commentsCount}
+              </Comments>
+            ) : null
+          }
           <Description dangerouslySetInnerHTML={{ __html: description }} />
-          {authors.length ? <BylineListSC authors={authors} attribution="" /> : (
+          {authors.length ? (
+            <BylineListSC authors={authors} attribution="" />
+          ) : author ? (
             <Byline
               author={`By ${author}`}
               authorImageCloudinaryId={authorImageCloudinaryId}
             />
-          )}
+          ) : null}
 
         </div>
       </ContentWrapper>

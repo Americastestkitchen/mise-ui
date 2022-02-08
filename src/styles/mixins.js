@@ -2,7 +2,7 @@ import { css } from 'styled-components';
 import { cards, color, font, fontSize } from './index';
 
 export const themeValue = (prop, val) => props => (props.theme[prop] && props.theme[prop][val])
- || val;
+  || val;
 
 export const withThemes = siteTheme => (
   css`${() => siteTheme.default || ''};${props => siteTheme[props.theme.siteKey]};${props => siteTheme[props.theme.mode]}`
@@ -29,7 +29,7 @@ export default {
   },
 
   articlesBoxLists(siteKey = '') {
-    let numberColor = color.mediumGray;
+    let numberColor = color.eclipse;
     let bulletColor = color.eclipse;
 
     if (siteKey === 'cco') {
@@ -226,6 +226,59 @@ export default {
   },
 };
 
+export const cssThemedFont = withThemes({
+  default: css`font-family: ${font.pnb};`,
+  atk: css`font-family: ${font.pnb};`,
+  cco: css`font-family: ${font.clb};`,
+  cio: css`font-family: ${font.mwr};`,
+});
+
+/** Headers */
+export const cssThemedFontBold = withThemes({
+  default: css`font-family: ${font.pnb};`,
+  atk: css`font-family: ${font.pnb};`,
+  cco: css`font-family: ${font.clb};`,
+  cio: css`
+    font-family: ${font.mwr};
+    font-weight: 700;
+  `,
+});
+
+export const cssThemedColor = withThemes({
+  default: css`color: ${color.eclipse};`,
+  atk: css`color: ${color.eclipse};`,
+  cco: css`color: ${color.black};`,
+  cio: css`color: ${color.cork};`,
+});
+
+export const cssThemedBackground = withThemes({
+  default: css`background: ${color.eclipse};`,
+  atk: css`background: ${color.eclipse};`,
+  cco: css`background: ${color.black};`,
+  cio: css`background: ${color.cork};`,
+});
+
+export const cssThemedFontAccentColor = withThemes({
+  default: css`color: ${color.tomato};`,
+  atk: css`color: ${color.tomato};`,
+  cco: css`color: ${color.denim};`,
+  cio: css`color: ${color.squirrel};`,
+});
+
+export const cssThemedFontAccentColorAlt = withThemes({
+  default: css`color: ${color.darkTeal};`,
+  atk: css`color: ${color.darkTeal};`,
+  cco: css`color: ${color.denim};`,
+  cio: css`color: ${color.squirrel};`,
+});
+
+export const cssThemedBackgroundAccentColorAlt = withThemes({
+  default: css`background: ${color.darkTeal};`,
+  atk: css`background: ${color.darkTeal};`,
+  cco: css`background: ${color.denim};`,
+  cio: css`background: ${color.squirrel};`,
+});
+
 export const cssReduceColor = css`
   background-image: none !important;
   background-color: transparent !important;
@@ -269,12 +322,46 @@ export const cssThemedLink = css`
   }
 `;
 
-/**
- * Commonly themed font color
- */
-export const cssThemedColor = withThemes({
-  default: css`color: ${color.eclipse};`,
-  atk: css`color: ${color.eclipse};`,
-  cco: css`color: ${color.black};`,
-  cio: css`color: ${color.cork};`,
-});
+/** Updated version of articlesBoxLists */
+export const cssArticleBoxStyles = css`
+  ol {
+    padding: 0;
+    li {
+      display: flex;
+      counter-increment: li;
+
+      &::before {
+        content: counter(li)".";
+        ${cssThemedColor}
+        font: ${fontSize.sm}/1.5 ${font.pnb};
+        display: inline-block;
+        margin-top: 0.2rem;
+        min-width: 1.8rem;
+      }
+    }
+  }
+
+  ul {
+    li {
+      align-items: flex-start;
+      margin-bottom: 1rem;
+      padding-left: 1.2rem;
+      position: relative;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      &::before {
+        border-radius: 4px;
+        content: ' ';
+        ${cssThemedBackground}
+        left: 0;
+        margin: 1rem 0.8rem 0 0;
+        min-height: 4px;
+        min-width: 4px;
+        position: absolute;
+      }
+    }
+  }
+`;

@@ -5,60 +5,54 @@ import styled, { css } from 'styled-components';
 
 import ImageListItem from '../ImageListItem';
 import { color, font, fontSize, mixins, withThemes } from '../../../../styles';
-
-const ImageListWrapperTheme = {
-  default: css`
-    background-color: ${color.white};
-    margin: 3rem 0 2.7rem;
-    max-width: 100%;
-    padding: 2.4rem 1rem 2rem;
-
-    ${breakpoint('md')`
-      padding: 2.4rem;
-    `}
-
-    ${breakpoint('xlg')`
-      ${({ width }) => (mixins.articlesWidth(width))};
-    `}
-  `,
-  cco: css`
-    ${mixins.ccoReviewSetBorder()}
-  `,
-};
+import { cssThemedColor } from '../../../../styles/mixins';
 
 const ImageListWrapper = styled.aside`
-  ${withThemes(ImageListWrapperTheme)}
+  background-color: ${color.white};
+  margin: 3rem 0 2.7rem;
+  max-width: 100%;
+  padding: 2.4rem 1rem 2rem;
+
+  ${breakpoint('md')`
+    padding: 2.4rem;
+  `}
+
+  ${breakpoint('xlg')`
+    ${({ width }) => (mixins.articlesWidth(width))};
+  `}
+
+  ${withThemes({
+    cco: css`
+      ${mixins.ccoReviewSetBorder()}
+    `,
+  })}
 `;
 
-const ImageListTitleTheme = {
-  default: css`
-    font: ${fontSize.xl}/2.6rem ${font.pnb};
-    letter-spacing: normal;
-    margin-bottom: 0.4rem;
-  `,
-  atk: css`
-    color: ${color.eclipse};
-  `,
-  cco: css`
-    color: ${color.black};
-  `,
-  cio: css`
-    color: ${color.cork};
-  `,
-};
-
 const ImageListTitle = styled.h3`
-  ${withThemes(ImageListTitleTheme)}
+  ${cssThemedColor}
+  font: ${fontSize.xl}/2.6rem ${font.pnb};
+  letter-spacing: normal;
+  margin-bottom: 0.4rem;
+`;
+
+const Intro = styled.div`
+  ${cssThemedColor}
+  font-family: ${font.pnr};
+  font-size: 16px;
+  line-height: 1.5;
+  padding-bottom: 8px;
 `;
 
 const ImageListContainer = ({
   images,
   className,
   title,
+  intro,
   width,
 }) => (
   <ImageListWrapper className={className} width={width}>
     {title && <ImageListTitle>{title}</ImageListTitle>}
+    {!!intro && <Intro>{intro}</Intro> }
     {
       images.map(image => (
         <ImageListItem
@@ -75,12 +69,14 @@ ImageListContainer.propTypes = {
   images: PropTypes.array.isRequired,
   className: PropTypes.string,
   title: PropTypes.string,
+  intro: PropTypes.string,
   width: PropTypes.oneOf(['default', 'wide']).isRequired,
 };
 
 ImageListContainer.defaultProps = {
   className: '',
   title: null,
+  intro: undefined,
 };
 
 export default ImageListContainer;
