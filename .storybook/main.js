@@ -10,5 +10,6 @@ module.exports = {
     '@whitespace/storybook-addon-html',
     '@storybook/addon-notes/register',
     '@storybook/addon-essentials',
+    '@storybook/addon-a11y'
   ],
 };
