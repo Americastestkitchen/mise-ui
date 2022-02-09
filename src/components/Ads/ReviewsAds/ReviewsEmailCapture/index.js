@@ -69,10 +69,7 @@ const AdDescription = styled.p`
   `)}
   ${cssThemedColor}
   ${kidsVariant(css`
-    font: ${fontSize.xl}/2.6rem ${font.pnr} !important;
-    ${md(css`
-      font: ${fontSize.md}/2.6rem ${font.pnr} !important;
-    `)}
+    font: ${fontSize.md}/2.6rem ${font.pnr} !important;
   `)}
 `;
 
