@@ -23,6 +23,8 @@ const Content = styled.div`
     margin: 0 auto 1.6rem;
     text-align: center;
   `}
+
+  z-index: 1;
 `;
 
 const CtaTheme = {
@@ -38,13 +40,15 @@ const CtaTheme = {
     width: 34rem;
 
     span {
-    font-size: 3.1rem;
-    margin: 0.15rem 0 0 0.8rem;
+      font-size: 3.1rem;
+      margin: 0.15rem 0 0 0.8rem;
     }
 
     ${breakpoint('md')`
-    width: 27.2rem;
+      width: 27.2rem;
     `}
+
+    z-index: 1;
   `,
   atk: css`
     background-color: ${color.coldPool};
