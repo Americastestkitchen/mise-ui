@@ -120,4 +120,13 @@ export const BoxBottomImageWideWidth = () => (
     <ArticleTextBlock {...storyProps.boxBottomImageWideWidth} />
   </ArticleTextBlockStoryWrapper>
 );
- 
+
+export const TextBlockWithOrderedList = () => (
+  <ArticleTextBlock 
+    content={`<ol>
+      <li>Text with <strong>strong element</strong> will wrap weirdly when longer than the container will wrap weirdly when longer than the container will wrap weirdly when longer than the container</li>
+      </ol>`
+    } 
+    width={"default"}
+  />
+);
