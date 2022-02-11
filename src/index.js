@@ -9,6 +9,7 @@ import ArticleImage from './components/Articles/ArticleImage';
 import ArticlePhotoCollection from './components/Articles/ArticlePhotoCollection';
 import ArticleTextBlock from './components/Articles/ArticleTextBlock';
 import AtkMarketingHat from './components/MarketingHat';
+import RecipesMarketingHat from './components/RecipesMarketingHat';
 import Badge from './components/Badge';
 import BookCarouselAd from './components/Ads/ReviewsAds/BookCarouselAd';
 import breakpoints from './styles/breakpoints';
@@ -119,6 +120,7 @@ export {
   ArticlePhotoCollection,
   ArticleTextBlock,
   AtkMarketingHat,
+  RecipesMarketingHat,
   AudioPlayer,
   Badge,
   BookCarouselAd,
