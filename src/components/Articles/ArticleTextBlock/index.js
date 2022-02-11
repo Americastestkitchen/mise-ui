@@ -19,6 +19,11 @@ const ArticleTextBlockWrapper = styled.div`
 
     .article-text-block__p {
       font: ${fontSize.md}/1.5 ${font.pnr};
+      strong,h1,h2,h3,h4,h5 {
+        font-family: ${font.pnb};
+        font-weight: 400;
+      }
+      
     }
   }
 
