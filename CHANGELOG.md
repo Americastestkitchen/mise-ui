@@ -1,3 +1,15 @@
+# v1.33.3 (Mon Feb 14 2022)
+
+#### 🐛 Bug Fix
+
+- CORE-110: fix display flex affecting line wrap with li strings that have tags in them [#626](https://github.com/Americastestkitchen/mise-ui/pull/626) ([@harry-atk](https://github.com/harry-atk))
+
+#### Authors: 1
+
+- Harry Scheuerle ([@harry-atk](https://github.com/harry-atk))
+
+---
+
 # v1.33.2 (Fri Feb 11 2022)
 
 #### 🐛 Bug Fix
