@@ -1,11 +1,3 @@
-export const trueFalse = {
-  control: { type: 'boolean' },
-};
-
-export const textInput = {
-  control: { type: 'text' },
-};
-
 export const mode = {
   options: ['light', 'dark'],
   control: { type: 'inline-radio' },
@@ -22,6 +14,4 @@ export default {
   disable,
   mode,
   siteKey,
-  textInput,
-  trueFalse,
 };

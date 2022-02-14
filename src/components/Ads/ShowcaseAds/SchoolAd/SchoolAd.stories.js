@@ -1,48 +1,38 @@
-import breakpoint from 'styled-components-breakpoint';
 import React from 'react';
-import styled, { css, ThemeProvider } from 'styled-components';
-import { withKnobs, select , text } from '@storybook/addon-knobs';
 
 import SchoolAd from './index';
-import { breakpoints, color, spacing, withThemes } from '../../../../styles';
+import { color } from '../../../../styles';
+import { disable } from '../../../../config/argTypes';
+import { adsDarkThemeWrapper } from '../../../../config/decorators';
+
+
 
 export default {
   title: 'Components/Ads/ShowcaseAds/SchoolAd',
   component: SchoolAd,
-  decorators: [withKnobs],
+  decorators: [adsDarkThemeWrapper(color.gunmetal)],
+  argTypes: {
+    ctaHref: disable,
+    ctaTarget: {
+      options: ['_self', '_blank'],
+      control: 'select'
+    },
+    deviceType: {
+      options: ['desktop', 'phone', 'tablet'],
+      control: 'inline-radio'
+    },
+    onClick: {action: 'onClick'},
+  }
 };
 
-const StoryWrapperTheme = {
-  default: css`
+const Template = args => <SchoolAd {...args} />;
 
-    ${breakpoint('lg')`
-      padding: 8rem ${spacing.sm};
-    `}
-  `,
-  dark: css`
-    background-color: ${color.gunmetal};
-  `,
-}
-
-const StoryWrapper = styled.div`
-  ${withThemes(StoryWrapperTheme)}
-`;
-
-export const Default = () => (
-  <ThemeProvider theme={{
-    breakpoints,
-    mode: 'dark',
-  }}>
-    <StoryWrapper>
-      <SchoolAd
-        cta={text('Cta Text', 'TRY FOR FREE')}
-        ctaHref="https://school.americastestkitchen.com"
-        ctaTarget={select('CTA Target', ['_self', '_blank'], '_blank')}
-        deviceType="desktop"
-        siteKey={select('Site Key', ['atk', 'cio', 'cco', 'kids', 'school', 'shop'], 'school')}
-        subtitle={text('Subtitle', 'Get access to 320+ courses and learn from our expert test cooks in your kitchen, on your schedule.')}
-        title={text('Title', 'Great cooks never stop learning.')}
-      />
-    </StoryWrapper>
-  </ThemeProvider>
-);
+export const Default = Template.bind({});
+Default.args = {
+  cta: 'TRY FOR FREE',
+  ctaHref: 'https://school.americastestkitchen.com',
+  ctaTarget: '_self',
+  deviceType: 'desktop',
+  subtitle: 'Get access to 320+ courses and learn from our expert test cooks in your kitchen, on your schedule.',
+  title: 'Great cooks never stop learning.',
+};

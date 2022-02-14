@@ -1,50 +1,33 @@
 /* eslint-disable line-len */
-import breakpoint from 'styled-components-breakpoint';
 import React from 'react';
-import styled, { css, ThemeProvider } from 'styled-components';
-import { withKnobs, select , text } from '@storybook/addon-knobs';
 
-import { breakpoints, color, spacing, withThemes } from '../../../styles';
+import { color } from '../../../styles';
 
 import SingleMembershipAd from './index';
 import TextDecorations, { UnderlinedText } from '../../DesignTokens/TextDecoration'
+import { disable } from '../../../config/argTypes';
+import { adsDarkThemeWrapper } from '../../../config/decorators';
 
 const Underline = TextDecorations.UnderlineThree;
 
 export default {
   title: 'Components/Ads/SingleMembershipAd',
   component: SingleMembershipAd,
-  decorators: [withKnobs],
+  decorators: [adsDarkThemeWrapper(color.gunmetal)],
+  argTypes: {
+    ctaHref: disable,
+    onClick: {action: 'onClick'},
+    title: disable,
+  }
 };
 
-const StoryWrapperTheme = {
-  default: css`
-    ${breakpoint('lg')`
-      padding: 8rem ${spacing.sm};
-    `}
-  `,
-  dark: css`
-    background-color: ${color.gunmetal};
-  `,
-}
+const Template = ({...args}) => <SingleMembershipAd {...args} />;
 
-const StoryWrapper = styled.div`
-  ${withThemes(StoryWrapperTheme)}
-`;
-
-export const Default = () => (
-  <ThemeProvider theme={{
-    breakpoints,
-    mode: 'dark',
-  }}>
-    <StoryWrapper>
-      <SingleMembershipAd
-        cta={text('Cta Text', 'Get free access')}
-        ctaHref="https://www.americastestkitchen.com/order"
-        title={() => (
-          <span>Cook smart with <UnderlinedText>100% reliable recipes<Underline /></UnderlinedText> trusted by millions of home cooks—Try Digital All Access Now.</span>
-        )}
-      />
-    </StoryWrapper>
-  </ThemeProvider>
-);
+export const Default = Template.bind({});
+Default.args = {
+  cta: 'Get free access',
+  ctaHref: 'https://www.americastestkitchen.com/order',
+  title: () => (
+    <span>Cook smart with <UnderlinedText>100% reliable recipes<Underline /></UnderlinedText> trusted by millions of home cooks—Try Digital All Access Now.</span>
+  )
+};

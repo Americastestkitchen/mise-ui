@@ -1,40 +1,22 @@
-import breakpoint from 'styled-components-breakpoint';
 import React from 'react';
-import styled, { css, ThemeProvider } from 'styled-components';
 
-import PairedProduct from './index';
-import { textInput, mode } from '../../../config/argTypes';
-import { breakpoints, color, spacing, withThemes } from '../../../styles';
+import PairedProducts from './index';
+import { color } from '../../../styles';
+import { adsDarkThemeWrapper } from '../../../config/decorators';
 
 export default {
   title: 'Components/Ads/PairedProductAd',
-  component: PairedProduct,
+  component: PairedProducts,
+  decorators: [adsDarkThemeWrapper(color.gunmetal)],
   argTypes: {
     onClick: {action: 'onClick callback'}, 
     products: {
-      control: {type: 'object'}
-    },
-    title: textInput,
-    mode: mode,
+      control: 'object'
+    }
   }
 };
 
-const StoryWrapperTheme = {
-  default: css`
-    padding: 0 ${spacing.sm};
 
-    ${breakpoint('lg')`
-      padding: 8rem ${spacing.sm};
-    `}
-  `,
-  dark: css`
-    background-color: ${color.gunmetal};
-  `,
-}
-
-const StoryWrapper = styled.div`
-  ${withThemes(StoryWrapperTheme)}
-`;
 
 
 const defaultData =  [
@@ -57,24 +39,10 @@ const defaultData =  [
 ];
 
 
-
-const ThemedPairedProductAd = ({...args}) => (
-  <ThemeProvider theme={{
-    breakpoints,
-  }}>
-    <StoryWrapper>
-      <PairedProduct {...args}/>
-    </StoryWrapper>
-  </ThemeProvider>
-);
-
-const Template = ({...args}) => (
-  <ThemedPairedProductAd {...args} />
-);
+const Template = args => <PairedProducts {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
   products: defaultData,
   title: 'Cook with Confidence',
-  mode: 'dark',
 }

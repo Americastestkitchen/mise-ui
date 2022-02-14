@@ -1,53 +1,37 @@
 /* eslint-disable line-len */
-import breakpoint from 'styled-components-breakpoint';
 import React from 'react';
-import styled, { css, ThemeProvider } from 'styled-components';
-import { withKnobs, select , text } from '@storybook/addon-knobs';
-
-import { breakpoints, color, spacing, withThemes } from '../../../../styles';
+import { color } from '../../../../styles';
 
 import MembershipShowcaseAd from './index';
 import TextDecorations, { UnderlinedText } from '../../../DesignTokens/TextDecoration'
+import { disable } from '../../../../config/argTypes';
+import { adsDarkThemeWrapper } from '../../../../config/decorators';
 
 const Underline = TextDecorations.UnderlineThree;
 
 export default {
   title: 'Components/Ads/ShowcaseAds/MembershipShowcaseAd',
   component: MembershipShowcaseAd,
-  decorators: [withKnobs],
+  decorators: [adsDarkThemeWrapper(color.asphalt)],
+  argTypes: {
+    ctaHref: disable,
+    deviceType: {
+      options: ['desktop', 'phone', 'tablet'],
+      control: 'inline-radio'
+    },
+    onClick: {action: 'onClick'},
+    title: disable,
+  }
 };
 
-const StoryWrapperTheme = {
-  default: css`
-    padding: ${spacing.sm};
+const Template = args => <MembershipShowcaseAd {...args} />;
 
-    ${breakpoint('lg')`
-      padding: 8rem ${spacing.sm};
-    `}
-  `,
-  dark: css`
-    background-color: ${color.asphalt};
-  `,
-}
-
-const StoryWrapper = styled.div`
-  ${withThemes(StoryWrapperTheme)}
-`;
-
-export const Default = () => (
-  <ThemeProvider theme={{
-    breakpoints,
-    mode: 'dark',
-  }}>
-    <StoryWrapper>
-      <MembershipShowcaseAd
-        cta={text('Cta Text', 'Get free access')}
-        ctaHref="https://www.americastestkitchen.com/order"
-        deviceType="desktop"
-        title={() => (
-          <span>Cook smart with <UnderlinedText>100% reliable recipes<Underline /></UnderlinedText> trusted by millions of home cooks—Try Digital All Access Now.</span>
-        )}
-      />
-    </StoryWrapper>
-  </ThemeProvider>
-);
+export const Default = Template.bind({});
+Default.args = {
+  cta: 'Get free access',
+  ctaHref: 'https://www.americastestkitchen.com/order',
+  deviceType: 'desktop',
+  title: () => (
+    <span>Cook smart with <UnderlinedText>100% reliable recipes<Underline /></UnderlinedText> trusted by millions of home cooks—Try Digital All Access Now.</span>
+  )
+};

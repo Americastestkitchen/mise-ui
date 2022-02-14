@@ -1,41 +1,42 @@
 import React from 'react';
 import {ThemeProvider } from 'styled-components';
 
-
 import { breakpoints } from '../../../../styles';
-import { disable, trueFalse, textInput } from '../../../../config/argTypes';
+import { disable } from '../../../../config/argTypes';
 import ReviewsMarketingHat from './index';
 
 export default {
   title: 'Components/Ads/ReviewsAds/ReviewsMarketingHat',
   component: ReviewsMarketingHat,
+  decorators: [
+    (Story) => (
+      <ThemeProvider theme={{ breakpoints }}>
+        <Story />
+      </ThemeProvider>
+    )
+  ],
   argTypes: {
-    buttonText: textInput,
-    description: textInput,
-    headline: textInput,
     inputId: disable,
-    images: {control: {type: 'object'}},
-    isAnonymous: trueFalse,
+    images: {control: 'object' },
     promoId: disable,
     onSubmit: {action: 'onSubmit'},
-    title: textInput
   }
 };
 
 const defaultImages = {
   desktopAsset: 'https://res.cloudinary.com/hksqkdlah/image/upload/v1621261895/ATK%20Reviews%20Ads/PansHat_Desktop_3x.jpg',
+  desktopLgAsset: '',
+  tabletAsset: '',
   mobileAsset: 'https://res.cloudinary.com/hksqkdlah/image/upload/v1621261948/ATK%20Reviews%20Ads/PansHat_Mobile_3x.jpg',
 };
 
-const Template = ({...args}) => (
-  <ThemeProvider theme={{ breakpoints }}>
+const Template = args => (
   <ReviewsMarketingHat
-    {...args}
+    {...args} 
     incode="MAR2DAA1A"
     inputId="email-form__input"
     mdc='AF0150MA1D'
   />
-</ThemeProvider>
 );
 
 export const DefaultFormer = Template.bind({});

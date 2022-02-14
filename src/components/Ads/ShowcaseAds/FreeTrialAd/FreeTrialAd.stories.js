@@ -1,48 +1,29 @@
-import breakpoint from 'styled-components-breakpoint';
 import React from 'react';
-import styled, { css, ThemeProvider } from 'styled-components';
-import { withKnobs, select , text } from '@storybook/addon-knobs';
 
-import { breakpoints, color, spacing, withThemes } from '../../../../styles';
-
+import { color } from '../../../../styles';
 import FreeTrialAd from './index';
+import { disable } from '../../../../config/argTypes';
+import { adsDarkThemeWrapper } from '../../../../config/decorators';
+
 
 export default {
   title: 'Components/Ads/ShowcaseAds/FreeTrialAd',
   component: FreeTrialAd,
-  decorators: [withKnobs],
+  decorators: [adsDarkThemeWrapper(color.gunmetal)],
+  argTypes: {
+    cloudinaryId: disable,
+    ctaHref: disable,
+    onClick: {action: 'onClick callback'},
+  }
 };
 
-const StoryWrapperTheme = {
-  default: css`
-    padding: ${spacing.sm};
+const Template = args => <FreeTrialAd {...args}/>;
 
-    ${breakpoint('lg')`
-      padding: 8rem ${spacing.sm};
-    `}
-  `,
-  dark: css`
-    background-color: ${color.gunmetal};
-  `,
-}
-
-const StoryWrapper = styled.div`
-  ${withThemes(StoryWrapperTheme)}
-`;
-
-export const Default = () => (
-  <ThemeProvider theme={{
-    breakpoints,
-    mode: 'dark',
-  }}>
-    <StoryWrapper>
-      <FreeTrialAd
-        cloudinaryId={text('Image', 'mise-play/play-showcase-magazine-ad')}
-        cta={text('Cta Text', 'Free trial issue')}
-        ctaHref="https://www.americastestkitchen.com/order"
-        subtitle={text('Subtitle', 'All-new foolproof recipes and kitchen discoveries in America’s most-trusted cooking magazine.')}
-        title={text('Title', 'Claim Your Free Trial Issue!')}
-      />
-    </StoryWrapper>
-  </ThemeProvider>
-);
+export const Default = Template.bind({});
+Default.args = {
+  cloudinaryId: 'mise-play/play-showcase-magazine-ad',
+  cta: 'Free trial issue',
+  ctaHref: 'https://www.americastestkitchen.com/order',
+  subtitle: 'All-new foolproof recipes and kitchen discoveries in America’s most-trusted cooking magazine.',
+  title: 'Claim Your Free Trial Issue!',
+};
