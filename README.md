@@ -180,6 +180,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://github.com/leo-fsl"><img src="https://avatars.githubusercontent.com/u/94620909?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Leonardo</b></sub></a><br /><a href="#example-leo-fsl" title="Examples">💡</a> <a href="https://github.com/americastestkitchen/americastestkitchen/mise-ui/commits?author=leo-fsl" title="Tests">⚠️</a> <a href="https://github.com/americastestkitchen/americastestkitchen/mise-ui/commits?author=leo-fsl" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/harry-atk"><img src="https://avatars.githubusercontent.com/u/88331810?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Harry Scheuerle</b></sub></a><br /><a href="#example-harry-atk" title="Examples">💡</a> <a href="https://github.com/americastestkitchen/americastestkitchen/mise-ui/commits?author=harry-atk" title="Code">💻</a></td>
   </tr>
 </table>
 

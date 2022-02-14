@@ -20,6 +20,16 @@
         "test",
         "code"
       ]
+    },
+    {
+      "login": "harry-atk",
+      "name": "Harry Scheuerle",
+      "avatar_url": "https://avatars.githubusercontent.com/u/88331810?v=4",
+      "profile": "https://github.com/harry-atk",
+      "contributions": [
+        "example",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
