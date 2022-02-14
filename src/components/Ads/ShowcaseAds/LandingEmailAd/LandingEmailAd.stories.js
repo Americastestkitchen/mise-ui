@@ -1,75 +1,88 @@
 import React from 'react';
-import { action } from '@storybook/addon-actions';
 import { ThemeProvider } from 'styled-components';
-import { withKnobs } from '@storybook/addon-knobs';
 import { breakpoints } from '../../../../styles';
 
 import LandingEmailAd from './index';
+import { disable, mode, textInput, trueFalse } from '../../../../config/argTypes';
 
 export default {
   title: 'Components/Ads/ShowcaseAds/LandingEmailAd',
   component: LandingEmailAd,
-  decorators: [withKnobs],
+  argTypes: {
+    buttonText: textInput,
+    desktopImageUrl: textInput,
+    errorText: disable,
+    inputId: disable,
+    headline: textInput,
+    onSubmit: {action: 'OnSubmit'},
+    tabletImageUrl: textInput,
+    title: textInput,
+    success: trueFalse,
+    successText: textInput,
+  }
 };
 
-export const Default = () => (
+const Template = ({...args}) => (
   <ThemeProvider theme={{
     breakpoints,
   }}>
-    <LandingEmailAd
-      desktopImageUrl='https://res.cloudinary.com/hksqkdlah/image/upload/ar_16:9,c_scale,dpr_auto,h_330,w_560/v1618429645/ATK%20Landing%20Page/WellEquippedCookNewsletter_3x.jpg'
-      tabletImageUrl='https://res.cloudinary.com/hksqkdlah/image/upload/ar_16:9,c_scale,dpr_auto,h_330,w_560/v1618429645/ATK%20Landing%20Page/WellEquippedCookNewsletter_3x.jpg' 
-      headline="Well-Equipped Cook Newsletter"
-      imageUrl="https://res.cloudinary.com/hksqkdlah/image/upload/ar_16:9,c_scale,dpr_auto,h_330,w_560/v1618429645/ATK%20Landing%20Page/WellEquippedCookNewsletter_3x.jpg"
-      onSubmit={action('click button')}
-      title="How far does our team go to research equipment and ingredients on your behalf? Find out."
-    />
+    <LandingEmailAd {...args}/>
   </ThemeProvider>
 );
 
-export const Success = () => (
-  <ThemeProvider theme={{
-    breakpoints,
-  }}>
-    <LandingEmailAd 
-      headline="Well-Equipped Cook Newsletter"
-      onSubmit={action('click button')}
-      success={true}
-      successText="Thank you! Get ready for watch and cook newsletter in your inbox."
-      title="How far does our team go to research equipment and ingredients on your behalf? Find out."
-      desktopImageUrl='https://res.cloudinary.com/hksqkdlah/image/upload/ar_16:9,c_scale,dpr_auto,h_330,w_560/v1618429645/ATK%20Landing%20Page/WellEquippedCookNewsletter_3x.jpg'
-      tabletImageUrl='https://res.cloudinary.com/hksqkdlah/image/upload/ar_16:9,c_scale,dpr_auto,h_330,w_560/v1618429645/ATK%20Landing%20Page/WellEquippedCookNewsletter_3x.jpg'
-    />
-  </ThemeProvider>
-);
+const defaultArgs = {
+  buttonText: 'sign me up',
+  desktopImageUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/ar_16:9,c_scale,dpr_auto,h_330,w_560/v1618429645/ATK%20Landing%20Page/WellEquippedCookNewsletter_3x.jpg',
+  tabletImageUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/ar_16:9,c_scale,dpr_auto,h_330,w_560/v1618429645/ATK%20Landing%20Page/WellEquippedCookNewsletter_3x.jpg',
+}
 
-export const DarkMode = () => (
-  <ThemeProvider theme={{
-    breakpoints,
-    mode: 'dark',
-  }}>
-    <LandingEmailAd
-      onSubmit={action('click button')}
-      title="Get out of that cooking rut with six weeks of this newsletter from Jack Bishop in your inbox."
-      desktopImageUrl='https://res.cloudinary.com/hksqkdlah/image/upload/ar_16:9,c_scale,dpr_auto,h_330,w_560/v1618429645/ATK%20Landing%20Page/WellEquippedCookNewsletter_3x.jpg'
-      tabletImageUrl='https://res.cloudinary.com/hksqkdlah/image/upload/ar_16:9,c_scale,dpr_auto,h_330,w_560/v1618429645/ATK%20Landing%20Page/WellEquippedCookNewsletter_3x.jpg'
-    />
-  </ThemeProvider>
-);
+export const Default = Template.bind({});
+Default.argTypes = {
+  successText: disable
+}
+Default.args = {
+  headline: 'Well-Equipped Cook Newsletter',
+  success: false,
+  successText: 'Thank you! Get ready for watch and cook newsletter in your inbox.',
+  title: 'How far does our team go to research equipment and ingredients on your behalf? Find out.',
+  ...defaultArgs,
+};
 
-export const DarkModeSuccess = () => (
-  <ThemeProvider theme={{
-    breakpoints,
-    mode: 'dark'
-  }}>
-  <LandingEmailAd 
-    desktopImageUrl='https://res.cloudinary.com/hksqkdlah/image/upload/ar_16:9,c_scale,dpr_auto,h_330,w_560/v1618429645/ATK%20Landing%20Page/WellEquippedCookNewsletter_3x.jpg'
-    tabletImageUrl='https://res.cloudinary.com/hksqkdlah/image/upload/ar_16:9,c_scale,dpr_auto,h_330,w_560/v1618429645/ATK%20Landing%20Page/WellEquippedCookNewsletter_3x.jpg'
-    headline="Well-Equipped Cook Newsletter"
-    onSubmit={action('click button')}
-    success={true}
-    successText="Thank you! Get ready for watch and cook newsletter in your inbox."
-    title="How far does our team go to research equipment and ingredients on your behalf? Find out."
-  />
-  </ThemeProvider>
-)
+export const Success = Template.bind({});
+Success.argTypes = {
+  buttonText: disable
+}
+Success.args = {
+  headline: 'Well-Equipped Cook Newsletter',
+  success: true,
+  successText: 'Thank you! Get ready for watch and cook newsletter in your inbox.',
+  title: 'How far does our team go to research equipment and ingredients on your behalf? Find out.',
+  ...defaultArgs,
+};
+
+export const DarkMode = Template.bind({});
+DarkMode.argTypes = {
+  mode: mode,
+  successText: disable
+}
+DarkMode.args = {
+  headline: "",
+  mode: 'dark',
+  success: false,
+  title: 'Get out of that cooking rut with six weeks of this newsletter from Jack Bishop in your inbox.',
+  ...defaultArgs
+};
+
+export const DarkModeSuccess = Template.bind({});
+DarkModeSuccess.argTypes = {
+  buttonText: disable,
+  mode: mode
+}
+DarkModeSuccess.args = {
+  headline: 'Well-Equipped Cook Newsletter',
+  mode: 'dark',
+  success: true,
+  successText: 'Thank you! Get ready for watch and cook newsletter in your inbox.',
+  title: 'How far does our team go to research equipment and ingredients on your behalf? Find out.',
+  ...defaultArgs
+};

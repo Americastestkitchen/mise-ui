@@ -5,13 +5,12 @@ import styled, { css, ThemeProvider } from 'styled-components';
 
 import HeroAd from './index';
 import { breakpoints, color, spacing, withThemes } from '../../../styles';
-import { disable, mode, textInput } from '../../../config/argTypes';
+import { disable, textInput } from '../../../config/argTypes';
 
 export default {
   title: 'Components/Ads/HeroAd',
   component: HeroAd,
   argTypes: {
-    mode: mode,
     backgroundColor: {
       options: ['darkSlate', 'bluewood', 'squirrel', 'slate'],
       control: {type: 'select'}
@@ -53,6 +52,7 @@ const StoryWrapper = styled.div`
 const Template = ({...args}) => (
   <ThemeProvider theme={{
     breakpoints,
+    mode: 'dark'
   }}>
     <StoryWrapper>
       <HeroAd {...args}/>
@@ -68,7 +68,6 @@ Default.args = {
   cloudinaryId: 'mise-play/ATK-COMPLETE-SHOW-COVER',
   cta: 'Save 56% Now',
   ctaHref: 'https://shop.americastestkitchen.com',
-  mode: 'dark',
   subtitle: '',
   title: 'Get 1,670+ Recipes from all 21 seasons!'
 }

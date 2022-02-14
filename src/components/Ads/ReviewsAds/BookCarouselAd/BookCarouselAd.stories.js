@@ -11,7 +11,7 @@ export default {
   argTypes: {
   cloudinaryId: textInput,
   ctaLinkText: textInput,
-  hrefUrl: textInput,
+  hrefUrl: disable,
   sourceKey: disable,
   title: textInput,
   }

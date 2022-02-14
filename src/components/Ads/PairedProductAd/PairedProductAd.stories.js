@@ -3,19 +3,18 @@ import React from 'react';
 import styled, { css, ThemeProvider } from 'styled-components';
 
 import PairedProduct from './index';
-import { textInput, mode } from '../../../config/argTypes';
+import { textInput, disable} from '../../../config/argTypes';
 import { breakpoints, color, spacing, withThemes } from '../../../styles';
 
 export default {
   title: 'Components/Ads/PairedProductAd',
   component: PairedProduct,
   argTypes: {
-    onClick: {action: 'onClick callback'}, 
+    onClick: disable, 
     products: {
       control: {type: 'object'}
     },
     title: textInput,
-    mode: mode,
   }
 };
 
@@ -61,6 +60,7 @@ const defaultData =  [
 const ThemedPairedProductAd = ({...args}) => (
   <ThemeProvider theme={{
     breakpoints,
+    mode: 'dark'
   }}>
     <StoryWrapper>
       <PairedProduct {...args}/>
@@ -76,5 +76,4 @@ export const Default = Template.bind({});
 Default.args = {
   products: defaultData,
   title: 'Cook with Confidence',
-  mode: 'dark',
 }

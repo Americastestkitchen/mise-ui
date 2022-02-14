@@ -1,16 +1,23 @@
 import breakpoint from 'styled-components-breakpoint';
 import React from 'react';
 import styled, { css, ThemeProvider } from 'styled-components';
-import { withKnobs, select , text } from '@storybook/addon-knobs';
 
 import { breakpoints, color, spacing, withThemes } from '../../../../styles';
-
 import FreeTrialAd from './index';
+import { disable, mode, textInput } from '../../../../config/argTypes';
 
 export default {
   title: 'Components/Ads/ShowcaseAds/FreeTrialAd',
   component: FreeTrialAd,
-  decorators: [withKnobs],
+  argTypes: {
+    cloudinaryId: disable,
+    cta: textInput,
+    ctaHref: disable,
+    onClick: disable,
+    mode: mode,
+    title: textInput,
+    subtitle: textInput,
+  }
 };
 
 const StoryWrapperTheme = {
@@ -30,19 +37,22 @@ const StoryWrapper = styled.div`
   ${withThemes(StoryWrapperTheme)}
 `;
 
-export const Default = () => (
+const Template = ({...args}) => (
   <ThemeProvider theme={{
-    breakpoints,
-    mode: 'dark',
+    breakpoints
   }}>
     <StoryWrapper>
-      <FreeTrialAd
-        cloudinaryId={text('Image', 'mise-play/play-showcase-magazine-ad')}
-        cta={text('Cta Text', 'Free trial issue')}
-        ctaHref="https://www.americastestkitchen.com/order"
-        subtitle={text('Subtitle', 'All-new foolproof recipes and kitchen discoveries in America’s most-trusted cooking magazine.')}
-        title={text('Title', 'Claim Your Free Trial Issue!')}
-      />
+      <FreeTrialAd {...args}/>
     </StoryWrapper>
   </ThemeProvider>
 );
+
+export const Default = Template.bind({});
+Default.args = {
+  cloudinaryId: 'mise-play/play-showcase-magazine-ad',
+  cta: 'Free trial issue',
+  ctaHref: 'https://www.americastestkitchen.com/order',
+  mode: 'dark',
+  subtitle: 'All-new foolproof recipes and kitchen discoveries in America’s most-trusted cooking magazine.',
+  title: 'Claim Your Free Trial Issue!',
+};

@@ -24,6 +24,8 @@ export default {
 
 const defaultImages = {
   desktopAsset: 'https://res.cloudinary.com/hksqkdlah/image/upload/v1621261895/ATK%20Reviews%20Ads/PansHat_Desktop_3x.jpg',
+  desktopLgAsset: '',
+  tabletAsset: '',
   mobileAsset: 'https://res.cloudinary.com/hksqkdlah/image/upload/v1621261948/ATK%20Reviews%20Ads/PansHat_Mobile_3x.jpg',
 };
 
