@@ -19,6 +19,8 @@ const ContentWrapperTheme = {
     ${breakpoint('xlg')`
       padding: 0.8rem 3rem 3rem 2.4rem;
     `}
+
+    ${mixins.articlesBoxLists()}
   `,
   atk: css`
     color: ${color.eclipse};
