@@ -90,7 +90,7 @@ export const Title = styled.h2`
   ${cssThemedColor}
   ${cssThemedFontBold}
   font-size: 26px;
-  line-height: 1.2;
+  line-height: 33px;
   margin: 0;
 `;
 
