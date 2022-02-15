@@ -3,7 +3,7 @@
 import Flickity from 'flickity';
 import React, { useCallback, useState, useEffect, useRef, MutableRefObject, Dispatch, SetStateAction } from 'react';
 import useResizeObserver from 'use-resize-observer';
-import { fixIosScrollBehavior, fixLeftOverflow } from './bug-fixes';
+import { fixIosScrollBehavior, fixLeftOverflow, fixOverflowGroups } from './bug-fixes';
 
 function isAllSlidesVisible(flkty: any): boolean {
   const slideableWidth = flkty?.slideableWidth;
@@ -80,6 +80,7 @@ function useFlickityCallbackRef(flickity: MutableRefObject<Flickity | null>) {
         ready: function (this: Flickity) {
           fixIosScrollBehavior.call(this);
           fixLeftOverflow.call(this);
+          fixOverflowGroups.call(this);
         },
       },
     });
@@ -133,6 +134,7 @@ function useFlickityCallbackRefGroup(flickity: MutableRefObject<Flickity | null>
         ready: function (this: Flickity) {
           fixIosScrollBehavior.call(this);
           fixLeftOverflow.call(this);
+          fixOverflowGroups.call(this);
         },
       },
     });
