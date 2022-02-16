@@ -143,6 +143,8 @@ export type DisplayBeltAdProps = {
   ctaLink?: string;
   /** top headline copy */
   headline?: string;
+  /** Onclick fires mixpanel accepted event */
+  onClick: () => void;
   /** sale copy  */
   saleCopy?: string
 };
@@ -152,6 +154,7 @@ const DisplayBeltAd = ({
   ctaCopy = 'SAVE NOW',
   ctaLink = 'https://shop.americastestkitchen.com',
   headline = 'Discover favorite cookbooks',
+  onClick,
   saleCopy = 'Up to 70% off',
 }: DisplayBeltAdProps) => (
   <ImageBgWrapper>
@@ -170,7 +173,7 @@ const DisplayBeltAd = ({
       <Headline>{headline}</Headline>
       <SaleCopy>{saleCopy}</SaleCopy>
     </Content>
-    <Cta href={ctaLink}>{ctaCopy}<span>‣</span></Cta>
+    <Cta onClick={onClick} href={ctaLink}>{ctaCopy}<span>‣</span></Cta>
   </ImageBgWrapper>
 );
 
