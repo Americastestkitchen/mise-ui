@@ -1,3 +1,16 @@
+# v1.33.4 (Wed Feb 16 2022)
+
+#### 🐛 Bug Fix
+
+- release branch for 1.33.4 [#634](https://github.com/Americastestkitchen/mise-ui/pull/634) ([@jaslakson](https://github.com/jaslakson))
+- ARCHIE-3166 - Topic carousel header [#620](https://github.com/Americastestkitchen/mise-ui/pull/620) ([@jaslakson](https://github.com/jaslakson))
+
+#### Authors: 1
+
+- Jason Aslakson ([@jaslakson](https://github.com/jaslakson))
+
+---
+
 # v1.33.3 (Mon Feb 14 2022)
 
 #### 🐛 Bug Fix
