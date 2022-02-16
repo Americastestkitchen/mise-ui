@@ -111,6 +111,14 @@ const SearchSortByCircleTheme = {
     height: 1.2rem;
     margin-right: 0.6rem;
     width: 1.2rem;
+
+    border: solid 1px ${color.nobel};
+
+    ${({ isRefined }) => (isRefined ? `
+        background-color: ${color.mint};
+    ` : `
+        background-color: transparent;
+    `)}
   `,
   atk: css`
     border: solid 1px ${color.nobel};
