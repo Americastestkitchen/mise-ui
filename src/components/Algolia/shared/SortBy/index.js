@@ -80,16 +80,18 @@ const SearchSortByItem = styled.div`
 `;
 
 const SearchSortByNew = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 0.8rem;
+  height: 2rem;
+  width: 4.2rem;
+  border-radius: 0.6rem;
   background-color: ${color.tomato};
-  border-radius: 0.5rem;
   color: ${color.white};
-  font: ${fontSize.xsm}/1.2rem ${font.pnb};
-  letter-spacing: 1.25px;
-  margin-left: ${spacing.xsm};
-  padding: 2px 0px 1px 2px;
-  text-align: center;
+  font: ${fontSize.xsm} / 1.8rem ${font.pnb};
+  letter-spacing: 1.6px;
   text-transform: uppercase;
-  width: 3.4rem;
 `;
 
 const SearchSortByRadioInputTheme = {
@@ -111,6 +113,14 @@ const SearchSortByCircleTheme = {
     height: 1.2rem;
     margin-right: 0.6rem;
     width: 1.2rem;
+
+    border: solid 1px ${color.nobel};
+
+    ${({ isRefined }) => (isRefined ? `
+        background-color: ${color.mint};
+    ` : `
+        background-color: transparent;
+    `)}
   `,
   atk: css`
     border: solid 1px ${color.nobel};
