@@ -17,6 +17,7 @@ const items = [
   { value: 'everest_search_development', label: 'Relevance' },
   { value: 'everest_search_popularity_desc_development', label: 'Popularity' },
   { value: 'everest_search_published_date_desc_development', label: 'Publish Date' },
+  { value: "everest_search_avg_rating_desc_development", label: "Top Rated", isNew: true }
 ];
 
 const Template = (args) => (
