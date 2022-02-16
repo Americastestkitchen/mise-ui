@@ -1,3 +1,15 @@
+# v1.33.5 (Wed Feb 16 2022)
+
+#### 🐛 Bug Fix
+
+- SEARCH-106: search page need visible checkbox without site key [#635](https://github.com/Americastestkitchen/mise-ui/pull/635) ([@harry-atk](https://github.com/harry-atk))
+
+#### Authors: 1
+
+- Harry Scheuerle ([@harry-atk](https://github.com/harry-atk))
+
+---
+
 # v1.33.4 (Wed Feb 16 2022)
 
 #### 🐛 Bug Fix
