@@ -17,8 +17,12 @@ const HeroHatBody = styled.div.attrs({
   flex-direction: column;
   margin: 0 auto;
   max-width: calc(100% - 2.6rem);
-  padding: 1rem 2rem;
+  padding: 1rem 2rem 2.5rem;
   width: 34.2rem;
+
+  button.how-we-use__link {
+    line-height: 1.2rem;
+  }
 
   #article-page-hat-form-email,
   #article-page-hat-form-submit {
@@ -43,7 +47,7 @@ const HeroHatBody = styled.div.attrs({
     letter-spacing: ${letterSpacing.cta};
 
     &:hover {
-      background-color: #3c7f10;
+      background-color: ${color.darkFrog} !important;
     }
   }
 
@@ -88,13 +92,12 @@ const HeroHatBody = styled.div.attrs({
     }
 
     button {
-      background-color: #3f8411;
       letter-spacing: 2.88px;
       line-height: 20px;
       padding: 0;
 
       &:hover {
-        background-color: #3c7f10;
+        background-color: ${color.darkFrog} !important;
       }
     }
   }
@@ -137,7 +140,7 @@ const HeroHatBody = styled.div.attrs({
       button {
         width: 27.4rem;
         padding: 0;
-        line-height: 23px;
+        font-size: 1.7rem;
       }
 
       input {
@@ -171,6 +174,7 @@ const HeroHatBody = styled.div.attrs({
       max-width: 100%;
       button {
         line-height: 20px;
+        font-size: 1.8rem;
       }
     }
 
