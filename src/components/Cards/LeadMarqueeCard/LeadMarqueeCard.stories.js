@@ -31,6 +31,28 @@ export const Default = () => (
   </StoryWrapper>
 );
 
+export const WithFavoritesRibbon = () => (
+  <StoryWrapper className="story-wrapper">
+    <LeadMarqueeCard
+      author={text('Author Name', 'Kevin Pang')}
+      authorImageCloudinaryId={text('Author Image', 'AKO%20Articles/Author_Headshots/staff_kevin_pang')}
+      imageUrl={text('Background Image', 'https://res.cloudinary.com/hksqkdlah/image/upload/ar_1:1,c_fill,dpr_2.0,f_auto,fl_lossy,g_faces:auto,h_440,w_792,q_auto:low/22391_sfs-chocolate-crinkle-cookies-35')}
+      backgroundColor={select('Background Color', ['#1A3352', '#B25B18', '#321A52', '#1775C2', '#857351', '#521a2d', '#405700', '#005E71', '#167A7A', '#0B3C3D'], "#005E71")}
+      description={text('Dek', '"There’s a better way than squinting into a laptop."')}
+      displayAttributions
+      commentsCount={300}
+      numRatings={43}
+      avgRating={4.8}
+      displayFavoritesRibbon
+      favoriteObjectId="recipe_8125"
+      href={text('Link', 'https://www.americastestkitchen.com/recipes/8125')}
+      siteKey="atk"
+      stickers={[{ type: 'priority', text: 'New' }, { type: 'editorial', text: 'Dessert' }]}
+      title={text('Title', 'Chocolate Crinkle Cookies')}
+    />
+  </StoryWrapper>
+);
+
 export const NoAuthorImage = () => (
   <StoryWrapper className="story-wrapper">
     <LeadMarqueeCard
