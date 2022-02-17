@@ -42,6 +42,18 @@
         "example",
         "test"
       ]
+    },
+    {
+      "login": "kayseriatk",
+      "name": "Kayseri Martinez",
+      "avatar_url": "https://avatars.githubusercontent.com/u/95244777?v=4",
+      "profile": "https://github.com/kayseriatk",
+      "contributions": [
+        "doc",
+        "example",
+        "test",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
