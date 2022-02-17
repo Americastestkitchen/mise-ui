@@ -1,3 +1,15 @@
+# v1.33.6 (Thu Feb 17 2022)
+
+#### 🐛 Bug Fix
+
+- Fixed Recipes Marketing Hat [#633](https://github.com/Americastestkitchen/mise-ui/pull/633) ([@leo-fsl](https://github.com/leo-fsl))
+
+#### Authors: 1
+
+- Leonardo ([@leo-fsl](https://github.com/leo-fsl))
+
+---
+
 # v1.33.5 (Wed Feb 16 2022)
 
 #### 🐛 Bug Fix
