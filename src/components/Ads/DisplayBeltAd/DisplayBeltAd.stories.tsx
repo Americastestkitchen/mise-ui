@@ -1,6 +1,6 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import { defaultTheme, storybookParameters, wrapKnobs } from '../../../config/shared.stories';
+import { defaultTheme, setViewport, storybookParameters, wrapKnobs } from '../../../config/shared.stories';
 import DisplayBeltAd, { DisplayBeltAdProps } from './DisplayBeltAd';
 
 export default {
@@ -33,3 +33,8 @@ const PreviewDisplayBeltAd = ({ theme, props }: PreviewProps) => (
 export const AtkBeltAd = () => <PreviewDisplayBeltAd theme={{ siteKey: 'atk' }} />;
 export const CioBeltAd = () => <PreviewDisplayBeltAd theme={{ siteKey: 'cio' }} />;
 export const CcoBeltAd = () => <PreviewDisplayBeltAd theme={{ siteKey: 'cco' }} />;
+export const AtkBeltAdMobile = () => <PreviewDisplayBeltAd theme={{ siteKey: 'atk' }} />;
+export const AtkBeltAdTablet = () => <PreviewDisplayBeltAd theme={{ siteKey: 'atk' }} />;
+
+setViewport('iphone6', AtkBeltAdMobile);
+setViewport('ipad', AtkBeltAdTablet);
