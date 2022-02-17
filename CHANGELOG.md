@@ -1,3 +1,16 @@
+# v1.33.7 (Thu Feb 17 2022)
+
+#### 🐛 Bug Fix
+
+- Text component with a background causes font styling issues [#631](https://github.com/Americastestkitchen/mise-ui/pull/631) (kayserifsl@Kayseris-MacBook-Pro.local [@kayseriatk](https://github.com/kayseriatk))
+
+#### Authors: 2
+
+- Kayseri FullStackLabs (kayserifsl@Kayseris-MacBook-Pro.local)
+- Kayseri Martinez ([@kayseriatk](https://github.com/kayseriatk))
+
+---
+
 # v1.33.6 (Thu Feb 17 2022)
 
 #### 🐛 Bug Fix
