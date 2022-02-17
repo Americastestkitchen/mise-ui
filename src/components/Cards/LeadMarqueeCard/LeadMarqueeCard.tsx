@@ -201,7 +201,7 @@ type LeadMarqueeCardProps = {
   /** Image for card. */
   imageUrl: string;
   href: string;
-  siteKey: 'atk' | 'cco' | 'cio' | 'kids' | 'school' | 'shop'
+  siteKey: 'atk' | 'cco' | 'cio' | 'kids' | 'school' | 'shop';
   /** Optional: attribution controls */
   displayAttributions?: boolean;
   commentsCount?: number;
