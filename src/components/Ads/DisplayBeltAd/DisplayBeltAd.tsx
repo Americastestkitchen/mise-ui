@@ -4,6 +4,7 @@ import breakpoint from 'styled-components-breakpoint';
 import cloudinaryInstance, { baseImageConfig } from '../../../lib/cloudinary';
 import { color, font, fontSize, letterSpacing, withThemes } from '../../../styles';
 import { cssThemedColor } from '../../../styles/mixins';
+import useMedia from '../../hooks/useMedia';
 
 export type HeroImages = {
   mobile: string,
@@ -123,21 +124,7 @@ const ImageBgWrapperTheme = {
 };
 const ImageBgWrapper = styled.div`${withThemes(ImageBgWrapperTheme)}`;
 
-const Img = styled.img`
-  height: 100%;
-  left: 50%;
-  position: absolute;
-  top: 47%;
-  transform: translate(-50%, -50%);
-
-  ${breakpoint('md')`
-    top: 50%;
-  `}
-`;
-
 export type DisplayBeltAdProps = {
-  /** cloudinary strings for background images */
-  backgroundImages: HeroImages;
   /** cta button copy */
   ctaCopy?: string;
   /** cta link */
@@ -150,8 +137,119 @@ export type DisplayBeltAdProps = {
   saleCopy?: string
 };
 
+const ImageLeft = styled.img`
+  position: absolute;
+  height: 100%;
+  left: 0;
+`;
+
+const ImageRight = styled.img`
+  position: absolute;
+  height: 100%;
+  right: 0;
+`;
+
+const OffcenterImage = styled.img`
+  position: absolute;
+  height: 100%;
+  transform: translateX(-74px);
+`;
+
+const exampleImages = {
+  desktop: '2022 Review Landing/Belt-placeholder-AKO-Desktop-1280x150_2x.png',
+  largeTablet: '2022 Review Landing/Belt-placeholder-AKO-Landscape_Tablet-1024x150_2x.png',
+  mobile: '2022 Review Landing/Belt-placeholder-AKO-Mobile-372x192_2x.png',
+  tablet: '2022 Review Landing/Belt-placeholder-AKO-Tablet-768x150_2x.png',
+};
+
+const shared = { alt: '', crossOrigin: 'anonymous', decoding: 'async' } as const;
+
+function DisplayBeltImage() {
+  const isMobile = useMedia('(max-width: 767px)');
+  const isTablet = useMedia('(min-width: 768px)');
+  const isLargeTablet = useMedia('(min-width: 1024px)');
+  const isDesktop = useMedia('(min-width: 1136px)');
+
+  if (isDesktop) {
+    return (
+      <OffcenterImage
+        src={cloudinaryInstance.url(exampleImages.desktop, {
+          ...baseImageConfig,
+          height: 150,
+          width: 1136,
+        })}
+        {...shared}
+      />
+    );
+  }
+
+  if (isLargeTablet) {
+    return (
+      <>
+        <ImageLeft
+          src={cloudinaryInstance.url(exampleImages.largeTablet, {
+            ...baseImageConfig,
+            height: 150,
+            width: 350,
+            gravity: 'west',
+          })}
+          {...shared}
+        />
+        <ImageRight
+          src={cloudinaryInstance.url(exampleImages.largeTablet, {
+            ...baseImageConfig,
+            height: 150,
+            width: 350,
+            gravity: 'east',
+          })}
+          {...shared}
+        />
+      </>
+    );
+  }
+
+  if (isTablet) {
+    return (
+      <>
+        <ImageLeft
+          src={cloudinaryInstance.url(exampleImages.tablet, {
+            ...baseImageConfig,
+            height: 150,
+            width: 220,
+            gravity: 'west',
+          })}
+          {...shared}
+        />
+        <ImageRight
+          src={cloudinaryInstance.url(exampleImages.tablet, {
+            ...baseImageConfig,
+            height: 150,
+            width: 220,
+            gravity: 'east',
+          })}
+          {...shared}
+        />
+      </>
+    );
+  }
+
+  if (isMobile) {
+    return (
+      <ImageLeft
+        src={cloudinaryInstance.url(exampleImages.mobile, {
+          ...baseImageConfig,
+          height: 150,
+          width: 150,
+        })}
+        {...shared}
+      />
+    );
+  }
+
+  return null;
+}
+
 const DisplayBeltAd = ({
-  backgroundImages,
   ctaCopy = 'SAVE NOW',
   ctaLink = 'https://shop.americastestkitchen.com',
   headline = 'Discover favorite cookbooks',
@@ -159,17 +257,7 @@ const DisplayBeltAd = ({
   saleCopy = 'Up to 70% off',
 }: DisplayBeltAdProps) => (
   <ImageBgWrapper>
-    <picture>
-      <source media="(min-width: 1136px)" srcSet={cloudinaryInstance.url(backgroundImages.desktop, { ...baseImageConfig, height: 150 })} />
-      <source media="(min-width: 1024px)" srcSet={cloudinaryInstance.url(backgroundImages.largeTablet, { ...baseImageConfig, height: 150 })} />
-      <source media="(min-width: 768px)" srcSet={cloudinaryInstance.url(backgroundImages.tablet, { ...baseImageConfig, height: 150 })} />
-      <Img
-        src={cloudinaryInstance.url(backgroundImages.mobile, { ...baseImageConfig, height: 130 })}
-        alt=""
-        crossOrigin="anonymous"
-        decoding="async"
-      />
-    </picture>
+    <DisplayBeltImage />
     <Content>
       <Headline>{headline}</Headline>
       <SaleCopy>{saleCopy}</SaleCopy>

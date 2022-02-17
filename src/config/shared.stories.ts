@@ -37,6 +37,7 @@ export const setBackground = (background: string, ...stories: ComponentStory<any
   });
 };
 
+// https://github.com/storybookjs/storybook/blob/next/addons/viewport/src/defaults.ts
 export const setViewport = (viewport: string, ...stories: ComponentStory<any>[]): void => {
   stories.forEach((story) => {
     story.parameters = { ...story.parameters, viewport: { defaultViewport: viewport } };
