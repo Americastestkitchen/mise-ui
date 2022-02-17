@@ -33,7 +33,7 @@ const CtaTheme = {
     color: ${color.white};
     display: flex;
     font: ${fontSize.lg}/2rem ${font.pnb};
-    height: 4.5rem;
+    height: 4rem;
     justify-content: center;
     letter-spacing: ${letterSpacing.cta};
     margin: 0 auto;
@@ -102,6 +102,7 @@ const ImageBgWrapperTheme = {
     display: flex;
     flex-direction: column;
     height: 19.2rem;
+    overflow: hidden;
     justify-content: center;
     position: relative;
     width: 100%;
@@ -173,7 +174,7 @@ const DisplayBeltAd = ({
       <Headline>{headline}</Headline>
       <SaleCopy>{saleCopy}</SaleCopy>
     </Content>
-    <Cta onClick={onClick} href={ctaLink}>{ctaCopy}<span>‣</span></Cta>
+    <Cta onClick={onClick} href={ctaLink}>{ctaCopy} ▸</Cta>
   </ImageBgWrapper>
 );
 
