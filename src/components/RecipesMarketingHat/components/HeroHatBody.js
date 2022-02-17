@@ -40,7 +40,7 @@ const HeroHatBody = styled.div.attrs({
 
   .registrant-submit {
     align-items: center;
-    background-color: #3f8411;
+    background-color: ${color.frog} !important;
     display: flex;
     font: ${fontSize.lg}/2rem ${font.pnb};
     justify-content: center;
