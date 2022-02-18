@@ -61,6 +61,10 @@ const CarouselTheme = {
       display: flex;
       overflow: hidden;
 
+      .carousel-cell {
+        transform: none !important;
+      }
+
       .slideshow & {
         .carousel-cell {
           display: flex;
