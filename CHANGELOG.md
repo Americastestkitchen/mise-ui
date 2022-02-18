@@ -1,3 +1,15 @@
+# v1.33.9 (Fri Feb 18 2022)
+
+#### 🐛 Bug Fix
+
+- CORE-142: don't translate disabled carousel cells when its parent has display flex. [#641](https://github.com/Americastestkitchen/mise-ui/pull/641) ([@harry-atk](https://github.com/harry-atk))
+
+#### Authors: 1
+
+- Harry Scheuerle ([@harry-atk](https://github.com/harry-atk))
+
+---
+
 # v1.33.8 (Fri Feb 18 2022)
 
 #### 🐛 Bug Fix
