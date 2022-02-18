@@ -1,3 +1,15 @@
+# v1.33.8 (Fri Feb 18 2022)
+
+#### 🐛 Bug Fix
+
+- Fix button color marketing hat [#640](https://github.com/Americastestkitchen/mise-ui/pull/640) ([@leo-fsl](https://github.com/leo-fsl))
+
+#### Authors: 1
+
+- Leonardo ([@leo-fsl](https://github.com/leo-fsl))
+
+---
+
 # v1.33.7 (Thu Feb 17 2022)
 
 #### 🐛 Bug Fix
