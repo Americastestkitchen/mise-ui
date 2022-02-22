@@ -148,18 +148,20 @@ const ImageLeft = styled.img`
   position: absolute;
   height: 100%;
   left: 0;
+  max-width: unset;
 `;
 
 const ImageRight = styled.img`
   position: absolute;
   height: 100%;
   right: 0;
+  max-width: unset;
 `;
 
-const OffcenterImage = styled.img`
+const FullImage = styled.img`
   position: absolute;
   height: 100%;
-  transform: translateX(-74px);
+  max-width: unset;
 `;
 
 const exampleImages = {
@@ -179,7 +181,8 @@ function DisplayBeltImage({ backgroundImages } : {backgroundImages: HeroImages})
 
   if (isDesktop) {
     return (
-      <OffcenterImage
+      <FullImage
+        className="display-belt__desktop-image"
         src={cloudinaryInstance.url(backgroundImages?.desktop, {
           ...baseImageConfig,
           height: 150,
