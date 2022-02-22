@@ -130,6 +130,8 @@ const ImageBgWrapperTheme = {
 const ImageBgWrapper = styled.div`${withThemes(ImageBgWrapperTheme)}`;
 
 export type DisplayBeltAdProps = {
+  /** background images */
+  backgroundImages?: HeroImages;
   /** cta button copy */
   ctaCopy?: string;
   /** cta link */
@@ -146,18 +148,20 @@ const ImageLeft = styled.img`
   position: absolute;
   height: 100%;
   left: 0;
+  max-width: unset;
 `;
 
 const ImageRight = styled.img`
   position: absolute;
   height: 100%;
   right: 0;
+  max-width: unset;
 `;
 
-const OffcenterImage = styled.img`
+const FullImage = styled.img`
   position: absolute;
   height: 100%;
-  transform: translateX(-74px);
+  max-width: unset;
 `;
 
 const exampleImages = {
@@ -169,7 +173,7 @@ const exampleImages = {
 
 const shared = { alt: '', crossOrigin: 'anonymous', decoding: 'async' } as const;
 
-function DisplayBeltImage() {
+function DisplayBeltImage({ backgroundImages } : {backgroundImages: HeroImages}) {
   const isMobile = useMedia('(max-width: 767px)');
   const isTablet = useMedia('(min-width: 768px)');
   const isLargeTablet = useMedia('(min-width: 1024px)');
@@ -177,11 +181,11 @@ function DisplayBeltImage() {
 
   if (isDesktop) {
     return (
-      <OffcenterImage
-        src={cloudinaryInstance.url(exampleImages.desktop, {
+      <FullImage
+        className="display-belt__desktop-image"
+        src={cloudinaryInstance.url(backgroundImages?.desktop, {
           ...baseImageConfig,
           height: 150,
-          width: 1136,
         })}
         {...shared}
       />
@@ -192,7 +196,7 @@ function DisplayBeltImage() {
     return (
       <>
         <ImageLeft
-          src={cloudinaryInstance.url(exampleImages.largeTablet, {
+          src={cloudinaryInstance.url(backgroundImages?.largeTablet, {
             ...baseImageConfig,
             height: 150,
             width: 350,
@@ -201,7 +205,7 @@ function DisplayBeltImage() {
           {...shared}
         />
         <ImageRight
-          src={cloudinaryInstance.url(exampleImages.largeTablet, {
+          src={cloudinaryInstance.url(backgroundImages?.largeTablet, {
             ...baseImageConfig,
             height: 150,
             width: 350,
@@ -217,7 +221,7 @@ function DisplayBeltImage() {
     return (
       <>
         <ImageLeft
-          src={cloudinaryInstance.url(exampleImages.tablet, {
+          src={cloudinaryInstance.url(backgroundImages?.tablet, {
             ...baseImageConfig,
             height: 150,
             width: 220,
@@ -226,7 +230,7 @@ function DisplayBeltImage() {
           {...shared}
         />
         <ImageRight
-          src={cloudinaryInstance.url(exampleImages.tablet, {
+          src={cloudinaryInstance.url(backgroundImages?.tablet, {
             ...baseImageConfig,
             height: 150,
             width: 220,
@@ -241,7 +245,7 @@ function DisplayBeltImage() {
   if (isMobile) {
     return (
       <ImageLeft
-        src={cloudinaryInstance.url(exampleImages.mobile, {
+        src={cloudinaryInstance.url(backgroundImages?.mobile, {
           ...baseImageConfig,
           height: 150,
           width: 150,
@@ -269,6 +273,7 @@ const TriangleRight = () => (
 );
 
 const DisplayBeltAd = ({
+  backgroundImages = exampleImages,
   ctaCopy = 'SAVE NOW',
   ctaLink = 'https://shop.americastestkitchen.com',
   headline = 'Discover favorite cookbooks',
@@ -276,7 +281,7 @@ const DisplayBeltAd = ({
   saleCopy = 'Up to 70% off',
 }: DisplayBeltAdProps) => (
   <ImageBgWrapper>
-    <DisplayBeltImage />
+    <DisplayBeltImage backgroundImages={backgroundImages} />
     <Content>
       <Headline>{headline}</Headline>
       <SaleCopy>{saleCopy}</SaleCopy>

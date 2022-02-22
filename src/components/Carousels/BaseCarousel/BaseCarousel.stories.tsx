@@ -266,11 +266,11 @@ const RecipeCarouselExampleTemplate = ({ siteKey = 'atk' }: ActionProps) => (
     >
       <BaseCarousel
         useFlickityHook={useFlickityGroup}
-        title="Recipe Carousel"
+        title="Got Gear, Need Recipes?"
         header={(
           <LinkCarouselHeader
-            title="Recipe Carousel"
-            linkText="BROWSE ALL"
+            title="Got Gear, Need Recipes?"
+            linkText="browse all Books"
             linkProps={{ href: '/#' }}
           />
         )}
