@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { color, fontSize, lineHeight, font } from '../../../../styles';
+import { color, fontSize, lineHeight, font, mixins } from '../../../../styles';
 import type { InferStyledTypes } from '../../../../styles/utility-types';
 import ActionSummaryItem from '../../../ActionSummaryItem';
 
@@ -9,6 +9,10 @@ const Wrapper = styled.div`
 
   .icon--star {
     margin-right: 1.6rem;
+  }
+
+  &:focus {
+    ${mixins.focusIndicator('#3d3d3d', '2px')}
   }
 `;
 
