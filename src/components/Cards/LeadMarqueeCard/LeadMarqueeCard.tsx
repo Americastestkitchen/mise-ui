@@ -221,7 +221,7 @@ const LeadMarqueeCard = ({
       href={href}
       onClick={onClick}
     >
-      <MarqueeImageWrapper>
+      <MarqueeImageWrapper className="lead-marquee-card__image-wrapper">
         <StyledBadge type={siteKey} />
         {
           displayFavoritesRibbon && favoriteObjectId && (
@@ -241,6 +241,7 @@ const LeadMarqueeCard = ({
       </MarqueeImageWrapper>
       <ContentWrapper
         backgroundColor={backgroundColor}
+        className="lead-marquee-card__content-wrapper"
       >
         <div
           className="lead-marquee-card__content"
