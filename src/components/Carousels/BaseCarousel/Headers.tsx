@@ -4,6 +4,7 @@ import { mixins, font, withThemes, color } from '../../../styles';
 import { Intro, Title, Topic } from './styled-elements';
 import { cssThemedColor, cssThemedFontAccentColorAlt } from '../../../styles/mixins';
 import { InferStyledTypes } from '../../../styles/utility-types';
+import { ChevronThin } from '../../DesignTokens/Icon';
 
 const cssThemedStrokeAccentAlt = withThemes({
   default: css`stroke: ${color.darkTeal};`,
@@ -25,14 +26,6 @@ const Layout = styled.span`
     display: inline-block;
     margin-right: 16px;
   }
-`;
-
-const Svg = styled.svg`
-  margin-left: 5px;
-  fill: none;
-  stroke: inherit;
-  stroke-linecap: round;
-  stroke-miterlimit: 10;
 `;
 
 const Link = styled.a`
@@ -76,17 +69,7 @@ export function LinkCarouselHeader({
       {linkText && (
         <Link {...linkProps}>
           {linkText}
-          <Svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="4.279"
-            height="10.978"
-            viewBox="0 0 4.279 10.978"
-            aria-hidden="true"
-            focusable="false"
-            role="img"
-          >
-            <path data-name="Path 2" d="m0 0 3 4.8-3 4.8" transform="translate(.689 .689)" />
-          </Svg>
+          <ChevronThin />
         </Link>
       )}
     </Layout>
