@@ -24,9 +24,30 @@ const PreviewDisplayBeltAd = ({ theme, props }: PreviewProps) => (
   </ThemeProvider>
 );
 
-export const AtkBeltAd = () => <PreviewDisplayBeltAd theme={{ siteKey: 'atk' }} />;
-export const CioBeltAd = () => <PreviewDisplayBeltAd theme={{ siteKey: 'cio' }} />;
-export const CcoBeltAd = () => <PreviewDisplayBeltAd theme={{ siteKey: 'cco' }} />;
+const atkDisplayBeltImages = {
+  mobile: '2022 Review Landing/Belt-placeholder-AKO-Mobile-372x192_2x.png',
+  tablet: '2022 Review Landing/Belt-placeholder-AKO-Tablet-768x150_2x.png',
+  largeTablet: '2022 Review Landing/Belt-placeholder-AKO-Landscape_Tablet-1024x150_2x.png',
+  desktop: '2022 Review Landing/Belt-placeholder-AKO-Desktop-1280x150_2x.png',
+};
+
+const cioDisplayBeltImages = {
+  mobile: '2022 Review Landing/CIO-Mobile-Display-Belt',
+  tablet: '2022 Review Landing/CIO-Tablet-Display-Belt',
+  largeTablet: '2022 Review Landing/CIO-Large-Tablet-Display-Belt',
+  desktop: '2022 Review Landing/CIO-Desktop-Display-Belt',
+};
+
+const ccoDisplayBeltImages = {
+  mobile: '2022 Review Landing/CCO-Mobile-Display-Belt',
+  tablet: '2022 Review Landing/CCO-Tablet-Display-Belt',
+  largeTablet: '2022 Review Landing/CCO-Large-Tablet-Display-Belt',
+  desktop: '2022 Review Landing/CCO-Desktop-Display-Belt',
+};
+
+export const AtkBeltAd = () => <PreviewDisplayBeltAd theme={{ siteKey: 'atk' }} props={{ backgroundImages: atkDisplayBeltImages }} />;
+export const CioBeltAd = () => <PreviewDisplayBeltAd theme={{ siteKey: 'cio' }} props={{ backgroundImages: cioDisplayBeltImages }} />;
+export const CcoBeltAd = () => <PreviewDisplayBeltAd theme={{ siteKey: 'cco' }} props={{ backgroundImages: ccoDisplayBeltImages }} />;
 export const AtkBeltAdMobile = () => <PreviewDisplayBeltAd theme={{ siteKey: 'atk' }} />;
 export const AtkBeltAdTablet = () => <PreviewDisplayBeltAd theme={{ siteKey: 'atk' }} />;
 export const AtkBeltAdTabletLarge = () => <PreviewDisplayBeltAd theme={{ siteKey: 'atk' }} />;
