@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import cloudinaryInstance, { baseImageConfig } from '../../../lib/cloudinary';
-import { color, font, fontSize, letterSpacing, withThemes } from '../../../styles';
+import { color, font, fontSize, letterSpacing, mixins, withThemes } from '../../../styles';
 import { cssThemedColor } from '../../../styles/mixins';
 import useMedia from '../../hooks/useMedia';
 
@@ -43,6 +43,10 @@ const CtaTheme = {
     span {
       font-size: 3.1rem;
       margin: 0.15rem 0 0 0.8rem;
+    }
+
+    &:focus {
+      ${mixins.focusIndicator(`${color.white}`, '-4px')}
     }
 
     ${breakpoint('md')`
