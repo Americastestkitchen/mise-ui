@@ -4,6 +4,7 @@ import breakpoint from 'styled-components-breakpoint';
 import cloudinaryInstance, { baseImageConfig } from '../../../lib/cloudinary';
 import { color, font, fontSize, letterSpacing, mixins, withThemes } from '../../../styles';
 import { cssThemedColor } from '../../../styles/mixins';
+import * as Icons from '../../DesignTokens/Icon';
 import useMedia from '../../hooks/useMedia';
 
 export type HeroImages = {
@@ -253,6 +254,20 @@ function DisplayBeltImage() {
   return null;
 }
 
+const TriangleStyles = styled.div`> .triangle-right {
+  fill: ${color.white};
+  margin-left: 10px;
+  margin-bottom: 1px;
+  height: 9px;
+  width: 9px;
+}`;
+
+const TriangleRight = () => (
+  <TriangleStyles>
+    <Icons.TriangleRight />
+  </TriangleStyles>
+);
+
 const DisplayBeltAd = ({
   ctaCopy = 'SAVE NOW',
   ctaLink = 'https://shop.americastestkitchen.com',
@@ -266,7 +281,7 @@ const DisplayBeltAd = ({
       <Headline>{headline}</Headline>
       <SaleCopy>{saleCopy}</SaleCopy>
     </Content>
-    <Cta onClick={onClick} href={ctaLink}>{ctaCopy} ▸</Cta>
+    <Cta onClick={onClick} href={ctaLink}>{ctaCopy}<TriangleRight /></Cta>
   </ImageBgWrapper>
 );
 
