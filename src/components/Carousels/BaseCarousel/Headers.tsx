@@ -5,6 +5,7 @@ import { Intro, Title, Topic } from './styled-elements';
 import { cssThemedColor, cssThemedFontAccentColorAlt } from '../../../styles/mixins';
 import { InferStyledTypes } from '../../../styles/utility-types';
 import { ChevronThin } from '../../DesignTokens/Icon';
+import { untilMd } from '../../../styles/breakpoints';
 
 const cssThemedStrokeAccentAlt = withThemes({
   default: css`stroke: ${color.darkTeal};`,
@@ -20,12 +21,25 @@ const cssThemedStroke = withThemes({
   cio: css`stroke: ${color.cork};`,
 });
 
-const Layout = styled.span`
+/**
+ * If link text is provided, we add spacing for title to wrap above
+ *  the arrow buttons by a bit to match designs.
+ */
+const cssWrappingStyles = css`
+  ${Title} {
+    display: block;
+    margin-right: -32px; 
+    margin-bottom: 8px;
+  }
+`;
+
+const Layout = styled.span<{ hasLink: boolean }>`
   vertical-align: middle;
   ${Title} {
     display: inline-block;
     margin-right: 16px;
   }
+  ${({ hasLink }) => hasLink && untilMd(css`${cssWrappingStyles}`)}
 `;
 
 const Link = styled.a`
@@ -64,7 +78,7 @@ export function LinkCarouselHeader({
   linkProps,
 }: LinkCarouselHeaderProps) {
   return (
-    <Layout>
+    <Layout hasLink={!!linkText}>
       <Title {...titleProps}>{title}</Title>
       {linkText && (
         <Link {...linkProps}>
