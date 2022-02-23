@@ -71,7 +71,7 @@ function useResizeFlickity(
  */
 function useFlickityCallbackRef(flickity: MutableRefObject<Flickity | null>) {
   return useCallback((elem) => {
-    const Flickity = require('flickity-imagesloaded'); // eslint-disable-line
+    const Flickity = require('flickity'); // eslint-disable-line
     const flkty = new Flickity(elem, {
       imagesLoaded: true,
       wrapAround: true,
@@ -130,7 +130,7 @@ export default function useFlickity(): FlickityState {
  */
 function useFlickityCallbackRefGroup(flickity: MutableRefObject<Flickity | null>) {
   return useCallback((elem) => {
-    const Flickity = require('flickity-imagesloaded'); // eslint-disable-line
+    const Flickity = require('flickity'); // eslint-disable-line
     const flkty = new Flickity(elem, {
       imagesLoaded: true,
       wrapAround: true,
