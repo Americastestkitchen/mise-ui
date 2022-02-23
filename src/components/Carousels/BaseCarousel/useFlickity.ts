@@ -90,8 +90,14 @@ function useFlickityCallbackRef(flickity: MutableRefObject<Flickity | null>) {
         },
       },
     });
-    flkty.resize();
+
     flickity.current = flkty;
+
+    const resizeObserver = new ResizeObserver(() => {
+      flkty.resize();
+    });
+
+    resizeObserver.observe(elem);
   }, [flickity]);
 }
 
@@ -144,8 +150,14 @@ function useFlickityCallbackRefGroup(flickity: MutableRefObject<Flickity | null>
         },
       },
     });
-    flkty.resize();
+
     flickity.current = flkty;
+
+    const resizeObserver = new ResizeObserver(() => {
+      flkty.resize();
+    });
+
+    resizeObserver.observe(elem);
   }, [flickity]);
 }
 
