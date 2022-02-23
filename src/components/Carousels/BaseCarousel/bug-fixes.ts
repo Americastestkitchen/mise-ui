@@ -56,6 +56,8 @@ export function fixOverflowGroups(this: any): void {
       const percentMatch = typeof groupCells === 'string' && groupCells.match(/^(\d+)%$/);
       const percent = percentMatch ? parseInt(percentMatch[1], 10) / 100 : 1;
       return (_: any, slideWidth: any) => {
+        // if these are incorrectly negative, a call to .resize is
+        //  needed to update these dom values.
         const { innerWidth, marginLeft, marginRight } = thisArg.size;
         const innerWidthUnderHeader = innerWidth + marginLeft + marginRight;
         return slideWidth <= (innerWidthUnderHeader + 1) * percent;
