@@ -71,6 +71,10 @@ function useResizeFlickity(
  */
 function useFlickityCallbackRef(flickity: MutableRefObject<Flickity | null>) {
   return useCallback((elem) => {
+    if (!elem) {
+      return;
+    }
+
     const Flickity = require('flickity'); // eslint-disable-line
     const flkty = new Flickity(elem, {
       imagesLoaded: true,
@@ -94,7 +98,9 @@ function useFlickityCallbackRef(flickity: MutableRefObject<Flickity | null>) {
     flickity.current = flkty;
 
     const resizeObserver = new ResizeObserver(() => {
-      flkty.resize();
+      if (flkty) {
+        flkty.resize();
+      }
     });
 
     resizeObserver.observe(elem);
@@ -130,6 +136,10 @@ export default function useFlickity(): FlickityState {
  */
 function useFlickityCallbackRefGroup(flickity: MutableRefObject<Flickity | null>) {
   return useCallback((elem) => {
+    if (!elem) {
+      return;
+    }
+
     const Flickity = require('flickity'); // eslint-disable-line
     const flkty = new Flickity(elem, {
       imagesLoaded: true,
@@ -154,7 +164,9 @@ function useFlickityCallbackRefGroup(flickity: MutableRefObject<Flickity | null>
     flickity.current = flkty;
 
     const resizeObserver = new ResizeObserver(() => {
-      flkty.resize();
+      if (flkty) {
+        flkty.resize();
+      }
     });
 
     resizeObserver.observe(elem);
