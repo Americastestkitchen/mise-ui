@@ -7,7 +7,7 @@ const fontSize = {
   xl: '2.3rem',
   xxl: '3.2rem',
   xxxl: '3.7rem',
-};
+} as const;
 
 const font = {
   clb: 'Clarendon Bold,serif',
@@ -17,14 +17,14 @@ const font = {
   cwf: 'chippewa-falls, sans-serif',
   gdn: 'gooddog-new, sans-serif',
   msr: 'Montserrat, sans-serif',
-};
+} as const;
 
 const lineHeight = {
   sm: '1.13',
   md: '1.25',
   lg: '1.63',
   xlg: '1.75',
-};
+} as const;
 
 const letterSpacing = {
   cta: '2.88px', // cta buttons for ads
@@ -36,7 +36,7 @@ const letterSpacing = {
   xlg: '2.6px',
   xxlg: '3px',
   xxxlg: '6px',
-};
+} as const;
 
 export {
   fontSize,
