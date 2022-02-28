@@ -48,7 +48,6 @@ const AccentRectangle = styled.div`
 `;
 
 const cloudinaryOptions = { ...baseImageConfig, aspectRatio: '3:2' };
-
 /**
  * Contents for div.carousel-cell.
  * Keyed rendering is set by parent component so id is unused property here.
