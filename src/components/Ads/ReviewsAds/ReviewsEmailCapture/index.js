@@ -93,6 +93,9 @@ const AdSuccess = styled.div`
   span {
     font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb};
   }
+  .success-svg-wrapper{
+    max-width: 10%;
+  }
 `;
 
 const AdTitle = styled.h2`
@@ -263,7 +266,9 @@ const ReviewsEmailCapture = ({
       {success
         ? (
           <AdSuccess>
-            <Checkmark fill={color.mint} />
+            <div className="success-svg-wrapper">
+              <Checkmark fill={color.mint} />
+            </div>
             <span>{successText}</span>
           </AdSuccess>
         )

@@ -20,7 +20,7 @@ const AccentRectangle = styled.div`
   ${withThemes({
     default: css`background-color: ${color.mint};`,
     atk: css`background-color: ${color.mint};`,
-    cco: css`background-color: ${color.bermudaGray};`,
+    cco: css`background-color: ${color.denim};`,
     cio: css`background-color: ${color.squirrel};`,
   })}
 `;
