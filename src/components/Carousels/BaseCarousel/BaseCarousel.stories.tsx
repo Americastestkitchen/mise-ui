@@ -269,6 +269,7 @@ const RecipeCarouselExampleTemplate = ({ siteKey = 'atk' }: ActionProps) => (
         title="Got Gear, Need Recipes?"
         header={(
           <LinkCarouselHeader
+            includeIcon
             title="Got Gear, Need Recipes?"
             linkText="browse all Books"
             linkProps={{ href: '/#' }}

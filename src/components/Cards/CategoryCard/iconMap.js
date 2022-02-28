@@ -1,5 +1,5 @@
 import CCORooster from '../../DesignTokens/Icon/svgs/CCORooster';
-import CookbookCollection from '../../DesignTokens/Icon/svgs/CookbookCollection';
+import Cookbook from '../../DesignTokens/Icon/svgs/Cookbook';
 import LandingPlay from '../../DesignTokens/Icon/svgs/LandingPlay';
 import LatestReviews from '../../DesignTokens/Icon/svgs/LatestReviews';
 import RecipeCard from '../../DesignTokens/Icon/svgs/RecipeCardUpdate';
@@ -8,7 +8,7 @@ import ShoppingCart from '../../DesignTokens/Icon/svgs/ShoppingCart';
 import TrendingArrow from '../../DesignTokens/Icon/svgs/TrendingArrow';
 
 const IconMap = {
-  cookbook: CookbookCollection,
+  cookbook: Cookbook,
   latest: LatestReviews,
   play: LandingPlay,
   recipeCard: RecipeCard,
