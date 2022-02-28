@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import Cookbook from '../../DesignTokens/Icon/svgs/Cookbook';
 import { mixins, font, withThemes, color } from '../../../styles';
 import { Intro, Title, Topic } from './styled-elements';
 import { cssThemedColor, cssThemedFontAccentColorAlt } from '../../../styles/mixins';
@@ -64,7 +65,20 @@ const Link = styled.a`
   }
 `;
 
+const SvgWrapper = styled.div`
+  height: 1.9rem;
+  display: inline-block;
+  margin-right: 0.8rem;
+  width: 2.6rem;
+
+  svg {
+    max-height: 100%;
+    max-width: 100%;
+  }
+`;
+
 export type LinkCarouselHeaderProps = {
+  includeIcon?: boolean;
   title: string;
   linkText: string;
   titleProps?: InferStyledTypes<typeof Title>;
@@ -72,6 +86,7 @@ export type LinkCarouselHeaderProps = {
 };
 
 export function LinkCarouselHeader({
+  includeIcon,
   title,
   linkText,
   titleProps,
@@ -79,6 +94,13 @@ export function LinkCarouselHeader({
 }: LinkCarouselHeaderProps) {
   return (
     <Layout hasLink={!!linkText}>
+      {
+        includeIcon && (
+          <SvgWrapper>
+            <Cookbook fill={color.eclipse} />
+          </SvgWrapper>
+        )
+      }
       <Title {...titleProps}>{title}</Title>
       {linkText && (
         <Link {...linkProps}>
