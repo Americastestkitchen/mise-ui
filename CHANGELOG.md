@@ -1,3 +1,17 @@
+# v1.33.10 (Mon Feb 28 2022)
+
+#### 🐛 Bug Fix
+
+- deleting space [#653](https://github.com/Americastestkitchen/mise-ui/pull/653) (kayserifsl@Kayseris-MacBook-Pro.local [@kayseriatk](https://github.com/kayseriatk))
+- Km content 49 and 50 [#651](https://github.com/Americastestkitchen/mise-ui/pull/651) (kayserifsl@Kayseris-MacBook-Pro.local [@kayseriatk](https://github.com/kayseriatk))
+
+#### Authors: 2
+
+- Kayseri FullStackLabs (kayserifsl@Kayseris-MacBook-Pro.local)
+- Kayseri Martinez ([@kayseriatk](https://github.com/kayseriatk))
+
+---
+
 # v1.33.9 (Fri Feb 18 2022)
 
 #### 🐛 Bug Fix
