@@ -2,12 +2,14 @@ import React, { CSSProperties } from 'react';
 import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import { color, font, fontSize, lineHeight, spacing } from '../../../styles';
+
 import Badge from '../../Badge';
 import Byline from '../../Byline';
+import FavoriteRibbonWithBg from '../shared/FavoriteRibbonWithBg';
 import Image from '../shared/Image';
 import Sticker from '../shared/Sticker';
 import BylineList, { Author } from '../../BylineList';
-import { Comment as CommentIcon } from '../../DesignTokens/Icon';
+import { FeatureCardUserAttributions } from '../shared/UserAttributions/UserAttributions';
 
 const LeadMarqueeCardWrapper = styled.article.attrs({
   className: 'lead-marquee-card',
@@ -52,9 +54,18 @@ const LeadMarqueeCardWrapper = styled.article.attrs({
     }
 
     .lead-marquee-card__image {
-      height: 102%;
-      max-width: 79rem;
+      height: 100%;
+      width: 100%;
     }
+  `}
+`;
+
+const MarqueeImageWrapper = styled.div`
+  position: relative;
+
+  ${breakpoint('xlg')`
+    height: 102%;
+    max-width: 79rem;
   `}
 `;
 
@@ -62,6 +73,13 @@ export const StyledBadge = styled(Badge)`
   position: absolute;
   top: ${spacing.xsm};
   left: ${spacing.xsm};
+  z-index: 1;
+`;
+
+const StyledFavoriteButtonWithBg = styled(FavoriteRibbonWithBg)`
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
   z-index: 1;
 `;
 
@@ -82,6 +100,10 @@ const ContentWrapper = styled.div<{ backgroundColor: CSSProperties['backgroundCo
   }
 
   .byline span {
+    color: ${color.white};
+  }
+
+  .user-attributions {
     color: ${color.white};
   }
 `;
@@ -154,12 +176,19 @@ type LeadMarqueeCardProps = {
   /** Background color for content wrapper */
   backgroundColor?: CSSProperties['backgroundColor'];
   description?: string;
-  commentsCount?: number;
   imageAlt?: string;
   /** Image for card. */
   imageUrl: string;
   href: string;
   siteKey: 'atk' | 'cco' | 'cio' | 'kids' | 'school' | 'shop'
+  /** Optional: attribution controls */
+  displayAttributions?: boolean;
+  commentsCount?: number;
+  avgRating?: number;
+  numRatings?: number;
+  /** Optional: favorites controls */
+  displayFavoritesRibbon?: boolean;
+  favoriteObjectId?: string;
   /** Optional: Data used to render stickers */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   stickers: any[];
@@ -171,12 +200,17 @@ const LeadMarqueeCard = ({
   author,
   authorImageCloudinaryId = '',
   authors = [],
+  avgRating,
   backgroundColor = '#783681',
   commentsCount,
   description = '',
+  displayFavoritesRibbon,
+  displayAttributions,
+  favoriteObjectId,
   imageAlt = '',
   imageUrl,
   href,
+  numRatings,
   siteKey,
   stickers,
   title,
@@ -187,14 +221,27 @@ const LeadMarqueeCard = ({
       href={href}
       onClick={onClick}
     >
-      <StyledBadge type={siteKey} />
-      <Image
-        className="lead-marquee-card__image"
-        imageUrl={imageUrl}
-        imageAlt={imageAlt}
-      />
+      <MarqueeImageWrapper className="lead-marquee-card__image-wrapper">
+        <StyledBadge type={siteKey} />
+        {
+          displayFavoritesRibbon && favoriteObjectId && (
+            <StyledFavoriteButtonWithBg
+              className="lead-marquee-card__favorites-ribbon"
+              siteKey={siteKey}
+              objectId={favoriteObjectId}
+              title={title}
+            />
+          )
+        }
+        <Image
+          className="lead-marquee-card__image"
+          imageUrl={imageUrl}
+          imageAlt={imageAlt}
+        />
+      </MarqueeImageWrapper>
       <ContentWrapper
         backgroundColor={backgroundColor}
+        className="lead-marquee-card__content-wrapper"
       >
         <div
           className="lead-marquee-card__content"
@@ -212,11 +259,13 @@ const LeadMarqueeCard = ({
           ) : null }
           <Title dangerouslySetInnerHTML={{ __html: title }} />
           {
-            commentsCount ? (
-              <Comments>
-                <CommentIcon fill="white" style={{ width: '16px', height: '16px' }} />&nbsp;{commentsCount}
-              </Comments>
-            ) : null
+            displayAttributions && (
+              <FeatureCardUserAttributions
+                commentsCount={commentsCount}
+                numRatings={numRatings}
+                avgRating={avgRating}
+              />
+            )
           }
           <Description dangerouslySetInnerHTML={{ __html: description }} />
           {authors.length ? (
