@@ -202,6 +202,10 @@ function StandardCard({
   href,
 }) {
   const ImageItem = Array.isArray(imageUrl) ? ImageCollage : Image;
+  let stickerAria = "" 
+  stickers.forEach((el) => {
+    stickerAria += el.text;
+  });
   return (
     <StyledStandardCard
       className={`standard-card${imageUrl ? '' : ' no-image'}`}
@@ -245,6 +249,7 @@ function StandardCard({
         </ImageWrapper>
         <TitleWrapper className="standard-card__title-wrapper">
           <a
+            aria-label={`${title}, ${stickerAria}, ${contentTypeFormatted || contentType}`}
             className="standard-card__anchor"
             href={href}
             onClick={onClick}
