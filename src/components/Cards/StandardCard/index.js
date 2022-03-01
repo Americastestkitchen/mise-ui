@@ -202,10 +202,12 @@ function StandardCard({
   href,
 }) {
   const ImageItem = Array.isArray(imageUrl) ? ImageCollage : Image;
-  let stickerAria = "" 
-  stickers.forEach((el) => {
-    stickerAria += el.text;
-  });
+  let stickerAria = '';
+  if (stickers) {
+    stickers.forEach((el) => {
+      stickerAria += el.text;
+    });
+  }
   return (
     <StyledStandardCard
       className={`standard-card${imageUrl ? '' : ' no-image'}`}
