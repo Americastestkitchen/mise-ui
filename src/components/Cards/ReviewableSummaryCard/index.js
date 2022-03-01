@@ -78,7 +78,7 @@ const ReviewableSummaryItemTheme = {
   `,
 };
 
-const ReviewableSummaryItemEl = styled.div.attrs({
+const ReviewableSummaryItemEl = styled.a.attrs({
   className: 'reviewable-summary-card',
 })`${withThemes(ReviewableSummaryItemTheme)}`;
 
@@ -186,7 +186,7 @@ const ItemPrice = styled.div`
 
 const parensRe = /(\([^)]+\))/;
 
-const ReviewableLinkEl = styled.a`
+const ReviewableLinkEl = styled.div`
   @media(hover: hover) {
     &:hover {
       color: ${color.mint};
@@ -261,6 +261,7 @@ const ReviewableSummaryCard = React.memo(({
       data-discontinued={isDiscontinued}
       data-has-img={Boolean(cloudinaryId)}
       data-buy-now={Boolean(buyNowLink)}
+      tabIndex={0}
     >
       <TitleImageWrapper>
         <TitleImageContent data-buy-now={Boolean(buyNowLink)}>
