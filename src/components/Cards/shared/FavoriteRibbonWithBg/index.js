@@ -34,6 +34,7 @@ const FavoriteButtonWithBg = ({
   fill,
   isFavorited,
   objectId,
+  siteKey,
   title,
 }) => (
   <StyledFavoriteButtonWithBg
@@ -42,6 +43,7 @@ const FavoriteButtonWithBg = ({
     className={`${className} favorite-action-bg ${isFavorited ? 'favorited' : ''}`}
     data-document-title={title}
     data-favoritable-id={objectId}
+    data-origin-site={siteKey}
     data-testid="favorite-button"
     fill={fill}
   >
@@ -57,6 +59,7 @@ FavoriteButtonWithBg.propTypes = {
   className: PropTypes.string,
   fill: PropTypes.string,
   isFavorited: PropTypes.bool,
+  siteKey: PropTypes.string.isRequired,
   objectId: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
 };
