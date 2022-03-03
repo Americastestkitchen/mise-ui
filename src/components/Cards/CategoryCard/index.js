@@ -71,8 +71,16 @@ const LinkToBrowseTheme = {
     }
 
     .svg-wrapper {
-      background-color: ${color.queenBlue};
+      background-color: ${color.kashmirBlue};
     }
+
+    ${breakpoint('xlg')`
+      &:hover {
+        background-color: ${color.alabaster};
+        border-radius: 8px;
+        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+      }
+    `}
   `,
 };
 
@@ -135,7 +143,7 @@ const TaglineWrapperTheme = {
     height: 3rem;
     line-height: 16px;
     text-align: center;
-    width: 8rem;
+    width: 9rem;
   `,
   atk: css`
     color: ${color.eclipse};
@@ -144,10 +152,12 @@ const TaglineWrapperTheme = {
   cio: css`
     color: ${color.cork};
     font-family: ${font.mwr};
+    font-size: 12px;
   `,
   cco: css`
     color: ${color.black};
     font-family: ${font.clb};
+    font-size: 12px;
   `,
 };
 

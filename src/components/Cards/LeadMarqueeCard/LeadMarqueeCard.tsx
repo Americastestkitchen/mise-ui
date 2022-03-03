@@ -1,8 +1,7 @@
 import React, { CSSProperties } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
-import { color, font, fontSize, lineHeight, spacing } from '../../../styles';
-
+import { color, font, fontSize, lineHeight, spacing, withThemes } from '../../../styles';
 import Badge from '../../Badge';
 import Byline from '../../Byline';
 import FavoriteRibbonWithBg from '../shared/FavoriteRibbonWithBg';
@@ -122,33 +121,54 @@ export const StyledSticker = styled(Sticker)`
   }
 `;
 
-const Title = styled.h1`
-  color: ${color.white};
-  font: ${fontSize.xxl}/${lineHeight.sm} ${font.pnb};
-  margin-bottom: ${spacing.xsm};
+const TitleTheme = {
+  default: css`
+    color: ${color.white};
+    font: ${fontSize.xxl}/${lineHeight.sm} ${font.pnb};
+    margin-bottom: ${spacing.xsm};
 
-  ${breakpoint('lg')`
-    margin-bottom: ${spacing.sm};
-  `};
+    ${breakpoint('lg')`
+      margin-bottom: ${spacing.sm};
+    `};
+  `,
+  cco: css`
+    font-family: ${font.clb} !important;
+  `,
+  cio: css`
+    font-family: ${font.mwr} !important;
+  `,
+};
+
+const Title = styled.h1`
+  ${withThemes(TitleTheme)}
 `;
 
 const BylineListSC = styled(BylineList)`
   color: white;
 `;
 
-const Description = styled.p`
-  color: ${color.white};
-  display: none;
+const DekTheme = {
+  default: css`
+    color: ${color.white};
+    display: none;
 
-  ${breakpoint('md')`
-    display: block;
-    font: ${fontSize.md}/${lineHeight.lg} ${font.mwr};
-    margin-bottom: ${spacing.sm};
-  `};
-  
-  ${breakpoint('lg')`
-    line-height: ${lineHeight.md};
-  `}
+    ${breakpoint('md')`
+      display: block;
+      font: ${fontSize.md}/${lineHeight.lg} ${font.mwr};
+      margin-bottom: ${spacing.sm};
+    `};
+
+    ${breakpoint('lg')`
+      line-height: ${lineHeight.md};
+    `}
+  `,
+  cco: css`
+    font-family: ${font.pnr} !important;
+  `,
+};
+
+const Description = styled.p`
+  ${withThemes(DekTheme)}
 `;
 
 const Comments = styled.p`
