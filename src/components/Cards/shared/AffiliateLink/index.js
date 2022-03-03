@@ -14,7 +14,7 @@ const AffiliateLinkWrapperTheme = {
 
     > img {
       display: block;
-      margin: 1rem auto 0;
+      margin: 0 auto;
       width: 10rem;
     }
 
