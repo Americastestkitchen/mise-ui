@@ -7,6 +7,7 @@ import breakpoints from '../styles/breakpoints';
 export const storybookParameters = {
   decorators: [withKnobs],
   parameters: {
+    layout: 'fullscreen',
     backgrounds: {
       default: 'atk',
       values: [
@@ -41,5 +42,11 @@ export const setBackground = (background: string, ...stories: ComponentStory<any
 export const setViewport = (viewport: string, ...stories: ComponentStory<any>[]): void => {
   stories.forEach((story) => {
     story.parameters = { ...story.parameters, viewport: { defaultViewport: viewport } };
+  });
+};
+
+export const setArgs = (args: any, ...stories: ComponentStory<any>[]): void => {
+  stories.forEach((story) => {
+    story.args = { ...story.args, ...args };
   });
 };
