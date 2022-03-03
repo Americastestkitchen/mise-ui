@@ -103,6 +103,7 @@ const color = {
   queenBlue: '#426491',
   pearlBush: '#ede8de',
   alabaster: '#f7f7f7',
+  kashmirBlue: '#416491',
 };
 
 export default color;

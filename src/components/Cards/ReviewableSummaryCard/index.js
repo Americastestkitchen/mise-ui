@@ -58,6 +58,10 @@ const ReviewableSummaryItemTheme = {
   atk: css`
     h3 {
       color: ${color.eclipse};
+
+      &:hover {
+        color: ${color.mint};
+      }
     }
   `,
   cco: css`
@@ -69,11 +73,19 @@ const ReviewableSummaryItemTheme = {
 
     h3 {
       color: ${color.black};
+
+      &:hover {
+        color: ${color.denim};
+      }
     }
   `,
   cio: css`
     h3 {
       color: ${color.cork};
+
+      &:hover {
+        color: ${color.squirrel};
+      }
     }
   `,
 };
