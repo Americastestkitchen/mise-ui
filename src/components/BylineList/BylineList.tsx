@@ -67,6 +67,7 @@ const Wrapper = styled.span<{ refHeight: number }>`
   ${props => cssInlineBreakpoint(css`
     margin-top: -2px;
     margin-bottom: ${spacing.sm};
+    max-width: 28.8rem;
     padding-right: 12px;
     align-self: ${props.refHeight < 40 ? 'center' : 'initial'};
   `)}
