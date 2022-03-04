@@ -10,7 +10,7 @@ import { color, font, fontSize, withThemes } from '../../../../styles';
 const ToggleRefinementWrapperTheme = {
   default: css`
     .refinement-filter__wrapper label {
-      font: ${fontSize.md}/1.38 ${font.pnb};
+      font: ${fontSize.md}/1.05 ${font.pnb};
       ${({ theme }) => (theme && theme.siteKey ? mixins.styledLinkWithSiteKey(theme.siteKey) : '')}
     }
   `,
