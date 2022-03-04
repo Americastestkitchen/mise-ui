@@ -71,7 +71,7 @@ const LinkToBrowseTheme = {
     }
 
     .svg-wrapper {
-      background-color: ${color.kashmirBlue};
+      background-color: ${color.denim};
     }
 
     ${breakpoint('xlg')`
