@@ -61,7 +61,8 @@ const StandardSlideThemed = styled.div`
       }
       &:hover {
         [class*="horizontal-line"] {
-        stroke: ${color.white} !important;
+          stroke: ${color.white} !important;
+          stroke-width: 2;
         }
       }
     }

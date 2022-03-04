@@ -66,7 +66,7 @@ const Attributions = ({
           <span>
             {
               shopPrices.salePrice ? (
-                <span>
+                <span aria-label={`Was ${shopPrices.price}, now ${shopPrices.salePrice}`}>
                   <ins>
                     {`$${shopPrices.salePrice} `}
                   </ins>

@@ -39,6 +39,7 @@ const AffiliateLinkTheme = {
     padding: 1rem 2rem;
     position: relative;
     text-align: center;
+    z-index: 1;
     ${mixins.truncate()}
 
     @media(hover: hover) {

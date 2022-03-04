@@ -272,7 +272,7 @@ const DisplayBeltAd = ({
       <Headline>{headline}</Headline>
       <SaleCopy>{saleCopy}</SaleCopy>
     </Content>
-    <Cta onClick={onClick} href={ctaLink}>{ctaCopy}<DetailTriangleRight /></Cta>
+    <Cta onClick={onClick} href={ctaLink} target="_blank">{ctaCopy}<DetailTriangleRight /></Cta>
   </ImageBgWrapper>
 );
 
