@@ -12,6 +12,10 @@ export default {
   ...storybookParameters,
 } as ComponentMeta<typeof TrialBeltAd>;
 
+/**
+ * Space between background and content is entirely controlled by external margins.
+ * This always ensures the background belt reaches across the viewport width.
+ */
 const TestMargins = styled.section`
   margin: 32px 16px;
   ${md(css`
