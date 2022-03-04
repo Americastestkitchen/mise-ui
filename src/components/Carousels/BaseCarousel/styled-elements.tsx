@@ -30,7 +30,7 @@ export const Divider = styled.div<{showDivider?: boolean}>`
     `,
     cco: css`
       background-color: ${color.whiteSmoke};
-      height: 6px;
+      height: 4px;
     `,
     cio: css`
       background-color: ${color.bone};

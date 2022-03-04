@@ -58,6 +58,10 @@ const ReviewableSummaryItemTheme = {
   atk: css`
     h3 {
       color: ${color.eclipse};
+
+      &:hover {
+        color: ${color.mint};
+      }
     }
   `,
   cco: css`
@@ -69,11 +73,19 @@ const ReviewableSummaryItemTheme = {
 
     h3 {
       color: ${color.black};
+
+      &:hover {
+        color: ${color.denim};
+      }
     }
   `,
   cio: css`
     h3 {
       color: ${color.cork};
+
+      &:hover {
+        color: ${color.squirrel};
+      }
     }
   `,
 };
@@ -247,9 +259,11 @@ const ReviewableSummaryCard = React.memo(({
   const isDiscontinued = price?.toLowerCase()?.includes('discontinued') ?? false;
   const priceMarkup = price?.replace(parensRe, '<span>$1</span>') ?? null;
   let buyNowIcon = asin ? 'Amazon' : null;
-
   if (buyNowOverrideAffiliateActive) {
     buyNowIcon = buyNowOverrideAffiliateName || null;
+  }
+  if (buyNowLink && buyNowLink.includes('amazon')) {
+    buyNowIcon = 'Amazon';
   }
   const sortOfWinner = winner || isShortList;
   const stickerText = sortOfWinner
