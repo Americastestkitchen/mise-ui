@@ -4,8 +4,8 @@ import breakpoint from 'styled-components-breakpoint';
 import cloudinaryInstance, { baseImageConfig } from '../../../lib/cloudinary';
 import { color, font, fontSize, letterSpacing, mixins, withThemes } from '../../../styles';
 import { cssThemedColor } from '../../../styles/mixins';
-import * as Icons from '../../DesignTokens/Icon';
 import useMedia from '../../hooks/useMedia';
+import DetailTriangleRight from '../components/DetailTriangleRight';
 
 export type HeroImages = {
   mobile: string,
@@ -258,20 +258,6 @@ function DisplayBeltImage({ backgroundImages } : {backgroundImages: HeroImages})
   return null;
 }
 
-const TriangleStyles = styled.div`> .triangle-right {
-  fill: ${color.white};
-  margin-left: 10px;
-  margin-bottom: 1px;
-  height: 9px;
-  width: 9px;
-}`;
-
-const TriangleRight = () => (
-  <TriangleStyles>
-    <Icons.TriangleRight />
-  </TriangleStyles>
-);
-
 const DisplayBeltAd = ({
   backgroundImages = exampleImages,
   ctaCopy = 'SAVE NOW',
@@ -286,7 +272,7 @@ const DisplayBeltAd = ({
       <Headline>{headline}</Headline>
       <SaleCopy>{saleCopy}</SaleCopy>
     </Content>
-    <Cta onClick={onClick} href={ctaLink}>{ctaCopy}<TriangleRight /></Cta>
+    <Cta onClick={onClick} href={ctaLink}>{ctaCopy}<DetailTriangleRight /></Cta>
   </ImageBgWrapper>
 );
 
