@@ -108,6 +108,20 @@ const RefinementFilterCheckTheme = {
       top: 0;
     }
   `,
+  cco: css`
+    svg {
+      path {
+        fill: ${color.black};
+      }
+    }
+  `,
+  cio: css`
+    svg {
+      path {
+        fill: ${color.cork};
+      }
+    }
+  `,
   dark: css`
     svg {
       path {
