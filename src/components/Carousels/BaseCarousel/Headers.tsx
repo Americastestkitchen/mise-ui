@@ -28,7 +28,7 @@ const cssThemedStroke = withThemes({
 const cssWrappingStyles = css`
   ${Title} {
     display: block;
-    margin-right: -32px; 
+    margin-right: -64px; 
     margin-bottom: 8px;
   }
 `;
