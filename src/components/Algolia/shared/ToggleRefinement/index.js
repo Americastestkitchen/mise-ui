@@ -1,50 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { connectRefinementList } from 'react-instantsearch-dom';
 
 import RefinementFilter2 from '../RefinementFilter2';
-import mixins from '../../../../styles/mixins';
-import { color, font, fontSize, withThemes } from '../../../../styles';
-
-const ToggleRefinementWrapperTheme = {
-  default: css`
-    .refinement-filter__wrapper label {
-      font: ${fontSize.md}/1.05 ${font.pnb};
-      ${({ theme }) => (theme && theme.siteKey ? mixins.styledLinkWithSiteKey(theme.siteKey) : '')}
-    }
-  `,
-  atk: css`
-    color: ${color.eclipse};
-
-    .refinement-filter__wrapper label {
-      &:hover {
-        color: ${color.eclipse};
-      }
-    }
-  `,
-  cco: css`
-    color: ${color.black};
-
-    .refinement-filter__wrapper label {
-      &:hover {
-        color: ${color.black};
-      }
-    }
-  `,
-  cio: css`
-    color: ${color.cork};
-
-    .refinement-filter__wrapper label {
-      &:hover {
-        color: ${color.cork};
-      }
-    }
-  `,
-};
+import { cssThemedColor, cssThemedLink } from '../../../../styles/mixins';
+import { font, fontSize } from '../../../../styles';
 
 const ToggleRefinementWrapper = styled.div`
-  ${withThemes(ToggleRefinementWrapperTheme)}
+  width: fit-content;
+
+  .refinement-filter__wrapper {
+    label {
+      ${cssThemedColor}
+      ${cssThemedLink}
+      font: ${fontSize.md}/1.05 ${font.pnb};
+    }
+
+    &:hover {
+      label {
+        ${cssThemedColor}
+      }
+    }
+  }
 `;
 
 const ToggleRefinement = ({
