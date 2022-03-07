@@ -25,6 +25,7 @@ const ReviewableSummaryItemTheme = {
     }
 
     h3 {
+      cursor: pointer;
       font: ${fontSize.lg}/${lineHeight.md} ${font.pnb};
     }
 
@@ -90,7 +91,7 @@ const ReviewableSummaryItemTheme = {
   `,
 };
 
-const ReviewableSummaryItemEl = styled.a.attrs({
+const ReviewableSummaryItemEl = styled.div.attrs({
   className: 'reviewable-summary-card',
 })`${withThemes(ReviewableSummaryItemTheme)}`;
 
@@ -198,7 +199,9 @@ const ItemPrice = styled.div`
 
 const parensRe = /(\([^)]+\))/;
 
-const ReviewableLinkEl = styled.div`
+const ReviewableLinkEl = styled.a`
+  z-index: 1;
+
   @media(hover: hover) {
     &:hover {
       color: ${color.mint};
@@ -314,7 +317,7 @@ const ReviewableSummaryCard = React.memo(({
           )}
         </TitleImageContent>
         {cloudinaryId && (
-          <ReviewableLink
+          <div
             className="image-link"
             href={href}
             hrefDataAttrs={hrefDataAttrs}
@@ -329,7 +332,7 @@ const ReviewableSummaryCard = React.memo(({
                 'thumbnailPlaceholder',
               )}
             />
-          </ReviewableLink>
+          </div>
         )}
       </TitleImageWrapper>
     </ReviewableSummaryItemEl>
