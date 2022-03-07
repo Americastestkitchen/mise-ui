@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connectMenu } from 'react-instantsearch-dom';
@@ -16,20 +16,29 @@ const MenuWrapper = styled.ul`
   }
 `;
 
-const Menu = ({ items, onClickItem, ...restProps }) => (
-  <MenuWrapper hasItems={items && items.length > 0}>
-    {
-      items.map(item => (
+const Menu = ({ items, onClickItem, ...restProps }) => {
+  const { currentRefinement, canRefine, refine } = restProps;
+
+  /** If menu is not valid, clear filtered items */
+  useEffect(() => {
+    if (!canRefine && currentRefinement) {
+      refine();
+    }
+  }, [currentRefinement, canRefine, refine]);
+
+  return (
+    <MenuWrapper hasItems={items && items.length > 0}>
+      {items.map(item => (
         <RefinementFilter
           {...item}
           {...restProps}
           handleClick={onClickItem}
           includeCount={false}
         />
-      ))
-    }
-  </MenuWrapper>
-);
+      ))}
+    </MenuWrapper>
+  );
+};
 
 Menu.propTypes = {
   items: PropTypes.array.isRequired,
