@@ -278,7 +278,6 @@ const ReviewableSummaryCard = React.memo(({
       data-discontinued={isDiscontinued}
       data-has-img={Boolean(cloudinaryId)}
       data-buy-now={Boolean(buyNowLink)}
-      tabIndex={0}
     >
       <TitleImageWrapper>
         <TitleImageContent data-buy-now={Boolean(buyNowLink)}>
