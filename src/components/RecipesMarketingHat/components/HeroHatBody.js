@@ -5,6 +5,7 @@ import {
   font,
   fontSize,
   letterSpacing,
+  mixins,
   spacing,
 } from '../../../styles';
 
@@ -108,6 +109,18 @@ const HeroHatBody = styled.div.attrs({
 
   .how-we-use__text {
     top: 2rem;
+  }
+
+  input:focus {
+    ${mixins.focusIndicator(color.eclipse, '-5px')}
+  }
+
+  button:focus {
+    ${mixins.focusIndicator(color.white, '-3px')}
+  }
+
+  .how-we-use__link:focus {
+    ${mixins.focusIndicator(color.eclipse, '0px')}
   }
 
   ${breakpoint('md')`
