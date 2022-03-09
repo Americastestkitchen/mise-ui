@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import cloudinaryInstance, { baseImageConfig } from '../../../lib/cloudinary';
 import { color, font, fontSize, letterSpacing, mixins, withThemes } from '../../../styles';
+import { md, untilMd } from '../../../styles/breakpoints';
 import { cssThemedColor } from '../../../styles/mixins';
 import useMedia from '../../hooks/useMedia';
 import DetailTriangleRight from '../components/DetailTriangleRight';
@@ -14,19 +15,25 @@ export type HeroImages = {
   desktop: string,
 }
 
-const Content = styled.div`
+const TextArea = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 3.2rem;
-  margin: 2.5rem 3.3rem 3.2rem auto;
+  justify-content: center;
+  align-items: center;
   text-align: right;
-
-  ${breakpoint('md')`
-    margin: 0 auto 1.6rem;
+  ${md(css`
     text-align: center;
-  `}
+  `)}
+`;
 
+const Content = styled.div`
+  flex-grow: 1;
+  display: flex;
+  margin-top: 5px;
   z-index: 1;
+  ${untilMd(css`
+    margin-left: 140px;
+  `)}
 `;
 
 const CtaTheme = {
@@ -109,9 +116,9 @@ const ImageBgWrapperTheme = {
     flex-direction: column;
     height: 19.2rem;
     overflow: hidden;
-    justify-content: center;
     position: relative;
     width: 100%;
+    padding-bottom: 20px;
   
     ${breakpoint('md')`
       height: 15rem;
@@ -269,8 +276,10 @@ const DisplayBeltAd = ({
   <ImageBgWrapper>
     <DisplayBeltImage backgroundImages={backgroundImages} />
     <Content>
-      <Headline>{headline}</Headline>
-      <SaleCopy>{saleCopy}</SaleCopy>
+      <TextArea>
+        <Headline>{headline}</Headline>
+        <SaleCopy>{saleCopy}</SaleCopy>
+      </TextArea>
     </Content>
     <Cta onClick={onClick} href={ctaLink} target="_blank">{ctaCopy}<DetailTriangleRight /></Cta>
   </ImageBgWrapper>
