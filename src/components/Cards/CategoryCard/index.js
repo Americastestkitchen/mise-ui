@@ -143,11 +143,16 @@ const TaglineWrapperTheme = {
     height: 3rem;
     line-height: 16px;
     text-align: center;
-    width: 9rem;
+    width: 8rem;
+
+    ${breakpoint('md')`
+      width: 9rem;
+    `}
   `,
   atk: css`
     color: ${color.eclipse};
     font-family: ${font.pnr};
+    width: 9rem;
   `,
   cio: css`
     color: ${color.cork};
