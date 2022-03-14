@@ -32,17 +32,17 @@ const atkDisplayBeltImages = {
 };
 
 const cioDisplayBeltImages = {
-  mobile: '2022 Review Landing/CIO-Mobile-Display-Belt',
-  tablet: '2022 Review Landing/CIO-Tablet-Display-Belt',
-  largeTablet: '2022 Review Landing/CIO-Large-Tablet-Display-Belt',
-  desktop: '2022 Review Landing/CIO-Desktop-Display-Belt',
+  mobile: '2022 Review Landing/CIO-Mobile',
+  tablet: '2022 Review Landing/CIO-Tablet-768x150_3x',
+  largeTablet: '2022 Review Landing/CIO-Landscape_Tablet-1024x150_3x',
+  desktop: '2022 Review Landing/CIO-Desktop-1280x150_3x',
 };
 
 const ccoDisplayBeltImages = {
-  mobile: '2022 Review Landing/CCO-Mobile-Display-Belt',
-  tablet: '2022 Review Landing/CCO-Tablet-Display-Belt',
-  largeTablet: '2022 Review Landing/CCO-Large-Tablet-Display-Belt',
-  desktop: '2022 Review Landing/CCO-Desktop-Display-Belt',
+  mobile: '2022 Review Landing/CCO-Mobile',
+  tablet: '2022 Review Landing/CCO-Tablet-768x150_3x',
+  largeTablet: '2022 Review Landing/CCO-Landscape_Tablet-1024x150_3x',
+  desktop: '2022 Review Landing/CCO-Desktop-1280x150_3x',
 };
 
 export const AtkBeltAd = () => <PreviewDisplayBeltAd theme={{ siteKey: 'atk' }} props={{ backgroundImages: atkDisplayBeltImages }} />;
