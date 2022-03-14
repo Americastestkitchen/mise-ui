@@ -37,6 +37,10 @@ const tabletLayout = css`
     letter-spacing: 2.56px;
     margin-bottom: 6px;
   }
+  ${Description} {
+    font-size: 23px;
+    line-height: 26px;
+  }
   ${ButtonArea} {
     width: 200px;
   }
@@ -52,10 +56,6 @@ const desktopLayout = css`
   ${TextArea} {
     padding-left: 32px;
     padding-right: 32px;
-  }
-  ${Description} {
-    font-size: 23px;
-    line-height: 26px;
   }
   ${ButtonArea} {
     margin-right: 72px;
