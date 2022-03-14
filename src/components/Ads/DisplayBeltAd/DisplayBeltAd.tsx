@@ -254,8 +254,8 @@ function DisplayBeltImage({ backgroundImages } : {backgroundImages: HeroImages})
       <ImageLeft
         src={cloudinaryInstance.url(backgroundImages?.mobile, {
           ...baseImageConfig,
-          height: 150,
-          width: 150,
+          height: 192,
+          width: 192,
         })}
         {...shared}
       />
