@@ -35,7 +35,6 @@ const tabletLayout = css`
   }
   ${Headline} {
     letter-spacing: 2.56px;
-    line-height: 20px;
     margin-bottom: 6px;
   }
   ${ButtonArea} {
@@ -53,9 +52,6 @@ const desktopLayout = css`
   ${TextArea} {
     padding-left: 32px;
     padding-right: 32px;
-  }
-  ${Headline} {
-    font-size: 16px;
   }
   ${Description} {
     font-size: 23px;

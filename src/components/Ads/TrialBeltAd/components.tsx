@@ -5,8 +5,8 @@ import { cssThemedButton } from './css';
 
 export const Headline = styled.p`
   font-family: ${font.pnr};
-  font-size: 14px;
-  line-height: 1.29;
+  font-size: 16px;
+  line-height: 20px;
   letter-spacing: 2.24px;
   text-transform: uppercase;
 `;
@@ -14,7 +14,7 @@ export const Headline = styled.p`
 export const Description = styled.p`
   font-family: ${font.pnb};
   font-size: 18px;
-  line-height: 1.11;
+  line-height: 20px;
 `;
 
 export const TextArea = styled.div`
