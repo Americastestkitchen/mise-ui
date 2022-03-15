@@ -43,6 +43,7 @@ const cookingSchoolArgs: TrialBeltAdProps = {
   headline: 'Try our online cooking school',
   description: 'Take your skills to the next level with 320+ courses led by our expert test cooks.',
   cta: 'TRY FOR FREE',
+  reducedTextSizing: true,
 };
 
 const magazineArgs: TrialBeltAdProps = {
