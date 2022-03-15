@@ -17,7 +17,6 @@ export default function ArrowButton({ rotate, ...props }: ArrowButtonProps) {
         aria-hidden="true"
         focusable="false"
         role="img"
-        rotated={rotate}
       >
         <path d={arrowPath} {...rotation} />
       </Svg>

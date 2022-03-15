@@ -50,19 +50,17 @@ export const Button = styled.button`
   }
 
   &:active{
-    ${cssThemedBackgroundAccentColorAlt}
     opacity: 0.6;
   }
 `;
 
-export const Svg = styled.svg<{rotated?: boolean}>`
+export const Svg = styled.svg`
   width: 60%;
   height: 60%;
   position: absolute;
-  left: ${({ rotated }) => (rotated ? '23%' : '25%')};
-  top: ${({ rotated }) => (rotated ? '18%' : '20%')};;
+  left: 20%;
+  top: 20%;
   fill: white;
-  max-width: 1.3rem;
 `;
 
 export const Navigation = styled.nav`
