@@ -1,3 +1,17 @@
+# v1.33.11 (Tue Mar 15 2022)
+
+#### 🐛 Bug Fix
+
+- fixing imports [#673](https://github.com/Americastestkitchen/mise-ui/pull/673) (kayserifsl@Kayseris-MacBook-Pro.local [@kayseriatk](https://github.com/kayseriatk))
+- Km content 115 [#665](https://github.com/Americastestkitchen/mise-ui/pull/665) (kayserifsl@Kayseris-MacBook-Pro.local [@kayseriatk](https://github.com/kayseriatk))
+
+#### Authors: 2
+
+- Kayseri FullStackLabs (kayserifsl@Kayseris-MacBook-Pro.local)
+- Kayseri Martinez ([@kayseriatk](https://github.com/kayseriatk))
+
+---
+
 # v1.33.10 (Mon Feb 28 2022)
 
 #### 🐛 Bug Fix
