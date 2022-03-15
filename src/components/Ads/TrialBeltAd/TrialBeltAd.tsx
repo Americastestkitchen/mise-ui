@@ -2,7 +2,7 @@ import React from 'react';
 import cloudinaryInstance, { baseImageConfig } from '../../../lib/cloudinary';
 import { InferStyledTypes } from '../../../styles/utility-types';
 import DetailTriangleRight from '../components/DetailTriangleRight';
-import { ButtonArea, ClickArea, Description, Headline, ImageArea, TextArea } from './components';
+import { ButtonArea, ClickArea, Description, Headline, ImageArea, TextArea } from './css/components';
 import Layout from './Layout';
 
 export type TrialBeltAdProps = {
@@ -16,6 +16,8 @@ export type TrialBeltAdProps = {
   description: string;
   /** Text for button (button is a div since card is an anchor tag) */
   cta: string;
+  /** Reduced font sizes for larger text options */
+  reducedTextSizing?: boolean;
   /**
    * Pass any additional props to the click area. This can be for
    *  analytics events, accessibility with "aria-label", or any other
@@ -30,11 +32,12 @@ export default function TrialBeltAd({
   headline,
   description,
   cta,
+  reducedTextSizing,
   linkProps = {},
 }: TrialBeltAdProps) {
   const src = cloudinaryInstance.url(cloudinaryId, { ...baseImageConfig, height: 100, width: 100 });
   return (
-    <Layout>
+    <Layout reducedTextSizing={reducedTextSizing}>
       <ClickArea href={href} {...linkProps}>
         <ImageArea>
           <img

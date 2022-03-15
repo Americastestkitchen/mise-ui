@@ -1,80 +1,16 @@
-import styled, { css } from 'styled-components';
-import { lg, md } from '../../../styles/breakpoints';
-import { ButtonArea, ClickArea, Description, Headline, TextArea } from './components';
-import { cssThemedLightBackground, cssHorizontalGridAreas, cssVerticalGridAreas } from './css';
-
-const desktop = '@media only screen and (min-width: 1280px)';
-
-const mobileLayout = css`
-  height: 192px;
-  padding-top: 16px;
-  padding-bottom: 16px;
-  
-  ${ClickArea} {
-    ${cssVerticalGridAreas}
-  }
-  ${TextArea} {
-    padding-left: 16px;
-  }
-  ${ButtonArea} {
-    max-width: 340px;
-    width: 100%;
-  }
-`;
-
-const tabletLayout = css`
-  height: 150px;
-  padding-top: 25px;
-  padding-bottom: 25px;
-  
-  ${ClickArea} {
-    ${cssHorizontalGridAreas}
-  }
-  ${TextArea} {
-    padding-right: 16px;
-  }
-  ${Headline} {
-    letter-spacing: 2.56px;
-    margin-bottom: 6px;
-  }
-  ${Description} {
-    font-size: 23px;
-    line-height: 26px;
-  }
-  ${ButtonArea} {
-    width: 200px;
-  }
-`;
-
-const tabletLargeLayout = css`
-  ${ButtonArea} {
-    width: 272px;
-  }
-`;
-
-const desktopLayout = css`
-  ${TextArea} {
-    padding-left: 32px;
-    padding-right: 32px;
-  }
-  ${ButtonArea} {
-    margin-right: 72px;
-  }
-`;
+import styled from 'styled-components';
+import { cssThemedLightBackground } from './css/shared';
+import layoutStyles from './css/layoutStyles';
+import reducedTextSizing from './css/reducedTextSizing';
 
 /**
  * Consolidates all breakpoint specific layout and styles.
  * Any style changes unrelated to theming can be made here.
  */
-const Layout = styled.div`
+const Layout = styled.div<{ reducedTextSizing?: boolean }>`
   ${cssThemedLightBackground}
-
-  ${mobileLayout}
-  ${md(css`${tabletLayout}`)}
-  ${lg(css`${tabletLargeLayout}`)}
-  ${desktop} {
-    ${desktopLayout}
-  }
+  ${layoutStyles}
+  ${reducedTextSizing}
 
   box-sizing: border-box;
   width: 100vw;

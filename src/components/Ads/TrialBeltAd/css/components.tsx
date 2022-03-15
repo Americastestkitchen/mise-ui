@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { font, color } from '../../../styles';
-import { cssThemedColor } from '../../../styles/mixins';
-import { cssThemedButton } from './css';
+import { font, color } from '../../../../styles';
+import { cssThemedColor } from '../../../../styles/mixins';
+import { cssThemedButton } from './shared';
 
 export const Headline = styled.p`
   font-family: ${font.pnr};
