@@ -1,5 +1,5 @@
 import { css } from 'styled-components';
-import { color, withThemes } from '../../../styles';
+import { color, withThemes } from '../../../../styles';
 
 export const cssThemedLightBackground = withThemes({
   default: css`background-color: ${color.frost};`,
@@ -9,23 +9,23 @@ export const cssThemedLightBackground = withThemes({
 
 export const cssThemedButton = withThemes({
   default: css`
-      background-color: ${color.coldPool};
-      &:hover {
-        background-color: ${color.darkColdPool};
-      }
-    `,
+    background-color: ${color.coldPool};
+    &:hover {
+      background-color: ${color.darkColdPool};
+    }
+  `,
   cio: css`
-      background-color: ${color.squirrel};
-      &:hover {
-        background-color: ${color.cork};
-      }
-    `,
+    background-color: ${color.squirrel};
+    &:hover {
+      background-color: ${color.cork};
+    }
+  `,
   cco: css`
-      background-color: ${color.denim};
-      &:hover {
-         background-color: ${color.arapawa};
-      }
-    `,
+    background-color: ${color.denim};
+    &:hover {
+        background-color: ${color.arapawa};
+    }
+  `,
 });
 
 export const cssVerticalGridAreas = css`
