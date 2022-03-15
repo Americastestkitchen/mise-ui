@@ -16,7 +16,7 @@ export type TrialBeltAdProps = {
   description: string;
   /** Text for button (button is a div since card is an anchor tag) */
   cta: string;
-  /** Reduced font sizes for larger text options */
+  /** Reduced font sizes for larger text options. All defined in ./css/reducedTextSizing.ts. */
   reducedTextSizing?: boolean;
   /**
    * Pass any additional props to the click area. This can be for

@@ -26,6 +26,11 @@ const cssDescriptionSize = css`
   line-height: 26px;
 `;
 
+/**
+ * Headline font reduced until tablet
+ * Description font reduced until desktop
+ * No spacing between text until tablet
+ */
 const schoolStyles = css`
   ${Headline} {
     padding-bottom: 8px;
@@ -46,6 +51,11 @@ const schoolStyles = css`
   }
 `;
 
+/**
+ * Headline font never reduced
+ * Description font reduced until tablet
+ * Always spacing between text
+ */
 const magStyles = css`
   ${Headline} {
     padding-bottom: 8px;
