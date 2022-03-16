@@ -54,6 +54,16 @@
         "test",
         "code"
       ]
+    },
+    {
+      "login": "ttornese",
+      "name": "Tom Tornese",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2482369?v=4",
+      "profile": "https://github.com/ttornese",
+      "contributions": [
+        "example",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
