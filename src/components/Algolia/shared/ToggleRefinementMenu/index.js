@@ -16,12 +16,14 @@ const ToggleRefinementMenu = ({
   menuOnClickItem,
   menuTransformItems,
   toggleRefinementAttribute,
+  toggleRefinementClick,
   toggleRefinementLabel,
   toggleRefinementValue,
 }) => (
   <ToggleRefinementMenuWrapper>
     <ToggleRefinement
       attribute={toggleRefinementAttribute}
+      handleClick={toggleRefinementClick}
       label={toggleRefinementLabel}
       value={toggleRefinementValue}
     />
@@ -38,11 +40,13 @@ ToggleRefinementMenu.propTypes = {
   menuOnClickItem: PropTypes.func,
   menuTransformItems: PropTypes.func,
   toggleRefinementAttribute: PropTypes.string.isRequired,
+  toggleRefinementClick: PropTypes.func,
   toggleRefinementLabel: PropTypes.string.isRequired,
   toggleRefinementValue: PropTypes.string.isRequired,
 };
 
 ToggleRefinementMenu.defaultProps = {
+  toggleRefinementClick: null,
   menuTransformItems: null,
   menuOnClickItem: null,
 };

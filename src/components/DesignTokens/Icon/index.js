@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import * as Icons from './svgs';
 
+export { default as ChevronThin } from './svgs/ChevronThin';
+export * from './svgs/ChevronThin';
+
 function Icon({ children }) {
   return children;
 }

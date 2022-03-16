@@ -1,26 +1,64 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { md } from '../../../styles/breakpoints';
-import { mixins } from '../../../styles';
-import { Intro, Subtitle, Title, Topic } from './styled-elements';
+import { mixins, font, withThemes, color } from '../../../styles';
+import { Intro, Title, Topic } from './styled-elements';
+import { cssThemedColor, cssThemedFontAccentColorAlt } from '../../../styles/mixins';
+import { InferStyledTypes } from '../../../styles/utility-types';
+import { ChevronThin } from '../../DesignTokens/Icon';
+import { untilMd } from '../../../styles/breakpoints';
 
-const arrowPath = 'M 45.4883 88.5586 C 48.082 92.5664 53.2734 93.7109 57.3086 91.4219 C 61.3477 88.8477 62.5 83.6953 60.1953 79.6914 L 40.0078 47.6445 L 60.1953 15.5977 C 62.7891 11.5898 61.6367 6.1523 57.3086 3.8633 C 55.8672 3.0078 54.4258 2.4336 52.6953 2.4336 C 49.8125 2.4336 46.9297 3.8633 45.4883 6.4414 L 19.5352 47.6445 L 45.4883 88.5586 Z M 45.4883 88.5586';
+const cssThemedStrokeAccentAlt = withThemes({
+  default: css`stroke: ${color.darkTeal};`,
+  atk: css`stroke: ${color.darkTeal};`,
+  cco: css`stroke: ${color.denim};`,
+  cio: css`stroke: ${color.squirrel};`,
+});
 
-const Layout = styled.div`
-  ${md(css`
-    display: flex;
-    align-items: center;
-    ${Title} {
-      margin-right: 16px;
+const cssThemedStroke = withThemes({
+  default: css`stroke: ${color.eclipse};`,
+  atk: css`stroke: ${color.eclipse};`,
+  cco: css`stroke: ${color.black};`,
+  cio: css`stroke: ${color.cork};`,
+});
+
+/**
+ * If link text is provided, we add spacing for title to wrap above
+ *  the arrow buttons by a bit to match designs.
+ */
+const cssWrappingStyles = css`
+  ${Title} {
+    display: block;
+    margin-right: -64px; 
+    margin-bottom: 8px;
+  }
+`;
+
+const Layout = styled.span<{ hasLink: boolean }>`
+  vertical-align: middle;
+  ${Title} {
+    display: inline-block;
+    margin-right: 16px;
+  }
+  ${({ hasLink }) => hasLink && untilMd(css`${cssWrappingStyles}`)}
+`;
+
+const Link = styled.a`
+  white-space: nowrap;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-family: ${font.pnr};
+  font-size: 18px;
+  line-height: 23px;
+  letter-spacing: 2.88px;
+  margin: 0;
+  ${cssThemedColor}
+  ${cssThemedStroke}
+  @media (hover: hover) {
+    &:hover {
+      ${cssThemedFontAccentColorAlt}
+      ${cssThemedStrokeAccentAlt}
     }
-  `)}
-`;
-
-const Svg = styled.svg`
-  height: 10px;
-`;
-
-const Button = styled.button`
+  }
   &:focus-within {
     ${mixins.focusIndicator()}
   }
@@ -28,33 +66,26 @@ const Button = styled.button`
 
 export type LinkCarouselHeaderProps = {
   title: string;
-  subtitle: string;
-  onClick: (ev: React.MouseEvent<HTMLButtonElement>) => void;
-  buttonProps?: React.PropsWithoutRef<'button'>;
+  linkText: string;
+  titleProps?: InferStyledTypes<typeof Title>;
+  linkProps: InferStyledTypes<typeof Link>;
 };
 
 export function LinkCarouselHeader({
   title,
-  subtitle,
-  onClick,
-  buttonProps,
+  linkText,
+  titleProps,
+  linkProps,
 }: LinkCarouselHeaderProps) {
   return (
-    <Layout>
-      <Title>{title}</Title>
-      <Button type="button" onClick={onClick} {...buttonProps}>
-        <Subtitle>
-          <span>{subtitle}</span>
-          <Svg
-            viewBox="0 0 100 100"
-            aria-hidden="true"
-            focusable="false"
-            role="img"
-          >
-            <path d={arrowPath} transform="translate(100, 100) rotate(180)" />
-          </Svg>
-        </Subtitle>
-      </Button>
+    <Layout hasLink={!!linkText}>
+      <Title {...titleProps}>{title}</Title>
+      {linkText && (
+        <Link {...linkProps}>
+          {linkText}
+          <ChevronThin />
+        </Link>
+      )}
     </Layout>
   );
 }

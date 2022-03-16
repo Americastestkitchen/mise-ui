@@ -1,10 +1,12 @@
 import styled, { css } from 'styled-components';
 import { withThemes, color, font } from '../../../styles';
-import { cssThemedBackground,
+import {
+  cssThemedBackground,
   cssThemedBackgroundAccentColorAlt,
   cssThemedColor,
   cssThemedFontBold,
-  cssThemedLink } from '../../../styles/mixins';
+  cssThemedLink,
+} from '../../../styles/mixins';
 
 export const Carousel = styled.div`
   width: 100%;
@@ -28,7 +30,7 @@ export const Divider = styled.div<{showDivider?: boolean}>`
     `,
     cco: css`
       background-color: ${color.whiteSmoke};
-      height: 6px;
+      height: 4px;
     `,
     cio: css`
       background-color: ${color.bone};
@@ -90,7 +92,7 @@ export const Title = styled.h2`
   ${cssThemedColor}
   ${cssThemedFontBold}
   font-size: 26px;
-  line-height: 1.15;
+  line-height: 33px;
   margin: 0;
 `;
 
@@ -98,7 +100,7 @@ export const Intro = styled.div`
   ${cssThemedColor}
   font-family: ${font.mwr};
   font-size: 16px;
-  line-height: 1.63;
+  line-height: 1.6;
   padding: 3px 0;
   a {
     ${cssThemedLink}

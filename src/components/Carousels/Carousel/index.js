@@ -200,6 +200,7 @@ function getFlickityInstance(el, options) {
   const isPhone = window.innerWidth <= 768 || window.innerHeight <= 450;
   const groupCells = slideshow ? false : '100%';
   const cOptions = {
+    accessibility: false,
     autoPlay,
     cellAlign,
     dragThreshold: 10,

@@ -14,6 +14,20 @@ const TitleTheme = {
       }
     }
   `,
+  cco: css`
+    @media(hover: hover) {
+      &:hover {
+        color: ${color.denim};
+      }
+    }
+  `,
+  cio: css`
+    @media(hover: hover) {
+      &:hover {
+        color: ${color.squirrel};
+      }
+    }
+  `,
   dark: css`
     @media(hover: hover) {
       &:hover {

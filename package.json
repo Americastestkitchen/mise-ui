@@ -1,12 +1,12 @@
 {
   "name": "@atk/mise-ui",
-  "version": "1.33.11",
+  "version": "1.33.11--canary.283ae01.0",
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.14.5",
     "algoliasearch": "^4.0.3",
     "cloudinary-core": "^2.11.4",
     "cross-fetch": "^3.1.4",
-    "flickity": "^2.2.2",
+    "flickity": "2.2.2",
     "flickity-imagesloaded": "^2.0.0",
     "lodash.memoize": "^4.1.2",
     "lodash.orderby": "^4.6.0",

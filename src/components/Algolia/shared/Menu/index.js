@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connectMenu } from 'react-instantsearch-dom';
-
 import RefinementFilter from '../RefinementFilter2';
 
 const MenuWrapper = styled.ul`

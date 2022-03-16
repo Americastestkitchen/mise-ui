@@ -75,7 +75,13 @@ const PersonCardDescription = styled.div`
 `;
 
 const PersonCard = ({ description, imgAlt, imgCloudinaryId, mode, name }) => (
-  <PersonCardWrapper className="person-card" data-testid="person-card" mode={mode}>
+  <PersonCardWrapper
+    aria-label={imgAlt}
+    className="person-card"
+    data-testid="person-card"
+    mode={mode}
+    tabIndex={0}
+  >
     <PersonHeadShot
       imgAlt={imgAlt}
       imgCloudinaryId={imgCloudinaryId}

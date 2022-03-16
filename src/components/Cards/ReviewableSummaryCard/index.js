@@ -25,6 +25,7 @@ const ReviewableSummaryItemTheme = {
     }
 
     h3 {
+      cursor: pointer;
       font: ${fontSize.lg}/${lineHeight.md} ${font.pnb};
     }
 
@@ -58,6 +59,10 @@ const ReviewableSummaryItemTheme = {
   atk: css`
     h3 {
       color: ${color.eclipse};
+
+      &:hover {
+        color: ${color.mint};
+      }
     }
   `,
   cco: css`
@@ -69,11 +74,19 @@ const ReviewableSummaryItemTheme = {
 
     h3 {
       color: ${color.black};
+
+      &:hover {
+        color: ${color.denim};
+      }
     }
   `,
   cio: css`
     h3 {
       color: ${color.cork};
+
+      &:hover {
+        color: ${color.squirrel};
+      }
     }
   `,
 };
@@ -187,6 +200,8 @@ const ItemPrice = styled.div`
 const parensRe = /(\([^)]+\))/;
 
 const ReviewableLinkEl = styled.a`
+  z-index: 1;
+
   @media(hover: hover) {
     &:hover {
       color: ${color.mint};
@@ -247,9 +262,11 @@ const ReviewableSummaryCard = React.memo(({
   const isDiscontinued = price?.toLowerCase()?.includes('discontinued') ?? false;
   const priceMarkup = price?.replace(parensRe, '<span>$1</span>') ?? null;
   let buyNowIcon = asin ? 'Amazon' : null;
-
   if (buyNowOverrideAffiliateActive) {
     buyNowIcon = buyNowOverrideAffiliateName || null;
+  }
+  if (buyNowLink && buyNowLink.includes('amazon')) {
+    buyNowIcon = 'Amazon';
   }
   const sortOfWinner = winner || isShortList;
   const stickerText = sortOfWinner
@@ -299,7 +316,7 @@ const ReviewableSummaryCard = React.memo(({
           )}
         </TitleImageContent>
         {cloudinaryId && (
-          <ReviewableLink
+          <div
             className="image-link"
             href={href}
             hrefDataAttrs={hrefDataAttrs}
@@ -314,7 +331,7 @@ const ReviewableSummaryCard = React.memo(({
                 'thumbnailPlaceholder',
               )}
             />
-          </ReviewableLink>
+          </div>
         )}
       </TitleImageWrapper>
     </ReviewableSummaryItemEl>
