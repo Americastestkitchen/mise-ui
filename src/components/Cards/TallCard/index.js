@@ -29,8 +29,12 @@ const StyledTallCard = styled.article`
     z-index: 2;
   }
 
-  a img {
-    transition: all .3s ease;
+  a {
+    display: block;
+
+      img {
+        transition: all .3s ease;
+      }
   }
 
   @media(hover: hover) {
