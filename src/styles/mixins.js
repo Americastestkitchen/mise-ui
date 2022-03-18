@@ -12,6 +12,7 @@ function focusIndicator(outlineColor = color.eclipse, outlineOffset = '3px') {
   return css`
     outline: 2px dotted ${outlineColor};
     outline-offset: ${outlineOffset};
+    border: none;
   `;
 }
 

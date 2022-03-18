@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+import { color, mixins } from '.';
 
 export default css`
   /*! Flickity v2.2.1
@@ -59,8 +60,7 @@ export default css`
   }
 
   .flickity-button:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px #19F;
+    ${mixins.focusIndicator(color.white)}
   }
 
   .flickity-button:active {
