@@ -40,6 +40,14 @@ export const BreadcrumbArrow = ({ fill }) => (
 
 BreadcrumbArrow.propTypes = Icons.BreadcrumbArrow.propTypes;
 
+export const CCOSmallRooster = () => (
+  <Icon>
+    <Icons.CCOSmallRooster />
+  </Icon>
+);
+
+CCOSmallRooster.propTypes = Icons.CCOSmallRooster.propTypes;
+
 export const Checkmark = ({ fill }) => (
   <Icon>
     <Icons.Checkmark
@@ -88,6 +96,14 @@ export const Close = ({ ariaLabel, fill }) => (
 
 Close.propTypes = Icons.Close.propTypes;
 
+export const CIOTagline = () => (
+  <Icon>
+    <Icons.CIOTagline />
+  </Icon>
+);
+
+CIOTagline.propTypes = Icons.CIOTagline.propTypes;
+
 export const Collection = ({ fill }) => (
   <Icon>
     <Icons.Collection
@@ -107,6 +123,14 @@ export const Cookbook = ({ className }) => (
 );
 
 Cookbook.propTypes = Icons.Cookbook.propTypes;
+
+export const CookingPot = () => (
+  <Icon>
+    <Icons.CookingPot />
+  </Icon>
+);
+
+CookingPot.propTypes = Icons.CookingPot.propTypes;
 
 export const Comment = props => (
   <Icon>

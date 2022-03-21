@@ -2,12 +2,15 @@ import Alert from './Alert';
 import Arrow from './Arrow';
 import Bell from './Bell';
 import BreadcrumbArrow from './BreadcrumbArrow';
+import CCOSmallRooster from './CCOSmallRooster';
 import Checkmark from './Checkmark';
 import Checkmark2 from './Checkmark2';
 import ChefHat from './ChefHat';
 import ChevronThinDown from './ChevronThinDown';
+import CIOTagline from './CIOTagline';
 import Close from './Close';
 import Collection from './Collection';
+import CookingPot from './CookingPot';
 import Comment from './Comment';
 import Content from './Content';
 import Cookbook from './Cookbook';
@@ -47,11 +50,14 @@ export {
   Arrow,
   Bell,
   BreadcrumbArrow,
+  CCOSmallRooster,
   Checkmark,
   Checkmark2,
   ChefHat,
   ChevronThinDown,
+  CIOTagline,
   Close,
+  CookingPot,
   Comment,
   Content,
   Collection,
