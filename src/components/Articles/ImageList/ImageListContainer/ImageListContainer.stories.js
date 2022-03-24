@@ -21,7 +21,7 @@ const images = [
   {
     altText: 'picture of a thing',
     cloudinaryId: 'AKO%20Articles/2021%20Articles/Reviews%20Team/GettyImages-680787007',
-    content: '\u003cp\u003eThere are many things about this picture to say. There are many things about this picture to say. There are many things about this picture to say.\u003cp\u003e',
+    content: '<ol><li><strong class="ql-color-#3d3d3d ql-bg-#f5f5f5"><u>While browning does improve flavor, darker pans also produced cakes </u></strong><span class="ql-color-#3d3d3d ql-bg-#f5f5f5">that were distinctly more evenly, producing taller,&nbsp;</span><a href="https://www-staging.americastestkitchen.com/" target="_blank" class="ql-color-#3d3d3d ql-bg-#f5f5f5">more level layers.</a></li><li><em class="ql-color-#3d3d3d ql-bg-#f5f5f5">As the layers cooled, one result was clear: The darker the pan the darker the cake. A dark-colored pan absorbs heat more efficiently than a light-colored pan.</em></li><li><strong class="ql-bg-#f5f5f5 ql-color-#3d3d3d">As the layers cooled, one result was clear: The darker the pan the darker the cake. A dark-colored pan absorbs heat more efficiently than a light-colored pan.</strong></li></ol>',
     lazy: true
   }
 ];

@@ -343,11 +343,14 @@ export const cssThemedLink = css`
 export const cssArticleBoxStyles = css`
   ol {
     padding: 0;
+    position: relative;
     li {
-      display: flex;
       counter-increment: li;
+      padding-left: 16px;
 
       &::before {
+        position: absolute;
+        left: 0;
         content: counter(li)".";
         ${cssThemedColor}
         font: ${fontSize.sm}/1.5 ${font.pnb};
