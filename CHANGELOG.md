@@ -1,3 +1,16 @@
+# v1.33.13 (Thu Mar 24 2022)
+
+#### 🐛 Bug Fix
+
+- Image List component with different font styles in copy causing issue… [#675](https://github.com/Americastestkitchen/mise-ui/pull/675) (kayserifsl@Kayseris-MacBook-Pro.local [@kayseriatk](https://github.com/kayseriatk))
+
+#### Authors: 2
+
+- Kayseri FullStackLabs (kayserifsl@Kayseris-MacBook-Pro.local)
+- Kayseri Martinez ([@kayseriatk](https://github.com/kayseriatk))
+
+---
+
 # v1.33.12 (Wed Mar 16 2022)
 
 #### 🐛 Bug Fix
