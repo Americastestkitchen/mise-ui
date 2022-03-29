@@ -1,8 +1,6 @@
-// look for instances to use css mixins
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { color, font, fontSize, withThemes } from '../../styles';
-// prefer these breakpoints V
 import { untilMd } from '../../styles/breakpoints';
 import { CCOSmallRooster, CIOTagline, CookingPot } from '../DesignTokens/Icon/svgs';
 
