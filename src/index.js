@@ -117,6 +117,9 @@ export { default as LinkFarm } from './components/Articles/LinkFarm';
 export * from './components/Carousels/BaseCarousel';
 export { default as BaseCarousel } from './components/Carousels/BaseCarousel';
 
+export * from './components/Cards/RelatedRecipeCard';
+export { default as RelatedRecipeCard } from './components/Cards/RelatedRecipeCard';
+
 export {
   Accordion,
   AccordionControl,
