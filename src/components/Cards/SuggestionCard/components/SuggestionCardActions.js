@@ -1,40 +1,37 @@
 import breakpoint from 'styled-components-breakpoint';
 import styled from 'styled-components';
 
-import { font, fontSize } from '../../../../styles';
+import { font, fontSize, color } from '../../../../styles';
 
 const SuggestionCardActions = styled.div.attrs({
   className: 'suggestion-card__buttons',
 })`
   display: flex;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  bottom: -26.5rem;
 
-  button {
-    font: 700 ${fontSize.sm}/1.64 ${font.msr};
-    white-space: nowrap;
+  .button-container {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin-right: 1rem;
+
+    span {
+      font-size: ${fontSize.xsm};
+      color: ${color.eclipse};
+      font-family: ${font.pnr};
+      text-transform: uppercase;
+    }
   }
 
   @media (min-width: 0) and (max-width: 413px) {
-    flex-direction: column;
-
-    button {
-      width: 100%;
-      
-      &:first-child {
-        margin-bottom: 0.8rem;
-      }
-    }
+    // flex-direction: column;
   }
 
-  ${breakpoint('md', 'xlg')`
-    flex-direction: column;
-
-    button {
-      width: 100%;
-      
-      &:first-child {
-        margin-bottom: 0.8rem;
-      }
-    }
+  ${breakpoint('md')`
+    bottom: -7rem;
   `}
 `;
 
