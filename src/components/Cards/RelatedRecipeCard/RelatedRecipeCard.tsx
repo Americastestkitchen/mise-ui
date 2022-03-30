@@ -17,6 +17,7 @@ const ContentTheme = {
     background: ${color.white};
     display: flex;
     flex-direction: column;
+    max-height: 12.8rem;
     max-width: 21.2rem;
     padding: 2rem 3.8rem 0 1.6rem;
 
