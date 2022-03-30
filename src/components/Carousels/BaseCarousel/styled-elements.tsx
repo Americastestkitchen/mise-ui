@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import breakpoint from 'styled-components-breakpoint';
 import { withThemes, color, font } from '../../../styles';
 import {
   cssThemedBackground,
@@ -14,6 +15,17 @@ export const Carousel = styled.div`
     /* 100% slides vertical scrollbar bug */
     overflow: hidden;
   }
+
+  .suggestion-card {
+    width: 272px;
+    margin-right: 20px;
+
+    ${breakpoint('md')`
+      width: 560px;
+
+    `}
+  }
+
   .standard-card {
     width: 272px;
   }
@@ -51,7 +63,7 @@ export const Button = styled.button`
 
   &:hover {
     ${cssThemedBackground}
-    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16); 
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
     outline: none;
   }
 

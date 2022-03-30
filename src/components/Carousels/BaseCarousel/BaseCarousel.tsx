@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useCallback, createContext, useContext } from 'react';
+import React, { PropsWithChildren, useCallback, createContext, useContext, useEffect } from 'react';
 import ArrowButton from './ArrowButton';
 
 import { Title, Header, Navigation, Divider, Carousel } from './styled-elements';
@@ -48,6 +48,54 @@ export default function BaseCarousel({
   const resize = useCallback(() => {
     flickity.current?.resize();
   }, [flickity]);
+
+  const publishEvent = useCallback((evt, data) => {
+    if (typeof dry !== 'undefined') {
+      // eslint-disable-next-line no-undef
+      dry.events.publish(evt, data);
+    }
+  }, []);
+
+  const handleCellChange = useCallback((idx) => {
+    const cell = flickity.current?.cells[idx].element;
+    const node = cell.cloneNode(true);
+    publishEvent('flickity:change', { node, idx });
+  }, [flickity, publishEvent]);
+
+  const handleCellClick = useCallback((evt: React.FocusEvent<HTMLElement>) => {
+    const button = evt.target.closest('button');
+    if (button) {
+      const list = button.classList;
+      if (list.contains('remove-cell')) {
+        evt.preventDefault();
+        if (flickity.current?.slides.length > 1) {
+          const { selectedIndex } = flickity.current;
+          flickity.current.next(true);
+          publishEvent('flickity:remove', { ...button.dataset, selectedIndex });
+          setTimeout(() => {
+            const cell = button.closest('.suggestion-card');
+            if (cell) flickity.current.remove(cell);
+          }, 500);
+        } else {
+          publishEvent('flickity:remove', { ...button.dataset });
+          flickity.current.destroy();
+        }
+      } else if (list.contains('next-cell')) {
+        flickity.current.next();
+        publishEvent('flickity:next', null);
+      } else if (list.contains('previous-cell')) {
+        flickity.current.previous(true);
+        publishEvent('flickity:previous', null);
+      }
+    }
+  }, [flickity, publishEvent]);
+
+  useEffect(() => {
+    const container = flickity.current.element;
+    container.addEventListener('click', handleCellClick);
+    flickity.current.on('change', handleCellChange);
+    return () => container.removeEventListener('click', handleCellClick);
+  }, [flickity, handleCellClick, handleCellChange]);
 
   const carouselLabel = `Carousel: ${title}`;
 
