@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useState } from 'react';
 import styled, { css } from 'styled-components';
 import useResizeObserver from 'use-resize-observer/polyfilled';
 import { font, fontSize, spacing } from '../../styles';
@@ -148,6 +148,7 @@ const BylineList = ({
   attribution,
   disableStacked,
 }: BylineListProps): ReactElement => {
+  const [imageError, setImageError] = useState(false);
   const { ref, height = null } = useResizeObserver();
 
   const authorImage = (() => {
@@ -175,13 +176,14 @@ const BylineList = ({
       refHeight={height ?? 0}
       disableStacked={disableStacked}
     >
-      {authorImage && (
+      {(authorImage && !imageError) && (
         <AuthorAvatarImage
           crossOrigin="anonymous"
           decoding="async"
           width={avatarSideLength}
           height={avatarSideLength}
           src={authorImage}
+          onError={() => { setImageError(true); }}
         />
       )}
       <MiddleAlignment>
