@@ -125,6 +125,9 @@ export { default as RelatedRecipeCard } from './components/Cards/RelatedRecipeCa
 export * from './components/Cards/ArticleCard';
 export { default as ArticleCard } from './components/Cards/ArticleCard';
 
+export * from './components/Cards/VideoCard';
+export { default as VideoCard } from './components/Cards/VideoCard';
+
 export {
   Accordion,
   AccordionControl,
