@@ -69,17 +69,21 @@ const Attribution = styled.span<{ atLeastOneAuthor: boolean; disableStacked?: bo
     && css`${cssAttributionSeparator}`}
 `;
 
-const cssFnWrapperInline = (refHeight: number) => css`
+const cssWrapperInline = css`
   margin-top: -2px;
   margin-bottom: ${spacing.sm};
   max-width: 28.8rem;
   padding-right: 12px;
-  align-self: ${refHeight < 40 ? 'center' : 'initial'};
+  
 `;
 
 const Wrapper = styled.span<{ refHeight: number; disableStacked?: boolean }>`
-  ${props => !props.disableStacked && cssInlineBreakpoint(css`${cssFnWrapperInline(props.refHeight)}`)};
-  ${props => props.disableStacked && css`${cssFnWrapperInline(props.refHeight)}`};
+  ${props => !props.disableStacked && cssInlineBreakpoint(css`
+    ${cssWrapperInline}
+    /* when display direction column, align self */
+    align-self: ${props.refHeight < 40 ? 'center' : 'initial'};  
+  `)};
+  ${props => props.disableStacked && css`${cssWrapperInline}`};
 
   /* tablet and above has attribution on its own line. */
   ${props => !props.disableStacked && cssStackedBreakpoint(css`
