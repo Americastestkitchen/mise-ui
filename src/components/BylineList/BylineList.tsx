@@ -83,10 +83,11 @@ const Wrapper = styled.span<{ refHeight: number; disableStacked?: boolean }>`
     /* when display direction column, align self */
     align-self: ${props.refHeight < 40 ? 'center' : 'initial'};  
   `)};
+
   ${props => props.disableStacked && css`${cssWrapperInline}`};
 
   /* tablet and above has attribution on its own line. */
-  ${props => !props.disableStacked && cssStackedBreakpoint(css`
+  ${props => (!props.disableStacked) && cssStackedBreakpoint(css`
     ${Attribution} {
       display: block;
       margin: ${spacing.xsm} 0;
