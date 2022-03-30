@@ -120,6 +120,9 @@ export { default as BaseCarousel } from './components/Carousels/BaseCarousel';
 export * from './components/Cards/RelatedRecipeCard';
 export { default as RelatedRecipeCard } from './components/Cards/RelatedRecipeCard';
 
+export * from './components/Cards/VideoCard';
+export { default as VideoCard } from './components/Cards/VideoCard';
+
 export {
   Accordion,
   AccordionControl,
