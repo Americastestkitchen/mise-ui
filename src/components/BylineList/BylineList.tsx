@@ -44,8 +44,15 @@ const AuthorList = styled.span`
   ${cssThemedColor}
 `;
 
+const cssAttributionSeparator = css`
+  &::before {
+    content: " | ";
+    margin: 0 4px;
+  }
+`;
+
 /** Attribution (i.e. Published on / Updated on) */
-const Attribution = styled.span<{ atLeastOneAuthor: boolean }>`
+const Attribution = styled.span<{ atLeastOneAuthor: boolean; disableStacked?: boolean }>`
   vertical-align: baseline;
   font-family: ${font.pnr};
   font-size: ${fontSize.md};
@@ -54,26 +61,28 @@ const Attribution = styled.span<{ atLeastOneAuthor: boolean }>`
 
   /* tablet and above is divided with | character. If no authors, don't show | character even on desktop. */
   ${props => props.atLeastOneAuthor
-    && cssInlineBreakpoint(css`
-    ${props => props.theme}
-      &::before {
-        content: " | ";
-        margin: 0 4px;
-      }
-    `)}
+    && !props.disableStacked
+    && cssInlineBreakpoint(css`${cssAttributionSeparator}`)}
+
+  ${props => props.atLeastOneAuthor
+    && props.disableStacked
+    && css`${cssAttributionSeparator}`}
 `;
 
-const Wrapper = styled.span<{ refHeight: number }>`
-  ${props => cssInlineBreakpoint(css`
-    margin-top: -2px;
-    margin-bottom: ${spacing.sm};
-    max-width: 28.8rem;
-    padding-right: 12px;
-    align-self: ${props.refHeight < 40 ? 'center' : 'initial'};
-  `)}
+const cssFnWrapperInline = (refHeight: number) => css`
+  margin-top: -2px;
+  margin-bottom: ${spacing.sm};
+  max-width: 28.8rem;
+  padding-right: 12px;
+  align-self: ${refHeight < 40 ? 'center' : 'initial'};
+`;
+
+const Wrapper = styled.span<{ refHeight: number; disableStacked?: boolean }>`
+  ${props => !props.disableStacked && cssInlineBreakpoint(css`${cssFnWrapperInline(props.refHeight)}`)};
+  ${props => props.disableStacked && css`${cssFnWrapperInline(props.refHeight)}`};
 
   /* tablet and above has attribution on its own line. */
-  ${cssStackedBreakpoint(css`
+  ${props => !props.disableStacked && cssStackedBreakpoint(css`
     ${Attribution} {
       display: block;
       margin: ${spacing.xsm} 0;
@@ -127,6 +136,7 @@ export type BylineListProps = {
   onClick?: OnClick;
   authors: Author[];
   attribution: string;
+  disableStacked?: boolean;
 }
 
 /**
@@ -138,6 +148,7 @@ const BylineList = ({
   onClick,
   authors,
   attribution,
+  disableStacked,
 }: BylineListProps): ReactElement => {
   const { ref, height = null } = useResizeObserver();
 
@@ -160,7 +171,12 @@ const BylineList = ({
   const atLeastOneAuthor = authors?.length > 0;
 
   return (
-    <Wrapper className={className} ref={ref} refHeight={height ?? 0}>
+    <Wrapper
+      className={className}
+      ref={ref}
+      refHeight={height ?? 0}
+      disableStacked={disableStacked}
+    >
       {authorImage && (
         <AuthorAvatarImage
           crossOrigin="anonymous"
@@ -175,7 +191,10 @@ const BylineList = ({
           <AuthorListInner authors={authors} onClick={onClick} />
         </AuthorList>
         {attribution && (
-          <Attribution atLeastOneAuthor={atLeastOneAuthor}>
+          <Attribution
+            atLeastOneAuthor={atLeastOneAuthor}
+            disableStacked={disableStacked}
+          >
             {attribution}
           </Attribution>
         )}
