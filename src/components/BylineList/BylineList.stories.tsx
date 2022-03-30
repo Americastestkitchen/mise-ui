@@ -34,6 +34,7 @@ export const OneAuthor = () => <Preview props={exampleAuthorsProp.oneAuthor} />;
 export const OneAuthorNoPhoto = () => <Preview props={exampleAuthorsProp.oneAuthorNoPhoto} />;
 export const TwoAuthor = () => <Preview props={exampleAuthorsProp.twoAuthors} />;
 export const ThreeAuthors = () => <Preview props={exampleAuthorsProp.threeAuthors} />;
+export const OneAuthorDisabledStyles = () => <Preview props={exampleAuthorsProp.oneAuthor} />;
 
 // Theming
 export const CCOTheme = () => <Preview theme={{ siteKey: 'cco' }} props={exampleAuthorsProp.oneAuthor} />;
