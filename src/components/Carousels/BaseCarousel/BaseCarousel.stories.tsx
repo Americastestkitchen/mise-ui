@@ -256,10 +256,9 @@ export const RecipeCarouselTopicExample = () => (
 
 type ActionProps = {
   siteKey: 'atk' | 'cio' | 'cco';
-  onClick: (ev: React.MouseEvent<HTMLButtonElement>) => void
 };
 
-const RecipeCarouselExampleTemplate = ({ siteKey = 'atk', onClick }: ActionProps) => (
+const RecipeCarouselExampleTemplate = ({ siteKey = 'atk' }: ActionProps) => (
   <PreviewProvider siteKey={siteKey}>
     <CarouselWidthWrapper
       maxWidthPx={847}
@@ -267,12 +266,12 @@ const RecipeCarouselExampleTemplate = ({ siteKey = 'atk', onClick }: ActionProps
     >
       <BaseCarousel
         useFlickityHook={useFlickityGroup}
-        title="Recipe Carousel"
+        title="Got Gear, Need Recipes?"
         header={(
           <LinkCarouselHeader
-            title="Recipe Carousel"
-            subtitle="BROWSE ALL"
-            onClick={onClick}
+            title="Got Gear, Need Recipes?"
+            linkText="browse all Books"
+            linkProps={{ href: '/#' }}
           />
         )}
         showDivider

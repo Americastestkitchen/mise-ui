@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
 import { Checkmark } from '../../../DesignTokens/Icon/svgs';
-import { color, font, fontSize, spacing, withThemes } from '../../../../styles';
+import { color, font, fontSize, mixins, spacing, withThemes } from '../../../../styles';
 
 const RefinementFilterWrapperTheme = {
   default: css`
@@ -11,7 +11,8 @@ const RefinementFilterWrapperTheme = {
     display: flex;
 
     &:focus-within {
-      box-shadow: 0 0 0 2px ${color.focusRing};
+      box-shadow: none !important;
+      ${mixins.focusIndicator()}
     }
 
     &:hover {
@@ -105,6 +106,20 @@ const RefinementFilterCheckTheme = {
       left: 0;
       position: absolute;
       top: 0;
+    }
+  `,
+  cco: css`
+    svg {
+      path {
+        fill: ${color.black};
+      }
+    }
+  `,
+  cio: css`
+    svg {
+      path {
+        fill: ${color.cork};
+      }
     }
   `,
   dark: css`

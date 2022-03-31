@@ -1,3 +1,45 @@
+# v1.33.13 (Thu Mar 24 2022)
+
+#### 🐛 Bug Fix
+
+- Image List component with different font styles in copy causing issue… [#675](https://github.com/Americastestkitchen/mise-ui/pull/675) (kayserifsl@Kayseris-MacBook-Pro.local [@kayseriatk](https://github.com/kayseriatk))
+
+#### Authors: 2
+
+- Kayseri FullStackLabs (kayserifsl@Kayseris-MacBook-Pro.local)
+- Kayseri Martinez ([@kayseriatk](https://github.com/kayseriatk))
+
+---
+
+# v1.33.12 (Wed Mar 16 2022)
+
+#### 🐛 Bug Fix
+
+- Feature reviews extension [#674](https://github.com/Americastestkitchen/mise-ui/pull/674) ([@harry-atk](https://github.com/harry-atk) jess.bon@americastestkitchen.com [@ttornese](https://github.com/ttornese) [@jaslakson](https://github.com/jaslakson))
+
+#### Authors: 4
+
+- Harry Scheuerle ([@harry-atk](https://github.com/harry-atk))
+- Jason Aslakson ([@jaslakson](https://github.com/jaslakson))
+- Jess Bon (jess.bon@americastestkitchen.com)
+- Tom Tornese ([@ttornese](https://github.com/ttornese))
+
+---
+
+# v1.33.11 (Tue Mar 15 2022)
+
+#### 🐛 Bug Fix
+
+- fixing imports [#673](https://github.com/Americastestkitchen/mise-ui/pull/673) (kayserifsl@Kayseris-MacBook-Pro.local [@kayseriatk](https://github.com/kayseriatk))
+- Km content 115 [#665](https://github.com/Americastestkitchen/mise-ui/pull/665) (kayserifsl@Kayseris-MacBook-Pro.local [@kayseriatk](https://github.com/kayseriatk))
+
+#### Authors: 2
+
+- Kayseri FullStackLabs (kayserifsl@Kayseris-MacBook-Pro.local)
+- Kayseri Martinez ([@kayseriatk](https://github.com/kayseriatk))
+
+---
+
 # v1.33.10 (Mon Feb 28 2022)
 
 #### 🐛 Bug Fix

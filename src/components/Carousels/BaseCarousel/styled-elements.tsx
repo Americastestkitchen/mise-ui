@@ -1,6 +1,12 @@
 import styled, { css } from 'styled-components';
 import { withThemes, color, font } from '../../../styles';
-import { cssThemedBackground, cssThemedBackgroundAccentColorAlt, cssThemedColor, cssThemedFontBold, cssThemedLink } from '../../../styles/mixins';
+import {
+  cssThemedBackground,
+  cssThemedBackgroundAccentColorAlt,
+  cssThemedColor,
+  cssThemedFontBold,
+  cssThemedLink,
+} from '../../../styles/mixins';
 
 export const Carousel = styled.div`
   width: 100%;
@@ -24,7 +30,7 @@ export const Divider = styled.div<{showDivider?: boolean}>`
     `,
     cco: css`
       background-color: ${color.whiteSmoke};
-      height: 6px;
+      height: 4px;
     `,
     cio: css`
       background-color: ${color.bone};
@@ -50,17 +56,19 @@ export const Button = styled.button`
   }
 
   &:active{
+    ${cssThemedBackgroundAccentColorAlt}
     opacity: 0.6;
   }
 `;
 
-export const Svg = styled.svg`
+export const Svg = styled.svg<{rotated?: boolean}>`
   width: 60%;
   height: 60%;
   position: absolute;
-  left: 20%;
-  top: 20%;
+  left: ${({ rotated }) => (rotated ? '23%' : '25%')};
+  top: ${({ rotated }) => (rotated ? '18%' : '20%')};;
   fill: white;
+  max-width: 1.3rem;
 `;
 
 export const Navigation = styled.nav`
@@ -84,7 +92,7 @@ export const Title = styled.h2`
   ${cssThemedColor}
   ${cssThemedFontBold}
   font-size: 26px;
-  line-height: 1.15;
+  line-height: 33px;
   margin: 0;
 `;
 
@@ -92,7 +100,7 @@ export const Intro = styled.div`
   ${cssThemedColor}
   font-family: ${font.mwr};
   font-size: 16px;
-  line-height: 1.63;
+  line-height: 1.6;
   padding: 3px 0;
   a {
     ${cssThemedLink}
