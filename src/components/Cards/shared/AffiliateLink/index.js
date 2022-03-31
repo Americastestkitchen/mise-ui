@@ -14,7 +14,7 @@ const AffiliateLinkWrapperTheme = {
 
     > img {
       display: block;
-      margin: 1rem auto 0;
+      margin: 0 auto;
       width: 10rem;
     }
 
@@ -39,6 +39,7 @@ const AffiliateLinkTheme = {
     padding: 1rem 2rem;
     position: relative;
     text-align: center;
+    z-index: 1;
     ${mixins.truncate()}
 
     @media(hover: hover) {

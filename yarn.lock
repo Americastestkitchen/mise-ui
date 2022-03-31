@@ -8838,7 +8838,7 @@ flickity-imagesloaded@^2.0.0:
     flickity "^2.0.0"
     imagesloaded "^4.1.0"
 
-flickity@^2.0.0, flickity@^2.2.2:
+flickity@2.2.2, flickity@^2.0.0:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/flickity/-/flickity-2.2.2.tgz#29597ac4d9b81938a58610a0eeb9db915508063d"
   integrity sha512-yiPMuP8tw/zN7ARgeSLZNvzK11GkzI2mp/zlYBsyttguSCROAqxj6wiN2sSfPfW3xMG3hcUHxWUXNQMlk/wYcg==

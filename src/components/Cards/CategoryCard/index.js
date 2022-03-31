@@ -1,59 +1,170 @@
 import breakpoint from 'styled-components-breakpoint';
 import PropTypes from 'prop-types';
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import IconMap from './iconMap';
 import Image from '../shared/Image';
-import { color, font, fontSize } from '../../../styles';
+import { color, font, fontSize, mixins, withThemes } from '../../../styles';
 import { getImageUrl } from '../../../lib/cloudinary';
 
 const CarouselContainer = styled.div`
-    height: 12.5rem;
-    margin-right: 0.5rem;
+  height: 12.5rem;
+  margin-right: 0.5rem;
 `;
 
-const LinkToBrowse = styled.a`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  height: 11.8rem;
-  justify-content: center;
-  width: 9.4rem;
+const LinkToBrowseTheme = {
+  default: css`
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 11.8rem;
+    justify-content: center;
+    width: 9.4rem;
 
-  &:focus {
-    outline: none;
-    border: 3px solid ${color.danube};
-    border-radius: 5px;
-  }
-
-  ${breakpoint('xlg')`
-    &:hover {
-      background-color: ${color.white};
-      border-radius: 8px;
-      box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    .product-img-wrapper {
+      background-color: transparent;
     }
-  `}  
+
+    &:focus {
+      ${mixins.focusIndicator(color.eclipse, '-5px')}
+    }
+
+    ${breakpoint('xlg')`
+      &:hover {
+        background-color: ${color.white};
+        border-radius: 8px;
+        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+      }
+    `}
+  `,
+  atk: css`
+    .product-img-wrapper {
+      background-color: ${color.frost};
+    }
+
+    .svg-wrapper {
+      background-color: ${color.frost};
+
+      &.recipes {
+        background-color: ${color.darkTeal};
+      }
+    }
+  `,
+  cio: css`
+    .product-img-wrapper {
+      background-color: ${color.pearlBush};
+    }
+
+    .svg-wrapper {
+      background-color: ${color.squirrel};
+    }
+  `,
+  cco: css`
+    .product-img-wrapper {
+      background-color: ${color.alabaster};
+    }
+
+    .recipes {
+      outline: 1px solid ${color.queenBlue};
+      outline-offset: 3px;
+    }
+
+    .svg-wrapper {
+      background-color: ${color.denim};
+    }
+
+    ${breakpoint('xlg')`
+      &:hover {
+        background-color: ${color.alabaster};
+        border-radius: 8px;
+        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+      }
+    `}
+  `,
+};
+
+const LinkToBrowse = styled.a.attrs({
+  className: 'browse-link',
+})`
+  ${withThemes(LinkToBrowseTheme)}
 `;
 
-const ImageWrapper = styled.div`
-  align-items: center;
-  background-color: ${color.frost};
-  border-radius: 50%;
-  display: flex;
-  height: 6rem;
-  justify-content: center;
-  margin-bottom: 10%;
-  width: 6rem;
+const ImageWrapperTheme = {
+  default: css`
+    align-items: center;
+    border-radius: 50%;
+    display: flex;
+    height: 6rem;
+    justify-content: center;
+    margin-bottom: 10%;
+    width: 6rem;
+  `,
+  atk: css`
+    .svg-reviews {
+      svg path {
+        fill: ${color.mint};
+      }
+    }
+    .svg-recipes {
+      svg path {
+        fill: ${color.white};
+      }
+    }
+  `,
+  cio: css`
+    svg path {
+      fill: ${color.white};
+    }
+  `,
+  cco: css`
+    svg path {
+      fill: ${color.white};
+    }
+    .rooster {
+      svg {
+        path:nth-child(2n+1) {
+          fill: none;
+        }
+      }
+    }
+  `,
+};
+
+const ImageWrapper = styled.div.attrs({
+  className: 'image-wrapper',
+})`
+  ${withThemes(ImageWrapperTheme)}
 `;
 
-const Tagline = styled.p`
-  color: ${color.eclipse};
-  font: ${fontSize.sm} ${font.pnr};
-  height: 3rem;
-  line-height: 1.14;
-  text-align: center;
-  width: 8rem;
+const TaglineWrapperTheme = {
+  default: css`
+    font-size: ${fontSize.sm};
+    height: 3rem;
+    line-height: 16px;
+    text-align: center;
+    width: 9rem;
+  `,
+  atk: css`
+    color: ${color.eclipse};
+    font-family: ${font.pnr};
+  `,
+  cio: css`
+    color: ${color.cork};
+    font-family: ${font.mwr};
+    font-size: 12px;
+  `,
+  cco: css`
+    color: ${color.black};
+    font-family: ${font.clb};
+    font-size: 12px;
+  `,
+};
+
+const Tagline = styled.p.attrs({
+  className: 'tagline',
+})`
+  ${withThemes(TaglineWrapperTheme)}
 `;
 
 const SvgWrapper = styled.div`
@@ -80,6 +191,14 @@ const SvgWrapper = styled.div`
   .trending-icon {
     width: 100%;
   }
+
+  &.recipeCard {
+    width: 62%;
+  }
+
+  &.latest, &.cookbook {
+    width: 64%;
+  }
 `;
 
 const CategoryCard = ({
@@ -91,10 +210,14 @@ const CategoryCard = ({
   filterValue,
   lazy,
   onClick,
+  page,
   svgId,
   tagline,
 }) => {
-  const CategoryIcon = IconMap?.[svgId] || IconMap.star;
+  const CategoryIcon = IconMap?.[svgId] || IconMap.reviews;
+  const backgroundClass = cloudinaryId
+    ? 'product-img-wrapper'
+    : 'svg-wrapper';
 
   return (
     <CarouselContainer>
@@ -108,7 +231,7 @@ const CategoryCard = ({
         href={`${browsePath}`}
         onClick={onClick}
       >
-        <ImageWrapper>
+        <ImageWrapper className={`${backgroundClass} ${page}`}>
           {assetType === 'productImage' ? (
             <Image
               className="category-product-image"
@@ -119,8 +242,8 @@ const CategoryCard = ({
               width={60}
             />
           ) : (
-            <SvgWrapper>
-              <CategoryIcon fill={color.mint} />
+            <SvgWrapper className={`svg-${page} ${svgId}`}>
+              <CategoryIcon />
             </SvgWrapper>
           )}
         </ImageWrapper>
@@ -139,7 +262,19 @@ CategoryCard.propTypes = {
   filterValue: PropTypes.string,
   lazy: PropTypes.bool,
   onClick: PropTypes.func,
-  svgId: PropTypes.oneOf(['shoppingCart', 'star', 'reviews', 'trendingArrow', 'play', '']),
+  page: PropTypes.oneOf(['reviews', 'recipes']),
+  svgId: PropTypes.oneOf([
+    'cookbook',
+    'latest',
+    'recipeCard',
+    'reviews',
+    'rooster',
+    'shoppingCart',
+    'star',
+    'trendingArrow',
+    'play',
+    '',
+  ]),
   tagline: PropTypes.string.isRequired,
 };
 
@@ -150,6 +285,7 @@ CategoryCard.defaultProps = {
   filterName: null,
   filterValue: null,
   onClick: null,
+  page: 'reviews',
   svgId: 'star',
 };
 

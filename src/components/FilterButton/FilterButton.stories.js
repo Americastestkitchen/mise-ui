@@ -1,31 +1,20 @@
 import React from 'react';
-import { action } from '@storybook/addon-actions';
-import styled, { ThemeProvider } from 'styled-components';
 
 import FilterButton from './index';
-import { color, spacing } from '../../styles';
-
-const DarkModeWrapper = styled.div`
-  background-color: ${color.gunmetal};
-  padding: ${spacing.md};
-`;
+import { mode, siteKey } from '../../config/argTypes';
+import { addThemedWrapper } from '../../config/decorators';
 
 export default {
   title: 'Components/FilterButton',
   component: FilterButton,
+  decorators: [ addThemedWrapper() ],
+  argTypes: { mode, siteKey },
 };
 
-export const LightMode = () => (
-  <FilterButton onClick={action('click-filter-button')} />
-);
+const Template = args => <FilterButton {...args} />;
 
-export const DarkMode = () => (
-  <ThemeProvider theme={{ mode: 'dark' }}>
-    <DarkModeWrapper>
-      <FilterButton
-        onClick={action('click-filter-button')}
-        text="More Seasons"
-      />
-    </DarkModeWrapper>
-  </ThemeProvider>
-);
+export const LightMode = Template.bind({});
+LightMode.args = { siteKey: 'atk' };
+
+export const DarkMode = Template.bind({});
+DarkMode.args = { mode: 'dark', siteKey: 'atk', text: 'More Seasons' };

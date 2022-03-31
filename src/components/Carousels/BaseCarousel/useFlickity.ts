@@ -3,7 +3,7 @@
 import Flickity from 'flickity';
 import React, { useCallback, useState, useEffect, useRef, MutableRefObject, Dispatch, SetStateAction } from 'react';
 import useResizeObserver from 'use-resize-observer';
-import { fixIosScrollBehavior, fixLeftOverflow } from './bug-fixes';
+import { fixIosScrollBehavior, fixLeftOverflow, fixOverflowGroups } from './bug-fixes';
 
 /**
  * Allow for slight overflow related to margin on the last slide.
@@ -71,7 +71,11 @@ function useResizeFlickity(
  */
 function useFlickityCallbackRef(flickity: MutableRefObject<Flickity | null>) {
   return useCallback((elem) => {
-    const Flickity = require('flickity-imagesloaded'); // eslint-disable-line
+    if (!elem) {
+      return;
+    }
+
+    const Flickity = require('flickity'); // eslint-disable-line
     const flkty = new Flickity(elem, {
       imagesLoaded: true,
       wrapAround: true,
@@ -86,11 +90,20 @@ function useFlickityCallbackRef(flickity: MutableRefObject<Flickity | null>) {
         ready: function (this: Flickity) {
           fixIosScrollBehavior.call(this);
           fixLeftOverflow.call(this);
+          fixOverflowGroups.call(this);
         },
       },
     });
-    flkty.resize();
+
     flickity.current = flkty;
+
+    const resizeObserver = new ResizeObserver(() => {
+      if (flkty) {
+        flkty.resize();
+      }
+    });
+
+    resizeObserver.observe(elem);
   }, [flickity]);
 }
 
@@ -123,7 +136,11 @@ export default function useFlickity(): FlickityState {
  */
 function useFlickityCallbackRefGroup(flickity: MutableRefObject<Flickity | null>) {
   return useCallback((elem) => {
-    const Flickity = require('flickity-imagesloaded'); // eslint-disable-line
+    if (!elem) {
+      return;
+    }
+
+    const Flickity = require('flickity'); // eslint-disable-line
     const flkty = new Flickity(elem, {
       imagesLoaded: true,
       wrapAround: true,
@@ -139,11 +156,20 @@ function useFlickityCallbackRefGroup(flickity: MutableRefObject<Flickity | null>
         ready: function (this: Flickity) {
           fixIosScrollBehavior.call(this);
           fixLeftOverflow.call(this);
+          fixOverflowGroups.call(this);
         },
       },
     });
-    flkty.resize();
+
     flickity.current = flkty;
+
+    const resizeObserver = new ResizeObserver(() => {
+      if (flkty) {
+        flkty.resize();
+      }
+    });
+
+    resizeObserver.observe(elem);
   }, [flickity]);
 }
 

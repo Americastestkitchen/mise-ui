@@ -89,6 +89,12 @@ import fonts from './styles/fonts';
 import globalStyle from './styles/global';
 import { color, font, fontSize, mixins, spacing } from './styles';
 
+export { default as DisplayBeltAd } from './components/Ads/DisplayBeltAd';
+export * from './components/Ads/DisplayBeltAd';
+
+export { default as TrialBeltAd } from './components/Ads/TrialBeltAd';
+export * from './components/Ads/TrialBeltAd';
+
 export { default as RelatedContentCard } from './components/Cards/RelatedContentCard';
 export * from './components/Cards/RelatedContentCard';
 

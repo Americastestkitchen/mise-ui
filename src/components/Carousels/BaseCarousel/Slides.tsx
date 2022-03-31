@@ -56,8 +56,14 @@ const StandardSlideThemed = styled.div`
       [class*="ribbon"] {
         fill: ${colorValue} !important;
       }
-      [class*="vertical-line"], [class*="horizontal-line"] {
+      [class*="vertical-line"] {
         stroke: ${colorValue} !important;
+      }
+      &:hover {
+        [class*="horizontal-line"] {
+          stroke: ${color.white} !important;
+          stroke-width: 2;
+        }
       }
     }
     .outer-stroke {
