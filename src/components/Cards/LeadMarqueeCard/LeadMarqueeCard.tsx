@@ -172,15 +172,6 @@ const Description = styled.p`
   ${withThemes(DekTheme)}
 `;
 
-const Comments = styled.p`
-  align-items: center;
-  color: ${color.white};
-  display: flex;
-  justify-content: center;
-  font: ${fontSize.md} ${font.pnb};
-  line-height: 1;
-`;
-
 type LeadMarqueeCardProps = {
   /**
    * Author Name

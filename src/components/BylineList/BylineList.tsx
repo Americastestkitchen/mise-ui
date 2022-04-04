@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useState } from 'react';
 import styled, { css } from 'styled-components';
 import useResizeObserver from 'use-resize-observer/polyfilled';
 import { font, fontSize, spacing } from '../../styles';
@@ -44,8 +44,15 @@ const AuthorList = styled.span`
   ${cssThemedColor}
 `;
 
+const cssAttributionSeparator = css`
+  &::before {
+    content: " | ";
+    margin: 0 4px;
+  }
+`;
+
 /** Attribution (i.e. Published on / Updated on) */
-const Attribution = styled.span<{ atLeastOneAuthor: boolean }>`
+const Attribution = styled.span<{ atLeastOneAuthor: boolean; disableStacked?: boolean }>`
   vertical-align: baseline;
   font-family: ${font.pnr};
   font-size: ${fontSize.md};
@@ -54,26 +61,33 @@ const Attribution = styled.span<{ atLeastOneAuthor: boolean }>`
 
   /* tablet and above is divided with | character. If no authors, don't show | character even on desktop. */
   ${props => props.atLeastOneAuthor
-    && cssInlineBreakpoint(css`
-    ${props => props.theme}
-      &::before {
-        content: " | ";
-        margin: 0 4px;
-      }
-    `)}
+    && !props.disableStacked
+    && cssInlineBreakpoint(css`${cssAttributionSeparator}`)}
+
+  ${props => props.atLeastOneAuthor
+    && props.disableStacked
+    && css`${cssAttributionSeparator}`}
 `;
 
-const Wrapper = styled.span<{ refHeight: number }>`
-  ${props => cssInlineBreakpoint(css`
-    margin-top: -2px;
-    margin-bottom: ${spacing.sm};
-    max-width: 28.8rem;
-    padding-right: 12px;
-    align-self: ${props.refHeight < 40 ? 'center' : 'initial'};
-  `)}
+const cssWrapperInline = css`
+  margin-top: -2px;
+  margin-bottom: ${spacing.sm};
+  max-width: 28.8rem;
+  padding-right: 12px;
+  
+`;
+
+const Wrapper = styled.span<{ refHeight: number; disableStacked?: boolean }>`
+  ${props => !props.disableStacked && cssInlineBreakpoint(css`
+    ${cssWrapperInline}
+    /* when display direction column, align self */
+    align-self: ${props.refHeight < 40 ? 'center' : 'initial'};  
+  `)};
+
+  ${props => props.disableStacked && css`${cssWrapperInline}`};
 
   /* tablet and above has attribution on its own line. */
-  ${cssStackedBreakpoint(css`
+  ${props => (!props.disableStacked) && cssStackedBreakpoint(css`
     ${Attribution} {
       display: block;
       margin: ${spacing.xsm} 0;
@@ -125,6 +139,7 @@ export type BylineListProps = {
   onClick?: (id: number) => void;
   authors: Author[];
   attribution: string;
+  disableStacked?: boolean;
 }
 
 /**
@@ -136,7 +151,9 @@ const BylineList = ({
   onClick,
   authors,
   attribution,
+  disableStacked,
 }: BylineListProps): ReactElement => {
+  const [imageError, setImageError] = useState(false);
   const { ref, height = null } = useResizeObserver();
 
   const authorImage = (() => {
@@ -158,14 +175,20 @@ const BylineList = ({
   const atLeastOneAuthor = authors?.length > 0;
 
   return (
-    <Wrapper className={className} ref={ref} refHeight={height ?? 0}>
-      {authorImage && (
+    <Wrapper
+      className={className}
+      ref={ref}
+      refHeight={height ?? 0}
+      disableStacked={disableStacked}
+    >
+      {(authorImage && !imageError) && (
         <AuthorAvatarImage
           crossOrigin="anonymous"
           decoding="async"
           width={avatarSideLength}
           height={avatarSideLength}
           src={authorImage}
+          onError={() => { setImageError(true); }}
         />
       )}
       <MiddleAlignment>
@@ -173,7 +196,10 @@ const BylineList = ({
           <AuthorListInner authors={authors} onClick={onClick} />
         </AuthorList>
         {attribution && (
-          <Attribution atLeastOneAuthor={atLeastOneAuthor}>
+          <Attribution
+            atLeastOneAuthor={atLeastOneAuthor}
+            disableStacked={disableStacked}
+          >
             {attribution}
           </Attribution>
         )}
