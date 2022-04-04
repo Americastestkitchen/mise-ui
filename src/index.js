@@ -122,7 +122,6 @@ export { default as BaseCarousel } from './components/Carousels/BaseCarousel';
 export * from './components/Cards/RelatedRecipeCard';
 export { default as RelatedRecipeCard } from './components/Cards/RelatedRecipeCard';
 
-
 export * from './components/Cards/ArticleCard';
 export { default as ArticleCard } from './components/Cards/ArticleCard';
 
