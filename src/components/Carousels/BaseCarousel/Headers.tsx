@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import Cookbook from '../../DesignTokens/Icon/svgs/Cookbook';
 import { mixins, font, withThemes, color } from '../../../styles';
-import { Intro, Title, Topic } from './styled-elements';
+import { Intro, Title, TitleWrapper, Topic } from './styled-elements';
 import { cssThemedColor, cssThemedFontAccentColorAlt } from '../../../styles/mixins';
 import { InferStyledTypes } from '../../../styles/utility-types';
 import { ChevronThin } from '../../DesignTokens/Icon';
@@ -27,17 +27,17 @@ const cssThemedStroke = withThemes({
  *  the arrow buttons by a bit to match designs.
  */
 const cssWrappingStyles = css`
-  ${Title} {
+  ${TitleWrapper} {
     display: block;
-    margin-right: -64px; 
-    margin-bottom: 8px;
+    margin-right: -6.4rem; 
+    margin-bottom: 0.8rem;
   }
 `;
 
 const Layout = styled.span<{ hasLink: boolean }>`
   vertical-align: middle;
-  ${Title} {
-    display: inline-block;
+  ${TitleWrapper} {
+    display: inline-flex;
     margin-right: 16px;
   }
   ${({ hasLink }) => hasLink && untilMd(css`${cssWrappingStyles}`)}
@@ -94,14 +94,18 @@ export function LinkCarouselHeader({
 }: LinkCarouselHeaderProps) {
   return (
     <Layout hasLink={!!linkText}>
-      {
-        includeIcon && (
-          <SvgWrapper>
-            <Cookbook fill={color.eclipse} />
-          </SvgWrapper>
-        )
-      }
-      <Title {...titleProps}>{title}</Title>
+      <TitleWrapper>
+        {
+          includeIcon && (
+            <SvgWrapper>
+              <Cookbook fill={color.eclipse} />
+            </SvgWrapper>
+          )
+        }
+        <Title {...titleProps}>
+          {title}
+        </Title>
+      </TitleWrapper>
       {linkText && (
         <Link {...linkProps}>
           {linkText}
