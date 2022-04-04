@@ -23,6 +23,10 @@ const ToggleRefinementWrapper = styled.div`
       }
     }
   }
+  
+  .refinement-filter__checkmark {
+    top: 0.4rem;
+  }
 `;
 
 const ToggleRefinement = ({

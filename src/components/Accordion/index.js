@@ -12,10 +12,13 @@ const AccordionWrapper = styled.div.attrs({
   className: 'accordion-content-wrapper',
 })`
   &:focus-within {
-    box-shadow: 0 0 0 2px ${color.focusRing};
+    box-shadow: none !important;
+  }
 
-    > button:focus {
-      outline: none;
+  .accordion-item__button {
+    &:focus {
+      box-shadow: none !important;
+      ${mixins.focusIndicator()}
     }
   }
 

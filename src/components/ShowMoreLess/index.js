@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
+import { cssThemedColor, cssThemedHoverColor } from '../../styles/mixins';
 import { color, font, spacing, withThemes } from '../../styles';
 
 const ShowMoreLessInitial = styled.ul``;
@@ -9,17 +10,14 @@ const ShowMoreLessRest = styled.ul``;
 
 export const ShowMoreLessButtonTheme = {
   default: css`
-    color: ${color.nobel};
     font: 1.2rem/1 ${font.pnb};
     letter-spacing: 1.2px;
     padding: ${spacing.xsm} 0;
     text-transform: uppercase;
-
-    &:hover {
-      color: ${color.mint};
-    }
   `,
   kidsSearch: css`
+    color: ${color.nobel};
+
     &:hover {
       color: ${color.jade};
     }
@@ -27,6 +25,14 @@ export const ShowMoreLessButtonTheme = {
 };
 
 const ShowMoreLessButton = styled.button`
+  ${cssThemedColor}
+
+  @media(hover: hover) {
+    &:hover {
+      ${cssThemedHoverColor}
+    }
+  }
+
   ${withThemes(ShowMoreLessButtonTheme)}
 `;
 
