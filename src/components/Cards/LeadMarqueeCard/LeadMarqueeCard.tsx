@@ -1,7 +1,7 @@
 import React, { CSSProperties } from 'react';
 import styled, { css } from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
-import { color, font, fontSize, lineHeight, spacing, withThemes } from '../../../styles';
+import { color, font, fontSize, lineHeight, mixins, spacing, withThemes } from '../../../styles';
 import Badge from '../../Badge';
 import Byline from '../../Byline';
 import FavoriteRibbonWithBg from '../shared/FavoriteRibbonWithBg';
@@ -32,6 +32,19 @@ const LeadMarqueeCardWrapper = styled.article.attrs({
     transform: scale(1.1);
   }
 
+  a {
+    overflow: hidden;
+    &:focus {
+      .lead-marquee-card__content {
+        ${mixins.focusIndicator('#ffffff', '18px')}
+      }
+    }
+  }
+  
+  button:focus {
+    ${mixins.focusIndicator('#ffffff', '2px')}
+  }
+
   ${breakpoint('smmd')`
     .lead-marquee-card__image {
       transform: scale(1.05);
@@ -47,6 +60,8 @@ const LeadMarqueeCardWrapper = styled.article.attrs({
   `}
 
   ${breakpoint('xlg')`
+    height: 44rem;
+
     a {
       display: flex;
       max-height: 44rem;
@@ -60,12 +75,14 @@ const LeadMarqueeCardWrapper = styled.article.attrs({
 `;
 
 const MarqueeImageWrapper = styled.div`
+  overflow: hidden;
   position: relative;
 
   ${breakpoint('xlg')`
-    height: 102%;
-    max-width: 79rem;
+    max-width: calc(100% - 34.5rem);
+    width: calc(100% - 34.5rem);
   `}
+
 `;
 
 export const StyledBadge = styled(Badge)`
@@ -86,6 +103,7 @@ const ContentWrapper = styled.div<{ backgroundColor: CSSProperties['backgroundCo
   align-items: center;
   background-color: ${props => props.backgroundColor};
   display: flex;
+  justify-content: center;
   padding: ${spacing.md};
   position: relative;
   z-index: 1;
@@ -105,6 +123,17 @@ const ContentWrapper = styled.div<{ backgroundColor: CSSProperties['backgroundCo
   .user-attributions {
     color: ${color.white};
   }
+
+  .person-head-shot {
+    height: 4rem;
+    margin: 0 0.8rem 0 0;
+    width: 4rem;
+  }
+
+  ${breakpoint('xlg')`
+    min-width: 34.5rem;
+    width: 34.5rem;
+  `}
 `;
 
 export const StickerGroup = styled.div`
@@ -128,9 +157,19 @@ const TitleTheme = {
     font: ${fontSize.xxl}/${lineHeight.sm} ${font.pnb};
     margin-bottom: ${spacing.xsm};
 
+    width; 34rem;
+
+    ${breakpoint('md')`
+      width: 68rem;
+    `}
+
     ${breakpoint('lg')`
-      margin-bottom: ${spacing.sm};
-    `};
+      width: 84.8rem;
+    `}
+
+    ${breakpoint('xlg')`
+      width: 28.8rem;
+    `}
   `,
   cco: css`
     font-family: ${font.clb} !important;
@@ -140,7 +179,7 @@ const TitleTheme = {
   `,
 };
 
-const Title = styled.h1`
+const Title = styled.h2`
   ${withThemes(TitleTheme)}
 `;
 
@@ -156,11 +195,17 @@ const DekTheme = {
     ${breakpoint('md')`
       display: block;
       font: ${fontSize.md}/${lineHeight.lg} ${font.mwr};
-      margin-bottom: ${spacing.sm};
+      margin: 0.4rem 0 ${spacing.sm};
+      max-width: 65.8rem;
     `};
 
     ${breakpoint('lg')`
       line-height: ${lineHeight.md};
+      max-width: 72.4rem;
+    `}
+
+    ${breakpoint('xlg')`
+      max-width: 26.4rem;
     `}
   `,
   cco: css`
@@ -170,15 +215,6 @@ const DekTheme = {
 
 const Description = styled.p`
   ${withThemes(DekTheme)}
-`;
-
-const Comments = styled.p`
-  align-items: center;
-  color: ${color.white};
-  display: flex;
-  justify-content: center;
-  font: ${fontSize.md} ${font.pnb};
-  line-height: 1;
 `;
 
 type LeadMarqueeCardProps = {

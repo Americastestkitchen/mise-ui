@@ -88,6 +88,11 @@ export const Header = styled.header`
   padding: 4px 0;
 `;
 
+export const TitleWrapper = styled.div`
+  align-items: center;
+  display: flex; 
+`;
+
 export const Title = styled.h2`
   ${cssThemedColor}
   ${cssThemedFontBold}
