@@ -1,9 +1,70 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled, { css } from 'styled-components';
 import { connectRefinementList } from 'react-instantsearch-dom';
 
 import RefinementList2 from '../RefinementList2';
 import Accordion from '../../../Accordion';
+import { cssThemedHoverColor } from '../../../../styles/mixins';
+import { color, mixins, withThemes } from '../../../../styles';
+
+const StyledAccordionTheme = {
+  atk: css`
+    .accordion-item__button {
+      @media(hover: hover) {
+          &:hover {
+            .accordion-item__icon {
+              svg {
+                fill: ${color.mint};
+              }
+            }
+          }
+        }
+      }
+    }
+  `,
+  cco: css`
+    .accordion-item__button {
+      @media(hover: hover) {
+          &:hover {
+            .accordion-item__icon {
+              svg {
+                fill: ${color.denim};
+              }
+            }
+          }
+        }
+      }
+    }
+  `,
+  cio: css`
+    .accordion-item__button {
+      @media(hover: hover) {
+          &:hover {
+            .accordion-item__icon {
+              svg {
+                fill: ${color.squirrel};
+              }
+            }
+          }
+        }
+      }
+    }
+  `,
+};
+
+const StyledAccordion = styled(Accordion)`
+  .accordion-ref-list__heading,
+  legend {
+    ${cssThemedHoverColor}
+  }
+
+  .accordion-ref-list__heading {
+    max-width: 18rem;
+  }
+
+  ${withThemes(StyledAccordionTheme)}
+`;
 
 const AccordionRefinementList = ({
   attribute,
@@ -15,7 +76,7 @@ const AccordionRefinementList = ({
   ...restProps
 }) => (
   items && items.length > 0 ? (
-    <Accordion
+    <StyledAccordion
       icon={icon}
       iconSize={iconSize}
       label={() => <h3 className="accordion-ref-list__heading">{showHideLabel}</h3>}
@@ -26,7 +87,7 @@ const AccordionRefinementList = ({
         items={items}
         {...restProps}
       />
-    </Accordion>
+    </StyledAccordion>
   ) : null
 );
 

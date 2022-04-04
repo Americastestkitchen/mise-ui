@@ -254,6 +254,13 @@ export const cssThemedColor = withThemes({
   cio: css`color: ${color.cork};`,
 });
 
+export const cssThemedHoverColor = withThemes({
+  default: css`color: ${color.mint};`,
+  atk: css`color: ${color.mint};`,
+  cco: css`color: ${color.denim};`,
+  cio: css`color: ${color.squirrel};`,
+});
+
 export const cssThemedFill = withThemes({
   default: css`fill: ${color.eclipse};`,
   atk: css`fill: ${color.eclipse};`,
