@@ -47,6 +47,8 @@ const HeroCardLogo = styled.div`
   `}
 
   img {
+    object-position: bottom;
+    object-fit: contain;
     max-width: 100%;
     width: 100%;
   }
