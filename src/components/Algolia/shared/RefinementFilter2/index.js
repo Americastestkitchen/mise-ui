@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
 import { Checkmark } from '../../../DesignTokens/Icon/svgs';
+import { cssThemedColor } from '../../../../styles/mixins';
 import { color, font, fontSize, mixins, spacing, withThemes } from '../../../../styles';
 
 const RefinementFilterWrapperTheme = {
   default: css`
     align-items: center;
     display: flex;
+    position: relative;
 
     &:focus-within {
       box-shadow: none !important;
@@ -82,7 +84,6 @@ const RefinementFilterLabel = styled.label.attrs({
 
 const RefinementFilterCountTheme = {
   default: css`
-    color: ${color.nobel};
     font: ${fontSize.md}/1.38 ${font.pnr};
   `,
   dark: css`
@@ -92,14 +93,17 @@ const RefinementFilterCountTheme = {
 
 const RefinementFilterCount = styled.span.attrs({
   className: 'refinement-filter__count',
-})`${withThemes(RefinementFilterCountTheme)}`;
+})`
+  ${cssThemedColor}
+  ${withThemes(RefinementFilterCountTheme)}
+`;
 
 const RefinementFilterCheckTheme = {
   default: css`
     height: 1.2rem;
-    margin-left: -2rem;
-    margin-right: ${spacing.xsm};
-    position: relative;
+    left: -2rem;
+    position: absolute;
+    top: 1rem;
     width: 1.2rem;
 
     svg {
