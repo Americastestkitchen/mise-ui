@@ -4,7 +4,7 @@ import styled, { css, ThemeProvider } from 'styled-components';
 import { setArgs, setViewport, storybookParameters } from '../../../config/shared.stories';
 import { breakpoints } from '../../../styles';
 import { lg, md } from '../../../styles/breakpoints';
-import TrialBeltAd, { TrialBeltAdProps } from './TrialBeltAd';
+import TrialBeltAd, { TextTrialBeltAd, TextTrialBeltProps, TrialBeltAdProps } from './TrialBeltAd';
 
 export default {
   title: 'Components/Ads/TrialBeltAd',
@@ -54,6 +54,13 @@ const magazineArgs: TrialBeltAdProps = {
   cta: 'FREE ISSUE',
 };
 
+const textAdArgs: TextTrialBeltProps = {
+  href: '#',
+  headline: 'COOKING SCHOOL',
+  description: 'Become fearless in the kitchen. 320+ online lessons for novice to advanced cooks.',
+  cta: 'TRY FOR FREE',
+};
+
 export const CookingSchoolAdMobile = Template.bind({});
 export const CookingSchoolAdTablet = Template.bind({});
 export const CookingSchoolAdLargeTablet = Template.bind({});
@@ -81,3 +88,14 @@ setArgs(
 
 CookingSchoolAdDesktopCIO.parameters = { ...CookingSchoolAdDesktopCIO.parameters, siteKey: 'cio' };
 CookingSchoolAdDesktopCCO.parameters = { ...CookingSchoolAdDesktopCCO.parameters, siteKey: 'cco' };
+
+const Template2: Story = (args, { parameters }) => (
+  <ThemeProvider theme={{ breakpoints, siteKey: parameters.siteKey ?? 'atk' }}>
+    <TestMargins>
+      <TextTrialBeltAd {...args} />
+    </TestMargins>
+  </ThemeProvider>
+);
+
+export const TextTrialBeltAdDefault = Template2.bind({});
+TextTrialBeltAdDefault.args = textAdArgs;
