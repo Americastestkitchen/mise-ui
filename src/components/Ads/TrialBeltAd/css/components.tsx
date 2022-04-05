@@ -3,6 +3,16 @@ import { font, color } from '../../../../styles';
 import { cssThemedColor } from '../../../../styles/mixins';
 import { cssThemedButton } from './shared';
 
+export const AccentHeadline = styled.p`
+  font-family: 'Univers LT Std', sans-serif; 
+  padding-top: 14px; /* embedded visual metrics need fixing? */
+  font-size: 46px;
+  line-height: 26px;
+  letter-spacing: 0.46px;
+  color: #d73a19; // not tomatoe?
+  text-transform: uppercase;
+`;
+
 export const Headline = styled.p`
   font-family: ${font.pnr};
   font-size: 16px;
@@ -31,6 +41,10 @@ export const ImageArea = styled.div`
   width: 100px;
 `;
 
+export const GridImageArea = styled.div`
+  grid-area: ImageArea;
+`;
+
 export const ButtonArea = styled.div`
   ${cssThemedButton}
   grid-area: ButtonArea;
@@ -51,8 +65,6 @@ export const ButtonArea = styled.div`
 
 export const ClickArea = styled.a`
   display: grid; 
-  grid-template-columns: auto 1fr auto; 
-  grid-template-rows: auto auto auto; 
   gap: 0px 0px; 
   width: 100%;
 `;
