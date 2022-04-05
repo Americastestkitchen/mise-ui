@@ -84,7 +84,7 @@ const PlayerWrapper = styled.div`
   `)}
 
   ${lg(css`
-    height: 47.8rem
+    height: 47.8rem;
   `)}
 
   ${xlg(css`
