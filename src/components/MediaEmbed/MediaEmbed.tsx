@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import useResizeObserver from 'use-resize-observer/polyfilled';
 import Caption from './Caption';
@@ -85,10 +85,19 @@ export function ZypeEmbed({
   source, caption, autoplay = false, token,
 }: EmbedProps & { autoplay?: boolean; token: string; }) {
   useScript(`https://player.zype.com/embed/${source}.js?api_key=${token}&autoplay=${autoplay}&controls=true&da=true`);
+  const ref = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    if (ref.current) {
+      ref.current.id = `zype_${source}`;
+    }
+    // We don't want to update refs since this component gets
+    //  replaced with a player embed by the zype script.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <div>
       <AspectRatio>
-        <div id={`zype_${source}`} />
+        <div ref={ref} />
       </AspectRatio>
       <Caption caption={caption} />
     </div>
