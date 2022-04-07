@@ -2,12 +2,22 @@ import React, { PropsWithChildren, ReactNode, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { md, untilMd } from '../../../styles/breakpoints';
 import { color, font } from '../../../styles';
-import { cssThemedColor, cssThemedFontBold } from '../../../styles/mixins';
+import { cssThemedColor, cssThemedFontBold, withThemes } from '../../../styles/mixins';
 import Badge from '../../Badge';
 import cloudinaryInstance, { baseImageConfig } from '../../../lib/cloudinary';
 import Sticker from '../shared/Sticker';
 import BylineList, { Author } from '../../BylineList';
 import { InferStyledTypes } from '../../../styles/utility-types';
+
+const cssThemedDescriptionFont = withThemes({
+  default: css`font-family: ${font.mwr};`,
+  cco: css`font-family: ${font.pnr};`,
+});
+
+const cssThemedBackgroundColor = withThemes({
+  default: css`background-color: ${color.white};`,
+  cco: css`background-color: ${color.whiteSmoke};`,
+});
 
 /*
  * Below md image is only set height, above md card is set height.
@@ -39,12 +49,12 @@ const CardImage = styled.div`
 `;
 
 const CardBody = styled.div`
+  ${cssThemedBackgroundColor}
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 8px;
   padding: 16px;
-  background-color: ${color.white};
 `;
 
 const Title = styled.h3`
@@ -55,7 +65,7 @@ const Title = styled.h3`
 `;
 
 const Description = styled.div`
-  font-family: ${font.mwr};
+  ${cssThemedDescriptionFont}
   ${cssThemedColor}
   font-size: 16px;
   line-height: 26px;
