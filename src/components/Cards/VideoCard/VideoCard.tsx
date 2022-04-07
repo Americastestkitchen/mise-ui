@@ -13,19 +13,6 @@ const CardWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin: auto;
-  width: calc(100% - 32px);
-
-  ${md(css`
-    width: 70.4rem;
-  `)}
-
-  ${lg(css`
-    width: 84.8rem;
-  `)}
-
-  ${xlg(css`
-    max-width: 113.6rem;
-  `)}
 `;
 const Content = styled.div`
   display: flex;
@@ -75,21 +62,7 @@ const Headline = styled.span`
 `;
 
 const PlayerWrapper = styled.div`
-  height: 19.2rem;
   margin-bottom: 1.6rem;
-  width: 100%;
-
-  ${md(css`
-    height: 39.7rem;
-  `)}
-
-  ${lg(css`
-    height: 47.8rem;
-  `)}
-
-  ${xlg(css`
-    height: 64rem;
-  `)}
 `;
 
 const TitleLink = styled.a`
@@ -116,7 +89,7 @@ const VideoCard = ({
   slug,
 }: VideoCardProps) => (
   <CardWrapper>
-    <PlayerWrapper id="zype-player__wrapper">
+    <PlayerWrapper>
       {children}
     </PlayerWrapper>
     <Content>

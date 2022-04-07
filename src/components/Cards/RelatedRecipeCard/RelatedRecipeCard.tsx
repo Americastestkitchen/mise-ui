@@ -5,7 +5,7 @@ import { color, font, fontSize, withThemes } from '../../../styles';
 import { StandardUserAttributions } from '../shared/UserAttributions/UserAttributions';
 import Image from '../shared/Image';
 import Sticker from '../shared/Sticker';
-import { cssThemedColor } from '../../../styles/mixins';
+import mixins, { cssThemedColor } from '../../../styles/mixins';
 import { md } from '../../../styles/breakpoints';
 
 const CtaLink = styled.a`
@@ -36,6 +36,7 @@ const Content = styled.div`
 
 const HeadlineTheme = {
   default: css`
+    ${mixins.truncateLineClamp(3)}
     font: ${fontSize.md}/2.3rem ${font.pnb};
     margin-bottom: 1.4rem;
   `,
