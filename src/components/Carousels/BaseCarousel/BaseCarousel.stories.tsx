@@ -1,7 +1,6 @@
-import React, { PropsWithChildren } from 'react';
+import React, { PropsWithChildren, ReactNode } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { ComponentStory } from '@storybook/react';
+import type { ComponentStory } from '@storybook/react';
 import { defaultTheme, setBackground, setViewport, storybookParameters } from '../../../config/shared.stories';
 import BaseCarousel, { useCarouselContext } from './BaseCarousel';
 import StandardCard from '../../Cards/StandardCard';
@@ -10,6 +9,7 @@ import { useFlickityGroup } from './useFlickity';
 import { FullWidthSlide, StandardSlide } from './Slides';
 import { CarouselWidthWrapper } from './Wrappers';
 import PhotoCarouselCell, { PhotoCarouselCellProps } from './Cells/PhotoCarouselCell';
+import useCarouselActive from './useCarouselActive';
 
 export default {
   title: 'Components/Carousels/BaseCarousel',
@@ -23,7 +23,7 @@ const PreviewProvider = ({ children, siteKey }: PropsWithChildren<{siteKey: 'atk
   </ThemeProvider>
 );
 
-const Box = styled.a.attrs({ href: '#' })`
+const Box = styled.a`
   width: 300px;
   height: 400px;
   margin-right: 16px;
@@ -34,17 +34,23 @@ const Box = styled.a.attrs({ href: '#' })`
   }
 `;
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const Slide = ({ children }: any) => {
+const Slide = ({ children, index }: { children: ReactNode; index: number }) => {
   const { onFocus } = useCarouselContext();
-  return <Box onFocus={onFocus}>{children}</Box>;
+  const isActive = useCarouselActive(index);
+
+  return (
+    <Box href="#" onFocus={onFocus}>
+      {isActive ? 'hi' : 'bye'}
+      {children}
+    </Box>
+  );
 };
 
 export const ATK = () => (
   <PreviewProvider siteKey="atk">
-    <BaseCarousel title="The Latest &amp; Best from Our Brands The Latest &amp; Best from Our Brands" showDivider>
-      {['a', 'b', 'c', 'd'].map(alphabet => (
-        <Slide key={alphabet}>{alphabet}</Slide>
+    <BaseCarousel title="The Latest &amp; Best from Our Brands The Latest &amp; Best from Our Brands" showDivider useFlickityHook={useFlickityGroup}>
+      {['a', 'b', 'c', 'd'].map((alphabet, index) => (
+        <Slide key={alphabet} index={index}>{alphabet}</Slide>
       ))}
     </BaseCarousel>
   </PreviewProvider>
@@ -53,7 +59,7 @@ export const ATK = () => (
 export const CCO = () => (
   <PreviewProvider siteKey="cco">
     <BaseCarousel title="The Latest &amp; Best from Our Brands The Latest &amp; Best from Our Brands" showDivider>
-      {['a', 'b', 'c', 'd'].map(alphabet => <Slide key={alphabet}>{alphabet}</Slide>)}
+      {['a', 'b', 'c', 'd'].map((alphabet, index) => <Slide key={alphabet} index={index}>{alphabet}</Slide>)}
     </BaseCarousel>
   </PreviewProvider>
 );
@@ -62,7 +68,7 @@ setBackground('cco', CCO);
 export const CIO = () => (
   <PreviewProvider siteKey="cio">
     <BaseCarousel title="The Latest &amp; Best from Our Brands The Latest &amp; Best from Our Brands" showDivider>
-      {['a', 'b', 'c', 'd'].map(alphabet => <Slide key={alphabet}>{alphabet}</Slide>)}
+      {['a', 'b', 'c', 'd'].map((alphabet, index) => <Slide key={alphabet} index={index}>{alphabet}</Slide>)}
     </BaseCarousel>
   </PreviewProvider>
 );

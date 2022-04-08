@@ -10,3 +10,4 @@ export * from './Headers';
 export * from './Slides';
 export * from './Cells';
 export * from './useFlickity';
+export { default as useCarouselActive } from './useCarouselActive';
