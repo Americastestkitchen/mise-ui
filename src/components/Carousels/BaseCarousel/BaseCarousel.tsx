@@ -1,3 +1,4 @@
+import type Flickity from 'flickity';
 import React, { PropsWithChildren, useCallback, createContext, useContext } from 'react';
 import ArrowButton from './ArrowButton';
 
@@ -5,6 +6,14 @@ import { Title, Header, Navigation, Divider, Carousel } from './styled-elements'
 import useFlickity, { FlickityState } from './useFlickity';
 
 export const context = createContext({
+  registerOnChange: (callback: (flickity: Flickity) => void): (() => void) => {
+    // eslint-disable-next-line no-console
+    console.log('useCarouselContext hook outside of provider', callback);
+    return () => {
+      // eslint-disable-next-line no-console
+      console.log('useCarouselContext hook unregister outside of provider', callback);
+    };
+  },
   onFocus: (e: React.FocusEvent<HTMLElement>) => {
     // eslint-disable-next-line no-console
     console.log('useCarouselContext hook outside of provider', e);
@@ -39,10 +48,18 @@ export default function BaseCarousel({
   /** Scrolls carousel when contents of a slide are highlighted through tabbing. */
   const onFocus = useCallback((ev: React.FocusEvent<HTMLElement>) => {
     // @ts-expect-error cell is type Cell
-    const found = flickity.current?.cells.findIndex(cell => cell.element === ev.currentTarget);
+    const found = flickity.current?.cells.findIndex(cell => cell?.element === ev.currentTarget);
     if (typeof found === 'number') {
       flickity.current?.selectCell(found);
     }
+  }, [flickity]);
+
+  const registerOnChange = useCallback((callback) => {
+    callback(flickity.current);
+    flickity.current?.on('change', () => callback(flickity.current));
+    return () => {
+      flickity.current?.off('change', callback);
+    };
   }, [flickity]);
 
   const resize = useCallback(() => {
@@ -63,7 +80,7 @@ export default function BaseCarousel({
       <Divider showDivider={showDivider} />
       {/* IMPORTANT: Cards use this internally `.carousel & {}` to avoid breakpoint styles */}
       <Carousel ref={flickityRef} className="carousel">
-        <context.Provider value={{ onFocus, resize }}>
+        <context.Provider value={{ registerOnChange, onFocus, resize }}>
           {children}
         </context.Provider>
       </Carousel>
