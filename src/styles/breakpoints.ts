@@ -42,7 +42,7 @@ export const smmd: BreakpointFn = interp => breakpoint('smmd')`${interp}`;
 export const lg: BreakpointFn = interp => breakpoint('lg')`${interp}`;
 export const xlg: BreakpointFn = interp => breakpoint('xlg')`${interp}`;
 
-export const untilSm: BreakpointFn = interp => breakpoint('sm')`${interp}`;
+export const untilSm: BreakpointFn = interp => breakpoint('xs', 'sm')`${interp}`;
 export const untilMd: BreakpointFn = interp => breakpoint('xs', 'md')`${interp}`;
 export const untilSmmd: BreakpointFn = interp => breakpoint('xs', 'smmd')`${interp}`;
 export const untilLg: BreakpointFn = interp => breakpoint('xs', 'lg')`${interp}`;

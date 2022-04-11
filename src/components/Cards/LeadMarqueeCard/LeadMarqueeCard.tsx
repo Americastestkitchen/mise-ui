@@ -2,6 +2,7 @@ import React, { CSSProperties } from 'react';
 import styled, { css } from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import { color, font, fontSize, lineHeight, mixins, spacing, withThemes } from '../../../styles';
+import { untilMd } from '../../../styles/breakpoints';
 import Badge from '../../Badge';
 import Byline from '../../Byline';
 import FavoriteRibbonWithBg from '../shared/FavoriteRibbonWithBg';
@@ -183,6 +184,10 @@ const Title = styled.h2`
   ${withThemes(TitleTheme)}
 `;
 
+const StyledAttributions = styled(FeatureCardUserAttributions)`
+  ${untilMd(css`margin-bottom: 1rem;`)}
+`;
+
 const BylineListSC = styled(BylineList)`
   color: white;
 `;
@@ -317,7 +322,7 @@ const LeadMarqueeCard = ({
           <Title dangerouslySetInnerHTML={{ __html: title }} />
           {
             displayAttributions && (
-              <FeatureCardUserAttributions
+              <StyledAttributions
                 commentsCount={commentsCount}
                 numRatings={numRatings}
                 avgRating={avgRating}

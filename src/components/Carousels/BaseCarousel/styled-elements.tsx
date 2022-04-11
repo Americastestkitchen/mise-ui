@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { withThemes, color, font } from '../../../styles';
+import { untilSm } from '../../../styles/breakpoints';
 import {
   cssThemedBackground,
   cssThemedBackgroundAccentColorAlt,
@@ -76,6 +77,9 @@ export const Navigation = styled.nav`
   display: flex;
   padding-left: 20px;
   padding-bottom: 4px;
+
+  ${untilSm(css`padding-left: 4px`)}
+
   ${Button}:first-child {
     margin-right: 8px;
   }
