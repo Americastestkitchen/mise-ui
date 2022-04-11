@@ -29,6 +29,10 @@ LoggedIn.args = {
   isFavorited: false,
   searchAttribution: true,
   searchComments: 5,
+  shopPrices: {
+    price: '29.09',
+    salePrice: '10.00',
+  },
   siteKey: 'cio',
   siteKeyFavorites: 'cio',
   stickers: [{ type: 'priority', text: 'New' }, { type: 'editorial', text: 'Trending' }],

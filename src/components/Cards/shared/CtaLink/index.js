@@ -1,22 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import breakpoint from 'styled-components-breakpoint';
 import { color, font, fontSize, lineHeight, mixins, withThemes } from '../../../../styles';
 
 const CtaLinkTheme = {
   default: css`
     color: ${color.tomato};
     transition: color 0.1s ease-in-out;
-    font: 1.2rem/${lineHeight.sm} ${font.pnb};
+    font: ${fontSize.md}/18px ${font.pnb};
 
     &:hover {
       color: ${color.rust};
     }
-
-    ${breakpoint('lg')`
-      font-size: ${fontSize.md};
-    `}
   `,
   dark: css`
     font: ${fontSize.md} /${lineHeight.sm} ${font.pnb};
