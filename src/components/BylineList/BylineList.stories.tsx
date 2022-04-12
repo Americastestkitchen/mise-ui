@@ -1,69 +1,40 @@
 import React from 'react';
-import styled, { css, ThemeProvider } from 'styled-components';
-import type { ComponentMeta } from '@storybook/react';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { action } from '@storybook/addon-actions';
-import BylineList, { BylineListProps } from './BylineList';
-import { defaultTheme, setBackground, setViewport, storybookParameters, wrapKnobs } from '../../config/shared.stories';
-import { untilMd, md } from '../../styles/breakpoints';
-import exampleAuthorsProp from './exampleAuthorsProp.stories';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import styled, { css } from 'styled-components';
+import BylineList from './BylineList';
+import { setArgs, setParameters, setTheme, setViewport } from '../../config/shared.stories';
+import args from './exampleAuthorsProp.stories';
+import { md, untilMd } from '../../styles/breakpoints';
 
 export default {
   title: 'Components/BylineList',
   component: BylineList,
-  ...storybookParameters,
 } as ComponentMeta<typeof BylineList>;
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type PreviewProps = { theme?: any, props?: Partial<BylineListProps> };
-
-const defaultArgs: Partial<BylineListProps> = {
-  attribution: 'Updated on Jun. 2020',
-  authors: [],
-};
-
-const Preview = ({ theme, props }: PreviewProps) => (
-  <ThemeProvider theme={{ ...defaultTheme, ...theme }}>
-    <BylineList {...wrapKnobs({ ...defaultArgs, ...props })} />
-  </ThemeProvider>
-);
+const Template: ComponentStory<typeof BylineList> = props => <BylineList {...props} />;
 
 // Author Handling
-export const NoAuthor = () => <Preview />;
-export const OneAuthor = () => <Preview props={exampleAuthorsProp.oneAuthor} />;
-export const OneAuthorNoPhoto = () => <Preview props={exampleAuthorsProp.oneAuthorNoPhoto} />;
-export const TwoAuthor = () => <Preview props={exampleAuthorsProp.twoAuthors} />;
-export const ThreeAuthors = () => <Preview props={exampleAuthorsProp.threeAuthors} />;
+export const NoAuthor = Template.bind({});
+export const OneAuthor = Template.bind({});
+export const OneAuthorNoPhoto = Template.bind({});
+export const TwoAuthor = Template.bind({});
+export const ThreeAuthors = Template.bind({});
 
 // Theming
-export const CCOTheme = () => <Preview theme={{ siteKey: 'cco' }} props={exampleAuthorsProp.oneAuthor} />;
-setBackground('cco', CCOTheme);
-export const CIOTheme = () => <Preview theme={{ siteKey: 'cio' }} props={exampleAuthorsProp.oneAuthor} />;
-setBackground('cio', CIOTheme);
+export const CCOTheme = Template.bind({});
+export const CIOTheme = Template.bind({});
 
 // Viewport Styles
-export const NoAuthorMobile = () => <Preview />;
-export const OneAuthorMobile = () => <Preview props={exampleAuthorsProp.oneAuthor} />;
-export const OneAuthorMobileNoPhoto = () => <Preview props={exampleAuthorsProp.oneAuthorNoPhoto} />;
-export const ThreeAuthorsMobile = () => <Preview props={exampleAuthorsProp.threeAuthors} />;
-setViewport('iphone5', NoAuthorMobile, OneAuthorMobile, OneAuthorMobileNoPhoto, ThreeAuthorsMobile);
+export const NoAuthorMobile = Template.bind({});
+export const OneAuthorMobile = Template.bind({});
+export const OneAuthorMobileNoPhoto = Template.bind({});
+export const ThreeAuthorsMobile = Template.bind({});
 
 // Link Styles
-export const PhotoAuthorsClickable = () => (
-  <Preview props={{ ...exampleAuthorsProp.oneAuthor, onClick: action('onClick') }} />
-);
-export const AtkAuthorsClickable = () => (
-  <Preview props={{ ...exampleAuthorsProp.threeAuthors, onClick: action('onClick') }} />
-);
-export const CcoAuthorsClickable = () => (
-  <Preview theme={{ siteKey: 'cco' }} props={{ ...exampleAuthorsProp.threeAuthors, onClick: action('onClick') }} />
-);
-setBackground('cco', CcoAuthorsClickable);
-
-export const CioAuthorsClickable = () => (
-  <Preview theme={{ siteKey: 'cio' }} props={{ ...exampleAuthorsProp.threeAuthors, onClick: action('onClick') }} />
-);
-setBackground('cio', CioAuthorsClickable);
+export const PhotoAuthorsClickable = Template.bind({});
+export const AtkAuthorsClickable = Template.bind({});
+export const CcoAuthorsClickable = Template.bind({});
+export const CioAuthorsClickable = Template.bind({});
 
 const DesktopFlexLayout = styled.div<{width: number}>`
   width: ${props => props.width}px;
@@ -102,22 +73,49 @@ const DetailActionsMock = () => (
   </DetailActionsWrapperMock>
 );
 
-type Preview2Props = { width: number, props: Partial<BylineListProps> };
-const Preview2 = ({ width, props }: Preview2Props) => (
-  <ThemeProvider theme={{ ...defaultTheme }}>
-    <DesktopFlexLayout width={width}>
-      <BylineList {...wrapKnobs({ ...defaultArgs, ...props })} />
-      <DetailActionsMock />
-    </DesktopFlexLayout>
-  </ThemeProvider>
+// Self Alignment behavior
+const Template2: ComponentStory<typeof BylineList> = (props, { parameters }) => (
+  <DesktopFlexLayout width={parameters.width ?? 1_000}>
+    <BylineList {...props} />
+    <DetailActionsMock />
+  </DesktopFlexLayout>
 );
 
-// Self Alignment behavior
-export const AlignPhoto = () => <Preview2 props={exampleAuthorsProp.oneAuthor} width={700} />;
-export const AlignNoPhoto = () => (
-  <Preview2 props={exampleAuthorsProp.oneAuthorNoPhoto} width={700} />
+export const AlignPhoto = Template2.bind({});
+export const AlignNoPhoto = Template2.bind({});
+export const AlignPhotoWrap = Template2.bind({});
+export const AlignNoPhotoWrap = Template2.bind({});
+
+// component args
+setArgs(args.noAuthor,
+  NoAuthor, NoAuthorMobile,
 );
-export const AlignPhotoWrap = () => <Preview2 props={exampleAuthorsProp.oneAuthor} width={500} />;
-export const AlignNoPhotoWrap = () => (
-  <Preview2 props={exampleAuthorsProp.oneAuthorNoPhoto} width={500} />
+setArgs(args.oneAuthor,
+  OneAuthor, OneAuthorMobile, PhotoAuthorsClickable, AlignPhoto, AlignPhotoWrap,
 );
+setArgs(args.oneAuthorNoPhoto,
+  OneAuthorNoPhoto, OneAuthorMobileNoPhoto, AlignNoPhoto, AlignNoPhotoWrap,
+);
+setArgs(args.twoAuthors,
+  TwoAuthor,
+);
+setArgs(args.threeAuthors,
+  ThreeAuthors, ThreeAuthorsMobile, AtkAuthorsClickable, CcoAuthorsClickable, CioAuthorsClickable,
+);
+
+// arg that triggers click themes
+setArgs({ onClick: () => {} },
+  PhotoAuthorsClickable, AtkAuthorsClickable, CcoAuthorsClickable, CioAuthorsClickable,
+);
+
+// background and provider siteKey
+setTheme('atk', NoAuthor, OneAuthor, OneAuthorNoPhoto, TwoAuthor, ThreeAuthors);
+setTheme('cio', CIOTheme, CioAuthorsClickable);
+setTheme('cco', CCOTheme, CcoAuthorsClickable);
+
+// line-wrapping parameters
+setParameters({ width: 700 }, AlignPhoto, AlignNoPhoto);
+setParameters({ width: 500 }, AlignPhotoWrap, AlignNoPhotoWrap);
+
+// viewport args
+setViewport('iphone5', NoAuthorMobile, OneAuthorMobile, OneAuthorMobileNoPhoto, ThreeAuthorsMobile);
