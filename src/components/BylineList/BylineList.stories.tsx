@@ -1,7 +1,7 @@
 import React from 'react';
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import styled, { css } from 'styled-components';
-import BylineList from './BylineList';
+import BylineList, { BylineListLight } from './BylineList';
 import { setArgs, setParameters, setTheme, setViewport } from '../../config/shared.stories';
 import args from './exampleAuthorsProp.stories';
 import { md, untilMd } from '../../styles/breakpoints';
@@ -12,6 +12,19 @@ export default {
 } as ComponentMeta<typeof BylineList>;
 
 const Template: ComponentStory<typeof BylineList> = props => <BylineList {...props} />;
+
+const DarkBackground = styled.div`
+  background-color: darkblue;
+`;
+
+const TemplateLight: ComponentStory<typeof BylineListLight> = props => (
+  <DarkBackground>
+    <BylineListLight {...props} />
+  </DarkBackground>
+);
+
+// Styled Variants
+export const BylineListLightVariant = TemplateLight.bind({});
 
 // Author Handling
 export const NoAuthor = Template.bind({});
@@ -91,7 +104,8 @@ setArgs(args.noAuthor,
   NoAuthor, NoAuthorMobile,
 );
 setArgs(args.oneAuthor,
-  OneAuthor, OneAuthorMobile, PhotoAuthorsClickable, AlignPhoto, AlignPhotoWrap,
+  BylineListLightVariant, OneAuthor, OneAuthorMobile,
+  PhotoAuthorsClickable, AlignPhoto, AlignPhotoWrap,
 );
 setArgs(args.oneAuthorNoPhoto,
   OneAuthorNoPhoto, OneAuthorMobileNoPhoto, AlignNoPhoto, AlignNoPhotoWrap,
@@ -109,7 +123,7 @@ setArgs({ onClick: () => {} },
 );
 
 // background and provider siteKey
-setTheme('atk', NoAuthor, OneAuthor, OneAuthorNoPhoto, TwoAuthor, ThreeAuthors);
+setTheme('atk', BylineListLightVariant, NoAuthor, OneAuthor, OneAuthorNoPhoto, TwoAuthor, ThreeAuthors);
 setTheme('cio', CIOTheme, CioAuthorsClickable);
 setTheme('cco', CCOTheme, CcoAuthorsClickable);
 
