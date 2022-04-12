@@ -8,7 +8,7 @@ import Byline from '../../Byline';
 import FavoriteRibbonWithBg from '../shared/FavoriteRibbonWithBg';
 import Image from '../shared/Image';
 import Sticker from '../shared/Sticker';
-import BylineList, { Author } from '../../BylineList';
+import { Author, BylineListLight } from '../../BylineList';
 import { FeatureCardUserAttributions } from '../shared/UserAttributions/UserAttributions';
 
 const LeadMarqueeCardWrapper = styled.article.attrs({
@@ -158,7 +158,7 @@ const TitleTheme = {
     font: ${fontSize.xxl}/${lineHeight.sm} ${font.pnb};
     margin-bottom: ${spacing.xsm};
 
-    width; 34rem;
+    width: 34rem;
 
     ${breakpoint('md')`
       width: 68rem;
@@ -186,10 +186,6 @@ const Title = styled.h2`
 
 const StyledAttributions = styled(FeatureCardUserAttributions)`
   ${untilMd(css`margin-bottom: 1rem;`)}
-`;
-
-const BylineListSC = styled(BylineList)`
-  color: white;
 `;
 
 const DekTheme = {
@@ -331,7 +327,7 @@ const LeadMarqueeCard = ({
           }
           <Description dangerouslySetInnerHTML={{ __html: description }} />
           {authors.length ? (
-            <BylineListSC authors={authors} attribution="" />
+            <BylineListLight authors={authors} attribution="" />
           ) : author ? (
             <Byline
               author={`By ${author}`}

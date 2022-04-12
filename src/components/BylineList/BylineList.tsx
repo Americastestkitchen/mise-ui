@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import styled, { css } from 'styled-components';
 import useResizeObserver from 'use-resize-observer/polyfilled';
-import { font, fontSize, spacing } from '../../styles';
+import { font, fontSize, spacing, color } from '../../styles';
 import { md, untilMd } from '../../styles/breakpoints';
 import cloudinaryInstance, { baseImageConfig } from '../../lib/cloudinary';
 import { cssThemedColor, cssThemedLink } from '../../styles/mixins';
@@ -183,3 +183,12 @@ const BylineList = ({
 };
 
 export default BylineList;
+
+/**
+ * Light themed version of byline list for usage in cards with dark backgrounds.
+ */
+export const BylineListLight = styled(BylineList)`
+  ${AuthorList}, ${Attribution} {
+    color: ${color.white};
+  }
+`;
