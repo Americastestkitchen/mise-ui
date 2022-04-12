@@ -86,7 +86,9 @@ const Author = styled.span.attrs({ rel: 'author' })<{ underline?: boolean }>`
   ${props => props.underline && cssThemedLink}
 `;
 
-type AuthorListInnerProps = {authors: Author[], onClick?: (id: number, name: string) => void};
+type OnClick = (id: number, name: string) => void;
+
+type AuthorListInnerProps = {authors: Author[], onClick?: OnClick};
 
 const AuthorListInner = ({ authors, onClick }: AuthorListInnerProps) => {
   const fullNames = authors.map(
@@ -122,7 +124,7 @@ const AuthorListInner = ({ authors, onClick }: AuthorListInnerProps) => {
 export type BylineListProps = {
   className?: string;
   /** When defined, add link styles and sends id from author that is active */
-  onClick?: (id: number) => void;
+  onClick?: OnClick;
   authors: Author[];
   attribution: string;
 }
