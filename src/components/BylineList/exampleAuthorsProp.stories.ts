@@ -27,10 +27,11 @@ const authors: BylineListProps['authors'] = [
 ];
 
 const exampleAuthorsProp = {
-  oneAuthor: { authors: [authors[0]] },
-  oneAuthorNoPhoto: { authors: [authors.map(author => ({ ...author, photo: undefined }))[0]] },
-  twoAuthors: { authors: [authors[0], authors[1]] },
-  threeAuthors: { authors },
+  noAuthor: { attribution: 'Updated on Jun. 2020', authors: [] },
+  oneAuthor: { attribution: 'Updated on Jun. 2020', authors: [authors[0]] },
+  oneAuthorNoPhoto: { attribution: 'Updated on Jun. 2020', authors: [authors.map(author => ({ ...author, photo: undefined }))[0]] },
+  twoAuthors: { attribution: 'Updated on Jun. 2020', authors: [authors[0], authors[1]] },
+  threeAuthors: { attribution: 'Updated on Jun. 2020', authors },
 };
 
 export default exampleAuthorsProp;
