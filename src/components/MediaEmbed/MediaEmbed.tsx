@@ -50,6 +50,7 @@ export function YoutubeEmbed({ source, caption }: EmbedProps) {
           frameBorder="0"
           width="640"
           height="360"
+          allow="fullscreen;"
         />
       </AspectRatio>
       <Caption caption={caption} />

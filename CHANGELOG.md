@@ -1,3 +1,18 @@
+# v1.33.14 (Mon Apr 04 2022)
+
+#### 🐛 Bug Fix
+
+- fixing disabled youtube maximize [#681](https://github.com/Americastestkitchen/mise-ui/pull/681) (kayserifsl@Kayseris-MacBook-Pro.local [@kayseriatk](https://github.com/kayseriatk))
+- Fix Proof Logo on ListenShowPage Hero [#679](https://github.com/Americastestkitchen/mise-ui/pull/679) ([@twoodmanATK](https://github.com/twoodmanATK))
+
+#### Authors: 3
+
+- Kayseri FullStackLabs (kayserifsl@Kayseris-MacBook-Pro.local)
+- Kayseri Martinez ([@kayseriatk](https://github.com/kayseriatk))
+- Tim Woodman ([@twoodmanATK](https://github.com/twoodmanATK))
+
+---
+
 # v1.33.13 (Thu Mar 24 2022)
 
 #### 🐛 Bug Fix
