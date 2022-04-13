@@ -7,7 +7,7 @@ import reducedTextSizing from './css/reducedTextSizing';
  * Consolidates all breakpoint specific layout and styles.
  * Any style changes unrelated to theming can be made here.
  */
-const Layout = styled.div<{ reducedTextSizing?: boolean }>`
+const Layout = styled.div<{ excludePadding?: boolean, reducedTextSizing?: boolean }>`
   ${cssThemedLightBackground}
   ${layoutStyles}
   ${reducedTextSizing}
@@ -16,8 +16,7 @@ const Layout = styled.div<{ reducedTextSizing?: boolean }>`
   width: 100vw;
   margin-left: calc((100vw - 100%) / -2);
   margin-right: calc((100vw - 100%) / -2);
-  padding-left: calc((100vw - 100%) / 2);
-  padding-right: calc((100vw - 100%) / 2);
+  ${({ excludePadding }) => (!excludePadding ? 'padding-left: calc((100vw - 100%) / 2); padding-right: calc((100vw - 100%) / 2);' : '')}
 
   display: flex;
   justify-content: center;
