@@ -5,10 +5,9 @@ import { cssHorizontalGridAreas, cssVerticalGridAreas } from './shared';
 
 const desktop = '@media only screen and (min-width: 1280px)';
 
-const mobileLayout = css`
+const mobileLayout = css<{ excludePadding?: boolean }>`
   height: 192px;
-  padding-top: 16px;
-  padding-bottom: 16px;
+  ${({ excludePadding }) => (!excludePadding ? 'padding-top: 16px; padding-bottom: 16px;' : '')}
   
   ${ClickArea} {
     ${cssVerticalGridAreas}
@@ -22,10 +21,9 @@ const mobileLayout = css`
   }
 `;
 
-const tabletLayout = css`
+const tabletLayout = css<{ excludePadding?: boolean}>`
   height: 150px;
-  padding-top: 25px;
-  padding-bottom: 25px;
+  ${({ excludePadding }) => (!excludePadding ? 'padding-top: 25px; padding-bottom: 25px;' : '')}
   
   ${ClickArea} {
     ${cssHorizontalGridAreas}

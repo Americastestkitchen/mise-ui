@@ -7,6 +7,7 @@ import { md, untilMd } from '../../../styles/breakpoints';
 import { cssThemedColor } from '../../../styles/mixins';
 import useMedia from '../../hooks/useMedia';
 import DetailTriangleRight from '../components/DetailTriangleRight';
+import Layout from '../TrialBeltAd/Layout';
 
 export type HeroImages = {
   mobile: string,
@@ -273,16 +274,18 @@ const DisplayBeltAd = ({
   onClick,
   saleCopy = 'Up to 70% off',
 }: DisplayBeltAdProps) => (
-  <ImageBgWrapper>
-    <DisplayBeltImage backgroundImages={backgroundImages} />
-    <Content>
-      <TextArea>
-        <Headline>{headline}</Headline>
-        <SaleCopy>{saleCopy}</SaleCopy>
-      </TextArea>
-    </Content>
-    <Cta onClick={onClick} href={ctaLink} target="_blank">{ctaCopy}<DetailTriangleRight /></Cta>
-  </ImageBgWrapper>
+  <Layout excludePadding>
+    <ImageBgWrapper>
+      <DisplayBeltImage backgroundImages={backgroundImages} />
+      <Content>
+        <TextArea>
+          <Headline>{headline}</Headline>
+          <SaleCopy>{saleCopy}</SaleCopy>
+        </TextArea>
+      </Content>
+      <Cta onClick={onClick} href={ctaLink} target="_blank">{ctaCopy}<DetailTriangleRight /></Cta>
+    </ImageBgWrapper>
+  </Layout>
 );
 
 export default DisplayBeltAd;
