@@ -23,6 +23,7 @@ const Menu = ({ items, onClickItem, ...restProps }) => (
         <RefinementFilter
           {...item}
           {...restProps}
+          key={item.label}
           handleClick={onClickItem}
           includeCount={false}
         />
