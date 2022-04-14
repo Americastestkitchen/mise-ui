@@ -7,6 +7,7 @@ import {
   fontSize,
   letterSpacing,
   lineHeight,
+  mixins,
   spacing,
   withThemes,
 } from '../../../styles';
@@ -26,6 +27,9 @@ const StyledButtonTheme = {
     text-transform: uppercase;
     transition: 0.2s all ease;
     white-space: nowrap;
+    &:focus {
+      ${mixins.focusIndicator()}
+    }
 
     @media(hover: hover) {
       &:hover {
