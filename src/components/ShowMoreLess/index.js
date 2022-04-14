@@ -38,42 +38,32 @@ const ShowMoreLessButton = styled.button`
 
 const ShowMoreLess = ({ initialCount, items, id }) => {
   const [hidden, toggleHidden] = useState(true);
-  let initialItems = null;
-  let restItems = null;
-  if (items.length > initialCount) {
-    initialItems = items.slice(0, initialCount);
-    restItems = items.slice(initialCount);
-  }
+  const initialItems = items.slice(0, initialCount);
+  const restItems = items.slice(initialCount);
+
   return (
     <div>
-      {
-        initialItems && restItems ? (
-          <>
-            <ShowMoreLessInitial>
-              {initialItems.map(item => item)}
-            </ShowMoreLessInitial>
-            <ShowMoreLessRest
-              data-testid="show-more-rest-items"
-              hidden={hidden || null}
-              id={`show-hide--${id}`}
-            >
-              {restItems.map(item => item)}
-            </ShowMoreLessRest>
-            <ShowMoreLessButton
-              aria-controls={`show-hide--${id}`}
-              aria-expanded={!hidden}
-              className="show-more-less__button"
-              onClick={() => { toggleHidden(!hidden); }}
-            >
-              {hidden ? '+ Show More' : '- Show Less'}
-            </ShowMoreLessButton>
-          </>
-        ) : (
-          <ul>
-            {items.map(item => item)}
-          </ul>
-        )
-      }
+      <ShowMoreLessInitial>
+        {initialItems.map(item => item)}
+      </ShowMoreLessInitial>
+      <ShowMoreLessRest
+        data-testid="show-more-rest-items"
+        hidden={hidden || null}
+        id={`show-hide--${id}`}
+      >
+        {restItems.map(item => item)}
+      </ShowMoreLessRest>
+      {!!restItems.length && (
+        <ShowMoreLessButton
+          aria-controls={`show-hide--${id}`}
+          aria-expanded={!hidden}
+          className="show-more-less__button"
+          onClick={() => { toggleHidden(!hidden); }}
+          aria-label={hidden ? 'Show More' : 'Show Less'}
+        >
+          {hidden ? '+ Show More' : '- Show Less'}
+        </ShowMoreLessButton>
+      )}
     </div>
   );
 };
