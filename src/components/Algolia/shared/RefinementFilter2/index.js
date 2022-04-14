@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
 import { Checkmark } from '../../../DesignTokens/Icon/svgs';
 import { cssThemedColor } from '../../../../styles/mixins';
-import { color, font, fontSize, mixins, spacing, withThemes } from '../../../../styles';
+import { color, font, fontSize, mixins, withThemes } from '../../../../styles';
 
 const RefinementFilterWrapperTheme = {
   default: css`
@@ -163,22 +163,28 @@ const RefinementFilter = ({
   if (filterType === 'toggleRefinement') {
     isActuallyRefined = currentRefinement.length > 0 && currentRefinement.includes(value);
   }
+
+  /**
+   * @type {(e: React.ChangeEvent<HTMLInputElement>) => void}
+   */
+  const onChange = useCallback((e) => {
+    if (!isActuallyRefined && typeof handleClick === 'function') handleClick(e);
+    if (filterType === 'refinementList') {
+      refine(value);
+    } else if (filterType === 'toggleRefinement') {
+      if (isActuallyRefined) {
+        refine(false);
+      } else {
+        refine(value);
+      }
+    }
+  }, [isActuallyRefined, handleClick, filterType, refine, value]);
+
+  const id = `${attribute}-${label}-filter`;
+
   return (
     <RefinementFilterWrapper
       className="refinement-filter__wrapper"
-      onClick={(e) => {
-        e.preventDefault();
-        if (!isActuallyRefined && typeof handleClick === 'function') handleClick(e);
-        if (filterType === 'refinementList') {
-          refine(value);
-        } else if (filterType === 'toggleRefinement') {
-          if (isActuallyRefined) {
-            refine(false);
-          } else {
-            refine(value);
-          }
-        }
-      }}
     >
       {
         isActuallyRefined ? (
@@ -187,13 +193,19 @@ const RefinementFilter = ({
           </RefinementFilterCheck>
         ) : null
       }
-      <RefinementFilterCheckbox defaultChecked={isActuallyRefined} id={`${attribute}-${value}-filter`} type="checkbox" />
+      <RefinementFilterCheckbox
+        checked={isActuallyRefined}
+        onChange={onChange}
+        id={id}
+        type="checkbox"
+      />
       <RefinementFilterLabel
-        htmlFor={`${attribute}-${value}-filter`}
+        htmlFor={id}
         isRefined={isActuallyRefined}
       >
         {label}{includeCount && count ? <RefinementFilterCount>{` (${count})`}</RefinementFilterCount> : null}
       </RefinementFilterLabel>
+
     </RefinementFilterWrapper>
   );
 };
