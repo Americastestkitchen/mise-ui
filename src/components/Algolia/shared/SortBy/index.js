@@ -220,7 +220,7 @@ const SearchSortByLabel = styled.label.attrs({
   className: 'search-sort-by__label',
 })`${withThemes(SearchSortByLabelTheme)}`;
 
-export const CustomSortBy = ({ defaultRefinement, items, refine }) => (
+export const CustomSortBy = ({ items, refine }) => (
   <>
     {
       items.map(({ isRefined, label, isNew, value }) => (
@@ -239,10 +239,10 @@ export const CustomSortBy = ({ defaultRefinement, items, refine }) => (
           </SearchSortByLabel>
           <SearchSortByRadioInput
             className={isRefined ? 'refined' : ''}
-            defaultChecked={value.includes(defaultRefinement)}
+            checked={isRefined}
             id={value}
             name="sortby"
-            onClick={() => {
+            onChange={() => {
               refine(value);
             }}
             type="radio"
@@ -255,9 +255,15 @@ export const CustomSortBy = ({ defaultRefinement, items, refine }) => (
 );
 
 CustomSortBy.propTypes = {
-  defaultRefinement: PropTypes.string.isRequired,
   items: PropTypes.array.isRequired,
   refine: PropTypes.func.isRequired,
 };
 
-export default connectSortBy(CustomSortBy);
+const SortBy = connectSortBy(CustomSortBy);
+
+SortBy.propTypes = {
+  defaultRefinement: PropTypes.string.isRequired,
+  items: PropTypes.array.isRequired,
+};
+
+export default SortBy;
