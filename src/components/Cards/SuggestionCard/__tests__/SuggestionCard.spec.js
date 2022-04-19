@@ -78,11 +78,6 @@ describe('SuggestionCard component', () => {
     expect(screen.queryByTestId('suggestion-sub-title')).toBeNull();
   });
 
-  it('does renders a dek', () => {
-    renderComponent(baseRecipe);
-    expect(screen.getByTestId('suggestion-dek'));
-  });
-
   it('does not render a description', () => {
     renderComponent({
       ...baseRecipe,
