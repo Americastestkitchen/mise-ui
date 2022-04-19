@@ -12,10 +12,13 @@ const AccordionWrapper = styled.div.attrs({
   className: 'accordion-content-wrapper',
 })`
   &:focus-within {
-    box-shadow: 0 0 0 2px ${color.focusRing};
+    box-shadow: none !important;
+  }
 
-    > button:focus {
-      outline: none;
+  .accordion-item__button {
+    &:focus {
+      box-shadow: none !important;
+      ${mixins.focusIndicator()}
     }
   }
 
@@ -41,6 +44,9 @@ const AccordionButtonTheme = {
     padding: 0.2rem ${spacing.xxsm} 0.2rem 0;
     text-transform: uppercase;
     width: 100%;
+    &:focus {
+      ${mixins.focusIndicator()}
+    }
 
     @media(hover: hover) {
       &:hover {
@@ -211,16 +217,14 @@ const AccordionLabelWrapperTheme = {
     align-items: flex-end;
     display: flex;
 
-    ${({ hasIcon }) => (
-    hasIcon ? `
+    ${({ hasIcon }) => (hasIcon && css`
       .show-hide__button-label {
         display: inline-block;
         margin-right: ${spacing.xsm};
         max-width: 11.25rem;
         text-align: left;
       }
-    ` : ''
-  )}
+    `)}
 
     svg {
       flex-shrink: 0;

@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { withThemes, color, font } from '../../../styles';
+import { untilMd } from '../../../styles/breakpoints';
 import {
   cssThemedBackground,
   cssThemedBackgroundAccentColorAlt,
@@ -72,10 +73,13 @@ export const Svg = styled.svg<{rotated?: boolean}>`
 `;
 
 export const Navigation = styled.nav`
+  ${untilMd(css`padding-left: 8px; padding-bottom: 0;`)}
   flex-shrink: 0;
   display: flex;
   padding-left: 20px;
   padding-bottom: 4px;
+
+
   ${Button}:first-child {
     margin-right: 8px;
   }
@@ -86,6 +90,11 @@ export const Header = styled.header`
   justify-content: space-between;
   align-items: flex-end;
   padding: 4px 0;
+`;
+
+export const TitleWrapper = styled.div`
+  align-items: center;
+  display: flex; 
 `;
 
 export const Title = styled.h2`

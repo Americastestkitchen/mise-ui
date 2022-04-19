@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import { color, font, fontSize, letterSpacing, lineHeight, spacing, withThemes } from '../../styles';
+import { color, font, fontSize, letterSpacing, lineHeight, spacing, withThemes, mixins } from '../../styles';
 import { cssThemedColor } from '../../styles/mixins';
 import Filter from '../DesignTokens/Icon/svgs/Filter';
 
@@ -9,6 +9,9 @@ const StyledFilterButtonTheme = {
   default: css`
     font: ${fontSize.md}/${lineHeight.sm} ${font.pnb};
     padding: ${spacing.xsm};
+    &:focus {
+      ${mixins.focusIndicator()}
+    }
   `,
   kidsSearch: css`
     color: ${color.black};

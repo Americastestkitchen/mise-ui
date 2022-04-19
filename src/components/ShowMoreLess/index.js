@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
+import { cssThemedColor, cssThemedHoverColor } from '../../styles/mixins';
 import { color, font, spacing, withThemes } from '../../styles';
 
 const ShowMoreLessInitial = styled.ul``;
@@ -9,17 +10,14 @@ const ShowMoreLessRest = styled.ul``;
 
 export const ShowMoreLessButtonTheme = {
   default: css`
-    color: ${color.nobel};
     font: 1.2rem/1 ${font.pnb};
     letter-spacing: 1.2px;
     padding: ${spacing.xsm} 0;
     text-transform: uppercase;
-
-    &:hover {
-      color: ${color.mint};
-    }
   `,
   kidsSearch: css`
+    color: ${color.nobel};
+
     &:hover {
       color: ${color.jade};
     }
@@ -27,47 +25,45 @@ export const ShowMoreLessButtonTheme = {
 };
 
 const ShowMoreLessButton = styled.button`
+  ${cssThemedColor}
+
+  @media(hover: hover) {
+    &:hover {
+      ${cssThemedHoverColor}
+    }
+  }
+
   ${withThemes(ShowMoreLessButtonTheme)}
 `;
 
 const ShowMoreLess = ({ initialCount, items, id }) => {
   const [hidden, toggleHidden] = useState(true);
-  let initialItems = null;
-  let restItems = null;
-  if (items.length > initialCount) {
-    initialItems = items.slice(0, initialCount);
-    restItems = items.slice(initialCount);
-  }
+  const initialItems = items.slice(0, initialCount);
+  const restItems = items.slice(initialCount);
+
   return (
     <div>
-      {
-        initialItems && restItems ? (
-          <>
-            <ShowMoreLessInitial>
-              {initialItems.map(item => item)}
-            </ShowMoreLessInitial>
-            <ShowMoreLessRest
-              data-testid="show-more-rest-items"
-              hidden={hidden || null}
-              id={`show-hide--${id}`}
-            >
-              {restItems.map(item => item)}
-            </ShowMoreLessRest>
-            <ShowMoreLessButton
-              aria-controls={`show-hide--${id}`}
-              aria-expanded={!hidden}
-              className="show-more-less__button"
-              onClick={() => { toggleHidden(!hidden); }}
-            >
-              {hidden ? '+ Show More' : '- Show Less'}
-            </ShowMoreLessButton>
-          </>
-        ) : (
-          <ul>
-            {items.map(item => item)}
-          </ul>
-        )
-      }
+      <ShowMoreLessInitial>
+        {initialItems.map(item => item)}
+      </ShowMoreLessInitial>
+      <ShowMoreLessRest
+        data-testid="show-more-rest-items"
+        hidden={hidden || null}
+        id={`show-hide--${id}`}
+      >
+        {restItems.map(item => item)}
+      </ShowMoreLessRest>
+      {!!restItems.length && (
+        <ShowMoreLessButton
+          aria-controls={`show-hide--${id}`}
+          aria-expanded={!hidden}
+          className="show-more-less__button"
+          onClick={() => { toggleHidden(!hidden); }}
+          aria-label={hidden ? 'Show More' : 'Show Less'}
+        >
+          {hidden ? '+ Show More' : '- Show Less'}
+        </ShowMoreLessButton>
+      )}
     </div>
   );
 };
