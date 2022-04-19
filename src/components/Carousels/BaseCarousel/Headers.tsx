@@ -6,7 +6,7 @@ import { Intro, Title, TitleWrapper, Topic } from './styled-elements';
 import { cssThemedColor, cssThemedFontAccentColorAlt } from '../../../styles/mixins';
 import { InferStyledTypes } from '../../../styles/utility-types';
 import { ChevronThin } from '../../DesignTokens/Icon';
-import { md, untilMd } from '../../../styles/breakpoints';
+import { md, untilSm, untilMd } from '../../../styles/breakpoints';
 
 const cssThemedStrokeAccentAlt = withThemes({
   default: css`stroke: ${color.darkTeal};`,
@@ -29,7 +29,9 @@ const cssThemedStroke = withThemes({
 const cssWrappingStyles = css`
   ${TitleWrapper} {
     margin-bottom: 0.8rem;
-    max-width: 29rem;
+    max-width: 30rem;
+
+    ${untilSm(css`max-width: 26rem;`)}
   }
 `;
 
@@ -48,6 +50,11 @@ const Layout = styled.span<{ hasLink: boolean }>`
 `;
 
 const Link = styled.a`
+  ${untilSm(css`
+    display: block;
+    max-width: 20rem;
+    white-space: pre-wrap;
+  `)}
   white-space: nowrap;
   cursor: pointer;
   text-transform: uppercase;
@@ -70,6 +77,7 @@ const Link = styled.a`
 `;
 
 const SvgWrapper = styled.div`
+  ${untilMd(css`display: none;`)}
   height: 1.9rem;
   display: inline-block;
   margin-right: 0.8rem;
