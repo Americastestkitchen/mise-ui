@@ -1,7 +1,7 @@
 import breakpoint from 'styled-components-breakpoint';
 import styled from 'styled-components';
 
-import { font, fontSize, color } from '../../../../styles';
+import { font, color } from '../../../../styles';
 
 const SuggestionCardActions = styled.div.attrs({
   className: 'suggestion-card__buttons',
@@ -19,15 +19,11 @@ const SuggestionCardActions = styled.div.attrs({
     margin-right: 1rem;
 
     span {
-      font-size: ${fontSize.xsm};
+      font-size: 1.2rem;
       color: ${color.eclipse};
-      font-family: ${font.pnr};
+      font-family: ${font.pnb};
       text-transform: uppercase;
     }
-  }
-
-  @media (min-width: 0) and (max-width: 413px) {
-    // flex-direction: column;
   }
 
   ${breakpoint('md')`

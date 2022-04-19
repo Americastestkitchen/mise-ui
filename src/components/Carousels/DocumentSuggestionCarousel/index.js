@@ -62,7 +62,7 @@ const DocumentListCarouselTheme = {
         height: 52rem !important;
 
         ${breakpoint('md')`
-          height: 30rem !important;
+          height: 32rem !important;
         `}
       }
     }
@@ -105,6 +105,7 @@ const DocumentSuggestionCarousel = ({
     ) : (
       <BaseCarousel
         title={title}
+        showDivider
       >
         {items.map((item, idx) => (
           <SuggestionCard
