@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { withThemes, color, font } from '../../../styles';
-import { untilSm } from '../../../styles/breakpoints';
+import { untilMd } from '../../../styles/breakpoints';
 import {
   cssThemedBackground,
   cssThemedBackgroundAccentColorAlt,
@@ -73,12 +73,12 @@ export const Svg = styled.svg<{rotated?: boolean}>`
 `;
 
 export const Navigation = styled.nav`
+  ${untilMd(css`padding-left: 8px; padding-bottom: 0;`)}
   flex-shrink: 0;
   display: flex;
   padding-left: 20px;
   padding-bottom: 4px;
 
-  ${untilSm(css`padding-left: 4px`)}
 
   ${Button}:first-child {
     margin-right: 8px;
@@ -95,6 +95,13 @@ export const Header = styled.header`
 export const TitleWrapper = styled.div`
   align-items: center;
   display: flex; 
+
+  ${untilMd(css`
+    h2 {
+      max-width: 250px;
+      width: 100%;
+    }
+  `)}
 `;
 
 export const Title = styled.h2`
