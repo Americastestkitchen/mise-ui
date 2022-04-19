@@ -95,13 +95,6 @@ export const Header = styled.header`
 export const TitleWrapper = styled.div`
   align-items: center;
   display: flex; 
-
-  ${untilMd(css`
-    h2 {
-      max-width: 250px;
-      width: 100%;
-    }
-  `)}
 `;
 
 export const Title = styled.h2`
