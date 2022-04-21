@@ -92,7 +92,7 @@ const SvgWrapper = styled.div`
 export type LinkCarouselHeaderProps = {
   includeIcon?: boolean;
   title: string;
-  linkText: string;
+  linkText?: string;
   titleProps?: InferStyledTypes<typeof Title>;
   linkProps: InferStyledTypes<typeof Link>;
 };
