@@ -32,7 +32,7 @@ const mixinOverflowHorizontal = (overflowHorizontalPx: number) => css`
 `;
 
 export type ArgsProps = {
-  maxWidthPx: number;
+  maxWidthPx?: number;
   overflowAuto?: boolean;
   overflowManualPx?: number;
   overflowHorizontalPx?: number;
@@ -40,7 +40,7 @@ export type ArgsProps = {
 
 const CarouselWrapperSC = styled.div<ArgsProps>`
   & {
-    max-width: ${({ maxWidthPx }) => `${maxWidthPx}px`};
+    ${({ maxWidthPx }) => css`max-width: ${maxWidthPx}px;`}
   }
   ${({ overflowAuto }) => overflowAuto && cssAuto};
   ${({ overflowManualPx }) => overflowManualPx && mixinOverflowManual(overflowManualPx)};
