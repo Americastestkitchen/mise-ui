@@ -31,7 +31,7 @@ const HeroHatWrapper = styled.div.attrs({
       `background-image: url("${getImageUrl(heroImages.tablet, { width: 768 })}");`
     )}
     background-size: cover;
-    margin-bottom: ${spacing.sm};
+    margin-bottom: 0;
     min-height: 16.7rem;
     padding-top: 0;
 
