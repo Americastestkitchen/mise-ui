@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
@@ -184,49 +184,51 @@ const RefinementFilter = ({
   refine,
   handleClick,
   value,
-}) => (
-  <>
-    <RefinementFilterLabel
-      altFill={altFill}
-      className={`${attribute}`}
-      data-site-key={value}
-      isRefined={isRefined || (currentRefinement && currentRefinement.length > 0)}
-      onClick={(e) => {
-        if (!isRefined && typeof handleClick === 'function') handleClick(e);
-        if (filterType === 'refinementList') {
-          refine(value);
-        } else if (filterType === 'toggleRefinement') {
-          if (currentRefinement.length > 0) {
-            refine(false);
-          } else {
-            refine(value);
-          }
-        }
-      }}
-    >
-      {
-        isRefined || (filterType === 'toggleRefinement' && currentRefinement.length > 0) ? (
+}) => {
+  /**
+   * @type {(e: React.ChangeEvent<HTMLInputElement>) => void}
+   */
+  const onChange = useCallback((e) => {
+    if (!isRefined && typeof handleClick === 'function') {
+      handleClick(e);
+    }
+    if (filterType === 'refinementList') {
+      refine(value);
+    } else if (filterType === 'toggleRefinement') {
+      if (currentRefinement.length > 0) {
+        refine(false);
+      } else {
+        refine(value);
+      }
+    }
+  }, [currentRefinement?.length, filterType, handleClick, isRefined, refine, value]);
+  return (
+    <>
+      <RefinementFilterLabel
+        altFill={altFill}
+        className={`${attribute}`}
+        data-site-key={value}
+        isRefined={isRefined || (currentRefinement && currentRefinement.length > 0)}
+      >
+        {isRefined || (filterType === 'toggleRefinement' && currentRefinement.length > 0) ? (
           <RefinementFilterCheck data-testid="refinement-filter__checkmark">
             <Checkmark />
           </RefinementFilterCheck>
-        ) : null
-      }
-      <RefinementFilterCheckbox
-        defaultChecked={isRefined}
-        name={label}
-        type="checkbox"
-      />
-      {
-        attribute === 'search_site_list' ? (
+        ) : null}
+        <RefinementFilterCheckbox
+          checked={isRefined}
+          name={label}
+          type="checkbox"
+          onChange={onChange}
+        />
+        {attribute === 'search_site_list' ? (
           <Badge
             className="search-refinement__badge"
             fill={isRefined ? altFill : color.eclipse}
             type={value}
           />
-        ) : null
-      }
-      {
-        includeCount ? (
+        ) : null}
+        {includeCount ? (
           <span className="search-refinement-filter__count">
             <span className="search-refinement-list__label-text">
               {label}
@@ -239,11 +241,11 @@ const RefinementFilter = ({
           <span className="search-refinement-list__label-text">
             {label}
           </span>
-        )
-      }
-    </RefinementFilterLabel>
-  </>
-);
+        )}
+      </RefinementFilterLabel>
+    </>
+  );
+};
 
 RefinementFilter.propTypes = {
   altFill: PropTypes.string,

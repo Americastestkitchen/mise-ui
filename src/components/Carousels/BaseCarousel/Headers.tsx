@@ -1,11 +1,12 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import Cookbook from '../../DesignTokens/Icon/svgs/Cookbook';
 import { mixins, font, withThemes, color } from '../../../styles';
-import { Intro, Title, Topic } from './styled-elements';
+import { Intro, Title, TitleWrapper, Topic } from './styled-elements';
 import { cssThemedColor, cssThemedFontAccentColorAlt } from '../../../styles/mixins';
 import { InferStyledTypes } from '../../../styles/utility-types';
 import { ChevronThin } from '../../DesignTokens/Icon';
-import { untilMd } from '../../../styles/breakpoints';
+import { md, untilSm, untilMd } from '../../../styles/breakpoints';
 
 const cssThemedStrokeAccentAlt = withThemes({
   default: css`stroke: ${color.darkTeal};`,
@@ -26,23 +27,34 @@ const cssThemedStroke = withThemes({
  *  the arrow buttons by a bit to match designs.
  */
 const cssWrappingStyles = css`
-  ${Title} {
-    display: block;
-    margin-right: -64px; 
-    margin-bottom: 8px;
+  ${TitleWrapper} {
+    margin-bottom: 0.8rem;
+    max-width: 30rem;
+
+    ${untilSm(css`max-width: 26rem;`)}
   }
 `;
 
 const Layout = styled.span<{ hasLink: boolean }>`
   vertical-align: middle;
-  ${Title} {
-    display: inline-block;
-    margin-right: 16px;
+
+  ${TitleWrapper} {
+    display: inline-flex;
+
+    ${md(css`
+      margin-right: 16px;
+    `)}
   }
+
   ${({ hasLink }) => hasLink && untilMd(css`${cssWrappingStyles}`)}
 `;
 
 const Link = styled.a`
+  ${untilSm(css`
+    display: block;
+    max-width: 20rem;
+    white-space: pre-wrap;
+  `)}
   white-space: nowrap;
   cursor: pointer;
   text-transform: uppercase;
@@ -64,7 +76,21 @@ const Link = styled.a`
   }
 `;
 
+const SvgWrapper = styled.div`
+  ${untilMd(css`display: none;`)}
+  height: 1.9rem;
+  display: inline-block;
+  margin-right: 0.8rem;
+  width: 2.6rem;
+
+  svg {
+    max-height: 100%;
+    max-width: 100%;
+  }
+`;
+
 export type LinkCarouselHeaderProps = {
+  includeIcon?: boolean;
   title: string;
   linkText: string;
   titleProps?: InferStyledTypes<typeof Title>;
@@ -72,6 +98,7 @@ export type LinkCarouselHeaderProps = {
 };
 
 export function LinkCarouselHeader({
+  includeIcon,
   title,
   linkText,
   titleProps,
@@ -79,7 +106,18 @@ export function LinkCarouselHeader({
 }: LinkCarouselHeaderProps) {
   return (
     <Layout hasLink={!!linkText}>
-      <Title {...titleProps}>{title}</Title>
+      <TitleWrapper>
+        {
+          includeIcon && (
+            <SvgWrapper>
+              <Cookbook fill={color.eclipse} />
+            </SvgWrapper>
+          )
+        }
+        <Title {...titleProps}>
+          {title}
+        </Title>
+      </TitleWrapper>
       {linkText && (
         <Link {...linkProps}>
           {linkText}

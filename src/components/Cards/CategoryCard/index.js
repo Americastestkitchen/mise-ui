@@ -199,6 +199,11 @@ const SvgWrapper = styled.div`
   &.latest, &.cookbook {
     width: 64%;
   }
+  
+  svg {
+    height: 100%;
+    width: 100%;
+  }
 `;
 
 const CategoryCard = ({

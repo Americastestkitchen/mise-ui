@@ -34,7 +34,17 @@ export const wrapKnobs = (args: any): any => Object.fromEntries(
 
 export const setBackground = (background: string, ...stories: ComponentStory<any>[]): void => {
   stories.forEach((story) => {
-    story.parameters = { ...story.parameters, backgrounds: { default: background } };
+    story.parameters = {
+      ...story.parameters,
+      backgrounds: {
+        default: background,
+        values: [
+          { name: 'atk', value: '#f5f5f5' },
+          { name: 'cco', value: '#ffffff' },
+          { name: 'cio', value: '#fcf9f3' },
+        ],
+      },
+    };
   });
 };
 
@@ -49,4 +59,19 @@ export const setArgs = (args: any, ...stories: ComponentStory<any>[]): void => {
   stories.forEach((story) => {
     story.args = { ...story.args, ...args };
   });
+};
+
+export const setParameters = (parameters: any, ...stories: ComponentStory<any>[]): void => {
+  stories.forEach((story) => {
+    story.parameters = { ...story.parameters, ...parameters };
+  });
+};
+
+/**
+ * Sets the siteKey used in .storybook/preview.js decorators
+ *  (may be confusing if siteKey is also component property)
+ */
+export const setTheme = (siteKey: 'atk' | 'cio' | 'cco', ...stories: ComponentStory<any>[]): void => {
+  setBackground(siteKey, ...stories);
+  setArgs({ siteKey }, ...stories);
 };

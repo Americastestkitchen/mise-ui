@@ -5,8 +5,10 @@ import cloudinaryInstance, { baseImageConfig } from '../../../lib/cloudinary';
 import { color, font, fontSize, letterSpacing, mixins, withThemes } from '../../../styles';
 import { md, untilMd } from '../../../styles/breakpoints';
 import { cssThemedColor } from '../../../styles/mixins';
+import { InferStyledTypes } from '../../../styles/utility-types';
 import useMedia from '../../hooks/useMedia';
 import DetailTriangleRight from '../components/DetailTriangleRight';
+import Layout from '../TrialBeltAd/Layout';
 
 export type HeroImages = {
   mobile: string,
@@ -148,7 +150,13 @@ export type DisplayBeltAdProps = {
   /** Onclick fires mixpanel accepted event */
   onClick: () => void;
   /** sale copy  */
-  saleCopy?: string
+  saleCopy?: string;
+  /**
+   * Pass any additional props to the click area. This can be for
+   *  analytics events, accessibility with "aria-label", or any other
+   *  property unseen for future requirements on the anchor tag.
+   */
+  linkProps?: InferStyledTypes<typeof Cta>;
 };
 
 const ImageLeft = styled.img`
@@ -272,17 +280,20 @@ const DisplayBeltAd = ({
   headline = 'Discover favorite cookbooks',
   onClick,
   saleCopy = 'Up to 70% off',
+  linkProps,
 }: DisplayBeltAdProps) => (
-  <ImageBgWrapper>
-    <DisplayBeltImage backgroundImages={backgroundImages} />
-    <Content>
-      <TextArea>
-        <Headline>{headline}</Headline>
-        <SaleCopy>{saleCopy}</SaleCopy>
-      </TextArea>
-    </Content>
-    <Cta onClick={onClick} href={ctaLink} target="_blank">{ctaCopy}<DetailTriangleRight /></Cta>
-  </ImageBgWrapper>
+  <Layout excludePadding>
+    <ImageBgWrapper>
+      <DisplayBeltImage backgroundImages={backgroundImages} />
+      <Content>
+        <TextArea>
+          <Headline>{headline}</Headline>
+          <SaleCopy>{saleCopy}</SaleCopy>
+        </TextArea>
+      </Content>
+      <Cta onClick={onClick} href={ctaLink} target="_blank" {...linkProps}>{ctaCopy}<DetailTriangleRight /></Cta>
+    </ImageBgWrapper>
+  </Layout>
 );
 
 export default DisplayBeltAd;

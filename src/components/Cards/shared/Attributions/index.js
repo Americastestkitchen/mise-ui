@@ -18,6 +18,10 @@ const StyledAttributions = styled.div`
     display: inline-block;
   }
 
+  ins {
+    font: ${fontSize.md}/${lineHeight.md} ${font.pnb};
+  }
+
   ${breakpoint('xs', 'lg')`
     .attributions__bullet {
       display: none;

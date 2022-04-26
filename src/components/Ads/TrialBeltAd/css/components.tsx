@@ -1,6 +1,7 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { font, color } from '../../../../styles';
 import { cssThemedColor } from '../../../../styles/mixins';
+import { md, xlg } from '../../../../styles/breakpoints';
 import { cssThemedButton } from './shared';
 
 export const Headline = styled.p`
@@ -15,6 +16,10 @@ export const Description = styled.p`
   font-family: ${font.pnb};
   font-size: 18px;
   line-height: 20px;
+  max-width: 208px;
+
+  ${md(css`max-width: 300px;`)}
+  ${xlg(css`max-width: 100%`)}
 `;
 
 export const TextArea = styled.div`

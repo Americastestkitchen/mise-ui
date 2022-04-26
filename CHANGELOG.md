@@ -1,3 +1,16 @@
+# v1.33.15 (Tue Apr 19 2022)
+
+#### 🐛 Bug Fix
+
+- Feature PR Recipes Landing [#702](https://github.com/Americastestkitchen/mise-ui/pull/702) ([@ttornese](https://github.com/ttornese) [@harry-atk](https://github.com/harry-atk))
+
+#### Authors: 2
+
+- Harry Scheuerle ([@harry-atk](https://github.com/harry-atk))
+- Tom Tornese ([@ttornese](https://github.com/ttornese))
+
+---
+
 # v1.33.14 (Mon Apr 04 2022)
 
 #### 🐛 Bug Fix
