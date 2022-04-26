@@ -1,3 +1,15 @@
+# v1.33.16 (Tue Apr 26 2022)
+
+#### 🐛 Bug Fix
+
+- TW ACR 193 [#693](https://github.com/Americastestkitchen/mise-ui/pull/693) ([@twoodmanATK](https://github.com/twoodmanATK))
+
+#### Authors: 1
+
+- Tim Woodman ([@twoodmanATK](https://github.com/twoodmanATK))
+
+---
+
 # v1.33.15 (Tue Apr 19 2022)
 
 #### 🐛 Bug Fix
