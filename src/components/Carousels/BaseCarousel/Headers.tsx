@@ -94,7 +94,7 @@ export type LinkCarouselHeaderProps = {
   title: string;
   linkText?: string;
   titleProps?: InferStyledTypes<typeof Title>;
-  linkProps: InferStyledTypes<typeof Link>;
+  linkProps?: InferStyledTypes<typeof Link>;
 };
 
 export function LinkCarouselHeader({
