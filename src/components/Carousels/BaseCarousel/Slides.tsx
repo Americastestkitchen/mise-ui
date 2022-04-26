@@ -1,9 +1,13 @@
 import React, { PropsWithChildren } from 'react';
 import styled, { css } from 'styled-components';
 import { color } from '../../../styles';
+import { InferStyledTypes } from '../../../styles/utility-types';
 import { useCarouselContext } from './BaseCarousel';
 
-export type SlideProps = PropsWithChildren<{key: React.Key}>;
+export type SlideProps = PropsWithChildren<{
+  key: React.Key,
+  divProps?: InferStyledTypes<typeof StandardSlideThemed>
+}>;
 
 export function FullWidthSlide({ children }: SlideProps) {
   const { onFocus } = useCarouselContext();
@@ -79,10 +83,10 @@ const StandardSlideThemed = styled.div`
   }
 `;
 
-export function StandardSlide({ children }: SlideProps) {
+export function StandardSlide({ children, divProps }: SlideProps) {
   const { onFocus } = useCarouselContext();
   return (
-    <StandardSlideThemed onFocus={onFocus}>
+    <StandardSlideThemed onFocus={onFocus} {...divProps}>
       {children}
     </StandardSlideThemed>
   );
