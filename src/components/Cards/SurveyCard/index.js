@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import breakpoint from 'styled-components-breakpoint';
+import styledBreakpoint from 'styled-components-breakpoint';
 import { color, font, fontSize, lineHeight } from '../../../styles';
 import DishTypeForm from './components/DishTypeForm';
 import NpsForm from './components/NpsForm';
@@ -17,7 +17,7 @@ const SurveyCardWrapper = styled.div`
   position: relative;
   font: ${fontSize.sm}/${lineHeight.md} ${font.pnr};
 
-  ${breakpoint('smmd')`
+  ${styledBreakpoint('smmd')`
     padding: 3.3rem;
     padding-bottom: 6.8rem;
     max-width: 56rem;
@@ -107,7 +107,7 @@ const SurveyCard = ({
   handleSubmit,
   surveyType,
 }) => {
-  const [errorMesssge, setErrorMessage] = useState();
+  const [errorMesssage, setErrorMessage] = useState();
   const [successMessage, setsuccessMessage] = useState(null);
 
   const handleResponseSubmit = (surveyResponse) => {
@@ -122,17 +122,15 @@ const SurveyCard = ({
 
   return (
     <SurveyCardWrapper>
-      {title && (<Title>{title}</Title>)}
-      {subTitle && !successMessage ? (
-        <SubTitle>{subTitle}</SubTitle>
-      ) : null }
-      {successMessage ? (
-        <SuccessMessage>{successMessage}</SuccessMessage>
-      ) : null}
-      {!successMessage && surveyType ? (
-        <FormEl surveyType={surveyType} handleSubmit={handleResponseSubmit} />
-      ) : null}
-      {errorMesssge ? (<ErrorMessage>{errorMesssge}</ErrorMessage>) : null}
+      <Title data-testid="survey-title">{title}</Title>
+      {!successMessage && (
+        <>
+          <SubTitle data-testid="survey-subtitle">{subTitle}</SubTitle>
+          <FormEl surveyType={surveyType} handleSubmit={handleResponseSubmit} />
+        </>
+      )}
+      {successMessage && <SuccessMessage>{successMessage}</SuccessMessage>}
+      {errorMesssage ? (<ErrorMessage>{errorMesssage}</ErrorMessage>) : null}
     </SurveyCardWrapper>
   );
 };

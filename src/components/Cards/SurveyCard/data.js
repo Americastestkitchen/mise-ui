@@ -14,5 +14,5 @@ export const npsData = [
   'Not Likely',
   'Neither',
   'Likely',
-  'Verfy Likely',
+  'Very Likely',
 ];

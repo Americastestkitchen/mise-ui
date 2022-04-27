@@ -28,7 +28,6 @@ const SurveyCardOption = styled.label`
   }
 
   span {
-    // color: ${color.eclipse};
     padding: 7px 12px 5px 10px;
     border-radius: 1.5rem;
     font-size: ${fontSize.sm};
@@ -55,9 +54,15 @@ const DishTypeForm = ({ handleSubmit }) => {
   };
 
   return (
-    <SurveyForm onSubmit={e => handleDishTypeSubmit(e)}>
+    <SurveyForm
+      onSubmit={e => handleDishTypeSubmit(e)}
+      data-testid="survey-form"
+    >
       {dishTypeData.map(slug => (
-        <SurveyCardOption key={slug} htmlFor={slug}>
+        <SurveyCardOption
+          key={slug}
+          htmlFor={slug}
+        >
           <input
             type="checkbox"
             id={slug}
@@ -68,7 +73,7 @@ const DishTypeForm = ({ handleSubmit }) => {
           <span>{slug}</span>
         </SurveyCardOption>
       ))}
-      <SubmitButton type="submit">
+      <SubmitButton type="submit" data-testid="surveySubmit-button">
         <span className="checkmark"><Checkmark fill={color.eclipse} /></span>
         Submit
       </SubmitButton>

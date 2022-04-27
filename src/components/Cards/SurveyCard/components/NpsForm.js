@@ -30,6 +30,7 @@ const SurveyCardOption = styled.label`
     border-radius: 15px;
     box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
     background-color: #fff;
+    cursor: pointer;
   }
 
   input:checked {
