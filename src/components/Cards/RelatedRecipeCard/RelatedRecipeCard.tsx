@@ -2,77 +2,48 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { getImageUrl } from '../../../lib/cloudinary';
 import { color, font, fontSize, withThemes } from '../../../styles';
-import { StandardUserAttributions } from '../shared/UserAttributions/UserAttributions';
+import { UserAttributions } from '../shared/UserAttributions';
 import Image from '../shared/Image';
-import Sticker from '../shared/Sticker';
 import mixins, { cssThemedColor } from '../../../styles/mixins';
-import { md } from '../../../styles/breakpoints';
 
 const CtaLink = styled.a`
   display: flex;
+  width: min(344px, 100%);
+  height: 128px;
 `;
 
-const ContentTheme = {
-  default: css`
-    background: ${color.white};
-    display: flex;
-    flex-direction: column;
-    max-height: 12.8rem;
-    max-width: 21.2rem;
-    padding: 2rem 3.8rem 0 1.6rem;
-
-    ${md(css`
-      max-width: 21.6rem;
-    `)}
-  `,
-  cco: css`
-    background: ${color.whiteSmoke};
-  `,
-};
+const cssBackgroundColor = withThemes({
+  default: css`background-color: ${color.white};`,
+  cco: css`background-color: ${color.whiteSmoke};`,
+});
 
 const Content = styled.div`
-  ${withThemes(ContentTheme)}
+  ${cssBackgroundColor}
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 0 16px;
 `;
 
-const HeadlineTheme = {
-  default: css`
-    ${mixins.truncateLineClamp(3)}
-    font: ${fontSize.md}/2.3rem ${font.pnb};
-    margin-bottom: 1.4rem;
-  `,
-  atk: css`
-    line-height: 2rem;
-  `,
-};
-
 const Headline = styled.span`
-  ${withThemes(HeadlineTheme)}
   ${cssThemedColor}
+  ${mixins.truncateLineClamp(4)}
+  font: ${fontSize.md}/2.3rem ${font.pnb};
 `;
 
 const ImageWrapper = styled.div`
   background-position: center center;
   background-repeat: no-repeat;
+
   height: 128px;
   width: 128px;
+  flex-shrink: 0;
 
   img {
     width: 100%;   
-  }
-`;
-
-export const StickerGroup = styled.div`
-  bottom: 0;
-  display: flex;
-  flex-shrink: 0;
-  margin-bottom: 8px;
-`;
-
-const StyledSticker = styled(Sticker)`
-  margin-bottom: 0;
-
-  &:first-child {
-    margin-left: 0;
   }
 `;
 
@@ -84,8 +55,6 @@ export type RelatedRecipeCardProps = {
   headline: string;
   numRatings?: number;
   slug: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  stickers: any[];
 };
 
 const RelatedRecipeCard = ({
@@ -96,7 +65,6 @@ const RelatedRecipeCard = ({
   headline,
   numRatings = 0,
   slug,
-  stickers,
 }: RelatedRecipeCardProps) => (
   <CtaLink href={`/recipes/${slug}`}>
     <ImageWrapper>
@@ -107,23 +75,10 @@ const RelatedRecipeCard = ({
       />
     </ImageWrapper>
     <Content>
-      { stickers ? (
-        <StickerGroup>
-          {stickers.map(({ contentType, icon, text, type }) => (
-            <StyledSticker
-              contentType={contentType}
-              key={text}
-              icon={icon}
-              text={text}
-              type={type}
-            />
-          ))}
-        </StickerGroup>
-      ) : null }
       <Headline>
         {headline}
       </Headline>
-      <StandardUserAttributions
+      <UserAttributions
         avgRating={avgRating}
         commentsCount={commentsCount}
         numRatings={numRatings}
