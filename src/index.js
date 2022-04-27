@@ -44,6 +44,8 @@ import LandingEmailAd from './components/Ads/ShowcaseAds/LandingEmailAd';
 import LeadMarqueeCard from './components/Cards/LeadMarqueeCard';
 import LoadingCard from './components/Cards/LoadingCard';
 import LoadingCarousel from './components/Carousels/LoadingCarousel';
+import MadeForYouCard from './components/Cards/MadeForYouCard';
+import MadeForYouCarousel from './components/Carousels/MadeForYouCarousel';
 import LoadingRelatedDocumentCard from './components/Cards/LoadingRelatedDocumentCard';
 import MarqueeCard from './components/Cards/MarqueeCard';
 import MediaObjectCard from './components/Cards/MediaObjectCard';
@@ -117,6 +119,9 @@ export { default as LinkFarm } from './components/Articles/LinkFarm';
 export * from './components/Carousels/BaseCarousel';
 export { default as BaseCarousel } from './components/Carousels/BaseCarousel';
 
+export * from './components/Cards/RelatedRecipeCard';
+export { default as RelatedRecipeCard } from './components/Cards/RelatedRecipeCard';
+
 export {
   Accordion,
   AccordionControl,
@@ -171,6 +176,8 @@ export {
   LoadingCard,
   LoadingCarousel,
   LoadingRelatedDocumentCard,
+  MadeForYouCard,
+  MadeForYouCarousel,
   MediaObjectCard,
   PairedProductAd,
   PodcastEpisodeCard,
