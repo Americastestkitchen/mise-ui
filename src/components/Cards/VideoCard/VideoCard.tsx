@@ -30,6 +30,8 @@ const Content = styled.div`
 
   ${md(css`
     flex-direction: row;
+    /* stretch affects accessibility of stretched anchor tag */
+    align-items: flex-start;
   `)}
 `;
 
