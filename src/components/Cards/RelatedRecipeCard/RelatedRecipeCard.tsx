@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 import { getImageUrl } from '../../../lib/cloudinary';
-import { color, font, fontSize, withThemes } from '../../../styles';
+import { color, font, fontSize, withThemes, mixins } from '../../../styles';
 import { StandardUserAttributions } from '../shared/UserAttributions/UserAttributions';
 import Image from '../shared/Image';
 import Sticker from '../shared/Sticker';
@@ -23,6 +23,7 @@ const ContentTheme = {
     background: ${color.white};
     display: flex;
     flex-direction: column;
+    width: 21.2rem;
     max-width: 21.2rem;
     padding: .7rem .7rem 0 .7rem;
     @media (min-width: 360px) {
@@ -30,6 +31,7 @@ const ContentTheme = {
     }
 
     ${md(css`
+      width: 21.6rem;
       max-width: 21.6rem;
     `)}
   `,
@@ -55,6 +57,7 @@ const HeadlineTheme = {
 const Headline = styled.span`
   ${withThemes(HeadlineTheme)}
   ${cssThemedColor}
+  ${mixins.truncateLineClamp(3)}
 `;
 
 const ImageWrapper = styled.div`
@@ -70,6 +73,7 @@ const ImageWrapper = styled.div`
 
   img {
     width: 100%;
+    height: 100%;
   }
 `;
 
@@ -125,7 +129,7 @@ const RelatedRecipeCard = ({
   url,
   stickers,
 }: RelatedRecipeCardProps) => (
-  <CtaLink href={url} url={url}>
+  <CtaLink href={url} url={url} className="related-recipe-card">
     <ImageWrapper>
       <Image
         className="mini-card__image"
