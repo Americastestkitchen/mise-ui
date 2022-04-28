@@ -40,7 +40,7 @@ const defaultArgs = {
   isActive: false,
   relatedRecipe: relatedDefault,
   slug: '806-shrimp-fast-and-slow',
-  title: 'Shrimp, Fast and Slow',
+  title: 'Patatas Panaderas (Spanish Potatoes with Olive Oil and Wine)',
 };
 
 const PreviewVideoCard = ({ theme, props }: PreviewProps) => (

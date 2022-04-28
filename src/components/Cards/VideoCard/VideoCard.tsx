@@ -2,12 +2,21 @@ import React, { PropsWithChildren } from 'react';
 import styled, { css } from 'styled-components';
 import { font, fontSize } from '../../../styles';
 import RelatedRecipeCard, { RelatedRecipeCardProps } from '../RelatedRecipeCard';
-import { cssThemedColor, cssThemedLink } from '../../../styles/mixins';
+import { cssThemedColor, cssThemedLink, withThemes } from '../../../styles/mixins';
 import { md, lg, xlg } from '../../../styles/breakpoints';
 
 // need to confirm whether or not headline should be
 // From the episode or Now Playing/Up next depending
 // on when active in carousel
+
+const cssThemedHeadlineFont = withThemes({
+  default: css`
+    font-family: ${font.pnb};
+  `,
+  cco: css`
+    font-family: ${font.clb};
+  `,
+});
 
 const CardWrapper = styled.div`
   display: flex;
@@ -66,10 +75,17 @@ const PlayerWrapper = styled.div`
 `;
 
 const TitleLink = styled.a`
-  font: ${fontSize.xl}/2.6rem ${font.pnb};
   margin-bottom: 1rem;
-  max-width: fit-content;
-  ${cssThemedLink}
+  // a tag is flexed and underline needs wrapping
+  //  inline element; otherwise underline appears
+  //  under content box instead of text baseline. 
+  //  setting inline not sufficient.
+  span {
+    ${cssThemedHeadlineFont}
+    ${cssThemedLink}
+    line-height: 26px;
+    font-size: 23px;
+  }
 `;
 
 export type VideoCardProps = PropsWithChildren<{
@@ -95,7 +111,9 @@ const VideoCard = ({
     <Content>
       <EpisodeDetails>
         <Headline>{isActive ? 'Now Playing' : 'Up Next'}</Headline>
-        <TitleLink href={`/episodes/${slug}`}>{title}</TitleLink>
+        <TitleLink href={`/episodes/${slug}`}>
+          <span>{title}</span>
+        </TitleLink>
         <Description dangerouslySetInnerHTML={{ __html: dek }} />
       </EpisodeDetails>
       <RelatedRecipeCard {...relatedRecipe} />
