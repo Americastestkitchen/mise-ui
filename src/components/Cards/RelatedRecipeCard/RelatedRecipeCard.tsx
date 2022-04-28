@@ -1,9 +1,8 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { getImageUrl } from '../../../lib/cloudinary';
-import { color, font, fontSize, withThemes } from '../../../styles';
+import cloudinaryInstance, { baseImageConfig } from '../../../lib/cloudinary';
+import { color, font, withThemes } from '../../../styles';
 import { UserAttributions } from '../shared/UserAttributions';
-import Image from '../shared/Image';
 import mixins, { cssThemedColor } from '../../../styles/mixins';
 
 const CtaLink = styled.a`
@@ -13,8 +12,12 @@ const CtaLink = styled.a`
 `;
 
 const cssBackgroundColor = withThemes({
-  default: css`background-color: ${color.white};`,
-  cco: css`background-color: ${color.whiteSmoke};`,
+  default: css`
+    background-color: ${color.white};
+  `,
+  cco: css`
+    background-color: ${color.whiteSmoke};
+  `,
 });
 
 const Content = styled.div`
@@ -31,7 +34,9 @@ const Content = styled.div`
 const Headline = styled.span`
   ${cssThemedColor}
   ${mixins.truncateLineClamp(4)}
-  font: ${fontSize.md}/2.3rem ${font.pnb};
+  font-size: 16px;
+  font-family: ${font.pnb};
+  line-height: 23px;
 `;
 
 const ImageWrapper = styled.div`
@@ -43,7 +48,7 @@ const ImageWrapper = styled.div`
   flex-shrink: 0;
 
   img {
-    width: 100%;   
+    width: 100%;
   }
 `;
 
@@ -65,26 +70,27 @@ const RelatedRecipeCard = ({
   headline,
   numRatings = 0,
   slug,
-}: RelatedRecipeCardProps) => (
-  <CtaLink href={`/recipes/${slug}`}>
-    <ImageWrapper>
-      <Image
-        className="mini-card__image"
-        imageAlt={altText}
-        imageUrl={getImageUrl(cloudinaryId)}
-      />
-    </ImageWrapper>
-    <Content>
-      <Headline>
-        {headline}
-      </Headline>
-      <UserAttributions
-        avgRating={avgRating}
-        commentsCount={commentsCount}
-        numRatings={numRatings}
-      />
-    </Content>
-  </CtaLink>
-);
+}: RelatedRecipeCardProps) => {
+  const src = cloudinaryInstance.url(cloudinaryId, {
+    ...baseImageConfig,
+    width: 128,
+    height: 128,
+  });
+  return (
+    <CtaLink href={`/recipes/${slug}`}>
+      <ImageWrapper>
+        <img alt={altText} src={src} />
+      </ImageWrapper>
+      <Content>
+        <Headline>{headline}</Headline>
+        <UserAttributions
+          avgRating={avgRating}
+          commentsCount={commentsCount}
+          numRatings={numRatings}
+        />
+      </Content>
+    </CtaLink>
+  );
+};
 
 export default RelatedRecipeCard;
