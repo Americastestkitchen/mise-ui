@@ -15,7 +15,7 @@ const defaultArgs = {
   altText: 'Irish Stew with Carrots and Turnips',
   avgRating: 4.86,
   commentsCount: 125,
-  headline: 'Irish Stew with Carrots and Turnips',
+  headline: 'Irish Stew with Carrots and Turnips Irish Stew with Carrots and Turnips Irish Stew with Carrots and Turnips',
   numRatings: 7,
   slug: '4122-irish-stew-with-carrots-and-turnips',
   stickers: [
