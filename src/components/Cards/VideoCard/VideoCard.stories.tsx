@@ -5,7 +5,7 @@ import {
   setViewport,
   storybookParameters,
 } from '../../../config/shared.stories';
-import { RelatedRecipeCardProps } from '../RelatedRecipeCard';
+import RelatedRecipeCard, { RelatedRecipeCardProps } from '../RelatedRecipeCard';
 import VideoCard, { VideoCardProps } from './VideoCard';
 
 export default {
@@ -21,26 +21,23 @@ type PreviewProps = {
 
 const relatedDefault: RelatedRecipeCardProps = {
   cloudinaryId: '43534-stp-shrimp-risotto-40',
-  headline: 'Chilled Soba Noodles with Cucumber, Snow Peas, and Radishes',
-  slug: '11428-shrimp-risotto',
   altText: 'Shrimp Risotto',
+  headline: 'Chilled Soba Noodles with Cucumber, Snow Peas, and Radishes',
+  linkProps: { href: '/recipes/11428-shrimp-risotto' },
   avgRating: 4.87,
   commentsCount: 125,
   numRatings: 15,
 };
 
-const defaultArgs = {
-  dek: `<p><span class="ql-color-#000000">Test cook Keith Dresser shows host Julia Collin Davison 
+const defaultArgs: VideoCardProps = {
+  isActive: false,
+  title: 'Patatas Panaderas (Spanish Potatoes with Olive Oil and Wine)',
+  titleLinkProps: { href: '/episodes/806-shrimp-fast-and-slow' },
+  description: `<p><span class="ql-color-#000000">Test cook Keith Dresser shows host Julia Collin Davison 
   the secret to <a href="#">Pan-Seared Shrimp with Peanuts</a>, Black Pepper, and Lime. Equipment expert Adam Ried 
   shares his top picks for petty and utility knives with host Bridget Lancaster. Test cook Elle Simone
    Scott makes Bridget a showstopping Shrimp Risotto.</span></p>`,
-  imageAlt: '',
-  imageId:
-    'ATKTV and CCTV Season Refresh/ATKTV S22/Episode 7/ATK-S22_20210726_15-46-39_49849',
-  isActive: false,
-  relatedRecipe: relatedDefault,
-  slug: '806-shrimp-fast-and-slow',
-  title: 'Patatas Panaderas (Spanish Potatoes with Olive Oil and Wine)',
+  cardSlot: <RelatedRecipeCard {...relatedDefault} />,
 };
 
 const PreviewVideoCard = ({ theme, props }: PreviewProps) => (

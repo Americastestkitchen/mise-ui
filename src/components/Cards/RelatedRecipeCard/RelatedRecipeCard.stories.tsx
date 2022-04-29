@@ -11,22 +11,20 @@ export default {
 
 type PreviewProps = { theme?: Record<string, unknown>, props?: Partial<RelatedRecipeCardProps> };
 
-const defaultArgs = {
+const imageUrls = {
+  atk: '43534-stp-shrimp-risotto-40',
+  cco: '34368_sfs-irish-stew-with-carrots-and-turnips-464bw',
+  cio: 'SFS_Braciole_358_zxxnkx',
+};
+
+const defaultArgs: RelatedRecipeCardProps = {
   altText: 'Irish Stew with Carrots and Turnips',
   avgRating: 4.86,
   commentsCount: 125,
   headline: 'Irish Stew with Carrots and Turnips Irish Stew with Carrots and Turnips Irish Stew with Carrots and Turnips',
   numRatings: 7,
-  slug: '4122-irish-stew-with-carrots-and-turnips',
-  stickers: [
-    { type: 'priority', text: 'New' },
-    {
-      contentType: 'collection',
-      icon: 'collection',
-      text: '22 Recipes',
-      type: 'editorial',
-    },
-  ],
+  linkProps: { href: '4122-irish-stew-with-carrots-and-turnips' },
+  cloudinaryId: imageUrls.atk,
 };
 
 const PreviewRelatedRecipeCard = ({ theme, props }: PreviewProps) => (
@@ -34,12 +32,6 @@ const PreviewRelatedRecipeCard = ({ theme, props }: PreviewProps) => (
     <RelatedRecipeCard {...wrapKnobs({ ...defaultArgs, ...props })} />
   </ThemeProvider>
 );
-
-const imageUrls = {
-  atk: '43534-stp-shrimp-risotto-40',
-  cco: '34368_sfs-irish-stew-with-carrots-and-turnips-464bw',
-  cio: 'SFS_Braciole_358_zxxnkx',
-};
 
 export const AtkRelatedRecipeCard = () => <PreviewRelatedRecipeCard theme={{ siteKey: 'atk' }} props={{ cloudinaryId: imageUrls.atk }} />;
 export const CcoRelatedRecipeCard = () => <PreviewRelatedRecipeCard theme={{ siteKey: 'cco' }} props={{ cloudinaryId: imageUrls.cco }} />;
