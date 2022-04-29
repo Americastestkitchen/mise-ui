@@ -1,9 +1,9 @@
-import React, { PropsWithChildren } from 'react';
+import React, { PropsWithChildren, ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 import { font, fontSize } from '../../../styles';
-import RelatedRecipeCard, { RelatedRecipeCardProps } from '../RelatedRecipeCard';
 import { cssThemedColor, cssThemedLink, withThemes } from '../../../styles/mixins';
 import { md, lg, xlg } from '../../../styles/breakpoints';
+import { InferStyledTypes } from '../../../styles/utility-types';
 
 // need to confirm whether or not headline should be
 // From the episode or Now Playing/Up next depending
@@ -91,20 +91,20 @@ const TitleLink = styled.a`
 `;
 
 export type VideoCardProps = PropsWithChildren<{
-  dek: string;
   isActive?: boolean;
-  relatedRecipe: RelatedRecipeCardProps;
   title: string;
-  slug: string;
+  description: string;
+  titleLinkProps: InferStyledTypes<typeof TitleLink>;
+  cardSlot?: ReactNode;
 }>;
 
 const VideoCard = ({
   children,
-  dek,
+  description,
   isActive = false,
-  relatedRecipe,
   title,
-  slug,
+  titleLinkProps,
+  cardSlot,
 }: VideoCardProps) => (
   <CardWrapper>
     <PlayerWrapper>
@@ -113,12 +113,12 @@ const VideoCard = ({
     <Content>
       <EpisodeDetails>
         <Headline>{isActive ? 'Now Playing' : 'Up Next'}</Headline>
-        <TitleLink href={`/episodes/${slug}`}>
+        <TitleLink {...titleLinkProps}>
           <span>{title}</span>
         </TitleLink>
-        <Description dangerouslySetInnerHTML={{ __html: dek }} />
+        <Description dangerouslySetInnerHTML={{ __html: description }} />
       </EpisodeDetails>
-      <RelatedRecipeCard {...relatedRecipe} />
+      {cardSlot}
     </Content>
   </CardWrapper>
 );

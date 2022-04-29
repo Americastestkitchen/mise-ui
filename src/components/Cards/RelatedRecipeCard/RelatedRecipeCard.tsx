@@ -4,6 +4,7 @@ import cloudinaryInstance, { baseImageConfig } from '../../../lib/cloudinary';
 import { color, font, withThemes } from '../../../styles';
 import { UserAttributions } from '../shared/UserAttributions';
 import mixins, { cssThemedColor } from '../../../styles/mixins';
+import { InferStyledTypes } from '../../../styles/utility-types';
 
 const CtaLink = styled.a`
   display: flex;
@@ -59,17 +60,17 @@ export type RelatedRecipeCardProps = {
   commentsCount?: number;
   headline: string;
   numRatings?: number;
-  slug: string;
+  linkProps: InferStyledTypes<typeof CtaLink>;
 };
 
 const RelatedRecipeCard = ({
   altText = '',
   avgRating = 0,
   cloudinaryId,
-  commentsCount = 0,
   headline,
+  linkProps,
+  commentsCount = 0,
   numRatings = 0,
-  slug,
 }: RelatedRecipeCardProps) => {
   const src = cloudinaryInstance.url(cloudinaryId, {
     ...baseImageConfig,
@@ -77,7 +78,7 @@ const RelatedRecipeCard = ({
     height: 128,
   });
   return (
-    <CtaLink href={`/recipes/${slug}`}>
+    <CtaLink {...linkProps}>
       <ImageWrapper>
         <img alt={altText} src={src} />
       </ImageWrapper>
