@@ -1,10 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Svg = styled.svg`
+const Svg = styled.svg<{ stroke?: string }>`
   margin-left: 5px;
   fill: none;
-  stroke: inherit;
   stroke-linecap: round;
   stroke-miterlimit: 10;
 `;
