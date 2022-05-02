@@ -31,7 +31,7 @@ const Title = styled.p`
 const SubTitle = styled.p`
   font: ${fontSize.xl}/${lineHeight.md} ${font.pnb};
   margin: 1rem auto;
-  max-width: 34rem;
+  max-width: 36rem;
 `;
 
 export const SubmitButton = styled.button`

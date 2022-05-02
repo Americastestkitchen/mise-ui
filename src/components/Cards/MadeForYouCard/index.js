@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import { color, font, fontSize } from '../../../styles';
 
-const MadeForYouCardWrapper = styled.div`
+const MadeForYouCardWrapper = styled.a`
   display: flex;
   flex-direction: column;
   color: ${color.white};
@@ -19,46 +19,20 @@ const MadeForYouCardWrapper = styled.div`
 `;
 
 const MadeForYouCardTitleWrapper = styled.div`
-  padding: 20px;
-
-  div {
-    display: flex;
-    justify-content: items-start;
-    align-items: center;
-  }
-
-  h4 {
-    font-size: 16px;
-    margin-right: 6px;
-    white-space: pre;
-  }
-
-  span {
-    font-family: ${font.pnb};
-    font-size: 10px;
-    line-height: 1.2;
-    letter-spacing: 1.6px;
-    padding: 4px 8px;
-    border-radius: 6px;
-    background-color: rgba(0, 0, 0, 0.7);
-    text-transform: uppercase;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+  padding: 40px 20px;
 
   h3 {
     font-family: ${font.pnb};
     font-size: 26px;
     line-height: 1.15;
     text-align: center;
-    margin: 10px;
     text-overflow: ellipsis;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
-    height: 86px;
+    height: 90px;
+    width: 213px;
   }
 `;
 
@@ -75,15 +49,11 @@ const MadeForYouCard = ({
   index,
   cloudinary_url,
   title,
-  collection_type,
+  url,
 }) => (
-  <MadeForYouCardWrapper>
-    <img src={cloudinary_url} alt={collection_type} />
+  <MadeForYouCardWrapper href={url} title={title} className="made-for-you-card">
+    <img src={cloudinary_url} alt={title} />
     <MadeForYouCardTitleWrapper style={{ backgroundColor: getBgColor(index) }}>
-      <div>
-        <h4>Because you like:</h4>
-        <span>{collection_type}</span>
-      </div>
       <h3>{title}</h3>
     </MadeForYouCardTitleWrapper>
   </MadeForYouCardWrapper>
@@ -93,7 +63,7 @@ MadeForYouCard.propTypes = {
   index: PropTypes.number,
   cloudinary_url: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  collection_type: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
 };
 
 MadeForYouCard.defaultProps = {
