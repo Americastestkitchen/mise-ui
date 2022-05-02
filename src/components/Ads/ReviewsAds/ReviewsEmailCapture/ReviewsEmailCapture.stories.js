@@ -25,6 +25,17 @@ Default.args = {
   success: false
 };
 
+export const Wide = Template.bind({});
+Wide.args = {
+  description: 'Shop smarter with our ATK Reviews team\'s expert guides and top picks',
+  inputId: 'review-email-capture__detail',
+  isWide: true,
+  siteKey: 'atk',
+  title: 'Sign up for the Well-Equipped Cook Newsletter',
+  onSubmit: () => {},
+  success: false
+};
+
 export const DefaultSuccess = Template.bind({});
 DefaultSuccess.args = { ...Default.args, success: true };
 
