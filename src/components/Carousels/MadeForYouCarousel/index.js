@@ -9,7 +9,7 @@ import MadeForYouCard from '../../Cards/MadeForYouCard';
 const CarouselWrapper = styled.div`
   margin-bottom: 70px;
 
-  > a {
+  > div {
     margin-right: 20px;
   }
 `;
