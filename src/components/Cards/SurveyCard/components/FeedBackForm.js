@@ -25,11 +25,11 @@ const ButtonWrapper = styled.div`
 
 const FeedbackForm = ({ handleSubmit }) => (
   <ButtonWrapper>
-    <SubmitButton onClick={() => handleSubmit('Yes')}>
+    <SubmitButton onClick={() => handleSubmit('Yes')} className="survey-buttons">
       <span className="checkmark"><Checkmark fill={color.eclipse} /></span>
       <span>Yes</span>
     </SubmitButton>
-    <SubmitButton onClick={() => handleSubmit('No')}>
+    <SubmitButton onClick={() => handleSubmit('No')} className="survey-buttons">
       <span className="close"><Close fill={color.eclipse} /></span>
       <span>No</span>
     </SubmitButton>

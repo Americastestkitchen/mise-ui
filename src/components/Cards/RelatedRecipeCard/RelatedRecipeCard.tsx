@@ -9,13 +9,8 @@ import Sticker from '../shared/Sticker';
 import { cssThemedColor } from '../../../styles/mixins';
 import { md } from '../../../styles/breakpoints';
 
-interface CtaLinkProps {
-  url: string;
-}
-
-const CtaLink = styled.a<CtaLinkProps>`
+const CtaLink = styled.a`
   display: flex;
-  pointer-events: ${props => (props.url ? 'all' : 'none')};
 `;
 
 const ContentTheme = {
@@ -58,6 +53,10 @@ const Headline = styled.span`
   ${withThemes(HeadlineTheme)}
   ${cssThemedColor}
   ${mixins.truncateLineClamp(3)}
+
+  &:hover {
+    color: ${color.grayishCyan};
+  }
 `;
 
 const ImageWrapper = styled.div`
@@ -129,7 +128,7 @@ const RelatedRecipeCard = ({
   url,
   stickers,
 }: RelatedRecipeCardProps) => (
-  <CtaLink href={url} url={url} className="related-recipe-card">
+  <CtaLink href={url} className="related-recipe-card">
     <ImageWrapper>
       <Image
         className="mini-card__image"

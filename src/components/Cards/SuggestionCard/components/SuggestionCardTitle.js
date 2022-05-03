@@ -14,8 +14,12 @@ const SuggestionCardTitle = styled.a.attrs({
   ${mixins.truncateLineClamp(2)};
 
   ${breakpoint('md')`
-  font-size: ${fontSize.xl};
+    font-size: ${fontSize.xl};
   `}
+
+  &:hover {
+    color: ${color.grayishCyan};
+  }
 `;
 
 export default SuggestionCardTitle;

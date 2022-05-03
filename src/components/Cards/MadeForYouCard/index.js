@@ -5,16 +5,30 @@ import styled from 'styled-components';
 
 import { color, font, fontSize } from '../../../styles';
 
-const MadeForYouCardWrapper = styled.a`
+const MadeForYouCardWrapper = styled.div`
   display: flex;
   flex-direction: column;
   color: ${color.white};
   font: ${fontSize.md}/1 ${font.pnr};
   width: 272px;
 
-  img {
+  > a {
     height: 230px;
-    display: block;
+    width: 100%;
+    overflow: hidden;
+    
+    img {
+      transition: all 0.3s ease 0s;
+      object-fit: cover;
+    }
+  }
+
+
+  &:hover {
+    img {
+      transform: translateY(-0.8rem);
+      z-index:0;
+    }
   }
 `;
 
@@ -51,10 +65,14 @@ const MadeForYouCard = ({
   title,
   url,
 }) => (
-  <MadeForYouCardWrapper href={url} title={title} className="made-for-you-card">
-    <img src={cloudinary_url} alt={title} />
+  <MadeForYouCardWrapper title={title} className="made-for-you-card">
+    <a href={url} title={title}>
+      <img src={cloudinary_url} alt={title} />
+    </a>
     <MadeForYouCardTitleWrapper style={{ backgroundColor: getBgColor(index) }}>
-      <h3>{title}</h3>
+      <a href={url}>
+        <h3>{title}</h3>
+      </a>
     </MadeForYouCardTitleWrapper>
   </MadeForYouCardWrapper>
 );
