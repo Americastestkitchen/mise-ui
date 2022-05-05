@@ -150,6 +150,11 @@ const AdWrapper = styled.div`
       justify-content: center;
       letter-spacing: 1.6px;
       background-color: ${color.coldPool};
+
+      &:hover {
+        background-color: ${color.darkColdPool};
+      }
+
       ${kidsVariant(css`
         background-color: ${color.frog} !important;
         &:hover {
