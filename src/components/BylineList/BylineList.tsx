@@ -7,7 +7,7 @@ import cloudinaryInstance, { baseImageConfig } from '../../lib/cloudinary';
 import { cssThemedColor, cssThemedLink } from '../../styles/mixins';
 
 export type Author = {
-  id: number;
+  id?: number;
   firstName: string;
   lastName: string;
   photo?: { publicId?: string };
@@ -107,7 +107,8 @@ type AuthorListInnerProps = {authors: Author[], onClick?: OnClick};
 const AuthorListInner = ({ authors, onClick }: AuthorListInnerProps) => {
   const fullNames = authors.map(
     (author, idx) => {
-      if (!!onClick && !author?.inactive) {
+      const authorId = author.id;
+      if (!!onClick && !author?.inactive && authorId !== undefined) {
         return (
           <Author
             as="button"
@@ -115,7 +116,7 @@ const AuthorListInner = ({ authors, onClick }: AuthorListInnerProps) => {
             aria-label={`${author.firstName} ${author.lastName}: Go to author page`}
             key={author.id}
             underline
-            onClick={() => onClick(author.id, `${author.firstName.toLowerCase()}-${author.lastName.toLowerCase()}`)}
+            onClick={() => onClick(authorId, `${author.firstName.toLowerCase()}-${author.lastName.toLowerCase()}`)}
           >
             {author.firstName} {author.lastName}
           </Author>
