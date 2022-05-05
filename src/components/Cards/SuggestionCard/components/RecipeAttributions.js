@@ -15,7 +15,7 @@ const RecipeAttributions = styled.div.attrs({
 
   .action-summary {
     color: ${color.eclipse};
-    font-size: ${fontSize.sm};
+    font-size: ${fontSize.md};
   }
 
   .icon--star {
