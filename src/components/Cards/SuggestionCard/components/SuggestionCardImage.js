@@ -12,13 +12,13 @@ const SuggestionCardImg = styled.div.attrs({
   display: block;
   overflow: hidden;
   position: relative;
-  width: 100%;
   overflow: visible;
   width: 27.2rem;
-  min-height: 27.2rem;
-
+  height: 19.9rem;
+  
   ${breakpoint('md')`
     flex: 0 0 27.2rem;
+    height: 27.2rem;
   `}
 `;
 

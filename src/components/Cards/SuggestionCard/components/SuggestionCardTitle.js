@@ -8,14 +8,18 @@ const SuggestionCardTitle = styled.a.attrs({
 })`
   color: ${color.eclipse};
   font-family: ${font.pnb};
-  font-size: ${fontSize.lg};
+  font-size: 2rem;
   line-height: ${lineHeight.md};
   margin: 1rem 0;
   ${mixins.truncateLineClamp(2)};
 
   ${breakpoint('md')`
-  font-size: ${fontSize.xl};
+    font-size: ${fontSize.xl};
   `}
+
+  &:hover {
+    color: ${color.grayishCyan};
+  }
 `;
 
 export default SuggestionCardTitle;
