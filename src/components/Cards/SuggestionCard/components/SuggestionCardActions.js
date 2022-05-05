@@ -1,7 +1,7 @@
 import breakpoint from 'styled-components-breakpoint';
 import styled from 'styled-components';
 
-import { font, color } from '../../../../styles';
+import { color } from '../../../../styles';
 
 const SuggestionCardActions = styled.div.attrs({
   className: 'suggestion-card__buttons',
@@ -20,8 +20,8 @@ const SuggestionCardActions = styled.div.attrs({
 
     span {
       font-size: 1.2rem;
+      letter-spacing: 0.6px;
       color: ${color.eclipse};
-      font-family: ${font.pnb};
       text-transform: uppercase;
     }
   }

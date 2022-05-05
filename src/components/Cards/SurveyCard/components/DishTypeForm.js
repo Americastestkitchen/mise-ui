@@ -73,7 +73,7 @@ const DishTypeForm = ({ handleSubmit }) => {
           <span>{slug}</span>
         </SurveyCardOption>
       ))}
-      <SubmitButton type="submit" className="survey-buttons">
+      <SubmitButton type="submit" data-testid="surveySubmit-button" className="survey-buttons">
         <span className="checkmark"><Checkmark fill={color.eclipse} /></span>
         Submit
       </SubmitButton>

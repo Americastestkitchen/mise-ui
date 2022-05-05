@@ -8,7 +8,7 @@ const SuggestionCardTitle = styled.a.attrs({
 })`
   color: ${color.eclipse};
   font-family: ${font.pnb};
-  font-size: ${fontSize.lg};
+  font-size: 2rem;
   line-height: ${lineHeight.md};
   margin: 1rem 0;
   ${mixins.truncateLineClamp(2)};
