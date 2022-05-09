@@ -12,7 +12,7 @@ export default {
       // comments: 82,
       numRatings: 38,
       stickers: [
-        { type: 'editorial', text: 'Weeknight' },
+        { type: 'editorial', text: 'Breakfast & Brunch' },
       ],
     },
     {

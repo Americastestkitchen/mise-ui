@@ -18,7 +18,7 @@ export const DishTypeForm = () => (
     title="Tell us about you"
     subTitle="What kind of recipes you want to see more of?"
     handleSubmit={handleSubmit}
-    surveyType="onBoardingDishType"
+    surveyType="onboardingtags"
   />
 );
 
@@ -27,7 +27,7 @@ export const NpsForm = () => (
     title="Tell us about you"
     subTitle="How likely would you be to recommend America’s Test Kitchen to a friend?"
     handleSubmit={handleSubmit}
-    surveyType="NPS"
+    surveyType="nps"
   />
 );
 
@@ -37,6 +37,6 @@ export const FeedBack = () => (
     title="Tell us about you"
     subTitle="Was this collection helpful to you"
     handleSubmit={handleSubmit}
-    surveyType="feedBack"
+    surveyType="feedback"
   />
 )

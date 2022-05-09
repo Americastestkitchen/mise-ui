@@ -9,20 +9,24 @@ const SitckersContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 
   span.sticker {
     margin-bottom: 0;
     display: block !important;
+    margin-left: 0;
   }
 
   span.suggestioncardstickers-intro {
     font-family: ${font.pnr};
     font-size: ${fontSize.md};
     color: ${color.eclipse};
+    margin: 0.8rem 0.8rem 0.8rem 0;
   }
 
   ${breakpoint('md')`
     justify-content: flex-start;
+    align-items: center;
   `}
 `;
 

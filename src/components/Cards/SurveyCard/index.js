@@ -85,13 +85,13 @@ const SuccessMessage = styled.p`
 const FormEl = ({ surveyType, handleSubmit }) => {
   let El;
   switch (surveyType) {
-    case 'onBoardingDishType':
+    case 'onboardingtags':
       El = <DishTypeForm handleSubmit={handleSubmit} />;
       break;
-    case 'NPS':
+    case 'nps':
       El = <NpsForm handleSubmit={handleSubmit} />;
       break;
-    case 'feedBack':
+    case 'feedback':
       El = <FeedbackForm handleSubmit={handleSubmit} />;
       break;
     default:
