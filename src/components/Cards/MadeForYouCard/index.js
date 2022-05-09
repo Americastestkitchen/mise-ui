@@ -63,9 +63,10 @@ const MadeForYouCard = ({
   index,
   cloudinary_url,
   title,
+  collection_type,
   url,
 }) => (
-  <MadeForYouCardWrapper title={title} className="made-for-you-card">
+  <MadeForYouCardWrapper title={title} data-collection-type={collection_type} className="made-for-you-card">
     <a href={url} title={title}>
       <img src={cloudinary_url} alt={title} />
     </a>
@@ -81,6 +82,7 @@ MadeForYouCard.propTypes = {
   index: PropTypes.number,
   cloudinary_url: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
+  collection_type: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
 };
 
