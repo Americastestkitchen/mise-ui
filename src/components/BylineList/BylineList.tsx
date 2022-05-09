@@ -72,9 +72,7 @@ const Attribution = styled.span<{ atLeastOneAuthor: boolean; disableStacked?: bo
 const cssWrapperInline = css`
   margin-top: -2px;
   margin-bottom: ${spacing.sm};
-  max-width: 28.8rem;
   padding-right: 12px;
-  
 `;
 
 const Wrapper = styled.span<{ refHeight: number; disableStacked?: boolean }>`
