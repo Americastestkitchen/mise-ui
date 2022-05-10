@@ -164,7 +164,7 @@ export default function ArticleCard({
       <BylineList
         authors={authors}
         attribution={attribution}
-        disableStacked
+        px={390}
       />
     </SplitCard>
   );
