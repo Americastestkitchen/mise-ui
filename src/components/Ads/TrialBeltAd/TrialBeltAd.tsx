@@ -2,7 +2,17 @@ import React from 'react';
 import cloudinaryInstance, { baseImageConfig } from '../../../lib/cloudinary';
 import { InferStyledTypes } from '../../../styles/utility-types';
 import DetailTriangleRight from '../components/DetailTriangleRight';
-import { AccentHeadline, ButtonArea, ClickArea, Description, GridImageArea, Headline, ImageArea, TextArea } from './css/components';
+import {
+  AccentHeadline,
+  ButtonArea,
+  ClickArea,
+  Description,
+  GridImageArea,
+  Headline,
+  ImageArea,
+  TextArea,
+  VariantDescription,
+} from './css/components';
 import Layout from './Layout';
 
 export type TextTrialBeltProps = {
@@ -43,7 +53,7 @@ export function TextTrialBeltAd({
           <AccentHeadline dangerouslySetInnerHTML={{ __html: headline }} />
         </GridImageArea>
         <TextArea>
-          <Description dangerouslySetInnerHTML={{ __html: description }} />
+          <VariantDescription dangerouslySetInnerHTML={{ __html: description }} />
         </TextArea>
         <ButtonArea>
           {cta}<DetailTriangleRight />

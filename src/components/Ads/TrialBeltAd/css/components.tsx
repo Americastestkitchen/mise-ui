@@ -32,6 +32,11 @@ export const Description = styled.p`
   ${xlg(css`max-width: 100%`)}
 `;
 
+export const VariantDescription = styled(Description)`
+  max-width: 27.5rem;
+  ${md(css`max-width: 42rem;`)}
+`;
+
 export const TextArea = styled.div`
   ${cssThemedColor}
   grid-area: TextArea;

@@ -14,18 +14,6 @@ export const cssThemedButton = withThemes({
       background-color: ${color.darkColdPool};
     }
   `,
-  cio: css`
-    background-color: ${color.squirrel};
-    &:hover {
-      background-color: ${color.cork};
-    }
-  `,
-  cco: css`
-    background-color: ${color.denim};
-    &:hover {
-        background-color: ${color.arapawa};
-    }
-  `,
 });
 
 export const cssVerticalGridAreas = css`

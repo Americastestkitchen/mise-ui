@@ -80,7 +80,7 @@ const textMobileLayout = css`
   }
 
   ${ButtonArea} {
-    max-width: 340px;
+    max-width: 100%;
     width: 100%;
   } 
 `;
