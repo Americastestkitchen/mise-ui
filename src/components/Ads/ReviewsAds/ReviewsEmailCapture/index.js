@@ -210,6 +210,13 @@ const AdWrapper = styled.div`
     padding: 2.5rem 3.65rem 3.45rem 3rem;
     width: 100%;
 
+    .email-form-wrapper {
+      ${({ isWide }) => (isWide ? `
+        max-width: calc(60% - 4.5rem);
+        width: calc(60% - 4.5rem);
+      ` : '')}
+    }
+
     .email-form {
       margin-top: 1.5rem;
       min-width: 27rem;
@@ -228,8 +235,9 @@ const AdWrapper = styled.div`
 
     .email-form-wrapper {
       ${({ isWide }) => (isWide ? `
-        max-width: calc(50% - 3rem);
-        width: calc(50% - 3rem);
+        height: 4rem;
+        max-width: calc(55% - 3rem);
+        width: calc(55% - 3rem);
       ` : '')}
     }
 
@@ -239,7 +247,14 @@ const AdWrapper = styled.div`
 
       ${({ isWide }) => (isWide ? `
         flex-direction: row;
+        height: 100%;
         justify-content: flex-start;
+
+        input {
+          border-color: ${color.silver};
+          height: 100%;
+        }
+
         button {
           margin-top: 0;
           max-width: 21.8rem;
@@ -260,17 +275,22 @@ const MainContent = styled.div`
   `)}
   ${lg(css`
     margin-right: 0;
+
+    ${({ isWide }) => (isWide ? `
+      max-width: calc(40% - 4.5rem);
+      width: calc(40% - 4.5rem);
+      p {
+        margin-bottom: 0;
+      }
+    ` : '')}
   `)}
   ${xlg(css`
     margin-right: 1.65rem;
 
     ${({ isWide }) => (isWide ? `
       margin-right: 0;
-      max-width: calc(50% - 3rem);
-      width: calc(50% - 3rem);
-      p {
-        margin-bottom: 0;
-      }
+      max-width: calc(45% - 3rem);
+      width: calc(45% - 3rem);
     ` : '')}
   `)}
 `;
