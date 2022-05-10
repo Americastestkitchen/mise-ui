@@ -30,7 +30,7 @@ const relatedDefault: RelatedRecipeCardProps = {
 };
 
 const defaultArgs: VideoCardProps = {
-  isActive: false,
+  headline: 'FROM THE EPISODE',
   title: 'Patatas Panaderas (Spanish Potatoes with Olive Oil and Wine)',
   titleLinkProps: { href: '/episodes/806-shrimp-fast-and-slow' },
   description: `<p><span class="ql-color-#000000">Test cook Keith Dresser shows host Julia Collin Davison 
