@@ -23,6 +23,7 @@ import CardWrapper from './components/Cards/CardWrapper';
 import CategoryCard from './components/Cards/CategoryCard';
 import ClearRefinements from './components/Algolia/shared/ClearRefinements';
 import CookingSchoolAd from './components/Ads/ReviewsAds/CookingSchoolAd';
+import CustomStateResults from './components/CustomStateResults';
 import CurrentRefinements from './components/Algolia/shared/CurrentRefinements';
 import DocumentListCarousel from './components/Carousels/DocumentListCarousel';
 import DocumentSuggestionCarousel from './components/Carousels/DocumentSuggestionCarousel';
@@ -149,6 +150,7 @@ export {
   color,
   ClearRefinements,
   CookingSchoolAd,
+  CustomStateResults,
   CurrentRefinements,
   DocumentListCarousel,
   DocumentSuggestionCarousel,
