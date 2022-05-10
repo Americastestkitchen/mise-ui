@@ -6,7 +6,7 @@ import { CCOSmallRooster, CIOTagline, CookingPot } from '../DesignTokens/Icon/sv
 
 const iconCopy = {
   atk: [<CookingPot fill="#3d3d3d" />, 'Home of Cook\'s Country, Cook\'s Illustrated, & ATK Kids.'],
-  cco: [<CCOSmallRooster />, 'Food that\'s meant to be shared with friends and family'],
+  cco: [<CCOSmallRooster />, 'Food that\'s meant to be shared with friends and family.'],
   cio: [<CIOTagline />, 'Cook smarter and succeed every time'],
 };
 
