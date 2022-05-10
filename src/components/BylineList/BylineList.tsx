@@ -1,10 +1,11 @@
-import React, { ReactElement, useState } from 'react';
-import styled, { css } from 'styled-components';
+import React, { ReactElement, useState, useCallback } from 'react';
+import styled, { css, ThemeProvider } from 'styled-components';
 import useResizeObserver from 'use-resize-observer/polyfilled';
+import breakpoint from 'styled-components-breakpoint';
 import { font, fontSize, spacing, color } from '../../styles';
-import { md, untilMd } from '../../styles/breakpoints';
 import cloudinaryInstance, { baseImageConfig } from '../../lib/cloudinary';
 import { cssThemedColor, cssThemedLink } from '../../styles/mixins';
+import { BreakpointFn } from '../../styles/breakpoints';
 
 export type Author = {
   id?: number;
@@ -16,10 +17,10 @@ export type Author = {
 };
 
 /** Stack author names and attribution in mobile. */
-const cssStackedBreakpoint = untilMd;
+const cssStackedBreakpoint: BreakpointFn = interp => breakpoint('xs', 'bylineList')`${interp}`;
 
 /** Inline author names and attribution in tablet and above. */
-const cssInlineBreakpoint = md;
+const cssInlineBreakpoint: BreakpointFn = interp => breakpoint('bylineList')`${interp}`;
 
 /** cloudinary and image tag height & width number for avatar */
 const avatarSideLength = 40;
@@ -140,7 +141,18 @@ export type BylineListProps = {
   onClick?: OnClick;
   authors: Author[];
   attribution: string;
-  disableStacked?: boolean;
+  px?: number;
+}
+
+function useBreakpointTheme(px = 764) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return useCallback((theme: any) => ({
+    ...theme,
+    breakpoints: {
+      ...theme.breakpoints,
+      bylineList: px,
+    },
+  }), [px]);
 }
 
 /**
@@ -152,8 +164,9 @@ const BylineList = ({
   onClick,
   authors,
   attribution,
-  disableStacked,
+  px,
 }: BylineListProps): ReactElement => {
+  const themeFn = useBreakpointTheme(px);
   const [imageError, setImageError] = useState(false);
   const { ref, height = null } = useResizeObserver();
 
@@ -176,13 +189,14 @@ const BylineList = ({
   const atLeastOneAuthor = authors?.length > 0;
 
   return (
-    <Wrapper
-      className={className}
-      ref={ref}
-      refHeight={height ?? 0}
-      disableStacked={disableStacked}
-    >
-      {(authorImage && !imageError) && (
+    <ThemeProvider theme={themeFn}>
+      <Wrapper
+        className={className}
+        ref={ref}
+        refHeight={height ?? 0}
+        disableStacked={false}
+      >
+        {(authorImage && !imageError) && (
         <AuthorAvatarImage
           crossOrigin="anonymous"
           decoding="async"
@@ -191,21 +205,22 @@ const BylineList = ({
           src={authorImage}
           onError={() => { setImageError(true); }}
         />
-      )}
-      <MiddleAlignment>
-        <AuthorList>
-          <AuthorListInner authors={authors} onClick={onClick} />
-        </AuthorList>
-        {attribution && (
+        )}
+        <MiddleAlignment>
+          <AuthorList>
+            <AuthorListInner authors={authors} onClick={onClick} />
+          </AuthorList>
+          {attribution && (
           <Attribution
             atLeastOneAuthor={atLeastOneAuthor}
-            disableStacked={disableStacked}
+            disableStacked={false}
           >
             {attribution}
           </Attribution>
-        )}
-      </MiddleAlignment>
-    </Wrapper>
+          )}
+        </MiddleAlignment>
+      </Wrapper>
+    </ThemeProvider>
   );
 };
 
