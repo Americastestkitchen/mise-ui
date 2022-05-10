@@ -1,7 +1,7 @@
 import breakpoint from 'styled-components-breakpoint';
 import styled from 'styled-components';
 
-const SuggestionCardImg = styled.div.attrs({
+const SuggestionCardImg = styled.a.attrs({
   className: 'suggestion-card__img',
 })`
   ${({ imageUrl }) => (imageUrl ? `
@@ -15,7 +15,7 @@ const SuggestionCardImg = styled.div.attrs({
   overflow: visible;
   width: 27.2rem;
   height: 19.9rem;
-  
+
   ${breakpoint('md')`
     flex: 0 0 27.2rem;
     height: 27.2rem;

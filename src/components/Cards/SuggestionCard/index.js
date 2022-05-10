@@ -38,6 +38,7 @@ const SuggestionCard = ({
     <SuggestionCardImage
       data-testid={`suggestion-img-${Boolean(imageUrl)}`}
       imageUrl={imageUrl}
+      href={href}
     >
       <SuggestionCardBadge
         type={siteKey}
@@ -52,6 +53,7 @@ const SuggestionCard = ({
             data-object-id={objectId}
             data-origin-site={siteKey}
             data-testid="suggestion-action__favorite"
+            aria-label="save recipe suggestion"
           >
             <FavoriteRibbon
               ariaHidden
@@ -70,6 +72,7 @@ const SuggestionCard = ({
             data-href={href}
             data-object-id={objectId}
             data-testid="suggestion-action__skip"
+            aria-label="reject recipe suggestion"
           >
             <Close
               ariaHidden
