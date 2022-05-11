@@ -3,6 +3,7 @@ const color = {
   black: '#000000',
   cuttySark: '#57797b',
   tomato: '#d73a15',
+  salsaMexicana: '#a72e14',
   rust: '#a72e12',
   wildSand: '#f4f4f4',
   whiteSmoke: '#f5f5f5',

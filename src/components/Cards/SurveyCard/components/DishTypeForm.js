@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import styledBreakpoint from 'styled-components-breakpoint';
+
 import { color, fontSize } from '../../../..';
 import { dishTypeData } from '../data';
 import { SubmitButton } from '..';
@@ -33,7 +35,11 @@ const SurveyCardOption = styled.label`
     font-size: ${fontSize.sm};
     text-transform: uppercase;
     box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
-    margin: 0 8px 0 0;
+    margin: 0 8px 10px 0;
+
+    ${styledBreakpoint('md')` 
+      margin-bottom: 14px;
+    `}
   }
 `;
 
@@ -75,7 +81,7 @@ const DishTypeForm = ({ handleSubmit }) => {
       ))}
       <SubmitButton type="submit" data-testid="surveySubmit-button" className="survey-buttons">
         <span className="checkmark"><Checkmark fill={color.eclipse} /></span>
-        Submit
+        <span className="submit-text">Submit</span>
       </SubmitButton>
     </SurveyForm>
   );
