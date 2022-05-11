@@ -17,7 +17,7 @@ const CarouselWrapper = styled.div`
   }
 `;
 
-const StyledTitle = styled(Title)`  
+const StyledTitle = styled(Title)`
   display: flex;
   align-items: center;
 
@@ -38,7 +38,6 @@ const MadeForYouCarousel = ({ results, title, subtitle }) => {
         <StyledTitle>
           {title} <Sticker type="priority" text="new" />
         </StyledTitle>
-        <Divider showDivider />
         <EmptyState />
       </>
     );

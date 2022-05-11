@@ -31,6 +31,7 @@ const SuggestionCard = ({
   avgRating,
   comments,
   numRatings,
+  resourceType,
 }) => (
   <SuggestionCardWrapper
     data-idx={dataIdx}
@@ -39,6 +40,7 @@ const SuggestionCard = ({
       data-testid={`suggestion-img-${Boolean(imageUrl)}`}
       imageUrl={imageUrl}
       href={href}
+      aria-label={`Go to the ${title} recipe`}
     >
       <SuggestionCardBadge
         type={siteKey}
@@ -50,6 +52,8 @@ const SuggestionCard = ({
             data-event-name="RECOMMENDATION_ADDED"
             data-document-title={title}
             data-favoritable-id={objectId}
+            data-document-url={href}
+            data-document-type={resourceType}
             data-object-id={objectId}
             data-origin-site={siteKey}
             data-testid="suggestion-action__favorite"
@@ -67,16 +71,19 @@ const SuggestionCard = ({
         <div className="button-container">
           <SuggestionCardAction
             className="skip remove-cell"
-            data-document-title={title}
             data-event-name="RECOMMENDATION_REJECTED"
-            data-href={href}
+            data-document-title={title}
+            data-favoritable-id={objectId}
+            data-document-url={href}
+            data-document-type={resourceType}
             data-object-id={objectId}
+            data-origin-site={siteKey}
             data-testid="suggestion-action__skip"
             aria-label="reject recipe suggestion"
           >
             <Close
               ariaHidden
-              ariaLabel=" "
+              ariaLabel=""
               fill={color.eclipse}
             />
           </SuggestionCardAction>
@@ -92,6 +99,7 @@ const SuggestionCard = ({
           />
         ) : null}
         <SuggestionCardTitle
+          aria-label={`Go to the ${title} recipe`}
           data-testid="suggestion-title"
           href={href}
         >
@@ -141,6 +149,7 @@ SuggestionCard.propTypes = {
   stickers: PropTypes.array,
   title: PropTypes.string.isRequired,
   dataIdx: PropTypes.number.isRequired,
+  resourceType: PropTypes.string.isRequired,
 };
 
 SuggestionCard.defaultProps = {
