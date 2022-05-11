@@ -1,10 +1,11 @@
-import React, { ReactElement, useState } from 'react';
-import styled, { css } from 'styled-components';
+import React, { ReactElement, useState, useCallback } from 'react';
+import styled, { css, ThemeProvider } from 'styled-components';
 import useResizeObserver from 'use-resize-observer/polyfilled';
+import breakFunction from 'styled-components-breakpoint';
 import { font, fontSize, spacing, color } from '../../styles';
-import { md, untilMd } from '../../styles/breakpoints';
 import cloudinaryInstance, { baseImageConfig } from '../../lib/cloudinary';
 import { cssThemedColor, cssThemedLink } from '../../styles/mixins';
+import { BreakpointFn } from '../../styles/breakpoints';
 
 export type Author = {
   id?: number;
@@ -15,11 +16,25 @@ export type Author = {
   bio?: string;
 };
 
+/**
+ * Component breakpoint is settable and default to existing breakpoint used in components
+ */
+function useBreakpointTheme(breakpoint = 768) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return useCallback((theme: any) => ({
+    ...theme,
+    breakpoints: {
+      ...theme.breakpoints,
+      bylineList: breakpoint,
+    },
+  }), [breakpoint]);
+}
+
 /** Stack author names and attribution in mobile. */
-const cssStackedBreakpoint = untilMd;
+const cssStackedBreakpoint: BreakpointFn = interp => breakFunction('xs', 'bylineList')`${interp}`;
 
 /** Inline author names and attribution in tablet and above. */
-const cssInlineBreakpoint = md;
+const cssInlineBreakpoint: BreakpointFn = interp => breakFunction('bylineList')`${interp}`;
 
 /** cloudinary and image tag height & width number for avatar */
 const avatarSideLength = 40;
@@ -44,15 +59,8 @@ const AuthorList = styled.span`
   ${cssThemedColor}
 `;
 
-const cssAttributionSeparator = css`
-  &::before {
-    content: " | ";
-    margin: 0 4px;
-  }
-`;
-
 /** Attribution (i.e. Published on / Updated on) */
-const Attribution = styled.span<{ atLeastOneAuthor: boolean; disableStacked?: boolean }>`
+const Attribution = styled.span<{ atLeastOneAuthor: boolean }>`
   vertical-align: baseline;
   font-family: ${font.pnr};
   font-size: ${fontSize.md};
@@ -61,31 +69,26 @@ const Attribution = styled.span<{ atLeastOneAuthor: boolean; disableStacked?: bo
 
   /* tablet and above is divided with | character. If no authors, don't show | character even on desktop. */
   ${props => props.atLeastOneAuthor
-    && !props.disableStacked
-    && cssInlineBreakpoint(css`${cssAttributionSeparator}`)}
-
-  ${props => props.atLeastOneAuthor
-    && props.disableStacked
-    && css`${cssAttributionSeparator}`}
+    && cssInlineBreakpoint(css`
+    ${props => props.theme}
+      &::before {
+        content: " | ";
+        margin: 0 4px;
+      }
+    `)}
 `;
 
-const cssWrapperInline = css`
-  margin-top: -2px;
-  margin-bottom: ${spacing.sm};
-  padding-right: 12px;
-`;
-
-const Wrapper = styled.span<{ refHeight: number; disableStacked?: boolean }>`
-  ${props => !props.disableStacked && cssInlineBreakpoint(css`
-    ${cssWrapperInline}
-    /* when display direction column, align self */
-    align-self: ${props.refHeight < 40 ? 'center' : 'initial'};  
-  `)};
-
-  ${props => props.disableStacked && css`${cssWrapperInline}`};
+const Wrapper = styled.span<{ refHeight: number }>`
+  ${props => cssInlineBreakpoint(css`
+    margin-top: -2px;
+    margin-bottom: ${spacing.sm};
+    max-width: 28.8rem;
+    padding-right: 12px;
+    align-self: ${props.refHeight < 40 ? 'center' : 'initial'};
+  `)}
 
   /* tablet and above has attribution on its own line. */
-  ${props => (!props.disableStacked) && cssStackedBreakpoint(css`
+  ${cssStackedBreakpoint(css`
     ${Attribution} {
       display: block;
       margin: ${spacing.xsm} 0;
@@ -140,7 +143,7 @@ export type BylineListProps = {
   onClick?: OnClick;
   authors: Author[];
   attribution: string;
-  disableStacked?: boolean;
+  breakpoint?: number;
 }
 
 /**
@@ -152,8 +155,9 @@ const BylineList = ({
   onClick,
   authors,
   attribution,
-  disableStacked,
+  breakpoint,
 }: BylineListProps): ReactElement => {
+  const themeFn = useBreakpointTheme(breakpoint);
   const [imageError, setImageError] = useState(false);
   const { ref, height = null } = useResizeObserver();
 
@@ -176,13 +180,9 @@ const BylineList = ({
   const atLeastOneAuthor = authors?.length > 0;
 
   return (
-    <Wrapper
-      className={className}
-      ref={ref}
-      refHeight={height ?? 0}
-      disableStacked={disableStacked}
-    >
-      {(authorImage && !imageError) && (
+    <ThemeProvider theme={themeFn}>
+      <Wrapper className={className} ref={ref} refHeight={height ?? 0}>
+        {(authorImage && !imageError) && (
         <AuthorAvatarImage
           crossOrigin="anonymous"
           decoding="async"
@@ -191,21 +191,19 @@ const BylineList = ({
           src={authorImage}
           onError={() => { setImageError(true); }}
         />
-      )}
-      <MiddleAlignment>
-        <AuthorList>
-          <AuthorListInner authors={authors} onClick={onClick} />
-        </AuthorList>
-        {attribution && (
-          <Attribution
-            atLeastOneAuthor={atLeastOneAuthor}
-            disableStacked={disableStacked}
-          >
+        )}
+        <MiddleAlignment>
+          <AuthorList>
+            <AuthorListInner authors={authors} onClick={onClick} />
+          </AuthorList>
+          {attribution && (
+          <Attribution atLeastOneAuthor={atLeastOneAuthor}>
             {attribution}
           </Attribution>
-        )}
-      </MiddleAlignment>
-    </Wrapper>
+          )}
+        </MiddleAlignment>
+      </Wrapper>
+    </ThemeProvider>
   );
 };
 

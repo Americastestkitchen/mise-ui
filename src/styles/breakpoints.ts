@@ -31,7 +31,7 @@ export default breakpoints;
  *   `)}
  * `;
  */
-type BreakpointFn = <T>(
+export type BreakpointFn = <T>(
   // eslint-disable-next-line @typescript-eslint/ban-types
   interp: Interpolation<ThemedStyledProps<object, T>>
 ) => ReturnType<CSSFunction>

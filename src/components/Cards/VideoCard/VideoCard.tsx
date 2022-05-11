@@ -91,7 +91,7 @@ const TitleLink = styled.a`
 `;
 
 export type VideoCardProps = PropsWithChildren<{
-  isActive?: boolean;
+  headline: string;
   title: string;
   description: string;
   titleLinkProps: InferStyledTypes<typeof TitleLink>;
@@ -101,7 +101,7 @@ export type VideoCardProps = PropsWithChildren<{
 const VideoCard = ({
   children,
   description,
-  isActive = false,
+  headline,
   title,
   titleLinkProps,
   cardSlot,
@@ -112,7 +112,7 @@ const VideoCard = ({
     </PlayerWrapper>
     <Content>
       <EpisodeDetails>
-        <Headline>{isActive ? 'Now Playing' : 'Up Next'}</Headline>
+        <Headline>{headline}</Headline>
         <TitleLink {...titleLinkProps}>
           <span>{title}</span>
         </TitleLink>
