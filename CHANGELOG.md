@@ -1,3 +1,15 @@
+# v1.33.17 (Wed May 11 2022)
+
+#### 🐛 Bug Fix
+
+- SEARCH-111: Editors Note simplified absolute positioning, centered above mobile but capped to minimum matching existing styling. (handles no title/subtitle ui issues) [#721](https://github.com/Americastestkitchen/mise-ui/pull/721) ([@harry-atk](https://github.com/harry-atk))
+
+#### Authors: 1
+
+- Harry Scheuerle ([@harry-atk](https://github.com/harry-atk))
+
+---
+
 # v1.33.16 (Tue Apr 26 2022)
 
 #### 🐛 Bug Fix
