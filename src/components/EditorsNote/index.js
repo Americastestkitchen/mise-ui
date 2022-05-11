@@ -14,6 +14,7 @@ import {
 } from '../../styles';
 
 import * as Icons from '../DesignTokens/Icon';
+import { md } from '../../styles/breakpoints';
 
 const iconTypeMap = {
   alert: Icons.Alert,
@@ -121,40 +122,6 @@ const EditorNote = styled.section`
 `;
 
 const EditorNoteIconTheme = {
-  default: css`
-    align-items: center;
-    background-color: ${color.cuttySark};
-    border-radius: 50%;
-    display: flex;
-    height: 3rem;
-    justify-content: center;
-    left: 0;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    top: ${spacing.xlg};
-    width: 3rem;
-
-    .note-retention & {
-      background-color: ${color.darkTeal};
-    }
-
-    ${breakpoint('xs', 'md')`
-      top: 0;
-      transform: translate(50%, -50%);
-    `}
-
-    ${breakpoint('md', 'xlg')`
-      left: 5px;
-    `}
-
-    @media print {
-      color: ${color.black};
-
-      svg circle {
-        fill: ${color.black};
-      }
-    }
-  `,
   cco: css`
     background-color: ${color.denim};
 
@@ -199,8 +166,38 @@ const EditorNoteIconTheme = {
   `,
 };
 
+const cssEditorIconPositioning = css`
+  position: absolute;
+  top: -14px;
+  left: 14px;
+  ${md(css`
+    top: min(calc(50% - 15px), 25px);
+    left: -10px;
+  `)}
+`;
+
 const EditorNoteIcon = styled.span`
   ${withThemes(EditorNoteIconTheme)}
+  align-items: center;
+  background-color: ${color.cuttySark};
+  border-radius: 50%;
+  display: flex;
+  height: 3rem;
+  width: 3rem;
+  justify-content: center;
+  ${cssEditorIconPositioning}
+  
+  @media print {
+    color: ${color.black};
+
+    svg circle {
+      fill: ${color.black};
+    }
+  }
+
+  .note-retention & {
+    background-color: ${color.darkTeal};
+  }
 `;
 
 const EditorNoteTitleTheme = {
