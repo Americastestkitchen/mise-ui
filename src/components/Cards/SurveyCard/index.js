@@ -20,8 +20,9 @@ const SurveyCardWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  min-height: 27.2rem;
 
-  ${props => props.shouldCenter && `
+  ${props => props.hasSuccessMessage && `
     height: 27.2rem;
     padding-top: 0;
     padding-bottom: 0;
@@ -32,7 +33,7 @@ const SurveyCardWrapper = styled.div`
     width: 56rem;
     height: 27.2rem;
 
-    ${props => props.shouldCenter && `
+    ${props => props.hasSuccessMessage && `
       padding-bottom: 3.3rem; 
     `}
   `}
@@ -40,6 +41,7 @@ const SurveyCardWrapper = styled.div`
 `;
 
 const Title = styled.p`
+  line-height: 2.36;
   letter-spacing: 2.24px;
   text-transform: uppercase;
 `;
@@ -47,7 +49,7 @@ const Title = styled.p`
 const SubTitle = styled.p`
   font: 2.6rem/1.27 ${font.pnb};
   margin: 1rem auto;
-  max-width: 36rem;
+  max-width: 49rem;
 `;
 
 export const SubmitButton = styled.button`
@@ -63,8 +65,6 @@ export const SubmitButton = styled.button`
     bottom: -3.7rem;
   `}
 
-  -3.2rem;
-
   &:hover {
     span svg {
       background-color: ${color.darkerMint};
@@ -78,7 +78,7 @@ export const SubmitButton = styled.button`
   span svg {
     width: 40px;
     height: 40px;
-    padding: 15.3px 13.6px 15.3px 13.6px;
+    padding: 11px;
     box-shadow: 0 3px 6px 0 rgb(0 0 0 / 16%);
     border-radius: 40px;
     background-color: ${color.white};
@@ -93,13 +93,14 @@ export const SubmitButton = styled.button`
 `;
 
 const ErrorMessage = styled.p`
+  font-size: ${fontSize.md};
   color: ${color.salsaMexicana};
   line-height: 2.06;
 `;
 
 const SuccessMessage = styled.p`
-  font: ${fontSize.xl}/${lineHeight.md} ${font.pnb};
-  max-width: 390px;
+  font: 2.6rem/1.27 ${font.pnb};
+  max-width: 434px;
   margin: 1rem auto;
 `;
 
@@ -125,22 +126,22 @@ const SurveyCard = ({
   handleSubmit,
   surveyType,
 }) => {
-  const [errorMesssage, setErrorMessage] = useState(null);
-  const [successMessage, setsuccessMessage] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(null);
 
   const handleResponseSubmit = (surveyResponse) => {
     if (surveyResponse.length > 0) {
       handleSubmit(surveyResponse);
-      setsuccessMessage('Thank you! Your feedback helps us better serve members like you.');
+      setSuccessMessage('Thank you! Your feedback helps us better serve members like you.');
       setErrorMessage(null);
       return;
     }
 
-    setErrorMessage('Please make a selection');
+    setErrorMessage('Please make a selection.');
   };
 
   return (
-    <SurveyCardWrapper shouldCenter={successMessage}>
+    <SurveyCardWrapper hasSuccessMessage={successMessage}>
       <Title data-testid="survey-title">{title}</Title>
       {!successMessage && (
         <>
@@ -149,7 +150,7 @@ const SurveyCard = ({
         </>
       )}
       {successMessage && <SuccessMessage>{successMessage}</SuccessMessage>}
-      {errorMesssage ? (<ErrorMessage>{errorMesssage}</ErrorMessage>) : null}
+      {errorMessage ? (<ErrorMessage>{errorMessage}</ErrorMessage>) : null}
     </SurveyCardWrapper>
   );
 };

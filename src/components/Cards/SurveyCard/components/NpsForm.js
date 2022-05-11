@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import styledBreakpoint from 'styled-components-breakpoint';
+
 import { color, fontSize } from '../../../..';
 import { npsData } from '../data';
 import { SubmitButton } from '..';
@@ -19,8 +21,18 @@ const SurveyCardOption = styled.label`
   flex-direction: column;
   cursor: pointer;
   align-items: center;
-  margin-right: 2rem;
+  margin-right: 1rem;
   margin-bottom: 1rem;
+  max-width: 5.5rem;
+
+  ${styledBreakpoint('md')` 
+    max-width: 7rem;
+    margin-right: 2rem;
+  `}
+
+  &:nth-child(5) {
+    margin-right: 0;
+  }
 
   input {
     appearance: none;
@@ -39,8 +51,13 @@ const SurveyCardOption = styled.label`
 
   span {
     color: ${color.eclipse};
-    font-size: ${fontSize.sm};
+    font-size: 1.1rem;
+    letter-spacing: 2.24px;
     text-transform: uppercase;
+    
+    ${styledBreakpoint('md')` 
+      font-size: ${fontSize.sm};
+  `}
   }
 `;
 
@@ -57,16 +74,25 @@ const NpsForm = ({ handleSubmit }) => {
   };
 
   return (
-    <SurveyForm onSubmit={e => handleNpsFormSubmit(e)}>
+    <SurveyForm onSubmit={handleNpsFormSubmit}>
       {npsData.map(slug => (
-        <SurveyCardOption key={slug} htmlFor={slug}>
+        <SurveyCardOption
+          key={slug}
+          htmlFor={slug}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              handleOnChange(e);
+            }
+          }}
+        >
           <input
-            key={slug}
-            type="radio"
+            type="checkbox"
             id={slug}
             value={slug}
+            checked={npsResponse === slug}
             name="recommendationOption"
-            onChange={e => handleOnChange(e)}
+            onChange={handleOnChange}
           />
           <span>{slug}</span>
         </SurveyCardOption>

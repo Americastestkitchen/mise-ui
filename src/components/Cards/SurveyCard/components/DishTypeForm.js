@@ -19,6 +19,11 @@ const SurveyForm = styled.form`
 const SurveyCardOption = styled.label`
   display: inline-flex;
   cursor: pointer;
+  margin: 0 8px 10px 0;
+
+  ${styledBreakpoint('md')` 
+    margin-bottom: 14px;
+  `}
 
   input {
     display: none;
@@ -32,13 +37,12 @@ const SurveyCardOption = styled.label`
   span {
     padding: 7px 12px 5px 10px;
     border-radius: 1.5rem;
-    font-size: ${fontSize.sm};
+    font-size: 1.1rem;
     text-transform: uppercase;
     box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
-    margin: 0 8px 10px 0;
 
-    ${styledBreakpoint('md')` 
-      margin-bottom: 14px;
+    ${styledBreakpoint('md')`
+      font-size: ${fontSize.sm};
     `}
   }
 `;
@@ -46,12 +50,13 @@ const SurveyCardOption = styled.label`
 const DishTypeForm = ({ handleSubmit }) => {
   const [dishTypeResponse, setDishTypeResponse] = useState([]);
 
-  const handleOnChange = (e) => {
-    if (dishTypeResponse.includes(e.target.value)) {
-      setDishTypeResponse(prevState => prevState.filter(dishType => dishType !== e.target.value));
-    } else {
-      setDishTypeResponse(prevState => [...prevState, e.target.value]);
+  const handleOnChange = (value) => {
+    if (dishTypeResponse.includes(value)) {
+      setDishTypeResponse(prevState => prevState.filter(dishType => dishType !== value));
+      return;
     }
+
+    setDishTypeResponse(prevState => [...prevState, value]);
   };
 
   const handleDishTypeSubmit = (evt) => {
@@ -61,20 +66,23 @@ const DishTypeForm = ({ handleSubmit }) => {
 
   return (
     <SurveyForm
-      onSubmit={e => handleDishTypeSubmit(e)}
+      onSubmit={handleDishTypeSubmit}
       data-testid="survey-form"
     >
       {dishTypeData.map(slug => (
         <SurveyCardOption
           key={slug}
           htmlFor={slug}
+          tabIndex={0}
+          onKeyDown={e => e.key === 'Enter' && handleOnChange(slug)}
         >
           <input
             type="checkbox"
             id={slug}
             value={slug}
             name="recommendationOption"
-            onChange={e => handleOnChange(e)}
+            checked={dishTypeResponse.includes(slug)}
+            onChange={e => handleOnChange(e.target.value)}
           />
           <span>{slug}</span>
         </SurveyCardOption>
