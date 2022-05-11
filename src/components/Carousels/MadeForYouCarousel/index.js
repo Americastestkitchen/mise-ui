@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { font } from '../../../styles';
-import { Title } from '../BaseCarousel/styled-elements';
+import { Title, Divider } from '../BaseCarousel/styled-elements';
 import BaseCarousel from '../BaseCarousel';
 import EmptyState from './EmptyState';
 import MadeForYouCard from '../../Cards/MadeForYouCard';
@@ -35,6 +35,10 @@ const MadeForYouCarousel = ({ results, title, subtitle }) => {
     return (
       <>
         <Subtitle>{subtitle}</Subtitle>
+        <StyledTitle>
+          {title} <Sticker type="priority" text="new" />
+        </StyledTitle>
+        <Divider showDivider />
         <EmptyState />
       </>
     );

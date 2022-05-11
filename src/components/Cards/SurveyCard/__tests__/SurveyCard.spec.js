@@ -7,18 +7,12 @@ import SurveyCard from '..';
 const surveyProps = {
   title: 'Tell us about you',
   subTitle: 'What kind of recipes you want to see more of?',
-  surveyType: 'onBoardingDishType',
+  surveyType: 'onboardingtags',
   handleSubmit: () => {},
 };
 
 describe('SurveyCard component', () => {
-  const renderComponent = props => (
-    render(
-      <SurveyCard
-        {...props}
-      />,
-    )
-  );
+  const renderComponent = props => render(<SurveyCard {...props} />);
 
   it('does renders a Title', () => {
     renderComponent(surveyProps);
