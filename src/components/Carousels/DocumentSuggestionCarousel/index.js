@@ -121,6 +121,7 @@ const DocumentSuggestionCarousel = ({
             subtitle={item.subtitle}
             title={item.title}
             stickers={item.stickers}
+            resourceType={item.resourceType}
           />
         ))}
       </BaseCarousel>

@@ -6,7 +6,7 @@ export default {
   component: MadeForYouCarousel,
 };
 
-export const EmptyState = () => <MadeForYouCarousel username="You" />;
+export const EmptyState = () => <MadeForYouCarousel title='Made For you' subtitle='Smart collections that get more personalized as you go' />;
 
 export const StandardCarousel = () => (
   <MadeForYouCarousel
