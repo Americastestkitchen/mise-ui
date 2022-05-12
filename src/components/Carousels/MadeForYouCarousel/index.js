@@ -38,6 +38,7 @@ const MadeForYouCarousel = ({ results, title, subtitle }) => {
         <StyledTitle>
           {title} <Sticker type="priority" text="new" />
         </StyledTitle>
+        <Divider showDivider />
         <EmptyState />
       </>
     );
