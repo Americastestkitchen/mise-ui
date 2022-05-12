@@ -6,7 +6,7 @@ declare module 'styled-components-breakpoint' {
         ...params: Parameters<typeof css>
     ) => <P extends object>({ theme }: StyledProps<P>) => ReturnType<typeof css>;
 
-    type ThemeBreakpoint = 'xs' | 'sm' | 'smmd' | 'md' | 'lg' | 'xlg' | 'bylineList';
+    type ThemeBreakpoint = 'xs' | 'sm' | 'smmd' | 'md' | 'lg' | 'xlg' | 'xxlg' | 'bylineList';
 
     export default function styledBreakpoint(
         gte: ThemeBreakpoint,

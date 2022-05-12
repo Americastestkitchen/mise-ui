@@ -8,6 +8,7 @@ const breakpoints = {
   md: 768,
   lg: 1024,
   xlg: 1136,
+  xxlg: 1280,
 };
 
 export default breakpoints;
@@ -41,6 +42,7 @@ export const md: BreakpointFn = interp => breakpoint('md')`${interp}`;
 export const smmd: BreakpointFn = interp => breakpoint('smmd')`${interp}`;
 export const lg: BreakpointFn = interp => breakpoint('lg')`${interp}`;
 export const xlg: BreakpointFn = interp => breakpoint('xlg')`${interp}`;
+export const xxlg: BreakpointFn = interp => breakpoint('xxlg')`${interp}`;
 
 export const untilSm: BreakpointFn = interp => breakpoint('xs', 'sm')`${interp}`;
 export const untilMd: BreakpointFn = interp => breakpoint('xs', 'md')`${interp}`;
