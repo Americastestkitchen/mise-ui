@@ -2,7 +2,7 @@ import React, { PropsWithChildren, ReactNode, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { lg, md, untilMd, xlg } from '../../../styles/breakpoints';
 import { color, font } from '../../../styles';
-import { cssThemedColor, cssThemedFontBold, withThemes } from '../../../styles/mixins';
+import { cssThemedColor, withThemes, cssThemedTextLinkBold } from '../../../styles/mixins';
 import Badge from '../../Badge';
 import cloudinaryInstance, { baseImageConfig } from '../../../lib/cloudinary';
 import Sticker from '../shared/Sticker';
@@ -65,8 +65,7 @@ const CardBody = styled.div`
 `;
 
 const Title = styled.h3`
-  ${cssThemedFontBold}
-  ${cssThemedColor}
+  ${cssThemedTextLinkBold}
   font-size: 23px;
   line-height: 26px;
 `;
