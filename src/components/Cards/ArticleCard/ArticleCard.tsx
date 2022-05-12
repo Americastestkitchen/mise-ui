@@ -164,7 +164,7 @@ export default function ArticleCard({
       <BylineList
         authors={authors}
         attribution={attribution}
-        breakpoint={390}
+        breakpoint={550}
       />
     </SplitCard>
   );
