@@ -99,6 +99,7 @@ const CustomStateResults = ({
       const nextAnchor = refEl?.getElementsByClassName(
         'standard-card__anchor',
       )[1];
+      // eslint-disable-next-line no-unused-expressions
       nextAnchor?.focus();
     }
   }, [focusNextId, hitsPerPage, page]);

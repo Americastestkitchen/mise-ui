@@ -73,7 +73,7 @@ const NpsForm = ({ handleSubmit }) => {
       ))}
       <SubmitButton type="submit" className="survey-buttons">
         <span className="checkmark"><Checkmark fill={color.eclipse} /></span>
-        Submit
+        <span className="submit-text">Submit</span>
       </SubmitButton>
     </SurveyForm>
   );

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { PropsWithChildren, useCallback, createContext, useContext, useEffect } from 'react';
 import ArrowButton from './ArrowButton';
 
@@ -50,14 +51,14 @@ export default function BaseCarousel({
   }, [flickity]);
 
   const publishEvent = useCallback((evt, data) => {
-    if (typeof dry !== 'undefined') {
+    if (typeof window.dry !== 'undefined') {
       // eslint-disable-next-line no-undef
-      dry.events.publish(evt, data);
+      window.dry.events.publish(evt, data);
     }
   }, []);
 
   const handleCellChange = useCallback((idx) => {
-    const cell = flickity.current?.cells[idx].element;
+    const cell = (flickity.current?.cells[idx] as any).element;
     const node = cell.cloneNode(true);
     publishEvent('flickity:change', { node, idx });
   }, [flickity, publishEvent]);
@@ -68,32 +69,32 @@ export default function BaseCarousel({
       const list = button.classList;
       if (list.contains('remove-cell')) {
         evt.preventDefault();
-        if (flickity.current?.slides.length > 1) {
-          const { selectedIndex } = flickity.current;
-          flickity.current.next(true);
+        if ((flickity.current?.slides || []).length > 1) {
+          const { selectedIndex } = flickity.current || {};
+          flickity.current?.next(true);
           publishEvent('flickity:remove', { ...button.dataset, selectedIndex });
           setTimeout(() => {
             const cell = button.closest('.suggestion-card');
-            if (cell) flickity.current.remove(cell);
+            if (cell) flickity.current?.remove(cell);
           }, 500);
         } else {
           publishEvent('flickity:remove', { ...button.dataset });
-          flickity.current.destroy();
+          flickity.current?.destroy();
         }
       } else if (list.contains('next-cell')) {
-        flickity.current.next();
+        flickity.current?.next();
         publishEvent('flickity:next', null);
       } else if (list.contains('previous-cell')) {
-        flickity.current.previous(true);
+        flickity.current?.previous(true);
         publishEvent('flickity:previous', null);
       }
     }
   }, [flickity, publishEvent]);
 
   useEffect(() => {
-    const container = flickity.current.element;
+    const container = (flickity.current as any)?.element;
     container.addEventListener('click', handleCellClick);
-    flickity.current.on('change', handleCellChange);
+    flickity.current?.on('change', handleCellChange);
     return () => container.removeEventListener('click', handleCellClick);
   }, [flickity, handleCellClick, handleCellChange]);
 

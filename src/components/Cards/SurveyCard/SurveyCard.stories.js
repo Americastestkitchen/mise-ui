@@ -1,5 +1,6 @@
 import React from 'react';
-import { withKnobs, text } from '@storybook/addon-knobs';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { withKnobs } from '@storybook/addon-knobs';
 
 import SurveyCard from '.';
 
@@ -9,9 +10,7 @@ export default {
   decorators: [withKnobs],
 };
 
-const handleSubmit = (surveyOptions) => {
-  console.log(surveyOptions);
-}
+const handleSubmit = () => {};
 
 export const DishTypeForm = () => (
   <SurveyCard
@@ -25,12 +24,11 @@ export const DishTypeForm = () => (
 export const NpsForm = () => (
   <SurveyCard
     title="Tell us about you"
-    subTitle="How likely would you be to recommend America’s Test Kitchen to a friend?"
+    subTitle="How likely would you be to recommend America's Test Kitchen to a friend?"
     handleSubmit={handleSubmit}
     surveyType="nps"
   />
 );
-
 
 export const FeedBack = () => (
   <SurveyCard
@@ -39,4 +37,4 @@ export const FeedBack = () => (
     handleSubmit={handleSubmit}
     surveyType="feedback"
   />
-)
+);
