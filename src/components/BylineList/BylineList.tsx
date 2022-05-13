@@ -224,6 +224,7 @@ export const BylineListLight = styled(BylineList)`
  */
 export const BylineListArticleCard = styled(BylineList)`
   ${Wrapper} {
+    margin-bottom: 0;
     align-self: unset;
   }
 `;
