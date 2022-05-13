@@ -6,7 +6,7 @@ import { cssThemedColor, withThemes, cssThemedTextLinkBold } from '../../../styl
 import Badge from '../../Badge';
 import cloudinaryInstance, { baseImageConfig } from '../../../lib/cloudinary';
 import Sticker from '../shared/Sticker';
-import BylineList, { Author } from '../../BylineList';
+import { Author, BylineListArticleCard } from '../../BylineList';
 import { InferStyledTypes } from '../../../styles/utility-types';
 
 const cssThemedDescriptionFont = withThemes({
@@ -167,7 +167,7 @@ export default function ArticleCard({
       </StickerGroup>
       <Title>{title}</Title>
       <Description>{description}</Description>
-      <BylineList
+      <BylineListArticleCard
         authors={authors}
         attribution={attribution}
         breakpoint={550}
