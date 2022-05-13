@@ -1,6 +1,6 @@
 import React, { PropsWithChildren, ReactNode, useState } from 'react';
 import styled, { css } from 'styled-components';
-import { lg, md, untilMd, xlg, xxlg } from '../../../styles/breakpoints';
+import { lg, md, untilMd, xxlg } from '../../../styles/breakpoints';
 import { color, font } from '../../../styles';
 import { cssThemedColor, withThemes, cssThemedTextLinkBold } from '../../../styles/mixins';
 import Badge from '../../Badge';
