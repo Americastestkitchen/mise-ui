@@ -24,6 +24,7 @@ const cssBackgroundColor = withThemes({
 const Content = styled.div`
   ${cssBackgroundColor}
 
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;

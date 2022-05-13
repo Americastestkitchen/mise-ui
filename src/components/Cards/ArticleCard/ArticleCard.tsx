@@ -1,8 +1,8 @@
 import React, { PropsWithChildren, ReactNode, useState } from 'react';
 import styled, { css } from 'styled-components';
-import { md, untilMd } from '../../../styles/breakpoints';
+import { lg, md, untilMd, xlg } from '../../../styles/breakpoints';
 import { color, font } from '../../../styles';
-import { cssThemedColor, cssThemedFontBold, withThemes } from '../../../styles/mixins';
+import { cssThemedColor, withThemes, cssThemedTextLinkBold } from '../../../styles/mixins';
 import Badge from '../../Badge';
 import cloudinaryInstance, { baseImageConfig } from '../../../lib/cloudinary';
 import Sticker from '../shared/Sticker';
@@ -30,9 +30,16 @@ const Card = styled.a`
   grid-template-columns: 1fr;
   grid-template-rows: 1fr auto;
   ${md(css`
-    grid-template-columns: 1fr minmax(432px, 1fr);
-    grid-template-rows: 1fr;
-    height: 272px;
+    grid-template-columns: 272px auto;
+    grid-template-rows: 272px;
+  `)}
+  ${lg(css`
+    grid-template-columns: 416px auto;
+    grid-template-rows: 272px;
+  `)}
+  ${xlg(css`
+    grid-template-columns: 488px auto;
+    grid-template-rows: 272px;
   `)}
 `;
 
@@ -58,8 +65,7 @@ const CardBody = styled.div`
 `;
 
 const Title = styled.h3`
-  ${cssThemedFontBold}
-  ${cssThemedColor}
+  ${cssThemedTextLinkBold}
   font-size: 23px;
   line-height: 26px;
 `;
