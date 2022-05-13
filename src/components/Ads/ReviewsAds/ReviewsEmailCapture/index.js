@@ -212,7 +212,7 @@ const AdWrapper = styled.div`
 
     .email-form-wrapper {
       ${({ isWide }) => (isWide ? `
-        max-width: calc(60% - 4.5rem);
+        max-width: 41.6rem;
         width: calc(60% - 4.5rem);
       ` : '')}
     }
@@ -236,9 +236,13 @@ const AdWrapper = styled.div`
     .email-form-wrapper {
       ${({ isWide }) => (isWide ? `
         height: 4rem;
-        max-width: calc(55% - 3rem);
-        width: calc(55% - 3rem);
+        max-width: 57.8rem;
+        width: 57.8rem;
       ` : '')}
+    }
+
+    .form-input {
+      ${({ isWide }) => (isWide && 'width: 36rem;')}
     }
 
     .email-form {
@@ -250,7 +254,7 @@ const AdWrapper = styled.div`
         height: 100%;
         justify-content: flex-start;
 
-        input {
+        .form-input input {
           border-color: ${color.silver};
           height: 100%;
         }
