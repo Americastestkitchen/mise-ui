@@ -216,3 +216,15 @@ export const BylineListLight = styled(BylineList)`
     color: ${color.white};
   }
 `;
+
+/**
+ * Align self was implemented for self alignment with detail page actions.
+ * In Article card we are in a different flex direction container so we
+ *  are unsetting the property here.
+ */
+export const BylineListArticleCard = styled(BylineList)`
+  ${Wrapper} {
+    margin-bottom: 0;
+    align-self: unset;
+  }
+`;

@@ -1,12 +1,12 @@
 import React, { PropsWithChildren, ReactNode, useState } from 'react';
 import styled, { css } from 'styled-components';
-import { lg, md, untilMd, xlg } from '../../../styles/breakpoints';
+import { lg, md, untilMd, xxlg } from '../../../styles/breakpoints';
 import { color, font } from '../../../styles';
 import { cssThemedColor, withThemes, cssThemedTextLinkBold } from '../../../styles/mixins';
 import Badge from '../../Badge';
 import cloudinaryInstance, { baseImageConfig } from '../../../lib/cloudinary';
 import Sticker from '../shared/Sticker';
-import BylineList, { Author } from '../../BylineList';
+import { Author, BylineListArticleCard } from '../../BylineList';
 import { InferStyledTypes } from '../../../styles/utility-types';
 
 const cssThemedDescriptionFont = withThemes({
@@ -37,7 +37,7 @@ const Card = styled.a`
     grid-template-columns: 416px auto;
     grid-template-rows: 272px;
   `)}
-  ${xlg(css`
+  ${xxlg(css`
     grid-template-columns: 488px auto;
     grid-template-rows: 272px;
   `)}
@@ -167,7 +167,7 @@ export default function ArticleCard({
       </StickerGroup>
       <Title>{title}</Title>
       <Description>{description}</Description>
-      <BylineList
+      <BylineListArticleCard
         authors={authors}
         attribution={attribution}
         breakpoint={550}
