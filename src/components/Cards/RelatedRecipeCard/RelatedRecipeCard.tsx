@@ -11,6 +11,7 @@ import { md } from '../../../styles/breakpoints';
 
 const CtaLink = styled.a`
   display: flex;
+  width: fit-content;
 `;
 
 const ContentTheme = {

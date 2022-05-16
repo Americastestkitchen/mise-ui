@@ -13,7 +13,7 @@ const MadeForYouCardWrapper = styled.div`
   width: 272px;
 
   > a {
-    height: 230px;
+    height: 264px;
     width: 100%;
     overflow: hidden;
     
@@ -46,7 +46,6 @@ const MadeForYouCardTitleWrapper = styled.div`
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     height: 90px;
-    width: 213px;
   }
 `;
 
