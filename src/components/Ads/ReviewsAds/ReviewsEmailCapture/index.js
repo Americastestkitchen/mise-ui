@@ -331,7 +331,7 @@ const ReviewsEmailCapture = ({
     <AdWrapper success={success} isWide={isWide}>
       <ContentWrapper success={success} isWide={isWide}>
         <MainContent isWide={isWide}>
-          <AdTitle>{title}</AdTitle>
+          <AdTitle dangerouslySetInnerHTML={{ __html: title }} />
           {!success && (
           <AdDescription>{description}</AdDescription>
           )}
