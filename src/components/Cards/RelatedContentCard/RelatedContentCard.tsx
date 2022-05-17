@@ -142,36 +142,39 @@ const Card = styled.a`
   })}
 `;
 
-type WideCardWrapperProps = PropsWithChildren<{src: string}> & ComponentProps<typeof Card>
+type WideCardWrapperProps = PropsWithChildren<{ src: string | undefined }> &
+  ComponentProps<typeof Card>;
 
 export function Wrapper({ src, children, ...anchorProps }: WideCardWrapperProps) {
   const theme = useContext(ThemeContext);
   const isMobile = useMedia('(max-width: 767px)');
-  // const base = isMobile ? 145 : 200;
   const offset = theme.siteKey === 'cco' ? -20 : 0;
   const [imageSize, setImageSize] = useState(200);
   useEffect(() => {
-    if (isMobile) {
-      setImageSize(145 + offset);
-    } else {
-      setImageSize(200 + offset);
+    if (src) {
+      if (isMobile) {
+        setImageSize(145 + offset);
+      } else {
+        setImageSize(200 + offset);
+      }
     }
-  }, [isMobile, offset]);
+  }, [isMobile, src, offset]);
 
   return (
     <Card {...anchorProps}>
-      <ImageWrapper>
-        <img
-          width={imageSize}
-          height={imageSize}
-          aria-hidden="true"
-          src={src || undefined}
-          alt=""
-        />
-      </ImageWrapper>
-      <Content>
-        {children}
-      </Content>
+      {/* hide image if one is not provided, content shifts to left */}
+      {src && (
+        <ImageWrapper>
+          <img
+            width={imageSize}
+            height={imageSize}
+            aria-hidden="true"
+            src={src}
+            alt=""
+          />
+        </ImageWrapper>
+      )}
+      <Content>{children}</Content>
     </Card>
   );
 }
@@ -197,7 +200,7 @@ export type RelatedContentCardProps = {
    */
   buttonHref?: string;
   /** Src attribute value for image. */
-  src: string;
+  src?: string;
   /** Text content, 1st at top of card. */
   headline: string;
   /** Text content, 2nd from top of card. */
