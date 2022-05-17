@@ -10,8 +10,6 @@ import MadeForYouCard from '../../Cards/MadeForYouCard';
 import Sticker from '../../Cards/shared/Sticker';
 
 const CarouselWrapper = styled.div`
-  margin-bottom: 70px;
-
   > div {
     margin-right: 20px;
   }
@@ -34,7 +32,6 @@ const MadeForYouCarousel = ({ results, title, subtitle }) => {
   if (results.length === 0) {
     return (
       <>
-        <Subtitle>{subtitle}</Subtitle>
         <StyledTitle>
           {title} <Sticker type="priority" text="new" />
         </StyledTitle>

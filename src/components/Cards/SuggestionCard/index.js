@@ -48,28 +48,6 @@ const SuggestionCard = ({
       <SuggestionCardActions>
         <div className="button-container">
           <SuggestionCardAction
-            className="favorite-action remove-cell"
-            data-event-name="RECOMMENDATION_ADDED"
-            data-document-title={title}
-            data-favoritable-id={objectId}
-            data-document-url={href}
-            data-document-type={resourceType}
-            data-object-id={objectId}
-            data-origin-site={siteKey}
-            data-testid="suggestion-action__favorite"
-            aria-label="save recipe suggestion"
-          >
-            <FavoriteRibbon
-              ariaHidden
-              ariaLabel=" "
-              className="favorite-ribbon"
-              fill={color.white}
-            />
-          </SuggestionCardAction>
-          <span>Save</span>
-        </div>
-        <div className="button-container">
-          <SuggestionCardAction
             className="skip remove-cell"
             data-event-name="RECOMMENDATION_REJECTED"
             data-document-title={title}
@@ -88,6 +66,28 @@ const SuggestionCard = ({
             />
           </SuggestionCardAction>
           <span>Pass</span>
+        </div>
+        <div className="button-container">
+          <SuggestionCardAction
+            className="favorite-action remove-cell"
+            data-event-name="RECOMMENDATION_ADDED"
+            data-document-title={title}
+            data-favoritable-id={objectId}
+            data-document-url={href}
+            data-document-type={resourceType}
+            data-object-id={objectId}
+            data-origin-site={siteKey}
+            data-testid="suggestion-action__favorite"
+            aria-label="save recipe suggestion"
+          >
+            <FavoriteRibbon
+              ariaHidden
+              ariaLabel=""
+              className="favorite-ribbon"
+              fill={color.white}
+            />
+          </SuggestionCardAction>
+          <span>Save</span>
         </div>
       </SuggestionCardActions>
     </SuggestionCardImage>
