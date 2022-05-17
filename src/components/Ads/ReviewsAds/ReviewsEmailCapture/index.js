@@ -258,7 +258,7 @@ const ReviewsEmailCapture = ({
   <ThemeProvider theme={variantTheme(variant)}>
     <AdWrapper success={success}>
       <MainContent>
-        <AdTitle>{title}</AdTitle>
+        <AdTitle dangerouslySetInnerHTML={{ __html: title }} />
         {!success && (
         <AdDescription>{description}</AdDescription>
         )}
