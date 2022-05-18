@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import breakpoint from 'styled-components-breakpoint';
 import React from 'react';
 import styled from 'styled-components';
-import { StyledSticker } from '../../StandardCard';
+import Sticker from '../../shared/Sticker';
 import { font, fontSize, color } from '../../../../styles';
 
 const SitckersContainer = styled.div`
@@ -21,7 +21,7 @@ const SitckersContainer = styled.div`
     font-family: ${font.pnr};
     font-size: ${fontSize.md};
     color: ${color.eclipse};
-    margin: 0.8rem 0.8rem 0.8rem 0;
+    margin: 3px 10px 0 0;
   }
 
   ${breakpoint('md')`
@@ -35,7 +35,7 @@ const SuggestionCardStickers = ({ stickers }) => (
     <span className="suggestioncardstickers-intro">You might like:</span>
     {
       stickers.map(({ text, type }) => (
-        <StyledSticker
+        <Sticker
           className="sticker"
           key={text}
           type={type}

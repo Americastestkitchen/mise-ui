@@ -30,7 +30,7 @@ const SuggestionCardAction = styled.button.attrs({
 
     svg g {
       stroke: ${color.eclipse};
-      stroke-width: 3;
+      stroke-width: 2.5;
     }
 
     @media(hover: hover) {
@@ -50,7 +50,7 @@ const SuggestionCardAction = styled.button.attrs({
 
     svg path.outer-stroke {
       stroke: ${color.eclipse};
-      stroke-width: 6;
+      stroke-width: 4;
     }
 
     @media(hover: hover) {
