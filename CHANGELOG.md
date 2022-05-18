@@ -1,3 +1,17 @@
+# v1.33.18 (Wed May 18 2022)
+
+#### 🐛 Bug Fix
+
+- trigger release [#740](https://github.com/Americastestkitchen/mise-ui/pull/740) ([@harry-atk](https://github.com/harry-atk))
+- CORE-159: Article Newsletter widgets missing italics in titles [#738](https://github.com/Americastestkitchen/mise-ui/pull/738) (audrey.magwili@americastestkitchen.com)
+
+#### Authors: 2
+
+- Audrey Magwili ([@oddwili](https://github.com/oddwili))
+- Harry Scheuerle ([@harry-atk](https://github.com/harry-atk))
+
+---
+
 # v1.33.17 (Wed May 11 2022)
 
 #### 🐛 Bug Fix
