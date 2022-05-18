@@ -45,6 +45,10 @@ const SurveyCardOption = styled.label`
     cursor: pointer;
   }
 
+  &:hover input {
+    background-color: ${color.whiteSmoke};
+  }
+
   input:checked {
     background-color: ${color.darkTeal};
   }

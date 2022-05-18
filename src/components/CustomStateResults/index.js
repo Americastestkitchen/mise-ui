@@ -12,6 +12,11 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  margin-bottom: 2rem;
+
+  ${breakpoint('md')`
+    margin-bottom: 3rem;
+  `}
 
   .show-more-results-button {
     margin-bottom: ${spacing.md};
@@ -19,7 +24,6 @@ const Wrapper = styled.div`
     width: 100%;
 
     ${breakpoint('md')`
-      margin-bottom: 3rem;
       max-width: 33.5rem;
     `}
   }
@@ -115,7 +119,7 @@ const CustomStateResults = ({
         </Button>
       )}
       <RemainingResultsWrapper>
-        {hasMore && (
+        {hasMore && remainingCount > 0 && (
           <RemainingResultsText>
             There {`${remainingPre} `} <strong>{remainingCount}</strong>{' '}
             remaining {`${docType}${remainingPost}`}

@@ -61,26 +61,28 @@ const getBgColor = (index) => {
 const MadeForYouCard = ({
   index,
   cloudinary_url,
-  title,
   collection_type,
   url,
-}) => (
-  <MadeForYouCardWrapper title={title} data-collection-type={collection_type} className="made-for-you-card">
-    <a href={url} title={title}>
-      <img src={cloudinary_url} alt={title} />
-    </a>
-    <MadeForYouCardTitleWrapper style={{ backgroundColor: getBgColor(index) }}>
-      <a href={url}>
-        <h3>{title}</h3>
+}) => {
+  const title = `${collection_type} Recipes for You`;
+
+  return (
+    <MadeForYouCardWrapper title={title} data-collection-type={collection_type} className="made-for-you-card">
+      <a href={url} title={title}>
+        <img src={cloudinary_url} alt={title} />
       </a>
-    </MadeForYouCardTitleWrapper>
-  </MadeForYouCardWrapper>
-);
+      <MadeForYouCardTitleWrapper style={{ backgroundColor: getBgColor(index) }}>
+        <a href={url}>
+          <h3>{title}</h3>
+        </a>
+      </MadeForYouCardTitleWrapper>
+    </MadeForYouCardWrapper>
+  );
+};
 
 MadeForYouCard.propTypes = {
   index: PropTypes.number,
   cloudinary_url: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
   collection_type: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
 };

@@ -29,6 +29,10 @@ const SurveyCardOption = styled.label`
     display: none;
   }
 
+  &:hover span {
+    background-color: ${color.whiteSmoke};
+  }
+
   input:checked + span {
     background-color: ${color.darkTeal};
     color: white;
@@ -37,13 +41,9 @@ const SurveyCardOption = styled.label`
   span {
     padding: 7px 12px 5px 10px;
     border-radius: 1.5rem;
-    font-size: 1.1rem;
+    font-size: ${fontSize.sm};
     text-transform: uppercase;
     box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
-
-    ${styledBreakpoint('md')`
-      font-size: ${fontSize.sm};
-    `}
   }
 `;
 
