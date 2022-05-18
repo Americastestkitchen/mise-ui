@@ -197,17 +197,6 @@ function FeatureCard({
           imageUrl={imageUrl}
           lazy={lazyImage}
         />
-        <StyledBadge className={className} type={siteKey} />
-        {displayFavoritesButton && siteKeyFavorites ? (
-          <StyledFavoriteButtonWithBg
-            className={className}
-            siteKey={siteKeyFavorites}
-            role="button"
-            isFavorited={isFavorited}
-            objectId={objectId}
-            title={title}
-          />
-        ) : null}
         <div className="feature-card__subcomponents-wrapper">
           <div className="feature-card__subcomponents-content">
             {stickers ? (
@@ -249,6 +238,17 @@ function FeatureCard({
             </div>
           )}
         </div>
+        <StyledBadge className={className} type={siteKey} />
+        {displayFavoritesButton && siteKeyFavorites ? (
+          <StyledFavoriteButtonWithBg
+            className={className}
+            siteKey={siteKeyFavorites}
+            role="button"
+            isFavorited={isFavorited}
+            objectId={objectId}
+            title={title}
+          />
+        ) : null}
       </a>
       {ctaUrl && (
         <CtaLink
