@@ -8,7 +8,10 @@ import { InferStyledTypes } from '../../../styles/utility-types';
 
 const CtaLink = styled.a`
   display: flex;
-  width: min(344px, 100%);
+  width: 100%;
+  @media screen and (min-width: 580px) {
+    width: 344px;
+  }
   height: 128px;
 `;
 
