@@ -223,8 +223,6 @@ export const BylineListLight = styled(BylineList)`
  *  are unsetting the property here.
  */
 export const BylineListArticleCard = styled(BylineList)`
-  ${Wrapper} {
-    margin-bottom: 0;
-    align-self: unset;
-  }
+  margin-bottom: 0;
+  align-self: unset;
 `;
