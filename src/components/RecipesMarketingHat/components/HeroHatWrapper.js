@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import { getImageUrl } from '../../../lib/cloudinary';
-import { spacing } from '../../../styles';
 
 /* eslint-disable indent */
 const HeroHatWrapper = styled.div.attrs({

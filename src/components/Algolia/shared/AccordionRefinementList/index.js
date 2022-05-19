@@ -6,7 +6,7 @@ import { connectRefinementList } from 'react-instantsearch-dom';
 import RefinementList2 from '../RefinementList2';
 import Accordion from '../../../Accordion';
 import { cssThemedHoverColor } from '../../../../styles/mixins';
-import { color, mixins, withThemes } from '../../../../styles';
+import { color, withThemes } from '../../../../styles';
 
 const StyledAccordionTheme = {
   atk: css`
@@ -21,7 +21,6 @@ const StyledAccordionTheme = {
           }
         }
       }
-    }
   `,
   cco: css`
     .accordion-item__button {
@@ -35,7 +34,6 @@ const StyledAccordionTheme = {
           }
         }
       }
-    }
   `,
   cio: css`
     .accordion-item__button {
@@ -49,7 +47,6 @@ const StyledAccordionTheme = {
           }
         }
       }
-    }
   `,
 };
 
