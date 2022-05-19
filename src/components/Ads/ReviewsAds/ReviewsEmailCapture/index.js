@@ -32,27 +32,6 @@ const cssThemedBorder = withThemes({
   cio: css`border: solid 1px #858585;`,
 });
 
-const cssThemedButtonBackground = withThemes({
-  atk: css`
-    background-color: ${color.coldPool};
-    &:hover {
-      background-color: ${color.darkColdPool};
-    }
-  `,
-  cco: css`
-    background-color: ${color.denim};
-    &:hover {
-      background-color: ${color.arapawa};
-    }
-  `,
-  cio: css`
-    background-color: ${color.squirrel};
-    &:hover {
-      background-color: ${color.cork};
-    }
-  `,
-});
-
 const AdDescription = styled.p`
   font: ${fontSize.md}/2.1rem ${font.mwr};
   letter-spacing: normal;
