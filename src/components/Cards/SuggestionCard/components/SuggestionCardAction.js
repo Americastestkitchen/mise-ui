@@ -1,21 +1,20 @@
 import styled from 'styled-components';
 
-import { color, spacing } from '../../../../styles';
+import { color } from '../../../../styles';
 
 const SuggestionCardAction = styled.button.attrs({
   className: 'suggestion-card__button',
 })`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 40px;
   width: 40px;
-  border-radius: 40px;
+  border-radius: 50%;
   background-color: white;
-  padding: 10px;
   box-shadow:  0 3px 6px 0 rgba(0, 0, 0, 0.16);
-  margin-bottom: ${spacing.xsm};
-
 
   svg {
-
     &.favorite-ribbon {
       height: 13px;
       width: 9.3px;
@@ -27,7 +26,6 @@ const SuggestionCardAction = styled.button.attrs({
   }
 
   &.skip {
-
     svg g {
       stroke: ${color.eclipse};
       stroke-width: 2.5;
@@ -75,6 +73,16 @@ const SuggestionCardAction = styled.button.attrs({
       [class*="vertical-line"],
       [class*="horizontal-line"] {
         stroke: white;
+      }
+    }
+  }
+
+  &.close-v2 {
+    &:hover {
+      background-color: ${color.eclipse};
+      border: 1px solid ${color.eclipse};
+      path {
+        stroke: ${color.white};
       }
     }
   }

@@ -129,7 +129,7 @@ const RelatedRecipeCard = ({
   url,
   stickers,
 }: RelatedRecipeCardProps) => (
-  <CtaLink href={url} className="related-recipe-card">
+  <CtaLink href={url} title={headline} className="related-recipe-card">
     <ImageWrapper>
       <Image
         className="mini-card__image"

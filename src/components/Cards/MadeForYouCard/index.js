@@ -35,6 +35,13 @@ const MadeForYouCardWrapper = styled.div`
 const MadeForYouCardTitleWrapper = styled.div`
   padding: 40px 20px;
 
+  a {
+    width: 21.5rem;
+    height: 9rem;
+    display: flex;
+    align-items: center;
+  }
+
   h3 {
     font-family: ${font.pnb};
     font-size: 26px;
@@ -45,7 +52,6 @@ const MadeForYouCardTitleWrapper = styled.div`
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
-    height: 90px;
   }
 `;
 
@@ -58,13 +64,21 @@ const getBgColor = (index) => {
   return colors[indexRemainder];
 };
 
+const getTitle = (title = '') => {
+  if (title.toLowerCase() === 'fresh picks for you') {
+    return title;
+  }
+
+  return `${title} Recipes for You`;
+};
+
 const MadeForYouCard = ({
   index,
   cloudinary_url,
   collection_type,
   url,
 }) => {
-  const title = `${collection_type} Recipes for You`;
+  const title = getTitle(collection_type);
 
   return (
     <MadeForYouCardWrapper title={title} data-collection-type={collection_type} className="made-for-you-card">

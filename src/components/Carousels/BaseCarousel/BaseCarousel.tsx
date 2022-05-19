@@ -70,9 +70,11 @@ export default function BaseCarousel({
       if (list.contains('remove-cell')) {
         evt.preventDefault();
         if ((flickity.current?.slides || []).length > 1) {
-          const { selectedIndex } = flickity.current || {};
-          flickity.current?.next(true);
-          publishEvent('flickity:remove', { ...button.dataset, selectedIndex });
+          if (!list.contains('no-skip')) {
+            const { selectedIndex } = flickity.current || {};
+            flickity.current?.next(true);
+            publishEvent('flickity:remove', { ...button.dataset, selectedIndex });
+          }
           setTimeout(() => {
             const cell = button.closest('.suggestion-card');
             if (cell) flickity.current?.remove(cell);
