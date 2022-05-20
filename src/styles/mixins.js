@@ -8,6 +8,10 @@ export const withThemes = siteTheme => (
   css`${() => siteTheme.default || ''};${props => siteTheme[props.theme.siteKey]};${props => siteTheme[props.theme.mode]}`
 );
 
+/**
+ * @param {string} outlineColor
+ * @param {string} outlineOffset
+ */
 function focusIndicator(outlineColor = color.eclipse, outlineOffset = '3px') {
   return css`
     outline: 2px dotted ${outlineColor};
@@ -254,6 +258,10 @@ export const cssThemedColor = withThemes({
   cio: css`color: ${color.cork};`,
 });
 
+export const cssTransitionColor = css`
+  transition: color 0.2s ease;
+`;
+
 export const cssThemedHoverColor = withThemes({
   default: css`color: ${color.mint};`,
   atk: css`color: ${color.mint};`,
@@ -321,6 +329,20 @@ export const cssReduceColor = css`
   background-image: none !important;
   background-color: transparent !important;
   color-adjust: exact !important;
+`;
+
+export const cssThemedTextLinkBold = css`
+  ${cssThemedColor}
+  ${cssThemedFontBold}
+  ${cssTransitionColor}
+  &:focus, &:active {
+    ${focusIndicator()}
+  }
+  @media(hover: hover) {
+    &:hover {
+      ${cssThemedHoverColor}
+    }
+  }
 `;
 
 /**

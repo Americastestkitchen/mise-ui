@@ -1,13 +1,14 @@
-import React, { ReactElement } from 'react';
-import styled, { css } from 'styled-components';
+import React, { ReactElement, useState, useCallback } from 'react';
+import styled, { css, ThemeProvider } from 'styled-components';
 import useResizeObserver from 'use-resize-observer/polyfilled';
+import breakFunction from 'styled-components-breakpoint';
 import { font, fontSize, spacing, color } from '../../styles';
-import { md, untilMd } from '../../styles/breakpoints';
 import cloudinaryInstance, { baseImageConfig } from '../../lib/cloudinary';
 import { cssThemedColor, cssThemedLink } from '../../styles/mixins';
+import { BreakpointFn } from '../../styles/breakpoints';
 
 export type Author = {
-  id: number;
+  id?: number;
   firstName: string;
   lastName: string;
   photo?: { publicId?: string };
@@ -15,11 +16,25 @@ export type Author = {
   bio?: string;
 };
 
+/**
+ * Component breakpoint is settable and default to existing breakpoint used in components
+ */
+function useBreakpointTheme(breakpoint = 768) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return useCallback((theme: any) => ({
+    ...theme,
+    breakpoints: {
+      ...theme.breakpoints,
+      bylineList: breakpoint,
+    },
+  }), [breakpoint]);
+}
+
 /** Stack author names and attribution in mobile. */
-const cssStackedBreakpoint = untilMd;
+const cssStackedBreakpoint: BreakpointFn = interp => breakFunction('xs', 'bylineList')`${interp}`;
 
 /** Inline author names and attribution in tablet and above. */
-const cssInlineBreakpoint = md;
+const cssInlineBreakpoint: BreakpointFn = interp => breakFunction('bylineList')`${interp}`;
 
 /** cloudinary and image tag height & width number for avatar */
 const avatarSideLength = 40;
@@ -67,7 +82,6 @@ const Wrapper = styled.span<{ refHeight: number }>`
   ${props => cssInlineBreakpoint(css`
     margin-top: -2px;
     margin-bottom: ${spacing.sm};
-    max-width: 28.8rem;
     padding-right: 12px;
     align-self: ${props.refHeight < 40 ? 'center' : 'initial'};
   `)}
@@ -93,7 +107,8 @@ type AuthorListInnerProps = {authors: Author[], onClick?: OnClick};
 const AuthorListInner = ({ authors, onClick }: AuthorListInnerProps) => {
   const fullNames = authors.map(
     (author, idx) => {
-      if (!!onClick && !author?.inactive) {
+      const authorId = author.id;
+      if (!!onClick && !author?.inactive && authorId !== undefined) {
         return (
           <Author
             as="button"
@@ -101,7 +116,7 @@ const AuthorListInner = ({ authors, onClick }: AuthorListInnerProps) => {
             aria-label={`${author.firstName} ${author.lastName}: Go to author page`}
             key={author.id}
             underline
-            onClick={() => onClick(author.id, `${author.firstName.toLowerCase()}-${author.lastName.toLowerCase()}`)}
+            onClick={() => onClick(authorId, `${author.firstName.toLowerCase()}-${author.lastName.toLowerCase()}`)}
           >
             {author.firstName} {author.lastName}
           </Author>
@@ -127,6 +142,7 @@ export type BylineListProps = {
   onClick?: OnClick;
   authors: Author[];
   attribution: string;
+  breakpoint?: number;
 }
 
 /**
@@ -138,7 +154,10 @@ const BylineList = ({
   onClick,
   authors,
   attribution,
+  breakpoint,
 }: BylineListProps): ReactElement => {
+  const themeFn = useBreakpointTheme(breakpoint);
+  const [imageError, setImageError] = useState(false);
   const { ref, height = null } = useResizeObserver();
 
   const authorImage = (() => {
@@ -160,27 +179,30 @@ const BylineList = ({
   const atLeastOneAuthor = authors?.length > 0;
 
   return (
-    <Wrapper className={className} ref={ref} refHeight={height ?? 0}>
-      {authorImage && (
+    <ThemeProvider theme={themeFn}>
+      <Wrapper className={className} ref={ref} refHeight={height ?? 0}>
+        {(authorImage && !imageError) && (
         <AuthorAvatarImage
           crossOrigin="anonymous"
           decoding="async"
           width={avatarSideLength}
           height={avatarSideLength}
           src={authorImage}
+          onError={() => { setImageError(true); }}
         />
-      )}
-      <MiddleAlignment>
-        <AuthorList>
-          <AuthorListInner authors={authors} onClick={onClick} />
-        </AuthorList>
-        {attribution && (
+        )}
+        <MiddleAlignment>
+          <AuthorList>
+            <AuthorListInner authors={authors} onClick={onClick} />
+          </AuthorList>
+          {attribution && (
           <Attribution atLeastOneAuthor={atLeastOneAuthor}>
             {attribution}
           </Attribution>
-        )}
-      </MiddleAlignment>
-    </Wrapper>
+          )}
+        </MiddleAlignment>
+      </Wrapper>
+    </ThemeProvider>
   );
 };
 
@@ -193,4 +215,14 @@ export const BylineListLight = styled(BylineList)`
   ${AuthorList}, ${Attribution} {
     color: ${color.white};
   }
+`;
+
+/**
+ * Align self was implemented for self alignment with detail page actions.
+ * In Article card we are in a different flex direction container so we
+ *  are unsetting the property here.
+ */
+export const BylineListArticleCard = styled(BylineList)`
+  margin-bottom: 0;
+  align-self: unset;
 `;

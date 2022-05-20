@@ -1,15 +1,15 @@
 import styled from 'styled-components';
 import { cssThemedLightBackground } from './css/shared';
-import layoutStyles from './css/layoutStyles';
+import layoutStyles, { textLayoutStyles } from './css/layoutStyles';
 import reducedTextSizing from './css/reducedTextSizing';
 
 /**
  * Consolidates all breakpoint specific layout and styles.
  * Any style changes unrelated to theming can be made here.
  */
-const Layout = styled.div<{ excludePadding?: boolean, reducedTextSizing?: boolean }>`
+const Layout = styled.div<{ excludePadding?: boolean, reducedTextSizing?: boolean; textGrid?: boolean; }>`
   ${cssThemedLightBackground}
-  ${layoutStyles}
+  ${({ textGrid }) => (textGrid ? textLayoutStyles : layoutStyles)}
   ${reducedTextSizing}
 
   box-sizing: border-box;

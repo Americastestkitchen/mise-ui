@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import { color, font, fontSize, grid, lineHeight, mixins, spacing } from '../../../styles';
+import { cssThemedFontBold } from '../../../styles/mixins';
 import { FeatureCardUserAttributions } from '../shared/UserAttributions';
 import Badge from '../../Badge';
 import FavoriteRibbonWithBg from '../shared/FavoriteRibbonWithBg';
@@ -95,6 +96,9 @@ const StyledTitle = styled(Title)`
   &:hover {
     color: ${color.white};
   }
+
+  ${({ themedTitle }) => (themedTitle && cssThemedFontBold)}
+  ${({ themedTitle }) => (themedTitle && 'font-size: 3.2rem; line-height: 3.6rem;')}
 `;
 
 const StyledSticker = styled(Sticker)`
@@ -114,7 +118,7 @@ const StyledFavoriteButtonWithBg = styled(FavoriteRibbonWithBg)`
 const Attributions = styled.p.attrs({
   className: 'feature-card__attributions',
 })`
-  font: ${fontSize.md}/${lineHeight.md} ${font.pnb};
+  font: ${fontSize.md}/${lineHeight.md} ${font.pnr};
 `;
 
 const CtaLink = styled.a`
@@ -145,6 +149,7 @@ const OriginalPricing = styled.p`
 function FeatureCard({
   attributions,
   avgRating,
+  themedTitle,
   className,
   commentsCount,
   contentType,
@@ -192,17 +197,6 @@ function FeatureCard({
           imageUrl={imageUrl}
           lazy={lazyImage}
         />
-        <StyledBadge className={className} type={siteKey} />
-        {displayFavoritesButton && siteKeyFavorites ? (
-          <StyledFavoriteButtonWithBg
-            className={className}
-            siteKey={siteKeyFavorites}
-            role="button"
-            isFavorited={isFavorited}
-            objectId={objectId}
-            title={title}
-          />
-        ) : null}
         <div className="feature-card__subcomponents-wrapper">
           <div className="feature-card__subcomponents-content">
             {stickers ? (
@@ -218,7 +212,7 @@ function FeatureCard({
                 ))}
               </StickerGroup>
             ) : null}
-            <StyledTitle className={className} title={title} />
+            <StyledTitle themedTitle={themedTitle} className={className} title={title} />
             <FeatureCardUserAttributions
               avgRating={avgRating}
               commentsCount={commentsCount || null}
@@ -244,6 +238,17 @@ function FeatureCard({
             </div>
           )}
         </div>
+        <StyledBadge className={className} type={siteKey} />
+        {displayFavoritesButton && siteKeyFavorites ? (
+          <StyledFavoriteButtonWithBg
+            className={className}
+            siteKey={siteKeyFavorites}
+            role="button"
+            isFavorited={isFavorited}
+            objectId={objectId}
+            title={title}
+          />
+        ) : null}
       </a>
       {ctaUrl && (
         <CtaLink
@@ -262,6 +267,7 @@ function FeatureCard({
 
 FeatureCard.propTypes = {
   attributions: PropTypes.string,
+  themedTitle: PropTypes.bool,
   className: PropTypes.string,
   contentType: PropTypes.string.isRequired,
   ctaDataAttrs: PropTypes.object,
@@ -296,6 +302,7 @@ FeatureCard.propTypes = {
 
 FeatureCard.defaultProps = {
   attributions: '',
+  themedTitle: false,
   className: '',
   ctaDataAttrs: null,
   ctaText: '',

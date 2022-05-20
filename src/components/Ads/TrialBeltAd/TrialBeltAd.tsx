@@ -2,29 +2,67 @@ import React from 'react';
 import cloudinaryInstance, { baseImageConfig } from '../../../lib/cloudinary';
 import { InferStyledTypes } from '../../../styles/utility-types';
 import DetailTriangleRight from '../components/DetailTriangleRight';
-import { ButtonArea, ClickArea, Description, Headline, ImageArea, TextArea } from './css/components';
+import {
+  AccentHeadline,
+  ButtonArea,
+  ClickArea,
+  Description,
+  GridImageArea,
+  Headline,
+  ImageArea,
+  TextArea,
+  VariantButtonArea,
+  VariantDescription,
+} from './css/components';
 import Layout from './Layout';
 
-export type TrialBeltAdProps = {
+export type TextTrialBeltProps = {
   /** Link for card click area. */
   href: string;
-  /** Image to render in 100x100 area */
-  cloudinaryId: string;
   /** Top line of text, read as html */
   headline: string;
   /** Text below headline, read as html */
   description: string;
   /** Text for button (button is a div since card is an anchor tag) */
   cta: string;
-  /** Reduced font sizes for larger text options. All defined in ./css/reducedTextSizing.ts. */
-  reducedTextSizing?: boolean;
   /**
    * Pass any additional props to the click area. This can be for
    *  analytics events, accessibility with "aria-label", or any other
    *  property unseen for future requirements on the anchor tag.
    */
   linkProps?: InferStyledTypes<typeof ClickArea>;
+}
+
+export type TrialBeltAdProps = TextTrialBeltProps & {
+  /** Reduced font sizes for larger text options. All defined in ./css/reducedTextSizing.ts. */
+  reducedTextSizing?: boolean;
+  /** Image to render in 100x100 area */
+  cloudinaryId: string;
 };
+
+export function TextTrialBeltAd({
+  href,
+  headline,
+  description,
+  cta,
+  linkProps = {},
+}: TextTrialBeltProps) {
+  return (
+    <Layout reducedTextSizing textGrid>
+      <ClickArea href={href} {...linkProps}>
+        <GridImageArea>
+          <AccentHeadline dangerouslySetInnerHTML={{ __html: headline }} />
+        </GridImageArea>
+        <TextArea>
+          <VariantDescription dangerouslySetInnerHTML={{ __html: description }} />
+        </TextArea>
+        <VariantButtonArea>
+          {cta}<DetailTriangleRight />
+        </VariantButtonArea>
+      </ClickArea>
+    </Layout>
+  );
+}
 
 export default function TrialBeltAd({
   href,

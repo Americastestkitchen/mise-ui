@@ -19,7 +19,7 @@ const PersonCardWrapperTheme = {
     background-color: ${({ mode }) => (mode === 'dark' ? color.smokeyQuartz : color.white)};
 
     .person-head-shot {
-      margin-bottom: ${spacing.md};
+      margin-bottom: ${spacing.sm};
     }
   `,
   cco: css`
@@ -34,7 +34,7 @@ const PersonCardWrapper = styled.div`
 const PersonCardNameTheme = {
   default: css`
     font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb};
-    margin-bottom: ${spacing.sm};
+    margin-bottom: ${spacing.xsm};
   `,
   atk: css`
     color: ${({ mode }) => (mode === 'dark' ? color.white : color.eclipse)};

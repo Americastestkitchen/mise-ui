@@ -35,6 +35,7 @@ import FinePrint from './components/Articles/FinePrint';
 import FreeTrialAd from './components/Ads/ShowcaseAds/FreeTrialAd';
 import HeroAd from './components/Ads/HeroAd';
 import HeroCard from './components/Cards/HeroCard';
+import HomepageTagline from './components/HomepageTagline';
 import InlineNewsletter from './components/Newsletters/InlineNewsletter';
 import ImageListContainer from './components/Articles/ImageList/ImageListContainer';
 import ImageListItem from './components/Articles/ImageList/ImageListItem';
@@ -89,6 +90,8 @@ import fonts from './styles/fonts';
 import globalStyle from './styles/global';
 import { color, font, fontSize, mixins, spacing } from './styles';
 
+export * from './styles/mixins';
+
 export { default as DisplayBeltAd } from './components/Ads/DisplayBeltAd';
 export * from './components/Ads/DisplayBeltAd';
 
@@ -115,6 +118,15 @@ export { default as LinkFarm } from './components/Articles/LinkFarm';
 
 export * from './components/Carousels/BaseCarousel';
 export { default as BaseCarousel } from './components/Carousels/BaseCarousel';
+
+export * from './components/Cards/RelatedRecipeCard';
+export { default as RelatedRecipeCard } from './components/Cards/RelatedRecipeCard';
+
+export * from './components/Cards/ArticleCard';
+export { default as ArticleCard } from './components/Cards/ArticleCard';
+
+export * from './components/Cards/VideoCard';
+export { default as VideoCard } from './components/Cards/VideoCard';
 
 export {
   Accordion,
@@ -161,6 +173,7 @@ export {
   globalStyle,
   HeroAd,
   HeroCard,
+  HomepageTagline,
   ImageListContainer,
   ImageListItem,
   Image,

@@ -3,6 +3,7 @@ const color = {
   black: '#000000',
   cuttySark: '#57797b',
   tomato: '#d73a15',
+  tomatoTint: '#d73a19',
   rust: '#a72e12',
   wildSand: '#f4f4f4',
   whiteSmoke: '#f5f5f5',
@@ -102,8 +103,11 @@ const color = {
   greenWhite: '#e7eae1',
   queenBlue: '#426491',
   pearlBush: '#ede8de',
+  sonicSilver: '#757575',
   alabaster: '#f7f7f7',
   kashmirBlue: '#416491',
-};
+  prairieSand: '#9a3721',
+  tabascoNew: '#a72e14',
+} as const;
 
 export default color;
