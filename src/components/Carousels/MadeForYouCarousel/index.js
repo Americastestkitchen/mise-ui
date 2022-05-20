@@ -16,11 +16,8 @@ const CarouselWrapper = styled.div`
 `;
 
 const StyledTitle = styled(Title)`
-  display: flex;
-  align-items: center;
-
-  span {
-    margin-bottom: 0;
+  > span {
+    margin: 8px 0 0 6px;
   }
 `;
 

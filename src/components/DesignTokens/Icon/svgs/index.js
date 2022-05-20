@@ -7,6 +7,7 @@ import Checkmark2 from './Checkmark2';
 import ChefHat from './ChefHat';
 import ChevronThinDown from './ChevronThinDown';
 import Close from './Close';
+import CloseV2 from './CloseV2';
 import Collection from './Collection';
 import Comment from './Comment';
 import Content from './Content';
@@ -52,6 +53,7 @@ export {
   ChefHat,
   ChevronThinDown,
   Close,
+  CloseV2,
   Comment,
   Content,
   Collection,

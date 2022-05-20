@@ -16,7 +16,7 @@ import SuggestionCardWrapper from './components/SuggestionCardWrapper';
 import SuggestionCardStickers from './components/SuggestionCardStickers';
 import ActionSummaryItem from '../../ActionSummaryItem';
 import { FavoriteRibbon } from '../../DesignTokens/Icon';
-import { Close } from '../../DesignTokens/Icon/svgs';
+import { CloseV2 } from '../../DesignTokens/Icon/svgs';
 import { color } from '../../../styles';
 
 const SuggestionCard = ({
@@ -48,7 +48,7 @@ const SuggestionCard = ({
       <SuggestionCardActions>
         <div className="button-container">
           <SuggestionCardAction
-            className="skip remove-cell"
+            className="remove-cell no-skip close-v2"
             data-event-name="RECOMMENDATION_REJECTED"
             data-document-title={title}
             data-favoritable-id={objectId}
@@ -59,11 +59,7 @@ const SuggestionCard = ({
             data-testid="suggestion-action__skip"
             aria-label="reject recipe suggestion"
           >
-            <Close
-              ariaHidden
-              ariaLabel=""
-              fill={color.eclipse}
-            />
+            <CloseV2 />
           </SuggestionCardAction>
           <span>Pass</span>
         </div>

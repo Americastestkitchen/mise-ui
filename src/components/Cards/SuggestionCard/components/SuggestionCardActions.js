@@ -27,7 +27,7 @@ const SuggestionCardActions = styled.div.attrs({
   }
 
   ${breakpoint('md')`
-    bottom: -9rem;
+    bottom: -7.8rem;
   `}
 `;
 
