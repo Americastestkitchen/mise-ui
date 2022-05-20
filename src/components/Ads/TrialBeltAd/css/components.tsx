@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { font, color } from '../../../../styles';
 import { cssThemedColor } from '../../../../styles/mixins';
-import { md, xlg } from '../../../../styles/breakpoints';
+import { md, lg, xlg } from '../../../../styles/breakpoints';
 import { cssThemedButton } from './shared';
 
 export const AccentHeadline = styled.p`
@@ -35,6 +35,7 @@ export const Description = styled.p`
 export const VariantDescription = styled(Description)`
   max-width: 27.5rem;
   ${md(css`max-width: 42rem;`)}
+  ${lg(css`max-width: 100%;`)}
 `;
 
 export const TextArea = styled.div`
@@ -71,6 +72,10 @@ export const ButtonArea = styled.div`
   letter-spacing: 2.88px;
   color: ${color.white};
   text-transform: uppercase;
+`;
+
+export const VariantButtonArea = styled(ButtonArea)`
+  ${xlg('margin-right: 0 !important;')}
 `;
 
 export const ClickArea = styled.a`

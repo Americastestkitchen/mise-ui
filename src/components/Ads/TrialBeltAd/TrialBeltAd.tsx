@@ -11,6 +11,7 @@ import {
   Headline,
   ImageArea,
   TextArea,
+  VariantButtonArea,
   VariantDescription,
 } from './css/components';
 import Layout from './Layout';
@@ -55,9 +56,9 @@ export function TextTrialBeltAd({
         <TextArea>
           <VariantDescription dangerouslySetInnerHTML={{ __html: description }} />
         </TextArea>
-        <ButtonArea>
+        <VariantButtonArea>
           {cta}<DetailTriangleRight />
-        </ButtonArea>
+        </VariantButtonArea>
       </ClickArea>
     </Layout>
   );
