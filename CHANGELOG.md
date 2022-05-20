@@ -1,3 +1,19 @@
+# v1.33.19 (Fri May 20 2022)
+
+#### 🐛 Bug Fix
+
+- Feature homepages extension [#745](https://github.com/Americastestkitchen/mise-ui/pull/745) (jess.bon@americastestkitchen.com [@harry-atk](https://github.com/harry-atk) [@ttornese](https://github.com/ttornese) [@tdorin](https://github.com/tdorin))
+- CORE-370 CORE-386: final minor style adjustments for homepage extension release [#744](https://github.com/Americastestkitchen/mise-ui/pull/744) ([@ttornese](https://github.com/ttornese))
+
+#### Authors: 4
+
+- [@tdorin](https://github.com/tdorin)
+- Harry Scheuerle ([@harry-atk](https://github.com/harry-atk))
+- Jess Bon (jess.bon@americastestkitchen.com)
+- Tom Tornese ([@ttornese](https://github.com/ttornese))
+
+---
+
 # v1.33.18 (Wed May 18 2022)
 
 #### 🐛 Bug Fix
