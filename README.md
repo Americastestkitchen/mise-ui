@@ -187,10 +187,12 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/twoodmanATK"><img src="https://avatars.githubusercontent.com/u/91677751?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Tim Woodman</b></sub></a><br /><a href="https://github.com/americastestkitchen/americastestkitchen/mise-ui/commits?author=twoodmanATK" title="Code">💻</a> <a href="https://github.com/americastestkitchen/americastestkitchen/mise-ui/commits?author=twoodmanATK" title="Documentation">📖</a> <a href="#example-twoodmanATK" title="Examples">💡</a></td>
     <td align="center"><a href="https://github.com/oddwili"><img src="https://avatars.githubusercontent.com/u/6622568?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Audrey Magwili</b></sub></a><br /><a href="https://github.com/americastestkitchen/americastestkitchen/mise-ui/commits?author=oddwili" title="Code">💻</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/tdorin"><img src="https://avatars.githubusercontent.com/u/104532100?v=4?s=100" width="100px;" alt=""/><br /><sub><b>tdorin</b></sub></a><br /><a href="https://github.com/americastestkitchen/americastestkitchen/mise-ui/commits?author=tdorin" title="Documentation">📖</a> <a href="#example-tdorin" title="Examples">💡</a> <a href="https://github.com/americastestkitchen/americastestkitchen/mise-ui/commits?author=tdorin" title="Code">💻</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-restore -->
-
 <!-- prettier-ignore-end -->
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->

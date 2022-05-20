@@ -84,6 +84,17 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "tdorin",
+      "name": "tdorin",
+      "avatar_url": "https://avatars.githubusercontent.com/u/104532100?v=4",
+      "profile": "https://github.com/tdorin",
+      "contributions": [
+        "doc",
+        "example",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
