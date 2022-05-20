@@ -88,6 +88,17 @@ export const Close = ({ ariaLabel, fill }) => (
 
 Close.propTypes = Icons.Close.propTypes;
 
+export const CloseV2 = ({ ariaLabel, fill }) => (
+  <Icon>
+    <Icons.CloseV2
+      ariaLabel={ariaLabel}
+      fill={fill}
+    />
+  </Icon>
+);
+
+CloseV2.propTypes = Icons.CloseV2.propTypes;
+
 export const Collection = ({ fill }) => (
   <Icon>
     <Icons.Collection
