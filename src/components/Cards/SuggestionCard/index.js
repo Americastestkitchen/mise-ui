@@ -87,7 +87,7 @@ const SuggestionCard = ({
     </SuggestionCardImage>
     <SuggestionCardContent>
       <SuggestionCardContentInner>
-        {stickers.length > 1 ? (
+        {stickers ? (
           <SuggestionCardStickers
             stickers={stickers}
           />
@@ -139,7 +139,7 @@ SuggestionCard.defaultProps = {
   imageUrl: null,
   numRatings: null,
   subtitle: null,
-  stickers: [],
+  stickers: null,
 };
 
 SuggestionCard.Loading = LoadingSuggestionCard;

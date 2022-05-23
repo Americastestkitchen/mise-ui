@@ -12,9 +12,6 @@ export default {
       avgRating: null,
       // comments: 82,
       numRatings: 38,
-      stickers: [
-        { type: 'editorial', text: 'Breakfast & Brunch' },
-      ],
     },
     {
       objectId: 'recipe_12376',
