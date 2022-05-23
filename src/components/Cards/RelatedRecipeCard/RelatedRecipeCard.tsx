@@ -118,7 +118,7 @@ const RelatedRecipeCard = ({
       <ImageWrapper>
         <img alt={altText} src={src} />
       </ImageWrapper>
-      <Content>
+      <Content className="related-recipe-card-content">
         {stickers ? (
           <StickerGroup>
             {stickers.map(({ contentType, icon, text, type }) => (
