@@ -17,7 +17,6 @@ const MadeForYouCardWrapper = styled.div`
     height: 264px;
     width: 100%;
     overflow: hidden;
-
     img {
       transition: all 0.3s ease 0s;
       object-fit: cover;
