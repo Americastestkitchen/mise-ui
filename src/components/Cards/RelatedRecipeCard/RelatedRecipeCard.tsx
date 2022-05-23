@@ -62,7 +62,6 @@ export const StickerGroup = styled.div`
   bottom: 0;
   display: flex;
   flex-shrink: 0;
-  margin-bottom: 8px;
 `;
 
 const StyledSticker = styled(Sticker)`
