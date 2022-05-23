@@ -13,7 +13,7 @@ const SurveyForm = styled.form`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 `;
 
 const SurveyCardOption = styled.label`

@@ -14,8 +14,7 @@ import SuggestionCardSubTitle from './components/SuggestionCardSubTitle';
 import SuggestionCardTitle from './components/SuggestionCardTitle';
 import SuggestionCardWrapper from './components/SuggestionCardWrapper';
 import SuggestionCardStickers from './components/SuggestionCardStickers';
-import { FavoriteRibbon } from '../../DesignTokens/Icon';
-import { CloseV2 } from '../../DesignTokens/Icon/svgs';
+import { FavoriteRibbon, CloseV2 } from '../../DesignTokens/Icon';
 import { color } from '../../../styles';
 
 const SuggestionCard = ({
@@ -63,7 +62,7 @@ const SuggestionCard = ({
         </div>
         <div className="button-container">
           <SuggestionCardAction
-            className="favorite-action remove-cell"
+            className="favorite-action no-skip remove-cell"
             data-event-name="RECOMMENDATION_ADDED"
             data-document-title={title}
             data-favoritable-id={objectId}
