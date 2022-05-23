@@ -132,6 +132,10 @@ const CtaLink = styled.a`
   left: ${spacing.xsm};
   position: absolute;
   z-index: 2;
+
+  &:focus {
+    ${mixins.focusIndicator()};
+  }
 `;
 
 const PricingWrapper = styled.div`
