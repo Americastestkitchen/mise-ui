@@ -345,7 +345,10 @@ StandardCard.propTypes = {
   stickers: PropTypes.array,
   target: PropTypes.string,
   title: PropTypes.string.isRequired,
+<<<<<<< HEAD
   renderImage: PropTypes.func,
+=======
+>>>>>>> 5385d6f4 (add quickview button)
   quickViewButton: PropTypes.node,
 };
 
