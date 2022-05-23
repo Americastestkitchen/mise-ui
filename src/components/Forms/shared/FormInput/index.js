@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 
 import FormError from '../FormError';
 import FormLabel from '../FormLabel';
-import { color, font, fontSize, withThemes } from '../../../../styles';
+import { color, font, fontSize, withThemes, mixins } from '../../../../styles';
 
 const FormInputTheme = {
   default: css`
@@ -23,6 +23,7 @@ const FormInputTheme = {
     }
 
     &:focus {
+      ${mixins.focusIndicator()};
       outline: ${({ error }) => (error ? 'red auto 1px' : '')}
     }
   `,
