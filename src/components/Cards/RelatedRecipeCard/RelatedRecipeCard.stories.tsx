@@ -25,6 +25,22 @@ const defaultArgs: RelatedRecipeCardProps = {
   numRatings: 7,
   linkProps: { href: '4122-irish-stew-with-carrots-and-turnips' },
   cloudinaryId: imageUrls.atk,
+  stickers: [
+    {
+      contentType: 'collection',
+      type: 'priority',
+      text: 'New',
+      className: 'sticker',
+      icon: '',
+    },
+    {
+      className: 'sticker',
+      contentType: 'collection',
+      icon: 'collection',
+      text: '22 Recipes',
+      type: 'editorial',
+    },
+  ],
 };
 
 const PreviewRelatedRecipeCard = ({ theme, props }: PreviewProps) => (

@@ -5,6 +5,7 @@ import { color, font, withThemes } from '../../../styles';
 import { UserAttributions } from '../shared/UserAttributions';
 import mixins, { cssThemedColor } from '../../../styles/mixins';
 import { InferStyledTypes } from '../../../styles/utility-types';
+import Sticker from '../shared/Sticker';
 
 const CtaLink = styled.a`
   display: flex;
@@ -38,7 +39,7 @@ const Content = styled.div`
 
 const Headline = styled.span`
   ${cssThemedColor}
-  ${mixins.truncateLineClamp(4)}
+  ${mixins.truncateLineClamp(3)}
   font-size: 16px;
   font-family: ${font.pnb};
   line-height: 23px;
@@ -57,6 +58,36 @@ const ImageWrapper = styled.div`
   }
 `;
 
+export const StickerGroup = styled.div`
+  bottom: 0;
+  display: flex;
+  flex-shrink: 0;
+  margin-bottom: 8px;
+`;
+
+const StyledSticker = styled(Sticker)`
+  margin-bottom: 0;
+  &:first-child {
+    margin-left: 0;
+  }
+`;
+
+type ContentTypeProps =
+  | 'collection'
+  | 'clip'
+  | 'episode'
+  | 'playlist'
+  | 'video'
+  | 'cooking school course';
+
+  interface IStickers {
+    className: string;
+    contentType: ContentTypeProps;
+    icon: string;
+    text: string;
+    type: string;
+  }
+
 export type RelatedRecipeCardProps = {
   altText?: string;
   avgRating?: number;
@@ -64,6 +95,7 @@ export type RelatedRecipeCardProps = {
   commentsCount?: number;
   headline: string;
   numRatings?: number;
+  stickers: IStickers[];
   linkProps: InferStyledTypes<typeof CtaLink>;
 };
 
@@ -75,6 +107,7 @@ const RelatedRecipeCard = ({
   linkProps,
   commentsCount = 0,
   numRatings = 0,
+  stickers,
 }: RelatedRecipeCardProps) => {
   const src = cloudinaryInstance.url(cloudinaryId, {
     ...baseImageConfig,
@@ -82,11 +115,24 @@ const RelatedRecipeCard = ({
     height: 128,
   });
   return (
-    <CtaLink {...linkProps}>
+    <CtaLink {...linkProps} className="related-recipe-card">
       <ImageWrapper>
         <img alt={altText} src={src} />
       </ImageWrapper>
       <Content>
+        {stickers ? (
+          <StickerGroup>
+            {stickers.map(({ contentType, icon, text, type }) => (
+              <StyledSticker
+                contentType={contentType}
+                key={text}
+                icon={icon}
+                text={text}
+                type={type}
+              />
+            ))}
+          </StickerGroup>
+        ) : null}
         <Headline>{headline}</Headline>
         <UserAttributions
           avgRating={avgRating}
