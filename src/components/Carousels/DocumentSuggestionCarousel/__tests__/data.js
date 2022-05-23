@@ -8,6 +8,13 @@ export default {
       dek: '<p>Would we be able to create a silky, creamy pasta dish without the added cheese?</p>',
       imageUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/ar_3:4,c_fill,dpr_2.0,f_auto,fl_lossy,g_faces:auto,h_400,q_auto:low/43350-sfs-spaghetti-aglio-e-olio-68',
       siteKey: 'atk',
+      resourceType: 'recipe',
+      avgRating: 4.2,
+      // comments: 82,
+      numRatings: 38,
+      stickers: [
+        { type: 'editorial', text: 'Breakfast & Brunch' },
+      ],
     },
     {
       objectId: 'recipe_12376',
@@ -17,6 +24,13 @@ export default {
       dek: '<p>We break down this pro technique to produce flawless, flavorful fillets.</p>',
       imageUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/ar_3:4,c_fill,dpr_2.0,f_auto,fl_lossy,g_faces:auto,h_400,q_auto:low/SFS_butter_basted_fish_fillets_garlic_thyme-114_1_ndjdam',
       siteKey: 'atk',
+      avgRating: 4.2,
+      resourceType: 'recipe',
+      comments: 82,
+      numRatings: 38,
+      stickers: [
+        { type: 'editorial', text: 'Side Dishes' },
+      ],
     },
     {
       objectId: 'recipe_14018',
@@ -26,6 +40,13 @@ export default {
       dek: '<p><span class="ql-color-#0f0f0f">Orzo studded with roasted eggplant, tomatoes, and bell pepper is the perfect accompaniment to these meaty glazed steaks.</span></p>',
       imageUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/ar_3:4,c_fill,dpr_2.0,f_auto,fl_lossy,g_faces:auto,h_400,q_auto:low/SFS_BalsamicGlazedStripSteaksSummerVegetableOrzo-49_grkg7q',
       siteKey: 'atk',
+      avgRating: 4.2,
+      resourceType: 'recipe',
+      comments: 82,
+      numRatings: 38,
+      stickers: [
+        { type: 'editorial', text: 'Weeknight' },
+      ],
     },
     {
       objectId: 'recipe_8835',
@@ -35,6 +56,13 @@ export default {
       dek: "<p>Onions are the surprising key to this dish's rich flavor, but in the slow cooker, they misbehaved.</p>",
       imageUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/ar_3:4,c_fill,dpr_2.0,f_auto,fl_lossy,g_faces:auto,h_400,q_auto:low/29734_sfs-slow-cooker-beef-and-onion-ragu-19',
       siteKey: 'atk',
+      avgRating: 4.2,
+      resourceType: 'recipe',
+      comments: 82,
+      numRatings: 38,
+      stickers: [
+        { type: 'editorial', text: 'Side Dishes' },
+      ],
     },
     {
       objectId: 'recipe_4060',
@@ -44,6 +72,13 @@ export default {
       dek: '',
       imageUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/ar_3:4,c_fill,dpr_2.0,f_auto,fl_lossy,g_faces:auto,h_400,q_auto:low/29840_sfs-zucchini-and-tomato-tian-with-caramelized-onions-007',
       siteKey: 'atk',
+      avgRating: 4.2,
+      resourceType: 'recipe',
+      comments: 82,
+      numRatings: 38,
+      stickers: [
+        { type: 'editorial', text: 'Side Dishes' },
+      ],
     },
   ],
 };

@@ -108,6 +108,8 @@ const color = {
   kashmirBlue: '#416491',
   prairieSand: '#9a3721',
   tabascoNew: '#a72e14',
+  salsaMexicana: '#a72e14',
+  grayishCyan: '#437072',
 } as const;
 
 export default color;

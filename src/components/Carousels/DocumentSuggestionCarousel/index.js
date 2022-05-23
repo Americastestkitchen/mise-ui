@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import CardCarousel from '../CardCarousel';
+import BaseCarousel from '../BaseCarousel';
 import SuggestionCard from '../../Cards/SuggestionCard';
 import { color, font, fontSize, letterSpacing, lineHeight, spacing, withThemes } from '../../../styles';
 
@@ -28,11 +28,11 @@ export const Title = styled.h2.attrs({
 
 const SubtitleTheme = {
   default: css`
-    color: ${color.nobel};
-    font: 700 ${fontSize.xsm}/1 ${font.msr};
+    color: ${color.eclipse};
+    font: normal ${fontSize.md}/1 ${font.mwr};
     letter-spacing: ${letterSpacing.md};
-    margin-bottom: ${spacing.sm};
-    text-transform: uppercase;
+    margin-bottom: ${spacing.xsm};
+    font-style: italic;
 
     ${breakpoint('xs', 'md')`
       padding-right: ${spacing.md};
@@ -40,7 +40,7 @@ const SubtitleTheme = {
   `,
 };
 
-export const Subtitle = styled.h3.attrs({
+export const Subtitle = styled.span.attrs({
   className: 'document-suggestion-carousel__subtitle',
 })`${withThemes(SubtitleTheme)}`;
 
@@ -57,6 +57,14 @@ const DocumentListCarouselTheme = {
           width: calc(100% - 6.4rem);
         }
       }
+
+      .flickity-viewport {
+        height: 52rem !important;
+
+        ${breakpoint('md')`
+          height: 32rem !important;
+        `}
+      }
     }
 
     div.carousel-cell {
@@ -65,9 +73,8 @@ const DocumentListCarouselTheme = {
       }
     }
 
-    ${breakpoint('xs', 'md')`
-      margin-left: ${spacing.sm};
 
+    ${breakpoint('xs', 'md')`
       .carousel-cell {
         width: calc(100% - ${spacing.sm});
       }
@@ -80,43 +87,51 @@ const DocumentListCarouselWrapper = styled.div`
 `;
 
 const DocumentSuggestionCarousel = ({
-  initialIndex,
+  // initialIndex,
   items,
   loading,
-  subtitle,
   title,
+  subtitle,
 }) => (
   <DocumentListCarouselWrapper
     className="document-suggestion-carousel"
   >
-    <Title>{title}</Title>
-    {subtitle && (
-      <Subtitle>
-        {subtitle}
-      </Subtitle>
-    )}
+    <Subtitle>{subtitle}</Subtitle>
     {loading ? (
-      <SuggestionCard.Loading />
-    ) : (
-      <CardCarousel
-        cellAlign="left"
-        className="document-suggestion-carousel"
-        extraOptions={{ initialIndex, slideshow: true, wrapAround: true }}
-        items={items}
-        gradient={{
-          endColor: 'transparent',
-          startColor: 'transparent',
-        }}
+      <SuggestionCard.Loading
         title={title}
-        type="suggestion"
+        subtitle={subtitle}
       />
+    ) : (
+      <BaseCarousel
+        title={title}
+        showDivider
+      >
+        {items.map((item, idx) => (
+          <SuggestionCard
+            dataIdx={idx}
+            key={`carousel-cell-${item.objectId}`}
+            avgRating={item.avgRating}
+            numRatings={item.numRatings}
+            comments={item.comments}
+            href={item.href}
+            imageUrl={item.imageUrl}
+            objectId={item.objectId}
+            siteKey={item.siteKey}
+            subtitle={item.subtitle}
+            title={item.title}
+            stickers={item.stickers}
+            resourceType={item.resourceType}
+          />
+        ))}
+      </BaseCarousel>
     )}
   </DocumentListCarouselWrapper>
 );
 
 DocumentSuggestionCarousel.propTypes = {
   /** Index of the slide to display upon initialization */
-  initialIndex: PropTypes.number,
+  // initialIndex: PropTypes.number,
   loading: PropTypes.bool,
   /** List of items for the carousel */
   items: PropTypes.array.isRequired,
@@ -127,7 +142,7 @@ DocumentSuggestionCarousel.propTypes = {
 };
 
 DocumentSuggestionCarousel.defaultProps = {
-  initialIndex: 0,
+  // initialIndex: 0,
   loading: false,
   subtitle: null,
 };

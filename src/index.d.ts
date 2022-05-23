@@ -19,4 +19,9 @@ interface Window {
      * undefined if `//www.instagram.com/embed.js` not or not yet loaded
      */
     instgrm?: { Embeds: { process: () => void } };
+    dry: {
+        events: {
+            publish: (evt: unknown, data: unknown) => void
+        }
+    }
 }

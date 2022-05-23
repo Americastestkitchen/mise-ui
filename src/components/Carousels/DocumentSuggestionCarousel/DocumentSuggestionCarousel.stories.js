@@ -48,6 +48,6 @@ export const Default = Template.bind({});
 Default.args = {
   ...Default.args,
   items: data.suggestionItems,
-  subtitle: 'Based on your current favorites',
-  title: 'Discover more favorites from the Test Kitchen',
+  title: 'Discover New Favorites',
+  subtitle: 'Based on Recent Activity',
 };
