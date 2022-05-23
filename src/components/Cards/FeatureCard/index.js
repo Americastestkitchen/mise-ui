@@ -113,6 +113,10 @@ const StyledFavoriteButtonWithBg = styled(FavoriteRibbonWithBg)`
   position: absolute;
   top: 0.6rem;
   right: 0.6rem;
+
+  &:focus {
+    ${mixins.focusIndicator()};
+  }
 `;
 
 const Attributions = styled.p.attrs({
