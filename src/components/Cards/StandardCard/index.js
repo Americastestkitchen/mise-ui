@@ -200,6 +200,7 @@ function StandardCard({
   target,
   title,
   href,
+  quickViewButton,
 }) {
   const ImageItem = Array.isArray(imageUrl) ? ImageCollage : Image;
   let stickerAria = '';
@@ -271,6 +272,7 @@ function StandardCard({
               title={title}
             />
           ) : null }
+          {quickViewButton}
         </TitleWrapper>
       </>
       {searchAttribution && (
@@ -337,6 +339,7 @@ StandardCard.propTypes = {
   stickers: PropTypes.array,
   target: PropTypes.string,
   title: PropTypes.string.isRequired,
+  quickViewButton: PropTypes.node,
 };
 
 StandardCard.defaultProps = {
@@ -365,6 +368,7 @@ StandardCard.defaultProps = {
   siteKeyFavorites: null,
   stickers: [],
   target: null,
+  quickViewButton: null,
 };
 
 export default React.memo(StandardCard, (prev, next) => (
