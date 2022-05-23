@@ -1,28 +1,24 @@
 import styled from 'styled-components';
 
-import { color, spacing } from '../../../../styles';
+import { color } from '../../../../styles';
 
 const SuggestionCardAction = styled.button.attrs({
   className: 'suggestion-card__button',
 })`
-  align-items: center;
   display: flex;
-  height: 4rem;
   justify-content: center;
-  padding: 0;
-  vertical-align: middle;
-  width: calc(50% - ${spacing.xsm});
-
-  &:first-child {
-    margin-right: ${spacing.sm};
-  }
-
-  span {
-    padding-left: ${spacing.sm};
-  }
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: white;
+  box-shadow:  0 3px 6px 0 rgba(0, 0, 0, 0.16);
 
   svg {
-
+    &.favorite-ribbon {
+      height: 13px;
+      width: 9.3px;
+    }
     &.close {
       height: 1.2rem;
       width: 1.2rem;
@@ -30,16 +26,17 @@ const SuggestionCardAction = styled.button.attrs({
   }
 
   &.skip {
-    background-color: ${color.white};
-    border: 1px solid ${color.suvaGray};
-    color: ${color.eclipse};
+    svg g {
+      stroke: ${color.eclipse};
+      stroke-width: 2.5;
+    }
 
     @media(hover: hover) {
       &:hover {
         background-color: ${color.eclipse};
         border: 1px solid ${color.eclipse};
         color: ${color.white};
-  
+
         svg g {
           stroke: ${color.white};
         }
@@ -48,14 +45,19 @@ const SuggestionCardAction = styled.button.attrs({
   }
 
   &.favorite-action {
-    background-color: ${color.mint};
-    border: 1px solid ${color.mint};
-    color: ${color.white};
+
+    svg path.outer-stroke {
+      stroke: ${color.eclipse};
+      stroke-width: 4;
+    }
 
     @media(hover: hover) {
       &:hover {
         background-color: ${color.darkerMint};
-        border: 1px solid ${color.darkerMint};
+
+        svg path.outer-stroke {
+          stroke: ${color.white};
+        }
       }
     }
 
@@ -71,6 +73,16 @@ const SuggestionCardAction = styled.button.attrs({
       [class*="vertical-line"],
       [class*="horizontal-line"] {
         stroke: white;
+      }
+    }
+  }
+
+  &.close-v2 {
+    &:hover {
+      background-color: ${color.eclipse};
+      border: 1px solid ${color.eclipse};
+      path {
+        stroke: ${color.white};
       }
     }
   }

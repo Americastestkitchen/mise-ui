@@ -1,3 +1,5 @@
+import scrollToWithAnimation from 'scrollto-with-animation';
+
 const utils = {
   loadScriptFile(url, async = true, defer = false, location = 'head') {
     if (!url) return;
@@ -27,6 +29,12 @@ const utils = {
     link.href = url;
     const headScript = document.querySelector('script');
     headScript.parentNode.insertBefore(link, headScript);
+  },
+  scrollTo(yPos, duration = 250) {
+    // browser compatibility - some use documentElement, some body
+    [document.documentElement, document.body].forEach((el) => {
+      scrollToWithAnimation(el, 'scrollTop', yPos, duration, 'easeInOutCirc');
+    });
   },
 };
 

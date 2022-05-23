@@ -9,6 +9,7 @@ import ChefHat from './ChefHat';
 import ChevronThinDown from './ChevronThinDown';
 import CIOTagline from './CIOTagline';
 import Close from './Close';
+import CloseV2 from './CloseV2';
 import Collection from './Collection';
 import CookingPot from './CookingPot';
 import Comment from './Comment';
@@ -57,6 +58,7 @@ export {
   ChevronThinDown,
   CIOTagline,
   Close,
+  CloseV2,
   CookingPot,
   Comment,
   Content,

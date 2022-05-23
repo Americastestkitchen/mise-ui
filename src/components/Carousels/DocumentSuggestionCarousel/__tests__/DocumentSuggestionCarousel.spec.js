@@ -8,7 +8,15 @@ import breakpoints from '../../../../styles/breakpoints';
 import data from './data';
 import DocumentSuggestionCarousel from '../index';
 
+class ResizeObserver {
+  observe() {}
+
+  unobserve() {}
+}
+
 describe('DocumentListCarousel component should', () => {
+  window.ResizeObserver = ResizeObserver;
+
   const renderComponent = ({ subtitle, title }) => (
     render(
       <ThemeProvider theme={{ breakpoints }}>
