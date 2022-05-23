@@ -8,13 +8,12 @@ import SuggestionCardActions from './components/SuggestionCardActions';
 import SuggestionCardBadge from './components/SuggestionCardBadge';
 import SuggestionCardContent from './components/SuggestionCardContent';
 import SuggestionCardContentInner from './components/SuggestionCardContentInner';
-import RecipeAttributions from './components/RecipeAttributions';
+import { UserAttributions } from '../shared/UserAttributions';
 import SuggestionCardImage from './components/SuggestionCardImage';
 import SuggestionCardSubTitle from './components/SuggestionCardSubTitle';
 import SuggestionCardTitle from './components/SuggestionCardTitle';
 import SuggestionCardWrapper from './components/SuggestionCardWrapper';
 import SuggestionCardStickers from './components/SuggestionCardStickers';
-import ActionSummaryItem from '../../ActionSummaryItem';
 import { FavoriteRibbon } from '../../DesignTokens/Icon';
 import { CloseV2 } from '../../DesignTokens/Icon/svgs';
 import { color } from '../../../styles';
@@ -88,7 +87,7 @@ const SuggestionCard = ({
     </SuggestionCardImage>
     <SuggestionCardContent>
       <SuggestionCardContentInner>
-        {stickers.length > 0 ? (
+        {stickers.length > 1 ? (
           <SuggestionCardStickers
             stickers={stickers}
           />
@@ -107,26 +106,13 @@ const SuggestionCard = ({
             {subtitle}
           </SuggestionCardSubTitle>
         )}
-        <RecipeAttributions
-          // eslint-disable-next-line
-          aria-label={`${avgRating > 0 ? `${avgRating} star${avgRating === 1 ? '' : 's'} ${numRatings} rating${numRatings === 1 ? '' : 's'}` : ''} ${comments ? `${comments} comment${comments === 1 ? '' : 's'}` : ''}`}
-          aria-hidden={!avgRating && !comments}
-          role="presentation"
-          tabIndex={!avgRating && !comments ? '-1' : '0'}
-        >
-          <ThemeProvider theme={{ siteKey: 'atk' }}>
-            {avgRating && numRatings && (
-              <ActionSummaryItem icon="star">
-                <div aria-hidden="true"><strong>{avgRating}</strong>&nbsp;<span>{`(${numRatings})`}</span></div>
-              </ActionSummaryItem>
-            )}
-            {comments && (
-              <ActionSummaryItem icon="comment">
-                <strong aria-hidden="true">{comments}</strong>
-              </ActionSummaryItem>
-            )}
-          </ThemeProvider>
-        </RecipeAttributions>
+        <ThemeProvider theme={{ siteKey: 'atk' }}>
+          <UserAttributions
+            avgRating={avgRating}
+            commentsCount={comments}
+            numRatings={numRatings}
+          />
+        </ThemeProvider>
       </SuggestionCardContentInner>
     </SuggestionCardContent>
   </SuggestionCardWrapper>
@@ -149,7 +135,7 @@ SuggestionCard.propTypes = {
 
 SuggestionCard.defaultProps = {
   avgRating: null,
-  comments: null,
+  comments: 0,
   imageUrl: null,
   numRatings: null,
   subtitle: null,

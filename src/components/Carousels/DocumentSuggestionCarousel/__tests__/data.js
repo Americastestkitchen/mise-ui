@@ -9,7 +9,7 @@ export default {
       imageUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/ar_3:4,c_fill,dpr_2.0,f_auto,fl_lossy,g_faces:auto,h_400,q_auto:low/43350-sfs-spaghetti-aglio-e-olio-68',
       siteKey: 'atk',
       resourceType: 'recipe',
-      avgRating: 4.2,
+      avgRating: null,
       // comments: 82,
       numRatings: 38,
       stickers: [
