@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { font, color } from '../../../../styles';
+import { font, color, mixins } from '../../../../styles';
 import { cssThemedColor } from '../../../../styles/mixins';
 import { md, xlg } from '../../../../styles/breakpoints';
 import { cssThemedButton } from './shared';
@@ -77,4 +77,8 @@ export const ClickArea = styled.a`
   display: grid; 
   gap: 0px 0px; 
   width: 100%;
+  
+  &:focus {
+    ${mixins.focusIndicator()};
+  }
 `;
