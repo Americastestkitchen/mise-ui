@@ -114,7 +114,7 @@ const RelatedRecipeCard = ({
     height: 128,
   });
   return (
-    <CtaLink {...linkProps} className="related-recipe-card">
+    <CtaLink {...linkProps} className="related-recipe-card" title={headline}>
       <ImageWrapper>
         <img alt={altText} src={src} />
       </ImageWrapper>
@@ -132,7 +132,7 @@ const RelatedRecipeCard = ({
             ))}
           </StickerGroup>
         ) : null}
-        <Headline>{headline}</Headline>
+        <Headline className="headline">{headline}</Headline>
         <UserAttributions
           avgRating={avgRating}
           commentsCount={commentsCount}
