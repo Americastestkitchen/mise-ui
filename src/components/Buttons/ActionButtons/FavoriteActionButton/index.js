@@ -16,6 +16,7 @@ const ButtonWrapper = styled.div.attrs({
   width: 16.3rem;
 `;
 
+
 const StyledFavoriteRibbon = styled(FavoriteRibbon)``;
 
 const StyledButton = styled(Button)`
