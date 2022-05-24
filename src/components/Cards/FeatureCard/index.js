@@ -239,7 +239,7 @@ function FeatureCard({
           )}
         </div>
         <StyledBadge className={className} type={siteKey} />
-        {displayFavoritesButton && siteKeyFavorites ? (
+        {displayFavoritesButton && siteKeyFavorites && objectId ? (
           <StyledFavoriteButtonWithBg
             className={className}
             siteKey={siteKeyFavorites}
