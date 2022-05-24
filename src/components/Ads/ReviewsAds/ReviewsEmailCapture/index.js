@@ -29,7 +29,7 @@ const cssThemedBackground = withThemes({
 const cssThemedBorder = withThemes({
   atk: css`border: solid 1px #D8D8D8;`,
   cco: css`border: solid 1px #E5E5E5;`,
-  cio: css`border: solid 1px #858585;`,
+  cio: css`border: solid 1px #d3c5a0;`,
 });
 
 const AdDescription = styled.p`

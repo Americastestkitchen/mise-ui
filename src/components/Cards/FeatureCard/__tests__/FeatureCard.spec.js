@@ -20,7 +20,7 @@ describe('FeatureCard component should', () => {
           siteKey="cco"
           siteKeyFavorites="cco"
           stickers={[{ type: 'priority', text: 'New' }, { type: 'editorial', text: '28:03' }]}
-          objectId=""
+          objectId="recipe_13333"
           title="Tacos Two Ways"
           href="https://www.americastestkitchen.com/equipment_reviews/1879-plastic-food-storage-containers?ref=new_search_experience_2"
         />

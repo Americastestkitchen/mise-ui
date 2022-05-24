@@ -92,6 +92,7 @@ const RelatedRecipeCard = ({
           avgRating={avgRating}
           commentsCount={commentsCount}
           numRatings={numRatings}
+          hideEmptyAttributions
         />
       </Content>
     </CtaLink>
