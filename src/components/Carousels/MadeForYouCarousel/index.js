@@ -11,7 +11,7 @@ import Sticker from '../../Cards/shared/Sticker';
 
 const CarouselWrapper = styled.div`
   > div {
-    margin-right: 20px;
+    margin-right: 16px;
   }
 `;
 
