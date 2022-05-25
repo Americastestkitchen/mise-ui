@@ -200,12 +200,14 @@ const AudioPlayer = ({
         ],
       };
     } else {
+      // eslint-disable-next-line no-undef
       setTimeout(checkPlyr, 500);
     }
   }, [playerInstance, playerEl, id, title]);
 
   // destroy player and garbage collect
   useEffect(() => {
+    // eslint-disable-next-line no-undef
     setTimeout(() => {
       utils.loadScriptFile('cdn.plyr.io/3.6.4/plyr.js', false, true, 'footer');
       utils.loadCssFile('https://cdn.plyr.io/3.6.4/plyr.css');

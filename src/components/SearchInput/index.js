@@ -112,9 +112,9 @@ class StyledSearchBox extends Component {
 
   componentDidMount() {
     /*
-       Value swapping is done here because on some browsers focusing on the
-       input element on mount will place the cursor at the beginning of the
-       search query rather than at the end.
+      Value swapping is done here because on some browsers focusing on the
+      input element on mount will place the cursor at the beginning of the
+      search query rather than at the end.
     */
     const tempVal = this.input.value;
     this.input.focus();
@@ -127,9 +127,11 @@ class StyledSearchBox extends Component {
   }
 
   onChangeDebounced = (evt) => {
+    // eslint-disable-next-line no-undef
     clearTimeout(this.timerId);
     const { handleChange, refine, delay } = this.props;
     const value = evt.currentTarget.value;
+    // eslint-disable-next-line no-undef
     this.timerId = setTimeout(
       () => {
         refine(value);
@@ -143,6 +145,7 @@ class StyledSearchBox extends Component {
     const { handleSubmit } = this.props;
     evt.preventDefault();
     evt.stopPropagation();
+    // eslint-disable-next-line no-undef
     clearTimeout(this.timerId);
     this.input.blur();
     if (handleSubmit) handleSubmit();

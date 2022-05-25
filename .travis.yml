@@ -1,5 +1,5 @@
 language: node_js
-node_js: '12'
+node_js: '16'
 env:
   global:
     - GIT_NAME="Domain Management"
@@ -13,7 +13,6 @@ script:
   - yarn test
   - yarn build
   - yarn tsc
-
 
 before_deploy:
   - if [ "$TRAVIS_BRANCH" == "master" ];then

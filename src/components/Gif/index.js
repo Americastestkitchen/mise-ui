@@ -110,6 +110,7 @@ class Gif extends Component {
       // If the Gif is visible, load it by setting state
       // otherwise, add it to the list of element being watched
       // NOTE: setTimeout pops this action to the end of the call stack
+      // eslint-disable-next-line no-undef
       setTimeout(() => {
         if (verge.inViewport(this.node, cushion)) {
           this.setState({ loaded: true });
@@ -137,6 +138,7 @@ class Gif extends Component {
   componentDidUpdate(prevProps) {
     const { lazy, srcSet } = this.props;
     if (lazy && prevProps.srcSet !== srcSet) {
+      // eslint-disable-next-line no-undef
       setTimeout(() => {
         removeElement(this.id);
         addElement(this.id, this.options);
@@ -178,7 +180,8 @@ class Gif extends Component {
       <GifContainer
         className={className}
         data-testid="mise-gif"
-        dangerouslySetInnerHTML={{ __html: `
+        dangerouslySetInnerHTML={{
+          __html: `
           <img
             crossOrigin="anonymous"
             className="img"
