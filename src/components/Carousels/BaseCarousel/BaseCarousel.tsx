@@ -1,29 +1,44 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import Flickity from 'flickity';
-import React, { PropsWithChildren, useCallback, createContext, useContext } from 'react';
-import ArrowButton from './ArrowButton';
+import type Flickity from "flickity";
+import React, {
+  PropsWithChildren,
+  useCallback,
+  createContext,
+  useContext,
+} from "react";
+import ArrowButton from "./ArrowButton";
 
-import { Title, Header, Navigation, Divider, Carousel } from './styled-elements';
-import useFlickity, { FlickityState } from './useFlickity';
+import {
+  Title,
+  Header,
+  Navigation,
+  Divider,
+  Carousel,
+} from "./styled-elements";
+import useFlickity, { FlickityState } from "./useFlickity";
 
 export const context = createContext({
-  registerOnChange: (callback: (flickity: Flickity, ev?: number) => void): (() => void) => {
+  registerOnChange: (
+    callback: (flickity: Flickity, ev?: number) => void
+  ): (() => void) => {
     // eslint-disable-next-line no-console
-    console.log('useCarouselContext hook outside of provider', callback);
+    console.log("useCarouselContext hook outside of provider", callback);
     return () => {
       // eslint-disable-next-line no-console
-      console.log('useCarouselContext hook unregister outside of provider', callback);
+      console.log(
+        "useCarouselContext hook unregister outside of provider",
+        callback
+      );
     };
   },
   onFocus: (e: React.FocusEvent<HTMLElement>) => {
     // eslint-disable-next-line no-console
-    console.log('useCarouselContext hook outside of provider', e);
+    console.log("useCarouselContext hook outside of provider", e);
   },
   resize: () => {
     // eslint-disable-next-line no-console
-    console.log('useCarouselContext hook outside of provider');
+    console.log("useCarouselContext hook outside of provider");
   },
-  flickity: null as (Flickity | null),
+  flickity: null as Flickity | null,
 });
 
 export const useCarouselContext = () => useContext(context);
@@ -37,7 +52,7 @@ export type StandardCarouselProps = PropsWithChildren<{
   header?: React.ReactNode;
   /** Pass a hook returning flickity state, choose from hooks in ./useFlickity */
   useFlickityHook?: () => FlickityState;
-}>
+}>;
 export default function BaseCarousel({
   title,
   showDivider,
@@ -48,21 +63,30 @@ export default function BaseCarousel({
   const { ref, flickity, flickityRef, hideButtons } = useFlickityHook();
 
   /** Scrolls carousel when contents of a slide are highlighted through tabbing. */
-  const onFocus = useCallback((ev: React.FocusEvent<HTMLElement>) => {
-    // @ts-expect-error cell is type Cell
-    const found = flickity.current?.cells.findIndex(cell => cell?.element === ev.currentTarget);
-    if (typeof found === 'number') {
-      flickity.current?.selectCell(found);
-    }
-  }, [flickity]);
+  const onFocus = useCallback(
+    (ev: React.FocusEvent<HTMLElement>) => {
+      const found = flickity.current?.cells.findIndex(
+        // @ts-expect-error cell is type Cell
+        (cell) => cell?.element === ev.currentTarget
+      );
+      if (typeof found === "number") {
+        flickity.current?.selectCell(found);
+      }
+    },
+    [flickity]
+  );
 
-  const registerOnChange = useCallback((callback: any) => {
-    callback(flickity.current);
-    flickity.current?.on('change', ev => callback(flickity.current, ev));
-    return () => {
-      flickity.current?.off('change', callback);
-    };
-  }, [flickity]);
+  const registerOnChange = useCallback(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (callback: any) => {
+      callback(flickity.current);
+      flickity.current?.on("change", () => callback(flickity.current));
+      return () => {
+        flickity.current?.off("change", callback);
+      };
+    },
+    [flickity]
+  );
 
   const resize = useCallback(() => {
     flickity.current?.resize();
@@ -75,14 +99,28 @@ export default function BaseCarousel({
       <Header aria-label={carouselLabel}>
         {header ?? <Title>{title}</Title>}
         <Navigation aria-label={carouselLabel} hidden={hideButtons}>
-          <ArrowButton aria-label={`Previous Slide: ${carouselLabel}`} onClick={() => flickity.current?.previous()} />
-          <ArrowButton aria-label={`Next Slide: ${carouselLabel}`} rotate onClick={() => flickity.current?.next()} />
+          <ArrowButton
+            aria-label={`Previous Slide: ${carouselLabel}`}
+            onClick={() => flickity.current?.previous()}
+          />
+          <ArrowButton
+            aria-label={`Next Slide: ${carouselLabel}`}
+            rotate
+            onClick={() => flickity.current?.next()}
+          />
         </Navigation>
       </Header>
       <Divider showDivider={showDivider} />
       {/* IMPORTANT: Cards use this internally `.carousel & {}` to avoid breakpoint styles */}
       <Carousel ref={flickityRef} className="carousel">
-        <context.Provider value={{ registerOnChange, onFocus, resize, flickity: flickity.current }}>
+        <context.Provider
+          value={{
+            registerOnChange,
+            onFocus,
+            resize,
+            flickity: flickity.current,
+          }}
+        >
           {children}
         </context.Provider>
       </Carousel>

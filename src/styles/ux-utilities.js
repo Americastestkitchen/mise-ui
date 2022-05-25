@@ -12,6 +12,7 @@ export function onClickHashLink(ev, safeArea = 40, durationMs = 500) {
   const { target } = ev;
   if (!('href' in target)) { return; }
 
+  // eslint-disable-next-line no-undef
   const { hash } = new URL(target.href);
   if (!hash.startsWith('#')) { return; }
 

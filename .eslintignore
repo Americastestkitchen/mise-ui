@@ -1,8 +1,10 @@
+.git
 .storybook
+babel.config.js
 dist
+jest.config.js
 node_modules
+src/**/*.stories.js
 src/serviceWorker.js
 src/setupTests.js
-src/**/*.stories.js
-.git
 storybook-static

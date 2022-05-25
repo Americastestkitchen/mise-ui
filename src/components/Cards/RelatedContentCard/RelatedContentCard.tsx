@@ -1,19 +1,34 @@
-import React, { ComponentProps, PropsWithChildren, useContext, useEffect, useState } from 'react';
-import styled, { css, DefaultTheme, ThemeContext, ThemeProvider } from 'styled-components';
-import { font, color, withThemes, mixins } from '../../../styles';
-import { md, untilMd } from '../../../styles/breakpoints';
-import { cssThemedColor, cssThemedFontAccentColorAlt, cssThemedLink } from '../../../styles/mixins';
-import useMedia from '../../hooks/useMedia';
-import AffiliateLink from '../shared/AffiliateLink';
+import React, {
+  ComponentProps,
+  PropsWithChildren,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
+import styled, {
+  css,
+  DefaultTheme,
+  ThemeContext,
+  ThemeProvider,
+} from "styled-components";
+import { font, color, withThemes, mixins } from "../../../styles";
+import { md, untilMd } from "../../../styles/breakpoints";
+import {
+  cssThemedColor,
+  cssThemedFontAccentColorAlt,
+  cssThemedLink,
+} from "../../../styles/mixins";
+import useMedia from "../../hooks/useMedia";
+import AffiliateLink from "../shared/AffiliateLink";
 
 const mobileCard = untilMd;
 const desktopCard = md;
 
-const mapPropsToThemeContext = (
-  props: Partial<RelatedContentCardProps>,
-) => (
-  theme: DefaultTheme,
-) => ({ ...theme, props });
+const mapPropsToThemeContext =
+  (props: Partial<RelatedContentCardProps>) => (theme: DefaultTheme) => ({
+    ...theme,
+    props,
+  });
 
 const cssHeadlineFont = css`
   font-family: ${font.pnb};
@@ -69,7 +84,7 @@ const cssCenterLeadingRow = css`
 
 const Headline = styled.span`
   ${cssHeadlineFont}
-  margin-bottom: ${({ theme }) => (theme.props.withButton ? '4px' : '8px')};
+  margin-bottom: ${({ theme }) => (theme.props.withButton ? "4px" : "8px")};
 `;
 
 const Title = styled.span`
@@ -97,9 +112,11 @@ const LinkText = styled.a`
 
 const LinkWrapper = styled.div`
   padding-top: 8px;
-  ${({ theme }) => theme.props.withButton && mobileCard(css`
-    padding-top: 0;
-  `)}
+  ${({ theme }) =>
+    theme.props.withButton &&
+    mobileCard(css`
+      padding-top: 0;
+    `)}
 `;
 
 const ImageWrapper = styled.div`
@@ -145,10 +162,14 @@ const Card = styled.a`
 type WideCardWrapperProps = PropsWithChildren<{ src: string | undefined }> &
   ComponentProps<typeof Card>;
 
-export function Wrapper({ src, children, ...anchorProps }: WideCardWrapperProps) {
+export function Wrapper({
+  src,
+  children,
+  ...anchorProps
+}: WideCardWrapperProps) {
   const theme = useContext(ThemeContext);
-  const isMobile = useMedia('(max-width: 767px)');
-  const offset = theme.siteKey === 'cco' ? -20 : 0;
+  const isMobile = useMedia("(max-width: 767px)");
+  const offset = theme.siteKey === "cco" ? -20 : 0;
   const [imageSize, setImageSize] = useState(200);
   useEffect(() => {
     if (src) {
@@ -211,7 +232,7 @@ export type RelatedContentCardProps = {
   link?: string;
   /** Show button link instead of text link. */
   withButton?: boolean;
-}
+};
 
 /** Preview helper, example implemenation, and validating exports */
 export default function RelatedContentCard({
