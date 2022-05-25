@@ -79,7 +79,7 @@ export default function BaseCarousel({
       </Header>
       <Divider showDivider={showDivider} />
       {/* IMPORTANT: Cards use this internally `.carousel & {}` to avoid breakpoint styles */}
-      <Carousel ref={flickityRef} className="carousel">
+      <Carousel data-qa="carousel-wrapper" ref={flickityRef} className="carousel">
         <context.Provider value={{ registerOnChange, onFocus, resize }}>
           {children}
         </context.Provider>
