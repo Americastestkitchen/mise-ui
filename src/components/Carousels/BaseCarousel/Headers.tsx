@@ -105,7 +105,7 @@ export function LinkCarouselHeader({
   linkProps,
 }: LinkCarouselHeaderProps) {
   return (
-    <Layout hasLink={!!linkText}>
+    <Layout data-qa="link-carousel-header" hasLink={!!linkText}>
       <TitleWrapper>
         {
           includeIcon && (
@@ -136,7 +136,7 @@ type IntroCarouselHeaderProps = {
 
 export function IntroCarouselHeader({ title, intro }: IntroCarouselHeaderProps) {
   return (
-    <div>
+    <div data-qa="intro-carousel-header">
       <Title>{title}</Title>
       {!!intro && <Intro dangerouslySetInnerHTML={{ __html: intro }} />}
     </div>
@@ -150,7 +150,7 @@ type TopicCarouselHeaderProps = {
 
 export function TopicCarouselHeader({ title, topic }: TopicCarouselHeaderProps) {
   return (
-    <div>
+    <div data-qa="topic-carousel-header">
       {!!topic && (
         <Topic>
           {topic}

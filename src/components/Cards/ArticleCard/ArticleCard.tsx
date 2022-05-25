@@ -109,7 +109,7 @@ function SplitCard({
   const [imageError, setImageError] = useState(false);
 
   return (
-    <Card {...linkProps}>
+    <Card data-qa="article-card" {...linkProps}>
       { !imageError ? (
         <>
           <CardImage onError={() => setImageError(true)}>
