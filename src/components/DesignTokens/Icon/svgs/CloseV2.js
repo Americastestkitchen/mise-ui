@@ -1,7 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import { color } from '../../../../styles';
+
+const StyledPath = styled.path`
+  stroke-linecap: round;
+  stroke-width: 2px;
+`;
 
 const CloseV2 = ({ ariaLabel, fill }) => (
   <svg
@@ -12,22 +18,14 @@ const CloseV2 = ({ ariaLabel, fill }) => (
     viewBox="0 0 12.828 12.828"
   >
     <g>
-      <path
+      <StyledPath
         transform="rotate(45 -1 2.414)"
         stroke={fill}
-        style={{
-          'stroke-linecap': 'round',
-          'stroke-width': '2px',
-        }}
         d="M0 0h14.142"
       />
-      <path
+      <StyledPath
         transform="rotate(135 5.414 3.07)"
         stroke={fill}
-        style={{
-          'stroke-linecap': 'round',
-          'stroke-width': '2px',
-        }}
         d="M0 0h14.142"
       />
     </g>
