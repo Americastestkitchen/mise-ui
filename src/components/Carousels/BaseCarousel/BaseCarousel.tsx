@@ -74,7 +74,6 @@ export default function BaseCarousel({
   );
 
   const registerOnChange = useCallback(
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (callback: any) => {
       callback(flickity.current);
       flickity.current?.on("change", () => callback(flickity.current));

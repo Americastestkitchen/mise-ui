@@ -4,6 +4,7 @@ babel.config.js
 dist
 jest.config.js
 node_modules
+src/**/__tests__/*.spec.js
 src/**/*.stories.js
 src/serviceWorker.js
 src/setupTests.js
