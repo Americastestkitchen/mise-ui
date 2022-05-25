@@ -25,7 +25,7 @@ export const Headline = styled.p`
 export const Description = styled.p`
   font-family: ${font.pnb};
   font-size: 18px;
-  line-height: 20px;
+  line-height: 22px;
   max-width: 208px;
 
   ${md(css`max-width: 300px;`)}
