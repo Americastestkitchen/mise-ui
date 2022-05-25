@@ -113,6 +113,10 @@ const StyledFavoriteButtonWithBg = styled(FavoriteRibbonWithBg)`
   position: absolute;
   top: 0.6rem;
   right: 0.6rem;
+
+  &:focus {
+    ${mixins.focusIndicator()};
+  }
 `;
 
 const Attributions = styled.p.attrs({
@@ -128,6 +132,10 @@ const CtaLink = styled.a`
   left: ${spacing.xsm};
   position: absolute;
   z-index: 2;
+
+  &:focus {
+    ${mixins.focusIndicator()};
+  }
 `;
 
 const PricingWrapper = styled.div`

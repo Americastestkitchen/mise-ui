@@ -10,6 +10,7 @@ import {
   lineHeight,
   spacing,
   withThemes,
+  mixins,
 } from '../../../styles';
 
 import Button from '../../Buttons/Button';
@@ -81,6 +82,11 @@ const HowWeUseLinkTheme = {
     display: block;
     font: 1.2rem/2rem ${font.pnr};
     padding: 0.8rem 0;
+
+    &:focus{
+      box-shadow: none !important;
+      ${mixins.focusIndicator()};
+    }
 
     @media(hover: hover) {
       &:hover {
