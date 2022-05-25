@@ -292,6 +292,7 @@ const Carousel = ({
           const { selectedIndex } = flktyRef.current;
           flktyRef.current.next(true);
           publishEvent('flickity:remove', { ...button.dataset, selectedIndex });
+          // eslint-disable-next-line no-undef
           setTimeout(() => {
             const cell = button.closest('.carousel-cell');
             if (cell) flktyRef.current.remove(cell);
@@ -335,6 +336,7 @@ const Carousel = ({
         elRef.current.flkty = flktyRef.current;
         if (!opts.initialIndex) {
           // workaround for flickity 'ready' event not working
+          // eslint-disable-next-line no-undef
           setTimeout(() => handleCellChange(0), 0);
         }
       }
@@ -342,7 +344,7 @@ const Carousel = ({
     }
     return () => {
       try { if (flktyRef.current) flktyRef.current.destroy(); } // eslint-disable-line
-      catch (err) {}; // eslint-disable-line
+      catch (err) { }; // eslint-disable-line
     };
   }, [items, options, handleCellChange]);
 

@@ -24,7 +24,7 @@
         "ts": "never",
         "tsx": "never"
       }
-   ],
+  ],
     "default-case": 0, // Required default case is nonsense.
     "new-cap": [2, {"capIsNew": false, "newIsCap": true}], // For Record() etc.
     "no-nested-ternary": 0, // It's nice for JSX.
@@ -32,7 +32,7 @@
     "no-shadow": 0, // Shadowing is a nice language feature. Naming is hard.
     // eslint-plugin-import
     "import/no-unresolved": [2, {"commonjs": true}],
-    "import/named": 2,
+    // "import/named": 2,
     "import/default": 2,
     "import/namespace": 2,
     "import/export": 2,
@@ -57,7 +57,7 @@
     "no-underscore-dangle": 0,
     "no-case-declarations": 0,
     "react/jsx-one-expression-per-line": 0,
-    "arrow-parens": [2, "as-needed", { "requireForBlockBody": true }],
+    // "arrow-parens": [2, "as-needed", { "requireForBlockBody": true }],
     "react/jsx-props-no-spreading": 0,
     "react/jsx-fragments": 0,
     "import/no-cycle": 0,
@@ -66,13 +66,13 @@
     "@typescript-eslint/no-empty-function": 0
   },
   "extends": [
-    "airbnb",
-    "plugin:react-hooks/recommended",
-    "plugin:import/errors",
-    "plugin:import/warnings",
-    "plugin:import/typescript",
+    // "airbnb",
     "eslint:recommended", 
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/errors",
+    "plugin:import/typescript",
+    "plugin:import/warnings",
+    "plugin:react-hooks/recommended"
   ],
   "plugins": [
     "import",

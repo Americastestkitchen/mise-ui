@@ -2,6 +2,7 @@ import cloudinary from 'cloudinary-core';
 
 /** @type {import('cloudinary-core').Cloudinary} */
 const cloudinaryInstance = cloudinary.Cloudinary.new({
+  // eslint-disable-next-line no-undef
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME || 'hksqkdlah',
 });
 
