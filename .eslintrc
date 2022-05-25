@@ -10,10 +10,15 @@
     "jest": true,
     "IntersectionObserver": true
   },
+  "env": {
+    "browser": true,
+    "node": true
+  },
   "parser": "@typescript-eslint/parser",
   "rules": {
     // Soft some rules.
     "no-use-before-define": "off",
+    "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-use-before-define": ["error"],
     "import/extensions": [
       "error",

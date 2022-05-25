@@ -10,7 +10,7 @@ import ArticlePhotoCollection from './components/Articles/ArticlePhotoCollection
 import ArticleTextBlock from './components/Articles/ArticleTextBlock';
 import AtkMarketingHat from './components/MarketingHat';
 import RecipesMarketingHat from './components/RecipesMarketingHat';
-import Badge from './components/Badge';
+import Badge from './components/Badge/Badge';
 import BookCarouselAd from './components/Ads/ReviewsAds/BookCarouselAd';
 import breakpoints from './styles/breakpoints';
 import Brands from './components/DesignTokens/Brands';

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { color } from '../../styles';
 import {
@@ -16,7 +15,15 @@ const StyledBadge = styled.svg`
   height: 2.5rem;
 `;
 
-const determineType = (type, fill) => {
+export type BadgeType = 'atk' | 'cio'| 'cco'| 'kids'| 'school'| 'shop';
+
+export type BadgeProps = {
+  className?: string;
+  fill?: string;
+  type: BadgeType;
+}
+
+const determineType = (type: BadgeType, fill = `${color.transparentBlack}`) => {
   const types = {
     atk: ATKBrandIcon,
     cio: CIOBrandIcon,
@@ -29,7 +36,7 @@ const determineType = (type, fill) => {
   return El && <El fill={fill} />;
 };
 
-const determineBadgeText = (type) => {
+const determineBadgeText = (type: BadgeType) => {
   const types = {
     atk: 'America’s Test Kitchen',
     cio: 'Cook’s Illustrated',
@@ -52,32 +59,21 @@ const determineBadgeText = (type) => {
  *  appear in the browse bar *are* interactive and function as facets
  */
 
-const Badge = ({
+ export default function Badge({
   className,
   fill,
   type,
-}) => (
-  <StyledBadge
-    data-testid={`${type}-badge`}
-    role="img"
-    aria-label={determineBadgeText(type)}
-    className={`badge${className ? ` ${className}` : ''}`}
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 25 25"
-  >
-    {determineType(type, fill)}
-  </StyledBadge>
-);
-
-Badge.propTypes = {
-  className: PropTypes.string,
-  fill: PropTypes.string,
-  type: PropTypes.oneOf(['atk', 'cio', 'cco', 'kids', 'school', 'shop']).isRequired,
-};
-
-Badge.defaultProps = {
-  className: '',
-  fill: `${color.transparentBlack}`,
-};
-
-export default Badge;
+}: BadgeProps) {
+  return (
+    <StyledBadge
+      data-testid={`${type}-badge`}
+      role="img"
+      aria-label={determineBadgeText(type)}
+      className={`badge${className ? ` ${className}` : ''}`}
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 25 25"
+    >
+      {determineType(type, fill)}
+    </StyledBadge>
+  );
+}

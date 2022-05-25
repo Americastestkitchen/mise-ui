@@ -1,8 +1,10 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 
-const CCOBrandIcon = ({ fill }) => (
-  <>
+export type CCOBrandIconProps = { fill: string };
+
+export default function CCOBrandIcon({ fill }: CCOBrandIconProps) {
+  return (
+    <>
     <defs>
       <clipPath id="cco-brand-icon-a"><path d="M0 0h14.1v16.226H0z" fill="none" /></clipPath><clipPath id="cco-brand-icon-b"><path d="M0 0h3.614v3.635H0z" fill="none" /></clipPath>
     </defs>
@@ -21,10 +23,5 @@ const CCOBrandIcon = ({ fill }) => (
       </g>
     </g>
   </>
-);
-
-CCOBrandIcon.propTypes = {
-  fill: PropTypes.string.isRequired,
-};
-
-export default CCOBrandIcon;
+  );
+}

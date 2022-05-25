@@ -2,8 +2,7 @@ import breakpoint from 'styled-components-breakpoint';
 import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { css } from 'styled-components';
-
-import Badge from '../../Badge';
+import Badge from '../../Badge/Badge';
 import Image from '../shared/Image';
 import Sticker from '../shared/Sticker';
 import {

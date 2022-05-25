@@ -3,11 +3,11 @@ import styled, { css } from 'styled-components';
 import { lg, md, untilMd, xxlg } from '../../../styles/breakpoints';
 import { color, font } from '../../../styles';
 import { cssThemedColor, withThemes, cssThemedTextLinkBold } from '../../../styles/mixins';
-import Badge from '../../Badge';
 import cloudinaryInstance, { baseImageConfig } from '../../../lib/cloudinary';
 import Sticker from '../shared/Sticker';
 import { Author, BylineListArticleCard } from '../../BylineList';
 import { InferStyledTypes } from '../../../styles/utility-types';
+import Badge from '../../Badge/Badge';
 
 const cssThemedDescriptionFont = withThemes({
   default: css`font-family: ${font.mwr};`,

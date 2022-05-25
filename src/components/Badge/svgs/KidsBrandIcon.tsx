@@ -1,8 +1,10 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 
-const KidsBrandIcon = ({ fill }) => (
-  <>
+export type KidsBrandIconProps = { fill: string };
+
+export default function KidsBrandIcon({ fill }: KidsBrandIconProps) {
+  return (
+    <>
     <defs>
       <clipPath id="kids-brand-icon-clip-path">
         <rect width="18.46" height="8.347" fill="none" />
@@ -19,10 +21,5 @@ const KidsBrandIcon = ({ fill }) => (
       </g>
     </g>
   </>
-);
-
-KidsBrandIcon.propTypes = {
-  fill: PropTypes.string.isRequired,
-};
-
-export default KidsBrandIcon;
+  );
+}
