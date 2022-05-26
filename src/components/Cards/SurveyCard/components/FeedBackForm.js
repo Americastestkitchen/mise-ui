@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { color } from '../../../..';
 import { SubmitButton } from '..';
-import Checkmark from '../../../DesignTokens/Icon/svgs/Checkmark2';
-import { Close } from '../../../DesignTokens/Icon';
+import Checkmark from '../../../DesignTokens/Icon/svgs/Checkmark3';
+import { Close2 } from '../../../DesignTokens/Icon';
 
 const ButtonWrapper = styled.div`
   display: flex;
@@ -33,7 +33,7 @@ const ButtonWrapper = styled.div`
 const FeedbackForm = ({ handleSubmit }) => (
   <ButtonWrapper>
     <SubmitButton onClick={() => handleSubmit('No')} className="survey-buttons">
-      <span className="close"><Close fill={color.eclipse} /></span>
+      <span className="close"><Close2 fill={color.eclipse} /></span>
       <span className="text">No</span>
     </SubmitButton>
     <SubmitButton onClick={() => handleSubmit('Yes')} className="survey-buttons">

@@ -5,11 +5,12 @@ import BreadcrumbArrow from './BreadcrumbArrow';
 import CCOSmallRooster from './CCOSmallRooster';
 import Checkmark from './Checkmark';
 import Checkmark2 from './Checkmark2';
+import Checkmark3 from './Checkmark3';
 import ChefHat from './ChefHat';
 import ChevronThinDown from './ChevronThinDown';
 import CIOTagline from './CIOTagline';
 import Close from './Close';
-import CloseV2 from './CloseV2';
+import Close2 from './Close2';
 import Collection from './Collection';
 import CookingPot from './CookingPot';
 import Comment from './Comment';
@@ -34,6 +35,7 @@ import RecipeCard from './RecipeCard';
 import Rewind from './Rewind';
 import ReviewsRibbon from './ReviewsRibbon';
 import RibbonAward from './RibbonAward';
+import Save from './Save';
 import SearchIcon from './SearchIcon';
 import Sort from './Sort';
 import StarEmpty from './StarEmpty';
@@ -54,11 +56,12 @@ export {
   CCOSmallRooster,
   Checkmark,
   Checkmark2,
+  Checkmark3,
   ChefHat,
   ChevronThinDown,
   CIOTagline,
   Close,
-  CloseV2,
+  Close2,
   CookingPot,
   Comment,
   Content,
@@ -83,6 +86,7 @@ export {
   Rewind,
   ReviewsRibbon,
   RibbonAward,
+  Save,
   SearchIcon,
   Sort,
   StarEmpty,
