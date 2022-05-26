@@ -5,9 +5,9 @@ import { untilMd } from '../../styles/breakpoints';
 import { CCOSmallRooster, CIOTagline, CookingPot } from '../DesignTokens/Icon/svgs';
 
 const iconCopy = {
-  atk: [<CookingPot fill="#3d3d3d" />, 'Home of Cook\'s Country, Cook\'s Illustrated, & ATK Kids.'],
-  cco: [<CCOSmallRooster />, 'Food that\'s meant to be shared with friends and family.'],
-  cio: [<CIOTagline />, 'Cook smarter and succeed every time'],
+  atk: [<CookingPot fill="#3d3d3d" />, 'America\'s Test Kitchen', 'Home of Cook\'s Country, Cook\'s Illustrated, & ATK Kids.'],
+  cco: [<CCOSmallRooster />, 'Cook\'s Country', 'Food that\'s meant to be shared with friends and family.'],
+  cio: [<CIOTagline />, 'Cook\'s Illustrated', 'Cook smarter and succeed every time'],
 };
 
 const TaglineTheme = {
@@ -35,7 +35,7 @@ const TaglineTheme = {
   `,
 };
 
-const Tagline = styled.span`
+const Tagline = styled.h1`
   ${withThemes(TaglineTheme)}
 `;
 
@@ -76,11 +76,16 @@ export type HomepageTaglineProps = {
 };
 
 const HomepageTagline = ({ siteKey }: HomepageTaglineProps) => {
-  const [icon, copy] = iconCopy[siteKey];
+  const [icon, siteName, copy] = iconCopy[siteKey];
   return (
     <TaglineWrapper>
       {icon}
-      <Tagline>{copy}</Tagline>
+      <Tagline>
+        <span className="visually-hidden">
+          {siteName}
+        </span>
+        {copy}
+      </Tagline>
     </TaglineWrapper>
   );
 };
