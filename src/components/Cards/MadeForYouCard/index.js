@@ -86,7 +86,10 @@ const MadeForYouCard = ({
         <Image
           imageAlt={title}
           imageUrl={cloudinary_url}
+<<<<<<< HEAD
           lowQualityImageUrl={cloudinary_url}
+=======
+>>>>>>> e14ec1ad (update card image and attribution fix)
         />
       </a>
       <MadeForYouCardTitleWrapper style={{ backgroundColor: getBgColor(index) }}>
