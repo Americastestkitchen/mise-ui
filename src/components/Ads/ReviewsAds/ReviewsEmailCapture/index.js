@@ -27,9 +27,15 @@ const cssThemedBackground = withThemes({
 });
 
 const cssThemedBorder = withThemes({
-  atk: css`border: solid 1px #D8D8D8;`,
-  cco: css`border: solid 1px #E5E5E5;`,
-  cio: css`border: solid 1px #d3c5a0;`,
+  atk: css`
+    border: solid 1px #D8D8D8;
+  `,
+  cco: css`
+    border: solid 1px ${color.silver};
+  `,
+  cio: css`
+    border: solid 1px #d3c5a0;
+  `,
 });
 
 const AdDescription = styled.p`
@@ -234,7 +240,6 @@ const AdWrapper = styled.div`
         justify-content: flex-start;
 
         .form-input input {
-          border-color: ${color.silver};
           height: 100%;
         }
 
