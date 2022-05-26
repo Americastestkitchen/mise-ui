@@ -22,9 +22,6 @@ const TaglineTheme = {
   cco: css`
     color: ${color.black};
     font: ${fontSize.md}/1.8rem ${font.pnb};
-    ${untilMd(css`
-      max-width: 23rem;
-    `)}
   `,
   cio: css`
     color: ${color.cork};
