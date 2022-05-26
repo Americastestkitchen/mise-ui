@@ -46,7 +46,7 @@ const SuggestionCard = ({
       <SuggestionCardActions>
         <div className="button-container">
           <SuggestionCardAction
-            className="remove-cell no-skip close-v2"
+            className="remove-cell close-v2"
             data-event-name="RECOMMENDATION_REJECTED"
             data-document-title={title}
             data-document-url={href}
@@ -62,7 +62,7 @@ const SuggestionCard = ({
         </div>
         <div className="button-container">
           <SuggestionCardAction
-            className="favorite-action no-skip remove-cell"
+            className="favorite-action remove-cell"
             data-event-name="RECOMMENDATION_ADDED"
             data-document-title={title}
             data-favoritable-id={objectId}

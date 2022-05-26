@@ -3,7 +3,7 @@ import breakpoint from 'styled-components-breakpoint';
 import React from 'react';
 import styled from 'styled-components';
 import Sticker from '../../shared/Sticker';
-import { font, fontSize, color } from '../../../../styles';
+import { font, fontSize, color, mixins } from '../../../../styles';
 
 const SitckersContainer = styled.div`
   display: flex;
@@ -15,6 +15,7 @@ const SitckersContainer = styled.div`
     margin-bottom: 0;
     display: block !important;
     margin-left: 0;
+    ${mixins.truncate(24)}
   }
 
   span.suggestioncardstickers-intro {
