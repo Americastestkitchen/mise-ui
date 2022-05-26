@@ -49,6 +49,7 @@ const SuggestionCard = ({
             className="remove-cell close-v2"
             data-event-name="RECOMMENDATION_REJECTED"
             data-document-title={title}
+            data-href={href}
             data-document-url={href}
             data-document-type={resourceType}
             data-object-id={objectId}
