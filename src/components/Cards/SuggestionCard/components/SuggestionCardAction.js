@@ -77,11 +77,12 @@ const SuggestionCardAction = styled.button.attrs({
     }
   }
 
-  &.close-v2 {
+  &.primary-hover {
     &:hover {
       background-color: ${color.darkerMint};
       border: 1px solid ${color.darkerMint};
-      path {
+
+      line, path {
         stroke: ${color.white};
       }
     }

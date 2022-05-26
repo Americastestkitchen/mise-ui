@@ -6,7 +6,7 @@ import styledBreakpoint from 'styled-components-breakpoint';
 import { color, fontSize } from '../../../..';
 import { dishTypeData } from '../data';
 import { SubmitButton } from '..';
-import Checkmark from '../../../DesignTokens/Icon/svgs/Checkmark2';
+import Checkmark from '../../../DesignTokens/Icon/svgs/Checkmark3';
 
 const SurveyForm = styled.form`
   margin: auto;

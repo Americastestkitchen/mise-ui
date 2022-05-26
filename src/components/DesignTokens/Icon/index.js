@@ -96,16 +96,16 @@ export const Close = ({ ariaLabel, fill }) => (
 
 Close.propTypes = Icons.Close.propTypes;
 
-export const CloseV2 = ({ ariaLabel, fill }) => (
+export const Close2 = ({ ariaLabel, fill }) => (
   <Icon>
-    <Icons.CloseV2
+    <Icons.Close2
       ariaLabel={ariaLabel}
       fill={fill}
     />
   </Icon>
 );
 
-CloseV2.propTypes = Icons.CloseV2.propTypes;
+Close2.propTypes = Icons.Close2.propTypes;
 
 export const CIOTagline = () => (
   <Icon>
@@ -346,6 +346,14 @@ export const RibbonAward = ({ fill }) => (
 );
 
 RibbonAward.propTypes = Icons.RibbonAward.propTypes;
+
+export const Save = props => (
+  <Icon>
+    <Icons.Save {...props} />
+  </Icon>
+);
+
+Save.propTypes = Icons.Save.propTypes;
 
 export const SearchIcon = ({ fill }) => (
   <Icon>
