@@ -26,7 +26,7 @@ export default {
       comments: 82,
       numRatings: 38,
       stickers: [
-        { type: 'editorial', text: 'Side Dishes' },
+        { type: 'editorial', text: 'Make Ahead|Grilling & Barbecue|Weeknight Weeknight Weeknight' },
       ],
     },
     {
