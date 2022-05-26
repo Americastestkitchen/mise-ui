@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import { color, font, fontSize, grid, lineHeight, mixins, spacing } from '../../../styles';
 import { cssThemedFontBold } from '../../../styles/mixins';
 import { FeatureCardUserAttributions } from '../shared/UserAttributions';
+import { lg } from '../../../styles/breakpoints';
 import Badge from '../../Badge';
 import FavoriteRibbonWithBg from '../shared/FavoriteRibbonWithBg';
 import Image from '../shared/Image';
@@ -98,7 +99,11 @@ const StyledTitle = styled(Title)`
   }
 
   ${({ themedTitle }) => (themedTitle && cssThemedFontBold)}
-  ${({ themedTitle }) => (themedTitle && 'font-size: 3.2rem; line-height: 3.6rem;')}
+  ${({ themedTitle }) => (themedTitle && `
+    font-size: 2.3rem;
+    line-height: 2.6rem;
+    ${lg(css`font-size: 3.2rem; line-height: 3.6rem;`)}
+  `)}
 `;
 
 const StyledSticker = styled(Sticker)`
