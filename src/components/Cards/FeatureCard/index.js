@@ -5,7 +5,7 @@ import breakpoint from 'styled-components-breakpoint';
 import { color, font, fontSize, grid, lineHeight, mixins, spacing } from '../../../styles';
 import { cssThemedFontBold } from '../../../styles/mixins';
 import { FeatureCardUserAttributions } from '../shared/UserAttributions';
-import { lg } from '../../../styles/breakpoints';
+import { untilLg } from '../../../styles/breakpoints';
 import Badge from '../../Badge';
 import FavoriteRibbonWithBg from '../shared/FavoriteRibbonWithBg';
 import Image from '../shared/Image';
@@ -100,9 +100,10 @@ const StyledTitle = styled(Title)`
 
   ${({ themedTitle }) => (themedTitle && cssThemedFontBold)}
   ${({ themedTitle }) => (themedTitle && `
-    font-size: 2.3rem;
-    line-height: 2.6rem;
-    ${lg(css`font-size: 3.2rem; line-height: 3.6rem;`)}
+    font-size: 3.2rem;
+    line-height: 3.6rem;
+
+    ${untilLg(css`font-size: 2.3rem; line-height: 2.6rem;`)}
   `)}
 `;
 
