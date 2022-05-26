@@ -5,6 +5,7 @@ import { color, font, withThemes } from '../../../styles';
 import { UserAttributions } from '../shared/UserAttributions';
 import mixins, { cssThemedColor } from '../../../styles/mixins';
 import { InferStyledTypes } from '../../../styles/utility-types';
+import Image from '../shared/Image';
 import Sticker from '../shared/Sticker';
 
 const CtaLink = styled.a`
@@ -14,6 +15,19 @@ const CtaLink = styled.a`
     width: 344px;
   }
   height: 128px;
+
+  .card-image {
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    height: 128px;
+    width: 128px;
+    flex-shrink: 0;
+
+    img {
+      width: 100%;
+    }
+  }
 `;
 
 const cssBackgroundColor = withThemes({
@@ -43,19 +57,6 @@ const Headline = styled.span`
   font-size: 16px;
   font-family: ${font.pnb};
   line-height: 23px;
-`;
-
-const ImageWrapper = styled.div`
-  background-position: center center;
-  background-repeat: no-repeat;
-
-  height: 128px;
-  width: 128px;
-  flex-shrink: 0;
-
-  img {
-    width: 100%;
-  }
 `;
 
 export const StickerGroup = styled.div`
@@ -115,9 +116,11 @@ const RelatedRecipeCard = ({
   });
   return (
     <CtaLink {...linkProps} className="related-recipe-card" title={headline}>
-      <ImageWrapper>
-        <img alt={altText} src={src} />
-      </ImageWrapper>
+      <Image
+        imageAlt={altText}
+        imageUrl={src}
+        className="card-image"
+      />
       <Content className="related-recipe-card-content">
         {stickers ? (
           <StickerGroup>
