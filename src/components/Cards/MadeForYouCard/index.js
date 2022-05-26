@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import Image from '../shared/Image';
 
 import { color, font, fontSize } from '../../../styles';
 
@@ -16,7 +17,7 @@ const MadeForYouCardWrapper = styled.div`
     height: 264px;
     width: 100%;
     overflow: hidden;
-    
+
     img {
       transition: all 0.3s ease 0s;
       object-fit: cover;
@@ -83,7 +84,10 @@ const MadeForYouCard = ({
   return (
     <MadeForYouCardWrapper title={title} data-collection-type={collection_type} className="made-for-you-card">
       <a href={url} title={title}>
-        <img src={cloudinary_url} alt={title} />
+        <Image
+          imageAlt={title}
+          imageUrl={cloudinary_url}
+        />
       </a>
       <MadeForYouCardTitleWrapper style={{ backgroundColor: getBgColor(index) }}>
         <a href={url}>

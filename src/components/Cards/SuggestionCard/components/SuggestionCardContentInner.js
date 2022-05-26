@@ -15,6 +15,14 @@ const SuggestionCardContentInner = styled.div.attrs({
     text-align: left;
     max-width: 30rem;
   `}
+
+  .recipe-attributions {
+    justify-content: center;
+
+    ${breakpoint('md')`
+      justify-content: flex-start;
+    `}
+  }
 `;
 
 export default SuggestionCardContentInner;

@@ -74,7 +74,7 @@ const SuggestionCard = ({
             data-testid="suggestion-action__favorite"
             aria-label="save recipe suggestion"
           >
-            <Save className="favorite-ribbon" fill={color.eclipse}/>
+            <Save className="favorite-ribbon" fill={color.eclipse} />
           </SuggestionCardAction>
           <span>Save</span>
         </div>
@@ -106,6 +106,7 @@ const SuggestionCard = ({
             avgRating={avgRating}
             commentsCount={comments}
             numRatings={numRatings}
+            className="recipe-attributions"
           />
         </ThemeProvider>
       </SuggestionCardContentInner>
