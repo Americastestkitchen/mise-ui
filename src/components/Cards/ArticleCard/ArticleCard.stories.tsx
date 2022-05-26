@@ -21,4 +21,5 @@ Default.args = {
   linkProps: {
     href: '',
   },
+  favoritesObjectId: 'article_13333',
 };
