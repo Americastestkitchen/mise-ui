@@ -68,8 +68,7 @@ export const SubmitButton = styled.button`
   &:hover {
     span svg {
       background-color: ${color.darkerMint};
-      path, g {
-        fill: ${color.white};
+      path, g, line {
         stroke: ${color.white};
       }
     }

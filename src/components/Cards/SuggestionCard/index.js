@@ -14,8 +14,7 @@ import SuggestionCardSubTitle from './components/SuggestionCardSubTitle';
 import SuggestionCardTitle from './components/SuggestionCardTitle';
 import SuggestionCardWrapper from './components/SuggestionCardWrapper';
 import SuggestionCardStickers from './components/SuggestionCardStickers';
-import { FavoriteRibbon, CloseV2 } from '../../DesignTokens/Icon';
-import { color } from '../../../styles';
+import { Save, Close2 } from '../../DesignTokens/Icon';
 
 const SuggestionCard = ({
   href,
@@ -46,7 +45,7 @@ const SuggestionCard = ({
       <SuggestionCardActions>
         <div className="button-container">
           <SuggestionCardAction
-            className="remove-cell close-v2"
+            className="remove-cell primary-hover"
             data-event-name="RECOMMENDATION_REJECTED"
             data-document-title={title}
             data-href={href}
@@ -57,13 +56,13 @@ const SuggestionCard = ({
             data-testid="suggestion-action__skip"
             aria-label="reject recipe suggestion"
           >
-            <CloseV2 />
+            <Close2 />
           </SuggestionCardAction>
           <span>Pass</span>
         </div>
         <div className="button-container">
           <SuggestionCardAction
-            className="favorite-action remove-cell"
+            className="favorite-action remove-cell primary-hover"
             data-event-name="RECOMMENDATION_ADDED"
             data-document-title={title}
             data-favoritable-id={objectId}
@@ -74,12 +73,7 @@ const SuggestionCard = ({
             data-testid="suggestion-action__favorite"
             aria-label="save recipe suggestion"
           >
-            <FavoriteRibbon
-              ariaHidden
-              ariaLabel=""
-              className="favorite-ribbon"
-              fill={color.white}
-            />
+            <Save className="favorite-ribbon" />
           </SuggestionCardAction>
           <span>Save</span>
         </div>
