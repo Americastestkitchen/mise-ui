@@ -74,11 +74,7 @@ const SuggestionCard = ({
             data-testid="suggestion-action__favorite"
             aria-label="save recipe suggestion"
           >
-<<<<<<< HEAD
             <Save className="favorite-ribbon" fill={color.eclipse} />
-=======
-            <Save className="favorite-ribbon" />
->>>>>>> 9729687a (Icons favorites fix)
           </SuggestionCardAction>
           <span>Save</span>
         </div>
