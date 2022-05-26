@@ -15,6 +15,7 @@ import SuggestionCardTitle from './components/SuggestionCardTitle';
 import SuggestionCardWrapper from './components/SuggestionCardWrapper';
 import SuggestionCardStickers from './components/SuggestionCardStickers';
 import { Save, Close2 } from '../../DesignTokens/Icon';
+import { color } from '../../../styles';
 
 const SuggestionCard = ({
   href,
@@ -73,7 +74,7 @@ const SuggestionCard = ({
             data-testid="suggestion-action__favorite"
             aria-label="save recipe suggestion"
           >
-            <Save className="favorite-ribbon" />
+            <Save className="favorite-ribbon" fill={color.eclipse}/>
           </SuggestionCardAction>
           <span>Save</span>
         </div>
