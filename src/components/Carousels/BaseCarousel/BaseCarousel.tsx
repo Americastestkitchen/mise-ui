@@ -96,7 +96,7 @@ export default function BaseCarousel({
             if (cell) flickity.current?.remove(cell);
           }, 500);
 
-          if (flickity.current?.cells.length < 6) {
+          if (flickity.current?.cells.length < 11) {
             setTimeout(() => {
               flickity.current?.next(true);
             }, 2500);
