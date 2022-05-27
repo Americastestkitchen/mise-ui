@@ -15,10 +15,10 @@ const CarouselWrapper = styled.div`
   }
 `;
 
-const StyledTitle = styled(Title)`
-  > span {
-    margin: 8px 0 0 6px;
-  }
+const StyledSticker = styled(Sticker)`
+  margin: 0 0 8px 0;
+  display: block;
+  width: 42px;
 `;
 
 const Subtitle = styled.span`
@@ -29,9 +29,8 @@ const MadeForYouCarousel = ({ results, title, subtitle }) => {
   if (results.length === 0) {
     return (
       <>
-        <StyledTitle>
-          {title} <Sticker type="priority" text="new" />
-        </StyledTitle>
+        <StyledSticker type="priority" text="new" />
+        <Title>{title}</Title>
         <Divider showDivider />
         <EmptyState />
       </>
@@ -40,13 +39,10 @@ const MadeForYouCarousel = ({ results, title, subtitle }) => {
 
   return (
     <>
+      <StyledSticker type="priority" text="new" />
       <Subtitle>{subtitle}</Subtitle>
       <BaseCarousel
-        header={(
-          <StyledTitle>
-            {title} <Sticker type="priority" text="new" />
-          </StyledTitle>
-        )}
+        header={(<Title>{title}</Title>)}
         showDivider
       >
         {results.map((props, index) => (

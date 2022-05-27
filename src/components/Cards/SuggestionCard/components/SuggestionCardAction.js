@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { color } from '../../../../styles';
+import { color, mixins } from '../../../../styles';
 
 const SuggestionCardAction = styled.button.attrs({
   className: 'suggestion-card__button',
@@ -13,6 +13,16 @@ const SuggestionCardAction = styled.button.attrs({
   border-radius: 50%;
   background-color: white;
   box-shadow:  0 3px 6px 0 rgba(0, 0, 0, 0.16);
+
+
+  ${mixins.onlySafari(`
+    height: 41px;
+  `)};
+
+  ${mixins.onlyFirefox(`
+    height: 41px;
+    width: 41px;
+  `)};
 
   svg {
     &.favorite-ribbon {
