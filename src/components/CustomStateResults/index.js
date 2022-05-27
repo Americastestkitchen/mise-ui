@@ -57,7 +57,7 @@ const BackToTopButton = styled.button`
   color: ${color.eclipse};
 
   &:hover {
-    color: ${color.mint};
+    color: ${color.grayishCyan};
   }
 
   ${breakpoint('xlg')`

@@ -231,6 +231,28 @@ export default {
       width: 1px;
     `;
   },
+
+  // CSS applied only in Safari 10.1+
+  // Ref: https://stackoverflow.com/questions/16348489/is-there-a-css-hack-for-safari-only-not-chrome
+  onlySafari(styles) {
+    return `
+      @media not all and (min-resolution: 0.001dpcm) {
+        @supports (-webkit-appearance: none) {
+          ${styles}
+        }
+      }
+    `;
+  },
+
+  // CSS applied only in firefox
+  // Ref: https://stackoverflow.com/questions/952861/targeting-only-firefox-with-css
+  onlyFirefox(styles) {
+    return `
+      @-moz-document url-prefix() {
+        ${styles}
+      }
+    `;
+  },
 };
 
 export const cssThemedFont = withThemes({
