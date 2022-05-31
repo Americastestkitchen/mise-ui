@@ -3,7 +3,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Image from '../shared/Image';
-import { getImageUrl } from '../../../lib/cloudinary';
 
 import { color, font, fontSize } from '../../../styles';
 
@@ -88,10 +87,7 @@ const MadeForYouCard = ({
         <Image
           imageAlt={title}
           imageUrl={cloudinary_url}
-          lowQualityImageUrl={getImageUrl(
-            cloudinary_url,
-            'thumbnailPlaceholder',
-          )}
+          lowQualityImageUrl={cloudinary_url}
         />
       </a>
       <MadeForYouCardTitleWrapper style={{ backgroundColor: getBgColor(index) }}>

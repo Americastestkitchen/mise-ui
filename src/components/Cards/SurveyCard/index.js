@@ -34,7 +34,7 @@ const SurveyCardWrapper = styled.div`
     height: 27.2rem;
 
     ${props => props.hasSuccessMessage && `
-      padding-bottom: 3.3rem; 
+      padding-bottom: 3.3rem;
     `}
   `}
 
@@ -115,6 +115,8 @@ const FormEl = ({ surveyType, handleSubmit }) => {
     case 'feedback':
       El = <FeedbackForm handleSubmit={handleSubmit} />;
       break;
+    default:
+      El = <NpsForm handleSubmit={handleSubmit} />;
   }
   return El;
 };

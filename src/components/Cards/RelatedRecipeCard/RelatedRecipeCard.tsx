@@ -120,6 +120,7 @@ const RelatedRecipeCard = ({
         imageAlt={altText}
         imageUrl={src}
         className="card-image"
+        lowQualityImageUrl={src}
       />
       <Content className="related-recipe-card-content">
         {stickers ? (
