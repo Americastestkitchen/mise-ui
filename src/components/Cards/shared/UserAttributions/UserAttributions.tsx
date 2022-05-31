@@ -20,17 +20,22 @@ export type UserAttributionsProps = InferStyledTypes<typeof Wrapper> & {
   avgRating?: number;
   numRatings?: number;
   commentsCount?: number;
+  /** When true, will hide rating and comments attributions when they are falsey */
+  hideEmptyAttributions?: boolean;
 };
 
 export default function UserAttributions({
   avgRating,
   numRatings,
   commentsCount,
+  hideEmptyAttributions,
   ...styledProps
 }: UserAttributionsProps) {
   const hasCommentsCount = typeof commentsCount === 'number';
   const hasRatings = typeof avgRating === 'number' && typeof numRatings === 'number';
   const hasNoData = !hasRatings && !hasCommentsCount;
+  const shouldHideRatings = hideEmptyAttributions && (!avgRating || !numRatings);
+  const shouldHideComments = hideEmptyAttributions && !commentsCount;
   const avgRatingRound = hasRatings ? (Math.round(10 * avgRating) / 10).toFixed(1) : undefined;
 
   const ratingsAria = `${avgRating && avgRating > 0 ? `${avgRatingRound} star${avgRatingRound === '1.0' ? '' : 's'} ${numRatings} rating${numRatings === 1 ? '' : 's'}` : ''}`;
@@ -44,12 +49,12 @@ export default function UserAttributions({
       tabIndex={hasNoData ? -1 : 0}
       {...styledProps}
     >
-      {hasRatings && (
+      {hasRatings && !shouldHideRatings && (
         <ActionSummaryItem icon="star">
           <div aria-hidden="true"><strong>{avgRatingRound}</strong>&nbsp;<span>{`(${numRatings})`}</span></div>
         </ActionSummaryItem>
       )}
-      {hasCommentsCount && (
+      {hasCommentsCount && !shouldHideComments && (
         <ActionSummaryItem icon="comment">
           <strong aria-hidden="true">{commentsCount}</strong>
         </ActionSummaryItem>

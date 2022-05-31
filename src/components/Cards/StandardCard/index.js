@@ -191,6 +191,7 @@ function StandardCard({
   numRatings,
   objectId,
   onClick,
+  renderImage,
   searchAttribution,
   searchComments,
   secondaryAttribution,
@@ -211,6 +212,7 @@ function StandardCard({
   return (
     <StyledStandardCard
       className={`standard-card${imageUrl ? '' : ' no-image'}`}
+      data-qa="standard-card"
       {...dataAttrs}
     >
       <>
@@ -224,11 +226,15 @@ function StandardCard({
               rel={target && target === '_blank' ? 'noopener noreferrer' : null}
               target={target}
             >
-              <ImageItem
-                aria-hidden="true"
-                imageAlt={imageAlt}
-                imageUrl={imageUrl}
-              />
+              {
+                renderImage ? renderImage() : (
+                  <ImageItem
+                    aria-hidden="true"
+                    imageAlt={imageAlt}
+                    imageUrl={imageUrl}
+                  />
+                )
+              }
             </a>
           ) : null }
           <StyledBadge
@@ -337,6 +343,7 @@ StandardCard.propTypes = {
   stickers: PropTypes.array,
   target: PropTypes.string,
   title: PropTypes.string.isRequired,
+  renderImage: PropTypes.func,
 };
 
 StandardCard.defaultProps = {
@@ -365,6 +372,7 @@ StandardCard.defaultProps = {
   siteKeyFavorites: null,
   stickers: [],
   target: null,
+  renderImage: null,
 };
 
 export default React.memo(StandardCard, (prev, next) => (

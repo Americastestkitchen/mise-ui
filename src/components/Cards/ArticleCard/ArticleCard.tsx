@@ -8,6 +8,15 @@ import cloudinaryInstance, { baseImageConfig } from '../../../lib/cloudinary';
 import Sticker from '../shared/Sticker';
 import { Author, BylineListArticleCard } from '../../BylineList';
 import { InferStyledTypes } from '../../../styles/utility-types';
+import FavoriteRibbonWithBg from '../shared/FavoriteRibbonWithBg';
+
+const Stack = styled.div`
+  display: grid;
+  grid-template-areas: "stack";
+  & > * {
+    grid-area: stack;
+  }
+`;
 
 const cssThemedDescriptionFont = withThemes({
   default: css`font-family: ${font.mwr};`,
@@ -90,35 +99,40 @@ const StickerGroup = styled.div`
 `;
 
 const BadgePlacement = styled.div`
-  position: absolute;
   padding: 8px;
+  align-self: flex-start;
+  justify-self: flex-start;
+`;
+
+const FavoritesPlacement = styled.div`
+  padding: 4px;
+  align-self: flex-start;
+  justify-self: flex-end;
 `;
 
 type SplitCardProps = PropsWithChildren<{
   linkProps: InferStyledTypes<typeof Card>;
-  documentSiteKey: 'atk' | 'cio' | 'cco';
   picture: ReactNode;
+  overlay?: ReactNode;
 }>;
 
 function SplitCard({
   linkProps,
-  documentSiteKey,
   picture,
+  overlay,
   children,
 }: SplitCardProps) {
   const [imageError, setImageError] = useState(false);
 
   return (
-    <Card {...linkProps}>
-      { !imageError ? (
-        <>
+    <Card data-qa="article-card" {...linkProps}>
+      {!imageError ? (
+        <Stack>
           <CardImage onError={() => setImageError(true)}>
             {picture}
           </CardImage>
-          <BadgePlacement>
-            <Badge type={documentSiteKey} fill={color.transparentBlack} />
-          </BadgePlacement>
-        </>
+          {overlay}
+        </Stack>
       ) : null}
       <CardBody>
         {children}
@@ -135,6 +149,11 @@ export type ArticleCardProps = {
   attribution: string;
   cloudinaryId: string;
   documentSiteKey: 'atk' | 'cio' | 'cco';
+  /**
+   * Object id only used for favorites. Leave undefined to not show
+   *  favorites button.
+   */
+  favoritesObjectId?: string;
   linkProps: InferStyledTypes<typeof Card>;
 }
 
@@ -146,6 +165,7 @@ export default function ArticleCard({
   attribution,
   cloudinaryId,
   documentSiteKey,
+  favoritesObjectId,
   linkProps,
 }: ArticleCardProps) {
   const src = cloudinaryInstance.url(cloudinaryId, { ...baseImageConfig, height: 190 });
@@ -154,16 +174,32 @@ export default function ArticleCard({
   return (
     <SplitCard
       linkProps={linkProps}
-      documentSiteKey={documentSiteKey}
       picture={(
         <picture>
           <source srcSet={srcLg} media="(min-width: 768px)" />
           <img src={src} alt="" />
         </picture>
       )}
+      overlay={(
+        <>
+          <BadgePlacement>
+            <Badge type={documentSiteKey} fill={color.transparentBlack} />
+          </BadgePlacement>
+          {!!favoritesObjectId && (
+            <FavoritesPlacement>
+              <FavoriteRibbonWithBg
+                fill={color.eclipse}
+                title={title}
+                objectId={favoritesObjectId}
+                siteKey={documentSiteKey}
+              />
+            </FavoritesPlacement>
+          )}
+        </>
+      )}
     >
       <StickerGroup>
-        {stickers.map(sticker => <Sticker {...sticker} />)}
+        {stickers.map(sticker => <Sticker key={sticker.text} {...sticker} />)}
       </StickerGroup>
       <Title>{title}</Title>
       <Description>{description}</Description>

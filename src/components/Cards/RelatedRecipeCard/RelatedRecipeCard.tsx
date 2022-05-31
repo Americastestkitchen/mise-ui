@@ -82,7 +82,7 @@ const RelatedRecipeCard = ({
     height: 128,
   });
   return (
-    <CtaLink {...linkProps}>
+    <CtaLink data-qa="related-recipe-card" {...linkProps}>
       <ImageWrapper>
         <img alt={altText} src={src} />
       </ImageWrapper>
@@ -92,6 +92,7 @@ const RelatedRecipeCard = ({
           avgRating={avgRating}
           commentsCount={commentsCount}
           numRatings={numRatings}
+          hideEmptyAttributions
         />
       </Content>
     </CtaLink>

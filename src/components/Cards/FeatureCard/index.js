@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import { color, font, fontSize, grid, lineHeight, mixins, spacing } from '../../../styles';
 import { cssThemedFontBold } from '../../../styles/mixins';
 import { FeatureCardUserAttributions } from '../shared/UserAttributions';
+import { untilLg } from '../../../styles/breakpoints';
 import Badge from '../../Badge';
 import FavoriteRibbonWithBg from '../shared/FavoriteRibbonWithBg';
 import Image from '../shared/Image';
@@ -98,7 +99,12 @@ const StyledTitle = styled(Title)`
   }
 
   ${({ themedTitle }) => (themedTitle && cssThemedFontBold)}
-  ${({ themedTitle }) => (themedTitle && 'font-size: 3.2rem; line-height: 3.6rem;')}
+  ${({ themedTitle }) => (themedTitle && css`
+    font-size: 3.2rem;
+    line-height: 3.6rem;
+
+    ${untilLg(css`font-size: 2.3rem; line-height: 2.6rem;`)}
+  `)}
 `;
 
 const StyledSticker = styled(Sticker)`
@@ -113,6 +119,10 @@ const StyledFavoriteButtonWithBg = styled(FavoriteRibbonWithBg)`
   position: absolute;
   top: 0.6rem;
   right: 0.6rem;
+
+  &:focus {
+    ${mixins.focusIndicator()};
+  }
 `;
 
 const Attributions = styled.p.attrs({
@@ -128,6 +138,10 @@ const CtaLink = styled.a`
   left: ${spacing.xsm};
   position: absolute;
   z-index: 2;
+
+  &:focus {
+    ${mixins.focusIndicator()};
+  }
 `;
 
 const PricingWrapper = styled.div`
@@ -180,6 +194,7 @@ function FeatureCard({
     <StyledFeatureCard
       className={ctaUrl ? 'has-cta feature-card' : 'feature-card'}
       contentType={contentType}
+      data-qa="feature-card"
       data-testid="feature-card"
       {...dataAttrs}
       isWide={isWide}
@@ -239,7 +254,7 @@ function FeatureCard({
           )}
         </div>
         <StyledBadge className={className} type={siteKey} />
-        {displayFavoritesButton && siteKeyFavorites ? (
+        {displayFavoritesButton && siteKeyFavorites && objectId ? (
           <StyledFavoriteButtonWithBg
             className={className}
             siteKey={siteKeyFavorites}

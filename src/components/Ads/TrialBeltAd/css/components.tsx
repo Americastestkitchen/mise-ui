@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { font, color } from '../../../../styles';
+import { font, color, mixins } from '../../../../styles';
 import { cssThemedColor } from '../../../../styles/mixins';
 import { md, lg, xlg } from '../../../../styles/breakpoints';
 import { cssThemedButton } from './shared';
@@ -25,7 +25,7 @@ export const Headline = styled.p`
 export const Description = styled.p`
   font-family: ${font.pnb};
   font-size: 18px;
-  line-height: 20px;
+  line-height: 22px;
   max-width: 208px;
 
   ${md(css`max-width: 300px;`)}
@@ -82,4 +82,8 @@ export const ClickArea = styled.a`
   display: grid; 
   gap: 0px 0px; 
   width: 100%;
+  
+  &:focus {
+    ${mixins.focusIndicator()};
+  }
 `;
