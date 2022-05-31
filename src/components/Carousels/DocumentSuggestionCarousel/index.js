@@ -6,6 +6,7 @@ import styled, { css } from 'styled-components';
 import BaseCarousel from '../BaseCarousel';
 import SuggestionCard from '../../Cards/SuggestionCard';
 import { color, font, fontSize, letterSpacing, lineHeight, spacing, withThemes } from '../../../styles';
+import SuggestionSideEffects from './SuggestionSideEffects';
 
 const TitleTheme = {
   default: css`
@@ -107,6 +108,7 @@ const DocumentSuggestionCarousel = ({
         title={title}
         showDivider
       >
+        <SuggestionSideEffects />
         {items.map((item, idx) => (
           <SuggestionCard
             dataIdx={idx}
