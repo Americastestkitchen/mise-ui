@@ -1,3 +1,17 @@
+# v1.33.20 (Tue May 31 2022)
+
+#### 🐛 Bug Fix
+
+- Feature homepages cio [#769](https://github.com/Americastestkitchen/mise-ui/pull/769) ([@harry-atk](https://github.com/harry-atk) [@ttornese](https://github.com/ttornese) audrey.magwili@americastestkitchen.com)
+
+#### Authors: 3
+
+- Audrey Magwili (audrey.magwili@americastestkitchen.com)
+- Harry Scheuerle ([@harry-atk](https://github.com/harry-atk))
+- Tom Tornese ([@ttornese](https://github.com/ttornese))
+
+---
+
 # v1.33.19 (Fri May 20 2022)
 
 #### 🐛 Bug Fix
