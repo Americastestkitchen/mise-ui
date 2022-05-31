@@ -81,28 +81,29 @@ const LoadingCarousel = ({
   intro,
   title,
   type,
-}) => (
-  <StyledLoadingCarousel className="loading-carousel">
-    {intro && (<div className="intro" />) }
-    { title && ctaText && (
-      <div className={`text-and-dots ${type}`}>
-        <div className="title-and-cta" />
-        <div className="dots" />
+  count,
+}) => {
+  const cards = Array(count).fill(<LoadingCard type={type} />);
+  return (
+    <StyledLoadingCarousel className="loading-carousel">
+      {intro && (<div className="intro" />) }
+      { title && ctaText && (
+        <div className={`text-and-dots ${type}`}>
+          <div className="title-and-cta" />
+          <div className="dots" />
+        </div>
+      )}
+      <div className="card-carousel">
+        <div className="cards">
+          {cards}
+          { title && ctaText && (
+            <div className="card-peek" />
+          )}
+        </div>
       </div>
-    )}
-    <div className="card-carousel">
-      <div className="cards">
-        <LoadingCard type={type} />
-        <LoadingCard type={type} />
-        <LoadingCard type={type} />
-        <LoadingCard type={type} />
-        { title && ctaText && (
-          <div className="card-peek" />
-        )}
-      </div>
-    </div>
-  </StyledLoadingCarousel>
-);
+    </StyledLoadingCarousel>
+  );
+};
 
 LoadingCarousel.propTypes = {
   /** Text displayed on CTA. */
@@ -120,13 +121,17 @@ LoadingCarousel.propTypes = {
     'standard',
     'tall',
     'related-small',
+    'related-recipe',
+    'suggestion',
   ]).isRequired,
+  count: PropTypes.number,
 };
 
 LoadingCarousel.defaultProps = {
   ctaText: null,
   intro: null,
   title: null,
+  count: 4,
 };
 
 export default LoadingCarousel;

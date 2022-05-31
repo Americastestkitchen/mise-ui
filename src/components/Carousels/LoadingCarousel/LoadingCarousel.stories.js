@@ -25,6 +25,20 @@ export const RelatedSmallCarousel = () => (
   <LoadingCarousel type="related-small" />
 )
 
+export const RelatedRecipeCarousel = () => (
+  <LoadingCarousel type="related-recipe" />
+)
+
+export const SuggestionCardCarousel = () => (
+  <LoadingCarousel
+   intro='For folks who always want to know why?'
+   ctaText='Explore 20 Seasons'
+   title="America's Test Kitchen"
+   type="suggestion"
+   count={2}
+  />
+)
+
 export const DocumentListCarousel = () => (
   <LoadingCarousel
     intro='For folks who always want to know why?'
