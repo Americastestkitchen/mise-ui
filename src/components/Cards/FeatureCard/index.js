@@ -99,7 +99,7 @@ const StyledTitle = styled(Title)`
   }
 
   ${({ themedTitle }) => (themedTitle && cssThemedFontBold)}
-  ${({ themedTitle }) => (themedTitle && `
+  ${({ themedTitle }) => (themedTitle && css`
     font-size: 3.2rem;
     line-height: 3.6rem;
 

@@ -18,7 +18,7 @@ const cssHeadlineReduced = css`
 
 const cssDescriptionReduced = css`
   font-size: 18px;
-  line-height: 20px;
+  line-height: 22px;
 `;
 
 const cssDescriptionSize = css`
