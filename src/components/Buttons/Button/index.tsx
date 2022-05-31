@@ -29,6 +29,7 @@ const StyledButtonTheme = {
     white-space: nowrap;
     &:focus {
       ${mixins.focusIndicator()}
+      z-index: 1;
     }
 
     @media(hover: hover) {
