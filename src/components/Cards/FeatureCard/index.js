@@ -140,7 +140,8 @@ const CtaLink = styled.a`
   z-index: 2;
 
   &:focus {
-    ${mixins.focusIndicator()};
+    ${mixins.focusIndicator(color.white)};
+
   }
 `;
 
