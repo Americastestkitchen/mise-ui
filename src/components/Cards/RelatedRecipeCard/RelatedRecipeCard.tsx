@@ -16,6 +16,10 @@ const CtaLink = styled.a`
   }
   height: 128px;
 
+  &:focus {
+    ${mixins.focusIndicator('#3d3d3d', '2px')}
+  }
+
   .card-image {
     background-position: center center;
     background-repeat: no-repeat;

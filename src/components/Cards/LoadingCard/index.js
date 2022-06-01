@@ -265,15 +265,7 @@ const StyledLoadingCardTheme = {
       `}
     }
 
-    &.related-recipe-card {
-      ${mixins.loadingGradientAnimation(cards.tall.width.base, color.silver, color.nobel)};
-    }
-
-    &.suggestion-card {
-      ${mixins.loadingGradientAnimation(cards.tall.width.base, color.silver, color.nobel)};
-    }
-
-    &.related-small-card {
+    &.related-recipe-card, &.suggestion-card, &.related-small-card {
       ${mixins.loadingGradientAnimation(cards.tall.width.base, color.silver, color.nobel)};
     }
   `,

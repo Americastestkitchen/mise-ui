@@ -14,6 +14,9 @@ const SuggestionCardAction = styled.button.attrs({
   background-color: white;
   box-shadow:  0 3px 6px 0 rgba(0, 0, 0, 0.16);
 
+  &:focus {
+    ${mixins.focusIndicator('#3d3d3d', '2px')}
+  }
 
   ${mixins.onlySafari(`
     height: 41px;

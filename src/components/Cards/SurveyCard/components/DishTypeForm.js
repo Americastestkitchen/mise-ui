@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import styledBreakpoint from 'styled-components-breakpoint';
 
-import { color, fontSize } from '../../../..';
+import { color, fontSize, mixins } from '../../../..';
 import { dishTypeData } from '../data';
 import { SubmitButton } from '..';
 import Checkmark from '../../../DesignTokens/Icon/svgs/Checkmark3';
@@ -21,7 +21,11 @@ const SurveyCardOption = styled.label`
   cursor: pointer;
   margin: 0 8px 10px 0;
 
-  ${styledBreakpoint('md')` 
+  &:focus {
+      ${mixins.focusIndicator('#3d3d3d', '2px')}
+    }
+
+  ${styledBreakpoint('md')`
     margin-bottom: 14px;
   `}
 
