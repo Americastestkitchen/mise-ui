@@ -21,7 +21,7 @@ export const Carousel = styled.div`
   }
   .suggestion-card {
     width: 272px;
-    margin-right: 20px;
+    margin-right: 1.6rem;
     ${breakpoint('md')`
       width: 560px;
     `}

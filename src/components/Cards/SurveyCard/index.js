@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import styledBreakpoint from 'styled-components-breakpoint';
-import { color, font, fontSize, lineHeight } from '../../../styles';
+import { color, font, fontSize, lineHeight, mixins } from '../../../styles';
 import DishTypeForm from './components/DishTypeForm';
 import NpsForm from './components/NpsForm';
 import FeedbackForm from './components/FeedBackForm';
@@ -60,6 +60,10 @@ export const SubmitButton = styled.button`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  &:focus {
+    ${mixins.focusIndicator('#3d3d3d', '2px')}
+  }
 
   ${styledBreakpoint('smmd')`
     bottom: -3.7rem;

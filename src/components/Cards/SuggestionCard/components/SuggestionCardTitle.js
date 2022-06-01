@@ -13,6 +13,10 @@ const SuggestionCardTitle = styled.a.attrs({
   margin: 1rem 0;
   ${mixins.truncateLineClamp(2)};
 
+  &:focus {
+    ${mixins.focusIndicator('#3d3d3d', '2px')}
+  }
+
   ${breakpoint('md')`
     font-size: ${fontSize.xl};
   `}
