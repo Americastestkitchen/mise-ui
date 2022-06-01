@@ -10,7 +10,7 @@ const SuggestionCardActions = styled.div.attrs({
   position: absolute;
   left: 50%;
   transform: translate(-50%, -50%);
-  bottom: -35.5rem;
+  bottom: -29.5rem;
 
   .button-container {
     display: flex;

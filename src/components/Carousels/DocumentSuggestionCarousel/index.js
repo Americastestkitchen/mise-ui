@@ -59,7 +59,7 @@ const DocumentListCarouselTheme = {
       }
 
       .flickity-viewport {
-        height: 52rem !important;
+        height: 47rem !important;
 
         ${breakpoint('md')`
           height: 32rem !important;
