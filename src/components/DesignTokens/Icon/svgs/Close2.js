@@ -38,7 +38,7 @@ Close.propTypes = {
 };
 
 Close.defaultProps = {
-  ariaLabel: "close",
+  ariaLabel: 'close',
   fill: `${color.eclipse}`,
 };
 
