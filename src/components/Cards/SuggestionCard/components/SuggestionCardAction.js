@@ -58,22 +58,6 @@ const SuggestionCardAction = styled.button.attrs({
   }
 
   &.favorite-action {
-
-    svg path.outer-stroke {
-      stroke: ${color.eclipse};
-      stroke-width: 4;
-    }
-
-    @media(hover: hover) {
-      &:hover {
-        background-color: ${color.darkerMint};
-
-        svg path.outer-stroke {
-          stroke: ${color.white};
-        }
-      }
-    }
-
     &:not(.favorited) {
       svg {
         .favorite-ribbon__ribbon {
@@ -91,12 +75,19 @@ const SuggestionCardAction = styled.button.attrs({
   }
 
   &.primary-hover {
-    &:hover {
-      background-color: ${color.darkerMint};
-      border: 1px solid ${color.darkerMint};
+    @media(hover: hover) {
+      &:hover {
+        background-color: ${color.darkerMint};
+        border: 1px solid ${color.darkerMint};
+        color: ${color.white};
 
-      line, path {
-        stroke: ${color.white};
+        svg g {
+          stroke: ${color.white};
+        }
+
+        line, path {
+          stroke: ${color.white};
+        }
       }
     }
   }

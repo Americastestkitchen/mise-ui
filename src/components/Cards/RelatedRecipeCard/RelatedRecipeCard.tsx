@@ -99,7 +99,7 @@ export type RelatedRecipeCardProps = {
   commentsCount?: number;
   headline: string;
   numRatings?: number;
-  stickers: IStickers[];
+  stickers?: IStickers[];
   linkProps: InferStyledTypes<typeof CtaLink>;
 };
 
