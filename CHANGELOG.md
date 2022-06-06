@@ -1,3 +1,18 @@
+# v1.33.21 (Mon Jun 06 2022)
+
+#### 🐛 Bug Fix
+
+- Favorites mise2 [#773](https://github.com/Americastestkitchen/mise-ui/pull/773) (jthomas@jthomas-mbp.attlocal.net [@leo-fsl](https://github.com/leo-fsl) [@harry-atk](https://github.com/harry-atk))
+- fixing linter error [#747](https://github.com/Americastestkitchen/mise-ui/pull/747) (jthomas@jthomas-mbp.attlocal.net)
+
+#### Authors: 3
+
+- Harry Scheuerle ([@harry-atk](https://github.com/harry-atk))
+- Jenner Thomas ([@jwinnfeild2517](https://github.com/jwinnfeild2517))
+- Leonardo ([@leo-fsl](https://github.com/leo-fsl))
+
+---
+
 # v1.33.20 (Tue May 31 2022)
 
 #### 🐛 Bug Fix
