@@ -8,8 +8,9 @@ const SuggestionCardContent = styled.div.attrs({
 })`
   flex: 1 0 0;
   font: ${fontSize.sm}/1.43 ${font.mwr};
+  position: relative;
 
-  ${breakpoint('lg')`
+  ${breakpoint('md')`
     align-self: center;
   `}
 `;

@@ -1,4 +1,5 @@
-import type Flickity from 'flickity';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import Flickity from 'flickity';
 import React, { PropsWithChildren, useCallback, createContext, useContext } from 'react';
 import ArrowButton from './ArrowButton';
 
@@ -6,7 +7,7 @@ import { Title, Header, Navigation, Divider, Carousel } from './styled-elements'
 import useFlickity, { FlickityState } from './useFlickity';
 
 export const context = createContext({
-  registerOnChange: (callback: (flickity: Flickity) => void): (() => void) => {
+  registerOnChange: (callback: (flickity: Flickity, ev?: number) => void): (() => void) => {
     // eslint-disable-next-line no-console
     console.log('useCarouselContext hook outside of provider', callback);
     return () => {
@@ -22,6 +23,7 @@ export const context = createContext({
     // eslint-disable-next-line no-console
     console.log('useCarouselContext hook outside of provider');
   },
+  flickity: null as (Flickity | null),
 });
 
 export const useCarouselContext = () => useContext(context);
@@ -56,7 +58,7 @@ export default function BaseCarousel({
 
   const registerOnChange = useCallback((callback) => {
     callback(flickity.current);
-    flickity.current?.on('change', () => callback(flickity.current));
+    flickity.current?.on('change', ev => callback(flickity.current, ev));
     return () => {
       flickity.current?.off('change', callback);
     };
@@ -79,8 +81,8 @@ export default function BaseCarousel({
       </Header>
       <Divider showDivider={showDivider} />
       {/* IMPORTANT: Cards use this internally `.carousel & {}` to avoid breakpoint styles */}
-      <Carousel data-qa="carousel-wrapper" ref={flickityRef} className="carousel">
-        <context.Provider value={{ registerOnChange, onFocus, resize }}>
+      <Carousel ref={flickityRef} className="carousel">
+        <context.Provider value={{ registerOnChange, onFocus, resize, flickity: flickity.current }}>
           {children}
         </context.Provider>
       </Carousel>

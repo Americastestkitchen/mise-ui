@@ -5,6 +5,8 @@ import { color, font, withThemes } from '../../../styles';
 import { UserAttributions } from '../shared/UserAttributions';
 import mixins, { cssThemedColor } from '../../../styles/mixins';
 import { InferStyledTypes } from '../../../styles/utility-types';
+import Image from '../shared/Image';
+import Sticker from '../shared/Sticker';
 
 const CtaLink = styled.a`
   display: flex;
@@ -13,6 +15,23 @@ const CtaLink = styled.a`
     width: 344px;
   }
   height: 128px;
+
+  &:focus {
+    ${mixins.focusIndicator('#3d3d3d', '2px')}
+  }
+
+  .card-image {
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    height: 128px;
+    width: 128px;
+    flex-shrink: 0;
+
+    img {
+      width: 100%;
+    }
+  }
 `;
 
 const cssBackgroundColor = withThemes({
@@ -38,24 +57,40 @@ const Content = styled.div`
 
 const Headline = styled.span`
   ${cssThemedColor}
-  ${mixins.truncateLineClamp(4)}
+  ${mixins.truncateLineClamp(3)}
   font-size: 16px;
   font-family: ${font.pnb};
   line-height: 23px;
 `;
 
-const ImageWrapper = styled.div`
-  background-position: center center;
-  background-repeat: no-repeat;
-
-  height: 128px;
-  width: 128px;
+export const StickerGroup = styled.div`
+  bottom: 0;
+  display: flex;
   flex-shrink: 0;
+`;
 
-  img {
-    width: 100%;
+const StyledSticker = styled(Sticker)`
+  margin-bottom: 0;
+  &:first-child {
+    margin-left: 0;
   }
 `;
+
+type ContentTypeProps =
+  | 'collection'
+  | 'clip'
+  | 'episode'
+  | 'playlist'
+  | 'video'
+  | 'cooking school course';
+
+  interface IStickers {
+    className: string;
+    contentType: ContentTypeProps;
+    icon: string;
+    text: string;
+    type: string;
+  }
 
 export type RelatedRecipeCardProps = {
   altText?: string;
@@ -64,6 +99,7 @@ export type RelatedRecipeCardProps = {
   commentsCount?: number;
   headline: string;
   numRatings?: number;
+  stickers?: IStickers[];
   linkProps: InferStyledTypes<typeof CtaLink>;
 };
 
@@ -75,6 +111,7 @@ const RelatedRecipeCard = ({
   linkProps,
   commentsCount = 0,
   numRatings = 0,
+  stickers,
 }: RelatedRecipeCardProps) => {
   const src = cloudinaryInstance.url(cloudinaryId, {
     ...baseImageConfig,
@@ -82,12 +119,28 @@ const RelatedRecipeCard = ({
     height: 128,
   });
   return (
-    <CtaLink data-qa="related-recipe-card" {...linkProps}>
-      <ImageWrapper>
-        <img alt={altText} src={src} />
-      </ImageWrapper>
-      <Content>
-        <Headline>{headline}</Headline>
+    <CtaLink {...linkProps} className="related-recipe-card" title={headline}>
+      <Image
+        imageAlt={altText}
+        imageUrl={src}
+        className="card-image"
+        lowQualityImageUrl={src}
+      />
+      <Content className="related-recipe-card-content">
+        {stickers ? (
+          <StickerGroup>
+            {stickers.map(({ contentType, icon, text, type }) => (
+              <StyledSticker
+                contentType={contentType}
+                key={text}
+                icon={icon}
+                text={text}
+                type={type}
+              />
+            ))}
+          </StickerGroup>
+        ) : null}
+        <Headline className="headline">{headline}</Headline>
         <UserAttributions
           avgRating={avgRating}
           commentsCount={commentsCount}

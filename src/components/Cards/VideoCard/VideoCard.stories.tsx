@@ -27,6 +27,7 @@ const relatedDefault: RelatedRecipeCardProps = {
   avgRating: 4.87,
   commentsCount: 125,
   numRatings: 15,
+  stickers: [],
 };
 
 const defaultArgs: VideoCardProps = {

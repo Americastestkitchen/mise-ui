@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import breakpoint from 'styled-components-breakpoint';
 import { withThemes, color, font } from '../../../styles';
 import { untilMd } from '../../../styles/breakpoints';
 import {
@@ -17,6 +18,13 @@ export const Carousel = styled.div`
   }
   .standard-card {
     width: 272px;
+  }
+  .suggestion-card {
+    width: 272px;
+    margin-right: 1.6rem;
+    ${breakpoint('md')`
+      width: 560px;
+    `}
   }
 `;
 
@@ -52,7 +60,7 @@ export const Button = styled.button`
 
   &:hover {
     ${cssThemedBackground}
-    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16); 
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
     outline: none;
   }
 
@@ -94,7 +102,7 @@ export const Header = styled.header`
 
 export const TitleWrapper = styled.div`
   align-items: center;
-  display: flex; 
+  display: flex;
 `;
 
 export const Title = styled.h2`

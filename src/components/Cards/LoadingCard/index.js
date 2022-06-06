@@ -176,6 +176,18 @@ const StyledLoadingCardTheme = {
       height: 7.6rem;
       width: ${cards.standard.width.lg};
     }
+
+    &.related-recipe-card {
+      ${mixins.loadingGradientAnimation(cards.tallWide.width.base)};
+      height: 12.8rem;
+      width: ${cards.standard.width.lg};
+    }
+
+    &.suggestion-card {
+      ${mixins.loadingGradientAnimation(cards.tallWide.width.base)};
+      height: 27.2rem;
+      width: ${cards.featureWide.width.lg};
+    }
   `,
 
   dark: css`
@@ -252,6 +264,10 @@ const StyledLoadingCardTheme = {
         ${mixins.loadingGradientAnimation(cards.tallWide.width.lg, color.silver, color.nobel)};
       `}
     }
+
+    &.related-recipe-card, &.suggestion-card, &.related-small-card {
+      ${mixins.loadingGradientAnimation(cards.tall.width.base, color.silver, color.nobel)};
+    }
   `,
 };
 
@@ -292,6 +308,8 @@ LoadingCard.propTypes = {
     'tall',
     'tall-wide',
     'related-small',
+    'related-recipe',
+    'suggestion',
   ]).isRequired,
 };
 
