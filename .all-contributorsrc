@@ -96,6 +96,17 @@
         "example",
         "code"
       ]
+    },
+    {
+      "login": "jwinnfeild2517",
+      "name": "Jenner Thomas",
+      "avatar_url": "https://avatars.githubusercontent.com/u/46112853?v=4",
+      "profile": "https://github.com/jwinnfeild2517",
+      "contributions": [
+        "example",
+        "test",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7

@@ -189,6 +189,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/tdorin"><img src="https://avatars.githubusercontent.com/u/104532100?v=4?s=100" width="100px;" alt=""/><br /><sub><b>tdorin</b></sub></a><br /><a href="https://github.com/americastestkitchen/americastestkitchen/mise-ui/commits?author=tdorin" title="Documentation">📖</a> <a href="#example-tdorin" title="Examples">💡</a> <a href="https://github.com/americastestkitchen/americastestkitchen/mise-ui/commits?author=tdorin" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/jwinnfeild2517"><img src="https://avatars.githubusercontent.com/u/46112853?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jenner Thomas</b></sub></a><br /><a href="#example-jwinnfeild2517" title="Examples">💡</a> <a href="https://github.com/americastestkitchen/americastestkitchen/mise-ui/commits?author=jwinnfeild2517" title="Tests">⚠️</a> <a href="https://github.com/americastestkitchen/americastestkitchen/mise-ui/commits?author=jwinnfeild2517" title="Code">💻</a></td>
   </tr>
 </table>
 
