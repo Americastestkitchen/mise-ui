@@ -28,7 +28,7 @@ const cssThemedBackground = withThemes({
 
 const cssThemedBorder = withThemes({
   atk: css`
-    border: solid 1px #D8D8D8;
+    border: solid 1px ${color.silver};
   `,
   cco: css`
     border: solid 1px ${color.silver};
@@ -175,7 +175,7 @@ const AdWrapper = styled.div`
   ${md(css`
     margin: ${spacing.xlg} -3.6rem 0;
     max-height: 17.7rem;
-    padding: 3.5rem 3.65rem 3.45rem 3.6rem;
+    padding: 2.6rem 3.2rem;
     width: calc(100% + ${spacing.xxxlg});
 
     .email-form {
@@ -289,15 +289,16 @@ const ContentWrapper = styled.div`
   width: 100%;
 
   ${md(css`
-    ${({ success }) => (success ? css`
-      flex-direction: column; align-items: flex-start;
-    ` : css`
-      align-items: center; flex-direction: row; justify-content: space-between;
+    align-items: flex-start;
+
+    ${({ success }) => (success ? css`flex-direction: column;` : css`
+      flex-direction: row; justify-content: space-between;
     `)}
   `)}
 
   ${xlg(css`
     ${({ isWide }) => (isWide ? 'margin: 0 auto; max-width: 113.6rem;' : '')}
+    ${({ success }) => (!success && 'align-items: center;')}
   `)}
 `;
 
