@@ -86,7 +86,7 @@ const StandardSlideThemed = styled.div`
 export function StandardSlide({ children, divProps }: SlideProps) {
   const { onFocus } = useCarouselContext();
   return (
-    <StandardSlideThemed onFocus={onFocus} {...divProps}>
+    <StandardSlideThemed onFocus={onFocus} {...divProps} className="standard-slide">
       {children}
     </StandardSlideThemed>
   );
