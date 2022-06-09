@@ -1,4 +1,5 @@
 import React from 'react';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import PullQuote from './index';
 import { siteKey } from '../../../config/argTypes';
@@ -9,9 +10,9 @@ export default {
   component: PullQuote,
   decorators: [ addThemedWrapper() ],
   argTypes: { siteKey },
-};
+} as ComponentMeta<typeof PullQuote>;
 
-const Template = args => <PullQuote {...args} />;
+const Template: ComponentStory<typeof PullQuote> = props => <PullQuote {...props} />;
 
 const sharedArgs = {
   attribution: 'First Last',
