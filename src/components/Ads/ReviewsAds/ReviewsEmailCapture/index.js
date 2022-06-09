@@ -106,7 +106,7 @@ const AdWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin: 3.6rem -${spacing.sm} 0;
-  padding: ${spacing.md} ${spacing.sm} 2.2rem;
+  padding: 2.2rem ${spacing.sm} 4rem;
   text-align: left;
   width: calc(100% + ${spacing.lg});
 
