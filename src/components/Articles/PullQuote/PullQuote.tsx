@@ -1,26 +1,25 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import breakpoint from 'styled-components-breakpoint';
 
 import ArticleFigcaption from '../shared/ArticleFigcaption';
+import ArticleComponentWidthType from '../types/ArticleComponentWidth';
 import { Quote } from '../../DesignTokens/Icon/svgs';
 import { color, font, fontSize, mixins, withThemes } from '../../../styles';
+import { md, xlg } from '../../../styles/breakpoints';
 
-const PullQuoteWrapper = styled.div`
+
+const PullQuoteWrapper = styled.div<{ width: ArticleComponentWidthType }>`
   display: flex;
   flex-direction: column;
   margin-bottom: 3rem;
   width: 100%;
 
-  ${breakpoint('md')`
+  ${md(css`
     flex-direction: row;
     max-width: 56rem;
-  `}
+  `)}
 
-  ${breakpoint('xlg')`
-    ${({ width }) => (mixins.articlesWidth(width))}
-  `}
+  ${({ width }) => `${xlg(css`${mixins.articlesWidth(width)}`)}`}
 `;
 
 const PullQuoteIconTheme = {
@@ -35,9 +34,9 @@ const PullQuoteIconTheme = {
       width: 100%;
     }
 
-    ${breakpoint('md')`
+    ${md(css`
       margin-right: 1.6rem;
-    `}
+    `)}
   `,
   atk: css`
     svg {
@@ -70,11 +69,11 @@ const PullQuoteFigure = styled.figure`
   margin: 0;
   padding: 0;
 
-  ${breakpoint('xlg')`
+  ${xlg(css`
     .article-figcaption {
       padding-bottom: 0.8rem;
     }
-  `}
+  `)}
 `;
 
 const PullQuoteBlockQuoteTheme = {
@@ -106,7 +105,19 @@ const PullQuoteBlockQuote = styled.blockquote`
   ${withThemes(PullQuoteBlockQuoteTheme)}
 `;
 
-const PullQuote = ({ attribution, includeIcon, quote, width }) => (
+export type PullQuoteProps = {
+  attribution?: string;
+  includeIcon?: boolean;
+  quote: string;
+  width?: ArticleComponentWidthType;
+};
+
+const PullQuote = ({
+  attribution,
+  includeIcon = true,
+  quote,
+  width = 'default',
+}: PullQuoteProps) => (
   <PullQuoteWrapper className="pull-quote" width={width}>
     {
       includeIcon && (
@@ -130,22 +141,5 @@ const PullQuote = ({ attribution, includeIcon, quote, width }) => (
     </PullQuoteFigure>
   </PullQuoteWrapper>
 );
-
-PullQuote.propTypes = {
-  /** Person attributed with saying the quote */
-  attribution: PropTypes.string,
-  /** Should component render quote icon? */
-  includeIcon: PropTypes.bool,
-  /** Text content of quote */
-  quote: PropTypes.string.isRequired,
-  /** Width configuration for PullQuote */
-  width: PropTypes.oneOf(['default', 'wide']),
-};
-
-PullQuote.defaultProps = {
-  attribution: null,
-  includeIcon: true,
-  width: 'default',
-};
 
 export default PullQuote;
