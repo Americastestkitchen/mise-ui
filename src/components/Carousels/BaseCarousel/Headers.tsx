@@ -27,11 +27,10 @@ const cssThemedStroke = withThemes({
  *  the arrow buttons by a bit to match designs.
  */
 const cssWrappingStyles = css`
+  display: flex;
+  flex-direction: column;
   ${TitleWrapper} {
     margin-bottom: 0.8rem;
-    max-width: 30rem;
-
-    ${untilSm(css`max-width: 26rem;`)}
   }
 `;
 
