@@ -9,10 +9,11 @@
     "jsx": "react",
     "declaration": true,
     "emitDeclarationOnly": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "skipLibCheck": true,
   },
   "include": ["src"],
   "exclude": [
-    "dist",
+    "dist"
   ]
 }

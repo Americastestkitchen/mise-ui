@@ -25,7 +25,12 @@
     "react": ">=16",
     "react-dom": ">=16",
     "react-instantsearch-dom": "^6.3.0",
-    "styled-components": "5.3.0"
+    "styled-components": "5.3.0",
+    "@types/flickity": "^2.2.6",
+    "@types/node": "^16.4.3",
+    "@types/react": "^17.0.15",
+    "@types/react-dom": "^17.0.9",
+    "@types/styled-components": "^5.1.11"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -79,11 +84,6 @@
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.7.2",
-    "@types/flickity": "^2.2.6",
-    "@types/node": "^16.4.3",
-    "@types/react": "^17.0.15",
-    "@types/react-dom": "^17.0.9",
-    "@types/styled-components": "^5.1.11",
     "@typescript-eslint/eslint-plugin": "^4.31.1",
     "@typescript-eslint/parser": "^4.31.1",
     "@whitespace/storybook-addon-html": "^5.0.0",
