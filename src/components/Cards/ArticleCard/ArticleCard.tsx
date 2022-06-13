@@ -148,7 +148,7 @@ export type ArticleCardProps = {
   authors: Pick<Author, 'firstName' | 'lastName' | 'photo' | 'id'>[];
   attribution: string;
   cloudinaryId: string;
-documentSiteKey: SiteKey;
+  documentSiteKey: DomainSiteKey;
   /**
    * Object id only used for favorites. Leave undefined to not show
    *  favorites button.

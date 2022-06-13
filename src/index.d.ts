@@ -26,4 +26,4 @@ interface Window {
     }
 }
 
-type SiteKey = 'atk' | 'cio' | 'cco';
+type DomainSiteKey = 'atk' | 'cio' | 'cco';

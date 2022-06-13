@@ -15,7 +15,7 @@ const TemplateHeadings = styled.h2.attrs({ tabIndex: 0 })`
   margin: 128px 0;
 `;
 
-const Preview = (props: TableOfContentsProps, siteKey: SiteKey) => (
+const Preview = (props: TableOfContentsProps, siteKey: DomainSiteKey) => (
   <ThemeProvider theme={{ ...defaultTheme, siteKey }}>
     <div>
       <TableOfContents {...props} />

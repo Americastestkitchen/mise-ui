@@ -238,7 +238,7 @@ type LeadMarqueeCardProps = {
   /** Image for card. */
   imageUrl: string;
   href: string;
-  siteKey: SiteKey | 'kids' | 'school' | 'shop';
+  siteKey: DomainSiteKey | 'kids' | 'school' | 'shop';
   /** Optional: attribution controls */
   displayAttributions?: boolean;
   commentsCount?: number;
