@@ -72,7 +72,7 @@ const TaglineWrapper = styled.div`
 `;
 
 export type HomepageTaglineProps = {
-  siteKey: SiteKey;
+  siteKey: DomainSiteKey;
 };
 
 const HomepageTagline = ({ siteKey }: HomepageTaglineProps) => {

@@ -128,14 +128,14 @@ export type ArticleCardProps = {
   authors: Pick<Author, 'firstName' | 'lastName' | 'photo' | 'id'>[];
   attribution: string;
   cloudinaryId: string;
-  documentSiteKey: SiteKey;
+  documentSiteKey: DomainSiteKey;
   linkProps: InferStyledTypes<typeof Card>;
 }
 
 
 type SplitCardProps = PropsWithChildren<{
   linkProps: InferStyledTypes<typeof Card>;
-  documentSiteKey: SiteKey;
+  documentSiteKey: DomainSiteKey;
   picture: ReactNode;
 }>;
 

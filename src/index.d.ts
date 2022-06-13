@@ -21,4 +21,4 @@ interface Window {
     instgrm?: { Embeds: { process: () => void } };
 }
 
-type SiteKey = 'atk' | 'cio' | 'cco';
+type DomainSiteKey = 'atk' | 'cio' | 'cco';
