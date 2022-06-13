@@ -19,7 +19,7 @@ export function FullWidthSlide({ children }: SlideProps) {
 }
 
 const mapSiteString = (map: Record<string, string>) => css`
-  ${({ theme }: { theme: { siteKey: SiteKey }}) => map?.[theme.siteKey] ?? 'unset'}
+  ${({ theme }: { theme: { siteKey: DomainSiteKey }}) => map?.[theme.siteKey] ?? 'unset'}
 `;
 
 const colorValue = mapSiteString({

@@ -71,7 +71,7 @@ export const setParameters = (parameters: any, ...stories: ComponentStory<any>[]
  * Sets the siteKey used in .storybook/preview.js decorators
  *  (may be confusing if siteKey is also component property)
  */
-export const setTheme = (siteKey: SiteKey, ...stories: ComponentStory<any>[]): void => {
+export const setTheme = (siteKey: DomainSiteKey, ...stories: ComponentStory<any>[]): void => {
   setBackground(siteKey, ...stories);
   setArgs({ siteKey }, ...stories);
 };
