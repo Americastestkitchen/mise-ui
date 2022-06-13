@@ -200,7 +200,7 @@ const EmailForm = ({
           role="button"
           type="submit"
         >
-          {buttonText}{optionalIcon ? <span>{optionalIcon}</span> : null}
+          {buttonText}{optionalIcon ? <span aria-hidden="true">{optionalIcon}</span> : null}
         </Button>
       </EmailFormElement>
       <HowWeUseWrapper>
