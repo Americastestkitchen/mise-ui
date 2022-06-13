@@ -94,12 +94,6 @@ const BadgePlacement = styled.div`
   padding: 8px;
 `;
 
-type SplitCardProps = PropsWithChildren<{
-  linkProps: InferStyledTypes<typeof Card>;
-  documentSiteKey: 'atk' | 'cio' | 'cco';
-  picture: ReactNode;
-}>;
-
 function SplitCard({
   linkProps,
   documentSiteKey,
@@ -134,9 +128,16 @@ export type ArticleCardProps = {
   authors: Pick<Author, 'firstName' | 'lastName' | 'photo' | 'id'>[];
   attribution: string;
   cloudinaryId: string;
-  documentSiteKey: 'atk' | 'cio' | 'cco';
+  documentSiteKey: SiteKey;
   linkProps: InferStyledTypes<typeof Card>;
 }
+
+
+type SplitCardProps = PropsWithChildren<{
+  linkProps: InferStyledTypes<typeof Card>;
+  documentSiteKey: SiteKey;
+  picture: ReactNode;
+}>;
 
 export default function ArticleCard({
   title,

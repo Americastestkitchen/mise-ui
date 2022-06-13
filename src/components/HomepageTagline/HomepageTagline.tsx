@@ -72,7 +72,7 @@ const TaglineWrapper = styled.div`
 `;
 
 export type HomepageTaglineProps = {
-  siteKey: 'atk' | 'cio' | 'cco';
+  siteKey: SiteKey;
 };
 
 const HomepageTagline = ({ siteKey }: HomepageTaglineProps) => {

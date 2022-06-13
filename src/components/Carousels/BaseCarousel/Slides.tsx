@@ -19,7 +19,7 @@ export function FullWidthSlide({ children }: SlideProps) {
 }
 
 const mapSiteString = (map: Record<string, string>) => css`
-  ${({ theme }: { theme: { siteKey: string }}) => map?.[theme.siteKey] ?? 'unset'}
+  ${({ theme }: { theme: { siteKey: SiteKey }}) => map?.[theme.siteKey] ?? 'unset'}
 `;
 
 const colorValue = mapSiteString({
@@ -35,8 +35,8 @@ const accentValue = mapSiteString({
 });
 
 const StandardSlideThemed = styled.div`
-  width: 272px; 
-  margin-left: 1px; 
+  width: 272px;
+  margin-left: 1px;
   margin-right: 14px;
   .standard-card__anchor {
     color: ${colorValue} !important;

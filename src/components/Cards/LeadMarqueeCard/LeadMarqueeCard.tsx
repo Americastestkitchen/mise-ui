@@ -25,7 +25,7 @@ const LeadMarqueeCardWrapper = styled.article.attrs({
       }
     }
   }
-  
+
   .lead-marquee-card__image {
     display: block;
     width: 100%;
@@ -41,7 +41,7 @@ const LeadMarqueeCardWrapper = styled.article.attrs({
       }
     }
   }
-  
+
   button:focus {
     ${mixins.focusIndicator('#ffffff', '2px')}
   }
@@ -238,7 +238,7 @@ type LeadMarqueeCardProps = {
   /** Image for card. */
   imageUrl: string;
   href: string;
-  siteKey: 'atk' | 'cco' | 'cio' | 'kids' | 'school' | 'shop';
+  siteKey: SiteKey | 'kids' | 'school' | 'shop';
   /** Optional: attribution controls */
   displayAttributions?: boolean;
   commentsCount?: number;
