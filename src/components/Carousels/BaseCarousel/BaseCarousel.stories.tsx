@@ -261,7 +261,7 @@ export const RecipeCarouselTopicExample = () => (
 );
 
 type ActionProps = {
-  siteKey: 'atk' | 'cio' | 'cco';
+  siteKey: SiteKey;
 };
 
 const RecipeCarouselExampleTemplate = ({ siteKey = 'atk' }: ActionProps) => (

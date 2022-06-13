@@ -25,3 +25,5 @@ interface Window {
         }
     }
 }
+
+type SiteKey = 'atk' | 'cio' | 'cco';
