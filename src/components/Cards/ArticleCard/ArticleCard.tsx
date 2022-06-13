@@ -71,6 +71,7 @@ const CardBody = styled.div`
   justify-content: center;
   gap: 8px;
   padding: 16px;
+  order: 1;
 `;
 
 const Title = styled.h3`
@@ -126,6 +127,9 @@ function SplitCard({
 
   return (
     <Card data-qa="article-card" {...linkProps}>
+      <CardBody>
+        {children}
+      </CardBody>
       {!imageError ? (
         <Stack>
           <CardImage onError={() => setImageError(true)}>
@@ -134,9 +138,6 @@ function SplitCard({
           {overlay}
         </Stack>
       ) : null}
-      <CardBody>
-        {children}
-      </CardBody>
     </Card>
   );
 }
