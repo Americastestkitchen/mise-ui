@@ -1,7 +1,7 @@
 import React, { PropsWithChildren, ReactNode, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { lg, md, untilMd, xxlg } from '../../../styles/breakpoints';
-import { color, font } from '../../../styles';
+import { color, font, mixins } from '../../../styles';
 import { cssThemedColor, withThemes, cssThemedTextLinkBold } from '../../../styles/mixins';
 import Badge from '../../Badge';
 import cloudinaryInstance, { baseImageConfig } from '../../../lib/cloudinary';
@@ -109,6 +109,10 @@ const FavoritesPlacement = styled.div`
   padding: 4px;
   align-self: flex-start;
   justify-self: flex-end;
+
+  button:focus {
+    ${mixins.focusIndicator()}
+  }
 `;
 
 type SplitCardProps = PropsWithChildren<{
