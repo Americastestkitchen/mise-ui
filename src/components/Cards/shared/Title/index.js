@@ -10,7 +10,7 @@ const TitleTheme = {
 
     @media(hover: hover) {
       &:hover {
-        color: ${color.mint};
+        color: ${color.darkTeal};
       }
     }
   `,
