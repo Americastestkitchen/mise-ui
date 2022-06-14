@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import { cards, color, fontSize, mixins, spacing, withThemes } from '../../../styles';
@@ -12,6 +11,7 @@ import Image from '../shared/Image';
 import ImageCollage from '../shared/ImageCollage';
 import Sticker from '../shared/Sticker';
 import Title from '../shared/Title';
+import { BaseCardPropType } from '../FeatureCard';
 
 const StandardCardTheme = {
   default: css`
@@ -169,6 +169,30 @@ export const StyledBadge = styled(Badge)`
   `}
 `;
 
+export interface StandardCardCardPropTypes extends BaseCardPropType {
+  avgRating: number,
+  ctaDataAttrs: Record<string, unknown>, //TODO: what object shape should this be?
+  dataAttrs: Record<string, unknown>, // TODO: document data attributes. What shape is this?
+  isFavorited: boolean,
+  numRatings: number,
+  objectId: string,
+  ctaText: string,
+  ctaUrl: string,
+  contentTypeFormatted: string,
+  displayFavoritesButton: boolean,
+  displayCookbook: boolean,
+  displayRecipeAttribution: boolean,
+  displaySecondaryAttribution: boolean,
+  displayLockIcon: boolean,
+  favoriteRibbonColor: string, // TODO: pull from list of colors
+  searchAttribution: boolean,
+  searchComments: number,
+  secondaryAttribution: number | string,
+  shopPrices: Record<string, unknown>, //TODO: what object shape should this be?
+  siteKeyFavorites: DomainSiteKey,
+  title: string,
+}
+
 function StandardCard({
   avgRating,
   className,
@@ -183,7 +207,7 @@ function StandardCard({
   displaySecondaryAttribution,
   displayFavoritesButton,
   displayLockIcon,
-  favoriteRibbonColor,
+  favoriteRibbonColor = color.eclipse,
   stickers,
   imageAlt,
   imageUrl,
@@ -202,7 +226,7 @@ function StandardCard({
   title,
   href,
   quickViewButton,
-}) {
+}: StandardCardCardPropTypes) {
   const ImageItem = Array.isArray(imageUrl) ? ImageCollage : Image;
   let stickerAria = '';
   if (stickers) {
@@ -309,75 +333,6 @@ function StandardCard({
     </StyledStandardCard>
   );
 }
-
-StandardCard.propTypes = {
-  avgRating: PropTypes.number,
-  displayFavoritesButton: PropTypes.bool,
-  className: PropTypes.string,
-  contentType: PropTypes.string.isRequired,
-  contentTypeFormatted: PropTypes.string,
-  ctaDataAttrs: PropTypes.object,
-  ctaText: PropTypes.string,
-  ctaUrl: PropTypes.string,
-  /** document data attributes */
-  dataAttrs: PropTypes.object,
-  displayCookbook: PropTypes.bool,
-  displayRecipeAttribution: PropTypes.bool,
-  displaySecondaryAttribution: PropTypes.bool,
-  displayLockIcon: PropTypes.bool,
-  favoriteRibbonColor: PropTypes.string,
-  href: PropTypes.string.isRequired,
-  imageAlt: PropTypes.string,
-  imageUrl: PropTypes.string,
-  isFavorited: PropTypes.bool,
-  numRatings: PropTypes.number,
-  objectId: PropTypes.string.isRequired,
-  onClick: PropTypes.func,
-  searchAttribution: PropTypes.bool,
-  searchComments: PropTypes.number,
-  secondaryAttribution: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string,
-  ]),
-  shopPrices: PropTypes.object,
-  siteKey: PropTypes.oneOf(['atk', 'cco', 'cio', 'kids', 'school', 'shop']).isRequired,
-  siteKeyFavorites: PropTypes.oneOf(['atk', 'cco', 'cio']),
-  stickers: PropTypes.array,
-  target: PropTypes.string,
-  title: PropTypes.string.isRequired,
-  renderImage: PropTypes.func,
-  quickViewButton: PropTypes.node,
-};
-
-StandardCard.defaultProps = {
-  avgRating: null,
-  className: null,
-  contentTypeFormatted: null,
-  ctaDataAttrs: null,
-  ctaText: '',
-  ctaUrl: '',
-  dataAttrs: null,
-  displayCookbook: false,
-  displayRecipeAttribution: false,
-  displaySecondaryAttribution: false,
-  displayFavoritesButton: false,
-  displayLockIcon: false,
-  favoriteRibbonColor: color.eclipse,
-  imageAlt: '',
-  imageUrl: '',
-  isFavorited: false,
-  numRatings: null,
-  onClick: null,
-  searchComments: null,
-  searchAttribution: false,
-  secondaryAttribution: null,
-  shopPrices: null,
-  siteKeyFavorites: null,
-  stickers: [],
-  target: null,
-  renderImage: null,
-  quickViewButton: null,
-};
 
 export default React.memo(StandardCard, (prev, next) => (
   prev.objectId === next.objectId

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import { color, font, fontSize, grid, lineHeight, mixins, spacing } from '../../../styles';
@@ -161,10 +160,44 @@ const OriginalPricing = styled.p`
   text-decoration: line-through;
 `;
 
+export interface FeatureCardPropTypes extends BaseCardPropType {
+  avgRating: number,
+  displayFavoritesButton: boolean,
+  ctaDataAttrs: Record<string, unknown>, //TODO: what object shape should this be?
+  dataAttrs: Record<string, unknown>, // TODO: document data attributes. What shape is this?
+  isFavorited: boolean,
+  numRatings: number,
+  objectId: string,
+  ctaText: string,
+  ctaUrl: string,
+  attributions: string,
+  themedTitle: boolean,
+  commentsCount?: number,
+  discountedPrice: string,
+  isWide: boolean,
+  lazyImage: boolean,
+  originalPrice: string,
+  personHeadShot: Record<string, unknown>, // TODO: change to PersonHeadshotProps when that work begins
+  siteKeyFavorites: DomainSiteKey,
+  title: string,
+}
+
+export interface BaseCardPropType {
+  className: string,
+  contentType?: string,
+  href: string,
+  imageAlt: string,
+  imageUrl: string,
+  stickers: [], // TODO: what is this an array of?
+  onClick(): void,
+  siteKey: ThemeSiteKey,
+  target: string,
+}
+
 function FeatureCard({
   attributions,
   avgRating,
-  themedTitle,
+  themedTitle = false,
   className,
   commentsCount,
   contentType,
@@ -173,13 +206,13 @@ function FeatureCard({
   ctaUrl,
   dataAttrs,
   discountedPrice,
-  displayFavoritesButton,
+  displayFavoritesButton = true,
   href,
   imageAlt,
   imageUrl,
-  isFavorited,
-  isWide,
-  lazyImage,
+  isFavorited = false,
+  isWide = false,
+  lazyImage = true,
   numRatings,
   objectId,
   onClick,
@@ -190,7 +223,7 @@ function FeatureCard({
   stickers,
   target,
   title,
-}) {
+}: FeatureCardPropTypes) {
   return (
     <StyledFeatureCard
       className={ctaUrl ? 'has-cta feature-card' : 'feature-card'}
@@ -280,65 +313,5 @@ function FeatureCard({
     </StyledFeatureCard>
   );
 }
-
-FeatureCard.propTypes = {
-  attributions: PropTypes.string,
-  themedTitle: PropTypes.bool,
-  className: PropTypes.string,
-  contentType: PropTypes.string.isRequired,
-  ctaDataAttrs: PropTypes.object,
-  ctaText: PropTypes.string,
-  ctaUrl: PropTypes.string,
-  /** document data attributes */
-  dataAttrs: PropTypes.object,
-  discountedPrice: PropTypes.string,
-  displayFavoritesButton: PropTypes.bool,
-  href: PropTypes.string.isRequired,
-  imageAlt: PropTypes.string,
-  imageUrl: PropTypes.string.isRequired,
-  isFavorited: PropTypes.bool,
-  isWide: PropTypes.bool,
-  lazyImage: PropTypes.bool,
-  commentsCount: PropTypes.number,
-  avgRating: PropTypes.number,
-  numRatings: PropTypes.number,
-  objectId: PropTypes.string.isRequired,
-  onClick: PropTypes.func,
-  originalPrice: PropTypes.string,
-  /** Optional: Image data that is used to render a PersonHeadShot. */
-  personHeadShot: PropTypes.shape({
-    ...PersonHeadShot.propTypes,
-  }),
-  siteKey: PropTypes.oneOf(['atk', 'cco', 'cio', 'kids', 'school', 'shop']).isRequired,
-  siteKeyFavorites: PropTypes.oneOf(['atk', 'cco', 'cio']),
-  stickers: PropTypes.array,
-  target: PropTypes.string,
-  title: PropTypes.string.isRequired,
-};
-
-FeatureCard.defaultProps = {
-  attributions: '',
-  themedTitle: false,
-  className: '',
-  ctaDataAttrs: null,
-  ctaText: '',
-  ctaUrl: '',
-  dataAttrs: null,
-  discountedPrice: null,
-  displayFavoritesButton: true,
-  imageAlt: '',
-  isFavorited: false,
-  isWide: false,
-  lazyImage: true,
-  commentsCount: 0,
-  avgRating: null,
-  numRatings: null,
-  onClick: null,
-  originalPrice: null,
-  personHeadShot: null,
-  siteKeyFavorites: null,
-  stickers: [],
-  target: null,
-};
 
 export default FeatureCard;

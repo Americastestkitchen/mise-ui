@@ -11,7 +11,7 @@
     "emitDeclarationOnly": true,
     "isolatedModules": true
   },
-  "include": ["src"],
+  "include": ["src", "**/*.ts", "**/*.tsx"],
   "exclude": [
     "dist",
   ]

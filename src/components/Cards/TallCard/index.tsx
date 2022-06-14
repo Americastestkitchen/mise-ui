@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import { color, font, fontSize, grid, lineHeight, spacing } from '../../../styles';
@@ -7,6 +6,7 @@ import Badge from '../../Badge';
 import Image from '../shared/Image';
 import { keyToLogo } from '../../DesignTokens/Logo';
 import Sticker from '../shared/Sticker';
+import { BaseCardPropType } from '../FeatureCard';
 
 const tallCardWidth = grid.columnWidth;
 const tallCardWideWidth = '36.8rem';
@@ -122,11 +122,11 @@ const TallCard = ({
   imageUrl,
   isWide,
   onClick,
-  overlayColor,
+  overlayColor = color.black,
   siteKey,
   stickers,
   target,
-}) => {
+}: TallCardProps) => {
   const Logo = keyToLogo(logoKey);
 
   return (
@@ -187,42 +187,12 @@ const TallCard = ({
   );
 };
 
-TallCard.propTypes = {
-  className: PropTypes.string,
-  /** Passed down to stickers to set (optional) sticker icon */
-  contentType: PropTypes.string.isRequired,
-  /** Optional: short byline description for each show */
-  dek: PropTypes.string,
-  /** href for entire card */
-  href: PropTypes.string.isRequired,
-  /** Optional: Key value that maps to a show logo. */
-  logoKey: PropTypes.string,
-  /** Alt text for card image */
-  imageAlt: PropTypes.string,
-  /** Image source url for card image */
-  imageUrl: PropTypes.string.isRequired,
-  /** Determines if card is wide variation */
-  isWide: PropTypes.bool,
-  onClick: PropTypes.func,
-  /** Specifies overlay color */
-  overlayColor: PropTypes.string,
-  /** Determines badge type */
-  siteKey: PropTypes.oneOf(['atk', 'cco', 'cio', 'kids', 'school', 'shop']).isRequired,
-  /** Array of sticker objects */
-  stickers: PropTypes.array,
-  target: PropTypes.string,
-};
-
-TallCard.defaultProps = {
-  className: null,
-  dek: '',
-  logoKey: null,
-  imageAlt: '',
-  isWide: false,
-  onClick: null,
-  overlayColor: color.black,
-  stickers: [],
-  target: null,
-};
+interface TallCardProps extends BaseCardPropType {
+  className: string,
+  dek?: string,
+  logoKey?: string,
+  isWide: boolean,
+  overlayColor: string,
+}
 
 export default TallCard;
