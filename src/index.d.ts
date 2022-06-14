@@ -27,3 +27,4 @@ interface Window {
 }
 
 type DomainSiteKey = 'atk' | 'cio' | 'cco';
+type ThemeSiteKey = 'atk' | 'cio' | 'cco' | 'kids' | 'school' | 'shop';
