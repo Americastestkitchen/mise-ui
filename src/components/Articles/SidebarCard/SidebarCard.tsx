@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { css } from 'styled-components';
 
@@ -49,15 +48,18 @@ const SidebarPicture = styled.picture`
   `)}
 `;
 
-const SidebarTextContent = styled.div`
+const SidebarTextContent = styled.div<{ photo: boolean }>`
   flex-direction: column;
-  padding: ${({ photo }) => (photo ? '1.4rem 1.5rem;' : '1.4rem 1rem;')};
-  min-width: ${({ photo }) => (photo ? '19.6rem;' : '34.1rem;')};
 
-  ${md(css`
-    min-width: ${({ photo }) => (photo ? '53.5rem;' : '69.6rem;')};
-    padding: 2.1rem;
-  `)}
+  ${({ photo }) => `
+    padding: ${photo ? '1.4rem 1.5rem;' : '1.4rem 1rem;'}
+    min-width: ${photo ? '19.6rem;' : '34.1rem;'}
+
+    ${md(css`
+      min-width: ${photo ? '53.3rem;' : '69.6rem;'}
+      padding: 2.1rem;
+    `)}
+  `}
 
   ${xlg(css`
     min-width: 20rem;
@@ -140,6 +142,15 @@ const SidebarLink = styled.a`
   `)}
 `;
 
+export type SidebarCardProps = {
+  altText: string;
+  description?: string;
+  photo?: string;
+  title: string;
+  type: string; // revisit this one
+  url: string;
+};
+
 const SidebarCard = ({
   altText,
   description,
@@ -147,7 +158,7 @@ const SidebarCard = ({
   title,
   type,
   url,
-}) => (
+}: SidebarCardProps) => (
   <SidebarCardContainer>
     {photo ? (
       <SidebarPicture>
@@ -171,9 +182,13 @@ const SidebarCard = ({
     <SidebarTextContent photo={Boolean(photo)}>
       <HeadlineType>{type === 'HowTo' ? 'How to' : type}</HeadlineType>
       <SidebarTitle>{title}</SidebarTitle>
-      <SidebarDescription
-        dangerouslySetInnerHTML={{ __html: description }}
-      />
+      {
+        description && (
+          <SidebarDescription
+            dangerouslySetInnerHTML={{ __html: description }}
+          />
+        )
+      }
       <SidebarLink
         href={url}
         target="_blank"
@@ -184,19 +199,5 @@ const SidebarCard = ({
     </SidebarTextContent>
   </SidebarCardContainer>
 );
-
-SidebarCard.propTypes = {
-  altText: PropTypes.string.isRequired,
-  description: PropTypes.string,
-  photo: PropTypes.string,
-  title: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
-};
-
-SidebarCard.defaultProps = {
-  description: null,
-  photo: null,
-};
 
 export default SidebarCard;
