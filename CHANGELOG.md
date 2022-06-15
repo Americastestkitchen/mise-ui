@@ -1,3 +1,17 @@
+# v1.33.22 (Wed Jun 15 2022)
+
+#### 🐛 Bug Fix
+
+- Favorites page fixes [#776](https://github.com/Americastestkitchen/mise-ui/pull/776) ([@leo-fsl](https://github.com/leo-fsl))
+- CORE-420: focus indicator feedback [#771](https://github.com/Americastestkitchen/mise-ui/pull/771) (audrey.magwili@americastestkitchen.com)
+
+#### Authors: 2
+
+- Audrey Magwili ([@oddwili](https://github.com/oddwili))
+- Leonardo ([@leo-fsl](https://github.com/leo-fsl))
+
+---
+
 # v1.33.21 (Mon Jun 06 2022)
 
 #### 🐛 Bug Fix
