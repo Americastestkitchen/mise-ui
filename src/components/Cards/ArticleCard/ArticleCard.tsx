@@ -141,7 +141,7 @@ function SplitCard({
   );
 }
 
-type ArticleCardProps = {
+export type ArticleCardProps = {
   title: string;
   description: string;
   stickers: { text: string, type: string }[];
