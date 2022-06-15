@@ -11,7 +11,7 @@ import Image from '../shared/Image';
 import ImageCollage from '../shared/ImageCollage';
 import Sticker from '../shared/Sticker';
 import Title from '../shared/Title';
-import { BaseCardPropType } from '../FeatureCard';
+import { BaseCardPropType } from '../Cards';
 
 const StandardCardTheme = {
   default: css`

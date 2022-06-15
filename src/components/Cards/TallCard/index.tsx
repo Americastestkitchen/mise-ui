@@ -6,7 +6,7 @@ import Badge from '../../Badge';
 import Image from '../shared/Image';
 import { keyToLogo } from '../../DesignTokens/Logo';
 import Sticker from '../shared/Sticker';
-import { BaseCardPropType } from '../FeatureCard';
+import { BaseCardPropType } from '../Cards';
 
 const tallCardWidth = grid.columnWidth;
 const tallCardWideWidth = '36.8rem';

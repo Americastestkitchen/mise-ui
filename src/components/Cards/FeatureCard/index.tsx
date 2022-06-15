@@ -11,6 +11,7 @@ import Image from '../shared/Image';
 import PersonHeadShot from '../shared/PersonHeadShot';
 import Sticker from '../shared/Sticker';
 import Title from '../shared/Title';
+import { BaseCardPropType } from '../Cards';
 
 const featureCardWidth = grid.columnWidth;
 const featureCardWideWidth = `${parseFloat(grid.columnWidth) * 2 + parseFloat(grid.gutterWidth)}rem`;
@@ -180,18 +181,6 @@ export interface FeatureCardPropTypes extends BaseCardPropType {
   personHeadShot: Record<string, unknown>, // TODO: change to PersonHeadshotProps when that work begins
   siteKeyFavorites: DomainSiteKey,
   title: string,
-}
-
-export interface BaseCardPropType {
-  className: string,
-  contentType?: string,
-  href: string,
-  imageAlt: string,
-  imageUrl: string,
-  stickers: [], // TODO: what is this an array of?
-  onClick(): void,
-  siteKey: ThemeSiteKey,
-  target: string,
 }
 
 function FeatureCard({
