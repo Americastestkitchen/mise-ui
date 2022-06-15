@@ -8,7 +8,7 @@ const SuggestionCardWrapper = styled.div.attrs({
 })`
   background: ${color.whiteSmoke};
   display: block;
-  min-height: 47.5rem;
+  min-height: 41.5rem;
 
   ${breakpoint('md')`
     display: flex;

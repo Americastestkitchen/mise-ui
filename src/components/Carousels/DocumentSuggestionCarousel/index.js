@@ -4,6 +4,8 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 import BaseCarousel from '../BaseCarousel';
+import { useFlickityGroup } from '../BaseCarousel/useFlickity';
+import { StandardSlide } from '../BaseCarousel/Slides';
 import SuggestionCard from '../../Cards/SuggestionCard';
 import { color, font, fontSize, letterSpacing, lineHeight, spacing, withThemes } from '../../../styles';
 import SuggestionSideEffects from './SuggestionSideEffects';
@@ -60,7 +62,7 @@ const DocumentListCarouselTheme = {
       }
 
       .flickity-viewport {
-        height: 52rem !important;
+        height: 47rem !important;
 
         ${breakpoint('md')`
           height: 32rem !important;
@@ -107,24 +109,26 @@ const DocumentSuggestionCarousel = ({
       <BaseCarousel
         title={title}
         showDivider
+        useFlickityHook={useFlickityGroup}
       >
         <SuggestionSideEffects />
         {items.map((item, idx) => (
-          <SuggestionCard
-            dataIdx={idx}
-            key={`carousel-cell-${item.objectId}`}
-            avgRating={item.avgRating}
-            numRatings={item.numRatings}
-            comments={item.comments}
-            href={item.href}
-            imageUrl={item.imageUrl}
-            objectId={item.objectId}
-            siteKey={item.siteKey}
-            subtitle={item.subtitle}
-            title={item.title}
-            stickers={item.stickers}
-            resourceType={item.resourceType}
-          />
+          <StandardSlide key={`carousel-cell-${item.objectId}`}>
+            <SuggestionCard
+              dataIdx={idx}
+              avgRating={item.avgRating}
+              numRatings={item.numRatings}
+              comments={item.comments}
+              href={item.href}
+              imageUrl={item.imageUrl}
+              objectId={item.objectId}
+              siteKey={item.siteKey}
+              subtitle={item.subtitle}
+              title={item.title}
+              stickers={item.stickers}
+              resourceType={item.resourceType}
+            />
+          </StandardSlide>
         ))}
       </BaseCarousel>
     )}

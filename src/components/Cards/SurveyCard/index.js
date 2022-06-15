@@ -28,7 +28,7 @@ const SurveyCardWrapper = styled.div`
     padding-bottom: 0;
   `}
 
-  ${styledBreakpoint('smmd')`
+  ${styledBreakpoint('md')`
     padding: 3.3rem 3.3rem 6rem;
     width: 56rem;
     height: 27.2rem;
@@ -99,6 +99,10 @@ const ErrorMessage = styled.p`
   font-size: ${fontSize.md};
   color: ${color.salsaMexicana};
   line-height: 2.06;
+  position: absolute;
+  bottom: 2rem;
+  left: auto;
+  right: auto;
 `;
 
 const SuccessMessage = styled.p`

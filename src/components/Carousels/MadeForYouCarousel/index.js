@@ -5,15 +5,11 @@ import PropTypes from 'prop-types';
 import { font } from '../../../styles';
 import { Title, Divider } from '../BaseCarousel/styled-elements';
 import BaseCarousel from '../BaseCarousel';
+import { useFlickityGroup } from '../BaseCarousel/useFlickity';
+import { StandardSlide } from '../BaseCarousel/Slides';
 import EmptyState from './EmptyState';
 import MadeForYouCard from '../../Cards/MadeForYouCard';
 import Sticker from '../../Cards/shared/Sticker';
-
-const CarouselWrapper = styled.div`
-  > div {
-    margin-right: 16px;
-  }
-`;
 
 const StyledSticker = styled(Sticker)`
   margin: 0 0 8px 0;
@@ -44,11 +40,12 @@ const MadeForYouCarousel = ({ results, title, subtitle }) => {
       <BaseCarousel
         header={(<Title>{title}</Title>)}
         showDivider
+        useFlickityHook={useFlickityGroup}
       >
         {results.map((props, index) => (
-          <CarouselWrapper key={index}>
+          <StandardSlide key={index}>
             <MadeForYouCard index={index} {...props} />
-          </CarouselWrapper>
+          </StandardSlide>
         ))}
       </BaseCarousel>
     </>
