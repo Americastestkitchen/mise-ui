@@ -1,3 +1,15 @@
+# v1.33.23 (Wed Jun 15 2022)
+
+#### 🐛 Bug Fix
+
+- Fix suggestion slide [#788](https://github.com/Americastestkitchen/mise-ui/pull/788) ([@leo-fsl](https://github.com/leo-fsl))
+
+#### Authors: 1
+
+- Leonardo ([@leo-fsl](https://github.com/leo-fsl))
+
+---
+
 # v1.33.22 (Wed Jun 15 2022)
 
 #### 🐛 Bug Fix
