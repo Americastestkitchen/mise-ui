@@ -32,7 +32,7 @@ export default function SuggestionSideEffects() {
           publishEvent('flickity:remove', { ...button.dataset, selectedIndex });
 
           setTimeout(() => {
-            const cell = button.closest('.suggestion-card');
+            const cell = button.closest('.standard-slide');
             if (cell) flickity?.remove(cell);
           }, 500);
 

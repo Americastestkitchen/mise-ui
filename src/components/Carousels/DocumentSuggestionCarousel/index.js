@@ -86,7 +86,11 @@ const DocumentListCarouselTheme = {
 };
 
 const DocumentListCarouselWrapper = styled.div`
-  ${withThemes(DocumentListCarouselTheme)}
+  ${withThemes(DocumentListCarouselTheme)};
+
+  .standard-slide {
+    width: auto;
+  }
 `;
 
 const DocumentSuggestionCarousel = ({
