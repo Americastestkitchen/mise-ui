@@ -248,7 +248,7 @@ function StandardCard({
               className="standard-card__anchor"
               href={href}
               onClick={onClick}
-              rel={target && target === '_blank' ? 'noopener noreferrer' : null}
+              rel={target && target === '_blank' ? 'noopener noreferrer' : undefined}
               target={target}
             >
               {
@@ -286,7 +286,7 @@ function StandardCard({
             className="standard-card__anchor"
             href={href}
             onClick={onClick}
-            rel={target && target === '_blank' ? 'noopener noreferrer' : null}
+            rel={target && target === '_blank' ? 'noopener noreferrer' : undefined}
             target={target}
           >
             <StyledTitle className={className} title={title} />

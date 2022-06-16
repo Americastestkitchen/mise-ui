@@ -149,7 +149,7 @@ const TallCard = ({
       <a
         href={href}
         onClick={onClick}
-        rel={target && target === '_blank' ? 'noopener noreferrer' : undefined}
+        rel={target && target === '_blank' ? 'noopener noreferrer' : ''}
         target={target}
       >
         <Overlay

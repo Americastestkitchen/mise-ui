@@ -1,10 +1,9 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import breakpoint from 'styled-components-breakpoint';
 import { color, font, fontSize, grid, lineHeight, mixins, spacing } from '../../../styles';
 import { cssThemedFontBold } from '../../../styles/mixins';
 import { FeatureCardUserAttributions } from '../shared/UserAttributions';
-import { untilLg } from '../../../styles/breakpoints';
+import { md, untilLg } from '../../../styles/breakpoints';
 import Badge from '../../Badge';
 import FavoriteRibbonWithBg from '../shared/FavoriteRibbonWithBg';
 import Image from '../shared/Image';
@@ -17,7 +16,7 @@ const featureCardWidth = grid.columnWidth;
 const featureCardWideWidth = `${parseFloat(grid.columnWidth) * 2 + parseFloat(grid.gutterWidth)}rem`;
 const featureCardWideHeight = '40rem';
 
-const StyledFeatureCard = styled.article`
+const StyledFeatureCard = styled.article<{ isWide: boolean }>`
   box-shadow: 0 0 0 ${color.black};
   height: ${({ isWide }) => (isWide ? '33rem' : featureCardWideHeight)};
   overflow: hidden; // solves/hides FF image edge flashing bug
@@ -73,9 +72,11 @@ const StyledFeatureCard = styled.article`
     }
   }
 
-  ${breakpoint('md')`
-    height: ${featureCardWideHeight};
-    width: ${({ isWide }) => (isWide ? featureCardWideWidth : featureCardWidth)};
+  ${({ isWide }) => `
+    ${md(css`
+      height: ${featureCardWideHeight};
+      width: ${isWide ? featureCardWideWidth : featureCardWidth};
+    `)}
   `}
 `;
 
@@ -91,7 +92,7 @@ const StyledBadge = styled(Badge)`
   left: ${spacing.xsm};
 `;
 
-const StyledTitle = styled(Title)`
+const StyledTitle = styled(Title)<{ themedTitle: boolean}>`
   margin-bottom: ${spacing.xxsm};
 
   &:hover {
@@ -225,7 +226,7 @@ function FeatureCard({
       <a
         href={href}
         onClick={onClick}
-        rel={target && target === '_blank' ? 'noopener noreferrer' : null}
+        rel={target && target === '_blank' ? 'noopener noreferrer' : ''}
         target={target}
       >
         <div className="feature-card__gradient-overlay" />
