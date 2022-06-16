@@ -29,7 +29,7 @@ const colorValue = mapSiteString({
 });
 
 const accentValue = mapSiteString({
-  atk: color.mint,
+  atk: color.darkTeal,
   cco: color.denim,
   cio: color.squirrel,
 });
