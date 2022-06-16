@@ -111,7 +111,7 @@ const FavoritesPlacement = styled.div`
   justify-self: flex-end;
 
   button:focus {
-    ${mixins.focusIndicator()}
+    ${mixins.focusIndicator(color.eclipse, '0')}
   }
 `;
 

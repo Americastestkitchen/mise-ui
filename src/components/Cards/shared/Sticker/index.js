@@ -96,6 +96,7 @@ const Sticker = ({
   type,
 }) => (
   <StyledSticker
+    aria-label={text}
     className={className}
     type={type}
   >
