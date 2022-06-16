@@ -11,6 +11,14 @@ import { BaseCardPropType } from '../Cards';
 const tallCardWidth = grid.columnWidth;
 const tallCardWideWidth = '36.8rem';
 
+type LogoType = 'atk' | 'cco' | 'cio' | 'mysteryRecipe' | 'perfectlySeasonal' | 'proof' | 'walkIn' | 'whatsEatingDan'
+interface TallCardProps extends BaseCardPropType {
+  className: string,
+  dek?: string,
+  logoKey?: LogoType,
+  isWide: boolean,
+  overlayColor: string,
+}
 const StyledTallCard = styled.article<{isWide: boolean}>`
   height: 60rem;
   position: relative;
@@ -49,7 +57,7 @@ const StyledTallCard = styled.article<{isWide: boolean}>`
   `}
 `;
 
-const Overlay = styled.div`
+const Overlay = styled.div<{overlayColor: string}>`
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), ${({ overlayColor }) => overlayColor});
   bottom: 0;
   height: 50.9rem;
@@ -83,7 +91,7 @@ const StyledSticker = styled(Sticker)`
   }
 `;
 
-const TallCardLogo = styled.div`
+const TallCardLogo = styled.div<{ logoWidth: string }>`
   margin-bottom: ${spacing.sm};
   width: ${({ logoWidth }) => logoWidth};
 
@@ -99,7 +107,8 @@ const Dek = styled.div`
   text-align: center;
 `;
 
-const determineLogoWidth = (logoType) => {
+
+const determineLogoWidth = (logoType: LogoType) => {
   const logoTypes = {
     atk: '13.6rem',
     cco: '18.93rem',
@@ -134,14 +143,13 @@ const TallCard = ({
   return (
     <StyledTallCard
       className={imageUrl ? '' : 'no-image'}
-      contentType={contentType}
       data-testid="tall-card"
       isWide={isWide}
     >
       <a
         href={href}
         onClick={onClick}
-        rel={target && target === '_blank' ? 'noopener noreferrer' : null}
+        rel={target && target === '_blank' ? 'noopener noreferrer' : undefined}
         target={target}
       >
         <Overlay
@@ -171,7 +179,7 @@ const TallCard = ({
               ))}
             </StickersWrapper>
           )}
-          { Logo && (
+          {Logo && logoKey && (
             <TallCardLogo
               logoWidth={determineLogoWidth(logoKey)}
             >
@@ -188,13 +196,5 @@ const TallCard = ({
     </StyledTallCard>
   );
 };
-
-interface TallCardProps extends BaseCardPropType {
-  className: string,
-  dek?: string,
-  logoKey?: string,
-  isWide: boolean,
-  overlayColor: string,
-}
 
 export default TallCard;
