@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Byline from './index';
+import Byline from './Byline';
 import { siteKey } from '../../config/argTypes';
 import { addThemedWrapper } from '../../config/decorators';
 

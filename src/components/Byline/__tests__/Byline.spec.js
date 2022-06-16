@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import 'jest-styled-components';
 
-import Byline from '../index';
+import Byline from '../Byline';
 import breakpoints from '../../../styles/breakpoints';
 
 describe('Byline component should', () => {
