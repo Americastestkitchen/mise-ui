@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import { color, font, fontSize, lineHeight, mixins, spacing, withThemes } from '../../../styles';
 import { untilMd } from '../../../styles/breakpoints';
-import Badge from '../../Badge';
+import Badge from '../../Badge/Badge';
 import Byline from '../../Byline/Byline';
 import FavoriteRibbonWithBg from '../shared/FavoriteRibbonWithBg';
 import Image from '../shared/Image';

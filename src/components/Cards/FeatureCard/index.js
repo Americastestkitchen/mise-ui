@@ -6,7 +6,7 @@ import { color, font, fontSize, grid, lineHeight, mixins, spacing } from '../../
 import { cssThemedFontBold } from '../../../styles/mixins';
 import { FeatureCardUserAttributions } from '../shared/UserAttributions';
 import { untilLg } from '../../../styles/breakpoints';
-import Badge from '../../Badge';
+import Badge from '../../Badge/Badge';
 import FavoriteRibbonWithBg from '../shared/FavoriteRibbonWithBg';
 import Image from '../shared/Image';
 import PersonHeadShot from '../shared/PersonHeadShot';

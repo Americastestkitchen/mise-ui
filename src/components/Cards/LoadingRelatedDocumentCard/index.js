@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import Badge from '../../Badge';
+import Badge from '../../Badge/Badge';
 import Image from '../shared/Image';
 import { color, mixins, spacing, withThemes } from '../../../styles';
 import { getImageUrl } from '../../../lib/cloudinary';

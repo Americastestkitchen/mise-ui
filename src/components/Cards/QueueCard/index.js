@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import { color, fontSize, spacing, lineHeight, font, letterSpacing, withThemes } from '../../../styles';
-import Badge from '../../Badge';
+import Badge from '../../Badge/Badge';
 import Image from '../shared/Image';
 import Sticker from '../shared/Sticker';
 import Title from '../shared/Title';
