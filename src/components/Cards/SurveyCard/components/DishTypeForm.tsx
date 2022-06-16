@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 import styledBreakpoint from 'styled-components-breakpoint';
 
-import { color, fontSize, mixins } from '../../../..';
+import { color, fontSize, mixins } from '../../../../styles';
 import { dishTypeData } from '../data';
 import { SubmitButton } from '..';
 import Checkmark from '../../../DesignTokens/Icon/svgs/Checkmark3';
@@ -51,10 +50,12 @@ const SurveyCardOption = styled.label`
   }
 `;
 
-const DishTypeForm = ({ handleSubmit }) => {
-  const [dishTypeResponse, setDishTypeResponse] = useState([]);
+const DishTypeForm = ({
+  handleSubmit,
+}: { handleSubmit: (dishTypeResponse: string[]) => void}) => {
+  const [dishTypeResponse, setDishTypeResponse] = useState<string[]>([]);
 
-  const handleOnChange = (value) => {
+  const handleOnChange = (value: string) => {
     if (dishTypeResponse.includes(value)) {
       setDishTypeResponse(prevState => prevState.filter(dishType => dishType !== value));
       return;
@@ -63,7 +64,7 @@ const DishTypeForm = ({ handleSubmit }) => {
     setDishTypeResponse(prevState => [...prevState, value]);
   };
 
-  const handleDishTypeSubmit = (evt) => {
+  const handleDishTypeSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     handleSubmit(dishTypeResponse);
   };
@@ -97,10 +98,6 @@ const DishTypeForm = ({ handleSubmit }) => {
       </SubmitButton>
     </SurveyForm>
   );
-};
-
-DishTypeForm.propTypes = {
-  handleSubmit: PropTypes.func.isRequired,
 };
 
 export default DishTypeForm;

@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
-import { color } from '../../../..';
+import { color } from '../../../../styles';
 import { SubmitButton } from '..';
 import Checkmark from '../../../DesignTokens/Icon/svgs/Checkmark3';
 import { Close2 } from '../../../DesignTokens/Icon';
@@ -30,7 +29,9 @@ const ButtonWrapper = styled.div`
   }
 `;
 
-const FeedbackForm = ({ handleSubmit }) => (
+const FeedbackForm = ({
+  handleSubmit,
+}: { handleSubmit: (surveyResponse: string) => void}) => (
   <ButtonWrapper>
     <SubmitButton onClick={() => handleSubmit('No')} className="survey-buttons">
       <span className="close"><Close2 fill={color.eclipse} /></span>
@@ -42,9 +43,5 @@ const FeedbackForm = ({ handleSubmit }) => (
     </SubmitButton>
   </ButtonWrapper>
 );
-
-FeedbackForm.propTypes = {
-  handleSubmit: PropTypes.func.isRequired,
-};
 
 export default FeedbackForm;
