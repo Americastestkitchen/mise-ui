@@ -56,7 +56,7 @@ export default function BaseCarousel({
     }
   }, [flickity]);
 
-  const registerOnChange = useCallback((callback) => {
+  const registerOnChange = useCallback((callback: any) => {
     callback(flickity.current);
     flickity.current?.on('change', ev => callback(flickity.current, ev));
     return () => {

@@ -5,7 +5,7 @@ import { useCarouselContext } from '../BaseCarousel';
 export default function SuggestionSideEffects() {
   const { registerOnChange, flickity } = useCarouselContext();
 
-  const publishEvent = useCallback((evt, data) => {
+  const publishEvent = useCallback((evt: any, data: any) => {
     if (typeof window.dry !== 'undefined') {
       // eslint-disable-next-line no-undef
       window.dry.events.publish(evt, data);

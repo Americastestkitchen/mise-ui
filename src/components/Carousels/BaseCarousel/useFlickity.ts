@@ -70,7 +70,7 @@ function useResizeFlickity(
  * Callback ref to initialize flickity on an element
  */
 function useFlickityCallbackRef(flickity: MutableRefObject<Flickity | null>) {
-  return useCallback((elem) => {
+  return useCallback((elem: any) => {
     if (!elem) {
       return;
     }
@@ -135,7 +135,7 @@ export default function useFlickity(): FlickityState {
  * Callback ref to initialize flickity on an element
  */
 function useFlickityCallbackRefGroup(flickity: MutableRefObject<Flickity | null>) {
-  return useCallback((elem) => {
+  return useCallback((elem: any) => {
     if (!elem) {
       return;
     }
