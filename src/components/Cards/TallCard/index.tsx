@@ -1,7 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
-import breakpoint from 'styled-components-breakpoint';
+import styled, { css } from 'styled-components';
 import { color, font, fontSize, grid, lineHeight, spacing } from '../../../styles';
+import { md } from '../../../styles/breakpoints';
 import Badge from '../../Badge';
 import Image from '../shared/Image';
 import { keyToLogo } from '../../DesignTokens/Logo';
@@ -11,7 +11,7 @@ import { BaseCardPropType } from '../Cards';
 const tallCardWidth = grid.columnWidth;
 const tallCardWideWidth = '36.8rem';
 
-const StyledTallCard = styled.article`
+const StyledTallCard = styled.article<{isWide: boolean}>`
   height: 60rem;
   position: relative;
   width: ${tallCardWidth};
@@ -42,8 +42,10 @@ const StyledTallCard = styled.article`
     }
   }
 
-  ${breakpoint('md')`
-    width: ${({ isWide }) => (isWide ? tallCardWideWidth : tallCardWidth)};
+  ${({ isWide }) => `
+    ${md(css`
+      width: ${isWide ? tallCardWideWidth : tallCardWidth};
+    `)}
   `}
 `;
 
