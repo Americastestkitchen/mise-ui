@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import { cards, color, fontSize, mixins, spacing, withThemes } from '../../../styles';
@@ -169,33 +169,35 @@ export const StyledBadge = styled(Badge)`
   `}
 `;
 
-export interface StandardCardCardPropTypes extends BaseCardPropType {
-  avgRating: number,
-  ctaDataAttrs: Record<string, unknown>, //TODO: what object shape should this be?
-  dataAttrs: Record<string, unknown>, // TODO: document data attributes. What shape is this?
-  isFavorited: boolean,
-  numRatings: number,
+export interface StandardCardPropTypes extends BaseCardPropType {
+  avgRating?: number,
+  ctaDataAttrs?: Record<string, unknown>, //TODO: what object shape should this be?
+  ctaText?: string,
+  ctaUrl?: string,
+  contentTypeFormatted?: string,
+  dataAttrs?: Record<string, unknown>, // TODO: document data attributes. What shape is this?
+  displayFavoritesButton?: boolean,
+  displayCookbook?: boolean,
+  displayRecipeAttribution?: boolean,
+  displaySecondaryAttribution?: boolean,
+  displayLockIcon?: boolean,
+  favoriteRibbonColor?: string, // TODO: pull from list of colors
+  isFavorited?: boolean,
+  numRatings?: number,
   objectId: string,
-  ctaText: string,
-  ctaUrl: string,
-  contentTypeFormatted: string,
-  displayFavoritesButton: boolean,
-  displayCookbook: boolean,
-  displayRecipeAttribution: boolean,
-  displaySecondaryAttribution: boolean,
-  displayLockIcon: boolean,
-  favoriteRibbonColor: string, // TODO: pull from list of colors
-  searchAttribution: boolean,
-  searchComments: number,
-  secondaryAttribution: number | string,
-  shopPrices: Record<string, unknown>, //TODO: what object shape should this be?
-  siteKeyFavorites: DomainSiteKey,
+  searchAttribution?: boolean,
+  searchComments?: number,
+  secondaryAttribution?: number | string,
+  shopPrices?: Record<string, unknown>, //TODO: what object shape should this be?
+  siteKeyFavorites?: DomainSiteKey,
   title: string,
+  renderImage?(): void;
+  quickViewButton?: ReactNode;
 }
 
 function StandardCard({
   avgRating,
-  className,
+  className = '',
   contentType,
   contentTypeFormatted,
   ctaDataAttrs,
@@ -226,7 +228,7 @@ function StandardCard({
   title,
   href,
   quickViewButton,
-}: StandardCardCardPropTypes) {
+}: StandardCardPropTypes) {
   const ImageItem = Array.isArray(imageUrl) ? ImageCollage : Image;
   let stickerAria = '';
   if (stickers) {
@@ -244,7 +246,7 @@ function StandardCard({
         <ImageWrapper className="standard-card__image-wrapper">
           { imageUrl ? (
             <a
-              tabIndex="-1"
+              tabIndex={-1}
               className="standard-card__anchor"
               href={href}
               onClick={onClick}

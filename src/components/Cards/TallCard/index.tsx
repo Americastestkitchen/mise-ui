@@ -12,12 +12,11 @@ const tallCardWidth = grid.columnWidth;
 const tallCardWideWidth = '36.8rem';
 
 type LogoType = 'atk' | 'cco' | 'cio' | 'mysteryRecipe' | 'perfectlySeasonal' | 'proof' | 'walkIn' | 'whatsEatingDan'
-interface TallCardProps extends BaseCardPropType {
-  className: string,
+export interface TallCardPropTypes extends BaseCardPropType {
   dek?: string,
   logoKey?: LogoType,
-  isWide: boolean,
-  overlayColor: string,
+  isWide?: boolean,
+  overlayColor?: string,
 }
 const StyledTallCard = styled.article<{isWide: boolean}>`
   height: 60rem;
@@ -124,20 +123,20 @@ const determineLogoWidth = (logoType: LogoType) => {
 };
 
 const TallCard = ({
-  className,
+  className = '',
   contentType,
   dek,
   href,
   logoKey,
   imageAlt,
   imageUrl,
-  isWide,
+  isWide = false,
   onClick,
   overlayColor = color.black,
   siteKey,
   stickers,
   target,
-}: TallCardProps) => {
+}: TallCardPropTypes) => {
   const Logo = keyToLogo(logoKey);
 
   return (

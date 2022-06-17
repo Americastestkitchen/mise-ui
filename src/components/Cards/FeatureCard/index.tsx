@@ -163,24 +163,24 @@ const OriginalPricing = styled.p`
 `;
 
 export interface FeatureCardPropTypes extends BaseCardPropType {
-  avgRating: number,
-  displayFavoritesButton: boolean,
-  ctaDataAttrs: Record<string, unknown>, //TODO: what object shape should this be?
-  dataAttrs: Record<string, unknown>, // TODO: document data attributes. What shape is this?
-  isFavorited: boolean,
-  numRatings: number,
-  objectId: string,
-  ctaText: string,
-  ctaUrl: string,
-  attributions: string,
-  themedTitle: boolean,
+  attributions?: string,
+  avgRating?: number,
+  ctaDataAttrs?: Record<string, unknown>, //TODO: what object shape should this be?
+  ctaText?: string,
+  ctaUrl?: string,
   commentsCount?: number,
-  discountedPrice: string,
-  isWide: boolean,
-  lazyImage: boolean,
-  originalPrice: string,
-  personHeadShot: Record<string, unknown>, // TODO: change to PersonHeadshotProps when that work begins
-  siteKeyFavorites: DomainSiteKey,
+  dataAttrs?: Record<string, unknown>, // TODO: document data attributes. What shape is this?
+  discountedPrice?: string,
+  displayFavoritesButton?: boolean,
+  isFavorited?: boolean,
+  isWide?: boolean,
+  lazyImage?: boolean,
+  numRatings?: number,
+  objectId: string,
+  originalPrice?: string,
+  personHeadShot?: Record<string, unknown>, // TODO: change to PersonHeadshotProps when that work begins
+  siteKeyFavorites?: DomainSiteKey,
+  themedTitle?: boolean,
   title: string,
 }
 
@@ -188,7 +188,7 @@ function FeatureCard({
   attributions,
   avgRating,
   themedTitle = false,
-  className,
+  className = '',
   commentsCount,
   contentType,
   ctaDataAttrs,
@@ -217,7 +217,6 @@ function FeatureCard({
   return (
     <StyledFeatureCard
       className={ctaUrl ? 'has-cta feature-card' : 'feature-card'}
-      contentType={contentType}
       data-qa="feature-card"
       data-testid="feature-card"
       {...dataAttrs}
@@ -254,7 +253,7 @@ function FeatureCard({
             <StyledTitle themedTitle={themedTitle} className={className} title={title} />
             <FeatureCardUserAttributions
               avgRating={avgRating}
-              commentsCount={commentsCount || null}
+              commentsCount={commentsCount}
               numRatings={numRatings}
             />
             {attributions ? <Attributions>{attributions}</Attributions> : null}
