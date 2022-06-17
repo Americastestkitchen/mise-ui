@@ -8,7 +8,7 @@ import { addThemedWrapper } from '../../../config/decorators';
 export default {
   title: 'Components/Articles/PullQuote',
   component: PullQuote,
-  decorators: [ addThemedWrapper() ],
+  decorators: [addThemedWrapper()],
   argTypes: { siteKey },
 } as ComponentMeta<typeof PullQuote>;
 
@@ -18,7 +18,7 @@ const sharedArgs = {
   attribution: 'First Last',
   includeIcon: true,
   quote: 'Cast iron skillets are endlessly enjoyable. You can hand down these pans for generations.',
-  siteKey: 'atk'
+  siteKey: 'atk',
 };
 
 export const DefaultWidth = Template.bind({});

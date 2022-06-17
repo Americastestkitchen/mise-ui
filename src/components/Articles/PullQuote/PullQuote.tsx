@@ -7,7 +7,6 @@ import { Quote } from '../../DesignTokens/Icon/svgs';
 import { color, font, fontSize, mixins, withThemes } from '../../../styles';
 import { md, xlg } from '../../../styles/breakpoints';
 
-
 const PullQuoteWrapper = styled.div<{ width: ArticleComponentWidthType }>`
   display: flex;
   flex-direction: column;
