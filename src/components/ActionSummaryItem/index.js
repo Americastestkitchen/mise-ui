@@ -39,7 +39,7 @@ const ActionSummaryTheme = {
     color: ${color.eclipse};
 
     svg path {
-      fill: ${color.mint};
+      fill: ${color.darkTeal};
     }
   `,
   cco: css`
