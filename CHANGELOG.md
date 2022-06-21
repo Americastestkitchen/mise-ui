@@ -1,3 +1,23 @@
+# v1.33.24 (Tue Jun 21 2022)
+
+#### 🐛 Bug Fix
+
+- Feature homepages atk [#798](https://github.com/Americastestkitchen/mise-ui/pull/798) ([@ttornese](https://github.com/ttornese) [@harry-atk](https://github.com/harry-atk))
+- CORE-507: change ako headline copy [#796](https://github.com/Americastestkitchen/mise-ui/pull/796) ([@ttornese](https://github.com/ttornese))
+- CORE-480: homepage a11y followup [#789](https://github.com/Americastestkitchen/mise-ui/pull/789) ([@ttornese](https://github.com/ttornese))
+- CORE-479: adding custom focus indicator to article card favorite ribbons [#783](https://github.com/Americastestkitchen/mise-ui/pull/783) ([@ttornese](https://github.com/ttornese))
+- CORE-327: a11y color contrast updates for StandardCard atk theme [#782](https://github.com/Americastestkitchen/mise-ui/pull/782) ([@ttornese](https://github.com/ttornese))
+- CORE-480: atk homepage a11y screen reader fixes [#781](https://github.com/Americastestkitchen/mise-ui/pull/781) ([@ttornese](https://github.com/ttornese))
+- CORE-419: Link Header should always wrap to second line in mobile [#780](https://github.com/Americastestkitchen/mise-ui/pull/780) ([@harry-atk](https://github.com/harry-atk))
+- CORE-452: minor adjustment to ReviewsEmailCapture padding on mobile devices [#778](https://github.com/Americastestkitchen/mise-ui/pull/778) ([@ttornese](https://github.com/ttornese))
+
+#### Authors: 2
+
+- Harry Scheuerle ([@harry-atk](https://github.com/harry-atk))
+- Tom Tornese ([@ttornese](https://github.com/ttornese))
+
+---
+
 # v1.33.23 (Wed Jun 15 2022)
 
 #### 🐛 Bug Fix
