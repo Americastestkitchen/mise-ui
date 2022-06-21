@@ -16,7 +16,7 @@ const TaglineTheme = {
     color: ${color.eclipse};
     font: ${fontSize.md}/2rem ${font.pnb};
     ${untilMd(css`
-      max-width: 22.4rem;
+      max-width: 27rem;
     `)}
   `,
   cco: css`
