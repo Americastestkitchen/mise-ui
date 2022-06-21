@@ -285,8 +285,8 @@ export const cssTransitionColor = css`
 `;
 
 export const cssThemedHoverColor = withThemes({
-  default: css`color: ${color.mint};`,
-  atk: css`color: ${color.mint};`,
+  default: css`color: ${color.darkTeal};`,
+  atk: css`color: ${color.darkTeal};`,
   cco: css`color: ${color.denim};`,
   cio: css`color: ${color.squirrel};`,
 });
