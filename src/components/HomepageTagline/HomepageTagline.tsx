@@ -5,7 +5,7 @@ import { untilMd } from '../../styles/breakpoints';
 import { CCOSmallRooster, CIOTagline, CookingPot } from '../DesignTokens/Icon/svgs';
 
 const iconCopy = {
-  atk: [<CookingPot fill="#3d3d3d" />, 'America\'s Test Kitchen', 'Home of Cook\'s Country, Cook\'s Illustrated, & ATK Kids.'],
+  atk: [<CookingPot fill="#3d3d3d" />, 'America\'s Test Kitchen', 'Trusted by home cooks for 25 years.'],
   cco: [<CCOSmallRooster />, 'Cook\'s Country', 'Celebrating cooking in America.'],
   cio: [<CIOTagline />, 'Cook\'s Illustrated', 'Cook smarter and succeed every time'],
 };
