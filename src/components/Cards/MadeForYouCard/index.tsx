@@ -1,6 +1,5 @@
 /* eslint-disable camelcase */
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Image from '../shared/Image';
 
@@ -55,7 +54,7 @@ const MadeForYouCardTitleWrapper = styled.div`
   }
 `;
 
-const getBgColor = (index) => {
+const getBgColor = (index: number) => {
   const colors = ['#1a3352', '#b25b18', '#321a52', '#1775c2', '#857351', '#521a2d', '#405700', '#005e71', '#167a7a'];
 
   // Get colors in a loop
@@ -72,12 +71,19 @@ const getTitle = (title = '') => {
   return `${title} Recipes for You`;
 };
 
+type MadeForYouCardProps = {
+  index?: number,
+  cloudinary_url: string,
+  collection_type: string,
+  url?: string,
+}
+
 const MadeForYouCard = ({
-  index,
+  index = 0,
   cloudinary_url,
   collection_type,
   url,
-}) => {
+}: MadeForYouCardProps) => {
   const title = getTitle(collection_type);
 
   return (
@@ -96,17 +102,6 @@ const MadeForYouCard = ({
       </MadeForYouCardTitleWrapper>
     </MadeForYouCardWrapper>
   );
-};
-
-MadeForYouCard.propTypes = {
-  index: PropTypes.number,
-  cloudinary_url: PropTypes.string.isRequired,
-  collection_type: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
-};
-
-MadeForYouCard.defaultProps = {
-  index: 0,
 };
 
 export default MadeForYouCard;
