@@ -13,7 +13,7 @@ import {
   mixins,
 } from '../../../styles';
 
-import Button from '../../Buttons/Button';
+import Button from '../../Buttons/Button/Button';
 import FormInput from '../shared/FormInput';
 
 // eslint-disable-next-line no-useless-escape

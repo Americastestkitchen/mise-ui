@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 import {
   color,
@@ -43,40 +42,40 @@ const StyledButtonTheme = {
   `,
 };
 
-const StyledButton = styled.button`
+const StyledButton = styled.button<{isFavorited?: boolean, iconType?: string}>`
 ${withThemes(StyledButtonTheme)}
 `;
 
-function Button({
+export type ButtonType = 'submit' | 'reset' | 'button';
+
+export type DefaultButton = React.ComponentPropsWithoutRef<'button'> & {
+  className?: string;
+  children?: ReactNode;
+  onClick?(): void;
+  type?: ButtonType;
+  isFavorited?: boolean;
+  iconType?: string;
+}
+
+export default function Button({
   className,
   children,
   onClick,
-  type,
+  type = 'button',
+  isFavorited,
+  iconType,
   ...restProps
-}: React.ComponentPropsWithoutRef<'button'>) {
+}: DefaultButton) {
   return (
     <StyledButton
       className={className}
       onClick={onClick}
       type={type}
+      isFavorited={isFavorited}
+      iconType={iconType}
       {...restProps}
     >
       {children}
     </StyledButton>
   );
 }
-
-Button.propTypes = {
-  className: PropTypes.string,
-  children: PropTypes.node.isRequired,
-  onClick: PropTypes.func,
-  type: PropTypes.oneOf(['submit', 'reset', 'button']),
-};
-
-Button.defaultProps = {
-  className: '',
-  onClick: () => {},
-  type: 'button',
-};
-
-export default Button;
