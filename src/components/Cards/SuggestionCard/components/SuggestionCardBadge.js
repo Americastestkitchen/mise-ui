@@ -1,7 +1,7 @@
 import breakpoint from 'styled-components-breakpoint';
 import styled from 'styled-components';
 
-import Badge from '../../../Badge';
+import Badge from '../../../Badge/Badge';
 import { spacing } from '../../../../styles';
 
 const SuggestionCardBadge = styled(Badge)`

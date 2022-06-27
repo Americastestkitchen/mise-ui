@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
-import Badge from '../../../Badge';
+import Badge from '../../../Badge/Badge';
 import { Checkmark } from '../../../DesignTokens/Icon/svgs';
 import { color, font, fontSize, mixins, spacing, withThemes } from '../../../../styles';
 

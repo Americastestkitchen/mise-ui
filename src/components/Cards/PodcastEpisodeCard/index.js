@@ -6,7 +6,7 @@ import { color, font, fontSize, spacing, lineHeight, letterSpacing, mixins } fro
 
 import { VideoPlay } from '../../DesignTokens/Icon';
 
-import Badge from '../../Badge';
+import Badge from '../../Badge/Badge';
 import Sticker from '../shared/Sticker';
 import Image from '../shared/Image';
 
