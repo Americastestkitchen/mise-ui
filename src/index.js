@@ -15,7 +15,7 @@ import BookCarouselAd from './components/Ads/ReviewsAds/BookCarouselAd';
 import breakpoints from './styles/breakpoints';
 import Brands from './components/DesignTokens/Brands';
 import Button from './components/Buttons/Button';
-import Byline from './components/Byline';
+import Byline from './components/Byline/Byline';
 import CustomStateResults from './components/CustomStateResults';
 import carousel from './styles/carousel';
 import Carousel from './components/Carousels/Carousel';

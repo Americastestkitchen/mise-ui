@@ -6,7 +6,7 @@ import { color, font, fontSize, lineHeight, spacing } from '../../../styles';
 import Badge from '../../Badge';
 import Image from '../shared/Image';
 import Sticker from '../shared/Sticker';
-import Byline from '../../Byline';
+import Byline from '../../Byline/Byline';
 
 const MarqueeCardWrapper = styled.article.attrs({
   className: 'article-card',

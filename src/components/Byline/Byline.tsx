@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 
@@ -60,8 +59,13 @@ const Author = styled.div.attrs({
   ${withThemes(AuthorTheme)}
 `;
 
+interface AttributionType {
+  author: string;
+  attribution?: string;
+}
+
 const AttributionTheme = {
-  default: css`
+  default: css<AttributionType>`
     display: flex;
     margin-top: ${spacing.sm};
 
@@ -96,47 +100,33 @@ const AttributionTheme = {
 
 const Attribution = styled.div.attrs({
   className: 'byline__attribution',
-})`
+})<AttributionType>`
   ${withThemes(AttributionTheme)}
 `;
 
-const Byline = ({
+export interface ByLineProps extends AttributionType{
+  authorImageCloudinaryId?: string;
+  className?: string;
+  imgAlt?: string;
+}
+
+export default function Byline({
   author,
   authorImageCloudinaryId,
   attribution,
   className,
   imgAlt,
-}) => (
-  <BylineWrapper className={`byline${authorImageCloudinaryId ? '' : ' no-image'}${className ? ` ${className}` : ''}`}>
-    <Author>
-      {authorImageCloudinaryId && <PersonHeadShot imgCloudinaryId={authorImageCloudinaryId} size={{ sm: '4' }} imgAlt={imgAlt} />}
-      <span rel="author">{author}</span>
-    </Author>
-    <Attribution author={author} attribution={attribution}>
-      {author && attribution && <span> |</span>}
-      {attribution && <span>{attribution}</span>}
-    </Attribution>
-  </BylineWrapper>
-);
-
-Byline.propTypes = {
-  /** Author Name */
-  author: PropTypes.string,
-  /** Cloudinary image id of author */
-  authorImageCloudinaryId: PropTypes.string,
-  /** Optional field to add custom text information such as publish date or author title */
-  attribution: PropTypes.string,
-  className: PropTypes.string,
-  /** Optional: Alt text for img */
-  imgAlt: PropTypes.string,
-};
-
-Byline.defaultProps = {
-  author: '',
-  authorImageCloudinaryId: null,
-  attribution: '',
-  className: '',
-  imgAlt: '',
-};
-
-export default Byline;
+}: ByLineProps) {
+  return (
+    <BylineWrapper className={`byline${authorImageCloudinaryId ? '' : ' no-image'}${className ? ` ${className}` : ''}`}>
+      <Author>
+        {authorImageCloudinaryId && <PersonHeadShot imgCloudinaryId={authorImageCloudinaryId} size={{ sm: '4' }} imgAlt={imgAlt} />}
+        <span>{author}</span>
+      </Author>
+      <Attribution author={author} attribution={attribution}>
+        {author && attribution && <span> |</span>}
+        {attribution && <span>{attribution}</span>}
+      </Attribution>
+    </BylineWrapper>
+  );
+}

@@ -4,7 +4,7 @@ import breakpoint from 'styled-components-breakpoint';
 import { color, font, fontSize, lineHeight, mixins, spacing, withThemes } from '../../../styles';
 import { untilMd } from '../../../styles/breakpoints';
 import Badge from '../../Badge';
-import Byline from '../../Byline';
+import Byline from '../../Byline/Byline';
 import FavoriteRibbonWithBg from '../shared/FavoriteRibbonWithBg';
 import Image from '../shared/Image';
 import Sticker from '../shared/Sticker';
