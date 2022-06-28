@@ -3,7 +3,7 @@ import styled, { css, ThemeProvider } from 'styled-components';
 import { withKnobs, text } from '@storybook/addon-knobs';
 
 import CardWrapper from './index';
-import { breakpoints, color, withThemes } from '../../../styles'
+import { breakpoints, color, withThemes } from '../../../styles';
 
 export default {
   title: 'Components/Cards/CardWrapper',
@@ -35,10 +35,10 @@ const wideCard = {
   siteKeyFavorites: 'atk',
   stickers: [
     { type: 'priority', text: 'New' },
-    { type: 'editorial', text: '23:23'},
+    { type: 'editorial', text: '23:23' },
   ],
   objectId: 'episode_1234',
-  title: 'Savory and Sweet Italian'
+  title: 'Savory and Sweet Italian',
 };
 
 const standardCard = { ...wideCard };
@@ -46,7 +46,7 @@ const standardCard = { ...wideCard };
 export const Wide = () => (
   <ThemeProvider theme={{
     breakpoints,
-    mode: 'dark'
+    mode: 'dark',
   }}>
     <StoryWrapper className="story-wrapper">
       <CardWrapper
@@ -63,7 +63,7 @@ export const Wide = () => (
 export const Standard = () => (
   <ThemeProvider theme={{
     breakpoints,
-    mode: 'dark'
+    mode: 'dark',
   }}>
     <StoryWrapper className="story-wrapper">
       <CardWrapper
@@ -80,7 +80,7 @@ export const Standard = () => (
 export const Tall = () => (
   <ThemeProvider theme={{
     breakpoints,
-    mode: 'dark'
+    mode: 'dark',
   }}>
     <StoryWrapper className="story-wrapper">
       <CardWrapper
