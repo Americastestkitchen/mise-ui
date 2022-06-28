@@ -12,7 +12,7 @@ const tallCardWidth = grid.columnWidth;
 const tallCardWideWidth = '36.8rem';
 
 type LogoType = 'atk' | 'cco' | 'cio' | 'mysteryRecipe' | 'perfectlySeasonal' | 'proof' | 'walkIn' | 'whatsEatingDan'
-export interface TallCardPropTypes extends BaseCardPropType {
+export type TallCardPropTypes = BaseCardPropType & {
   dek?: string,
   logoKey?: LogoType,
   isWide?: boolean,

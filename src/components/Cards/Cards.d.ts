@@ -1,4 +1,4 @@
-export interface BaseCardPropType {
+export type BaseCardPropType = {
     className?: string,
     contentType: string,
     href: string,

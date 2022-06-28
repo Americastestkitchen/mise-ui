@@ -169,7 +169,7 @@ export const StyledBadge = styled(Badge)`
   `}
 `;
 
-export interface StandardCardPropTypes extends BaseCardPropType {
+export type StandardCardPropTypes = BaseCardPropType & {
   avgRating?: number,
   ctaDataAttrs?: Record<string, unknown>, //TODO: what object shape should this be?
   ctaText?: string,

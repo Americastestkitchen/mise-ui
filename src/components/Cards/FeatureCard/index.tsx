@@ -162,7 +162,7 @@ const OriginalPricing = styled.p`
   text-decoration: line-through;
 `;
 
-export interface FeatureCardPropTypes extends BaseCardPropType {
+export type FeatureCardPropTypes = BaseCardPropType & {
   attributions?: string,
   avgRating?: number,
   ctaDataAttrs?: Record<string, unknown>, //TODO: what object shape should this be?
