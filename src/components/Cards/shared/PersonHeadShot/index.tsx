@@ -12,7 +12,7 @@ type HeadshotSize = {
 type PersonHeadshotPropTypes = {
   imgAlt?: string,
   imgCloudinaryId: string,
-  size: HeadshotSize,
+  size?: HeadshotSize,
 }
 
 const PersonHeadShotWrapper = styled.div<{ size: HeadshotSize }>`
