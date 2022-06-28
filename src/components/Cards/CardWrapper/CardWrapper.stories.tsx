@@ -1,7 +1,6 @@
 import React from 'react';
 import styled, { css, ThemeProvider } from 'styled-components';
 import { withKnobs, text } from '@storybook/addon-knobs';
-
 import CardWrapper from './index';
 import { breakpoints, color, withThemes } from '../../../styles';
 
@@ -44,10 +43,9 @@ const wideCard = {
 const standardCard = { ...wideCard };
 
 export const Wide = () => (
-  <ThemeProvider theme={{
-    breakpoints,
-    mode: 'dark',
-  }}>
+  <ThemeProvider
+    theme={{ breakpoints, mode: 'dark' }}
+  >
     <StoryWrapper className="story-wrapper">
       <CardWrapper
         ctaText={text('Cta Text', 'Explore Recipes')}
@@ -61,10 +59,7 @@ export const Wide = () => (
 );
 
 export const Standard = () => (
-  <ThemeProvider theme={{
-    breakpoints,
-    mode: 'dark',
-  }}>
+  <ThemeProvider theme={{ breakpoints, mode: 'dark' }}>
     <StoryWrapper className="story-wrapper">
       <CardWrapper
         ctaText={text('Cta Text', 'Explore Recipes')}
@@ -78,10 +73,7 @@ export const Standard = () => (
 );
 
 export const Tall = () => (
-  <ThemeProvider theme={{
-    breakpoints,
-    mode: 'dark',
-  }}>
+  <ThemeProvider theme={{ breakpoints, mode: 'dark' }}>
     <StoryWrapper className="story-wrapper">
       <CardWrapper
         ctaText={text('Cta Text', 'Explore Recipes')}
