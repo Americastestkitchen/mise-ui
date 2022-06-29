@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 import styledBreakpoint from 'styled-components-breakpoint';
 
-import { color, fontSize, mixins } from '../../../..';
+import { color, fontSize, mixins } from '../../../../styles';
 import { npsData } from '../data';
 import { SubmitButton } from '..';
 import Checkmark from '../../../DesignTokens/Icon/svgs/Checkmark3';
@@ -69,30 +68,27 @@ const SurveyCardOption = styled.label`
   }
 `;
 
-const NpsForm = ({ handleSubmit }) => {
+const NpsForm = ({
+  handleSubmit,
+}: { handleSubmit: (npsResponse: string) => void}) => {
   const [npsResponse, setNpsResponse] = useState('');
 
-  const handleOnChange = (evt) => {
-    setNpsResponse(evt.target.value);
+  const handleOnChange = (evt: React.ChangeEvent<HTMLInputElement>
+    | React.KeyboardEvent<HTMLInputElement>) => {
+    setNpsResponse(evt.currentTarget.value);
   };
 
-  const handleNpsFormSubmit = (evt) => {
+  const handleNpsFormSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     handleSubmit(npsResponse);
   };
 
   return (
-    <SurveyForm onSubmit={handleNpsFormSubmit}>
+    <SurveyForm onSubmit={e => handleNpsFormSubmit(e)}>
       {npsData.map(slug => (
         <SurveyCardOption
           key={slug}
           htmlFor={slug}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') {
-              e.preventDefault();
-              handleOnChange(e);
-            }
-          }}
         >
           <input
             type="checkbox"
@@ -100,7 +96,13 @@ const NpsForm = ({ handleSubmit }) => {
             value={slug}
             checked={npsResponse === slug}
             name="recommendationOption"
-            onChange={handleOnChange}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                e.preventDefault();
+                handleOnChange(e);
+              }
+            }}
+            onChange={e => handleOnChange(e)}
           />
           <span>{slug}</span>
         </SurveyCardOption>
@@ -111,10 +113,6 @@ const NpsForm = ({ handleSubmit }) => {
       </SubmitButton>
     </SurveyForm>
   );
-};
-
-NpsForm.propTypes = {
-  handleSubmit: PropTypes.func.isRequired,
 };
 
 export default NpsForm;

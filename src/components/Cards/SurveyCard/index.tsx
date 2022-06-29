@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import styledBreakpoint from 'styled-components-breakpoint';
 import { color, font, fontSize, lineHeight, mixins } from '../../../styles';
@@ -7,7 +6,7 @@ import DishTypeForm from './components/DishTypeForm';
 import NpsForm from './components/NpsForm';
 import FeedbackForm from './components/FeedBackForm';
 
-const SurveyCardWrapper = styled.div`
+const SurveyCardWrapper = styled.div<{ hasSuccessMessage: boolean}>`
   background-color: ${color.white};
   color: ${color.eclipse};
   text-align: center;
@@ -26,16 +25,17 @@ const SurveyCardWrapper = styled.div`
     height: 27.2rem;
     padding-top: 0;
     padding-bottom: 0;
+
+    ${styledBreakpoint('md')`
+      padding-bottom: 3.3rem;
+    `}
+
   `}
 
   ${styledBreakpoint('md')`
     padding: 3.3rem 3.3rem 6rem;
     width: 56rem;
     height: 27.2rem;
-
-    ${props => props.hasSuccessMessage && `
-      padding-bottom: 3.3rem;
-    `}
   `}
 
 `;
@@ -111,7 +111,19 @@ const SuccessMessage = styled.p`
   margin: 1rem auto;
 `;
 
-const FormEl = ({ surveyType, handleSubmit }) => {
+type SurveyCardProps = {
+  subTitle: string,
+  title: string,
+  surveyType: string,
+  handleSubmit: (surveyResponse: string | string[]) => void,
+}
+
+type FormTypeProps = {
+  surveyType: string,
+  handleSubmit: (surveyResponse: string | string[]) => void,
+}
+
+const FormEl = ({ surveyType, handleSubmit }: FormTypeProps) => {
   let El = null;
   switch (surveyType) {
     case 'onboardingtags':
@@ -134,19 +146,23 @@ const SurveyCard = ({
   subTitle,
   handleSubmit,
   surveyType,
-}) => {
-  const [errorMessage, setErrorMessage] = useState(null);
-  const [successMessage, setSuccessMessage] = useState(null);
+}: SurveyCardProps) => {
+  const message = {
+    success: 'Thank you! Your feedback helps us better serve members like you.',
+    error: 'Please make a selection.',
+  };
+  const [errorMessage, setErrorMessage] = useState(false);
+  const [successMessage, setSuccessMessage] = useState(false);
 
-  const handleResponseSubmit = (surveyResponse) => {
+  const handleResponseSubmit = (surveyResponse: string | string[]) => {
     if (surveyResponse.length > 0) {
       handleSubmit(surveyResponse);
-      setSuccessMessage('Thank you! Your feedback helps us better serve members like you.');
-      setErrorMessage(null);
+      setSuccessMessage(true);
+      setErrorMessage(false);
       return;
     }
 
-    setErrorMessage('Please make a selection.');
+    setErrorMessage(true);
   };
 
   return (
@@ -158,17 +174,10 @@ const SurveyCard = ({
           <FormEl surveyType={surveyType} handleSubmit={handleResponseSubmit} />
         </>
       )}
-      {successMessage && <SuccessMessage>{successMessage}</SuccessMessage>}
-      {errorMessage ? (<ErrorMessage>{errorMessage}</ErrorMessage>) : null}
+      {successMessage && <SuccessMessage>{message.success}</SuccessMessage>}
+      {errorMessage ? (<ErrorMessage>{message.error}</ErrorMessage>) : null}
     </SurveyCardWrapper>
   );
-};
-
-SurveyCard.propTypes = {
-  subTitle: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  surveyType: PropTypes.string.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
 };
 
 export default SurveyCard;
