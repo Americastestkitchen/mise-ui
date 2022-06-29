@@ -18,18 +18,18 @@ const StyledSticker = styled(Sticker)`
 
 const Subtitle = styled.span`
   font: italic 1.6rem/1.25 ${font.mwr};
-
-
 `;
+
+type SlideItem = {
+  'collection_type': string,
+  'cloudinary_url': string,
+  'url': string,
+}
 
 type MadeForYouCarouselProps = {
   title: string,
   subtitle: string,
-  results?: {
-    'collection_type': string,
-    'cloudinary_url': string,
-    'url': string,
-  }[],
+  results?: SlideItem[],
 }
 
 const MadeForYouCarousel = ({
