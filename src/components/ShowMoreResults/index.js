@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connectInfiniteHits } from 'react-instantsearch-dom';
-import Button from '../Buttons/Button';
+import Button from '../Buttons/Button/Button';
 
 const CustomShowMoreResults = ({
   className,

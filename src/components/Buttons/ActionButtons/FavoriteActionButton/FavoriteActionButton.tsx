@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Button from '../../Button';
+import Button from '../../Button/Button';
 import { color, letterSpacing, font, fontSize, spacing } from '../../../../styles';
 import { ChevronThinDown, FavoriteRibbon, Folder } from '../../../DesignTokens/Icon/svgs';
 
@@ -16,7 +16,7 @@ const ButtonWrapper = styled.div.attrs({
   width: 16.3rem;
 `;
 
-const StyledFavoriteRibbon = styled(FavoriteRibbon)``;
+const StyledFavoriteRibbon = styled(FavoriteRibbon)<{onClick(): void}>``;
 
 const StyledButton = styled(Button)`
   align-items: center;
@@ -83,14 +83,21 @@ const StyledButton = styled(Button)`
 const StyledFolder = styled(Folder)`
   margin-right: ${spacing.xsm};
 `;
+export type DefaultFavoriteActionButton = React.ComponentPropsWithoutRef<'button'> & {
+  className?: string;
+  favoritableId?: string;
+  isFavorited?: boolean;
+  onClick(): void;
+  title?: string;
+}
 
-function FavoriteActionButton({
+export default function FavoriteActionButton({
   className,
   favoritableId,
-  isFavorited,
+  isFavorited = false,
   onClick,
   title,
-}) {
+}: DefaultFavoriteActionButton) {
   return (
     <ButtonWrapper>
       <StyledButton
@@ -126,21 +133,3 @@ function FavoriteActionButton({
     </ButtonWrapper>
   );
 }
-
-FavoriteActionButton.propTypes = {
-  className: PropTypes.string,
-  favoritableId: PropTypes.string,
-  isFavorited: PropTypes.bool,
-  onClick: PropTypes.func,
-  title: PropTypes.string,
-};
-
-FavoriteActionButton.defaultProps = {
-  className: '',
-  favoritableId: null,
-  isFavorited: false,
-  onClick: () => {},
-  title: null,
-};
-
-export default FavoriteActionButton;

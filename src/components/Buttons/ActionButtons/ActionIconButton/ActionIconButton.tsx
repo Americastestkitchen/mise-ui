@@ -1,10 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Button from '../../Button';
+import Button from '../../Button/Button';
 import { color, letterSpacing, font, fontSize, spacing } from '../../../../styles';
 import { Print } from '../../../DesignTokens/Icon/svgs';
 
+export type IconType = 'print';
+
+export type IconProps = {
+  iconType: IconType;
+  onClick(): void;
+  text: string;
+}
 const StyledActionButton = styled(Button)`
   align-items: center;
   display: inline-flex;
@@ -20,7 +26,7 @@ const StyledActionButton = styled(Button)`
   }
 `;
 
-const determineIconType = (iconType) => {
+const determineIconType = (iconType: IconType) => {
   const iconTypes = {
     print: Print,
   };
@@ -28,11 +34,11 @@ const determineIconType = (iconType) => {
   return El && <El fill={color.white} />;
 };
 
-function ActionIconButton({
+export default function ActionIconButton({
   iconType,
   onClick,
   text,
-}) {
+}: IconProps) {
   return (
     <StyledActionButton
       iconType={iconType}
@@ -43,15 +49,3 @@ function ActionIconButton({
     </StyledActionButton>
   );
 }
-
-ActionIconButton.propTypes = {
-  iconType: PropTypes.string.isRequired,
-  onClick: PropTypes.func,
-  text: PropTypes.string.isRequired,
-};
-
-ActionIconButton.defaultProps = {
-  onClick: () => {},
-};
-
-export default ActionIconButton;

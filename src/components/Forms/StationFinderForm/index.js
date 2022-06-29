@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import Button from '../../Buttons/Button';
+import Button from '../../Buttons/Button/Button';
 import FormInput from '../shared/FormInput';
 import { Arrow } from '../../DesignTokens/Icon/svgs';
 import {

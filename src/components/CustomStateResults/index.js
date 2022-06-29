@@ -5,7 +5,7 @@ import breakpoint from 'styled-components-breakpoint';
 
 import utils from '../../lib/utils';
 import { fontSize, font, color, spacing } from '../../styles';
-import Button from '../Buttons/Button';
+import Button from '../Buttons/Button/Button';
 
 const Wrapper = styled.div`
   align-items: center;
