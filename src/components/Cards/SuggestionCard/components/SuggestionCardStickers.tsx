@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types';
 import breakpoint from 'styled-components-breakpoint';
 import React from 'react';
 import styled from 'styled-components';
 import Sticker from '../../shared/Sticker';
+import { Stickeritem } from '..';
 import { font, fontSize, color, mixins } from '../../../../styles';
 
 const SitckersContainer = styled.div`
@@ -31,7 +31,7 @@ const SitckersContainer = styled.div`
   `}
 `;
 
-const SuggestionCardStickers = ({ stickers }) => (
+const SuggestionCardStickers = ({ stickers }: {stickers: Stickeritem[]}) => (
   <SitckersContainer>
     <span className="suggestioncardstickers-intro">You might like:</span>
     {
@@ -46,9 +46,5 @@ const SuggestionCardStickers = ({ stickers }) => (
     }
   </SitckersContainer>
 );
-
-SuggestionCardStickers.propTypes = {
-  stickers: PropTypes.array.isRequired,
-};
 
 export default SuggestionCardStickers;

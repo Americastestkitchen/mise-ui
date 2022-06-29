@@ -10,8 +10,9 @@ export default {
       siteKey: 'atk',
       resourceType: 'recipe',
       avgRating: null,
-      // comments: 82,
-      numRatings: 38,
+      comments: 0,
+      numRatings: null,
+      sticker: [],
     },
     {
       objectId: 'recipe_12376',

@@ -1,41 +1,67 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
 
 import LoadingSuggestionCard from './components/LoadingSuggestionCard';
-import SuggestionCardAction from './components/SuggestionCardAction';
-import SuggestionCardActions from './components/SuggestionCardActions';
-import SuggestionCardBadge from './components/SuggestionCardBadge';
-import SuggestionCardContent from './components/SuggestionCardContent';
-import SuggestionCardContentInner from './components/SuggestionCardContentInner';
+import { color } from '../../../styles';
 import { UserAttributions } from '../shared/UserAttributions';
-import SuggestionCardImage from './components/SuggestionCardImage';
-import SuggestionCardSubTitle from './components/SuggestionCardSubTitle';
-import SuggestionCardTitle from './components/SuggestionCardTitle';
+import {
+  SuggestionCardImg,
+  SuggestionCardBadge,
+} from './components/SuggestionCardImage';
 import SuggestionCardWrapper from './components/SuggestionCardWrapper';
 import SuggestionCardStickers from './components/SuggestionCardStickers';
 import { Save, Close2 } from '../../DesignTokens/Icon';
-import { color } from '../../../styles';
 
-const SuggestionCard = ({
+import {
+  SuggestionCardActionsWrapper,
+  SuggestionCardAction,
+} from './components/SuggestionCardActions';
+import {
+  SuggestionCardContent,
+  SuggestionCardContentInner,
+  SuggestionCardSubTitle,
+  SuggestionCardTitle,
+} from './components/SuggestionCardContent';
+
+export type Stickeritem = {
+  type: string,
+  text: string,
+}
+
+export type SuggestionCardProps = {
+  avgRating?: number | null,
+  comments?: number,
+  href: string,
+  imageUrl?: string,
+  numRatings?: number | null,
+  objectId: string,
+  siteKey: string,
+  subtitle?: string,
+  stickers?: Stickeritem[],
+  title: string,
+  dataIdx?: number,
+  resourceType: string,
+}
+
+export const SuggestionCard = ({
   href,
-  dataIdx,
-  imageUrl,
+  dataIdx = 0,
+  imageUrl = '',
   objectId,
   siteKey,
-  subtitle,
-  stickers,
+  subtitle = '',
+  stickers = [],
   title,
   avgRating,
-  comments,
+  comments = 0,
   numRatings,
   resourceType,
-}) => (
+}: SuggestionCardProps) => (
   <SuggestionCardWrapper
     data-idx={dataIdx}
   >
-    <SuggestionCardImage
-      data-testid={`suggestion-img-${Boolean(imageUrl)}`}
+    <SuggestionCardImg
+      data-testid={`suggestion-img-${imageUrl}`}
       imageUrl={imageUrl}
       href={href}
       aria-label={`Go to the ${title} recipe`}
@@ -43,10 +69,9 @@ const SuggestionCard = ({
       <SuggestionCardBadge
         type={siteKey}
       />
-      <SuggestionCardActions>
+      <SuggestionCardActionsWrapper>
         <div className="button-container">
           <SuggestionCardAction
-            className="remove-cell primary-hover"
             data-event-name="RECOMMENDATION_REJECTED"
             data-document-title={title}
             data-href={href}
@@ -63,7 +88,7 @@ const SuggestionCard = ({
         </div>
         <div className="button-container">
           <SuggestionCardAction
-            className="favorite-action remove-cell primary-hover"
+            className="favorite-action"
             data-event-name="RECOMMENDATION_ADDED"
             data-document-title={title}
             data-favoritable-id={objectId}
@@ -78,15 +103,15 @@ const SuggestionCard = ({
           </SuggestionCardAction>
           <span>Save</span>
         </div>
-      </SuggestionCardActions>
-    </SuggestionCardImage>
+      </SuggestionCardActionsWrapper>
+    </SuggestionCardImg>
     <SuggestionCardContent>
       <SuggestionCardContentInner>
-        {stickers ? (
+        {Boolean(stickers.length !== 0) && (
           <SuggestionCardStickers
             stickers={stickers}
           />
-        ) : null}
+        )}
         <SuggestionCardTitle
           aria-label={`Go to the ${title} recipe`}
           data-testid="suggestion-title"
@@ -94,7 +119,7 @@ const SuggestionCard = ({
         >
           {title}
         </SuggestionCardTitle>
-        {subtitle && (
+        {Boolean(subtitle) && (
           <SuggestionCardSubTitle
             data-testid="suggestion-sub-title"
           >
@@ -114,30 +139,4 @@ const SuggestionCard = ({
   </SuggestionCardWrapper>
 );
 
-SuggestionCard.propTypes = {
-  avgRating: PropTypes.number,
-  comments: PropTypes.number,
-  href: PropTypes.string.isRequired,
-  imageUrl: PropTypes.string,
-  numRatings: PropTypes.number,
-  objectId: PropTypes.string.isRequired,
-  siteKey: PropTypes.string.isRequired,
-  subtitle: PropTypes.string,
-  stickers: PropTypes.array,
-  title: PropTypes.string.isRequired,
-  dataIdx: PropTypes.number.isRequired,
-  resourceType: PropTypes.string.isRequired,
-};
-
-SuggestionCard.defaultProps = {
-  avgRating: null,
-  comments: 0,
-  imageUrl: null,
-  numRatings: null,
-  subtitle: null,
-  stickers: null,
-};
-
 SuggestionCard.Loading = LoadingSuggestionCard;
-
-export default SuggestionCard;

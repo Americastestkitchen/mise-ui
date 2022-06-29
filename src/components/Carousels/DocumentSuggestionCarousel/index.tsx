@@ -1,12 +1,11 @@
 import breakpoint from 'styled-components-breakpoint';
-import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { css } from 'styled-components';
 
 import BaseCarousel from '../BaseCarousel';
 import { useFlickityGroup } from '../BaseCarousel/useFlickity';
 import { StandardSlide } from '../BaseCarousel/Slides';
-import SuggestionCard from '../../Cards/SuggestionCard';
+import { SuggestionCard, SuggestionCardProps } from '../../Cards/SuggestionCard';
 import { color, font, fontSize, letterSpacing, lineHeight, spacing, withThemes } from '../../../styles';
 import SuggestionSideEffects from './SuggestionSideEffects';
 
@@ -93,13 +92,20 @@ const DocumentListCarouselWrapper = styled.div`
   }
 `;
 
+type CarouselProps = {
+  items: SuggestionCardProps[],
+  loading?: boolean,
+  subtitle?: string,
+  title: string,
+}
+
 const DocumentSuggestionCarousel = ({
   // initialIndex,
   items,
-  loading,
+  loading = false,
   title,
-  subtitle,
-}) => (
+  subtitle = '',
+}: CarouselProps) => (
   <DocumentListCarouselWrapper
     className="document-suggestion-carousel"
   >
@@ -138,23 +144,5 @@ const DocumentSuggestionCarousel = ({
     )}
   </DocumentListCarouselWrapper>
 );
-
-DocumentSuggestionCarousel.propTypes = {
-  /** Index of the slide to display upon initialization */
-  // initialIndex: PropTypes.number,
-  loading: PropTypes.bool,
-  /** List of items for the carousel */
-  items: PropTypes.array.isRequired,
-  /** Larger title displayed above carousel */
-  subtitle: PropTypes.string,
-  /** Larger title displayed above carousel */
-  title: PropTypes.string.isRequired,
-};
-
-DocumentSuggestionCarousel.defaultProps = {
-  // initialIndex: 0,
-  loading: false,
-  subtitle: null,
-};
 
 export default DocumentSuggestionCarousel;

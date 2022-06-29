@@ -17,8 +17,8 @@ const Wrapper = styled.div`
 `;
 
 export type UserAttributionsProps = InferStyledTypes<typeof Wrapper> & {
-  avgRating?: number;
-  numRatings?: number;
+  avgRating?: number | null;
+  numRatings?: number | null;
   commentsCount?: number;
   /** When true, will hide rating and comments attributions when they are falsey */
   hideEmptyAttributions?: boolean;

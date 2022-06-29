@@ -1,10 +1,40 @@
+import breakpoint from 'styled-components-breakpoint';
 import styled from 'styled-components';
 
-import { color, mixins } from '../../../../styles';
+import { color, font, mixins } from '../../../../styles';
 
-const SuggestionCardAction = styled.button.attrs({
-  className: 'suggestion-card__button',
+export const SuggestionCardActionsWrapper = styled.div.attrs({
+  className: 'suggestion-card__buttons',
 })`
+  display: flex;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  bottom: -29.5rem;
+
+  .button-container {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin-right: 1rem;
+
+    span {
+      letter-spacing: 0.6px;
+      color: ${color.eclipse};
+      text-transform: uppercase;
+      font: 1rem/2.6rem ${font.pnr};
+    }
+  }
+
+  ${breakpoint('md')`
+    bottom: -7.8rem;
+  `}
+`;
+
+// set default className attrs but also allow the the component to take in a className
+export const SuggestionCardAction = styled.button.attrs<{ className: string }>(({ className }) => ({
+  className: `suggestion-card__button remove-cell primary-hover ${className}`,
+}))`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -92,5 +122,3 @@ const SuggestionCardAction = styled.button.attrs({
     }
   }
 `;
-
-export default SuggestionCardAction;
