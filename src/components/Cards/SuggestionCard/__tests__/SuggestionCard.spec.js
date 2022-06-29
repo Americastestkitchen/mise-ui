@@ -3,7 +3,7 @@ import { ThemeProvider } from 'styled-components';
 import { render, screen } from '@testing-library/react';
 import 'jest-styled-components';
 
-import SuggestionCard from '../index';
+import { SuggestionCard } from '../index';
 import breakpoints from '../../../../styles/breakpoints';
 
 const baseRecipe = {
@@ -40,7 +40,7 @@ describe('SuggestionCard component', () => {
   it('does not render an image', () => {
     renderComponent({
       ...baseRecipe,
-      imageUrl: null,
+      imageUrl: '',
     });
     expect(screen.getByTestId('suggestion-img-false'));
   });
@@ -73,7 +73,7 @@ describe('SuggestionCard component', () => {
   it('does not render a sub-title', () => {
     renderComponent({
       ...baseRecipe,
-      subtitle: null,
+      subtitle: '',
     });
     expect(screen.queryByTestId('suggestion-sub-title')).toBeNull();
   });

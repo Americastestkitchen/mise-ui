@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css, ThemeProvider } from 'styled-components';
 
-import data from './__tests__/data';
+import data from './data';
 import DocumentSuggestionCarousel from './index';
 import { breakpoints, color, withThemes } from '../../../styles';
 

@@ -65,7 +65,7 @@ export const SuggestionCard = ({
       data-idx={dataIdx}
     >
       <SuggestionCardImg
-        data-testid={`suggestion-img-${imageUrl}`}
+        data-testid={`suggestion-img-${Boolean(imageUrl)}`}
         imageUrl={imageUrl}
         href={href}
         aria-label={`Go to the ${title} recipe`}
