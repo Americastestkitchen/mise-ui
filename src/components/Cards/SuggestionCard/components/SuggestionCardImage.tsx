@@ -2,7 +2,7 @@ import breakpoint from 'styled-components-breakpoint';
 import styled from 'styled-components';
 import { mixins, spacing } from '../../../../styles';
 
-import Badge from '../../../Badge';
+import Badge from '../../../Badge/Badge';
 
 type CardImageProps = {
   imageUrl?: string,
