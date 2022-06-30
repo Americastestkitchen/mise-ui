@@ -35,12 +35,4 @@ describe('PersonCard component should', () => {
     renderComponent();
     expect(screen.getByText('Test Person'));
   });
-
-  // width and height are fixed for these cards
-  it('have correct width and height', () => {
-    renderComponent();
-    const personCard = screen.getByTestId('person-card');
-    expect(personCard).toHaveStyleRule('width: 27.2rem');
-    expect(personCard).toHaveStyleRule('height: 27.2rem');
-  });
 });
