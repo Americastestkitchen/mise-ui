@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { sm, md, lg } from '../../../../styles/breakpoints';
+import { md, lg } from '../../../../styles/breakpoints';
 import { getImageUrl } from '../../../../lib/cloudinary';
 
 type HeadshotSize = {
@@ -9,7 +9,7 @@ type HeadshotSize = {
   lg?: string;
 }
 
-type PersonHeadshotPropTypes = {
+export type PersonHeadshotPropTypes = {
   imgAlt?: string,
   imgCloudinaryId: string,
   size?: HeadshotSize,

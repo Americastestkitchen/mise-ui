@@ -1,23 +1,23 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import breakpoint from 'styled-components-breakpoint';
 import { color, font, fontSize, grid, lineHeight, mixins, spacing } from '../../../styles';
 import { cssThemedFontBold } from '../../../styles/mixins';
 import { FeatureCardUserAttributions } from '../shared/UserAttributions';
-import { untilLg } from '../../../styles/breakpoints';
+import { md, untilLg } from '../../../styles/breakpoints';
 import Badge from '../../Badge/Badge';
 import FavoriteRibbonWithBg from '../shared/FavoriteRibbonWithBg/FavoriteRibbonWithBg';
 import Image from '../shared/Image';
 import PersonHeadShot from '../shared/PersonHeadShot';
 import Sticker from '../shared/Sticker';
 import Title from '../shared/Title';
+import { BaseCardPropType } from '../Cards';
+import {PersonHeadshotPropTypes} from '../shared/PersonHeadShot';
 
 const featureCardWidth = grid.columnWidth;
 const featureCardWideWidth = `${parseFloat(grid.columnWidth) * 2 + parseFloat(grid.gutterWidth)}rem`;
 const featureCardWideHeight = '40rem';
 
-const StyledFeatureCard = styled.article`
+const StyledFeatureCard = styled.article<{ isWide: boolean }>`
   box-shadow: 0 0 0 ${color.black};
   height: ${({ isWide }) => (isWide ? '33rem' : featureCardWideHeight)};
   overflow: hidden; // solves/hides FF image edge flashing bug
@@ -73,9 +73,11 @@ const StyledFeatureCard = styled.article`
     }
   }
 
-  ${breakpoint('md')`
-    height: ${featureCardWideHeight};
-    width: ${({ isWide }) => (isWide ? featureCardWideWidth : featureCardWidth)};
+  ${({ isWide }) => `
+    ${md(css`
+      height: ${featureCardWideHeight};
+      width: ${isWide ? featureCardWideWidth : featureCardWidth};
+    `)}
   `}
 `;
 
@@ -91,7 +93,7 @@ const StyledBadge = styled(Badge)`
   left: ${spacing.xsm};
 `;
 
-const StyledTitle = styled(Title)`
+const StyledTitle = styled(Title)<{ themedTitle: boolean}>`
   margin-bottom: ${spacing.xxsm};
 
   &:hover {
@@ -161,11 +163,33 @@ const OriginalPricing = styled.p`
   text-decoration: line-through;
 `;
 
+export type FeatureCardPropTypes = BaseCardPropType & {
+  attributions?: string,
+  avgRating?: number,
+  ctaDataAttrs?: Record<string, unknown>, //TODO: what object shape should this be?
+  ctaText?: string,
+  ctaUrl?: string,
+  commentsCount?: number,
+  dataAttrs?: Record<string, unknown>, // TODO: document data attributes. What shape is this?
+  discountedPrice?: string,
+  displayFavoritesButton?: boolean,
+  isFavorited?: boolean,
+  isWide?: boolean,
+  lazyImage?: boolean,
+  numRatings?: number,
+  objectId: string,
+  originalPrice?: string,
+  personHeadShot?: PersonHeadshotPropTypes,
+  siteKeyFavorites?: DomainSiteKey,
+  themedTitle?: boolean,
+  title: string,
+}
+
 function FeatureCard({
   attributions,
   avgRating,
-  themedTitle,
-  className,
+  themedTitle = false,
+  className = '',
   commentsCount,
   contentType,
   ctaDataAttrs,
@@ -173,13 +197,13 @@ function FeatureCard({
   ctaUrl,
   dataAttrs,
   discountedPrice,
-  displayFavoritesButton,
+  displayFavoritesButton = true,
   href,
   imageAlt,
   imageUrl,
-  isFavorited,
-  isWide,
-  lazyImage,
+  isFavorited = false,
+  isWide = false,
+  lazyImage = true,
   numRatings,
   objectId,
   onClick,
@@ -190,11 +214,10 @@ function FeatureCard({
   stickers,
   target,
   title,
-}) {
+}: FeatureCardPropTypes) {
   return (
     <StyledFeatureCard
       className={ctaUrl ? 'has-cta feature-card' : 'feature-card'}
-      contentType={contentType}
       data-qa="feature-card"
       data-testid="feature-card"
       {...dataAttrs}
@@ -203,7 +226,7 @@ function FeatureCard({
       <a
         href={href}
         onClick={onClick}
-        rel={target && target === '_blank' ? 'noopener noreferrer' : null}
+        rel={target && target === '_blank' ? 'noopener noreferrer' : ''}
         target={target}
       >
         <div className="feature-card__gradient-overlay" />
@@ -231,7 +254,7 @@ function FeatureCard({
             <StyledTitle themedTitle={themedTitle} className={className} title={title} />
             <FeatureCardUserAttributions
               avgRating={avgRating}
-              commentsCount={commentsCount || null}
+              commentsCount={commentsCount}
               numRatings={numRatings}
             />
             {attributions ? <Attributions>{attributions}</Attributions> : null}
@@ -259,7 +282,7 @@ function FeatureCard({
           <StyledFavoriteButtonWithBg
             className={className}
             siteKey={siteKeyFavorites}
-            role="button"
+            // role="button"
             isFavorited={isFavorited}
             objectId={objectId}
             title={title}
@@ -280,65 +303,5 @@ function FeatureCard({
     </StyledFeatureCard>
   );
 }
-
-FeatureCard.propTypes = {
-  attributions: PropTypes.string,
-  themedTitle: PropTypes.bool,
-  className: PropTypes.string,
-  contentType: PropTypes.string.isRequired,
-  ctaDataAttrs: PropTypes.object,
-  ctaText: PropTypes.string,
-  ctaUrl: PropTypes.string,
-  /** document data attributes */
-  dataAttrs: PropTypes.object,
-  discountedPrice: PropTypes.string,
-  displayFavoritesButton: PropTypes.bool,
-  href: PropTypes.string.isRequired,
-  imageAlt: PropTypes.string,
-  imageUrl: PropTypes.string.isRequired,
-  isFavorited: PropTypes.bool,
-  isWide: PropTypes.bool,
-  lazyImage: PropTypes.bool,
-  commentsCount: PropTypes.number,
-  avgRating: PropTypes.number,
-  numRatings: PropTypes.number,
-  objectId: PropTypes.string.isRequired,
-  onClick: PropTypes.func,
-  originalPrice: PropTypes.string,
-  /** Optional: Image data that is used to render a PersonHeadShot. */
-  personHeadShot: PropTypes.shape({
-    ...PersonHeadShot.propTypes,
-  }),
-  siteKey: PropTypes.oneOf(['atk', 'cco', 'cio', 'kids', 'school', 'shop']).isRequired,
-  siteKeyFavorites: PropTypes.oneOf(['atk', 'cco', 'cio']),
-  stickers: PropTypes.array,
-  target: PropTypes.string,
-  title: PropTypes.string.isRequired,
-};
-
-FeatureCard.defaultProps = {
-  attributions: '',
-  themedTitle: false,
-  className: '',
-  ctaDataAttrs: null,
-  ctaText: '',
-  ctaUrl: '',
-  dataAttrs: null,
-  discountedPrice: null,
-  displayFavoritesButton: true,
-  imageAlt: '',
-  isFavorited: false,
-  isWide: false,
-  lazyImage: true,
-  commentsCount: 0,
-  avgRating: null,
-  numRatings: null,
-  onClick: null,
-  originalPrice: null,
-  personHeadShot: null,
-  siteKeyFavorites: null,
-  stickers: [],
-  target: null,
-};
 
 export default FeatureCard;
