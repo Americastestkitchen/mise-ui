@@ -7,7 +7,7 @@ import { md, untilLg } from '../../../styles/breakpoints';
 import Badge from '../../Badge/Badge';
 import FavoriteRibbonWithBg from '../shared/FavoriteRibbonWithBg/FavoriteRibbonWithBg';
 import Image from '../shared/Image';
-import PersonHeadShot, { PersonHeadshotPropTypes } from '../shared/PersonHeadShot';
+import PersonHeadShot, { PersonHeadshotPropTypes } from '../shared/PersonHeadShot/PersonHeadShot';
 import Sticker from '../shared/Sticker';
 import Title from '../shared/Title';
 import { BaseCardPropType } from '../Cards';
