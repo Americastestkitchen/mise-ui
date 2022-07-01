@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import { font } from '../../../styles';
 import { Title, Divider } from '../BaseCarousel/styled-elements';
@@ -21,7 +20,23 @@ const Subtitle = styled.span`
   font: italic 1.6rem/1.25 ${font.mwr};
 `;
 
-const MadeForYouCarousel = ({ results, title, subtitle }) => {
+type SlideItem = {
+  'collection_type': string,
+  'cloudinary_url': string,
+  'url': string,
+}
+
+type MadeForYouCarouselProps = {
+  title: string,
+  subtitle: string,
+  results?: SlideItem[],
+}
+
+const MadeForYouCarousel = ({
+  results = [],
+  title,
+  subtitle,
+}: MadeForYouCarouselProps) => {
   if (results.length === 0) {
     return (
       <>
@@ -41,6 +56,7 @@ const MadeForYouCarousel = ({ results, title, subtitle }) => {
         header={(<Title>{title}</Title>)}
         showDivider
         useFlickityHook={useFlickityGroup}
+        title="Smart Colletion Carousel"
       >
         {results.map((props, index) => (
           <StandardSlide key={index}>
@@ -50,16 +66,6 @@ const MadeForYouCarousel = ({ results, title, subtitle }) => {
       </BaseCarousel>
     </>
   );
-};
-
-MadeForYouCarousel.propTypes = {
-  title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string.isRequired,
-  results: PropTypes.array,
-};
-
-MadeForYouCarousel.defaultProps = {
-  results: [],
 };
 
 export default MadeForYouCarousel;
