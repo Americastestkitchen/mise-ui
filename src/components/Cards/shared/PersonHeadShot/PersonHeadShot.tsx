@@ -42,21 +42,21 @@ const PersonHeadShotImg = styled.img`
   width: 100%;
 `;
 
-const PersonHeadShot = ({
+export default function PersonHeadShot({
   imgAlt,
   imgCloudinaryId,
   size = { sm: '10' },
-}: PersonHeadshotPropTypes) => (
-  <PersonHeadShotWrapper
-    className="person-head-shot"
-    data-testid="person-head-shot"
-    size={size}
-  >
-    <PersonHeadShotImg
-      alt={imgAlt}
-      src={getImageUrl(imgCloudinaryId, { height: 100, width: 100 })}
-    />
-  </PersonHeadShotWrapper>
-);
-
-export default PersonHeadShot;
+}: PersonHeadshotPropTypes) {
+  return (
+    <PersonHeadShotWrapper
+      className="person-head-shot"
+      data-testid="person-head-shot"
+      size={size}
+    >
+      <PersonHeadShotImg
+        alt={imgAlt}
+        src={getImageUrl(imgCloudinaryId, { height: 100, width: 100 })}
+      />
+    </PersonHeadShotWrapper>
+  );
+}
