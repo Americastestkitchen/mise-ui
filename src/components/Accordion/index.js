@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 
-import AccordionControl from '../AccordionControl';
+import AccordionControl from '../AccordionControl/AccordionControl';
 import { ChefHat, Content, Cookbook, Knife, Sort, Time } from '../DesignTokens/Icon/svgs';
 import { color, font, fontSize, letterSpacing, mixins, spacing, withThemes } from '../../styles';
 

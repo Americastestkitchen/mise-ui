@@ -1,13 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 
 import { color, withThemes } from '../../styles';
 import { Plus } from '../DesignTokens/Icon/svgs';
 
+export type IconSize = 'default' | 'large' | 'extraLarge';
+export type DefaultAccordionControl = {
+  isExpanded: boolean;
+  iconSize?: IconSize;
+}
+
 const AccordionSvgWrapperTheme = {
-  default: css`
+  default: css<{isExpanded: boolean}>`
     height: 2rem;
     max-height: 2rem;
     max-width: 2rem;
@@ -137,25 +142,19 @@ const AccordionSvgWrapperTheme = {
 
 const AccordionSvgWrapperEl = styled.div.attrs({
   className: 'accordion-item__icon',
-})`
+})<{isExpanded: boolean}>`
   ${withThemes(AccordionSvgWrapperTheme)}
 `;
 
-const AccordionControl = ({ iconSize, isExpanded }) => (
-  <AccordionSvgWrapperEl
-    isExpanded={isExpanded}
-  >
-    <Plus size={iconSize} />
-  </AccordionSvgWrapperEl>
-);
-
-AccordionControl.propTypes = {
-  iconSize: PropTypes.oneOf(['default', 'large', 'extraLarge']),
-  isExpanded: PropTypes.bool.isRequired,
-};
-
-AccordionControl.defaultProps = {
-  iconSize: 'default',
-};
-
-export default AccordionControl;
+export default function AccordionControl({
+  isExpanded,
+  iconSize = 'default',
+}: DefaultAccordionControl) {
+  return (
+    <AccordionSvgWrapperEl
+      isExpanded={isExpanded}
+    >
+      <Plus size={iconSize} />
+    </AccordionSvgWrapperEl>
+  );
+}

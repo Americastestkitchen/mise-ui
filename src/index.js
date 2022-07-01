@@ -1,7 +1,7 @@
 import * as styles from './styles';
 import AudioPlayer from './components/AudioPlayer';
 import Accordion from './components/Accordion';
-import AccordionControl from './components/AccordionControl';
+import AccordionControl from './components/AccordionControl/AccordionControl';
 import AccordionRefinementList from './components/Algolia/shared/AccordionRefinementList';
 import ActionSummaryItem from './components/ActionSummaryItem';
 import ArticleFigcaption from './components/Articles/shared/ArticleFigcaption';
