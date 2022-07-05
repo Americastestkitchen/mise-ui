@@ -36,6 +36,7 @@
     "import/default": 2,
     "import/namespace": 2,
     "import/export": 2,
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
     // Overide Stateless
     "react/prefer-stateless-function": 0,
     "react/jsx-no-bind": 0,
@@ -71,7 +72,7 @@
     "plugin:import/errors",
     "plugin:import/warnings",
     "plugin:import/typescript",
-    "eslint:recommended", 
+    "eslint:recommended",
     "plugin:@typescript-eslint/recommended"
   ],
   "plugins": [
