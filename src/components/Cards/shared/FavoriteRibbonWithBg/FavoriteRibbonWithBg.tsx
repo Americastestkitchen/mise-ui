@@ -53,7 +53,7 @@ const FavoriteButtonWithBg = ({
     data-favoritable-id={objectId}
     data-origin-site={siteKey}
     data-testid="favorite-button"
-    fill={fill}
+    role="button"
   >
     <FavoriteRibbonWithBg
       ariaLabel=""
