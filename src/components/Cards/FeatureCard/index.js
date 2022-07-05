@@ -7,7 +7,7 @@ import { cssThemedFontBold } from '../../../styles/mixins';
 import { FeatureCardUserAttributions } from '../shared/UserAttributions';
 import { untilLg } from '../../../styles/breakpoints';
 import Badge from '../../Badge/Badge';
-import FavoriteRibbonWithBg from '../shared/FavoriteRibbonWithBg';
+import FavoriteRibbonWithBg from '../shared/FavoriteRibbonWithBg/FavoriteRibbonWithBg';
 import Image from '../shared/Image';
 import PersonHeadShot from '../shared/PersonHeadShot';
 import Sticker from '../shared/Sticker';
