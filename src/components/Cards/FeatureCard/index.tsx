@@ -172,6 +172,7 @@ export type FeatureCardPropTypes = BaseCardPropType & {
   dataAttrs?: Record<string, unknown>, // TODO: document data attributes. What shape is this?
   discountedPrice?: string,
   displayFavoritesButton?: boolean,
+  imageUrl: string,
   isFavorited?: boolean,
   isWide?: boolean,
   lazyImage?: boolean,

@@ -3,7 +3,6 @@ export type BaseCardPropType = {
     contentType: string,
     href: string,
     imageAlt?: string,
-    imageUrl: string, // TODO: this is optional in the standardcard, but not everywhere else
     stickers?: StickerType[],
     onClick?(): void,
     siteKey: ThemeSiteKey,
