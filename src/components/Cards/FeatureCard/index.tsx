@@ -7,11 +7,10 @@ import { md, untilLg } from '../../../styles/breakpoints';
 import Badge from '../../Badge/Badge';
 import FavoriteRibbonWithBg from '../shared/FavoriteRibbonWithBg/FavoriteRibbonWithBg';
 import Image from '../shared/Image';
-import PersonHeadShot from '../shared/PersonHeadShot';
+import PersonHeadShot, { PersonHeadshotPropTypes } from '../shared/PersonHeadShot';
 import Sticker from '../shared/Sticker';
 import Title from '../shared/Title';
 import { BaseCardPropType } from '../Cards';
-import {PersonHeadshotPropTypes} from '../shared/PersonHeadShot';
 
 const featureCardWidth = grid.columnWidth;
 const featureCardWideWidth = `${parseFloat(grid.columnWidth) * 2 + parseFloat(grid.gutterWidth)}rem`;
@@ -166,7 +165,7 @@ const OriginalPricing = styled.p`
 export type FeatureCardPropTypes = BaseCardPropType & {
   attributions?: string,
   avgRating?: number,
-  ctaDataAttrs?: Record<string, unknown>, //TODO: what object shape should this be?
+  ctaDataAttrs?: Record<string, unknown>, // TODO: what object shape should this be?
   ctaText?: string,
   ctaUrl?: string,
   commentsCount?: number,
