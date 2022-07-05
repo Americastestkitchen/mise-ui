@@ -37,7 +37,7 @@ export const ShopItem = () => (
     imageUrl="https://res.cloudinary.com/hksqkdlah/image/upload/v1617638854/ATK%20Landing%20Page/SPS_3x.jpg"
     siteKey="shop"
     siteKeyFavorites="cco"
-    stickers={[{ type: 'priority', text: "Exclusive Deal"} ]}
+    stickers={[{ type: 'priority', text: 'Exclusive Deal' }]}
     objectId=""
     onClick={action('result-click')}
     originalPrice="$59.99"
@@ -57,7 +57,7 @@ export const Wide = () => (
     isWide
     siteKey="atk"
     siteKeyFavorites="atk"
-    stickers={[{ type: 'priority', text: 'New' }, { type: 'editorial', text: '23:23'}]}
+    stickers={[{ type: 'priority', text: 'New' }, { type: 'editorial', text: '23:23' }]}
     objectId=""
     onClick={action('result-click')}
     title={text('Title', 'Savory and Sweet Italian')}
@@ -105,7 +105,7 @@ export const WideWithCTA = () => (
     avgRating={3.66}
     siteKey="atk"
     siteKeyFavorites="atk"
-    stickers={[{ type: 'editorial', text: 'Popular'}]}
+    stickers={[{ type: 'editorial', text: 'Popular' }]}
     objectId=""
     onClick={action('result-click')}
     title={text('Title', '12-Inch Stainless-Steel Skillets')}
