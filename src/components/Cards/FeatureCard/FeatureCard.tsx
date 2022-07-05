@@ -282,7 +282,6 @@ function FeatureCard({
           <StyledFavoriteButtonWithBg
             className={className}
             siteKey={siteKeyFavorites}
-            // role="button"
             isFavorited={isFavorited}
             objectId={objectId}
             title={title}
