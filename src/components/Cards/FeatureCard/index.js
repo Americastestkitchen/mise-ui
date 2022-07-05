@@ -108,8 +108,10 @@ const StyledTitle = styled(Title)`
 `;
 
 const StyledSticker = styled(Sticker)`
-  &:first-child {
-    margin-left: 0;
+  margin-left: 0;
+  margin-right: 0.8rem;
+  &:last-child {
+    margin-right: 0;
   }
 `;
 
