@@ -165,11 +165,11 @@ const OriginalPricing = styled.p`
 export type FeatureCardPropTypes = BaseCardPropType & {
   attributions?: string,
   avgRating?: number,
-  ctaDataAttrs?: Record<string, unknown>, // TODO: what object shape should this be?
+  ctaDataAttrs?: Record<string, unknown>,
   ctaText?: string,
   ctaUrl?: string,
   commentsCount?: number,
-  dataAttrs?: Record<string, unknown>, // TODO: document data attributes. What shape is this?
+  dataAttrs?: Record<string, unknown>,
   discountedPrice?: string,
   displayFavoritesButton?: boolean,
   imageUrl: string,
