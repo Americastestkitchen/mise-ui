@@ -1,3 +1,15 @@
+# v1.33.25 (Tue Jul 05 2022)
+
+#### 🐛 Bug Fix
+
+- SEARCH-149: wrap stickers without indentation [#799](https://github.com/Americastestkitchen/mise-ui/pull/799) ([@harry-atk](https://github.com/harry-atk))
+
+#### Authors: 1
+
+- Harry Scheuerle ([@harry-atk](https://github.com/harry-atk))
+
+---
+
 # v1.33.24 (Tue Jun 21 2022)
 
 #### 🐛 Bug Fix
