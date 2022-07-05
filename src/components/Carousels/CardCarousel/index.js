@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components';
 
 import Carousel from '../Carousel';
 import CategoryCard from '../../Cards/CategoryCard';
-import FeatureCard from '../../Cards/FeatureCard';
+import FeatureCard from '../../Cards/FeatureCard/FeatureCard';
 import HeroCard from '../../Cards/HeroCard';
 import LinearGradient from '../../DesignTokens/LinearGradient';
 import PersonCard from '../../Cards/PersonCard';

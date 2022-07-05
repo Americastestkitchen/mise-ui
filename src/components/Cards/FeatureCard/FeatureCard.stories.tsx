@@ -2,7 +2,7 @@ import React from 'react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, text } from '@storybook/addon-knobs';
 
-import FeatureCard from './index';
+import FeatureCard from './FeatureCard';
 
 export default {
   title: 'Components/Cards/FeatureCard',
