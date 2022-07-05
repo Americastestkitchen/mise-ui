@@ -37,29 +37,29 @@ type FavoriteButtonWithBgPropTypes = {
     title: string,
 }
 
-const FavoriteButtonWithBg = ({
+export default function FavoriteButtonWithBg({
   className = '',
   fill = color.eclipse,
   isFavorited = false,
   objectId,
   siteKey,
   title,
-}: FavoriteButtonWithBgPropTypes) => (
-  <StyledFavoriteButtonWithBg
-    aria-label={isFavorited ? `Remove ${title} from favorites` : `Save ${title} to favorites`}
-    aria-pressed={isFavorited}
-    className={`${className} favorite-action-bg ${isFavorited ? 'favorited' : ''}`}
-    data-document-title={title}
-    data-favoritable-id={objectId}
-    data-origin-site={siteKey}
-    data-testid="favorite-button"
-    role="button"
-  >
-    <FavoriteRibbonWithBg
-      ariaLabel=""
-      fill={fill}
-    />
-  </StyledFavoriteButtonWithBg>
-);
-
-export default FavoriteButtonWithBg;
+}: FavoriteButtonWithBgPropTypes) {
+  return (
+    <StyledFavoriteButtonWithBg
+      aria-label={isFavorited ? `Remove ${title} from favorites` : `Save ${title} to favorites`}
+      aria-pressed={isFavorited}
+      className={`${className} favorite-action-bg ${isFavorited ? 'favorited' : ''}`}
+      data-document-title={title}
+      data-favoritable-id={objectId}
+      data-origin-site={siteKey}
+      data-testid="favorite-button"
+      role="button"
+    >
+      <FavoriteRibbonWithBg
+        ariaLabel=""
+        fill={fill}
+      />
+    </StyledFavoriteButtonWithBg>
+  );
+}
