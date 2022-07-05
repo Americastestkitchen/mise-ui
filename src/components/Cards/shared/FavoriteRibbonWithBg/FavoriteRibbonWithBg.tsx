@@ -56,7 +56,6 @@ const FavoriteButtonWithBg = ({
     fill={fill}
   >
     <FavoriteRibbonWithBg
-      ariaHidden
       ariaLabel=""
       fill={fill}
     />
