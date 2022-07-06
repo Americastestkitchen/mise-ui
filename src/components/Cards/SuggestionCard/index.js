@@ -55,7 +55,7 @@ const SuggestionCard = ({
             data-object-id={objectId}
             data-origin-site={siteKey}
             data-testid="suggestion-action__skip"
-            aria-label="reject recipe suggestion"
+            aria-label={`reject ${title} recipe suggestion`}
           >
             <Close2 />
           </SuggestionCardAction>
@@ -72,7 +72,7 @@ const SuggestionCard = ({
             data-object-id={objectId}
             data-origin-site={siteKey}
             data-testid="suggestion-action__favorite"
-            aria-label="save recipe suggestion"
+            aria-label={`save ${title} recipe suggestion`}
           >
             <Save className="favorite-ribbon" fill={color.eclipse} />
           </SuggestionCardAction>
