@@ -32,17 +32,22 @@ type CtaLinkPropType = {
   onClick?(): void,
 }
 
-const CtaLink = ({ ctaText, ctaUrl, dataAttrs, onClick }: CtaLinkPropType) => (
-  <StyledCtaLink
-    aria-label={`${ctaText} (opens in new window)`}
-    className="cta-link"
-    href={ctaUrl}
-    target="_blank"
-    onClick={onClick}
-    {...dataAttrs}
-  >
-    {ctaText}
-  </StyledCtaLink>
-);
-
-export default CtaLink;
+export default function CtaLink({
+  ctaText,
+  ctaUrl,
+  dataAttrs,
+  onClick,
+}: CtaLinkPropType) {
+  return (
+    <StyledCtaLink
+      aria-label={`${ctaText} (opens in new window)`}
+      className="cta-link"
+      href={ctaUrl}
+      target="_blank"
+      onClick={onClick}
+      {...dataAttrs}
+    >
+      {ctaText}
+    </StyledCtaLink>
+  );
+}
