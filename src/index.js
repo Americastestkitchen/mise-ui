@@ -30,7 +30,7 @@ import DocumentSuggestionCarousel from './components/Carousels/DocumentSuggestio
 import FavoriteActionButton from './components/Buttons/ActionButtons/FavoriteActionButton/FavoriteActionButton';
 import EditorsNote from './components/EditorsNote';
 import EmailForm from './components/Forms/EmailForm';
-import FeatureCard from './components/Cards/FeatureCard';
+import FeatureCard from './components/Cards/FeatureCard/FeatureCard';
 import FilterButton from './components/FilterButton';
 import FinePrint from './components/Articles/FinePrint';
 import FreeTrialAd from './components/Ads/ShowcaseAds/FreeTrialAd';

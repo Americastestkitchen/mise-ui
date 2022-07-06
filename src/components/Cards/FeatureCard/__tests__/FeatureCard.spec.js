@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import 'jest-styled-components';
 
-import FeatureCard from '../index';
+import FeatureCard from '../FeatureCard';
 import breakpoints from '../../../../styles/breakpoints';
 
 describe('FeatureCard component should', () => {
@@ -61,13 +61,5 @@ describe('FeatureCard component should', () => {
   it('render an attribution', () => {
     renderComponent();
     expect(screen.getByText('Episode • Cook\'s Country'));
-  });
-
-  // width and height are fixed for these cards
-  it('have correct width and height', () => {
-    renderComponent();
-    const featureCard = screen.getByTestId('feature-card');
-    expect(featureCard).toHaveStyleRule('width: 27.2rem');
-    expect(featureCard).toHaveStyleRule('height: 40rem');
   });
 });

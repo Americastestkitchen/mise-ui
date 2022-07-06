@@ -2,18 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { color, font, fontSize, letterSpacing, spacing } from '../../../../styles';
 import { Collection, VideoPlay } from '../../../DesignTokens/Icon';
+import { StickerType, StickerContentType } from '../../Cards';
 
 const stickerHeight = '1.8rem';
-
-type StickerContentType = 'collection' | 'clip' | 'episode' | 'playlist' | 'video' | 'cooking school course';
-
-export type StickerPropType = {
-  className?: string;
-  contentType?: StickerContentType,
-  icon?: boolean,
-  type: string,
-  text: string
-};
 
 const StyledSticker = styled.span<{ type: string }>`
   display: inline-flex;
@@ -103,7 +94,7 @@ export default function Sticker({
   icon,
   text,
   type,
-}: StickerPropType) {
+}: StickerType) {
   return (
     <StyledSticker
       className={className}
