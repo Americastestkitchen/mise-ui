@@ -57,12 +57,6 @@ const EditorNoteTheme = {
 
     ${breakpoint('xs', 'md')`
       padding: 1.8rem ${spacing.sm};
-
-      div {
-        span {
-          display: block;
-        }
-      }
     `}
 
     ${breakpoint('md')`
