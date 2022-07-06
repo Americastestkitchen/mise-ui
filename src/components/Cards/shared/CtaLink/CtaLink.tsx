@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { color, font, fontSize, lineHeight, mixins, withThemes } from '../../../../styles';
 
@@ -26,7 +25,14 @@ const StyledCtaLink = styled.a`
   ${withThemes(CtaLinkTheme)};
 `;
 
-const CtaLink = ({ ctaText, ctaUrl, dataAttrs, onClick }) => (
+type CtaLinkPropType = {
+  ctaText: string,
+  ctaUrl: string,
+  dataAttrs?: Record<string, unknown>,
+  onClick?(): void,
+}
+
+const CtaLink = ({ ctaText, ctaUrl, dataAttrs, onClick }: CtaLinkPropType) => (
   <StyledCtaLink
     aria-label={`${ctaText} (opens in new window)`}
     className="cta-link"
@@ -38,17 +44,5 @@ const CtaLink = ({ ctaText, ctaUrl, dataAttrs, onClick }) => (
     {ctaText}
   </StyledCtaLink>
 );
-
-CtaLink.propTypes = {
-  ctaText: PropTypes.string.isRequired,
-  ctaUrl: PropTypes.string.isRequired,
-  dataAttrs: PropTypes.object,
-  onClick: PropTypes.func,
-};
-
-CtaLink.defaultProps = {
-  onClick: null,
-  dataAttrs: {},
-};
 
 export default CtaLink;
