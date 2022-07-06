@@ -10,7 +10,7 @@ import HeroCard from '../../Cards/HeroCard';
 import LinearGradient from '../../DesignTokens/LinearGradient';
 import PersonCard from '../../Cards/PersonCard';
 import ReviewableSummaryCard from '../../Cards/ReviewableSummaryCard';
-import StandardCard from '../../Cards/StandardCard';
+import StandardCard from '../../Cards/StandardCard/StandardCard';
 import SuggestionCard from '../../Cards/SuggestionCard';
 import TallCard from '../../Cards/TallCard';
 import TallToSquareCard from '../../Cards/TallToSquareCard';

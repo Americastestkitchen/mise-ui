@@ -3,7 +3,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import type { ComponentStory } from '@storybook/react';
 import { defaultTheme, setBackground, setViewport, storybookParameters } from '../../../config/shared.stories';
 import BaseCarousel, { useCarouselContext } from './BaseCarousel';
-import StandardCard from '../../Cards/StandardCard';
+import StandardCard from '../../Cards/StandardCard/StandardCard';
 import { LinkCarouselHeader, IntroCarouselHeader, TopicCarouselHeader } from './Headers';
 import { useFlickityGroup } from './useFlickity';
 import { FullWidthSlide, StandardSlide } from './Slides';

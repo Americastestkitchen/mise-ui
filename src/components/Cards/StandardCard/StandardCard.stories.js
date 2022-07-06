@@ -1,6 +1,6 @@
 import React from 'react';
 
-import StandardCard from './index';
+import StandardCard from './StandardCard';
 import { siteKey } from '../../../config/argTypes';
 import { addThemedWrapper } from '../../../config/decorators';
 import { color } from '../../../styles';
