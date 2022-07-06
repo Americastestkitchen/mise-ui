@@ -7,7 +7,7 @@ import cloudinaryInstance, { baseImageConfig } from '../../../lib/cloudinary';
 import Sticker from '../shared/Sticker';
 import { Author, BylineListArticleCard } from '../../BylineList';
 import { InferStyledTypes } from '../../../styles/utility-types';
-import FavoriteRibbonWithBg from '../shared/FavoriteRibbonWithBg';
+import FavoriteRibbonWithBg from '../shared/FavoriteRibbonWithBg/FavoriteRibbonWithBg';
 import Badge from '../../Badge/Badge';
 
 const Stack = styled.div`

@@ -5,7 +5,7 @@ import { color, font, fontSize, lineHeight, mixins, spacing, withThemes } from '
 import { untilMd } from '../../../styles/breakpoints';
 import Badge from '../../Badge/Badge';
 import Byline from '../../Byline/Byline';
-import FavoriteRibbonWithBg from '../shared/FavoriteRibbonWithBg';
+import FavoriteRibbonWithBg from '../shared/FavoriteRibbonWithBg/FavoriteRibbonWithBg';
 import Image from '../shared/Image';
 import Sticker from '../shared/Sticker';
 import { Author, BylineListLight } from '../../BylineList';
