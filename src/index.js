@@ -31,7 +31,7 @@ import FavoriteActionButton from './components/Buttons/ActionButtons/FavoriteAct
 import EditorsNote from './components/EditorsNote';
 import EmailForm from './components/Forms/EmailForm';
 import FeatureCard from './components/Cards/FeatureCard/FeatureCard';
-import FilterButton from './components/FilterButton';
+import FilterButton from './components/FilterButton/FilterButton';
 import FinePrint from './components/Articles/FinePrint';
 import FreeTrialAd from './components/Ads/ShowcaseAds/FreeTrialAd';
 import HeroAd from './components/Ads/HeroAd';
