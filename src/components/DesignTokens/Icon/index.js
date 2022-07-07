@@ -386,17 +386,11 @@ export const StarHalf = ({ color }) => (
 StarHalf.propTypes = Icons.StarHalf.propTypes;
 
 export const StarFull = ({
-  ariaHidden,
-  ariaLabel,
   color,
-  focusable,
 }) => (
   <Icon>
     <Icons.StarFull
-      ariaHidden={ariaHidden}
-      ariaLabel={ariaLabel}
       color={color}
-      focusable={focusable}
     />
   </Icon>
 );

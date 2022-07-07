@@ -1,14 +1,8 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 
 import { Comment, StarFull } from '../DesignTokens/Icon/svgs';
 import { color, font, fontSize, lineHeight, spacing, withThemes } from '../../styles';
-
-const iconMap = {
-  comment: Comment,
-  star: StarFull,
-};
 
 const ActionSummaryTheme = {
   default: css`
@@ -58,38 +52,32 @@ const ActionSummaryTheme = {
   `,
 };
 
-const ActionSummaryWrapper = styled.div.attrs({
-  className: 'action-summary',
-})`
+export type IconType = 'comment' | 'star';
+export type DefaultActionIcon = {
+  children: ReactNode | ReactNode[];
+  icon?: IconType;
+}
+const ActionSummaryWrapper = styled.div`
   ${withThemes(ActionSummaryTheme)}
 `;
 
-const ActionSummaryItem = ({
+const determineIconType = (icon: IconType) => {
+  const icons = {
+    comment: Comment,
+    star: StarFull,
+  };
+  const El = icons[icon];
+  return El && <El />;
+};
+
+export default function ActionSummaryItem({
   children,
   icon,
-  label,
-}) => {
-  const ActionIcon = iconMap[icon];
+}: DefaultActionIcon) {
   return (
-    <ActionSummaryWrapper className={`icon--${icon}`}>
-      {ActionIcon && <ActionIcon ariaLabel={label} />}
+    <ActionSummaryWrapper className={`action-summary icon--${icon}`}>
+      {icon && determineIconType(icon) }
       {children}
     </ActionSummaryWrapper>
   );
-};
-
-ActionSummaryItem.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]).isRequired,
-  icon: PropTypes.string,
-  label: PropTypes.string,
-};
-
-ActionSummaryItem.defaultProps = {
-  icon: null,
-  label: null,
-};
-
-export default ActionSummaryItem;
+}
