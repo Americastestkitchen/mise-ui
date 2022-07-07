@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { color, fontSize, lineHeight, font, mixins } from '../../../../styles';
 import type { InferStyledTypes } from '../../../../styles/utility-types';
-import ActionSummaryItem from '../../../ActionSummaryItem';
+import ActionSummaryItem from '../../../ActionSummaryItem/ActionSummaryItem';
 
 const Wrapper = styled.div`
   display: flex;
