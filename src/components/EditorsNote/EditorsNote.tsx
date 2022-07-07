@@ -1,6 +1,5 @@
 import breakpoint from 'styled-components-breakpoint';
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import {
   color,
@@ -15,15 +14,6 @@ import {
 
 import * as Icons from '../DesignTokens/Icon';
 import { md } from '../../styles/breakpoints';
-
-const iconTypeMap = {
-  alert: Icons.Alert,
-  coming_soon: Icons.Lightbulb,
-  generic: Icons.Bell,
-  retention: Icons.Bell,
-  retest: Icons.Bell,
-  price_update: Icons.PriceUpdate,
-};
 
 const EditorNoteTheme = {
   default: css`
@@ -281,21 +271,40 @@ const EditorNoteTextTheme = {
 const EditorNoteText = styled.div`
   ${withThemes(EditorNoteTextTheme)}
 `;
+export type NoteType = 'alert' | 'coming_soon' | 'generic' | 'retest' | 'price_update' | 'retention';
 
-const EditorsNote = ({
+export type EditorsNoteProps = {
+  content: string,
+  noteType?: NoteType,
+  subtitle?: string,
+  title?: string,
+}
+
+const iconTypeMap = {
+  alert: Icons.Alert,
+  coming_soon: Icons.Lightbulb,
+  generic: Icons.Bell,
+  retention: Icons.Bell,
+  retest: Icons.Bell,
+  price_update: Icons.PriceUpdate,
+};
+const determineNoteType = (noteType: NoteType) => {
+  const El = iconTypeMap[noteType] || iconTypeMap.generic;
+  return El && (
+  <EditorNoteIcon data-type={noteType}>
+    <El />
+  </EditorNoteIcon>
+  );
+};
+export default function EditorsNote({
   content,
-  noteType,
+  noteType = 'generic',
   subtitle,
   title,
-}) => {
-  const Icon = iconTypeMap[noteType] || iconTypeMap.generic;
+}: EditorsNoteProps) {
   return (
     <EditorNote className={`editors-note note-${noteType}`}>
-      {Icon && (
-        <EditorNoteIcon data-type={noteType}>
-          <Icon />
-        </EditorNoteIcon>
-      )}
+      { noteType && determineNoteType(noteType) }
       {(title || subtitle) && (
         <div>
           {title && (
@@ -311,26 +320,4 @@ const EditorsNote = ({
       />
     </EditorNote>
   );
-};
-
-EditorsNote.propTypes = {
-  content: PropTypes.string.isRequired,
-  noteType: PropTypes.oneOf([
-    'alert',
-    'coming_soon',
-    'generic',
-    'retest',
-    'price_update',
-    'retention',
-  ]),
-  subtitle: PropTypes.string,
-  title: PropTypes.string,
-};
-
-EditorsNote.defaultProps = {
-  noteType: null,
-  subtitle: null,
-  title: null,
-};
-
-export default EditorsNote;
+}
