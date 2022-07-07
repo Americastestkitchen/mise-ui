@@ -324,7 +324,7 @@ function StandardCard({
       {
         ctaUrl && (
           <CtaLink
-            ctaText={ctaText}
+            ctaText={ctaText || ''}
             ctaUrl={ctaUrl}
             dataAttrs={ctaDataAttrs}
             onClick={onClick}
