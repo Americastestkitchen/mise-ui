@@ -257,7 +257,7 @@ function StandardCard({
                 renderImage ? renderImage() : (
                   <ImageItem
                     aria-hidden="true"
-                    imageAlt={imageAlt}
+                    imageAlt={imageAlt || ''}
                     imageUrl={imageUrl}
                   />
                 )
@@ -309,8 +309,8 @@ function StandardCard({
       {searchAttribution && (
         <StandardUserAttributions
           commentsCount={searchComments}
-          numRatings={displayRecipeAttribution ? numRatings : null}
-          avgRating={displayRecipeAttribution ? avgRating : null}
+          numRatings={displayRecipeAttribution ? numRatings : undefined}
+          avgRating={displayRecipeAttribution ? avgRating : undefined}
         />
       )}
       <StyledAttributions
