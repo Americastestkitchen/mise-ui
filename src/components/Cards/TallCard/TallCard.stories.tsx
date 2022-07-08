@@ -20,7 +20,6 @@ export const Default = () => (
     imageUrl={text('Image url', 'https://res.cloudinary.com/hksqkdlah/image/upload/v1592937037/mise-play/tall-card.jpg')}
     overlayColor="#a53015"
     siteKey="cco"
-    siteKeyFavorites="cco"
     stickers={[{ type: 'priority', text: 'Popular' }]}
     onClick={action('result-click')}
   />
@@ -37,8 +36,7 @@ export const Wide = () => (
     isWide
     overlayColor="#711a5d"
     siteKey="cco"
-    siteKeyFavorites="cco"
-    stickers={[{ type: 'priority', text: 'New' }, { type: 'editorial', text: '38:08'}]}
+    stickers={[{ type: 'priority', text: 'New' }, { type: 'editorial', text: '38:08' }]}
     onClick={action('result-click')}
   />
 );
