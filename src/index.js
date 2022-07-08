@@ -84,7 +84,7 @@ import Sticker from './components/Cards/shared/Sticker';
 import SubscribeBubbles from './components/SubscribeBubbles';
 import SuggestionCard from './components/Cards/SuggestionCard';
 import SurveyCard from './components/Cards/SurveyCard';
-import TallCard from './components/Cards/TallCard';
+import TallCard from './components/Cards/TallCard/TallCard';
 import TallToSquareCard from './components/Cards/TallToSquareCard';
 import TextDecorations, { CircledText, SquiggledText, UnderlinedText } from './components/DesignTokens/TextDecoration';
 import ToggleRefinement from './components/Algolia/shared/ToggleRefinement';

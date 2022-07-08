@@ -2,7 +2,7 @@ import React from 'react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, text } from '@storybook/addon-knobs';
 
-import TallCard from './index';
+import TallCard from './TallCard';
 
 export default {
   title: 'Components/Cards/TallCard',

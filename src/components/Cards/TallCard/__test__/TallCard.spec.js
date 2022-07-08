@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import 'jest-styled-components';
 
-import TallCard from '../index';
+import TallCard from '../TallCard';
 import breakpoints from '../../../../styles/breakpoints';
 import { cards } from '../../../../styles';
 

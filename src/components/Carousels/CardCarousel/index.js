@@ -12,7 +12,7 @@ import PersonCard from '../../Cards/PersonCard';
 import ReviewableSummaryCard from '../../Cards/ReviewableSummaryCard';
 import StandardCard from '../../Cards/StandardCard';
 import SuggestionCard from '../../Cards/SuggestionCard';
-import TallCard from '../../Cards/TallCard';
+import TallCard from '../../Cards/TallCard/TallCard';
 import TallToSquareCard from '../../Cards/TallToSquareCard';
 import { cards, spacing, withThemes } from '../../../styles';
 import RelatedSmallCard from '../../Cards/RelatedSmallCard';
