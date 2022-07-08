@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import { cards, color, fontSize, mixins, spacing, withThemes } from '../../../styles';
 import { StandardUserAttributions } from '../shared/UserAttributions/UserAttributions';
-import Attributions from '../shared/Attributions';
+import Attributions from '../shared/Attributions/Attributions';
 import Badge from '../../Badge/Badge';
 import CtaLink from '../shared/CtaLink';
 import FavoriteButton from '../shared/FavoriteButton';

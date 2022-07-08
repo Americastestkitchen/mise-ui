@@ -1,5 +1,5 @@
 import React from 'react';
-import Attributions from './index';
+import Attributions from './Attributions';
 
 export default {
   title: 'Components/Cards/shared/Attributions',

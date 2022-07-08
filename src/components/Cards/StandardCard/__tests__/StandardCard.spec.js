@@ -10,7 +10,7 @@ import StandardCard, {
   StyledSticker,
   StyledTitle,
 } from '../index';
-import Attributions from '../../shared/Attributions';
+import Attributions from '../../shared/Attributions/Attributions';
 import CtaLink from '../../shared/CtaLink';
 import Image from '../../shared/Image';
 import breakpoints from '../../../../styles/breakpoints';
