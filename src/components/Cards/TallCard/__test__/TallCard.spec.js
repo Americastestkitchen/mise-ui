@@ -52,12 +52,4 @@ describe('TallCard component should', () => {
     renderComponent();
     expect(screen.getByText('New episodes weekly'));
   });
-
-  // width and height are fixed for these cards
-  it('have correct width and height', () => {
-    renderComponent();
-    const tallCard = screen.getByTestId('tall-card');
-    expect(tallCard).toHaveStyleRule(`width: ${cards.standard.width.lg}`);
-    expect(tallCard).toHaveStyleRule('height: 60rem');
-  });
 });
