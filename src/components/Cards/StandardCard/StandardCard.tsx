@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import { cards, color, fontSize, mixins, spacing, withThemes } from '../../../styles';
 import { StandardUserAttributions } from '../shared/UserAttributions/UserAttributions';
-import Attributions from '../shared/Attributions/Attributions';
+import Attributions, { ShopPrices } from '../shared/Attributions/Attributions';
 import Badge from '../../Badge/Badge';
 import CtaLink from '../shared/CtaLink/CtaLink';
 import FavoriteButton from '../shared/FavoriteButton';
@@ -189,7 +189,7 @@ export type StandardCardPropTypes = BaseCardPropType & {
   searchAttribution?: boolean,
   searchComments?: number,
   secondaryAttribution?: number | string,
-  shopPrices?: Record<string, unknown>, //TODO: what object shape should this be?
+  shopPrices?: ShopPrices,
   siteKeyFavorites?: DomainSiteKey,
   title: string,
   renderImage?(): Element;
