@@ -6,7 +6,6 @@ import 'jest-styled-components';
 
 import TallCard from '../TallCard';
 import breakpoints from '../../../../styles/breakpoints';
-import { cards } from '../../../../styles';
 
 describe('TallCard component should', () => {
   const renderComponent = () => (
