@@ -3,7 +3,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import type { ComponentStory } from '@storybook/react';
 import { defaultTheme, setBackground, setViewport, storybookParameters } from '../../../config/shared.stories';
 import BaseCarousel, { useCarouselContext } from './BaseCarousel';
-import StandardCard from '../../Cards/StandardCard/StandardCard';
+import StandardCard, { StandardCardPropTypes } from '../../Cards/StandardCard/StandardCard';
 import { LinkCarouselHeader, IntroCarouselHeader, TopicCarouselHeader } from './Headers';
 import { useFlickityGroup } from './useFlickity';
 import { FullWidthSlide, StandardSlide } from './Slides';
@@ -92,19 +92,17 @@ const items: PhotoCarouselCellProps[] = [
   },
 ];
 
-const recipeItems = [
+const recipeItems: StandardCardPropTypes[] = [
   {
     isFavorited: true,
     contentType: 'recipe',
     contentTypeFormatted: 'Recipe',
-    commentCount: 23,
     searchComments: 23,
     ctaText: '',
     ctaUrl: '',
     href: '/recipes/8125',
     imageAlt: 'Chocolate Crinkle Cookies',
     imageUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/ar_1:1,c_fill,dpr_2.0,f_auto,fl_lossy.progressive.strip_profile,g_faces:auto,q_auto:low,w_344/22391_sfs-chocolate-crinkle-cookies-35',
-    id: 'recipe_8125',
     objectId: 'recipe_8125',
     siteKey: 'atk',
     siteKeyFavorites: 'atk',
@@ -113,14 +111,12 @@ const recipeItems = [
   {
     contentType: 'recipe',
     contentTypeFormatted: 'Recipe',
-    commentCount: 23,
     searchComments: 23,
     ctaText: '',
     ctaUrl: '',
     href: '/recipes/8125',
     imageAlt: 'Chocolate Crinkle Cookies',
     imageUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/ar_1:1,c_fill,dpr_2.0,f_auto,fl_lossy.progressive.strip_profile,g_faces:auto,q_auto:low,w_344/22391_sfs-chocolate-crinkle-cookies-35',
-    id: 'recipe_8125-2',
     objectId: 'recipe_8125',
     siteKey: 'atk',
     siteKeyFavorites: 'atk',
@@ -129,14 +125,12 @@ const recipeItems = [
   {
     contentType: 'recipe',
     contentTypeFormatted: 'Recipe',
-    commentCount: 23,
     searchComments: 23,
     ctaText: '',
     ctaUrl: '',
     href: '/recipes/8125',
     imageAlt: 'Chocolate Crinkle Cookies',
     imageUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/ar_1:1,c_fill,dpr_2.0,f_auto,fl_lossy.progressive.strip_profile,g_faces:auto,q_auto:low,w_344/22391_sfs-chocolate-crinkle-cookies-35',
-    id: 'recipe_8125-2.5',
     objectId: 'recipe_8125',
     siteKey: 'atk',
     siteKeyFavorites: 'atk',
@@ -145,14 +139,12 @@ const recipeItems = [
   {
     contentType: 'recipe',
     contentTypeFormatted: 'Recipe',
-    commentCount: 23,
     searchComments: 23,
     ctaText: '',
     ctaUrl: '',
     href: '/recipes/8125',
     imageAlt: 'Chocolate Crinkle Cookies',
     imageUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/ar_1:1,c_fill,dpr_2.0,f_auto,fl_lossy.progressive.strip_profile,g_faces:auto,q_auto:low,w_344/22391_sfs-chocolate-crinkle-cookies-35',
-    id: 'recipe_8125-3',
     objectId: 'recipe_8125',
     siteKey: 'atk',
     siteKeyFavorites: 'atk',
@@ -161,14 +153,12 @@ const recipeItems = [
   {
     contentType: 'recipe',
     contentTypeFormatted: 'Recipe',
-    commentCount: 23,
     searchComments: 23,
     ctaText: '',
     ctaUrl: '',
     href: '/recipes/8125',
     imageAlt: 'Chocolate Crinkle Cookies',
     imageUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/ar_1:1,c_fill,dpr_2.0,f_auto,fl_lossy.progressive.strip_profile,g_faces:auto,q_auto:low,w_344/22391_sfs-chocolate-crinkle-cookies-35',
-    id: 'recipe_8125-4',
     objectId: 'recipe_8125',
     siteKey: 'atk',
     siteKeyFavorites: 'atk',
@@ -177,14 +167,12 @@ const recipeItems = [
   {
     contentType: 'recipe',
     contentTypeFormatted: 'Recipe',
-    commentCount: 23,
     searchComments: 23,
     ctaText: '',
     ctaUrl: '',
     href: '/recipes/8125',
     imageAlt: 'Chocolate Crinkle Cookies',
     imageUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/ar_1:1,c_fill,dpr_2.0,f_auto,fl_lossy.progressive.strip_profile,g_faces:auto,q_auto:low,w_344/22391_sfs-chocolate-crinkle-cookies-35',
-    id: 'recipe_8125-5',
     objectId: 'recipe_8125',
     siteKey: 'atk',
     siteKeyFavorites: 'atk',
@@ -193,14 +181,12 @@ const recipeItems = [
   {
     contentType: 'recipe',
     contentTypeFormatted: 'Recipe',
-    commentCount: 23,
     searchComments: 23,
     ctaText: '',
     ctaUrl: '',
     href: '/recipes/8125',
     imageAlt: 'Chocolate Crinkle Cookies',
     imageUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/ar_1:1,c_fill,dpr_2.0,f_auto,fl_lossy.progressive.strip_profile,g_faces:auto,q_auto:low,w_344/22391_sfs-chocolate-crinkle-cookies-35',
-    id: 'recipe_8125-6',
     objectId: 'recipe_8125',
     siteKey: 'atk',
     siteKeyFavorites: 'atk',
@@ -251,7 +237,7 @@ export const RecipeCarouselTopicExample = () => (
         }
       >
         {recipeItems.map(item => (
-          <StandardSlide key={item.id}>
+          <StandardSlide key={item.objectId}>
             <StandardCard key={item.objectId} {...item} />
           </StandardSlide>
         ))}
