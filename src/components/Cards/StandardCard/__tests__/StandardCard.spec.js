@@ -9,7 +9,7 @@ import StandardCard, {
   StickerGroup,
   StyledSticker,
   StyledTitle,
-} from '../index';
+} from '../StandardCard';
 import Attributions from '../../shared/Attributions/Attributions';
 import CtaLink from '../../shared/CtaLink/CtaLink';
 import Image from '../../shared/Image';

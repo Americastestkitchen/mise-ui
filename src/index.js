@@ -78,7 +78,7 @@ import SidebarCard from './components/Articles/SidebarCard';
 import SingleMembershipAd from './components/Ads/SingleMembershipAd';
 import SingleProductAd from './components/Ads/SingleProductAd';
 import SingleProductShowcaseAd from './components/Ads/ShowcaseAds/SingleProductShowcaseAd';
-import StandardCard from './components/Cards/StandardCard';
+import StandardCard from './components/Cards/StandardCard/StandardCard';
 import StationFinderForm from './components/Forms/StationFinderForm';
 import Sticker from './components/Cards/shared/Sticker';
 import SubscribeBubbles from './components/SubscribeBubbles';
