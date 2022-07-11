@@ -31,7 +31,7 @@ import FavoriteActionButton from './components/Buttons/ActionButtons/FavoriteAct
 import EditorsNote from './components/EditorsNote';
 import EmailForm from './components/Forms/EmailForm';
 import FeatureCard from './components/Cards/FeatureCard/FeatureCard';
-import FilterButton from './components/FilterButton';
+import FilterButton from './components/FilterButton/FilterButton';
 import FinePrint from './components/Articles/FinePrint';
 import FreeTrialAd from './components/Ads/ShowcaseAds/FreeTrialAd';
 import HeroAd from './components/Ads/HeroAd';
@@ -78,7 +78,7 @@ import SidebarCard from './components/Articles/SidebarCard';
 import SingleMembershipAd from './components/Ads/SingleMembershipAd';
 import SingleProductAd from './components/Ads/SingleProductAd';
 import SingleProductShowcaseAd from './components/Ads/ShowcaseAds/SingleProductShowcaseAd';
-import StandardCard from './components/Cards/StandardCard';
+import StandardCard from './components/Cards/StandardCard/StandardCard';
 import StationFinderForm from './components/Forms/StationFinderForm';
 import Sticker from './components/Cards/shared/Sticker';
 import SubscribeBubbles from './components/SubscribeBubbles';

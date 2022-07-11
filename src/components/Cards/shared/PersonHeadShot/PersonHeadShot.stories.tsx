@@ -1,6 +1,6 @@
 import React from 'react';
 
-import PersonHeadShot from './index';
+import PersonHeadShot from './PersonHeadShot';
 
 export default {
   title: 'Components/Cards/shared/PersonHeadShot',

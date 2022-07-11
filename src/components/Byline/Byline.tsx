@@ -10,7 +10,7 @@ import {
   spacing,
   withThemes,
 } from '../../styles';
-import PersonHeadShot from '../Cards/shared/PersonHeadShot';
+import PersonHeadShot from '../Cards/shared/PersonHeadShot/PersonHeadShot';
 
 const BylineWrapper = styled.div`
   display: flex;
@@ -73,7 +73,7 @@ const AttributionTheme = {
       font: ${fontSize.md}/${lineHeight.sm} ${font.pnr};
 
       &:first-child {
-        margin: ${props => (props.author && props.attribution ? `0 ${spacing.xsm}` : '0')};   
+        margin: ${props => (props.author && props.attribution ? `0 ${spacing.xsm}` : '0')};
       }
     }
 

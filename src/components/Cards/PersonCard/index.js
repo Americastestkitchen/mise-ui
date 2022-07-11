@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
-import PersonHeadShot from '../shared/PersonHeadShot';
+import PersonHeadShot from '../shared/PersonHeadShot/PersonHeadShot';
 import { color, font, fontSize, lineHeight, mixins, spacing, withThemes } from '../../../styles';
 
 const PersonCardWrapperTheme = {

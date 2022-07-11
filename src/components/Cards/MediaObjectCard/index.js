@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 
-import PersonHeadShot from '../shared/PersonHeadShot';
+import PersonHeadShot from '../shared/PersonHeadShot/PersonHeadShot';
 import { color, font, fontSize, grid, lineHeight, mixins, spacing } from '../../../styles';
 
 const MediaObjectCardWrapper = styled.section`
