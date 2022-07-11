@@ -81,7 +81,7 @@ import SingleProductShowcaseAd from './components/Ads/ShowcaseAds/SingleProductS
 import StandardCard from './components/Cards/StandardCard';
 import StationFinderForm from './components/Forms/StationFinderForm';
 import Sticker from './components/Cards/shared/Sticker';
-import SubscribeBubbles from './components/SubscribeBubbles';
+import SubscribeBubbles from './components/SubscribeBubbles/SubscribeBubbles';
 import SuggestionCard from './components/Cards/SuggestionCard';
 import SurveyCard from './components/Cards/SurveyCard';
 import TallCard from './components/Cards/TallCard';

@@ -1,16 +1,16 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import SubscribeBubbles from './index';
+import SubscribeBubbles, { Bubbles } from './SubscribeBubbles';
 import { color, spacing } from '../../styles';
 
 export default {
   title: 'Components/SubscribeBubbles',
   component: SubscribeBubbles,
-};
+} as ComponentMeta<typeof SubscribeBubbles>;
 
-const podcastApps = [
+const podcastApps: Bubbles = [
   {
     type: 'applePodcasts',
     name: 'Apple Podcasts',
@@ -58,8 +58,13 @@ const SubscribeBubblesStory = styled.div`
   padding: ${spacing.sm};
 `;
 
-export const Default = ({ className }) => (
+const Template: ComponentStory<typeof SubscribeBubbles> = props => (
   <SubscribeBubblesStory>
-    <SubscribeBubbles bubbles={podcastApps}/>
+    <SubscribeBubbles {...props} />
   </SubscribeBubblesStory>
 );
+
+export const Default = Template.bind({});
+Default.args = {
+  bubbles: podcastApps,
+};
