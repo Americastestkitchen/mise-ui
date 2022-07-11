@@ -1,17 +1,26 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import breakpoint from 'styled-components-breakpoint';
+import styled, { css } from 'styled-components';
 import { color, font, fontSize, grid, lineHeight, spacing } from '../../../styles';
+import { md } from '../../../styles/breakpoints';
 import Badge from '../../Badge/Badge';
 import Image from '../shared/Image';
 import { keyToLogo } from '../../DesignTokens/Logo';
 import Sticker from '../shared/Sticker';
+import { BaseCardPropType } from '../Cards';
 
 const tallCardWidth = grid.columnWidth;
 const tallCardWideWidth = '36.8rem';
 
-const StyledTallCard = styled.article`
+type LogoType = 'atk' | 'cco' | 'cio' | 'mysteryRecipe' | 'perfectlySeasonal' | 'proof' | 'walkIn' | 'whatsEatingDan'
+
+export type TallCardPropTypes = BaseCardPropType & {
+  dek?: string,
+  logoKey?: LogoType,
+  isWide?: boolean,
+  overlayColor?: string,
+  imageUrl: string,
+}
+const StyledTallCard = styled.article<{isWide: boolean}>`
   height: 60rem;
   position: relative;
   width: ${tallCardWidth};
@@ -42,12 +51,14 @@ const StyledTallCard = styled.article`
     }
   }
 
-  ${breakpoint('md')`
-    width: ${({ isWide }) => (isWide ? tallCardWideWidth : tallCardWidth)};
+  ${({ isWide }) => `
+    ${md(css`
+      width: ${isWide ? tallCardWideWidth : tallCardWidth};
+    `)}
   `}
 `;
 
-const Overlay = styled.div`
+const Overlay = styled.div<{overlayColor: string}>`
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), ${({ overlayColor }) => overlayColor});
   bottom: 0;
   height: 50.9rem;
@@ -81,7 +92,7 @@ const StyledSticker = styled(Sticker)`
   }
 `;
 
-const TallCardLogo = styled.div`
+const TallCardLogo = styled.div<{ logoWidth: string }>`
   margin-bottom: ${spacing.sm};
   width: ${({ logoWidth }) => logoWidth};
 
@@ -97,7 +108,7 @@ const Dek = styled.div`
   text-align: center;
 `;
 
-const determineLogoWidth = (logoType) => {
+const determineLogoWidth = (logoType: LogoType) => {
   const logoTypes = {
     atk: '13.6rem',
     cco: '18.93rem',
@@ -113,33 +124,32 @@ const determineLogoWidth = (logoType) => {
 };
 
 const TallCard = ({
-  className,
+  className = '',
   contentType,
   dek,
   href,
   logoKey,
   imageAlt,
-  imageUrl,
-  isWide,
+  imageUrl = '',
+  isWide = false,
   onClick,
-  overlayColor,
+  overlayColor = color.black,
   siteKey,
   stickers,
   target,
-}) => {
+}: TallCardPropTypes) => {
   const Logo = keyToLogo(logoKey);
 
   return (
     <StyledTallCard
-      className={imageUrl ? '' : 'no-image'}
-      contentType={contentType}
+      className={imageUrl || 'no-image'}
       data-testid="tall-card"
       isWide={isWide}
     >
       <a
         href={href}
         onClick={onClick}
-        rel={target && target === '_blank' ? 'noopener noreferrer' : null}
+        rel={target && target === '_blank' ? 'noopener noreferrer' : ''}
         target={target}
       >
         <Overlay
@@ -169,7 +179,7 @@ const TallCard = ({
               ))}
             </StickersWrapper>
           )}
-          { Logo && (
+          {Logo && logoKey && (
             <TallCardLogo
               logoWidth={determineLogoWidth(logoKey)}
             >
@@ -185,44 +195,6 @@ const TallCard = ({
       </a>
     </StyledTallCard>
   );
-};
-
-TallCard.propTypes = {
-  className: PropTypes.string,
-  /** Passed down to stickers to set (optional) sticker icon */
-  contentType: PropTypes.string.isRequired,
-  /** Optional: short byline description for each show */
-  dek: PropTypes.string,
-  /** href for entire card */
-  href: PropTypes.string.isRequired,
-  /** Optional: Key value that maps to a show logo. */
-  logoKey: PropTypes.string,
-  /** Alt text for card image */
-  imageAlt: PropTypes.string,
-  /** Image source url for card image */
-  imageUrl: PropTypes.string.isRequired,
-  /** Determines if card is wide variation */
-  isWide: PropTypes.bool,
-  onClick: PropTypes.func,
-  /** Specifies overlay color */
-  overlayColor: PropTypes.string,
-  /** Determines badge type */
-  siteKey: PropTypes.oneOf(['atk', 'cco', 'cio', 'kids', 'school', 'shop']).isRequired,
-  /** Array of sticker objects */
-  stickers: PropTypes.array,
-  target: PropTypes.string,
-};
-
-TallCard.defaultProps = {
-  className: null,
-  dek: '',
-  logoKey: null,
-  imageAlt: '',
-  isWide: false,
-  onClick: null,
-  overlayColor: color.black,
-  stickers: [],
-  target: null,
 };
 
 export default TallCard;

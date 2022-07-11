@@ -4,9 +4,8 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import 'jest-styled-components';
 
-import TallCard from '../index';
+import TallCard from '../TallCard';
 import breakpoints from '../../../../styles/breakpoints';
-import { cards } from '../../../../styles';
 
 describe('TallCard component should', () => {
   const renderComponent = () => (
@@ -51,13 +50,5 @@ describe('TallCard component should', () => {
   it('render a dek', () => {
     renderComponent();
     expect(screen.getByText('New episodes weekly'));
-  });
-
-  // width and height are fixed for these cards
-  it('have correct width and height', () => {
-    renderComponent();
-    const tallCard = screen.getByTestId('tall-card');
-    expect(tallCard).toHaveStyleRule(`width: ${cards.standard.width.lg}`);
-    expect(tallCard).toHaveStyleRule('height: 60rem');
   });
 });

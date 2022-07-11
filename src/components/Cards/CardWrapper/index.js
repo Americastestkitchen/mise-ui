@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components';
 
 import FeatureCard from '../FeatureCard/FeatureCard';
 import StandardCard from '../StandardCard/StandardCard';
-import TallCard from '../TallCard';
+import TallCard from '../TallCard/TallCard';
 import {
   color,
   font,
