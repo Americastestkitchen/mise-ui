@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { color, font, fontSize, letterSpacing, lineHeight, spacing, withThemes, mixins } from '../../styles';
 import { cssThemedColor } from '../../styles/mixins';
@@ -62,38 +61,36 @@ const StyledFilter = styled(Filter)`
   ${withThemes(StyledFilterTheme)}
 `;
 
-const FilterButton = ({ ariaControls, ariaExpanded, ariaLabel, className, id, onClick, text }) => (
-  <StyledFilterButton
-    aria-controls={ariaControls}
-    aria-expanded={ariaExpanded}
-    aria-label={ariaLabel}
-    className={className}
-    id={id}
-    onClick={onClick}
-  >
-    {text}
-    <StyledFilter />
-  </StyledFilterButton>
-);
+export type FilterButtonProps = {
+  ariaControls?: string,
+  ariaExpanded?: boolean,
+  ariaLabel?: string,
+  className?: string,
+  id?: string;
+  onClick(): void;
+  text?: string;
+}
 
-FilterButton.propTypes = {
-  ariaControls: PropTypes.string,
-  ariaExpanded: PropTypes.bool,
-  ariaLabel: PropTypes.string,
-  className: PropTypes.string,
-  id: PropTypes.string,
-  onClick: PropTypes.func,
-  text: PropTypes.string,
-};
-
-FilterButton.defaultProps = {
-  ariaControls: null,
-  ariaExpanded: null,
-  ariaLabel: null,
-  className: null,
-  id: null,
-  onClick: null,
-  text: 'Filter',
-};
-
-export default FilterButton;
+export default function FilterButton({
+  ariaControls,
+  ariaExpanded,
+  ariaLabel,
+  className,
+  id,
+  onClick,
+  text = 'Filter',
+}: FilterButtonProps) {
+  return (
+    <StyledFilterButton
+      aria-controls={ariaControls}
+      aria-expanded={ariaExpanded}
+      aria-label={ariaLabel}
+      className={className}
+      id={id}
+      onClick={onClick}
+    >
+      {text}
+      <StyledFilter />
+    </StyledFilterButton>
+  );
+}

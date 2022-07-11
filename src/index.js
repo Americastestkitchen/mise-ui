@@ -3,7 +3,7 @@ import AudioPlayer from './components/AudioPlayer';
 import Accordion from './components/Accordion';
 import AccordionControl from './components/AccordionControl/AccordionControl';
 import AccordionRefinementList from './components/Algolia/shared/AccordionRefinementList';
-import ActionSummaryItem from './components/ActionSummaryItem';
+import ActionSummaryItem from './components/ActionSummaryItem/ActionSummaryItem';
 import ArticleFigcaption from './components/Articles/shared/ArticleFigcaption';
 import ArticleImage from './components/Articles/ArticleImage';
 import ArticlePhotoCollection from './components/Articles/ArticlePhotoCollection';
@@ -31,7 +31,7 @@ import FavoriteActionButton from './components/Buttons/ActionButtons/FavoriteAct
 import EditorsNote from './components/EditorsNote';
 import EmailForm from './components/Forms/EmailForm';
 import FeatureCard from './components/Cards/FeatureCard/FeatureCard';
-import FilterButton from './components/FilterButton';
+import FilterButton from './components/FilterButton/FilterButton';
 import FinePrint from './components/Articles/FinePrint';
 import FreeTrialAd from './components/Ads/ShowcaseAds/FreeTrialAd';
 import HeroAd from './components/Ads/HeroAd';
