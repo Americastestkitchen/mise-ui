@@ -1,3 +1,15 @@
+# v1.33.26 (Mon Jul 11 2022)
+
+#### 🐛 Bug Fix
+
+- SEARCH-159: Add top result card [#814](https://github.com/Americastestkitchen/mise-ui/pull/814) ([@harry-atk](https://github.com/harry-atk))
+
+#### Authors: 1
+
+- Harry Scheuerle ([@harry-atk](https://github.com/harry-atk))
+
+---
+
 # v1.33.25 (Tue Jul 05 2022)
 
 #### 🐛 Bug Fix
