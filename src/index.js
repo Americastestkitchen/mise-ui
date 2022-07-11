@@ -132,6 +132,11 @@ export { default as ArticleCard } from './components/Cards/ArticleCard';
 export * from './components/Cards/VideoCard';
 export { default as VideoCard } from './components/Cards/VideoCard';
 
+export * from './components/Cards/TopResultCard';
+
+export { default as FavoritesButtonBg } from './components/Cards/shared/FavoriteRibbonWithBg';
+export * from './components/Cards/shared/UserAttributions';
+
 export {
   Accordion,
   AccordionControl,
