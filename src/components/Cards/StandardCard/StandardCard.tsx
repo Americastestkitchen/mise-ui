@@ -182,7 +182,7 @@ export type StandardCardPropTypes = BaseCardPropType & {
   displaySecondaryAttribution?: boolean,
   displayLockIcon?: boolean,
   favoriteRibbonColor?: string, // TODO: pull from list of colors
-  imageUrl?: string,
+  imageUrl: string,
   isFavorited?: boolean,
   numRatings?: number,
   objectId: string,
