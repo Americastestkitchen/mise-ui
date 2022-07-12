@@ -24,7 +24,7 @@ import {
   SuggestionCardTitle,
 } from './components/SuggestionCardContent';
 
-export type Stickeritem = {
+export type StickerItem = {
   type: string,
   text: string,
 }
@@ -38,7 +38,7 @@ export type SuggestionCardProps = {
   objectId: string,
   siteKey: string,
   subtitle?: string,
-  stickers?: Stickeritem[],
+  stickers?: StickerItem[],
   title: string,
   dataIdx?: number,
   resourceType: string,
@@ -58,8 +58,8 @@ export const SuggestionCard = ({
   numRatings,
   resourceType,
 }: SuggestionCardProps) => {
-  const Site: string = siteKey;
-  const siteBadge: BadgeType = Site as BadgeType;
+  const ThemeSiteKey: string = siteKey;
+  const SiteBadge: BadgeType = ThemeSiteKey as BadgeType;
   return (
     <SuggestionCardWrapper
       data-idx={dataIdx}
@@ -71,7 +71,7 @@ export const SuggestionCard = ({
         aria-label={`Go to the ${title} recipe`}
       >
         <SuggestionCardBadge
-          type={siteBadge}
+          type={SiteBadge}
         />
         <SuggestionCardActionsWrapper>
           <div className="button-container">

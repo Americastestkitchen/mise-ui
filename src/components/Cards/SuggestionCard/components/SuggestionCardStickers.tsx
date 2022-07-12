@@ -2,7 +2,7 @@ import breakpoint from 'styled-components-breakpoint';
 import React from 'react';
 import styled from 'styled-components';
 import Sticker from '../../shared/Sticker';
-import { Stickeritem } from '..';
+import { StickerItem } from '..';
 import { font, fontSize, color, mixins } from '../../../../styles';
 
 const SitckersContainer = styled.div`
@@ -31,7 +31,7 @@ const SitckersContainer = styled.div`
   `}
 `;
 
-const SuggestionCardStickers = ({ stickers }: {stickers: Stickeritem[]}) => (
+const SuggestionCardStickers = ({ stickers }: {stickers: StickerItem[]}) => (
   <SitckersContainer>
     <span className="suggestioncardstickers-intro">You might like:</span>
     {
