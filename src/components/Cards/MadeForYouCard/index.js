@@ -82,7 +82,7 @@ const MadeForYouCard = ({
 
   return (
     <MadeForYouCardWrapper title={title} data-collection-type={collection_type} className="made-for-you-card">
-      <a href={url} title={title}>
+      <a href={url} title={title} tabIndex="-1" aria-hidden="true">
         <Image
           imageAlt={title}
           imageUrl={cloudinary_url}
@@ -90,7 +90,7 @@ const MadeForYouCard = ({
         />
       </a>
       <MadeForYouCardTitleWrapper style={{ backgroundColor: getBgColor(index) }}>
-        <a href={url}>
+        <a href={url} aria-label={`Go to ${title} Smart Collection`}>
           <h3>{title}</h3>
         </a>
       </MadeForYouCardTitleWrapper>

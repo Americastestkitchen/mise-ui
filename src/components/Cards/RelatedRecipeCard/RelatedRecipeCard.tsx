@@ -119,7 +119,12 @@ const RelatedRecipeCard = ({
     height: 128,
   });
   return (
-    <CtaLink {...linkProps} className="related-recipe-card" title={headline}>
+    <CtaLink
+      {...linkProps}
+      aria-label={`Go to ${headline}`}
+      className="related-recipe-card"
+      title={headline}
+    >
       <Image
         imageAlt={altText}
         imageUrl={src}

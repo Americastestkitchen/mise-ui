@@ -39,6 +39,7 @@ const MadeForYouCarousel = ({ results, title, subtitle }) => {
       <Subtitle>{subtitle}</Subtitle>
       <BaseCarousel
         header={(<Title>{title}</Title>)}
+        title="Smart Collections"
         showDivider
         useFlickityHook={useFlickityGroup}
       >
