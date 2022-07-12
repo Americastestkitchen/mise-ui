@@ -28,7 +28,7 @@ import CurrentRefinements from './components/Algolia/shared/CurrentRefinements';
 import DocumentListCarousel from './components/Carousels/DocumentListCarousel';
 import DocumentSuggestionCarousel from './components/Carousels/DocumentSuggestionCarousel';
 import FavoriteActionButton from './components/Buttons/ActionButtons/FavoriteActionButton/FavoriteActionButton';
-import EditorsNote from './components/EditorsNote';
+import EditorsNote from './components/EditorsNote/EditorsNote';
 import EmailForm from './components/Forms/EmailForm';
 import FeatureCard from './components/Cards/FeatureCard/FeatureCard';
 import FilterButton from './components/FilterButton/FilterButton';
