@@ -104,14 +104,14 @@ type CardWrapperProps = {
   type: 'feature' | 'standard' | 'tall',
 }
 
-const CardWrapper = ({
+export default function CardWrapper({
   ctaText,
   ctaUrl,
   item,
   onClick,
   title,
   type = 'feature',
-}: CardWrapperProps) => {
+}: CardWrapperProps) {
   const El = typeMap[type];
 
   return (
@@ -131,6 +131,4 @@ const CardWrapper = ({
       />
     </CardWrapperWrapper>
   );
-};
-
-export default CardWrapper;
+}
