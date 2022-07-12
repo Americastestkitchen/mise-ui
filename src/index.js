@@ -1,6 +1,6 @@
 import * as styles from './styles';
 import AudioPlayer from './components/AudioPlayer';
-import Accordion from './components/Accordion';
+import Accordion from './components/Accordion/Accordion';
 import AccordionControl from './components/AccordionControl/AccordionControl';
 import AccordionRefinementList from './components/Algolia/shared/AccordionRefinementList';
 import ActionSummaryItem from './components/ActionSummaryItem/ActionSummaryItem';

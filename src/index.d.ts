@@ -21,6 +21,7 @@ interface Window {
     instgrm?: { Embeds: { process: () => void } };
     dry: {
         events: {
+            subscribe: (evt: unknown, data: unknown) => void
             publish: (evt: unknown, data: unknown) => void
         }
     }

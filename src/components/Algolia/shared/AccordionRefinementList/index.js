@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 import { connectRefinementList } from 'react-instantsearch-dom';
 
 import RefinementList2 from '../RefinementList2';
-import Accordion from '../../../Accordion';
+import Accordion from '../../../Accordion/Accordion';
 import { cssThemedHoverColor } from '../../../../styles/mixins';
 import { color, withThemes } from '../../../../styles';
 

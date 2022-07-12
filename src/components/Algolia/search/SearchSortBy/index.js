@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Accordion from '../../../Accordion';
+import Accordion from '../../../Accordion/Accordion';
 import SortBy from '../../shared/SortBy';
 
 const SearchSortBy = ({ defaultRefinement, icon, iconSize, items }) => (

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connectRefinementList } from 'react-instantsearch-dom';
 
 import RefinementList from '../../shared/RefinementList';
-import Accordion from '../../../Accordion';
+import Accordion from '../../../Accordion/Accordion';
 
 const SearchRefinementList = ({
   attribute,
