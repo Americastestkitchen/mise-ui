@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css, ThemeProvider } from 'styled-components';
 import { withKnobs, text } from '@storybook/addon-knobs';
-import CardWrapper from './index';
+import CardWrapper from './CardWrapper';
 import { breakpoints, color, withThemes } from '../../../styles';
 
 export default {
