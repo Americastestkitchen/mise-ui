@@ -3,6 +3,7 @@ import styled, { css, ThemeProvider } from 'styled-components';
 import { withKnobs, text } from '@storybook/addon-knobs';
 import CardWrapper from './CardWrapper';
 import { breakpoints, color, withThemes } from '../../../styles';
+import { FeatureCardPropTypes } from '../FeatureCard/FeatureCard';
 
 export default {
   title: 'Components/Cards/CardWrapper',
@@ -23,7 +24,7 @@ const StoryWrapper = styled.div`
   ${withThemes(StoryWrapperTheme)}
 `;
 
-const wideCard = {
+const wideCard: FeatureCardPropTypes = {
   attributions: 'Episode • America’s Test Kitchen',
   contentType: 'episode',
   displayFavoritesButton: true,

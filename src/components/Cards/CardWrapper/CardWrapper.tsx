@@ -2,9 +2,9 @@ import breakpoint from 'styled-components-breakpoint';
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import FeatureCard from '../FeatureCard/FeatureCard';
-import StandardCard from '../StandardCard/StandardCard';
-import TallCard from '../TallCard/TallCard';
+import FeatureCard, { FeatureCardPropTypes } from '../FeatureCard/FeatureCard';
+import StandardCard, { StandardCardPropTypes } from '../StandardCard/StandardCard';
+import TallCard, { TallCardPropTypes } from '../TallCard/TallCard';
 import {
   color,
   font,
@@ -98,7 +98,9 @@ const typeMap = {
 type CardWrapperProps = {
   ctaText?: string,
   ctaUrl?: string,
-  item: any; // TODO: update to Feature, Standard, and Tall object
+  item: FeatureCardPropTypes
+    | StandardCardPropTypes
+    | TallCardPropTypes;
   onClick?(): void,
   title: string,
   type: 'feature' | 'standard' | 'tall',
