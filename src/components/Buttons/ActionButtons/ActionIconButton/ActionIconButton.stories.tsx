@@ -3,7 +3,7 @@ import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import ActionIconButton, { IconProps } from './ActionIconButton';
 
-const iconType: unknown = {
+const iconType = {
   options: ['print'],
   control: { type: 'inline-radio' },
 };
