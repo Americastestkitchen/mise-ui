@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import breakpoint from 'styled-components-breakpoint';
+import { md, xlg } from '../../../styles/breakpoints';
 
 import ArticleFigcaption from '../shared/ArticleFigcaption';
 import { Quote } from '../../DesignTokens/Icon/svgs';
@@ -13,14 +13,18 @@ const PullQuoteWrapper = styled.div`
   margin-bottom: 3rem;
   width: 100%;
 
-  ${breakpoint('md')`
+  @media print {
+    page-break-inside: avoid;
+  }
+
+  ${md(css`
     flex-direction: row;
     max-width: 56rem;
-  `}
+  `)}
 
-  ${breakpoint('xlg')`
+  ${xlg(css`
     ${({ width }) => (mixins.articlesWidth(width))}
-  `}
+  `)}
 `;
 
 const PullQuoteIconTheme = {
@@ -35,9 +39,9 @@ const PullQuoteIconTheme = {
       width: 100%;
     }
 
-    ${breakpoint('md')`
+    ${md(css`
       margin-right: 1.6rem;
-    `}
+    `)}
   `,
   atk: css`
     svg {
@@ -64,17 +68,24 @@ const PullQuoteIconTheme = {
 
 const PullQuoteIcon = styled.div`
   ${withThemes(PullQuoteIconTheme)}
+  @media print {
+    svg {
+      circle {
+        fill: ${color.black};
+      }
+    }
+  }
 `;
 
 const PullQuoteFigure = styled.figure`
   margin: 0;
   padding: 0;
 
-  ${breakpoint('xlg')`
+  ${xlg(css`
     .article-figcaption {
       padding-bottom: 0.8rem;
     }
-  `}
+  `)}
 `;
 
 const PullQuoteBlockQuoteTheme = {
