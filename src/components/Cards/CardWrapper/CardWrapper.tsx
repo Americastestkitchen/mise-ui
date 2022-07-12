@@ -98,9 +98,7 @@ const typeMap = {
 type CardWrapperProps = {
   ctaText?: string,
   ctaUrl?: string,
-  item: FeatureCardPropTypes
-    | StandardCardPropTypes
-    | TallCardPropTypes;
+  item: any;
   onClick?(): void,
   title: string,
   type: 'feature' | 'standard' | 'tall',
