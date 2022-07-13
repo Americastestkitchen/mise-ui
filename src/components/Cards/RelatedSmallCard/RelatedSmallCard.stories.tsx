@@ -4,7 +4,6 @@ import { withKnobs, text } from '@storybook/addon-knobs';
 
 import RelatedSmallCard from '.';
 
-
 export default {
   title: 'Components/Cards/RelatedSmallCard',
   component: RelatedSmallCard,

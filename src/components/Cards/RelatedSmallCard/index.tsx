@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { cards, color, fontSize, spacing } from '../../../styles';
 import Image from '../shared/Image';
@@ -42,15 +41,25 @@ const StyledTitle = styled(Title)`
   line-height: 1.44;
 `;
 
+type SmallCardProps = {
+  dataAttrs?: Record<string, unknown>,
+  href: string,
+  imageAlt?: string,
+  imageUrl?: string,
+  onClick?: () => void;
+  target?:string,
+  title: string,
+}
+
 const RelatedSmallCard = ({
   dataAttrs,
-  imageAlt,
-  imageUrl,
+  imageAlt = '',
+  imageUrl = '',
   onClick,
   target,
   title,
   href,
-}) => (
+}: SmallCardProps) => (
   <RelatedSmallCardWrapper
     itemScope
     itemType="https://schema.org/Recipe"
@@ -61,14 +70,13 @@ const RelatedSmallCard = ({
     { imageUrl ? (
       <ImageWrapper>
         <a
-          tabIndex="-1"
+          tabIndex={-1}
           href={href}
           onClick={onClick}
-          rel={target && target === '_blank' ? 'noopener noreferrer' : null}
+          rel={target && target === '_blank' ? 'noopener noreferrer' : ''}
           target={target}
         >
           <Image
-            itemProp="image"
             aria-hidden="true"
             imageAlt={imageAlt}
             imageUrl={imageUrl}
@@ -81,7 +89,7 @@ const RelatedSmallCard = ({
     <TitleWrapper
       href={href}
       onClick={onClick}
-      rel={target && target === '_blank' ? 'noopener noreferrer' : null}
+      rel={target && target === '_blank' ? 'noopener noreferrer' : ''}
       target={target}
       itemProp="name"
     >
@@ -89,24 +97,6 @@ const RelatedSmallCard = ({
     </TitleWrapper>
   </RelatedSmallCardWrapper>
 );
-
-RelatedSmallCard.propTypes = {
-  dataAttrs: PropTypes.object,
-  href: PropTypes.string.isRequired,
-  imageAlt: PropTypes.string,
-  imageUrl: PropTypes.string,
-  onClick: PropTypes.func,
-  target: PropTypes.string,
-  title: PropTypes.string.isRequired,
-};
-
-RelatedSmallCard.defaultProps = {
-  dataAttrs: null,
-  imageAlt: '',
-  imageUrl: '',
-  target: null,
-  onClick: null,
-};
 
 export default React.memo(RelatedSmallCard, (prev, next) => (
   prev.href === next.href
