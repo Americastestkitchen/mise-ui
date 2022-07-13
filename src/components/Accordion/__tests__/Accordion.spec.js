@@ -4,7 +4,7 @@ import { render, fireEvent, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import 'jest-styled-components';
 
-import Accordion from '../index';
+import Accordion from '../Accordion';
 import breakpoints from '../../../styles/breakpoints';
 
 describe('Accordion component should', () => {

@@ -185,9 +185,7 @@ const HeroAdCtaTheme = {
   `,
 };
 
-const HeroAdCta = styled.span.attrs({
-  className: 'hero-ad__cta',
-})`${withThemes(HeroAdCtaTheme)}`;
+const HeroAdCta = styled.span`${withThemes(HeroAdCtaTheme)}`;
 
 const HeroAds = ({
   backgroundColor,

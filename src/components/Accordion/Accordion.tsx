@@ -1,11 +1,26 @@
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect, useState, ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
+import { xlg } from '../../styles/breakpoints';
 
 import AccordionControl from '../AccordionControl/AccordionControl';
 import { ChefHat, Content, Cookbook, Knife, Sort, Time } from '../DesignTokens/Icon/svgs';
 import { color, font, fontSize, letterSpacing, mixins, spacing, withThemes } from '../../styles';
+
+export type IconSize = 'default' | 'large' | 'extraLarge';
+export type LabelElement = () => JSX.Element;
+export type Icon = 'chefHat' | 'content'| 'cookbook'| 'knife'| 'sort'| 'time';
+
+export type DefaultAccordion = {
+  children: ReactNode | ReactNode[];
+  icon?: Icon;
+  iconSize?: IconSize;
+  id?: string;
+  isFieldset?: boolean;
+  isHidden?: boolean;
+  label: string | LabelElement;
+  onClick?(): void;
+}
 
 // AccordionWrapper 2
 const AccordionWrapper = styled.div.attrs({
@@ -54,9 +69,9 @@ const AccordionButtonTheme = {
       }
     }
 
-    ${breakpoint('xlg')`
+    ${xlg(css`
       width: 85%;
-    `}
+    `)}
   `,
   kidsSearch: css`
     font: 2.5rem/1 ${font.cwf};
@@ -74,9 +89,9 @@ const AccordionButtonTheme = {
       }
     }
 
-    ${breakpoint('xlg')`
+    ${xlg(css`
       width: 100%;
-    `}
+    `)}
   `,
   play: css`
     background-color: ${color.white};
@@ -96,9 +111,9 @@ const AccordionButtonTheme = {
       }
     }
 
-    ${breakpoint('xlg')`
+    ${xlg(css`
       width: 100%;
-    `}
+    `)}
   `,
   atk: css`
     display: block;
@@ -148,9 +163,9 @@ const AccordionButtonTheme = {
       text-transform: uppercase;
     }
 
-    ${breakpoint('xlg')`
+    ${xlg(css`
       width: 100%;
-    `}
+    `)}
 
     @media(hover: hover) {
       &:hover {
@@ -206,14 +221,12 @@ const AccordionButtonTheme = {
   `,
 };
 
-const AccordionButton = styled.button.attrs({
-  className: 'accordion-item__button',
-})`
+const AccordionButton = styled.button`
   ${withThemes(AccordionButtonTheme)}
 `;
 
 const AccordionLabelWrapperTheme = {
-  default: css`
+  default: css<{hasIcon: boolean}>`
     align-items: flex-end;
     display: flex;
 
@@ -255,7 +268,7 @@ const AccordionLabelWrapperTheme = {
 
 const AccordionLabelWrapper = styled.div.attrs({
   className: 'accordion-item__label',
-})`
+})<{hasIcon?: Icon}>`
   ${withThemes(AccordionLabelWrapperTheme)}
 `;
 
@@ -288,30 +301,27 @@ const StyledLegend = styled.legend`
   ${mixins.visuallyHidden};
 `;
 
-const Legend = ({ children }) => (
+type DefaultLegend = {
+  children: string | ReactNode | ReactNode[];
+}
+const Legend = ({ children }: DefaultLegend) => (
   <StyledLegend>{children}</StyledLegend>
 );
 
-Legend.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]).isRequired,
-};
-
-function Accordion({
+export default function Accordion({
   children,
   icon,
-  iconSize,
+  iconSize = 'default',
   id,
-  isFieldset,
-  isHidden,
+  isFieldset = false,
+  isHidden = false,
   label: Label,
   onClick,
-}) {
+}: DefaultAccordion) {
   const [hidden, toggleHidden] = useState(isHidden);
-  const AccordionContent = isFieldset ? AccordionFieldsetContent : AccordionDivContent;
+  const AccordionContent = (
+    isFieldset ? AccordionFieldsetContent : AccordionDivContent
+    ) as React.ElementType;
   const Icon = icon ? icons[icon] : null;
   let idVal = id;
   if (!idVal && typeof Label === 'string') {
@@ -327,9 +337,8 @@ function Accordion({
   }
 
   useEffect(() => {
-    if (typeof dry !== 'undefined') {
-      // eslint-disable-next-line no-undef
-      dry.events.subscribe('accordion:toggle', val => toggleHidden(val));
+    if (typeof window.dry !== 'undefined') {
+      window.dry.events.subscribe('accordion:toggle', (val: boolean) => toggleHidden(val));
     }
   }, []);
 
@@ -338,7 +347,7 @@ function Accordion({
       <AccordionButton
         aria-controls={`show-hide--${idVal}`}
         aria-expanded={!hidden}
-        className="show-hide__expand-collapse-button"
+        className="accordion-item__button show-hide__expand-collapse-button"
         onClick={() => {
           toggleHidden(curr => !curr);
           if (onClick) { onClick(); }
@@ -368,41 +377,3 @@ function Accordion({
     </AccordionWrapper>
   );
 }
-
-Accordion.propTypes = {
-  /** Content that will be hidden by expand collapse behavior. */
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]).isRequired,
-  /** Unique id string for svg icon to render next to label */
-  icon: PropTypes.string,
-  /* Size of icon */
-  iconSize: PropTypes.oneOf(['default', 'large', 'extraLarge']),
-  /** HTML attribute */
-  id: PropTypes.string,
-  /** For accessability we need a fieldset version of this component. */
-  isFieldset: PropTypes.bool,
-  /** Sets initial state of the hidden content. */
-  isHidden: PropTypes.bool,
-  /** Clickable text that appears in button next to plus/minus icon. */
-  label: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.func,
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]).isRequired,
-  /** for mixpanel purposes */
-  onClick: PropTypes.func,
-};
-
-Accordion.defaultProps = {
-  icon: null,
-  iconSize: 'default',
-  id: null,
-  isFieldset: false,
-  isHidden: false,
-  onClick: null,
-};
-
-export default Accordion;

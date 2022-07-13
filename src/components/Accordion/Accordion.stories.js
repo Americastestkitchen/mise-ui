@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { ThemeProvider } from 'styled-components';
 import { withKnobs } from '@storybook/addon-knobs';
 
-import Accordion from './index';
+import Accordion from './Accordion';
 import { color } from '../../styles';
 
 export default {

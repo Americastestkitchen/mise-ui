@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connectNumericMenu } from 'react-instantsearch-dom';
 
-import Accordion from '../../../Accordion';
+import Accordion from '../../../Accordion/Accordion';
 import NumericMenu from '../../shared/NumericMenu';
 
 const SearchNumericMenu = ({ icon, showHideLabel, items, refine }) => (
