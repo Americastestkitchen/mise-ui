@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import { cards, color, mixins, spacing, withThemes } from '../../../styles';
@@ -275,7 +274,23 @@ const StyledLoadingCard = styled.div`
   ${withThemes(StyledLoadingCardTheme)}
 `;
 
-const LoadingCard = ({ type }) => (
+type TypeOptions =
+  | 'category'
+  | 'feature'
+  | 'feature-wide'
+  | 'hero'
+  | 'person'
+  | 'podcast-episode'
+  | 'queue'
+  | 'reviewable'
+  | 'standard'
+  | 'tall'
+  | 'tall-wide'
+  | 'related-small'
+  | 'related-recipe'
+  | 'suggestion'
+
+const LoadingCard = ({ type }: {type: TypeOptions}) => (
   <StyledLoadingCard
     className={`${type}-card card`}
     data-testid={`loading-${type}-card`}
@@ -293,24 +308,5 @@ const LoadingCard = ({ type }) => (
     </div>
   </StyledLoadingCard>
 );
-
-LoadingCard.propTypes = {
-  type: PropTypes.oneOf([
-    'category',
-    'feature',
-    'feature-wide',
-    'hero',
-    'person',
-    'podcast-episode',
-    'queue',
-    'reviewable',
-    'standard',
-    'tall',
-    'tall-wide',
-    'related-small',
-    'related-recipe',
-    'suggestion',
-  ]).isRequired,
-};
 
 export default LoadingCard;
