@@ -4,9 +4,7 @@ import styled, { css } from 'styled-components';
 import PersonHeadShot from '../shared/PersonHeadShot/PersonHeadShot';
 import { color, font, fontSize, lineHeight, mixins, spacing, withThemes } from '../../../styles';
 
-type ModeType = {
-  mode: string
-}
+type ModeType = 'dark' | 'light';
 
 const PersonCardWrapperTheme = {
   default: css`
@@ -19,7 +17,7 @@ const PersonCardWrapperTheme = {
     padding: 2rem 0.8rem 2rem;
     width: 27.2rem;
 
-    background-color: ${({ mode }: ModeType) => (mode === 'dark' ? color.smokeyQuartz : color.white)};
+    background-color: ${({ mode }: { mode: ModeType }) => (mode === 'dark' ? color.smokeyQuartz : color.white)};
 
     .person-head-shot {
       margin-bottom: ${spacing.sm};
@@ -30,7 +28,7 @@ const PersonCardWrapperTheme = {
   `,
 };
 
-const PersonCardWrapper = styled.div<ModeType>`
+const PersonCardWrapper = styled.div<{ mode: ModeType }>`
   ${withThemes(PersonCardWrapperTheme)}
 `;
 
@@ -40,7 +38,7 @@ const PersonCardNameTheme = {
     margin-bottom: ${spacing.xsm};
   `,
   atk: css`
-    color: ${({ mode }: ModeType) => (mode === 'dark' ? color.white : color.eclipse)};
+    color: ${({ mode }: { mode: ModeType }) => (mode === 'dark' ? color.white : color.eclipse)};
   `,
   cco: css`
     color: ${color.black};
@@ -50,7 +48,7 @@ const PersonCardNameTheme = {
   `,
 };
 
-const PersonCardName = styled.h3<ModeType>`
+const PersonCardName = styled.h3<{ mode: ModeType }>`
   ${withThemes(PersonCardNameTheme)}
 `;
 
@@ -63,7 +61,7 @@ const PersonCardDescriptionTheme = {
     }
   `,
   atk: css`
-    color: ${({ mode }: ModeType) => (mode === 'dark' ? color.white : color.eclipse)};
+    color: ${({ mode }: { mode: ModeType }) => (mode === 'dark' ? color.white : color.eclipse)};
   `,
   cco: css`
     color: ${color.black};
@@ -73,7 +71,7 @@ const PersonCardDescriptionTheme = {
   `,
 };
 
-const PersonCardDescription = styled.div<ModeType>`
+const PersonCardDescription = styled.div<{ mode: ModeType }>`
   ${withThemes(PersonCardDescriptionTheme)}
 `;
 
@@ -81,7 +79,7 @@ type PersonCardProps = {
   description: string,
   imgAlt?: string,
   imgCloudinaryId: string,
-  mode?: string,
+  mode?: ModeType,
   name: string,
 };
 
