@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import HeroCard from './index';
-import AudioPlayer from '../../AudioPlayer';
+import AudioPlayer from '../../AudioPlayer/AudioPlayer';
 import { getImageUrl } from '../../../lib/cloudinary';
 
 export default {
@@ -54,7 +54,7 @@ export const Listen = () => {
   }
 
   const [selectedEpisode, setEpisode] = useState(null);
-  
+
   const onClick = (episode) => {
     setEpisode(episode);
   }
@@ -67,7 +67,7 @@ export const Listen = () => {
         ctaText="Listen to the Latest Episode"
         onClick={onClick.bind(this, episode)}
       />
-      { 
+      {
         selectedEpisode && (
           <AudioPlayer
             {...selectedEpisode}

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import fetch from 'cross-fetch';
 
-import AudioPlayer from './index';
+import AudioPlayer from './AudioPlayer';
 import LabelFrame from '../LabelFrame';
 import PodcastEpisodeCard from '../Cards/PodcastEpisodeCard';
 import { getImageUrl } from '../../lib/cloudinary';
