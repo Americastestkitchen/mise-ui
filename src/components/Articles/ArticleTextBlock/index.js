@@ -6,6 +6,7 @@ import breakpoint from 'styled-components-breakpoint';
 import ArticleTextBlockFloatImage from './components/ArticleTextBlockFloatImage';
 import SidebarCard from '../SidebarCard';
 import { color, font, fontSize, lineHeight, mixins, withThemes } from '../../../styles';
+import { cssThemedLink } from '../../../styles/mixins';
 
 const ArticleTextBlockWrapper = styled.div`
   margin-bottom: 2.4rem;
@@ -101,7 +102,6 @@ const ArticleTextBlockContentTheme = {
   default: css`
     font: ${fontSize.md}/${lineHeight.lg} ${font.mwr};
     margin-bottom: 2.4rem;
-
     > p {
       margin-bottom: 2.4rem;
 
@@ -130,32 +130,21 @@ const ArticleTextBlockContentTheme = {
             padding: 0.6rem 0.8rem 0 0;
           }
         }
-
         ${mixins.articlesWidth('default')}
       }
+    }
+    a {
+      ${cssThemedLink}
     }
   `,
   atk: css`
     color: ${color.eclipse};
-
-    a {
-      ${mixins.styledLink(color.turquoise, color.seaSalt)}
-    }
-
   `,
   cco: css`
     color: ${color.black};
-
-    a {
-      ${mixins.styledLink(color.malibu, color.cornflower)}
-    }
   `,
   cio: css`
     color: ${color.cork};
-
-    a {
-      ${mixins.styledLink(color.dijon, color.sand)}
-    }
   `,
 };
 

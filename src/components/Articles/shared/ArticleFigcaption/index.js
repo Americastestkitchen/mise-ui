@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 
-import { color, font, fontSize, mixins, withThemes } from '../../../../styles';
+import { color, font, fontSize, withThemes } from '../../../../styles';
+import { cssThemedLink } from '../../../../styles/mixins';
 
 const ArticleFigcaptionTheme = {
   default: css`
@@ -36,12 +37,12 @@ const ArticleFigcaptionTheme = {
     }
 
     a {
-      ${mixins.styledLink(color.turquoise, color.seaSalt)}
+      ${cssThemedLink}
     }
   `,
   atk: css`
     a {
-      ${mixins.styledLink(color.turquoise, color.seaSalt)}
+      ${cssThemedLink}
     }
 
     &::after {
@@ -50,7 +51,7 @@ const ArticleFigcaptionTheme = {
   `,
   cco: css`
     a {
-      ${mixins.styledLink(color.malibu, color.cornflower)}
+      ${cssThemedLink}
     }
 
     &::after {
@@ -59,7 +60,7 @@ const ArticleFigcaptionTheme = {
   `,
   cio: css`
     a {
-      ${mixins.styledLink(color.dijon, color.sand)}
+      ${cssThemedLink}
     }
 
     &::after {
