@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { color, font } from '../../../styles';
+import { color, font, mixins } from '../../../styles';
 import { cssThemedColor, cssThemedFontAccentColor } from '../../../styles/mixins';
 
 const Wrapper = styled.div`
@@ -42,6 +42,9 @@ const Anchor = styled.a`
   font-size: 14px;
   font-family: ${font.mwr};
   ${cssThemedFontAccentColor}
+  &:focus, &:active {
+    ${mixins.focusIndicator()};
+  }
 `;
 
 type LinkItem = { id: number; href: string; text: string };

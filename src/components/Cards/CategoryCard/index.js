@@ -27,7 +27,7 @@ const LinkToBrowseTheme = {
     }
 
     &:focus {
-      ${mixins.focusIndicator(color.eclipse, '-5px')}
+      ${mixins.focusIndicator(color.eclipse, '-2px')}
     }
 
     ${breakpoint('xlg')`

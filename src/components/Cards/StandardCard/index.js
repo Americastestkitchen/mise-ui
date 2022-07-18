@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
-import { cards, color, fontSize, spacing, withThemes } from '../../../styles';
+import { cards, color, fontSize, spacing, withThemes, mixins } from '../../../styles';
 import { StandardUserAttributions } from '../shared/UserAttributions/UserAttributions';
 import Attributions from '../shared/Attributions';
 import Badge from '../../Badge';
@@ -80,6 +80,12 @@ const TitleWrapperTheme = {
     align-items: flex-start;
     justify-content: space-between;
     padding-top: ${spacing.xsm};
+
+    a {
+      &:focus, &:active {
+        ${mixins.focusIndicator()};
+      }
+    }
   `,
 };
 

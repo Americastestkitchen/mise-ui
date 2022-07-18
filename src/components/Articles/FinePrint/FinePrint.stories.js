@@ -18,7 +18,7 @@ const paragraphContent = '<p>What do fried chicken, deli sandwiches, and backyar
 const listContent = '<ul><li>Store 1 bunch basil on counter</li><li>Store 1 bunch each cilantro and thyme on shelf in refrigerator Store 1 bunch each cilantro and thyme on shelf in refrigerator, adding text so this wraps to the next line!</li><li>Store 1 bunch each cilantro and thyme in door of refrigerator</li><li>Knock over (empty) in refrigerator 5 times</li><li>Push off counter (empty) 3 times</li><li>Wash 10 times according to manufacturer instructions</li></ul>';
 const listContentOrdered = `<ol>
   <li>Ordered list has wrap issue <strong>Only When</strong> there is a tag in the list element like bold, it also needs to be long enough to wrap text</li>
-  <li>Ordered list has wrap issue <strong>Only When</strong> there is a tag in the list element like bold, it also needs to be long enough to wrap text</li>
+  <li>Ordered list has wrap issue <a href="#"><strong>Only When</strong></a> there is a tag in the list element like bold, it also needs to be long enough to wrap text</li>
 </ol>`;
 const subtitle = 'There\'s a method to our madness, here\'s our full list of testing.';
 const title = 'Methodology';

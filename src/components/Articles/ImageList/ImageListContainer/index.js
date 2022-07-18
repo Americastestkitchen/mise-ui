@@ -7,7 +7,7 @@ import ImageListItem from '../ImageListItem';
 import { color, font, fontSize, mixins, withThemes } from '../../../../styles';
 import { cssThemedColor, cssThemedLink } from '../../../../styles/mixins';
 
-const ImageListWrapper = styled.aside`
+const ImageListWrapper = styled.div`
   background-color: ${color.white};
   margin: 3rem 0 2.7rem;
   max-width: 100%;

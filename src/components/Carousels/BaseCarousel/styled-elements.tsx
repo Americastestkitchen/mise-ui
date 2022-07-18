@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
-import { withThemes, color, font } from '../../../styles';
+import { withThemes, color, font, mixins } from '../../../styles';
 import { untilMd } from '../../../styles/breakpoints';
 import {
   cssThemedBackground,
@@ -56,6 +56,10 @@ export const Button = styled.button`
   position: relative;
 
   ${cssThemedBackgroundAccentColorAlt}
+  
+  &:focus, &:active {
+    ${mixins.focusIndicator()};
+  }
 
   &:hover {
     ${cssThemedBackground}
@@ -110,9 +114,11 @@ export const Title = styled.h2`
   font-size: 26px;
   line-height: 33px;
   margin: 0;
-
   a {
     ${cssThemedLink}
+    &:focus, &:active {
+        ${mixins.focusIndicator()}     
+      }
   }
 `;
 
