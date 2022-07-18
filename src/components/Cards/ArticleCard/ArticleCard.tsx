@@ -56,11 +56,13 @@ const CardImage = styled.div`
   overflow: hidden;
   ${untilMd(css`
     height: 190px;
+    min-height: 190px;
   `)}
   img, picture {
     object-fit: cover;
     width: 100%;
     height: 100%;
+    min-height: 272px;
   }
 `;
 
