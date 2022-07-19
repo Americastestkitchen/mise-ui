@@ -71,7 +71,7 @@ const Link = styled.a`
     }
   }
   &:focus-within {
-    ${mixins.focusIndicator()}
+    ${mixins.focusIndicator(color.eclipse, '5px')}
   }
 `;
 
