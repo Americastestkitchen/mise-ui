@@ -1,11 +1,10 @@
 import breakpoint from 'styled-components-breakpoint';
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
-import FeatureCard from '../FeatureCard/FeatureCard';
-import StandardCard from '../StandardCard/StandardCard';
-import TallCard from '../TallCard/TallCard';
+import FeatureCard, { FeatureCardPropTypes } from '../FeatureCard/FeatureCard';
+import StandardCard, { StandardCardPropTypes } from '../StandardCard/StandardCard';
+import TallCard, { TallCardPropTypes } from '../TallCard/TallCard';
 import {
   color,
   font,
@@ -96,15 +95,24 @@ const typeMap = {
   tall: TallCard,
 };
 
-const CardWrapper = ({
+type CardWrapperProps = {
+  ctaText?: string,
+  ctaUrl?: string,
+  item: any; // TODO: remove 'any' when card improvements are made
+  onClick?(): void,
+  title: string,
+  type: 'feature' | 'standard' | 'tall',
+}
+
+export default function CardWrapper({
   ctaText,
   ctaUrl,
   item,
   onClick,
   title,
-  type,
-}) => {
-  const El = typeMap[type] || FeatureCard;
+  type = 'feature',
+}: CardWrapperProps) {
+  const El = typeMap[type];
 
   return (
     <CardWrapperWrapper onClick={onClick}>
@@ -123,22 +131,4 @@ const CardWrapper = ({
       />
     </CardWrapperWrapper>
   );
-};
-
-CardWrapper.propTypes = {
-  ctaText: PropTypes.string,
-  ctaUrl: PropTypes.string,
-  item: PropTypes.object.isRequired,
-  /** onClick handler for tracking events */
-  onClick: PropTypes.func,
-  title: PropTypes.string.isRequired,
-  type: PropTypes.oneOf(['standard', 'feature', 'tall']).isRequired,
-};
-
-CardWrapper.defaultProps = {
-  ctaText: null,
-  ctaUrl: null,
-  onClick: null,
-};
-
-export default CardWrapper;
+}

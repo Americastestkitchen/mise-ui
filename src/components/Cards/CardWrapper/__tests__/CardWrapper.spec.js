@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import 'jest-styled-components';
 
-import CardWrapper from '../index';
+import CardWrapper from '../CardWrapper';
 import breakpoints from '../../../../styles/breakpoints';
 
 const wideCard = {
