@@ -9,6 +9,10 @@ const CtaLinkTheme = {
     transition: color 0.1s ease-in-out;
     font: ${fontSize.md}/18px ${font.pnb};
 
+    &:focus, &:active {
+      ${mixins.focusIndicator()};
+    }
+
     &:hover {
       color: ${color.rust};
     }

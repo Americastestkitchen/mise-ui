@@ -86,6 +86,12 @@ const TitleWrapperTheme = {
     align-items: flex-start;
     justify-content: space-between;
     padding-top: ${spacing.xsm};
+
+    a {
+      &:focus, &:active {
+        ${mixins.focusIndicator()};
+      }
+    }
   `,
 };
 

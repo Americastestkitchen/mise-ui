@@ -18,6 +18,10 @@ const PersonCardWrapperTheme = {
 
     background-color: ${({ mode }) => (mode === 'dark' ? color.smokeyQuartz : color.white)};
 
+    &:focus {
+      ${mixins.focusIndicator(({ mode }) => (mode === 'dark' ? color.white : color.eclipse), '-3px')}
+    }
+
     .person-head-shot {
       margin-bottom: ${spacing.sm};
     }
@@ -57,6 +61,9 @@ const PersonCardDescriptionTheme = {
     text-align: center;
     a {
       ${({ theme }) => (theme?.siteKey ? mixins.styledLinkWithSiteKey(theme.siteKey) : '')}
+      &:focus {
+        ${mixins.focusIndicator(({ mode }) => (mode === 'dark' ? color.white : color.eclipse), '2px')}
+      }
     }
   `,
   atk: css`

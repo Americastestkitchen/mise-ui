@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { cards, color, fontSize, spacing } from '../../../styles';
+import { cards, color, fontSize, spacing, mixins } from '../../../styles';
 import Image from '../shared/Image';
 
 import Title from '../shared/Title';
@@ -30,6 +30,9 @@ const ImageWrapper = styled.div`
 
 const TitleWrapper = styled.a`
   max-width: 17rem;
+  &:focus, &:active {
+    ${mixins.focusIndicator()};
+  }
 
   .no-image & {
     padding-left: ${spacing.xsm};
