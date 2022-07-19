@@ -41,6 +41,9 @@ const AffiliateLinkTheme = {
     text-align: center;
     z-index: 1;
     ${mixins.truncate()}
+    &:focus, &:active {
+      ${mixins.focusIndicator()};
+    }
 
     @media(hover: hover) {
       &:hover {
