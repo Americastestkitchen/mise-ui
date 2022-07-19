@@ -1,6 +1,5 @@
 import breakpoint from 'styled-components-breakpoint';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import plyrStyles from './plyrStyles';
 
@@ -155,6 +154,15 @@ display: none;
 
 const plyrOptions = { controls: ['progress', 'current-time', 'duration'], invertTime: false, displayDuration: true };
 
+type AudioPlayerPropTypes = {
+  id: string,
+  title: string,
+  episode?: number,
+  href?: string,
+  imageAlt?: string,
+  imageUrl?: string,
+}
+
 const AudioPlayer = ({
   id,
   title,
@@ -162,7 +170,7 @@ const AudioPlayer = ({
   imageAlt,
   imageUrl,
   href,
-}) => {
+}: AudioPlayerPropTypes) => {
   const playerEl = useRef(null);
   const playerInstance = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -278,8 +286,8 @@ const AudioPlayer = ({
       <LinkWrapper className="player__more-info">
         <div className="player__image">
           <Image
-            imageAlt={imageAlt}
-            imageUrl={imageUrl}
+            imageAlt={imageAlt || ''}
+            imageUrl={imageUrl || ''}
           />
         </div>
         {
@@ -288,26 +296,6 @@ const AudioPlayer = ({
       </LinkWrapper>
     </PlayerWrapper>
   );
-};
-
-AudioPlayer.propTypes = {
-  /** id of the episode */
-  id: PropTypes.string.isRequired,
-  /** title of the episode */
-  title: PropTypes.string.isRequired,
-  /** episode number */
-  episode: PropTypes.number,
-  /** link to page with more episode details */
-  href: PropTypes.string,
-  imageAlt: PropTypes.string,
-  imageUrl: PropTypes.string,
-};
-
-AudioPlayer.defaultProps = {
-  episode: null,
-  href: '',
-  imageAlt: '',
-  imageUrl: '',
 };
 
 export default React.memo(AudioPlayer);
