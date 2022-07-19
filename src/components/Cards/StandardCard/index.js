@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
-import { cards, color, fontSize, mixins, spacing, withThemes } from '../../../styles';
+import { cards, color, fontSize, spacing, withThemes } from '../../../styles';
 import { StandardUserAttributions } from '../shared/UserAttributions/UserAttributions';
 import Attributions from '../shared/Attributions';
 import Badge from '../../Badge';
@@ -21,12 +21,6 @@ const StandardCardTheme = {
     @media(hover: hover) {
       a.standard-card__anchor:hover {
         color: ${color.eclipse};
-      }
-    }
-
-    .search-page & {
-      a:focus-within p {
-        ${mixins.focusIndicator()};
       }
     }
   `,
