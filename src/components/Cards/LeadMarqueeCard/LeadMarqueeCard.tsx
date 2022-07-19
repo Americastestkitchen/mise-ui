@@ -2,7 +2,7 @@ import React, { CSSProperties } from 'react';
 import styled, { css } from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import { color, font, fontSize, lineHeight, mixins, spacing, withThemes } from '../../../styles';
-import { untilMd } from '../../../styles/breakpoints';
+import { md, untilMd } from '../../../styles/breakpoints';
 import Badge from '../../Badge';
 import Byline from '../../Byline';
 import FavoriteRibbonWithBg from '../shared/FavoriteRibbonWithBg';
@@ -193,15 +193,16 @@ const DekTheme = {
     color: ${color.white};
     display: none;
 
-    ${breakpoint('md')`
+    ${md(css`
       display: block;
-      font: ${fontSize.md}/${lineHeight.lg} ${font.mwr};
+      font-family: ${font.mwr};
+      font-size: ${fontSize.md};
+      line-height: 26px;
       margin: 0.4rem 0 ${spacing.sm};
       max-width: 65.8rem;
-    `};
+    `)}
 
     ${breakpoint('lg')`
-      line-height: ${lineHeight.md};
       max-width: 72.4rem;
     `}
 
