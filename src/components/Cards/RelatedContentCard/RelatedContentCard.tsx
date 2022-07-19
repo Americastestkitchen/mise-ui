@@ -134,6 +134,9 @@ const Content = styled.div`
 const Card = styled.a`
   ${cssCenterLeadingRow}
   background-color: ${color.white};
+  &:focus, &:active {
+    ${mixins.focusIndicator()};
+  }
   ${withThemes({
     cco: css`
       box-sizing: border-box;
@@ -239,7 +242,7 @@ export default function RelatedContentCard({
           {!!link && !!withButton ? (
             <WideCard.AffiliateLink text={link} url={buttonHref || href} />
           ) : (
-            <WideCard.LinkText>{link}</WideCard.LinkText>
+            <WideCard.LinkText href={href}>{link}</WideCard.LinkText>
           )}
         </WideCard.LinkWrapper>
       </ThemeProvider>
