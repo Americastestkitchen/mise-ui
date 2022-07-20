@@ -3,7 +3,7 @@ import { ThemeProvider } from 'styled-components';
 import { render, screen } from '@testing-library/react';
 import 'jest-styled-components';
 
-import { SuggestionCard } from '../index';
+import { SuggestionCard } from '../SuggestionCard';
 import breakpoints from '../../../../styles/breakpoints';
 
 const baseRecipe = {

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { SuggestionCard } from '.';
+import { SuggestionCard } from './SuggestionCard';
 
 const SuggestionContainer = styled.div`
   max-width: 62rem;

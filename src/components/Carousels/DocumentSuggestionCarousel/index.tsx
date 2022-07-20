@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components';
 import BaseCarousel from '../BaseCarousel';
 import { useFlickityGroup } from '../BaseCarousel/useFlickity';
 import { StandardSlide } from '../BaseCarousel/Slides';
-import { SuggestionCard, SuggestionCardProps } from '../../Cards/SuggestionCard';
+import { SuggestionCard, SuggestionCardProps } from '../../Cards/SuggestionCard/SuggestionCard';
 import { color, font, fontSize, letterSpacing, lineHeight, spacing, withThemes } from '../../../styles';
 import SuggestionSideEffects from './SuggestionSideEffects';
 
