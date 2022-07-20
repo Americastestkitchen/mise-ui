@@ -185,8 +185,8 @@ export default {
 
   loadingGradientAnimation(
     width = cards.standard.width.lg,
-    cardBackgroundColor = color.charcoal,
-    gradientColor = color.black,
+    cardBackgroundColor,
+    gradientColor,
   ) {
     return `
       .animated-background {
@@ -195,13 +195,13 @@ export default {
         animation-iteration-count: infinite;
         animation-name: loading;
         animation-timing-function: linear;
-        background-color: ${cardBackgroundColor};
+        background-color: ${cardBackgroundColor || color.charcoal};
         background-image:
           linear-gradient(
             90deg,
-            ${cardBackgroundColor} 0%,
-            ${gradientColor} 50%,
-            ${cardBackgroundColor} 100%
+            ${cardBackgroundColor || color.charcoal} 0%,
+            ${gradientColor || color.black} 50%,
+            ${cardBackgroundColor || color.charcoal} 100%
           );
         background-position: -${width} 0;
         background-repeat: no-repeat;
