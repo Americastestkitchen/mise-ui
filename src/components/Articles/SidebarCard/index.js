@@ -148,7 +148,7 @@ const SidebarCard = ({
   type,
   url,
 }) => (
-  <SidebarCardContainer>
+  <SidebarCardContainer aria-label={`${title} ${type}`}>
     {photo ? (
       <SidebarPicture>
         <source
