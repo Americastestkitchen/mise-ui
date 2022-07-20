@@ -82,7 +82,7 @@ import StandardCard from './components/Cards/StandardCard/StandardCard';
 import StationFinderForm from './components/Forms/StationFinderForm';
 import Sticker from './components/Cards/shared/Sticker';
 import SubscribeBubbles from './components/SubscribeBubbles/SubscribeBubbles';
-import SuggestionCard from './components/Cards/SuggestionCard';
+import { SuggestionCard } from './components/Cards/SuggestionCard/SuggestionCard';
 import SurveyCard from './components/Cards/SurveyCard';
 import TallCard from './components/Cards/TallCard/TallCard';
 import TallToSquareCard from './components/Cards/TallToSquareCard';

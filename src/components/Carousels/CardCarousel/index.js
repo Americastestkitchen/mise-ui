@@ -11,7 +11,7 @@ import LinearGradient from '../../DesignTokens/LinearGradient';
 import PersonCard from '../../Cards/PersonCard';
 import ReviewableSummaryCard from '../../Cards/ReviewableSummaryCard';
 import StandardCard from '../../Cards/StandardCard/StandardCard';
-import SuggestionCard from '../../Cards/SuggestionCard';
+import { SuggestionCard } from '../../Cards/SuggestionCard/SuggestionCard';
 import TallCard from '../../Cards/TallCard/TallCard';
 import TallToSquareCard from '../../Cards/TallToSquareCard';
 import { cards, spacing, withThemes } from '../../../styles';

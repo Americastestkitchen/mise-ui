@@ -1,8 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-const Save = ({ fill }) => (
+type SaveRibbonTypes = {
+  fill: string,
+  className?: string,
+}
+
+const Save = ({ fill, className = 'save-ribbon' }: SaveRibbonTypes) => (
   <svg
+    className={className}
     xmlns="http://www.w3.org/2000/svg"
     width="11.286"
     height="15.911"
@@ -19,9 +24,5 @@ const Save = ({ fill }) => (
     </g>
   </svg>
 );
-
-Save.propTypes = {
-  fill: PropTypes.string.isRequired,
-};
 
 export default Save;

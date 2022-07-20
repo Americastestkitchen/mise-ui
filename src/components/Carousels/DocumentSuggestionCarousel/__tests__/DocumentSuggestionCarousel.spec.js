@@ -5,7 +5,7 @@ import '@testing-library/jest-dom/extend-expect';
 import 'jest-styled-components';
 
 import breakpoints from '../../../../styles/breakpoints';
-import data from './data';
+import data from '../data';
 import DocumentSuggestionCarousel from '../index';
 
 class ResizeObserver {
