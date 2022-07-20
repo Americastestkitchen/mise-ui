@@ -6,6 +6,7 @@ import RecipeCard from '../../DesignTokens/Icon/svgs/RecipeCardUpdate';
 import ReviewsRibbon from '../../DesignTokens/Icon/svgs/ReviewsRibbon';
 import ShoppingCart from '../../DesignTokens/Icon/svgs/ShoppingCart';
 import TrendingArrow from '../../DesignTokens/Icon/svgs/TrendingArrow';
+import Star from '../../DesignTokens/Icon/svgs/Star';
 
 const IconMap = {
   cookbook: Cookbook,
@@ -16,7 +17,7 @@ const IconMap = {
   rooster: CCORooster,
   shoppingCart: ShoppingCart,
   trendingArrow: TrendingArrow,
-
+  star: Star,
 };
 
 export default IconMap;
