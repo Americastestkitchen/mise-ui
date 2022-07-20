@@ -1,9 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
 import PersonHeadShot from '../shared/PersonHeadShot/PersonHeadShot';
 import { color, font, fontSize, lineHeight, mixins, spacing, withThemes } from '../../../styles';
+
+type ModeType = 'dark' | 'light';
 
 const PersonCardWrapperTheme = {
   default: css`
@@ -16,7 +17,7 @@ const PersonCardWrapperTheme = {
     padding: 2rem 0.8rem 2rem;
     width: 27.2rem;
 
-    background-color: ${({ mode }) => (mode === 'dark' ? color.smokeyQuartz : color.white)};
+    background-color: ${({ mode }: { mode: ModeType }) => (mode === 'dark' ? color.smokeyQuartz : color.white)};
 
     .person-head-shot {
       margin-bottom: ${spacing.sm};
@@ -27,7 +28,7 @@ const PersonCardWrapperTheme = {
   `,
 };
 
-const PersonCardWrapper = styled.div`
+const PersonCardWrapper = styled.div<{ mode: ModeType }>`
   ${withThemes(PersonCardWrapperTheme)}
 `;
 
@@ -37,7 +38,7 @@ const PersonCardNameTheme = {
     margin-bottom: ${spacing.xsm};
   `,
   atk: css`
-    color: ${({ mode }) => (mode === 'dark' ? color.white : color.eclipse)};
+    color: ${({ mode }: { mode: ModeType }) => (mode === 'dark' ? color.white : color.eclipse)};
   `,
   cco: css`
     color: ${color.black};
@@ -47,7 +48,7 @@ const PersonCardNameTheme = {
   `,
 };
 
-const PersonCardName = styled.h3`
+const PersonCardName = styled.h3<{ mode: ModeType }>`
   ${withThemes(PersonCardNameTheme)}
 `;
 
@@ -60,7 +61,7 @@ const PersonCardDescriptionTheme = {
     }
   `,
   atk: css`
-    color: ${({ mode }) => (mode === 'dark' ? color.white : color.eclipse)};
+    color: ${({ mode }: { mode: ModeType }) => (mode === 'dark' ? color.white : color.eclipse)};
   `,
   cco: css`
     color: ${color.black};
@@ -70,11 +71,25 @@ const PersonCardDescriptionTheme = {
   `,
 };
 
-const PersonCardDescription = styled.div`
+const PersonCardDescription = styled.div<{ mode: ModeType }>`
   ${withThemes(PersonCardDescriptionTheme)}
 `;
 
-const PersonCard = ({ description, imgAlt, imgCloudinaryId, mode, name }) => (
+type PersonCardProps = {
+  description: string,
+  imgAlt?: string,
+  imgCloudinaryId: string,
+  mode?: ModeType,
+  name: string,
+};
+
+const PersonCard = ({
+  description,
+  imgAlt = '',
+  imgCloudinaryId,
+  mode = 'dark',
+  name,
+}: PersonCardProps) => (
   <PersonCardWrapper
     aria-label={imgAlt}
     className="person-card"
@@ -96,18 +111,5 @@ const PersonCard = ({ description, imgAlt, imgCloudinaryId, mode, name }) => (
     />
   </PersonCardWrapper>
 );
-
-PersonCard.propTypes = {
-  description: PropTypes.string.isRequired,
-  imgAlt: PropTypes.string,
-  imgCloudinaryId: PropTypes.string.isRequired,
-  mode: PropTypes.string,
-  name: PropTypes.string.isRequired,
-};
-
-PersonCard.defaultProps = {
-  imgAlt: '',
-  mode: 'dark',
-};
 
 export default PersonCard;
