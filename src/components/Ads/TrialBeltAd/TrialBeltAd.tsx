@@ -13,6 +13,7 @@ import {
   TextArea,
   VariantButtonArea,
   VariantDescription,
+  VerticalLine,
 } from './css/components';
 import Layout from './Layout';
 
@@ -21,6 +22,23 @@ export type TextTrialBeltProps = {
   href: string;
   /** Top line of text, read as html */
   headline: string;
+  /** Text below headline, read as html */
+  description: string;
+  /** Text for button (button is a div since card is an anchor tag) */
+  cta: string;
+  /**
+   * Pass any additional props to the click area. This can be for
+   *  analytics events, accessibility with "aria-label", or any other
+   *  property unseen for future requirements on the anchor tag.
+   */
+  linkProps?: InferStyledTypes<typeof ClickArea>;
+}
+
+export type TextImageTrialBeltProps = {
+  /** Link for card click area. */
+  href: string;
+  /** Image cloudinary id */
+  cloudinaryId: string;
   /** Text below headline, read as html */
   description: string;
   /** Text for button (button is a div since card is an anchor tag) */
@@ -52,6 +70,32 @@ export function TextTrialBeltAd({
       <ClickArea href={href} {...linkProps}>
         <GridImageArea>
           <AccentHeadline dangerouslySetInnerHTML={{ __html: headline }} />
+        </GridImageArea>
+        <TextArea>
+          <VariantDescription dangerouslySetInnerHTML={{ __html: description }} />
+        </TextArea>
+        <VariantButtonArea>
+          {cta}<DetailTriangleRight />
+        </VariantButtonArea>
+      </ClickArea>
+    </Layout>
+  );
+}
+
+export function TextImageTrialBeltAd({
+  href,
+  cloudinaryId,
+  description,
+  cta,
+  linkProps = {},
+}: TextImageTrialBeltProps) {
+  const src = cloudinaryInstance.url(cloudinaryId, { ...baseImageConfig, width: 240, height: 40 });
+  return (
+    <Layout reducedTextSizing textGrid>
+      <ClickArea href={href} {...linkProps}>
+        <GridImageArea>
+          <img src={src} alt="" width="240" height="40" />
+          <VerticalLine />
         </GridImageArea>
         <TextArea>
           <VariantDescription dangerouslySetInnerHTML={{ __html: description }} />

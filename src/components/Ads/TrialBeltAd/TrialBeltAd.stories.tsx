@@ -4,7 +4,7 @@ import styled, { css, ThemeProvider } from 'styled-components';
 import { setArgs, setViewport, storybookParameters } from '../../../config/shared.stories';
 import { breakpoints } from '../../../styles';
 import { lg, md } from '../../../styles/breakpoints';
-import TrialBeltAd, { TextTrialBeltAd, TextTrialBeltProps, TrialBeltAdProps } from './TrialBeltAd';
+import TrialBeltAd, { TextImageTrialBeltAd, TextImageTrialBeltProps, TextTrialBeltAd, TextTrialBeltProps, TrialBeltAdProps } from './TrialBeltAd';
 
 export default {
   title: 'Components/Ads/TrialBeltAd',
@@ -61,6 +61,13 @@ const textAdArgs: TextTrialBeltProps = {
   cta: 'TRY FOR FREE',
 };
 
+const textImageAdArgs: TextImageTrialBeltProps = {
+  href: '#',
+  cloudinaryId: '2022%20Homepage%20Landing/cooking-school-temp.png',
+  description: 'Become fearless in the kitchen. 320+ online lessons for novice to advanced cooks.',
+  cta: 'TRY FOR FREE',
+};
+
 export const CookingSchoolAdMobile = Template.bind({});
 export const CookingSchoolAdTablet = Template.bind({});
 export const CookingSchoolAdLargeTablet = Template.bind({});
@@ -99,3 +106,14 @@ const Template2: Story = (args, { parameters }) => (
 
 export const TextTrialBeltAdDefault = Template2.bind({});
 TextTrialBeltAdDefault.args = textAdArgs;
+
+const Template3: Story = (args, { parameters }) => (
+  <ThemeProvider theme={{ breakpoints, siteKey: parameters.siteKey ?? 'atk' }}>
+    <TestMargins>
+      <TextImageTrialBeltAd {...args} />
+    </TestMargins>
+  </ThemeProvider>
+);
+
+export const TextImageTrialBeltAdDefault = Template3.bind({});
+TextImageTrialBeltAdDefault.args = textImageAdArgs;
