@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import cloudinaryInstance, { baseImageConfig } from '../../../lib/cloudinary';
 import { InferStyledTypes } from '../../../styles/utility-types';
 import DetailTriangleRight from '../components/DetailTriangleRight';
@@ -82,6 +83,13 @@ export function TextTrialBeltAd({
   );
 }
 
+const InlineImage = styled.div`
+  height: 40px;
+  width: 240px;
+  overflow: hidden;
+  object-fit: cover;
+`;
+
 export function TextImageTrialBeltAd({
   href,
   cloudinaryId,
@@ -89,12 +97,14 @@ export function TextImageTrialBeltAd({
   cta,
   linkProps = {},
 }: TextImageTrialBeltProps) {
-  const src = cloudinaryInstance.url(cloudinaryId, { ...baseImageConfig, width: 240, height: 40 });
+  const src = cloudinaryInstance.url(cloudinaryId, { ...baseImageConfig, height: 40 });
   return (
     <Layout reducedTextSizing textGrid>
       <ClickArea href={href} {...linkProps}>
         <GridImageArea>
-          <img src={src} alt="" width="240" height="40" />
+          <InlineImage>
+            <img src={src} alt="" height="40" />
+          </InlineImage>
           <VerticalLine />
         </GridImageArea>
         <TextArea>
