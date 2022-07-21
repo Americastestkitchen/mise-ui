@@ -21,7 +21,7 @@ import carousel from './styles/carousel';
 import Carousel from './components/Carousels/Carousel';
 import CardCarousel from './components/Carousels/CardCarousel';
 import CardWrapper from './components/Cards/CardWrapper/CardWrapper';
-import CategoryCard from './components/Cards/CategoryCard';
+import CategoryCard from './components/Cards/CategoryCard/CategoryCard';
 import ClearRefinements from './components/Algolia/shared/ClearRefinements';
 import CookingSchoolAd from './components/Ads/ReviewsAds/CookingSchoolAd';
 import CurrentRefinements from './components/Algolia/shared/CurrentRefinements';
