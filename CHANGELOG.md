@@ -1,3 +1,17 @@
+# v1.33.27 (Fri Jul 22 2022)
+
+#### 🐛 Bug Fix
+
+- CORE-548: Remove display block at smaller breakpoints [#811](https://github.com/Americastestkitchen/mise-ui/pull/811) ([@harry-atk](https://github.com/harry-atk))
+- Jt hab 162 [#812](https://github.com/Americastestkitchen/mise-ui/pull/812) (jthomas@jthomas-mbp.attlocal.net)
+
+#### Authors: 2
+
+- Harry Scheuerle ([@harry-atk](https://github.com/harry-atk))
+- Jenner Thomas ([@jwinnfeild2517](https://github.com/jwinnfeild2517))
+
+---
+
 # v1.33.26 (Mon Jul 11 2022)
 
 #### 🐛 Bug Fix
