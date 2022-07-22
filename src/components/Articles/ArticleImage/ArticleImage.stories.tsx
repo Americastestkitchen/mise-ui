@@ -1,15 +1,15 @@
 import React from 'react';
-
-import ArticleImage from './index';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import ArticleImage from './ArticleImage';
 import { siteKey } from '../../../config/argTypes';
 import { addThemedWrapper } from '../../../config/decorators';
 
 export default {
   title: 'Components/Articles/ArticleImage',
   component: ArticleImage,
-  decorators: [ addThemedWrapper() ],
+  decorators: [addThemedWrapper()],
   argTypes: { siteKey },
-};
+} as ComponentMeta<typeof ArticleImage>;
 
 const alt = 'A chef is holding a pan with garlic bread on it.';
 const caption = 'The heat applied during pasteurization, a necessary step for all shelf-stable jars, essentially cooks the pickles.';
@@ -19,22 +19,17 @@ const imgSrcs = {
   tabletSrc: 'https://res.cloudinary.com/hksqkdlah/image/upload/c_fill,dpr_2.0,f_auto,fl_lossy.progressive.strip_profile,g_faces:auto,q_auto:low,w_697/v1/AKO%20Articles/2021%20Articles/Reviews%20Team/GettyImages-680787007',
 };
 
-const Template = (args) => <ArticleImage {...args} />;
+const Template: ComponentStory<typeof ArticleImage> = props => <ArticleImage {...props} />;
 
-export const DefaultWidth = Template.bind({});
-DefaultWidth.args = {
+const defaultArgs = {
+  siteKey: 'atk',
   alt,
   caption,
   ...imgSrcs,
-  siteKey: 'atk',
-  width: 'default',
 };
 
-export const WideWidth = Template.bind({});
-WideWidth.args = {
-  alt,
-  caption,
-  ...imgSrcs,
-  siteKey: 'atk',
-  width: 'wide',
+export const Default: ComponentStory<typeof ArticleImage> = Template.bind({});
+Default.args = {
+  ...defaultArgs,
+  width: 'default',
 };
