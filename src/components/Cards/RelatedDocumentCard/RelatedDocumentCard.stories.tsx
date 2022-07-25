@@ -1,20 +1,20 @@
 import React from 'react';
-
-import RelatedDocumentCard from './index';
-import { siteKey } from '../../../config/argTypes';
-import { addThemedWrapper } from '../../../config/decorators';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import { storybookParameters } from '../../../config/shared.stories';
+import RelatedDocumentCard, { RelatedDocumentCardProps } from './RelatedDocumentCard';
 
 export default {
   title: 'Components/Cards/RelatedDocumentCard',
   component: RelatedDocumentCard,
-  decorators: [ addThemedWrapper() ],
-  argTypes: { siteKey },
-};
+  ...storybookParameters,
+} as ComponentMeta<typeof RelatedDocumentCard>;
 
-const Template = (args) => <RelatedDocumentCard {...args} />;
+const Template = (args: RelatedDocumentCardProps) => (
+  <RelatedDocumentCard {...args} />
+);
 
-export const DefaultWidth = Template.bind({});
-DefaultWidth.args = {
+export const Default: ComponentStory<typeof RelatedDocumentCard> = Template.bind({});
+Default.args = {
   attribution: 'AMERICA’S TEST KITCHEN',
   contentType: 'episode',
   href: 'https://www.americastestkitchen.com/episode/742-crepes-two-ways',
