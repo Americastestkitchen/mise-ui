@@ -1,0 +1,23 @@
+@import "./_shared_colors";
+
+// Color Palette
+$cCork: #3f2b1e;
+$cSquirrel: #94856B;
+$cDijon: #eed681;
+$cSand: #fff5c2;
+$cLinen: #fcf9f3;
+$cIvory: #fffdeb;
+
+// Brand - $cB
+$cBPrimary: $cCork;
+$cBPrimaryHover: $cSquirrel;
+$cBSecondary: $cSquirrel;
+$cBSecondaryHover: $cCork;
+$cBFont: $cCork;
+$cBFontHover: $cSquirrel;
+$cBLink: $cDijon;
+$cBLinkHover: $cSand;
+
+// Backgrounds - $cBG
+$cBGPage: $cLinen;
+$cBGCallout: $cIvory;

@@ -1,0 +1,23 @@
+@import "./_shared_colors.scss";
+
+// Color Palette
+$cMint: #6ba6aa;
+$cEclipse: #3d3d3d;
+$cDarkTeal: #4D7A7C;
+$cTurquoise: #8FDEE3;
+$cSeaSalt: #D1FCFF;
+$cFrost: #e9f0f0;
+
+// Brand - $cB
+$cBPrimary: $cEclipse;
+$cBPrimaryHover: $cDarkTeal;
+$cBSecondary: $cMint;
+$cBSecondaryHover: $cBPrimaryHover;
+$cBFont: $cEclipse;
+$cBFontHover: $cDarkTeal;
+$cBLink: $cTurquoise;
+$cBLinkHover: $cSeaSalt;
+
+// Backgrounds - $cBG
+$cBGPage: $cWhiteSmoke;
+$cBGCallout: $cFrost;
