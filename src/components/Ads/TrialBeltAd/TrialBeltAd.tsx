@@ -40,6 +40,8 @@ export type TextImageTrialBeltProps = {
   href: string;
   /** Image cloudinary id */
   cloudinaryId: string;
+  /** Image alt */
+  imageAlt?: string;
   /** Text below headline, read as html */
   description: string;
   /** Text for button (button is a div since card is an anchor tag) */
@@ -57,6 +59,8 @@ export type TrialBeltAdProps = TextTrialBeltProps & {
   reducedTextSizing?: boolean;
   /** Image to render in 100x100 area */
   cloudinaryId: string;
+  /** Image alt */
+  imageAlt?: string;
 };
 
 export function TextTrialBeltAd({
@@ -93,6 +97,7 @@ const InlineImage = styled.div`
 export function TextImageTrialBeltAd({
   href,
   cloudinaryId,
+  imageAlt,
   description,
   cta,
   linkProps = {},
@@ -103,7 +108,7 @@ export function TextImageTrialBeltAd({
       <ClickArea href={href} {...linkProps}>
         <GridImageArea>
           <InlineImage>
-            <img src={src} alt="" height="40" />
+            <img src={src} alt={imageAlt ?? ''} height="40" />
           </InlineImage>
           <VerticalLine />
         </GridImageArea>
@@ -121,6 +126,7 @@ export function TextImageTrialBeltAd({
 export default function TrialBeltAd({
   href,
   cloudinaryId,
+  imageAlt,
   headline,
   description,
   cta,
@@ -134,7 +140,7 @@ export default function TrialBeltAd({
         <ImageArea>
           <img
             src={src}
-            alt=""
+            alt={imageAlt}
             width={100}
             height={100}
             crossOrigin="anonymous"
