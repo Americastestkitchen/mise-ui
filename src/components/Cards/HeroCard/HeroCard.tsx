@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 
-import PersonHeadShot from '../shared/PersonHeadShot/PersonHeadShot';
+import PersonHeadShot, { PersonHeadshotPropTypes } from '../shared/PersonHeadShot/PersonHeadShot';
 import Sticker from '../shared/Sticker/Sticker';
 import { color, font, fontSize, lineHeight, spacing } from '../../../styles';
 import { getImageUrl } from '../../../lib/cloudinary';
@@ -11,8 +11,8 @@ import { keyToLogo } from '../../DesignTokens/Logo';
 import { VideoPlay } from '../../DesignTokens/Icon/svgs';
 
 const HeroCardWrapper = styled.div.attrs({
-  className: 'hero-card',
-})`
+  className: 'suggestion-card__img',
+})<{ backgroundImg: string} >`
   background-image: ${({ backgroundImg }) => `url("${backgroundImg}")`};
   background-position: center center;
   background-size: cover;
@@ -86,7 +86,7 @@ const HeroCardTitle = styled.div`
   margin-bottom: ${spacing.xxsm};
 `;
 
-const HeroCardDescription = styled.div`
+const HeroCardDescription = styled.div<{ cardType: string }>`
   color: ${color.white};
   margin-bottom: ${spacing.xsm};
 
@@ -153,6 +153,26 @@ const HeroCardCtaText = styled.span`
   font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb};
 `;
 
+type HeroCardProps = {
+  /** Image rendered as background for card. */
+  backgroundCloudinaryId: string,
+  ctaUrl?: string,
+  /** text for card CTA */
+  ctaText: string,
+  /** Description text above CTA */
+  description: string,
+  /** Optional: Key value that maps to a show logo. */
+  iconKey?: string,
+  /** Optional: Image data that is used to render a PersonHeadShot. */
+  personHeadShot: PersonHeadshotPropTypes,
+  /** Optional: Data used to render a sticker. */
+  sticker: PropTypes.InferProps<typeof Sticker.propTypes>,
+  /** Title text above description */
+  title?: string,
+  onClick?: () => void,
+
+}
+
 const HeroCard = ({
   backgroundCloudinaryId,
   ctaUrl,
@@ -163,7 +183,7 @@ const HeroCard = ({
   sticker,
   title,
   onClick,
-}) => {
+}: HeroCardProps) => {
   const Logo = keyToLogo(iconKey);
   const backgroundImg = getImageUrl(backgroundCloudinaryId, 'heroCard');
   return (
@@ -223,39 +243,6 @@ const HeroCard = ({
       </HeroCardLink>
     </HeroCardWrapper>
   );
-};
-
-HeroCard.propTypes = {
-  /** Image rendered as background for card. */
-  backgroundCloudinaryId: PropTypes.string.isRequired,
-  /** href for card CTA */
-  ctaUrl: PropTypes.string,
-  /** text for card CTA */
-  ctaText: PropTypes.string.isRequired,
-  /** Description text above CTA */
-  description: PropTypes.string.isRequired,
-  /** Optional: Key value that maps to a show logo. */
-  iconKey: PropTypes.string,
-  /** Optional: Image data that is used to render a PersonHeadShot. */
-  personHeadShot: PropTypes.shape({
-    ...PersonHeadShot.propTypes,
-  }),
-  /** Optional: Data used to render a sticker. */
-  sticker: PropTypes.shape({
-    ...Sticker.propTypes,
-  }),
-  /** Title text above description */
-  title: PropTypes.string,
-  onClick: PropTypes.func,
-};
-
-HeroCard.defaultProps = {
-  ctaUrl: null,
-  iconKey: null,
-  personHeadShot: null,
-  sticker: null,
-  title: null,
-  onClick: () => {},
 };
 
 export default HeroCard;
