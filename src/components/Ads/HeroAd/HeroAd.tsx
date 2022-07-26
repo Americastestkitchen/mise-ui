@@ -1,5 +1,4 @@
 import breakpoint from 'styled-components-breakpoint';
-import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { getImageUrl } from '../../../lib/cloudinary';
@@ -14,6 +13,7 @@ import {
   withThemes,
 } from '../../../styles';
 
+import type { ColorName } from '../../../styles/colors';
 /**
  * Wrapper
  */
@@ -29,13 +29,16 @@ const HeroAdWrapperTheme = {
 
 const HeroAdWrapper = styled.div.attrs({
   className: 'hero-ad',
-})`${withThemes(HeroAdWrapperTheme)}`;
+})`
+  ${withThemes(HeroAdWrapperTheme)}
+`;
 
 /**
  * Wrapper inner (background-color)
  */
+
 const HeroAdInnerWrapperTheme = {
-  default: css`
+  default: css<{backgroundColor: ColorName}>`
     background-color: ${({ backgroundColor }) => `${color[backgroundColor] || 'transparent'}`};
     padding: 0 ${spacing.sm};
     position: relative;
@@ -54,7 +57,9 @@ const HeroAdInnerWrapperTheme = {
 
 const HeroAdInnerWrapper = styled.div.attrs({
   className: 'hero-ad__inner',
-})`${withThemes(HeroAdInnerWrapperTheme)}`;
+})<{backgroundColor: string}>`
+  ${withThemes(HeroAdInnerWrapperTheme)}
+`;
 
 /**
  * Content (title, subtitle, button, cta)
@@ -82,14 +87,16 @@ const HeroAdContentTheme = {
 
 const HeroAdContent = styled.div.attrs({
   className: 'hero-ad__content',
-})`${withThemes(HeroAdContentTheme)}`;
+})`
+  ${withThemes(HeroAdContentTheme)}
+`;
 
 /**
  * Main title
  */
 const HeroAdTitleTheme = {
   default: css`
-    font: 2.6rem/${lineHeight.sm} ${font.pnb};
+    font: 2.6rem / ${lineHeight.sm} ${font.pnb};
     margin-bottom: ${spacing.sm};
 
     ${breakpoint('md')`
@@ -98,20 +105,22 @@ const HeroAdTitleTheme = {
     `}
   `,
   dark: css`
-    color: ${color.white}
+    color: ${color.white};
   `,
 };
 
 const HeroAdTitle = styled.h3.attrs({
   className: 'hero-ad__title',
-})`${withThemes(HeroAdTitleTheme)}`;
+})`
+  ${withThemes(HeroAdTitleTheme)}
+`;
 
 /**
  * Sub title
  */
 const HeroAdSubtitleTheme = {
   default: css`
-    font: ${fontSize.md}/${lineHeight.sm} ${font.pnb};
+    font: ${fontSize.md} / ${lineHeight.sm} ${font.pnb};
     margin-bottom: ${spacing.xsm};
     text-align: center;
 
@@ -120,13 +129,15 @@ const HeroAdSubtitleTheme = {
     `}
   `,
   dark: css`
-    color: ${color.white}
+    color: ${color.white};
   `,
 };
 
 const HeroAdSubtitle = styled.h3.attrs({
   className: 'hero-ad__subtitle',
-})`${withThemes(HeroAdSubtitleTheme)}`;
+})`
+  ${withThemes(HeroAdSubtitleTheme)}
+`;
 
 /**
  * Image
@@ -158,17 +169,20 @@ const HeroAdImageTheme = {
 
 const HeroAdImage = styled.img.attrs({
   className: 'hero-ad__image',
-})`${withThemes(HeroAdImageTheme)}`;
+})`
+  ${withThemes(HeroAdImageTheme)}
+`;
 
 /**
  * Hero ad cta button
  */
+type HeroAdCtaProp = {backgroundColor: ColorName, hoverColor: ColorName}
 const HeroAdCtaTheme = {
-  default: css`
+  default: css<HeroAdCtaProp>`
     color: ${color.white};
     background-color: ${({ backgroundColor }) => `${color[backgroundColor || 'eclipse']}`};
     display: block;
-    font: ${fontSize.md}/4rem ${font.pnb};
+    font: ${fontSize.md} / 4rem ${font.pnb};
     letter-spacing: ${letterSpacing.cta};
     height: 4rem;
     text-align: center;
@@ -177,7 +191,7 @@ const HeroAdCtaTheme = {
     white-space: nowrap;
     width: 100%;
 
-    @media(hover: hover) {
+    @media (hover: hover) {
       &:hover {
         background-color: ${({ hoverColor }) => `${color[hoverColor || 'rust']}`};
       }
@@ -185,12 +199,27 @@ const HeroAdCtaTheme = {
   `,
 };
 
-const HeroAdCta = styled.span`${withThemes(HeroAdCtaTheme)}`;
+const HeroAdCta = styled.span<HeroAdCtaProp>`
+  ${withThemes(HeroAdCtaTheme)}
+`;
+
+type HeroAdProps = {
+  backgroundColor?: ColorName;
+  buttonColor?: ColorName;
+  buttonHoverColor?: ColorName;
+  cloudinaryId: string;
+  cta: string;
+  ctaHref: string;
+  ctaTarget?: string;
+  onClick: () => void;
+  subtitle?: string;
+  title: string;
+};
 
 const HeroAds = ({
-  backgroundColor,
-  buttonColor,
-  buttonHoverColor,
+  backgroundColor = 'transparent',
+  buttonColor = 'tomato',
+  buttonHoverColor = 'transparent',
   cloudinaryId,
   cta,
   ctaHref,
@@ -198,34 +227,20 @@ const HeroAds = ({
   onClick,
   subtitle,
   title,
-}) => (
+}: HeroAdProps) => (
   <HeroAdWrapper>
-    <a
-      href={ctaHref}
-      target={ctaTarget}
-      onClick={onClick}
-      title={cta}
-    >
+    <a href={ctaHref} target={ctaTarget} onClick={onClick} title={cta}>
       <HeroAdInnerWrapper
         backgroundColor={backgroundColor}
         data-testid="hero-ad__inner"
       >
         <HeroAdContent>
-          <HeroAdTitle>
-            {title}
-          </HeroAdTitle>
-          {subtitle && (
-            <HeroAdSubtitle>
-              {subtitle}
-            </HeroAdSubtitle>
-          )}
+          <HeroAdTitle>{title}</HeroAdTitle>
+          {subtitle && <HeroAdSubtitle>{subtitle}</HeroAdSubtitle>}
           <HeroAdImage
             alt=""
             data-testid="hero-ad__image"
-            src={getImageUrl(
-              cloudinaryId,
-              'heroAd',
-            )}
+            src={getImageUrl(cloudinaryId, 'heroAd')}
           />
           <HeroAdCta
             backgroundColor={buttonColor}
@@ -239,27 +254,5 @@ const HeroAds = ({
     </a>
   </HeroAdWrapper>
 );
-
-HeroAds.propTypes = {
-  backgroundColor: PropTypes.string,
-  buttonColor: PropTypes.string,
-  buttonHoverColor: PropTypes.string,
-  cloudinaryId: PropTypes.string.isRequired,
-  cta: PropTypes.string.isRequired,
-  ctaHref: PropTypes.string.isRequired,
-  ctaTarget: PropTypes.string,
-  onClick: PropTypes.func,
-  subtitle: PropTypes.string,
-  title: PropTypes.string.isRequired,
-};
-
-HeroAds.defaultProps = {
-  backgroundColor: 'transparent',
-  buttonColor: 'tomato',
-  buttonHoverColor: null,
-  ctaTarget: null,
-  onClick: null,
-  subtitle: null,
-};
 
 export default HeroAds;
