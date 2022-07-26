@@ -84,7 +84,7 @@ const LinkToBrowseTheme = {
   `,
 };
 
-const LinkToBrowse = styled.a.attrs({
+const LinkToBrowse = styled.a.attrs<{ className: string }>({
   className: 'browse-link',
 })`
   ${withThemes(LinkToBrowseTheme)}
@@ -131,7 +131,7 @@ const ImageWrapperTheme = {
   `,
 };
 
-const ImageWrapper = styled.div.attrs({
+const ImageWrapper = styled.div.attrs<{ className: string }>({
   className: 'image-wrapper',
 })`
   ${withThemes(ImageWrapperTheme)}
@@ -185,7 +185,7 @@ const SvgWrapper = styled.div`
 
   .shopping-cart-icon {
     position: absolute;
-    left: -4%; 
+    left: -4%;
   }
 
   .trending-icon {
@@ -199,27 +199,43 @@ const SvgWrapper = styled.div`
   &.latest, &.cookbook {
     width: 64%;
   }
-  
+
   svg {
     height: 100%;
     width: 100%;
   }
 `;
 
+type SvgIdOptions = keyof typeof IconMap;
+
+type CategoryCardProps = {
+  assetType: 'productImage' | 'svgIcon',
+  browsePath: string,
+  cloudinaryId?: string,
+  documentType?: string,
+  filterName?: string,
+  filterValue?: string,
+  lazy?: boolean,
+  onClick?: () => void,
+  page: 'reviews' | 'recipes',
+  svgId?: SvgIdOptions,
+  tagline: string,
+}
+
 const CategoryCard = ({
   assetType,
   browsePath,
-  cloudinaryId,
-  documentType,
+  cloudinaryId = '',
+  documentType = '',
   filterName,
   filterValue,
-  lazy,
+  lazy = true,
   onClick,
-  page,
-  svgId,
+  page = 'reviews',
+  svgId = 'star',
   tagline,
-}) => {
-  const CategoryIcon = IconMap?.[svgId] || IconMap.reviews;
+}: CategoryCardProps) => {
+  const CategoryIcon = IconMap[svgId] || IconMap.reviews;
   const backgroundClass = cloudinaryId
     ? 'product-img-wrapper'
     : 'svg-wrapper';
@@ -256,42 +272,6 @@ const CategoryCard = ({
       </LinkToBrowse>
     </CarouselContainer>
   );
-};
-
-CategoryCard.propTypes = {
-  assetType: PropTypes.oneOf(['productImage', 'svgIcon']).isRequired,
-  browsePath: PropTypes.string.isRequired,
-  cloudinaryId: PropTypes.string,
-  documentType: PropTypes.string,
-  filterName: PropTypes.string,
-  filterValue: PropTypes.string,
-  lazy: PropTypes.bool,
-  onClick: PropTypes.func,
-  page: PropTypes.oneOf(['reviews', 'recipes']),
-  svgId: PropTypes.oneOf([
-    'cookbook',
-    'latest',
-    'recipeCard',
-    'reviews',
-    'rooster',
-    'shoppingCart',
-    'star',
-    'trendingArrow',
-    'play',
-    '',
-  ]),
-  tagline: PropTypes.string.isRequired,
-};
-
-CategoryCard.defaultProps = {
-  cloudinaryId: '',
-  documentType: null,
-  lazy: true,
-  filterName: null,
-  filterValue: null,
-  onClick: null,
-  page: 'reviews',
-  svgId: 'star',
 };
 
 export default CategoryCard;

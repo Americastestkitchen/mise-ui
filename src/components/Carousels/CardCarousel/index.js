@@ -4,7 +4,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 import Carousel from '../Carousel';
-import CategoryCard from '../../Cards/CategoryCard';
+import CategoryCard from '../../Cards/CategoryCard/CategoryCard';
 import FeatureCard from '../../Cards/FeatureCard/FeatureCard';
 import HeroCard from '../../Cards/HeroCard';
 import LinearGradient from '../../DesignTokens/LinearGradient';

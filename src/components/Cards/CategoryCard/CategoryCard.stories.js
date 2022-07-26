@@ -1,7 +1,7 @@
 import { ThemeProvider } from 'styled-components';
 import React from 'react';
 
-import CategoryCard from './index';
+import CategoryCard from './CategoryCard';
 import { siteKey } from '../../../config/argTypes';
 
 const ThemedCategoryCard = ({
