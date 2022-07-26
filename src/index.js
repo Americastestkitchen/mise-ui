@@ -59,7 +59,7 @@ import PersonCard from './components/Cards/PersonCard';
 import PullQuote from './components/Articles/PullQuote';
 import RefinementListBasic from './components/Algolia/shared/RefinementListBasic';
 import RefinementList from './components/Algolia/shared/RefinementList';
-import RelatedDocumentCard from './components/Cards/RelatedDocumentCard';
+import RelatedDocumentCard from './components/Cards/RelatedDocumentCard/RelatedDocumentCard';
 import ResultsCount from './components/Algolia/shared/ResultsCount';
 import ReviewableSummaryCard from './components/Cards/ReviewableSummaryCard';
 import ReviewsEmailCapture from './components/Ads/ReviewsAds/ReviewsEmailCapture';
