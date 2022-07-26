@@ -7,7 +7,6 @@ import {
   fontSize,
   letterSpacing,
   lineHeight,
-  mixins,
   spacing,
   withThemes,
 } from '../../../styles';
@@ -28,7 +27,9 @@ const StyledButtonTheme = {
     transition: 0.2s all ease, 0s outline-offset linear, 0s outline linear;
     white-space: nowrap;
     &:focus {
-      ${mixins.focusIndicator()}
+      /* Not using mixin and using important for firefox agent css issues */
+      outline: 2px dotted ${color.eclipse} !important;
+      outline-offset: 3px;
       z-index: 1;
     }
 
