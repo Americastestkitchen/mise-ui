@@ -9,14 +9,12 @@ const StyledFavoriteButtonWithBg = styled.button`
     display: none;
   }
 
-  @media (hover: hover) {  
-    &:hover {
-      .is-favorited path {
-        fill: #fff;
-      }
-      .favorite-hover {
-        display: block;
-      }
+  &:hover {
+    .is-favorited path {
+      fill: #fff;
+    }
+    .favorite-hover {
+      display: block;
     }
   }
 
