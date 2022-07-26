@@ -1,3 +1,15 @@
+# v1.33.28 (Tue Jul 26 2022)
+
+#### 🐛 Bug Fix
+
+- core-573 Print Guide on Pull Quote [#823](https://github.com/Americastestkitchen/mise-ui/pull/823) ([@tdorin](https://github.com/tdorin))
+
+#### Authors: 1
+
+- [@tdorin](https://github.com/tdorin)
+
+---
+
 # v1.33.27 (Fri Jul 22 2022)
 
 #### 🐛 Bug Fix
