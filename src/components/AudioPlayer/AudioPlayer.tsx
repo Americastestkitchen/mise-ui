@@ -171,8 +171,8 @@ const AudioPlayer = ({
   imageUrl,
   href,
 }: AudioPlayerPropTypes) => {
-  const playerEl = useRef(null);
-  const playerInstance = useRef(null);
+  const playerEl: any = useRef(null);
+  const playerInstance: any = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
   // update player information when a new episode is selected

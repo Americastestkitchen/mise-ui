@@ -49,7 +49,7 @@ export const Default = () => {
         },
       );
       const episodeData = await response.json().catch((err) => {
-        console.error('REQUEST RESPONSE.JSON PARSING ERROR', url); // eslint-disable-line
+        console.error('REQUEST RESPONSE.JSON PARSING ERROR', url);
         console.error(err); // eslint-disable-line
       });
       setEpisodes(episodeData.episodes.filter(ep => ep.itunes_type !== 'bonus').slice(0, 3).map(({
