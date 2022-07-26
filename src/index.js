@@ -53,7 +53,7 @@ import MarqueeCard from './components/Cards/MarqueeCard';
 import MediaObjectCard from './components/Cards/MediaObjectCard';
 import MembershipShowcaseAd from './components/Ads/ShowcaseAds/MembershipShowcaseAd';
 import PodcastEpisodeCard from './components/Cards/PodcastEpisodeCard';
-import QueueCard from './components/Cards/QueueCard';
+import QueueCard from './components/Cards/QueueCard/QueueCard';
 import PairedProductAd from './components/Ads/PairedProductAd';
 import PersonCard from './components/Cards/PersonCard';
 import PullQuote from './components/Articles/PullQuote';
