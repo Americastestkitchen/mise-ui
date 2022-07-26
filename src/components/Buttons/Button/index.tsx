@@ -25,7 +25,7 @@ const StyledButtonTheme = {
     text-align: center;
     text-align: center;
     text-transform: uppercase;
-    transition: 0.2s all ease;
+    transition: 0.2s all ease, 0s outline-offset linear, 0s outline linear;
     white-space: nowrap;
     &:focus {
       ${mixins.focusIndicator()}
