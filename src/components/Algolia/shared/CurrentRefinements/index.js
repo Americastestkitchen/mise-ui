@@ -120,8 +120,6 @@ const RefinementClearButtonTheme = {
 
     svg {
       height: 0.8rem;
-      vertical-align: top;
-      margin-top: 5px;
     }
   `,
   atk: css`
