@@ -1,5 +1,4 @@
 import breakpoint from 'styled-components-breakpoint';
-import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { css } from 'styled-components';
 
@@ -217,7 +216,7 @@ type CategoryCardProps = {
   filterValue?: string,
   lazy?: boolean,
   onClick?: () => void,
-  page: 'reviews' | 'recipes',
+  page?: 'reviews' | 'recipes',
   svgId?: SvgIdOptions,
   tagline: string,
 }
