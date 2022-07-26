@@ -1,0 +1,50 @@
+@import "../../styles/typography/_fonts.scss";
+
+html {
+  font-size: $baseFontSize;
+}
+
+.heading1 {
+  font: $fHeadingLg;
+}
+
+.heading2 {
+  font: $fHeadingMd;
+}
+
+.heading3 {
+  font: $fHeadingSm;
+}
+
+.bodySmall {
+  font: $fBodySm;
+}
+
+.bodyMedium {
+  font: $fBodyMd;
+}
+
+.fCtaMd {
+  font: $fBodyMd;
+  letter-spacing: $fLSpacing;
+}
+
+.proximaNova {
+  font: $fBodyMd;
+}
+
+.proximaNovaBold {
+  font: 1rem/1.5 $proximaNovaBold;
+}
+
+.clarendonBold {
+  font: 1rem/1.5 $clarendonBold;
+}
+
+.merriweather {
+  font: 1rem/1.5 $merriweather;
+}
+
+.chippewaFalls {
+  font: 1rem/1.5 $chippewaFalls;
+}
