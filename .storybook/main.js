@@ -1,7 +1,11 @@
 module.exports = {
-  stories: ['../src/**/*.stories.@(js|tsx|mdx)'],
-  addons: ['@storybook/preset-create-react-app', '@storybook/addon-actions', '@storybook/addon-docs', '@storybook/addon-links', '@storybook/addon-knobs', '@storybook/addon-viewport/register', '@whitespace/storybook-addon-html', '@storybook/addon-notes/register', '@storybook/addon-essentials', '@storybook/addon-a11y'],
+  stories: ['../src/v2/**/*.stories.@(js|tsx|mdx)'],
+  addons: [
+    'storybook-design-token',
+    '@storybook/preset-scss',
+    '@storybook/addon-docs',
+  ],
   core: {
     builder: 'webpack5'
-  }
+  },
 };
