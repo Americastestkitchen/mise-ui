@@ -1,6 +1,6 @@
-import breakpoint from 'styled-components-breakpoint';
 import React from 'react';
 import styled, { css } from 'styled-components';
+import { sm, untilSmmd, smmd, md, xlg } from '../../../styles/breakpoints';
 import { getImageUrl } from '../../../lib/cloudinary';
 import {
   color,
@@ -20,10 +20,12 @@ import type { ColorName } from '../../../styles/colors';
 const HeroAdWrapperTheme = {
   default: css`
     width: ${grid.columnWidth};
-
-    ${breakpoint('xs', 'md')`
+    ${md(css`
       width: 100%;
-    `}
+    `)};
+    ${xlg(css`
+      width: 100%;
+    `)};
   `,
 };
 
@@ -44,14 +46,15 @@ const HeroAdInnerWrapperTheme = {
     position: relative;
     width: calc(${grid.columnWidth} - 3rem);
 
-    ${breakpoint('xs', 'md')`
+    ${md(css`
       margin-left: 0;
       width: 100%;
-    `}
-
-    ${breakpoint('md')`
       padding: ${spacing.sm};
-    `}
+    `)}
+    ${sm(css`
+      margin-left: 0;
+      width: 100%;
+    `)}
   `,
 };
 
@@ -66,22 +69,31 @@ const HeroAdInnerWrapper = styled.div.attrs({
  */
 const HeroAdContentTheme = {
   default: css`
-    ${breakpoint('xs', 'smmd')`
-      max-width: 20rem;
+  ${sm(css`
+  max-width: 20rem;
       min-width: 18.4rem;
-    `}
-
-    ${breakpoint('xs', 'md')`
       display: flex;
       flex-direction: column;
       justify-content: center;
       height: 26rem;
-    `}
+  `)}
+  ${untilSmmd(css`
+      max-width: 20rem;
+      min-width: 18.4rem;
+  `)}
+  ${smmd(css`
+  max-width: 34rem;
+      width: calc(100% - 24rem);
 
-    ${breakpoint('smmd', 'md')`
+  `)}
+  ${md(css`
+  display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 26rem;
       max-width: 34rem;
       width: calc(100% - 24rem);
-    `}
+  `)};
   `,
 };
 
@@ -98,11 +110,10 @@ const HeroAdTitleTheme = {
   default: css`
     font: 2.6rem / ${lineHeight.sm} ${font.pnb};
     margin-bottom: ${spacing.sm};
-
-    ${breakpoint('md')`
+    ${md(css`
       font-size: ${fontSize.xl};
       text-align: center;
-    `}
+    `)}
   `,
   dark: css`
     color: ${color.white};
@@ -123,10 +134,12 @@ const HeroAdSubtitleTheme = {
     font: ${fontSize.md} / ${lineHeight.sm} ${font.pnb};
     margin-bottom: ${spacing.xsm};
     text-align: center;
-
-    ${breakpoint('xs', 'smmd')`
+    ${sm(css`
       display: none;
-    `}
+    `)}
+    ${smmd(css`
+      display: none;
+    `)}
   `,
   dark: css`
     color: ${color.white};
@@ -150,20 +163,28 @@ const HeroAdImageTheme = {
     max-width: none;
     position: relative;
     transform: translateX(-47%);
-
-    ${breakpoint('xs', 'md')`
+      ${md(css`
       height: auto;
       left: 21rem;
       position: absolute;
       top: 50%;
       transform: translateY(-47%);
       width: 26rem;
-    `}
-
-    ${breakpoint('smmd', 'md')`
       left: auto;
       right: -4rem;
-    `}
+      `)}
+      ${sm(css`
+      height: auto;
+      left: 21rem;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-47%);
+      width: 26rem;
+      `)}
+      ${smmd(css`
+      left: auto;
+      right: -4rem;
+      `)}
   `,
 };
 

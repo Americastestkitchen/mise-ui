@@ -73,7 +73,7 @@ const AdSuccess = styled.div`
     ${md(css`
       margin-right: ${spacing.xsm};
       width: 2.1rem;
-    `)}  
+    `)}
   }
   span {
     font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb};
