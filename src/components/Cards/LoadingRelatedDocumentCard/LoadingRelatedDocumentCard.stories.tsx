@@ -10,7 +10,7 @@ import {
   withThemes,
 } from '../../../styles';
 
-import LoadingRelatedDocumentCard from './index';
+import LoadingRelatedDocumentCard from './LoadingRelatedDocumentCard';
 
 export default {
   title: 'Components/Cards/LoadingCard/RelatedDocumentCard',
