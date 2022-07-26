@@ -1,22 +1,22 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import breakpoint from 'styled-components-breakpoint';
+import { untilLg } from '../../../styles/breakpoints';
 import { color, fontSize, spacing, lineHeight, font, letterSpacing, withThemes } from '../../../styles';
+
 import Badge from '../../Badge/Badge';
 import Image from '../shared/Image';
 import Sticker from '../shared/Sticker';
+import { StickerType } from '../Cards';
 import Title from '../shared/Title';
 import ProgressBar from '../shared/ProgressBar';
 
 const QueueCardTheme = {
-  default: css`
-  `,
+  default: css``,
   dark: css`
     color: ${color.white};
 
     @media(hover: hover) {
-      &:hover {
+      &hover {
         color: ${color.silver};
       }
     }
@@ -45,28 +45,28 @@ const ImageWrapper = styled.div`
 
 export const StyledBadge = styled(Badge)`
   position: absolute;
-  top: ${spacing.xsm};
   left: ${spacing.xsm};
+  top: ${spacing.xsm};
 `;
 
-export const VideoInfo = styled.div`
+const VideoInfo = styled.div`
   align-items: center;
-  display: flex;
-  position: absolute;
   bottom: 0;
+  display: flex;
   justify-content: space-between;
   padding-right: ${spacing.sm};
+  position: absolute;
   width: 100%;
 `;
 
 const stickerHeightMobile = '1.2rem';
 export const StyledSticker = styled(Sticker)`
-  ${breakpoint('xs', 'lg')`
+  ${untilLg(css`
     border-radius: 0.5rem;
     line-height: ${stickerHeightMobile};
     height: ${stickerHeightMobile};
     font-size: ${fontSize.xxsm};
-  `}
+  `)}
 `;
 
 export const StyledTitle = styled(Title)`
@@ -74,87 +74,67 @@ export const StyledTitle = styled(Title)`
   transition: color 0.2s ease;
 `;
 
+export type QueueCardProps = {
+  className?: string;
+  contentType: 'episode' | 'video';
+  href: string;
+  imageAlt?: string;
+  imageUrl: string;
+  onClick: () => void;
+  progress?: number;
+  siteKey: ThemeSiteKey;
+  stickers?: StickerType[];
+  target?: string;
+  title: string;
+  type?: string;
+  videoId: string;
+};
+
 const QueueCard = ({
-  className,
+  className = '',
   contentType,
   href,
-  imageAlt,
+  imageAlt = '',
   imageUrl,
-  onClick,
-  progress,
+  onClick = () => {},
+  progress = 0,
   siteKey,
-  stickers,
-  target,
+  stickers = [],
+  target = '',
   title,
-  type,
+  type = '',
   videoId,
-}) => (
-  <StyledQueueCard
-    id={videoId}
-    data-testid="queue-card"
-  >
+}: QueueCardProps) => (
+  <StyledQueueCard id={videoId} data-testid="queue-card">
     <a
       className="queue-card__anchor"
       href={href}
       onClick={onClick}
-      rel={target && target === '_blank' ? 'noopener noreferrer' : null}
+      rel={target && target === '_blank' ? 'noopener noreferrer' : ''}
       target={target}
     >
       <ImageWrapper>
-        <StyledBadge
-          className={className}
-          type={siteKey}
-        />
-        <Image
-          aria-hidden="true"
-          imageAlt={imageAlt}
-          imageUrl={imageUrl}
-        />
+        <StyledBadge className={className} type={siteKey} />
+        <Image aria-hidden="true" imageAlt={imageAlt} imageUrl={imageUrl} />
         { stickers ? (
           <VideoInfo>
             {stickers.map(({ text, type }) => (
               <StyledSticker
                 className={className}
-                key={text}
                 contentType={contentType}
+                key={text}
                 type={type}
                 text={text}
               />
             ))}
             <ProgressBar progress={progress} />
           </VideoInfo>
-        ) : null }
+        ) : null}
       </ImageWrapper>
-      <h4>Resume {type} </h4>
+      <h4>Resume {type}</h4>
       <StyledTitle className={className} title={title} />
     </a>
   </StyledQueueCard>
 );
-
-QueueCard.propTypes = {
-  className: PropTypes.string,
-  contentType: PropTypes.oneOf(['episode', 'video']).isRequired,
-  href: PropTypes.string.isRequired,
-  imageAlt: PropTypes.string,
-  imageUrl: PropTypes.string.isRequired,
-  onClick: PropTypes.func,
-  progress: PropTypes.number,
-  siteKey: PropTypes.oneOf(['atk', 'cco', 'cio', 'kids', 'school', 'shop']).isRequired,
-  stickers: PropTypes.array,
-  target: PropTypes.string,
-  title: PropTypes.string.isRequired,
-  type: PropTypes.string,
-  videoId: PropTypes.string.isRequired,
-};
-
-QueueCard.defaultProps = {
-  className: null,
-  imageAlt: '',
-  onClick: null,
-  progress: 0,
-  stickers: [],
-  target: null,
-  type: null,
-};
 
 export default QueueCard;
