@@ -1,24 +1,20 @@
-import PropTypes from 'prop-types';
 import React from 'react';
-import styled, { css, ThemeProvider } from 'styled-components';
+import styled, { css, Interpolation, ThemeProvider } from 'styled-components';
 
-import {
-  color,
-  font,
-  fontSize,
-  lineHeight,
-  spacing,
-  withThemes,
-} from '../../../../styles';
+import { color, font, fontSize, lineHeight, spacing, withThemes } from '../../../../styles';
+import { md, lg, xlg } from '../../../../styles/breakpoints';
+import { cssThemedColor } from '../../../../styles/mixins';
 
 import Checkmark from '../../../DesignTokens/Icon/svgs/Checkmark2';
 import EmailForm from '../../../Forms/EmailForm';
-import { cssThemedColor } from '../../../../styles/mixins';
-import { lg, md, xlg } from '../../../../styles/breakpoints';
 
-const variantTheme = variant => theme => (variant ? ({ ...theme, [variant]: true }) : theme);
+const variantTheme = (variant: string) => (theme: Record<string, unknown>) => (
+  variant ? ({ ...theme, [variant]: true }) : theme
+);
 
-const kidsVariant = interp => css`${({ theme }) => theme.kidsVariant && interp}`;
+const kidsVariant = (interp: Interpolation<Record<string, unknown>>) => (
+  css`${({ theme }) => theme.kidsVariant && interp}`
+);
 
 const cssThemedBackground = withThemes({
   atk: css`background-color: ${color.frost};`,
@@ -27,15 +23,9 @@ const cssThemedBackground = withThemes({
 });
 
 const cssThemedBorder = withThemes({
-  atk: css`
-    border: solid 1px #D8D8D8;
-  `,
-  cco: css`
-    border: solid 1px ${color.silver};
-  `,
-  cio: css`
-    border: solid 1px #d3c5a0;
-  `,
+  atk: css`border: solid 1px ${color.alto};`,
+  cco: css`border: solid 1px ${color.silver};`,
+  cio: css`border: solid 1px ${color.akaroa};`,
 });
 
 const AdDescription = styled.p`
@@ -78,7 +68,7 @@ const AdSuccess = styled.div`
   span {
     font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb};
   }
-  .success-svg-wrapper{
+  .success-svg-wrapper {
     max-width: 10%;
   }
 `;
@@ -87,7 +77,6 @@ const AdTitle = styled.h2`
   font: ${fontSize.xl}/2.6rem ${font.pnb};
   letter-spacing: normal;
   margin-bottom: 1rem;
-  ${cssThemedColor}
   ${kidsVariant(css`
     font: ${fontSize.xl}/2.6rem ${font.gdn} !important;
   `)}
@@ -100,9 +89,10 @@ const AdTitle = styled.h2`
   ${xlg(css`
     max-width: none;
   `)}
+  ${cssThemedColor}
 `;
 
-const AdWrapper = styled.div`
+const AdWrapper = styled.div<{ isWide: boolean }>`
   display: flex;
   flex-direction: column;
   margin: 3.6rem -${spacing.sm} 0;
@@ -142,6 +132,7 @@ const AdWrapper = styled.div`
 
       ${kidsVariant(css`
         background-color: ${color.frog} !important;
+
         &:hover {
           background-color: ${color.darkFrog} !important;
         }
@@ -195,46 +186,47 @@ const AdWrapper = styled.div`
     padding: 2.5rem 3.65rem 3.45rem 3rem;
     width: 100%;
 
-    .email-form-wrapper {
-      ${({ isWide }) => (isWide ? `
-        max-width: 41.6rem;
-        width: calc(60% - 4.5rem);
-      ` : '')}
-    }
-
     .email-form {
       margin-top: 1.5rem;
       min-width: 27rem;
     }
-
   `)}
+
+  ${({ isWide }) => (isWide
+    ? lg(css`
+      .email-form-wrapper {
+        max-width: 41.6rem;
+        width: calc(60% - 4.5rem);
+      }
+  `) : '')}
 
   ${xlg(css`
     margin: 4.4rem 0 0;
     padding: 3.4rem 5.3rem;
     width: 84.8rem;
-    ${({ isWide }) => (isWide ? `
-      max-width: 100%;
-      width: 100%;
-    ` : '')}
-
-    .email-form-wrapper {
-      ${({ isWide }) => (isWide ? `
-        height: 4rem;
-        max-width: 57.8rem;
-        width: 57.8rem;
-      ` : '')}
-    }
-
-    .form-input {
-      ${({ isWide }) => (isWide && 'width: 36rem;')}
-    }
 
     .email-form {
       margin-top: 0;
       min-width: 34rem;
+    }
+  `)};
 
-      ${({ isWide }) => (isWide ? `
+  ${({ isWide }) => (isWide
+    ? xlg(css`
+      max-width: 100%;
+      width: 100%;
+    
+      .email-form-wrapper {
+        height: 4rem;
+        max-width: 57.8rem;
+        width: 57.8rem;
+      }
+    
+      .form-input {
+        width: 36rem;
+      }
+    
+      .email-form {
         flex-direction: row;
         height: 100%;
         justify-content: flex-start;
@@ -247,78 +239,107 @@ const AdWrapper = styled.div`
           margin-top: 0;
           max-width: 21.8rem;
         }
-      ` : '')}
-    }
-  `)}
+      }
+  `) : '')};
 
   ${cssThemedBackground}
 `;
 
-const MainContent = styled.div`
+const MainContent = styled.div<{isWide: boolean}>`
   width: 100%;
 
   ${md(css`
     margin-right: 1.65rem;
     max-width: 34rem;
   `)}
-  ${lg(css`
-    margin-right: 0;
 
-    ${({ isWide }) => (isWide ? `
+  ${({ isWide }) => (isWide
+    ? lg(css`
       max-width: calc(40% - 4.5rem);
       width: calc(40% - 4.5rem);
+
       p {
         margin-bottom: 0;
       }
-    ` : '')}
-  `)}
-  ${xlg(css`
-    margin-right: 1.65rem;
+    `) : '')}
 
-    ${({ isWide }) => (isWide ? `
+  ${lg(css`
+    margin-right: 0;
+  `)}
+
+  ${({ isWide }) => (isWide
+    ? xlg(css`
       margin-right: 0;
       max-width: calc(45% - 3rem);
       width: calc(45% - 3rem);
-    ` : '')}
+    `) : null)}
+
+  ${xlg(css`
+    margin-right: 1.65rem;
   `)}
 `;
 
-const ContentWrapper = styled.div`
+const ContentWrapper = styled.div<{isWide: boolean, success: boolean}>`
   display: flex;
   flex-direction: column;
   width: 100%;
 
-  ${md(css`
-    ${({ success }) => (success ? css`
-      flex-direction: column; align-items: flex-start;
+  ${({ success }) => (success
+    ? css`
+      align-items: flex-start;
+      flex-direction: column;
     ` : css`
-      align-items: center; flex-direction: row; justify-content: space-between;
-    `)}
-  `)}
+      align-items: center;
+      flex-direction: row;
+      justify-content: space-between;
+    `
+  )}
 
-  ${xlg(css`
-    ${({ isWide }) => (isWide ? 'margin: 0 auto; max-width: 113.6rem;' : '')}
-  `)}
+  ${({ isWide }) => (isWide
+    ? css`
+      margin: 0 auto;
+      max-width: 113.6rem;
+    ` : ''
+  )}
 `;
 
+export type ReviewsEmailCaptureProps = {
+  buttonTextColor?: string;
+  buttonText?: string;
+  description: string;
+  errorText?: string;
+  isWide?: boolean;
+  inputLabel?: string;
+  inputId: string;
+  onSubmit: () => void;
+  placeholder?: string;
+  success?: boolean;
+  successText: string;
+  title: string;
+  variant?: string;
+};
+
 const ReviewsEmailCapture = ({
-  isWide,
-  variant,
+  buttonTextColor = 'white',
+  buttonText = 'Sign me up',
   description,
+  errorText = 'Invalid email address',
+  isWide = false,
+  inputLabel = 'Email address',
+  inputId,
   onSubmit,
-  success,
-  successText,
+  placeholder = 'Enter your email address',
+  success = false,
+  successText = 'Thank you! Get ready for Well-Equipped Cook in your inbox on Wednesdays!',
   title,
-  ...emailFormProps
-}) => (
+  variant = '',
+}: ReviewsEmailCaptureProps) => (
   <ThemeProvider theme={variantTheme(variant)}>
-    <AdWrapper success={success} isWide={isWide}>
+    <AdWrapper isWide={isWide}>
       <ContentWrapper success={success} isWide={isWide}>
         <MainContent isWide={isWide}>
-          <AdTitle dangerouslySetInnerHTML={{ __html: title }} />
-          {!success && (
-          <AdDescription>{description}</AdDescription>
-          )}
+          <AdTitle dangerouslySetInnerHTML={{ __html: title }}/>
+          {!success && <AdDescription>{description}</AdDescription>}
         </MainContent>
         {success
           ? (
@@ -328,42 +349,22 @@ const ReviewsEmailCapture = ({
               </div>
               <span>{successText}</span>
             </AdSuccess>
-          )
-          : (
+          ) : (
             <EmailForm
-              {...emailFormProps}
+              buttonTextColor={buttonTextColor}
+              buttonText={buttonText}
+              errorText={errorText}
+              howWeUseText="How we use your email"
+              inputId={inputId}
+              inputLabel={inputLabel}
               optionalIcon="‣"
               onSubmit={onSubmit}
-              howWeUseText="How we use your email"
+              placeholder={placeholder}
             />
           )}
       </ContentWrapper>
     </AdWrapper>
   </ThemeProvider>
 );
-
-ReviewsEmailCapture.propTypes = {
-  variant: PropTypes.string,
-  buttonTextColor: PropTypes.string,
-  buttonText: PropTypes.string,
-  description: PropTypes.string.isRequired,
-  errorText: PropTypes.string,
-  isWide: PropTypes.bool,
-  inputLabel: PropTypes.string,
-  inputId: PropTypes.string.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  placeholder: PropTypes.string,
-  success: PropTypes.bool,
-  successText: PropTypes.string,
-  title: PropTypes.string.isRequired,
-};
-
-ReviewsEmailCapture.defaultProps = {
-  isWide: false,
-  variant: null,
-  success: false,
-  successText: 'Thank you! Get ready for Well-Equipped Cook in your inbox on Wednesdays!',
-  ...EmailForm.defaultProps,
-};
 
 export default ReviewsEmailCapture;
