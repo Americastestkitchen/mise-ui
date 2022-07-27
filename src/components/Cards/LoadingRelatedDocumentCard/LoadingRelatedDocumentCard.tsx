@@ -102,7 +102,6 @@ const LoadingRelatedDocumentCard = ({
           type={siteKey}
         />
         <Image
-          // aspectRatio={imageAspectRatio || ''}
           imageAlt="loading-related-img"
           imageUrl={getImageUrl(
             'ATK-S20_20190523_09-46-54_41671_ojahbg',
