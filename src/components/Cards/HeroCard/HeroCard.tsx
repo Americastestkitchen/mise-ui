@@ -86,7 +86,7 @@ const HeroCardTitle = styled.div`
   margin-bottom: ${spacing.xxsm};
 `;
 
-const HeroCardDescription = styled.div<{ cardType: string }>`
+const HeroCardDescription = styled.div<{ cardType: 'learn' | 'watch' }>`
   color: ${color.white};
   margin-bottom: ${spacing.xsm};
 
@@ -154,23 +154,15 @@ const HeroCardCtaText = styled.span`
 `;
 
 type HeroCardProps = {
-  /** Image rendered as background for card. */
   backgroundCloudinaryId: string,
   ctaUrl?: string,
-  /** text for card CTA */
   ctaText: string,
-  /** Description text above CTA */
   description: string,
-  /** Optional: Key value that maps to a show logo. */
   iconKey?: string,
-  /** Optional: Image data that is used to render a PersonHeadShot. */
   personHeadShot: PersonHeadshotPropTypes,
-  /** Optional: Data used to render a sticker. */
   sticker: PropTypes.InferProps<typeof Sticker.propTypes>,
-  /** Title text above description */
   title?: string,
   onClick?: () => void,
-
 }
 
 const HeroCard = ({
