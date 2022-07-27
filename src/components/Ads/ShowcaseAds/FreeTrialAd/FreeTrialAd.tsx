@@ -1,9 +1,8 @@
-import breakpoint from 'styled-components-breakpoint';
-import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { css } from 'styled-components';
-
+import { md, lg, xlg } from '../../../../styles/breakpoints';
 import { getImageUrl } from '../../../../lib/cloudinary';
+
 import {
   color,
   font,
@@ -17,17 +16,15 @@ import {
 const FreeTrialWrapperTheme = {
   default: css`
     background-color: ${color.smokeyQuartz};
-
-    ${breakpoint('md')`
+    ${md(css`
       align-items: center;
       display: flex;
       justify-content: space-between;
-    `}
-
-    ${breakpoint('xlg')`
+    `)}
+    ${xlg(css`
       margin: 0 auto;
       max-width: 113.6rem;
-    `}
+    `)}
   `,
 };
 
@@ -45,16 +42,16 @@ const FreeTrialPictureTheme = {
       width: 100%;
     }
 
-    ${breakpoint('md')`
+    ${md(css`
       flex: 0 0 50%;
       width: 50%;
-    `}
+    `)}
 
-    ${breakpoint('lg')`
+    ${lg(css`
       flex: 0 0 56rem;
       max-width: 56rem;
       width: 56rem;
-    `}
+    `)}
   `,
 };
 
@@ -66,11 +63,11 @@ const FreeTrialContentTheme = {
   default: css`
     padding: ${spacing.sm} 2rem;
 
-    ${breakpoint('md')`
+    ${md(css`
       padding: ${spacing.sm};
       flex: 1 0 50%;
       width: 50%;
-    `}
+    `)}
   `,
   dark: css`
     color: ${color.white};
@@ -82,10 +79,10 @@ const FreeTrialContent = styled.div.attrs({
 })`${withThemes(FreeTrialContentTheme)}`;
 
 const FreeTrialContentInner = styled.div`
-  ${breakpoint('lg')`
+  ${lg(css`
     margin: 0 auto;
     width: 34.4rem;
-  `}
+  `)}
 `;
 
 const FreeTrialTitleTheme = {
@@ -135,6 +132,15 @@ const FreeTrialCta = styled.a.attrs({
   className: 'free-trial-ad__cta',
 })`${withThemes(FreeTrialCtaTheme)}`;
 
+interface FreeTrialAd {
+  cloudinaryId: string;
+  cta: string;
+  ctaHref: string;
+  onClick: () => void;
+  title: string;
+  subtitle: string;
+}
+
 const FreeTrialAd = ({
   cloudinaryId,
   cta,
@@ -142,7 +148,7 @@ const FreeTrialAd = ({
   onClick,
   subtitle,
   title,
-}) => (
+}:FreeTrialAd) => (
   <FreeTrialWrapper>
     <FreeTrialPicture>
       <source
@@ -189,18 +195,5 @@ const FreeTrialAd = ({
     </FreeTrialContent>
   </FreeTrialWrapper>
 );
-
-FreeTrialAd.propTypes = {
-  cloudinaryId: PropTypes.string.isRequired,
-  cta: PropTypes.string.isRequired,
-  ctaHref: PropTypes.string.isRequired,
-  onClick: PropTypes.func,
-  title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string.isRequired,
-};
-
-FreeTrialAd.defaultProps = {
-  onClick: null,
-};
 
 export default FreeTrialAd;
