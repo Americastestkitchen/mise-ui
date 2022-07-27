@@ -1,6 +1,5 @@
 import React from 'react';
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
-import { withKnobs } from '@storybook/addon-knobs';
 import { siteKey } from '../../../../config/argTypes';
 import { addThemedWrapper } from '../../../../config/decorators';
 import CookingSchoolAd from './CookingSchoolAd';
@@ -8,7 +7,6 @@ import CookingSchoolAd from './CookingSchoolAd';
 export default {
   title: 'Components/Ads/ReviewsAds/CookingSchoolAd',
   component: CookingSchoolAd,
-  decorators: [withKnobs],
   argTypes: { siteKey },
 } as ComponentMeta<typeof CookingSchoolAd>;
 
