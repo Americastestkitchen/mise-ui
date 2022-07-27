@@ -1,18 +1,29 @@
-// import breakpoint from 'styled-components-breakpoint';
-import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 
+import { color, font, fontSize, spacing } from '../../../../styles';
+import { getImageUrl } from '../../../../lib/cloudinary';
 import Image from '../../../Cards/shared/Image';
 
-import {
-  color,
-  font,
-  fontSize,
-  spacing,
-} from '../../../../styles';
+const AdWrapper = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-height: 40rem;
+  max-width: 27.2rem;
+  min-height: 40rem;
+  overflow: hidden;
 
-import { getImageUrl } from '../../../../lib/cloudinary';
+  @media print {
+    display: none;
+  }
+
+  img {
+    max-height: 40rem;
+    max-width: 27.2rem;
+  }
+`;
 
 const AdCtaLink = styled.a`
   align-items: center;
@@ -46,33 +57,21 @@ const AdTitle = styled.p`
   text-align: center;
 `;
 
-const AdWrapper = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  max-height: 40rem;
-  max-width: 27.2rem;
-  min-height: 40rem;
-  overflow: hidden;
-
-  @media print {
-    display: none;
-  }
-
-  img {
-    max-height: 40rem;
-    max-width: 27.2rem;
-  }
-`;
+export type BookCarouselAdProps = {
+  cloudinaryId: string;
+  ctaLinkText: string;
+  hrefUrl: string;
+  sourceKey: string;
+  title: string;
+};
 
 const BookCarouselAd = ({
-  cloudinaryId,
-  ctaLinkText,
-  hrefUrl,
+  cloudinaryId = 'ATKTV22Book_Mise_ReviewsBookCarouselAd_816x1200.jpg',
+  ctaLinkText = 'Save 56% Now',
+  hrefUrl = 'https://shop.americastestkitchen.com/complete-atk-22.html',
   sourceKey,
-  title,
-}) => (
+  title = 'Get 1,727 recipes from all 22 seasons!',
+}: BookCarouselAdProps) => (
   <AdWrapper>
     <AdTitle>{title}</AdTitle>
     <Image
@@ -83,20 +82,5 @@ const BookCarouselAd = ({
     <AdCtaLink href={`${hrefUrl}?sourcekey=${sourceKey}`} target="_blank">{ctaLinkText}</AdCtaLink>
   </AdWrapper>
 );
-
-BookCarouselAd.propTypes = {
-  cloudinaryId: PropTypes.string,
-  ctaLinkText: PropTypes.string,
-  hrefUrl: PropTypes.string,
-  sourceKey: PropTypes.string.isRequired,
-  title: PropTypes.string,
-};
-
-BookCarouselAd.defaultProps = {
-  cloudinaryId: 'ATKTV22Book_Mise_ReviewsBookCarouselAd_816x1200.jpg',
-  ctaLinkText: 'Save 56% Now',
-  hrefUrl: 'https://shop.americastestkitchen.com/complete-atk-22.html',
-  title: 'Get 1,727 recipes from all 22 seasons!',
-};
 
 export default BookCarouselAd;

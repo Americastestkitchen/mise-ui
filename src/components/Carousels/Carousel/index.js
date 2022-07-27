@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components';
 
 import { color, spacing, withThemes } from '../../../styles';
 
-import BookCarouselAd from '../../Ads/ReviewsAds/BookCarouselAd';
+import BookCarouselAd from '../../Ads/ReviewsAds/BookCarouselAd/BookCarouselAd';
 
 const generatePositionStyles = (positions, breakpoint) => {
   const breakpointPositions = positions[breakpoint];

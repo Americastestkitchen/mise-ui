@@ -2,7 +2,7 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { render, screen } from '@testing-library/react';
 
-import BookCarouselAd from '../index';
+import BookCarouselAd from '../BookCarouselAd';
 import breakpoints from '../../../../../styles/breakpoints';
 
 describe('BookCarouselAd', () => {
