@@ -3,7 +3,7 @@ import React from 'react';
 import styled, { css, ThemeProvider } from 'styled-components';
 import { withKnobs, select , text } from '@storybook/addon-knobs';
 
-import HeroAd from './index';
+import HeroAd from './HeroAd';
 import { breakpoints, color, spacing, withThemes } from '../../../styles';
 
 export default {

@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import 'jest-styled-components';
 
-import HeroAd from '../index';
+import HeroAd from '../HeroAd';
 import breakpoints from '../../../../styles/breakpoints';
 import { color } from '../../../../styles';
 

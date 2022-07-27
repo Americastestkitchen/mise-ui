@@ -71,7 +71,8 @@ const color = {
   buttermilk: '#fff3b3',
   arrowTown: '#92856e',
   wedgewood: '#48648C',
-  tabasco: '#A72E13', // 167, 46, 19
+  tabasco: '#A72E13', // 167, 46, 19\
+  transparent: 'rgba(0,0,0,0)',
   transparentWhite: 'rgba(255, 255, 255, 0.5)',
   transparentBlack: 'rgba(0, 0, 0, 0.7)',
   transparentGunmetal: 'rgba(38, 38, 38, 0.5)',
@@ -113,3 +114,5 @@ const color = {
 } as const;
 
 export default color;
+export type ColorMap = typeof color;
+export type ColorName = keyof ColorMap;
