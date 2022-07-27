@@ -2,7 +2,7 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { render, screen } from '@testing-library/react';
 
-import FreeTrialAd from '../index';
+import FreeTrialAd from '../FreeTrialAd';
 import breakpoints from '../../../../../styles/breakpoints';
 
 describe('FreeTrialAd', () => {
