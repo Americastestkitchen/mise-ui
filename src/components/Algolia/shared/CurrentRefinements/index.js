@@ -8,6 +8,7 @@ import { color, font, fontSize, lineHeight, spacing, withThemes } from '../../..
 
 const RefinementTheme = {
   default: css`
+    align-self: start;
     display: flex;
     float: left;
     margin-bottom: ${spacing.xsm};
@@ -117,9 +118,12 @@ const RefinementClearButtonTheme = {
   default: css`
     font: ${fontSize.md}/${lineHeight.sm} ${font.pnr};
     width: 0.8rem;
+    align-self: start;
 
     svg {
       height: 0.8rem;
+      vertical-align: top;
+      margin-top: 5px;
     }
   `,
   atk: css`
