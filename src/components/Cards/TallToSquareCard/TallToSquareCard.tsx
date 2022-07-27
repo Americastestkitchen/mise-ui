@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import breakpoint from 'styled-components-breakpoint';
+import styled, { css } from 'styled-components';
+import { md, lg } from '../../../styles/breakpoints';
 
 import Sticker from '../shared/Sticker';
+
 import { color, font, fontSize } from '../../../styles';
 import { getImageUrl } from '../../../lib/cloudinary';
 
-const baseClassName = 'tall-to-square-card';
+const baseClass = 'tall-to-square-card';
+
+type bgImgIds = {
+  square: string;
+  tall: string;
+};
+
 const TallToSquareCardWrapper = styled.div.attrs({
-  className: baseClassName,
-})`
-  background-color: ${color.frost};
-  ${({ backgroundImageIds }) => (backgroundImageIds ? `background-image: url(${getImageUrl(backgroundImageIds.square, { width: 220 })});` : '')}
+  className: baseClass,
+})<{ backgroundImageIds: bgImgIds }>`
   background-size: cover;
   background-position: center;
   display: flex;
@@ -24,7 +28,7 @@ const TallToSquareCardWrapper = styled.div.attrs({
   width: 30rem;
   z-index: 1;
 
-  .${baseClassName}__sticker {
+  .${baseClass}__sticker {
     background-color: ${color.black};
     margin: 0;
     position: absolute;
@@ -32,21 +36,22 @@ const TallToSquareCardWrapper = styled.div.attrs({
     top: -0.9rem;
   }
 
-  ${breakpoint('md')`
-    ${({ backgroundImageIds }) => (backgroundImageIds ? `background-image: url(${getImageUrl(backgroundImageIds.tall, { width: 220 })});` : '')}
+  ${({ backgroundImageIds }) => (backgroundImageIds ? md(css`background-image: url(${getImageUrl(backgroundImageIds.tall, { width: 220 })});`) : '')}
+
+  ${md(css`
     height: 59.6rem;
     max-width: 27.2rem;
     width: 27.2rem;
-  `}
+  `)}
 
-  ${breakpoint('lg')`
+  ${lg(css`
     &:hover {
       background-position: 0 -1rem;
     }
-  `}
+  `)}
 `;
 
-const TallToSquareCardGradient = styled.div`
+const TallToSquareCardGradient = styled.div<{ gradientColor: string }>`
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), ${({ gradientColor }) => gradientColor});
   bottom: 0;
   height: 15.6rem;
@@ -57,7 +62,7 @@ const TallToSquareCardGradient = styled.div`
 `;
 
 const TallToSquareCardContent = styled.div.attrs({
-  className: `${baseClassName}__content`,
+  className: `${baseClass}__content`,
 })`
   display: flex;
   flex-direction: column;
@@ -67,28 +72,29 @@ const TallToSquareCardContent = styled.div.attrs({
   width: 100%;
   z-index: 1;
 
-  ${breakpoint('md')`
+  ${md(css`
     align-items: center;
-  `}
+  `)}
 `;
 
 const TallToSquareCardTitle = styled.h2.attrs({
-  className: `${baseClassName}__title`,
-})`
+  className: `${baseClass}__title`,
+})<{ textShadowColor: string }>`
   color: ${color.white};
   font: 2.4rem/1 ${font.pnb};
   text-align: center;
+
   ${({ textShadowColor }) => (textShadowColor ? `text-shadow: -1px 1px 0 ${textShadowColor};` : '')}
 
-  ${breakpoint('md')`
+  ${md(css`
     font-size: 3rem;
     max-width: 18rem;
-  `}
+  `)}
 `;
 
 const TallToSquareCardDescription = styled.p.attrs({
-  className: `${baseClassName}__description`,
-})`
+  className: `${baseClass}__description`,
+})<{ highlightColor: string }>`
   color: ${color.white};
   font: ${fontSize.md}/1.31 ${font.pnb};
   text-align: center;
@@ -98,18 +104,30 @@ const TallToSquareCardDescription = styled.p.attrs({
   }
 `;
 
+export type TallToSquareCardProps = {
+  backgroundImageIds: bgImgIds;
+  description: string;
+  gradientColor: string;
+  highlightColor: string;
+  href: string;
+  newTab?: boolean;
+  stickerText?: string;
+  textShadowColor?: string;
+  title: string;
+}
+
 const TallToSquareCard = ({
   backgroundImageIds,
   description,
   gradientColor,
   highlightColor,
   href,
-  newTab,
-  stickerText,
-  textShadowColor,
+  newTab = false,
+  stickerText = '',
+  textShadowColor = '',
   title,
-}) => {
-  const [bgImages, setBgImages] = useState(null);
+}: TallToSquareCardProps) => {
+  const [bgImages, setBgImages] = useState<bgImgIds>({ square: '', tall: '' });
   const anchorProps = newTab ? { rel: 'noopener noreferrer', target: '_blank' } : {};
 
   useEffect(() => {
@@ -118,17 +136,15 @@ const TallToSquareCard = ({
 
   return (
     <TallToSquareCardWrapper backgroundImageIds={bgImages}>
-      {
-        stickerText && (
-          <Sticker
-            className={`${baseClassName}__sticker`}
-            text={stickerText}
-            type="editorial"
-          />
-        )
-      }
+      {stickerText && (
+        <Sticker
+          className={`${baseClass}__sticker`}
+          text={stickerText}
+          type="editorial"
+        />
+      )}
       <a
-        className={`${baseClassName}__link`}
+        className={`${baseClass}__link`}
         href={href}
         {...anchorProps}
       >
@@ -145,27 +161,6 @@ const TallToSquareCard = ({
       </a>
     </TallToSquareCardWrapper>
   );
-};
-
-TallToSquareCard.propTypes = {
-  backgroundImageIds: PropTypes.shape({
-    square: PropTypes.string,
-    tall: PropTypes.string,
-  }).isRequired,
-  description: PropTypes.string.isRequired,
-  gradientColor: PropTypes.string.isRequired,
-  highlightColor: PropTypes.string.isRequired,
-  href: PropTypes.string.isRequired,
-  newTab: PropTypes.bool,
-  stickerText: PropTypes.string,
-  textShadowColor: PropTypes.string,
-  title: PropTypes.string.isRequired,
-};
-
-TallToSquareCard.defaultProps = {
-  newTab: false,
-  stickerText: null,
-  textShadowColor: null,
 };
 
 export default TallToSquareCard;

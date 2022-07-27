@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import 'jest-styled-components';
 
-import TallToSquareCard from '../index';
+import TallToSquareCard from '../TallToSquareCard';
 import breakpoints from '../../../../styles/breakpoints';
 
 describe('TallToSquareCard component should', () => {
