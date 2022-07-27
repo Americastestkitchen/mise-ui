@@ -161,7 +161,7 @@ const RefinementFilterCheckbox = styled.input`
 
 const RefinementFilterCountTheme = {
   default: css`
-    color: ${color.nobel};
+    color: ${color.eclipse};
   `,
   dark: css`
     color: ${color.white};
