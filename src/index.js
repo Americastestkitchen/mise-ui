@@ -23,7 +23,7 @@ import CardCarousel from './components/Carousels/CardCarousel';
 import CardWrapper from './components/Cards/CardWrapper/CardWrapper';
 import CategoryCard from './components/Cards/CategoryCard/CategoryCard';
 import ClearRefinements from './components/Algolia/shared/ClearRefinements';
-import CookingSchoolAd from './components/Ads/ReviewsAds/CookingSchoolAd';
+import CookingSchoolAd from './components/Ads/ReviewsAds/CookingSchoolAd/CookingSchoolAd';
 import CurrentRefinements from './components/Algolia/shared/CurrentRefinements';
 import DocumentListCarousel from './components/Carousels/DocumentListCarousel';
 import DocumentSuggestionCarousel from './components/Carousels/DocumentSuggestionCarousel';

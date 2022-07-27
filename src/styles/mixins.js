@@ -326,6 +326,18 @@ export const cssThemedBackground = withThemes({
   cio: css`background: ${color.cork};`,
 });
 
+export const cssThemedAdBtnBackgroundColor = withThemes({
+  atk: css`background: ${color.coldPool};`,
+  cco: css`background: ${color.denim};`,
+  cio: css`background: ${color.squirrel};`,
+});
+
+export const cssThemedAdBtnBackgroundHover = withThemes({
+  atk: css`background: ${color.darkColdPool};`,
+  cco: css`background: ${color.arapawa};`,
+  cio: css`background: ${color.cork};`,
+});
+
 export const cssThemedBackgroundAccentColorAlt = withThemes({
   default: css`background: ${color.darkTeal};`,
   atk: css`background: ${color.darkTeal};`,
@@ -434,5 +446,13 @@ export const cssArticleBoxStyles = css`
         position: absolute;
       }
     }
+  }
+`;
+
+export const cssThemedAdBtnBackground = css`
+  ${cssThemedAdBtnBackgroundColor}
+
+  &:hover {
+    ${cssThemedAdBtnBackgroundHover};
   }
 `;
