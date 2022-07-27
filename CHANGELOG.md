@@ -1,3 +1,20 @@
+# v1.33.29 (Wed Jul 27 2022)
+
+#### 🐛 Bug Fix
+
+- WEB-30: remove focus-within for standard card [#838](https://github.com/Americastestkitchen/mise-ui/pull/838) ([@harry-atk](https://github.com/harry-atk))
+- WEB-27: Current Refinements close icon alignment [#837](https://github.com/Americastestkitchen/mise-ui/pull/837) ([@harry-atk](https://github.com/harry-atk))
+- WEB-25: Lead Marquee line height 26px [#836](https://github.com/Americastestkitchen/mise-ui/pull/836) ([@harry-atk](https://github.com/harry-atk))
+- WEB-38: Refinement count color from nobel to eclipse [#835](https://github.com/Americastestkitchen/mise-ui/pull/835) ([@harry-atk](https://github.com/harry-atk))
+- WEB-34: Hover media on favorite ribbon [#834](https://github.com/Americastestkitchen/mise-ui/pull/834) ([@harry-atk](https://github.com/harry-atk))
+- WEB-31: outline-offset no transition for safari [#829](https://github.com/Americastestkitchen/mise-ui/pull/829) ([@harry-atk](https://github.com/harry-atk))
+
+#### Authors: 1
+
+- Harry Scheuerle ([@harry-atk](https://github.com/harry-atk))
+
+---
+
 # v1.33.28 (Tue Jul 26 2022)
 
 #### 🐛 Bug Fix
