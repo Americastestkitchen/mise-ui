@@ -4,6 +4,11 @@ import cloudinaryInstance, { baseImageConfig } from '../../../lib/cloudinary';
 import useMedia from '../../hooks/useMedia';
 import DisplayContent, { DisplayContentProps } from './DisplayContent';
 
+type AltTextProps = {
+  altTextLeft?: string;
+  altTextRight?: string;
+}
+
 export type AdAdminImages = {
   mobile: string;
   tabletLeft: string;
@@ -14,10 +19,9 @@ export type AdAdminImages = {
   desktopRight: string;
 }
 
-export type DisplayAdSplitProps = Omit<DisplayContentProps, 'displayImageComponent'> & {
-  /** background images */
-  backgroundImages?: AdAdminImages;
-};
+export type AdAdminImagesProps = AltTextProps & { backgroundImages: AdAdminImages };
+
+export type DisplayAdSplitProps = Omit<DisplayContentProps, 'displayImageComponent'> & AdAdminImagesProps;
 
 const EdgeAnchoredLeft = styled.img`
   position: absolute;
@@ -57,9 +61,9 @@ const exampleImages: AdAdminImages = {
   mobile: '2022 Review Landing/Belt-placeholder-AKO-Mobile-372x192_2x.png',
 };
 
-const shared = { alt: '', crossOrigin: 'anonymous', decoding: 'async' } as const;
+const shared = { crossOrigin: 'anonymous', decoding: 'async' } as const;
 
-function DisplayBeltImage({ backgroundImages } : {backgroundImages: AdAdminImages}) {
+function DisplayBeltImage({ backgroundImages, altTextLeft, altTextRight } : AdAdminImagesProps) {
   const isMobile = useMedia('(max-width: 767px)');
   const isTablet = useMedia('(min-width: 768px)');
   const isLargeTablet = useMedia('(min-width: 1024px)');
@@ -77,6 +81,7 @@ function DisplayBeltImage({ backgroundImages } : {backgroundImages: AdAdminImage
             crop: 'fit',
           })}
           {...shared}
+          alt={altTextLeft}
         />
         <OffsetMiddleRight
           src={cloudinaryInstance.url(backgroundImages?.desktopRight, {
@@ -87,6 +92,7 @@ function DisplayBeltImage({ backgroundImages } : {backgroundImages: AdAdminImage
             crop: 'fit',
           })}
           {...shared}
+          alt={altTextRight}
         />
       </>
     );
@@ -103,6 +109,7 @@ function DisplayBeltImage({ backgroundImages } : {backgroundImages: AdAdminImage
             gravity: 'west',
           })}
           {...shared}
+          alt={altTextLeft}
         />
         <EdgeAnchoredRight
           src={cloudinaryInstance.url(backgroundImages?.landscapeTabletRight, {
@@ -112,6 +119,7 @@ function DisplayBeltImage({ backgroundImages } : {backgroundImages: AdAdminImage
             gravity: 'east',
           })}
           {...shared}
+          alt={altTextRight}
         />
       </>
     );
@@ -128,6 +136,7 @@ function DisplayBeltImage({ backgroundImages } : {backgroundImages: AdAdminImage
             gravity: 'west',
           })}
           {...shared}
+          alt={altTextLeft}
         />
         <EdgeAnchoredRight
           src={cloudinaryInstance.url(backgroundImages?.tabletRight, {
@@ -137,6 +146,7 @@ function DisplayBeltImage({ backgroundImages } : {backgroundImages: AdAdminImage
             gravity: 'east',
           })}
           {...shared}
+          alt={altTextRight}
         />
       </>
     );
@@ -151,6 +161,7 @@ function DisplayBeltImage({ backgroundImages } : {backgroundImages: AdAdminImage
           width: 192,
         })}
         {...shared}
+        alt={altTextLeft}
       />
     );
   }
@@ -159,13 +170,21 @@ function DisplayBeltImage({ backgroundImages } : {backgroundImages: AdAdminImage
 }
 
 export default function DisplayAdSplit({
+  altTextLeft = '',
+  altTextRight = '',
   backgroundImages = exampleImages,
   ...displayContentProps
 }: DisplayAdSplitProps) {
   return (
     <DisplayContent
       {...displayContentProps}
-      displayImageComponent={<DisplayBeltImage backgroundImages={backgroundImages} />}
+      displayImageComponent={(
+        <DisplayBeltImage
+          backgroundImages={backgroundImages}
+          altTextLeft={altTextLeft}
+          altTextRight={altTextRight}
+        />
+      )}
     />
   );
 }
