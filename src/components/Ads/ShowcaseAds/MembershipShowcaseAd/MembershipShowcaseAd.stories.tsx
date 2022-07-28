@@ -1,44 +1,20 @@
 import React from 'react';
-import styled, { css, ThemeProvider } from 'styled-components';
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { siteKey } from '../../../../config/argTypes';
-import { addThemedWrapper } from '../../../../config/decorators';
-import { color, spacing, withThemes } from '../../../../styles';
-import { lg } from '../../../../styles/breakpoints';
+import DarkModeWrapper from '../../../../config/decorators/mode-dark';
 import MembershipShowcaseAd, { MembershipShowcaseAdProps } from './MembershipShowcaseAd';
 import { UnderlinedText, UnderlineThree } from '../../../DesignTokens/TextDecoration';
 
 export default {
   title: 'Components/Ads/ShowcaseAds/MembershipShowcaseAd',
   component: MembershipShowcaseAd,
-  decorators: [addThemedWrapper()],
+  decorators: [DarkModeWrapper()],
   argTypes: { siteKey },
 } as ComponentMeta<typeof MembershipShowcaseAd>;
 
-const StoryWrapperTheme = {
-  default: css`
-    padding: ${spacing.sm};
-
-    ${lg(css`
-      padding: 8rem ${spacing.sm};
-    `)}
-  `,
-  dark: css`
-    background-color: ${color.asphalt};
-  `,
-};
-
-const StoryWrapper = styled.div`
-  ${withThemes(StoryWrapperTheme)}
-`;
-
 const Template = (args: MembershipShowcaseAdProps) => (
-  <ThemeProvider theme={{ mode: 'dark' }}>
-    <StoryWrapper>
-      <MembershipShowcaseAd {...args} />
-    </StoryWrapper>
-  </ThemeProvider>
+  <MembershipShowcaseAd {...args} />
 );
 
 export const Default: ComponentStory<typeof MembershipShowcaseAd> = Template.bind({});
