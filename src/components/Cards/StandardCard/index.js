@@ -17,7 +17,7 @@ const StandardCardTheme = {
   default: css`
     color: ${color.eclipse};
 
-    // This hover state is necessary for a specificity issue related to SERP
+    // This hover state is necessary for a specificity issue related to SERP.
     @media(hover: hover) {
       a.standard-card__anchor:hover {
         color: ${color.eclipse};
