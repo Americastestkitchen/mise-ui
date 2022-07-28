@@ -1,3 +1,15 @@
+# v1.33.30 (Thu Jul 28 2022)
+
+#### 🐛 Bug Fix
+
+- rebuild [#857](https://github.com/Americastestkitchen/mise-ui/pull/857) ([@harry-atk](https://github.com/harry-atk))
+
+#### Authors: 1
+
+- Harry Scheuerle ([@harry-atk](https://github.com/harry-atk))
+
+---
+
 # v1.33.29 (Wed Jul 27 2022)
 
 #### 🐛 Bug Fix
