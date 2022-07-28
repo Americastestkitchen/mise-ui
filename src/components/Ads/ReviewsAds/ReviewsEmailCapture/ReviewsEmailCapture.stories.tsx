@@ -5,7 +5,7 @@ import { addThemedWrapper } from '../../../../config/decorators';
 import ReviewsEmailCapture, { ReviewsEmailCaptureProps } from './ReviewsEmailCapture';
 
 export default {
-  title: 'Components/Ads/ReviewsAds/ReviewsEmailCapture1',
+  title: 'Components/Ads/ReviewsAds/ReviewsEmailCapture',
   decorator: [addThemedWrapper()],
   component: ReviewsEmailCapture,
   argTypes: { siteKey },
