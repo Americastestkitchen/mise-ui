@@ -65,7 +65,7 @@ import ReviewableSummaryCard from './components/Cards/ReviewableSummaryCard';
 import ReviewsEmailCapture from './components/Ads/ReviewsAds/ReviewsEmailCapture';
 import ReviewsMarketingHat from './components/Ads/ReviewsAds/ReviewsMarketingHat';
 import RelatedSmallCard from './components/Cards/RelatedSmallCard';
-import SchoolAd from './components/Ads/ShowcaseAds/SchoolAd';
+import SchoolAd from './components/Ads/ShowcaseAds/SchoolAd/SchoolAd';
 import SearchBanner from './components/SearchBanner';
 import SearchInput from './components/SearchInput';
 import SearchNumericMenu from './components/Algolia/search/SearchNumericMenu';
