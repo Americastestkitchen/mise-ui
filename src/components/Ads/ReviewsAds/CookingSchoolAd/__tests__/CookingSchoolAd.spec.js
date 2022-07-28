@@ -3,7 +3,7 @@ import { action } from '@storybook/addon-actions';
 import { ThemeProvider } from 'styled-components';
 import { render, screen } from '@testing-library/react';
 
-import CookingSchoolAd from '../index';
+import CookingSchoolAd from '../CookingSchoolAd';
 import breakpoints from '../../../../../styles/breakpoints';
 
 describe('CookingSchoolAd', () => {
