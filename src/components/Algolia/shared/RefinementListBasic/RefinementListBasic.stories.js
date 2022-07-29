@@ -4,7 +4,7 @@ import LabelFrame from '../../../LabelFrame/LabelFrame';
 import RefinementListBasic from './index';
 import MiseInstantSearch from '../../../../lib/algolia/MiseInstantSearch/MiseInstantSearch';
 import { color, spacing } from '../../../../styles';
-import PodcastEpisodeCard from '../../../Cards/PodcastEpisodeCard';
+import PodcastEpisodeCard from '../../../Cards/PodcastEpisodeCard/PodcastEpisodeCard';
 const DarkModeWrapper = styled.div`
   background-color: ${color.gunmetal};
   padding: ${spacing.lg};
@@ -80,7 +80,7 @@ export const WithoutAlgolia = () => {
   const setIsRefined = (items) => {
     items.filter((season) => season.value === selectedSeason).map(season => season.isRefined = !season.isRefined)
   }
-  
+
   const items = [
     {
       label: "Season 1",
@@ -103,7 +103,7 @@ export const WithoutAlgolia = () => {
       isRefined: false,
     },
   ];
-  
+
   return (
   <>
     <LabelFrame label="Component">

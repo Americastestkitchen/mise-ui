@@ -4,7 +4,7 @@ import fetch from 'cross-fetch';
 
 import AudioPlayer from './index';
 import LabelFrame from '../LabelFrame/LabelFrame';
-import PodcastEpisodeCard from '../Cards/PodcastEpisodeCard';
+import PodcastEpisodeCard from '../Cards/PodcastEpisodeCard/PodcastEpisodeCard';
 import { getImageUrl } from '../../lib/cloudinary';
 
 import {

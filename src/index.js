@@ -52,7 +52,7 @@ import MadeForYouCarousel from './components/Carousels/MadeForYouCarousel';
 import MarqueeCard from './components/Cards/MarqueeCard/MarqueeCard';
 import MediaObjectCard from './components/Cards/MediaObjectCard/MediaObjectCard';
 import MembershipShowcaseAd from './components/Ads/ShowcaseAds/MembershipShowcaseAd/MembershipShowcaseAd';
-import PodcastEpisodeCard from './components/Cards/PodcastEpisodeCard';
+import PodcastEpisodeCard from './components/Cards/PodcastEpisodeCard/PodcastEpisodeCard';
 import QueueCard from './components/Cards/QueueCard/QueueCard';
 import PairedProductAd from './components/Ads/PairedProductAd/PairedProductAd';
 import PersonCard from './components/Cards/PersonCard';
