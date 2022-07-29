@@ -1,8 +1,8 @@
 import React from 'react';
 
-import ReviewableSummaryItem, { ReviewableSummaryCardProps } from './index';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import ReviewableSummaryCard from './ReviewableSummaryCard';
 import { siteKey } from '../../../config/argTypes';
-import { setArgs } from '../../../config/shared.stories';
 import { addThemedWrapper } from '../../../config/decorators';
 
 const affiliateCategory = { table: { category: 'Affiliate' } };
@@ -11,7 +11,7 @@ const recommendationCategory = { table: { category: 'Recommendation Status' } };
 
 export default {
   title: 'Components/Cards/ReviewableSummaryItem',
-  component: ReviewableSummaryItem,
+  component: ReviewableSummaryCard,
   decorators: [addThemedWrapper()],
   argTypes: {
     recommendationStatus: { ...recommendationCategory },
@@ -42,10 +42,15 @@ export default {
     price: { ...ctaCategory },
     siteKey,
   },
-};
+} as ComponentMeta<typeof ReviewableSummaryCard>;
 
-const Template = (args: ReviewableSummaryCardProps) => <ReviewableSummaryItem {...args} />;
-const StandardArgs: ReviewableSummaryCardProps = {
+const Template: ComponentStory<typeof ReviewableSummaryCard> = args => (
+  <ReviewableSummaryCard {...args} />
+);
+
+export const Standard = Template.bind({});
+
+Standard.args = {
   asin: 'B004T6M702',
   buyNowLink: 'https://www.amazon.com/dp/B004T6M702/?tag=akoequippilot-20',
   buyNowOverrideAffiliateActive: false,
@@ -59,6 +64,3 @@ const StandardArgs: ReviewableSummaryCardProps = {
   winnerHeader: 'winner',
   isShortList: false,
 };
-
-export const Standard = Template.bind({});
-setArgs(StandardArgs, Standard);
