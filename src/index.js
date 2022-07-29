@@ -51,7 +51,7 @@ import MadeForYouCard from './components/Cards/MadeForYouCard';
 import MadeForYouCarousel from './components/Carousels/MadeForYouCarousel';
 import MarqueeCard from './components/Cards/MarqueeCard';
 import MediaObjectCard from './components/Cards/MediaObjectCard';
-import MembershipShowcaseAd from './components/Ads/ShowcaseAds/MembershipShowcaseAd';
+import MembershipShowcaseAd from './components/Ads/ShowcaseAds/MembershipShowcaseAd/MembershipShowcaseAd';
 import PodcastEpisodeCard from './components/Cards/PodcastEpisodeCard';
 import QueueCard from './components/Cards/QueueCard/QueueCard';
 import PairedProductAd from './components/Ads/PairedProductAd';
