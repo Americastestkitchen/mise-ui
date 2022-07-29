@@ -1,6 +1,6 @@
+/* eslint-disable react/require-default-props */
 /* eslint-disable camelcase */
 import breakpoint from 'styled-components-breakpoint';
-import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { css } from 'styled-components';
 
@@ -171,11 +171,11 @@ const TitleImageContent = styled.div.attrs({
 
 const StickerWrapper = styled.div.attrs({
   className: 'reviewable-sticker-wrapper',
-})`
+})<{ winner: boolean} >`
   position: relative;
   z-index: 1;
   span {
-    background-color: ${props => color[props.winner ? 'darkTeal' : 'eclipse']};
+    background-color: ${({ winner }) => color[winner ? 'darkTeal' : 'eclipse']};
   }
 `;
 
@@ -209,36 +209,51 @@ const ReviewableLinkEl = styled.a`
   }
 `;
 
+type ReviewLinkProps = {
+  children: React.ReactNode,
+  className?: string,
+  href?: string,
+  hrefDataAttrs?: Record<string, unknown>,
+}
+
 const ReviewableLink = ({
   children,
   className,
   href,
-  hrefDataAttrs,
-}) => (href ? (
-  <ReviewableLinkEl
-    className={className}
-    href={href}
-    {...hrefDataAttrs}
-  >
-    {children}
-  </ReviewableLinkEl>
-) : children);
+  hrefDataAttrs = {},
+}: ReviewLinkProps) => (
+  <>
+    { href ? (
+      <ReviewableLinkEl
+        className={className}
+        href={href}
+        {...hrefDataAttrs}
+      >
+        {children}
+      </ReviewableLinkEl>
+    ) : children }
+  </>
+);
 
-ReviewableLink.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]).isRequired,
-  className: PropTypes.string,
-  href: PropTypes.string,
-  hrefDataAttrs: PropTypes.object,
-};
-
-ReviewableLink.defaultProps = {
-  className: null,
-  href: null,
-  hrefDataAttrs: {},
-};
+export type ReviewableSummaryCardProps = {
+  asin?: string,
+  buyNowLink?: string,
+  buyNowOnClick?: () => void,
+  buyNowOverrideAffiliateActive: boolean,
+  buyNowOverrideAffiliateName?: string,
+  cloudinaryId?: string,
+  dek?: string,
+  displayPrice?: boolean,
+  href?: string,
+  hrefDataAttrs?: Record<string, unknown>,
+  imageAltText?: string,
+  isShortList: boolean,
+  name: string,
+  price?: string,
+  recommendationStatus?: string,
+  winner: boolean,
+  winnerHeader?: string,
+}
 
 const ReviewableSummaryCard = React.memo(({
   asin,
@@ -247,18 +262,18 @@ const ReviewableSummaryCard = React.memo(({
   buyNowOverrideAffiliateActive,
   buyNowOverrideAffiliateName,
   cloudinaryId,
-  dek,
-  displayPrice,
+  dek = '',
+  displayPrice = false,
   href,
-  hrefDataAttrs,
-  imageAltText,
+  hrefDataAttrs = {},
+  imageAltText = '',
   isShortList,
   name,
   price,
   recommendationStatus,
   winner,
   winnerHeader,
-}) => {
+}: ReviewableSummaryCardProps) => {
   const isDiscontinued = price?.toLowerCase()?.includes('discontinued') ?? false;
   const priceMarkup = price?.replace(parensRe, '<span>$1</span>') ?? null;
   let buyNowIcon = asin ? 'Amazon' : null;
@@ -269,9 +284,9 @@ const ReviewableSummaryCard = React.memo(({
     buyNowIcon = 'Amazon';
   }
   const sortOfWinner = winner || isShortList;
-  const stickerText = sortOfWinner
+  const stickerText: string = sortOfWinner !== undefined
     ? winnerHeader || 'Winner'
-    : recommendationStatus;
+    : recommendationStatus || '';
 
   return (
     <ReviewableSummaryItemEl
@@ -292,7 +307,7 @@ const ReviewableSummaryCard = React.memo(({
           )}
           <ReviewableLink href={href} hrefDataAttrs={hrefDataAttrs}>
             <h3>{name}</h3>
-            {dek && (<p>{dek}</p>)}
+            {dek && <p>{dek}</p>}
           </ReviewableLink>
           {!buyNowLink && priceMarkup && (
             <ItemPrice dangerouslySetInnerHTML={{ __html: priceMarkup }} />
@@ -316,13 +331,12 @@ const ReviewableSummaryCard = React.memo(({
           )}
         </TitleImageContent>
         {cloudinaryId && (
-          <div
+          <a
             className="image-link"
             href={href}
-            hrefDataAttrs={hrefDataAttrs}
+            {...hrefDataAttrs}
           >
             <Image
-              aspectRatio="1:1"
               className="reviewable-img"
               imageAlt={imageAltText}
               imageUrl={getImageUrl(cloudinaryId, 'thumbnail')}
@@ -331,48 +345,11 @@ const ReviewableSummaryCard = React.memo(({
                 'thumbnailPlaceholder',
               )}
             />
-          </div>
+          </a>
         )}
       </TitleImageWrapper>
     </ReviewableSummaryItemEl>
   );
 });
-
-ReviewableSummaryCard.propTypes = {
-  asin: PropTypes.string,
-  buyNowLink: PropTypes.string,
-  buyNowOnClick: PropTypes.func,
-  buyNowOverrideAffiliateActive: PropTypes.bool.isRequired,
-  buyNowOverrideAffiliateName: PropTypes.string,
-  cloudinaryId: PropTypes.string,
-  dek: PropTypes.string,
-  displayPrice: PropTypes.bool,
-  href: PropTypes.string,
-  hrefDataAttrs: PropTypes.object,
-  imageAltText: PropTypes.string,
-  isShortList: PropTypes.bool,
-  name: PropTypes.string.isRequired,
-  price: PropTypes.string,
-  recommendationStatus: PropTypes.string,
-  winner: PropTypes.bool.isRequired,
-  winnerHeader: PropTypes.string,
-};
-
-ReviewableSummaryCard.defaultProps = {
-  asin: null,
-  buyNowLink: null,
-  buyNowOnClick: null,
-  buyNowOverrideAffiliateName: null,
-  cloudinaryId: null,
-  dek: null,
-  displayPrice: false,
-  href: null,
-  hrefDataAttrs: {},
-  imageAltText: '',
-  isShortList: false,
-  price: null,
-  recommendationStatus: null,
-  winnerHeader: null,
-};
 
 export default ReviewableSummaryCard;

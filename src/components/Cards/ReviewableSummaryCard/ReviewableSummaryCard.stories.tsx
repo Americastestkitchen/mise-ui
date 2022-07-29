@@ -1,7 +1,8 @@
 import React from 'react';
 
-import ReviewableSummaryItem from './index';
+import ReviewableSummaryItem, { ReviewableSummaryCardProps } from './index';
 import { siteKey } from '../../../config/argTypes';
+import { setArgs } from '../../../config/shared.stories';
 import { addThemedWrapper } from '../../../config/decorators';
 
 const affiliateCategory = { table: { category: 'Affiliate' } };
@@ -11,7 +12,7 @@ const recommendationCategory = { table: { category: 'Recommendation Status' } };
 export default {
   title: 'Components/Cards/ReviewableSummaryItem',
   component: ReviewableSummaryItem,
-  decorators: [ addThemedWrapper() ],
+  decorators: [addThemedWrapper()],
   argTypes: {
     recommendationStatus: { ...recommendationCategory },
     winner: { ...recommendationCategory },
@@ -43,10 +44,8 @@ export default {
   },
 };
 
-const Template = (args) => <ReviewableSummaryItem {...args} />;
-
-export const Standard = Template.bind({});
-Standard.args = {
+const Template = (args: ReviewableSummaryCardProps) => <ReviewableSummaryItem {...args} />;
+const StandardArgs: ReviewableSummaryCardProps = {
   asin: 'B004T6M702',
   buyNowLink: 'https://www.amazon.com/dp/B004T6M702/?tag=akoequippilot-20',
   buyNowOverrideAffiliateActive: false,
@@ -56,7 +55,10 @@ Standard.args = {
   name: 'All-Clad Stainless 2Qt Saucepan',
   price: '$15.99',
   recommendationStatus: 'Highly Recommended',
-  siteKey: 'atk',
   winner: true,
   winnerHeader: 'winner',
+  isShortList: false,
 };
+
+export const Standard = Template.bind({});
+setArgs(StandardArgs, Standard);
