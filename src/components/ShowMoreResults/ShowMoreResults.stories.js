@@ -6,7 +6,7 @@ import fetch from 'cross-fetch';
 import LabelFrame from '../LabelFrame';
 import ShowMoreResults from './index';
 import MiseInstantSearch from '../../lib/algolia/MiseInstantSearch/MiseInstantSearch';
-import PodcastEpisodeCard from '../Cards/PodcastEpisodeCard';
+import PodcastEpisodeCard from '../Cards/PodcastEpisodeCard/PodcastEpisodeCard';
 import { withKnobs, text } from '@storybook/addon-knobs';
 
 import {

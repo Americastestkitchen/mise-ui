@@ -1,12 +1,12 @@
-import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import { color, font, fontSize, spacing, lineHeight, letterSpacing, mixins } from '../../../styles';
 
 import { VideoPlay } from '../../DesignTokens/Icon';
 
-import Badge from '../../Badge/Badge';
+import Badge, { BadgeType } from '../../Badge/Badge';
+import { StickerType } from '../Cards';
 import Sticker from '../shared/Sticker';
 import Image from '../shared/Image/Image';
 
@@ -243,14 +243,35 @@ const TextWrapper = styled.div`
   `}
 `;
 
-class PodcastEpisodeCard extends Component {
-  setEpisode = (episode) => {
-    const { setEpisode } = this.props;
-    setEpisode(episode); // call method
-  };
+type PodcastEpisodeCardProps = {
+  title: string,
+  description?: string,
+  episode?: number,
+  href?: string,
+  id: string,
+  isPlaying?: boolean,
+  imageAlt?: string,
+  imageUrl?: string,
+  siteKey: BadgeType,
+  stickers: StickerType[],
+  setEpisode?: (value: Record<string, unknown>) => void,
+}
 
-  render() {
-    const {
+const PodcastEpisodeCard = ({
+  episode,
+  title,
+  description,
+  href,
+  id,
+  imageAlt = '',
+  imageUrl = '',
+  siteKey,
+  stickers = [],
+  isPlaying = false,
+  setEpisode = () => {},
+}: PodcastEpisodeCardProps) => {
+  const handleClick = () => {
+    setEpisode({
       episode,
       title,
       description,
@@ -260,108 +281,67 @@ class PodcastEpisodeCard extends Component {
       imageUrl,
       siteKey,
       stickers,
-      isPlaying,
-    } = this.props;
+    });
+  };
 
-    return (
-      <PodcastEpisodeCardWrapper
-        id={id}
-        className={`podcast-episode-card ${isPlaying ? 'is-playing' : ''}`}
-        tabIndex="0"
-        role="button"
-        aria-label={`${isPlaying ? 'Currently playing' : 'Play'} Episode ${episode || ''}: ${title}`}
-        onClick={this.setEpisode.bind(this, {
-          episode,
-          title,
-          description,
-          href,
-          id,
-          imageAlt,
-          imageUrl,
-          siteKey,
-          stickers,
-        })}
-      >
-        <div className="grow-div">
-          <ImageWrapper className="podcast-episode-card__image">
-            <Image
-              aria-hidden="true"
-              imageAlt={imageAlt}
-              imageUrl={imageUrl}
+  return (
+    <PodcastEpisodeCardWrapper
+      id={id}
+      className={`podcast-episode-card ${isPlaying ? 'is-playing' : ''}`}
+      tabIndex={0}
+      role="button"
+      aria-label={`${isPlaying ? 'Currently playing' : 'Play'} Episode ${episode || ''}: ${title}`}
+      onClick={handleClick}
+    >
+      <div className="grow-div">
+        <ImageWrapper className="podcast-episode-card__image">
+          <Image
+            aria-hidden="true"
+            imageAlt={imageAlt}
+            imageUrl={imageUrl}
+          />
+        </ImageWrapper>
+      </div>
+      <div>
+        <div className="place-hold">
+          <StyledBadge
+            type={siteKey}
+          />
+          {stickers.map(({ text, type }) => (
+            <StyledSticker
+              key={text}
+              contentType="episode"
+              type={type}
+              text={text}
             />
-          </ImageWrapper>
+          ))}
         </div>
-        <div>
-          <div className="place-hold">
-            <StyledBadge
-              type={siteKey}
-            />
-            {stickers.map(({ text, type }) => (
-              <StyledSticker
-                key={text}
-                contentType="episode"
-                type={type}
-                text={text}
-              />
-            ))}
+        <TextWrapper>
+          <div>
+            <h4>
+              {
+                isPlaying && (
+                  <NowPlayingSticker
+                    className="now-playing"
+                    type="editorial"
+                    text="now playing"
+                  />
+                )
+              }
+              {
+                episode ? `Episode ${episode}` : ''
+              }
+            </h4>
+            <VideoPlay fill={color.white} />
+            <h3>{title}</h3>
           </div>
-          <TextWrapper>
-            <div>
-              <h4>
-                {
-                  isPlaying && (
-                    <NowPlayingSticker
-                      className="now-playing"
-                      type="editorial"
-                      text="now playing"
-                    />
-                  )
-                }
-                {
-                  episode ? `Episode ${episode}` : ''
-                }
-              </h4>
-              <VideoPlay fill={color.white} />
-              <h3>{title}</h3>
-            </div>
-            <p>{description} </p>
-            {href && <> <span>•••</span><a href={href}>More From This Episode</a></>}
-          </TextWrapper>
-        </div>
-        <p>{description} </p>
-      </PodcastEpisodeCardWrapper>
-    );
-  }
-}
-
-PodcastEpisodeCard.propTypes = {
-  /** title of the episode */
-  title: PropTypes.string.isRequired,
-  /** short description of episode */
-  description: PropTypes.string,
-  /** episode number */
-  episode: PropTypes.number,
-  /** link of episode detail page */
-  href: PropTypes.string,
-  /** episode id */
-  id: PropTypes.string.isRequired,
-  isPlaying: PropTypes.bool,
-  imageAlt: PropTypes.string,
-  imageUrl: PropTypes.string,
-  siteKey: PropTypes.string.isRequired,
-  stickers: PropTypes.array,
-  setEpisode: PropTypes.func,
-};
-
-PodcastEpisodeCard.defaultProps = {
-  description: '',
-  episode: null,
-  href: '',
-  imageAlt: '',
-  imageUrl: '',
-  isPlaying: false,
-  stickers: [],
-  setEpisode: null,
+          <p>{description} </p>
+          {href && <> <span>•••</span><a href={href}>More From This Episode</a></>}
+        </TextWrapper>
+      </div>
+      <p>{description} </p>
+    </PodcastEpisodeCardWrapper>
+  );
 };
 
 export default React.memo(PodcastEpisodeCard);
