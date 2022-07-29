@@ -61,7 +61,7 @@ const ReviewableSummaryItemTheme = {
       color: ${color.eclipse};
 
       &:hover {
-        color: ${color.mint};
+        color: ${color.darkTeal};
       }
     }
   `,
@@ -220,7 +220,7 @@ const ReviewableLinkEl = styled.a`
 
   @media(hover: hover) {
     &:hover {
-      color: ${color.mint};
+      color: ${color.darkTeal};
     }
   }
 `;

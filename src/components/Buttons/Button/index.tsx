@@ -34,7 +34,7 @@ const StyledButtonTheme = {
 
     @media(hover: hover) {
       &:hover {
-        background-color: ${color.mint};
+        background-color: ${color.darkTeal};
       }
     }
   `,
