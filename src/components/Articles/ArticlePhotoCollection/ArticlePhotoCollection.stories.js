@@ -1,22 +1,23 @@
-import React from 'react';
+import React from "react";
 
-import ArticlePhotoCollection from './index';
-import images from './imagesResponse';
-import { siteKey } from '../../../config/argTypes';
-import { addThemedWrapper } from '../../../config/decorators';
+import ArticlePhotoCollection from "./index";
+import images from "./imagesResponse";
+import { siteKey } from "../../../config/argTypes";
+import ThemedWrapper from "../../../config/decorators/ThemedWrapper";
 
 export default {
-  title: 'Components/Articles/ArticlePhotoCollection',
+  title: "Components/Articles/ArticlePhotoCollection",
   component: ArticlePhotoCollection,
-  decorators: [ addThemedWrapper() ],
+  decorators: [ThemedWrapper()],
   argTypes: {
     siteKey,
     count: { table: { disable: true } },
   },
 };
 
-const caption = 'The heat applied during pasteurization, a necessary step for all <a href="#">shelf-stable jars</a>, essentially cooks the pickles. Pickle spears (left) are especially vulnerable and often turn out soft and soggy. Shelf-stable whole pickles (right) are much more likely to stay firm and crunchy.';
-const title = 'Collection of Pickle Photos';
+const caption =
+  'The heat applied during pasteurization, a necessary step for all <a href="#">shelf-stable jars</a>, essentially cooks the pickles. Pickle spears (left) are especially vulnerable and often turn out soft and soggy. Shelf-stable whole pickles (right) are much more likely to stay firm and crunchy.';
+const title = "Collection of Pickle Photos";
 
 const Template = (args) => <ArticlePhotoCollection {...args} />;
 
@@ -25,9 +26,9 @@ TwoUp.args = {
   caption,
   count: 2,
   images: images.slice(0, 2),
-  siteKey: 'atk',
+  siteKey: "atk",
   title,
-  width: 'default',
+  width: "default",
 };
 
 export const ThreeUp = Template.bind({});
@@ -35,7 +36,7 @@ ThreeUp.args = {
   caption,
   count: 3,
   images,
-  siteKey: 'atk',
+  siteKey: "atk",
   title,
-  width: 'default',
+  width: "default",
 };

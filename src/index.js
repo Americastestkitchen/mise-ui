@@ -77,7 +77,7 @@ import ShowMoreResults from './components/ShowMoreResults';
 import SidebarCard from './components/Articles/SidebarCard';
 import SingleMembershipAd from './components/Ads/SingleMembershipAd';
 import SingleProductAd from './components/Ads/SingleProductAd';
-import SingleProductShowcaseAd from './components/Ads/ShowcaseAds/SingleProductShowcaseAd';
+import SingleProductShowcaseAd from './components/Ads/ShowcaseAds/SingleProductShowcaseAd/SingleProductShowcaseAd';
 import StandardCard from './components/Cards/StandardCard/StandardCard';
 import StationFinderForm from './components/Forms/StationFinderForm';
 import Sticker from './components/Cards/shared/Sticker';

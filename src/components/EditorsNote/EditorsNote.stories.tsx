@@ -3,7 +3,7 @@ import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import EditorsNote from './EditorsNote';
 import { siteKey } from '../../config/argTypes';
-import { addThemedWrapper } from '../../config/decorators';
+import ThemedWrapper from '../../config/decorators/ThemedWrapper';
 
 const noteType = {
   options: ['alert', 'coming_soon', 'generic', 'price_update', 'retention', 'retest'],
@@ -13,7 +13,7 @@ const noteType = {
 export default {
   title: 'Components/EditorsNote',
   component: EditorsNote,
-  decorators: [addThemedWrapper()],
+  decorators: [ThemedWrapper()],
   argTypes: {
     siteKey,
     noteType,

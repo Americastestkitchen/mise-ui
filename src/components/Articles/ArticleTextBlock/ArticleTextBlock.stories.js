@@ -1,23 +1,23 @@
-import React from 'react';
-import styled from 'styled-components';
-import breakpoint from 'styled-components-breakpoint';
+import React from "react";
+import styled from "styled-components";
+import breakpoint from "styled-components-breakpoint";
 
-import storyProps from './articleTextBlockStoryProps';
-import ArticleTextBlock from './index';
-import { siteKey } from '../../../config/argTypes';
-import { addThemedWrapper } from '../../../config/decorators';
+import storyProps from "./articleTextBlockStoryProps";
+import ArticleTextBlock from "./index";
+import { siteKey } from "../../../config/argTypes";
+import ThemedWrapper from "../../../config/decorators/ThemedWrapper";
 
 export default {
-  title: 'Components/Articles/ArticleTextBlock',
+  title: "Components/Articles/ArticleTextBlock",
   component: ArticleTextBlock,
-  decorators: [ addThemedWrapper() ],
+  decorators: [ThemedWrapper()],
   argTypes: { siteKey },
-}; 
+};
 
 const ArticleTextBlockStoryWrapper = styled.div`
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
   padding: 1.6rem;
-  ${breakpoint('md')`
+  ${breakpoint("md")`
     padding: 3.6rem;
   `}
 `;
@@ -28,14 +28,18 @@ export const WithTheme = Template.bind({});
 WithTheme.args = {
   ...storyProps.floatImageWithCaption,
   content: `${storyProps.floatImageWithCaption.content}${storyProps.floatImageSupplement.content}`,
-  siteKey: 'atk'
+  siteKey: "atk",
 };
 
 export const DropCap = () => <ArticleTextBlock {...storyProps.dropCap} />;
 
-export const NoImageDefaultWidth = () => <ArticleTextBlock {...storyProps.noImageDefaultWidth} />;
+export const NoImageDefaultWidth = () => (
+  <ArticleTextBlock {...storyProps.noImageDefaultWidth} />
+);
 
-export const NoImageWideWidth = () => <ArticleTextBlock {...storyProps.noImageWideWidth} />;
+export const NoImageWideWidth = () => (
+  <ArticleTextBlock {...storyProps.noImageWideWidth} />
+);
 
 export const FloatImageWithoutCaption = () => (
   <ArticleTextBlockStoryWrapper>
@@ -122,11 +126,10 @@ export const BoxBottomImageWideWidth = () => (
 );
 
 export const TextBlockWithOrderedList = () => (
-  <ArticleTextBlock 
+  <ArticleTextBlock
     content={`<ol>
       <li>Text with <strong>strong element</strong> will wrap weirdly when longer than the container will wrap weirdly when longer than the container will wrap weirdly when longer than the container</li>
-      </ol>`
-    } 
+      </ol>`}
     width={"default"}
   />
 );

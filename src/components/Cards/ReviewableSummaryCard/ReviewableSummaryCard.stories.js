@@ -1,17 +1,17 @@
-import React from 'react';
+import React from "react";
 
-import ReviewableSummaryItem from './index';
-import { siteKey } from '../../../config/argTypes';
-import { addThemedWrapper } from '../../../config/decorators';
+import ReviewableSummaryItem from "./index";
+import { siteKey } from "../../../config/argTypes";
+import ThemedWrapper from "../../../config/decorators/ThemedWrapper";
 
-const affiliateCategory = { table: { category: 'Affiliate' } };
-const ctaCategory = { table: { category: 'CTA' } };
-const recommendationCategory = { table: { category: 'Recommendation Status' } };
+const affiliateCategory = { table: { category: "Affiliate" } };
+const ctaCategory = { table: { category: "CTA" } };
+const recommendationCategory = { table: { category: "Recommendation Status" } };
 
 export default {
-  title: 'Components/Cards/ReviewableSummaryItem',
+  title: "Components/Cards/ReviewableSummaryItem",
   component: ReviewableSummaryItem,
-  decorators: [ addThemedWrapper() ],
+  decorators: [ThemedWrapper()],
   argTypes: {
     recommendationStatus: { ...recommendationCategory },
     winner: { ...recommendationCategory },
@@ -22,16 +22,16 @@ export default {
     buyNowOverrideAffiliateName: {
       control: {
         options: [
-          'Amazon',
-          'BlueApron',
-          'Houzz',
-          'KingArthur',
-          'SurLaTable',
-          'ThermoWorks',
-          'Victorinox',
-          'WilliamsSonoma',
+          "Amazon",
+          "BlueApron",
+          "Houzz",
+          "KingArthur",
+          "SurLaTable",
+          "ThermoWorks",
+          "Victorinox",
+          "WilliamsSonoma",
         ],
-        type: 'select',
+        type: "select",
       },
       ...affiliateCategory,
     },
@@ -47,16 +47,17 @@ const Template = (args) => <ReviewableSummaryItem {...args} />;
 
 export const Standard = Template.bind({});
 Standard.args = {
-  asin: 'B004T6M702',
-  buyNowLink: 'https://www.amazon.com/dp/B004T6M702/?tag=akoequippilot-20',
+  asin: "B004T6M702",
+  buyNowLink: "https://www.amazon.com/dp/B004T6M702/?tag=akoequippilot-20",
   buyNowOverrideAffiliateActive: false,
-  buyNowOverrideAffiliateName: 'Amazon',
-  cloudinaryId: 'Equipment Images/SIL_CookwareSets_All-Clad1And1-2QTSaucepan_1746',
+  buyNowOverrideAffiliateName: "Amazon",
+  cloudinaryId:
+    "Equipment Images/SIL_CookwareSets_All-Clad1And1-2QTSaucepan_1746",
   displayPrice: true,
-  name: 'All-Clad Stainless 2Qt Saucepan',
-  price: '$15.99',
-  recommendationStatus: 'Highly Recommended',
-  siteKey: 'atk',
+  name: "All-Clad Stainless 2Qt Saucepan",
+  price: "$15.99",
+  recommendationStatus: "Highly Recommended",
+  siteKey: "atk",
   winner: true,
-  winnerHeader: 'winner',
+  winnerHeader: "winner",
 };

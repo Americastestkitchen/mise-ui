@@ -2,12 +2,12 @@ import React from 'react';
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import ArticleImage from './ArticleImage';
 import { siteKey } from '../../../config/argTypes';
-import { addThemedWrapper } from '../../../config/decorators';
+import ThemedWrapper from '../../../config/decorators/ThemedWrapper';
 
 export default {
   title: 'Components/Articles/ArticleImage',
   component: ArticleImage,
-  decorators: [addThemedWrapper()],
+  decorators: [ThemedWrapper()],
   argTypes: { siteKey },
 } as ComponentMeta<typeof ArticleImage>;
 

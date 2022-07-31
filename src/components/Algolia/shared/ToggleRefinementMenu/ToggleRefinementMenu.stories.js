@@ -1,15 +1,15 @@
-import React from 'react';
+import React from "react";
 
-import LabelFrame from '../../../LabelFrame';
-import MiseInstantSearch from '../../../../lib/algolia/MiseInstantSearch/MiseInstantSearch';
-import ToggleRefinementMenu from './index';
-import { siteKey } from '../../../../config/argTypes';
-import { addThemedWrapper } from '../../../../config/decorators';
+import LabelFrame from "../../../LabelFrame";
+import MiseInstantSearch from "../../../../lib/algolia/MiseInstantSearch/MiseInstantSearch";
+import ToggleRefinementMenu from "./index";
+import { siteKey } from "../../../../config/argTypes";
+import ThemedWrapper from "../../../../config/decorators/ThemedWrapper";
 
 export default {
-  title: 'Components/Algolia/shared/ToggleRefinementMenu',
+  title: "Components/Algolia/shared/ToggleRefinementMenu",
   component: ToggleRefinementMenu,
-  decorators: [ addThemedWrapper() ],
+  decorators: [ThemedWrapper()],
   argTypes: { siteKey },
 };
 
@@ -19,7 +19,9 @@ const Template = (args) => (
       <ToggleRefinementMenu
         documentType="Equipment Review"
         menuAttribute="search_review_type_list"
-        menuOnClickItem={() => { console.log('clicked item'); }}
+        menuOnClickItem={() => {
+          console.log("clicked item");
+        }}
         toggleRefinementAttribute="search_document_klass"
         toggleRefinementLabel="Equipment Reviews"
         toggleRefinementValue="equipment_review"
@@ -40,4 +42,4 @@ const Template = (args) => (
 );
 
 export const EquipmentReview = Template.bind({});
-EquipmentReview.args = { siteKey: 'atk' };
+EquipmentReview.args = { siteKey: "atk" };

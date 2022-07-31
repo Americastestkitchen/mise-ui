@@ -1,14 +1,14 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import DarkModeWrapper from '../../../../config/decorators/mode-dark';
+import DarkModeWrapper from '../../../../config/decorators/DarkMode';
 import LandingEmailAd from './LandingEmailAd';
-import { addThemedWrapper } from '../../../../config/decorators';
+import ThemedWrapper from '../../../../config/decorators/ThemedWrapper';
 import backgrounds from '../../../../config/backgrounds';
 
 export default {
   title: 'Components/Ads/ShowcaseAds/LandingEmailAd',
   component: LandingEmailAd,
-  decorators: [addThemedWrapper()],
+  decorators: [ThemedWrapper()],
   parameters: { actions: { argTypesRegex: '^on.*' }, backgrounds: { default: 'atk', ...backgrounds } },
 } as ComponentMeta<typeof LandingEmailAd>;
 

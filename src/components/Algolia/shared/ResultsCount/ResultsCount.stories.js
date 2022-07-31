@@ -1,15 +1,15 @@
-import React from 'react';
+import React from "react";
 
-import LabelFrame from '../../../LabelFrame';
-import MiseInstantSearch from '../../../../lib/algolia/MiseInstantSearch/MiseInstantSearch';
-import ResultsCount from './index';
-import { siteKey } from '../../../../config/argTypes';
-import { addThemedWrapper } from '../../../../config/decorators';
+import LabelFrame from "../../../LabelFrame";
+import MiseInstantSearch from "../../../../lib/algolia/MiseInstantSearch/MiseInstantSearch";
+import ResultsCount from "./index";
+import { siteKey } from "../../../../config/argTypes";
+import ThemedWrapper from "../../../../config/decorators/ThemedWrapper";
 
 export default {
-  title: 'Components/Algolia/shared/ResultsCount',
+  title: "Components/Algolia/shared/ResultsCount",
   component: ResultsCount,
-  decorators: [ addThemedWrapper() ],
+  decorators: [ThemedWrapper()],
   argTypes: { siteKey },
 };
 
@@ -22,4 +22,4 @@ const Template = (args) => (
 );
 
 export const Default = Template.bind({});
-Default.args = { siteKey: 'atk' };
+Default.args = { siteKey: "atk" };

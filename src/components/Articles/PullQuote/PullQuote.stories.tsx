@@ -3,12 +3,12 @@ import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import PullQuote from './index';
 import { siteKey } from '../../../config/argTypes';
-import { addThemedWrapper } from '../../../config/decorators';
+import ThemedWrapper from '../../../config/decorators/ThemedWrapper';
 
 export default {
   title: 'Components/Articles/PullQuote',
   component: PullQuote,
-  decorators: [addThemedWrapper()],
+  decorators: [ThemedWrapper()],
   argTypes: { siteKey },
 } as ComponentMeta<typeof PullQuote>;
 

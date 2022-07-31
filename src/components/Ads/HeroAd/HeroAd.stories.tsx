@@ -1,7 +1,7 @@
 import React from 'react';
-import { ComponentStory } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import HeroAd from './HeroAd';
-import DarkModeWrapper from '../../../config/decorators/mode-dark';
+import DarkModeWrapper from '../../../config/decorators/DarkMode';
 
 export default {
   title: 'Components/Ads/HeroAd',
@@ -25,7 +25,7 @@ export default {
       control: { type: 'radio' },
     },
   },
-};
+} as ComponentMeta<typeof HeroAd>;
 
 const Template: ComponentStory<typeof HeroAd> = args => <HeroAd {...args} />;
 export const Default = Template.bind({});

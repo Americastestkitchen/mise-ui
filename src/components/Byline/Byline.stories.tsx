@@ -3,12 +3,12 @@ import React from 'react';
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import Byline, { ByLineProps } from './Byline';
 import { siteKey } from '../../config/argTypes';
-import { addThemedWrapper } from '../../config/decorators';
+import ThemedWrapper from '../../config/decorators/ThemedWrapper';
 
 export default {
   title: 'Components/Byline',
   component: Byline,
-  decorators: [addThemedWrapper()],
+  decorators: [ThemedWrapper()],
   argTypes: { siteKey },
 } as ComponentMeta<typeof Byline>;
 

@@ -2,12 +2,12 @@ import React from 'react';
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import RelatedContentCard, { RelatedContentCardProps } from './RelatedContentCard';
 import { siteKey } from '../../../config/argTypes';
-import { addThemedWrapper } from '../../../config/decorators';
+import ThemedWrapper from '../../../config/decorators/ThemedWrapper';
 
 export default {
   title: 'Components/Cards/RelatedContentCard',
   component: RelatedContentCard,
-  decorators: [addThemedWrapper()],
+  decorators: [ThemedWrapper()],
   argTypes: { siteKey },
 } as ComponentMeta<typeof RelatedContentCard>;
 

@@ -3,12 +3,12 @@ import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import ActionSummaryItem from './ActionSummaryItem';
 import { disable, siteKey } from '../../config/argTypes';
-import { addThemedWrapper } from '../../config/decorators';
+import ThemedWrapper from '../../config/decorators/ThemedWrapper';
 
 export default {
   title: 'Components/ActionSummaryItem',
   component: ActionSummaryItem,
-  decorators: [addThemedWrapper()],
+  decorators: [ThemedWrapper()],
   argTypes: { children: disable, icon: disable, siteKey },
 } as ComponentMeta<typeof ActionSummaryItem>;
 

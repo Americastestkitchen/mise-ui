@@ -1,7 +1,7 @@
 import React from 'react';
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import { siteKey } from '../../../../config/argTypes';
-import { addThemedWrapper } from '../../../../config/decorators';
+import ThemedWrapper from '../../../../config/decorators/ThemedWrapper';
 import CookingSchoolAd from './CookingSchoolAd';
 
 export default {
@@ -21,7 +21,7 @@ ReviewsLanding.args = {
   href: '/order?incode=MAR1DCS1M&mdc=SF0110SM8KLM8P',
 };
 ReviewsLanding.decorators = [
-  addThemedWrapper(),
+  ThemedWrapper(),
 ];
 
 export const ReviewsLandingMobile = Template.bind({});
@@ -38,7 +38,7 @@ ReviewsDetailPage.args = {
   href: '/order?incode=MAR1DCS1M&mdc=SF0110SM8KLM8P',
 };
 ReviewsDetailPage.decorators = [
-  addThemedWrapper(),
+  ThemedWrapper(),
 ];
 
 export const ReviewsDetailPageMobile = Template.bind({});

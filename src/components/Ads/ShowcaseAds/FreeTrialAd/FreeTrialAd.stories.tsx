@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import FreeTrialAd from './FreeTrialAd';
-import DarkModeWrapper from '../../../../config/decorators/mode-dark';
+import DarkModeWrapper from '../../../../config/decorators/DarkMode';
 
 export default {
   title: 'Components/Ads/ShowcaseAds/FreeTrialAd',

@@ -3,12 +3,12 @@ import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import ArticleFigcaption from './index';
 import { siteKey } from '../../../../config/argTypes';
-import { addThemedWrapper } from '../../../../config/decorators';
+import ThemedWrapper from '../../../../config/decorators/ThemedWrapper';
 
 export default {
   title: 'Components/Articles/shared/ArticleFigcaption',
   component: ArticleFigcaption,
-  decorators: [addThemedWrapper()],
+  decorators: [ThemedWrapper()],
   argTypes: { siteKey },
 } as ComponentMeta<typeof ArticleFigcaption>;
 

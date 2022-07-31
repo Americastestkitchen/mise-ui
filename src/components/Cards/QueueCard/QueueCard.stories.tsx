@@ -3,13 +3,13 @@ import styled, { css, ThemeProvider } from 'styled-components';
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import QueueCard, { QueueCardProps } from './QueueCard';
 import { siteKey } from '../../../config/argTypes';
-import { addThemedWrapper } from '../../../config/decorators';
+import ThemedWrapper from '../../../config/decorators/ThemedWrapper';
 import { color, spacing, withThemes } from '../../../styles';
 
 export default {
   title: 'Components/Cards/QueueCard',
   component: QueueCard,
-  decorators: [addThemedWrapper()],
+  decorators: [ThemedWrapper()],
   argTypes: { siteKey },
 } as ComponentMeta<typeof QueueCard>;
 

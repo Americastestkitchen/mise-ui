@@ -3,12 +3,12 @@ import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import SidebarCard from './index';
 import { siteKey } from '../../../config/argTypes';
-import { addThemedWrapper } from '../../../config/decorators';
+import ThemedWrapper from '../../../config/decorators/ThemedWrapper';
 
 export default {
   title: 'Components/Articles/SidebarCard',
   component: SidebarCard,
-  decorators: [addThemedWrapper()],
+  decorators: [ThemedWrapper()],
   argTypes: { siteKey },
 } as ComponentMeta<typeof SidebarCard>;
 

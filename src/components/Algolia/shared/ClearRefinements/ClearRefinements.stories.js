@@ -1,16 +1,16 @@
-import React from 'react';
+import React from "react";
 
-import LabelFrame from '../../../LabelFrame';
-import ClearRefinements from './index';
-import MiseInstantSearch from '../../../../lib/algolia/MiseInstantSearch/MiseInstantSearch';
-import SearchRefinementList from '../../search/SearchRefinementList';
-import { siteKey } from '../../../../config/argTypes';
-import { addThemedWrapper } from '../../../../config/decorators';
+import LabelFrame from "../../../LabelFrame";
+import ClearRefinements from "./index";
+import MiseInstantSearch from "../../../../lib/algolia/MiseInstantSearch/MiseInstantSearch";
+import SearchRefinementList from "../../search/SearchRefinementList";
+import { siteKey } from "../../../../config/argTypes";
+import ThemedWrapper from "../../../../config/decorators/ThemedWrapper";
 
 export default {
-  title: 'Components/Algolia/shared/ClearRefinements',
+  title: "Components/Algolia/shared/ClearRefinements",
   component: ClearRefinements,
-  decorators: [ addThemedWrapper() ],
+  decorators: [ThemedWrapper()],
   argTypes: { siteKey },
 };
 
@@ -30,4 +30,4 @@ const Template = (args) => (
 );
 
 export const Default = Template.bind({});
-Default.args = { siteKey: 'atk' };
+Default.args = { siteKey: "atk" };

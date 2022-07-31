@@ -2,12 +2,12 @@ import React from 'react';
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import FilterButton from './FilterButton';
 import { mode, siteKey } from '../../config/argTypes';
-import { addThemedWrapper } from '../../config/decorators';
+import ThemedWrapper from '../../config/decorators/ThemedWrapper';
 
 export default {
   title: 'Components/FilterButton',
   component: FilterButton,
-  decorators: [addThemedWrapper()],
+  decorators: [ThemedWrapper()],
   argTypes: {
     mode,
     siteKey,

@@ -1,8 +1,5 @@
-import breakpoint from 'styled-components-breakpoint';
-import PropTypes from 'prop-types';
-import React from 'react';
+import React, { MouseEvent } from 'react';
 import styled, { css } from 'styled-components';
-
 import Badge from '../../../Badge/Badge';
 import { getImageUrl } from '../../../../lib/cloudinary';
 import {
@@ -14,6 +11,9 @@ import {
   spacing,
   withThemes,
 } from '../../../../styles';
+
+import { lg, md } from '../../../../styles/breakpoints';
+import { SiteKey } from '../../../../config/argTypes';
 
 /**
  * Wrapper
@@ -29,10 +29,10 @@ const ProductTheme = {
       top: ${spacing.xsm};
     }
 
-    ${breakpoint('md')`
+    ${md(css`
       align-items: center;
       display: flex;
-    `}
+    `)}
   `,
 };
 
@@ -47,15 +47,15 @@ const ProductPictureTheme = {
   dark: css`
     display: block;
 
-    ${breakpoint('md')`
+    ${md(css`
       flex: 0 0 34rem;
       width: 34rem;
-    `}
+    `)}
 
-    ${breakpoint('lg')`
+    ${lg(css`
       flex: 0 0 56rem;
       width: 56rem;
-    `}
+    `)}
   `,
 };
 
@@ -74,21 +74,22 @@ const ProductInfoTheme = {
     justify-content: center;
     padding: 2rem 2rem 3.8rem;
 
-    ${breakpoint('md')`
+    ${md(css`
       padding: 0;
       margin-left: ${spacing.sm};
       width: calc(50% - ${spacing.lg});
-    `}
+    `)}
   `,
 };
+
 const ProductInfo = styled.div.attrs({
   className: 'product__info',
 })`${withThemes(ProductInfoTheme)}`;
 
 const ProductInfoInner = styled.div`
-  ${breakpoint('lg')`
+  ${lg(css`
     width: 34.4rem;
-  `}
+  `)}
 `;
 
 /**
@@ -96,13 +97,12 @@ const ProductInfoInner = styled.div`
  */
 const ProductTitleTheme = {
   default: css`
-    font: 2.6rem/${lineHeight.sm} ${font.pnb};
-    margin-bottom: ${spacing.sm};
+  font: 2.6rem/${lineHeight.sm} ${font.pnb};
+  margin-bottom: ${spacing.sm};
   `,
-  dark: css`
-    color: ${color.whiteSmoke}
-  `,
+  dark: css`color: ${color.whiteSmoke}`,
 };
+
 const ProductTitle = styled.h3.attrs({
   className: 'product__title',
 })`${withThemes(ProductTitleTheme)}`;
@@ -149,21 +149,32 @@ const ProductCtaTheme = {
       }
     }
 
-    ${breakpoint('md')`
+    ${md(css`
       display: inline-block;
       margin: ${spacing.xsm} auto 0;
       width: 29rem;
-    `}
+    `)}
 
-    ${breakpoint('lg')`
+    ${lg(css`
       width: 34.4rem;
-    `}
+    `)}
   `,
 };
 
 const ProductCta = styled.a.attrs({
   className: 'product__cta',
 })`${withThemes(ProductCtaTheme)}`;
+
+interface SingleProductShowcaseAd {
+  cloudinaryId: string;
+  cta: string;
+  ctaHref: string;
+  ctaTarget?: string;
+  onClick?: (() => void)| ((e: MouseEvent) => void);
+  siteKey: SiteKey;
+  subtitle: string;
+  title: string;
+}
 
 const SingleProductShowcaseAd = ({
   cloudinaryId,
@@ -174,7 +185,7 @@ const SingleProductShowcaseAd = ({
   siteKey,
   subtitle,
   title,
-}) => (
+}: SingleProductShowcaseAd) => (
   <Product>
     <ProductPicture>
       <source
@@ -225,21 +236,5 @@ const SingleProductShowcaseAd = ({
     />
   </Product>
 );
-
-SingleProductShowcaseAd.propTypes = {
-  cloudinaryId: PropTypes.string.isRequired,
-  cta: PropTypes.string.isRequired,
-  ctaHref: PropTypes.string.isRequired,
-  ctaTarget: PropTypes.string,
-  onClick: PropTypes.func,
-  siteKey: PropTypes.oneOf(['atk', 'cio', 'cco', 'kids', 'school', 'shop']).isRequired,
-  subtitle: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-};
-
-SingleProductShowcaseAd.defaultProps = {
-  ctaTarget: null,
-  onClick: null,
-};
 
 export default SingleProductShowcaseAd;

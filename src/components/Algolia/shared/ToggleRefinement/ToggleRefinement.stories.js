@@ -1,15 +1,15 @@
-import React from 'react';
+import React from "react";
 
-import LabelFrame from '../../../LabelFrame';
-import MiseInstantSearch from '../../../../lib/algolia/MiseInstantSearch/MiseInstantSearch';
-import ToggleRefinement from './index';
-import { siteKey } from '../../../../config/argTypes';
-import { addThemedWrapper } from '../../../../config/decorators';
+import LabelFrame from "../../../LabelFrame";
+import MiseInstantSearch from "../../../../lib/algolia/MiseInstantSearch/MiseInstantSearch";
+import ToggleRefinement from "./index";
+import { siteKey } from "../../../../config/argTypes";
+import ThemedWrapper from "../../../../config/decorators/ThemedWrapper";
 
 export default {
-  title: 'Components/Algolia/shared/ToggleRefinement',
+  title: "Components/Algolia/shared/ToggleRefinement",
   component: ToggleRefinement,
-  decorators: [ addThemedWrapper() ],
+  decorators: [ThemedWrapper()],
   argTypes: { siteKey },
 };
 
@@ -27,4 +27,4 @@ const Template = (args) => (
 );
 
 export const Trending = Template.bind({});
-Trending.args = {siteKey: 'atk' };
+Trending.args = { siteKey: "atk" };
