@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import { color, font, fontSize, lineHeight, mixins, withThemes } from '../../../../styles';
+import { color, font, fontSize, lineHeight, withThemes } from '../../../../styles';
 import * as Icons from '../../../DesignTokens/Icon';
 import Brands from '../../../DesignTokens/Brands';
 
@@ -39,7 +39,9 @@ const AffiliateLinkTheme = {
     position: relative;
     text-align: center;
     z-index: 1;
-    ${mixins.truncate()}
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 
     @media(hover: hover) {
       &:hover {
