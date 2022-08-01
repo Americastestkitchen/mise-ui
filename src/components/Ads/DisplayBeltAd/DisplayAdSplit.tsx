@@ -25,7 +25,7 @@ export type DisplayAdSplitProps = Omit<DisplayContentProps, 'displayImageCompone
 
 const EdgeAnchoredLeft = styled.img`
   position: absolute;
-  height: 100%;
+  height: 128px;
   left: 0;
   max-width: unset;
 `;
@@ -52,13 +52,13 @@ const OffsetMiddleRight = styled.img`
 `;
 
 const exampleImages: AdAdminImages = {
-  desktopLeft: '2022 Review Landing/ShopLargeLeft_jhhynf.png',
-  desktopRight: '2022 Review Landing/ShopLargeRight_hr9zmr',
-  landscapeTabletLeft: '2022 Review Landing/Belt-placeholder-AKO-Landscape_Tablet-1024x150_2x.png',
-  landscapeTabletRight: '2022 Review Landing/Belt-placeholder-AKO-Landscape_Tablet-1024x150_2x.png',
-  tabletLeft: '2022 Review Landing/Belt-placeholder-AKO-Tablet-768x150_2x.png',
-  tabletRight: '2022 Review Landing/ShopBeltRight_jddoq7',
-  mobile: '2022 Review Landing/Belt-placeholder-AKO-Mobile-372x192_2x.png',
+  desktopLeft: '2022-Shop-Ads/atk/atk-desktop-left.png',
+  desktopRight: '2022-Shop-Ads/atk/atk-desktop-right.png',
+  landscapeTabletLeft: '2022-Shop-Ads/atk/atk-landscape-left.png',
+  landscapeTabletRight: '2022-Shop-Ads/atk/atk-landscape-right.png',
+  tabletLeft: '2022-Shop-Ads/atk/atk-tablet-left.png',
+  tabletRight: '2022-Shop-Ads/atk/atk-tablet-right.png',
+  mobile: '2022-Shop-Ads/atk/atk-mobile.png',
 };
 
 const shared = { crossOrigin: 'anonymous', decoding: 'async' } as const;
@@ -157,8 +157,7 @@ function DisplayBeltImage({ backgroundImages, altTextLeft, altTextRight } : AdAd
       <EdgeAnchoredLeft
         src={cloudinaryInstance.url(backgroundImages?.mobile, {
           ...baseImageConfig,
-          height: 192,
-          width: 192,
+          height: 130,
         })}
         {...shared}
         alt={altTextLeft}
