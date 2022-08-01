@@ -1,5 +1,5 @@
 import React from 'react';
-import { boolean, withKnobs, select, text } from '@storybook/addon-knobs';
+import { withKnobs, select, text } from '@storybook/addon-knobs';
 
 import AffiliateLink from './AffiliateLink';
 
@@ -25,7 +25,7 @@ export const Default = () => (
       ],
       'Amazon')}
     text={text('Text', 'Buy now for $15')}
-    title={text('Link Title', null)}
+    title={text('Link Title', '')}
     url={text('URL', 'https://www.amazon.com')}
   />
 );
