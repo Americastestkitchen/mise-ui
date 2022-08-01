@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import 'jest-styled-components';
 
-import LoadingRelatedDocumentCard from '../index';
+import LoadingRelatedDocumentCard from '../LoadingRelatedDocumentCard';
 import breakpoints from '../../../../styles/breakpoints';
 
 describe('LoadingRelatedDocumentCard component should', () => {
