@@ -102,7 +102,7 @@ export function TextImageTrialBeltAd({
   cta,
   linkProps = {},
 }: TextImageTrialBeltProps) {
-  const src = cloudinaryInstance.url(cloudinaryId, { ...baseImageConfig, height: 40 });
+  const src = cloudinaryInstance.url(cloudinaryId, { ...baseImageConfig, height: 42 });
   return (
     <Layout reducedTextSizing textGrid>
       <ClickArea href={href} {...linkProps}>

@@ -63,7 +63,7 @@ const textAdArgs: TextTrialBeltProps = {
 
 const textImageAdArgs: TextImageTrialBeltProps = {
   href: '#',
-  cloudinaryId: '2022%20Homepage%20Landing/cooking-school-temp.png',
+  cloudinaryId: 'cooking-school/OCS_Logo',
   description: 'Become fearless in the kitchen. 320+ online lessons for novice to advanced cooks.',
   cta: 'TRY FOR FREE',
 };
