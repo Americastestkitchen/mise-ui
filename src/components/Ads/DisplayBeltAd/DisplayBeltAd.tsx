@@ -132,12 +132,17 @@ export type DisplayBeltAdProps = Omit<DisplayContentProps, 'displayImageComponen
 
 const DisplayBeltAd = ({
   backgroundImages = exampleImages,
+  headline,
   ...displayContentProps
-}: DisplayBeltAdProps) => (
-  <DisplayContent
-    {...displayContentProps}
-    displayImageComponent={<DisplayBeltImage backgroundImages={backgroundImages} />}
-  />
-);
+}: DisplayBeltAdProps) => {
+  const headlineEm = headline ? `<em>${headline}</em>` : '<em>Discover favorite cookbooks</em>';
+  return (
+    <DisplayContent
+      {...displayContentProps}
+      headline={headlineEm}
+      displayImageComponent={<DisplayBeltImage backgroundImages={backgroundImages} />}
+    />
+  );
+};
 
 export default DisplayBeltAd;

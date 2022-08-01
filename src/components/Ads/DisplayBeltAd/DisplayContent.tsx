@@ -81,7 +81,6 @@ const Cta = styled.a`
 
 const Headline = styled.p`
   font: ${fontSize.sm}/2.3rem ${font.mwr};
-  font-style: italic;
   margin-bottom: 0.5rem;
 
   ${breakpoint('md')`
