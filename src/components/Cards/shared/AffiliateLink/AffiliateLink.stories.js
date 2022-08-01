@@ -1,7 +1,7 @@
 import React from 'react';
 import { boolean, withKnobs, select, text } from '@storybook/addon-knobs';
 
-import AffiliateLink from './index';
+import AffiliateLink from './AffiliateLink';
 
 export default {
   title: 'Components/Cards/shared/AffiliateLink',
