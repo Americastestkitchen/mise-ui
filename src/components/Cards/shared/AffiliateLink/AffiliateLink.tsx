@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { css } from 'styled-components';
 
@@ -64,6 +63,17 @@ const AffiliateLinkEl = styled.a.attrs({
   className: 'partner-link__anchor',
 })`${withThemes(AffiliateLinkTheme)}`;
 
+type AffiliateLinkPropTypes = {
+  dataAttrs?: Record<string, any>,
+  icon?: 'Amazon' | 'BlueApron' | 'Houzz' | 'KingArthur' | 'SurLaTable' | 'ThermoWorks' | 'Victorinox' | 'WilliamsSonoma',
+  readerLabel?: string,
+  name?: string,
+  onClick?(): void,
+  text: string,
+  title?: string,
+  url: string,
+}
+
 const AffiliateLink = ({
   dataAttrs,
   icon,
@@ -73,8 +83,8 @@ const AffiliateLink = ({
   text,
   title,
   url,
-}) => {
-  const Icon = Brands[icon] || null;
+}: AffiliateLinkPropTypes) => {
+  const Icon = icon ? Brands[icon] : null;
   return (
     <AffiliateLinkWrapper aria-label={name} onClick={onClick}>
       <AffiliateLinkEl
@@ -91,27 +101,6 @@ const AffiliateLink = ({
       {Icon && <Icon alt="" />}
     </AffiliateLinkWrapper>
   );
-};
-
-AffiliateLink.propTypes = {
-  dataAttrs: PropTypes.object,
-  icon: PropTypes.any,
-  readerLabel: PropTypes.string,
-  name: PropTypes.string,
-  /** for mixpanel purposes */
-  onClick: PropTypes.func,
-  text: PropTypes.string.isRequired,
-  title: PropTypes.string,
-  url: PropTypes.string.isRequired,
-};
-
-AffiliateLink.defaultProps = {
-  dataAttrs: {},
-  icon: null,
-  name: null,
-  onClick: null,
-  readerLabel: null,
-  title: null,
 };
 
 export default AffiliateLink;
