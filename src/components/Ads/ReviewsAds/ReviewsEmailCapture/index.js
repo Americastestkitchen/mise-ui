@@ -318,7 +318,7 @@ const ReviewsEmailCapture = ({
         <MainContent isWide={isWide}>
           <AdTitle dangerouslySetInnerHTML={{ __html: title }} />
           {!success && (
-          <AdDescription>{description}</AdDescription>
+          <AdDescription dangerouslySetInnerHTML={{ __html: description }} />
           )}
         </MainContent>
         {success
