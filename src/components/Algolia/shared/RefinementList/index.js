@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import ShowMoreLess from '../../../ShowMoreLess';
+import ShowMoreLess from '../../../ShowMoreLess/ShowMoreLess';
 import RefinementFilter from '../RefinementFilter/RefinementFilter';
 import { color } from '../../../../styles';
 

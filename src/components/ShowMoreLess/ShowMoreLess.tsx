@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
 import { cssThemedColor, cssThemedHoverColor } from '../../styles/mixins';
@@ -36,8 +35,18 @@ const ShowMoreLessButton = styled.button`
   ${withThemes(ShowMoreLessButtonTheme)}
 `;
 
-const ShowMoreLess = ({ initialCount, items, id }) => {
-  const [hidden, toggleHidden] = useState(true);
+export type ShowMoreLessProps = {
+  id: string;
+  initialCount: number;
+  items: JSX.Element[];
+};
+
+const ShowMoreLess = ({
+  id,
+  initialCount,
+  items,
+}: ShowMoreLessProps) => {
+  const [hidden, setHidden] = useState(true);
   const initialItems = items.slice(0, initialCount);
   const restItems = items.slice(initialCount);
 
@@ -48,7 +57,7 @@ const ShowMoreLess = ({ initialCount, items, id }) => {
       </ShowMoreLessInitial>
       <ShowMoreLessRest
         data-testid="show-more-rest-items"
-        hidden={hidden || null}
+        hidden={hidden}
         id={`show-hide--${id}`}
       >
         {restItems.map(item => item)}
@@ -57,24 +66,15 @@ const ShowMoreLess = ({ initialCount, items, id }) => {
         <ShowMoreLessButton
           aria-controls={`show-hide--${id}`}
           aria-expanded={!hidden}
+          aria-label={hidden ? 'Show more' : 'Show less'}
           className="show-more-less__button"
-          onClick={() => { toggleHidden(!hidden); }}
-          aria-label={hidden ? 'Show More' : 'Show Less'}
+          onClick={() => { setHidden(!hidden); }}
         >
           {hidden ? '+ Show More' : '- Show Less'}
         </ShowMoreLessButton>
       )}
     </div>
   );
-};
-
-ShowMoreLess.propTypes = {
-  /** Unique id for this ShowMoreLess. */
-  id: PropTypes.string.isRequired,
-  /** Initial number of 'items' that render before clicking 'Show More'. */
-  initialCount: PropTypes.number.isRequired,
-  /** The list of 'items' to render. */
-  items: PropTypes.array.isRequired,
 };
 
 export default ShowMoreLess;

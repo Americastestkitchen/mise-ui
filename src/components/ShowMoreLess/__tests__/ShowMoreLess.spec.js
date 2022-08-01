@@ -5,7 +5,7 @@ import { render, fireEvent, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import 'jest-styled-components';
 
-import ShowMoreLess from '../index';
+import ShowMoreLess from '../ShowMoreLess';
 import breakpoints from '../../../styles/breakpoints';
 
 describe('ShowMoreLess component should', () => {
