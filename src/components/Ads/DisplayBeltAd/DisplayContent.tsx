@@ -167,8 +167,8 @@ export default function DisplayContent({
         {displayImageComponent}
         <Content>
           <TextArea>
-            <Headline>{headline}</Headline>
-            <SaleCopy>{saleCopy}</SaleCopy>
+            <Headline dangerouslySetInnerHTML={{ __html: headline }} />
+            <SaleCopy dangerouslySetInnerHTML={{ __html: saleCopy }} />
           </TextArea>
         </Content>
         <Cta onClick={onClick} href={ctaLink} target="_blank" {...linkProps}>{ctaCopy}<DetailTriangleRight /></Cta>
