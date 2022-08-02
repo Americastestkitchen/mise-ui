@@ -1,0 +1,150 @@
+<!-- Typography.stories.mdx -->
+import styles from "./typography.module.scss";
+
+import { Canvas, Meta, Typeset } from '@storybook/addon-docs';
+
+<Meta title="Design Tokens/Typography" />
+
+# Typography
+
+## Font Families
+
+**$proximaNova:** 'proximaNovaRegular'
+
+<Canvas>
+  <p className={styles.proximaNova}>Proxima Nova</p>
+</Canvas>
+
+**$proximaNovaBold:** 'proximaNovaBold'
+
+<Canvas>
+  <p className={styles.proximaNovaBold}>Proxima Nova Bold</p>
+</Canvas>
+
+**$clarendonBold:** 'Clarendon Bold'
+<Canvas>
+  <p className={styles.clarendonBold}>Clarendon Bold</p>
+</Canvas>
+
+**$merriweather:** 'Merriweather'
+<Canvas>
+  <p className={styles.merriweather}>Merriweather</p>
+</Canvas>
+
+**$chippewaFalls:** 'chippewaFalls'
+<Canvas>
+  <p className={styles.chippewaFalls}>chippewa falls</p>
+</Canvas>
+
+## Base Properties
+
+### Shared Between Brands
+
+| Variable | Value |
+|-|-|
+| $baseFontSize | 16px |
+| $baseLineHeight | 1.5 |
+| $primaryFont | $proximaNova |
+| $secondaryFont | $proximaNovaBold |
+
+### ATK
+
+| Variable | Value |
+|-|-|
+| $accentFont | $merriweather |
+
+### CCO
+
+| Variable | Value |
+|-|-|
+| $accentFont | $clarendonBold |
+
+### CIO
+
+| Variable | Value |
+|-|-|
+| $accentFont | $merriweather |
+
+## Headings - $fHeading
+
+Headings include page titles, carousel headers, card names
+
+**$fHeadingSm:** 1.5rem/1.625rem $secondaryFont; // 24px/26px
+<Canvas>
+  <h3 className={styles.heading3}>Chocolate Crinkle Cookies</h3>
+</Canvas>
+
+**$fHeadingMd:** 1.625rem/2.063rem $secondaryFont; // 26px/33px
+<Canvas>
+  <h2 className={styles.heading2}>Chocolate Crinkle Cookies</h2>
+</Canvas>
+
+**$fHeadingLg:** 2rem/2.25rem $secondaryFont; // 32px/36px
+<Canvas>
+  <h1 className={styles.heading1}>Chocolate Crinkle Cookies</h1>
+</Canvas>
+
+## Body - $fBody
+**$fBodySm:** 0.875rem/1rem $primaryFont; // 14px/16px
+<Canvas>
+  <p className={styles.bodySmall}>
+    Find the winner on amazon
+  </p>
+</Canvas>
+
+**$fBodyMd:** 1rem / 1.5 $primaryFont; // 16px/1.5
+<Canvas>
+  <p className={styles.bodyMedium}>
+    Both natural and Dutch-processed cocoa will work in this recipe. Our favorite natural cocoa is Hershey’s Natural Cocoa Unsweetened; our favorite Dutch-processed cocoa is Droste Cocoa. Our preferred unsweetened chocolate is Hershey’s Unsweetened Baking Bar.
+   </p>
+</Canvas>
+
+**$fLetteringSpacing:** 2.88px;
+<Canvas>
+  <p className={styles.fCtaMd}>
+    BROWSE ALL
+   </p>
+</Canvas>
+
+## Font Size Range Suggestion
+### Body
+* 12px - may want to drop this
+* 14px
+* 16px - BASE
+* 20px
+### Headings
+* 24px
+* 28px
+* 32px 
+* 36px - may want to drop this
+
+## Line Height Suggestions
+### Explicitly defined in mise
+* 1.13
+* 1.25
+* 1.63
+* 1.75
+
+On top of these explicitly defined line heights, there is a wide range of line
+heights across our different pages. I believe we should consider assigning line
+heights based on use cases (heading,body,etc.) rather than creating a list of
+useable line heights.
+
+## Letter Spacing Suggestions
+### Explicitly defined in mise
+* cta: '2.88px'
+* xxsm: '0.2px'
+* xsm: '0.8px'
+* sm: '1.0px'
+* md: '1.6px'
+* lg: '1.9px'
+* xlg: '2.6px'
+* xxlg: '3px'
+* xxxlg: '6px'
+
+Same note as line heights above.
+
+## Minor Discrepencies on Prod
+Belt Ads and Standard Card headings. These two components have headings with nearly identical font styles.
+* ads: size - 24px lineHeight - 26px
+* standard card: size - 23px lineHeight - 26px
