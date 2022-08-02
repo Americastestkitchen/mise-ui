@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
-import { addThemedWrapper } from '../../config/decorators';
+import ThemedWrapper from '../../config/decorators/ThemedWrapper';
 import Listable, { ListableProps } from './Listable';
 import { color, grid } from '../../styles';
 
 export default {
   title: 'Components/Listable',
-  decorator: [addThemedWrapper()],
+  decorator: [ThemedWrapper()],
   component: Listable,
 } as ComponentMeta<typeof Listable>;
 

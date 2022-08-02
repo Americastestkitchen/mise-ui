@@ -66,7 +66,7 @@ const AffiliateLinkEl = styled.a.attrs({
 })`${withThemes(AffiliateLinkTheme)}`;
 
 type AffiliateLinkPropTypes = {
-  dataAttrs?: Record<string, any>,
+  dataAttrs?: Record<string, unknown>,
   icon?: 'Amazon' | 'BlueApron' | 'Houzz' | 'KingArthur' | 'SurLaTable' | 'ThermoWorks' | 'Victorinox' | 'WilliamsSonoma',
   readerLabel?: string,
   name?: string,

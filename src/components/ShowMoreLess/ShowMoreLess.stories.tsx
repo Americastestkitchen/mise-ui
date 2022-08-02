@@ -2,7 +2,7 @@ import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { siteKey } from '../../config/argTypes';
 import ShowMoreLess, { ShowMoreLessProps } from './ShowMoreLess';
-import { addThemedWrapper } from '../../config/decorators';
+import ThemedWrapper from '../../config/decorators/ThemedWrapper';
 
 const Item = ({ num }: { num: number }) => <p>{`Item ${num}`}</p>;
 const defaultItems = [
@@ -14,7 +14,7 @@ const defaultItems = [
 export default {
   title: 'Components/ShowMoreLess',
   component: ShowMoreLess,
-  decorators: [addThemedWrapper()],
+  decorators: [ThemedWrapper()],
   argTypes: { siteKey },
 } as ComponentMeta<typeof ShowMoreLess>;
 

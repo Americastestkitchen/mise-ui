@@ -2,7 +2,7 @@ import React from 'react';
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { siteKey } from '../../../../config/argTypes';
-import DarkModeWrapper from '../../../../config/decorators/mode-dark';
+import DarkModeWrapper from '../../../../config/decorators/DarkMode';
 import MembershipShowcaseAd, { MembershipShowcaseAdProps } from './MembershipShowcaseAd';
 import { UnderlinedText, UnderlineThree } from '../../../DesignTokens/TextDecoration';
 
