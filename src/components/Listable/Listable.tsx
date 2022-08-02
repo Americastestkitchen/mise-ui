@@ -1,14 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { Lock, VideoPlay } from '../DesignTokens/Icon/index';
 import { color, fontSize, font, grid, lineHeight, spacing } from '../../styles';
 import { getImageUrl } from '../../lib/cloudinary';
 
-const ListableWrapper = styled.div.attrs(({ isCompleted }) => ({
-  className: `listable${isCompleted ? ' completed' : ''}`,
-}))`
+const ListableWrapper = styled.div`
   display: flex;
   max-width: ${grid.columnWidth};
   width: ${grid.columnWidth};
@@ -34,9 +31,7 @@ const ListableImage = styled.img.attrs({
   width: 12rem;
 `;
 
-const ListableBody = styled.div.attrs(({ isSelected }) => ({
-  className: `listable__body${isSelected ? ' selected' : ''}`,
-}))`
+const ListableBody = styled.div`
   display: flex;
   flex: 1 0 calc(100% - 12rem);
   flex-direction: column;
@@ -71,33 +66,38 @@ const ListableDuration = styled.span`
   }
 `;
 
+export type ListableProps = {
+  cloudinaryId: string;
+  duration: string;
+  hasAccess: boolean;
+  isCompleted?: boolean;
+  isSelected?: boolean;
+  title: string;
+};
+
 const Listable = ({
   cloudinaryId,
   duration,
   hasAccess,
-  isCompleted,
-  isSelected,
+  isCompleted = false,
+  isSelected = false,
   title,
-}) => (
+}: ListableProps) => (
   <ListableWrapper
-    isCompleted={isCompleted}
+    className={`listable ${isCompleted ? 'completed' : ''}`}
   >
     <ListableImage
       alt=""
       src={getImageUrl(cloudinaryId, { height: 70, width: 122 })}
     />
     <ListableBody
-      isSelected={isSelected}
+      className={`listable__body ${isSelected ? 'selected' : ''}`}
       data-testid="listable-body"
     >
       <ListableTitle>
-        {
-          !hasAccess && (
-            <Lock
-              fill={color.white}
-            />
-          )
-        }
+        {!hasAccess && (
+          <Lock fill={color.white} />
+        )}
         {title}
       </ListableTitle>
       <ListableDuration>
@@ -107,19 +107,5 @@ const Listable = ({
     </ListableBody>
   </ListableWrapper>
 );
-
-Listable.propTypes = {
-  cloudinaryId: PropTypes.string.isRequired,
-  duration: PropTypes.string.isRequired,
-  hasAccess: PropTypes.bool.isRequired,
-  isCompleted: PropTypes.bool,
-  isSelected: PropTypes.bool,
-  title: PropTypes.string.isRequired,
-};
-
-Listable.defaultProps = {
-  isCompleted: false,
-  isSelected: false,
-};
 
 export default Listable;
