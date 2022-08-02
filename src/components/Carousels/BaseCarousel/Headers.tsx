@@ -136,7 +136,7 @@ type IntroCarouselHeaderProps = {
 export function IntroCarouselHeader({ title, intro }: IntroCarouselHeaderProps) {
   return (
     <div data-qa="intro-carousel-header">
-      <Title>{title}</Title>
+      <Title dangerouslySetInnerHTML={{ __html: title }} />
       {!!intro && <Intro dangerouslySetInnerHTML={{ __html: intro }} />}
     </div>
   );
