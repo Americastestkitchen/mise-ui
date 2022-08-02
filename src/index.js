@@ -72,7 +72,7 @@ import SearchNumericMenu from './components/Algolia/search/SearchNumericMenu';
 import SearchNumericMenuBasic from './components/Algolia/search/SearchNumericMenuBasic';
 import SearchRefinementList from './components/Algolia/search/SearchRefinementList';
 import SearchSortBy from './components/Algolia/search/SearchSortBy';
-import ShowMoreLess from './components/ShowMoreLess';
+import ShowMoreLess from './components/ShowMoreLess/ShowMoreLess';
 import ShowMoreResults from './components/ShowMoreResults';
 import SidebarCard from './components/Articles/SidebarCard';
 import SingleMembershipAd from './components/Ads/SingleMembershipAd';
