@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import AffiliateLink from '../shared/AffiliateLink';
+import AffiliateLink from '../shared/AffiliateLink/AffiliateLink';
 import Image from '../shared/Image';
 import Sticker from '../shared/Sticker';
 import { getImageUrl } from '../../../lib/cloudinary';
