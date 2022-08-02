@@ -185,56 +185,66 @@ const SingleProductShowcaseAd = ({
   siteKey,
   subtitle,
   title,
-}: SingleProductShowcaseAd) => (
-  <Product>
-    <ProductPicture>
-      <source
-        media="(min-width: 1024px)"
-        srcSet={getImageUrl(
-          cloudinaryId,
-          'showcaseFreeTrialDesktop',
-        )}
+}: SingleProductShowcaseAd) => {
+  console.log({ cloudinaryId,
+    cta,
+    ctaHref,
+    ctaTarget,
+    onClick,
+    siteKey,
+    subtitle,
+    title });
+  return (
+    <Product>
+      <ProductPicture>
+        <source
+          media="(min-width: 1024px)"
+          srcSet={getImageUrl(
+            cloudinaryId,
+            'showcaseFreeTrialDesktop',
+          )}
+        />
+        <source
+          media="(min-width: 768px)"
+          srcSet={getImageUrl(
+            cloudinaryId,
+            'showcaseFreeTrialTablet',
+          )}
+        />
+        <img
+          alt={title}
+          crossOrigin="anonymous"
+          decoding="async"
+          data-testid="product-img"
+          src={getImageUrl(
+            cloudinaryId,
+            'showcaseFreeTrialMobile',
+          )}
+        />
+      </ProductPicture>
+      <ProductInfo>
+        <ProductInfoInner>
+          <ProductTitle>
+            {title}
+          </ProductTitle>
+          <ProductSubtitle>
+            {subtitle}
+          </ProductSubtitle>
+          <ProductCta
+            href={ctaHref}
+            onClick={onClick}
+            target={ctaTarget}
+            title={cta}
+          >
+            {cta}
+          </ProductCta>
+        </ProductInfoInner>
+      </ProductInfo>
+      <Badge
+        type={siteKey}
       />
-      <source
-        media="(min-width: 768px)"
-        srcSet={getImageUrl(
-          cloudinaryId,
-          'showcaseFreeTrialTablet',
-        )}
-      />
-      <img
-        alt=""
-        crossOrigin="anonymous"
-        decoding="async"
-        data-testid="product-img"
-        src={getImageUrl(
-          cloudinaryId,
-          'showcaseFreeTrialMobile',
-        )}
-      />
-    </ProductPicture>
-    <ProductInfo>
-      <ProductInfoInner>
-        <ProductTitle>
-          {title}
-        </ProductTitle>
-        <ProductSubtitle>
-          {subtitle}
-        </ProductSubtitle>
-        <ProductCta
-          href={ctaHref}
-          onClick={onClick}
-          target={ctaTarget}
-          title={cta}
-        >
-          {cta}
-        </ProductCta>
-      </ProductInfoInner>
-    </ProductInfo>
-    <Badge
-      type={siteKey}
-    />
-  </Product>
-);
+    </Product>
+  );
+};
 
 export default SingleProductShowcaseAd;
