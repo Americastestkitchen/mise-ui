@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-// import { action } from '@storybook/addon-actions';
+import { siteKey } from '../../config/argTypes';
 import ShowMoreLess, { ShowMoreLessProps } from './ShowMoreLess';
 import { addThemedWrapper } from '../../config/decorators';
 
@@ -15,6 +15,7 @@ export default {
   title: 'Components/ShowMoreLess',
   component: ShowMoreLess,
   decorators: [addThemedWrapper()],
+  argTypes: { siteKey },
 } as ComponentMeta<typeof ShowMoreLess>;
 
 const Template: ComponentStory<typeof ShowMoreLess> = (args: ShowMoreLessProps) => (
