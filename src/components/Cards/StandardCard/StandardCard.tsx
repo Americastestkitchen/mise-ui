@@ -6,7 +6,7 @@ import { StandardUserAttributions } from '../shared/UserAttributions/UserAttribu
 import Attributions, { ShopPrices } from '../shared/Attributions/Attributions';
 import Badge from '../../Badge/Badge';
 import CtaLink from '../shared/CtaLink/CtaLink';
-import FavoriteButton from '../shared/FavoriteButton';
+import FavoriteButton from '../shared/FavoriteButton/FavoriteButton';
 import Image from '../shared/Image';
 import ImageCollage from '../shared/ImageCollage';
 import Sticker from '../shared/Sticker';

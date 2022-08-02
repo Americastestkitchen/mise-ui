@@ -1,7 +1,7 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
 
-import FavoriteButton from './index';
+import FavoriteButton from './FavoriteButton';
 
 export default {
   title: 'Components/Cards/shared/FavoriteButton',
