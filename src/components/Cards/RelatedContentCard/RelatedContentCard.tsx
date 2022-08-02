@@ -4,7 +4,7 @@ import { font, color, withThemes, mixins } from '../../../styles';
 import { md, untilMd } from '../../../styles/breakpoints';
 import { cssThemedColor, cssThemedFontAccentColorAlt, cssThemedLink } from '../../../styles/mixins';
 import useMedia from '../../hooks/useMedia';
-import AffiliateLink from '../shared/AffiliateLink';
+import AffiliateLink from '../shared/AffiliateLink/AffiliateLink';
 
 const mobileCard = untilMd;
 const desktopCard = md;

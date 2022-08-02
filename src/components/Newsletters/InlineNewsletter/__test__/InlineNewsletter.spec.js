@@ -2,7 +2,7 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { render, screen } from '@testing-library/react';
 
-import InlineNewsletter from '../index';
+import InlineNewsletter from '../InlineNewsletter';
 import breakpoints from '../../../../styles/breakpoints';
 
 const onSubmit = jest.fn();

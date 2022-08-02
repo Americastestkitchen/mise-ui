@@ -1,5 +1,4 @@
 import breakpoint from 'styled-components-breakpoint';
-import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { css } from 'styled-components';
 
@@ -85,11 +84,17 @@ const StyledBadge = styled(Badge)`
   left: ${spacing.xsm};
 `;
 
+type LoadingRelatedDocumentCardProps = {
+  hasImage: boolean
+  imageAspectRatio: string,
+  siteKey: ThemeSiteKey,
+}
+
 const LoadingRelatedDocumentCard = ({
-  hasImage,
+  hasImage = true,
   imageAspectRatio,
   siteKey,
-}) => (
+}: LoadingRelatedDocumentCardProps) => (
   <LoadingRelatedDocumentCardEl>
     {hasImage && (
       <RelatedDocumentImageWrapper>
@@ -97,7 +102,6 @@ const LoadingRelatedDocumentCard = ({
           type={siteKey}
         />
         <Image
-          aspectRatio={imageAspectRatio}
           imageAlt="loading-related-img"
           imageUrl={getImageUrl(
             'ATK-S20_20190523_09-46-54_41671_ojahbg',
@@ -117,16 +121,5 @@ const LoadingRelatedDocumentCard = ({
     </LoadingRelatedDocumentCardContent>
   </LoadingRelatedDocumentCardEl>
 );
-
-LoadingRelatedDocumentCard.propTypes = {
-  hasImage: PropTypes.bool,
-  imageAspectRatio: PropTypes.string,
-  siteKey: PropTypes.oneOf(['atk', 'cco', 'cio', 'kids', 'school', 'shop']).isRequired,
-};
-
-LoadingRelatedDocumentCard.defaultProps = {
-  hasImage: true,
-  imageAspectRatio: null,
-};
 
 export default LoadingRelatedDocumentCard;
