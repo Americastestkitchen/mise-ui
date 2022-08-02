@@ -1,18 +1,8 @@
-import breakpoint from 'styled-components-breakpoint';
-import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import {
-  color,
-  font,
-  fontSize,
-  lineHeight,
-  mixins,
-  spacing,
-  withThemes,
-} from '../../../styles';
-
+import { md, lg, xlg } from '../../../styles/breakpoints';
+import { color, font, fontSize, lineHeight, mixins, spacing, withThemes } from '../../../styles';
 import Checkmark from '../../DesignTokens/Icon/svgs/Checkmark2';
 import EmailForm from '../../Forms/EmailForm';
 
@@ -21,22 +11,22 @@ const NewsletterTitleTheme = {
     font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb};
     margin-bottom: ${spacing.sm};
 
-    ${breakpoint('lg')`
+    ${lg(css`
       margin-bottom: 0;
-    `}
+    `)}
   `,
   dark: css`
     color: ${color.white};
   `,
 };
 
-const NewsletterInfoWrapper = styled.div.attrs({
-  className: 'inline-newsletter__info',
-})``;
-
 const NewsletterTitle = styled.h2.attrs({
   className: 'inline-newsletter__title',
 })`${withThemes(NewsletterTitleTheme)}`;
+
+const NewsletterInfoWrapper = styled.div.attrs({
+  className: 'inline-newsletter__info',
+})``;
 
 const NewsletterSubtitleTheme = {
   default: css`
@@ -45,10 +35,10 @@ const NewsletterSubtitleTheme = {
     margin-bottom: ${spacing.xsm};
     text-transform: uppercase;
 
-    ${breakpoint('xlg')`
+    ${xlg(css`
       font: ${fontSize.md}/1.6rem ${font.pnr};
       letter-spacing: 2.56px;
-    `}
+    `)}
   `,
   dark: css`
     color: ${color.white};
@@ -81,12 +71,11 @@ const NewsletterSuccess = styled.div.attrs({
   className: 'inline-newsletter__success',
 })`${withThemes(NewsletterSuccessTheme)}`;
 
-const InlineNewsletterContent = styled.div`
-  ${breakpoint('md')`
-    ${({ success }) => `${success
-    ? 'align-items: flex-start;'
-    : 'align-items: center;'
-  }`}
+const InlineNewsletterContent = styled.div<{success: boolean}>`
+  ${({ success }) => md(css`
+    align-items: ${success ? 'flex-start' : 'center'};
+  `)}
+  ${md(css`
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -107,15 +96,15 @@ const InlineNewsletterContent = styled.div`
         ${mixins.focusIndicator(color.eclipse, '2px')}
       }
     }
-  `}
+  `)}
 
-  ${breakpoint('lg')`
+  ${({ success }) => lg(css`
+    ${success ? 'flex-direction: column;' : 'align-items: center;'}
+  `)}
+
+  ${lg(css`
     display: flex;
     justify-content: space-between;
-    ${({ success }) => `${success
-    ? 'flex-direction: column;'
-    : 'align-items: center;'}
-    `}
 
     .inline-newsletter__success,
     .email-form-wrapper {
@@ -127,13 +116,14 @@ const InlineNewsletterContent = styled.div`
       flex: 4 1 auto;
       margin-bottom: 1rem;
     }
-  `}
+  `)}
 
-  ${breakpoint('lg')`
-    ${({ success }) => `${success
-    ? `flex-direction: column; align-items: flex-start; color: ${color.eclipse};`
+  ${({ success }) => xlg(css`${success
+    ? `flex-direction: column; align-iems: flex-start; color: ${color.eclipse}`
     : 'flex-direction: row;'}
-    `}
+  `)}
+
+  ${xlg(css`
     margin: 0 auto;
     max-width: 113.6rem;
 
@@ -145,24 +135,24 @@ const InlineNewsletterContent = styled.div`
     .inline-newsletter__success {
       max-width: 100%;
     }
-    
+  
     .email-form-wrapper {
       max-width: 56rem;
     }
-  `}
+  `)}
 `;
 
 const InlineNewsletterWrapperTheme = {
   default: css`
     padding: ${spacing.sm} ${spacing.sm} ${spacing.md};
 
-    ${breakpoint('md')`
+    ${md(css`
       padding: 1.6rem 3.6rem 0.6rem;
-    `}
+    `)}
 
-    ${breakpoint('xlg')`
+    ${xlg(css`
       padding: ${spacing.sm};
-    `}
+    `)}
   `,
   dark: css`
     background-color: ${color.asphalt};
@@ -173,22 +163,37 @@ const InlineNewsletterWrapper = styled.div.attrs({
   className: 'inline-newsletter',
 })`${withThemes(InlineNewsletterWrapperTheme)}`;
 
-/**
- * A site themed version of this component is available under a different name
- * ReviewsEmailCapture src/components/Ads/ReviewsAds/ReviewsEmailCapture/index.js
- */
+export type InlineNewsletterProps = {
+  buttonColor?: string;
+  buttonTextColor?: string;
+  buttonText?: string;
+  errorText?: string;
+  inputLabel?: string;
+  inputId: string;
+  onSubmit: () => void;
+  placeholder?: string;
+  success?: boolean;
+  successText?: string;
+  subtitle: string;
+  title: string;
+};
+
 const InlineNewsletter = ({
+  buttonColor = 'frog',
+  buttonTextColor = 'white',
+  buttonText = 'Sign me up',
+  errorText = 'Invalid email address',
+  inputLabel = 'Email address',
+  inputId,
   onSubmit,
-  success,
-  successText,
+  placeholder = 'Enter your email address',
+  success = false,
+  successText = 'Thank you! Get ready for Well-Equipped Cook in your inbox on Wednesdays!',
   subtitle,
   title,
-  ...emailFormProps
-}) => (
+}: InlineNewsletterProps) => (
   <InlineNewsletterWrapper>
-    <InlineNewsletterContent
-      success={success}
-    >
+    <InlineNewsletterContent success={success}>
       <NewsletterInfoWrapper>
         <NewsletterSubtitle>
           {subtitle}
@@ -205,37 +210,20 @@ const InlineNewsletter = ({
             <Checkmark fill={color.mint} />
             <span>{successText}</span>
           </NewsletterSuccess>
-        )
-        : (
+        ) : (
           <EmailForm
+            buttonColor={buttonColor}
+            buttonTextColor={buttonTextColor}
+            buttonText={buttonText}
+            errorText={errorText}
+            inputLabel={inputLabel}
+            inputId={inputId}
             onSubmit={onSubmit}
-            {...emailFormProps}
+            placeholder={placeholder}
           />
         )}
     </InlineNewsletterContent>
   </InlineNewsletterWrapper>
 );
-
-InlineNewsletter.propTypes = {
-  buttonColor: PropTypes.string,
-  buttonTextColor: PropTypes.string,
-  buttonText: PropTypes.string,
-  errorText: PropTypes.string,
-  inputLabel: PropTypes.string,
-  inputId: PropTypes.string.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  placeholder: PropTypes.string,
-  success: PropTypes.bool,
-  successText: PropTypes.string,
-  subtitle: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-};
-
-InlineNewsletter.defaultProps = {
-  ...EmailForm.defaultProps,
-  success: false,
-  successText: 'Thank you! Get ready for Well-Equipped Cook in your inbox on Wednesdays!',
-  successDescription: null,
-};
 
 export default InlineNewsletter;
