@@ -1,19 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import breakpoint from 'styled-components-breakpoint';
+import styled, { css } from 'styled-components';
+import { md } from '../../../styles/breakpoints';
 
-import PersonHeadShot from '../shared/PersonHeadShot/PersonHeadShot';
+import PersonHeadShot, { PersonHeadshotPropTypes } from '../shared/PersonHeadShot/PersonHeadShot';
 import { color, font, fontSize, grid, lineHeight, mixins, spacing } from '../../../styles';
 
 const MediaObjectCardWrapper = styled.section`
   max-width: 100%;
   width: 100%;
 
-  ${breakpoint('md')`
+  ${md(css`
     max-width: ${grid.columnWidth};
     width: ${grid.columnWidth};
-  `}
+  `)}
 `;
 
 const MediaObjectCardHeading = styled.div`
@@ -39,7 +38,7 @@ const MediaObjectCardName = styled.h2`
 `;
 
 const MediaObjectCardTitle = styled.h3`
-  color ${color.nobel};
+  color: ${color.nobel};
   font: ${fontSize.md}/${lineHeight.sm} ${font.pnb};
 `;
 
@@ -53,9 +52,18 @@ const MediaObjectCardCta = styled.a`
   ${mixins.styledLink(color.turquoise, color.seaSalt)}
 `;
 
+export type MediaCardObjectProps = {
+  ctaText?: string;
+  ctaUrl?: string;
+  description: string;
+  personHeadShot: PersonHeadshotPropTypes;
+  personName: string;
+  personTitle: string;
+}
+
 const MediaObjectCard = ({
   ctaText, ctaUrl, description, personHeadShot, personName, personTitle,
-}) => (
+}: MediaCardObjectProps) => (
   <MediaObjectCardWrapper>
     <MediaObjectCardHeading>
       <PersonHeadShot
@@ -81,21 +89,5 @@ const MediaObjectCard = ({
     )}
   </MediaObjectCardWrapper>
 );
-
-MediaObjectCard.propTypes = {
-  ctaText: PropTypes.string,
-  ctaUrl: PropTypes.string,
-  description: PropTypes.string.isRequired,
-  personHeadShot: PropTypes.shape({
-    ...PersonHeadShot.propTypes,
-  }).isRequired,
-  personName: PropTypes.string.isRequired,
-  personTitle: PropTypes.string.isRequired,
-};
-
-MediaObjectCard.defaultProps = {
-  ctaText: null,
-  ctaUrl: null,
-};
 
 export default MediaObjectCard;
