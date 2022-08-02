@@ -110,6 +110,10 @@ export const Title = styled.h2`
   font-size: 26px;
   line-height: 33px;
   margin: 0;
+
+  a {
+    ${cssThemedLink}
+  }
 `;
 
 export const Intro = styled.div`
