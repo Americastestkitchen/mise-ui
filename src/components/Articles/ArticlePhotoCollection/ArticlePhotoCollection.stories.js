@@ -16,7 +16,7 @@ export default {
 };
 
 const caption = 'The heat applied during pasteurization, a necessary step for all <a href="#">shelf-stable jars</a>, essentially cooks the pickles. Pickle spears (left) are especially vulnerable and often turn out soft and soggy. Shelf-stable whole pickles (right) are much more likely to stay firm and crunchy.';
-const title = 'Collection of Pickle Photos';
+const title = 'Collection of <a>Pickle Photos</a>';
 
 const Template = (args) => <ArticlePhotoCollection {...args} />;
 
