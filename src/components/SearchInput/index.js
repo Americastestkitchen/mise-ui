@@ -170,7 +170,7 @@ class StyledSearchBox extends Component {
         role="search"
       >
         <SearchIcon
-          fill={color.mint}
+          fill={color.darkTeal}
         />
         <input
           className="search-input__input"

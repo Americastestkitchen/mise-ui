@@ -128,7 +128,7 @@ const AccordionButtonTheme = {
           max-width: 3.6rem;
 
           svg {
-            fill: ${color.nobel};
+            fill: ${color.darkTeal};
           }
         }
       }
