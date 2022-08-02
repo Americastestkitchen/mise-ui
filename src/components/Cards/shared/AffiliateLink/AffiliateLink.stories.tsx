@@ -1,31 +1,41 @@
 import React from 'react';
-import { withKnobs, select, text } from '@storybook/addon-knobs';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import AffiliateLink from './AffiliateLink';
 
 export default {
   title: 'Components/Cards/shared/AffiliateLink',
   component: AffiliateLink,
-  decorators: [withKnobs],
-};
+  argTypes: {
+    icon: {
+      control: { type: 'select',
+        options: [
+          'Amazon',
+          'BlueApron',
+          'Houzz',
+          'KingArthur',
+          'SurLaTable',
+          'ThermoWorks',
+          'Victorinox',
+          'WilliamsSonoma',
+        ] },
+    },
+    readerLabel: { control: false },
+    onClick: { control: false },
+    dataAttrs: { control: false },
+  },
+} as ComponentMeta<typeof AffiliateLink>;
 
-export const Default = () => (
-  <AffiliateLink
-    icon={select(
-      'Icon',
-      [
-        'Amazon',
-        'BlueApron',
-        'Houzz',
-        'KingArthur',
-        'SurLaTable',
-        'ThermoWorks',
-        'Victorinox',
-        'WilliamsSonoma',
-      ],
-      'Amazon')}
-    text={text('Text', 'Buy now for $15')}
-    title={text('Link Title', '')}
-    url={text('URL', 'https://www.amazon.com')}
-  />
-);
+const Template: ComponentStory<typeof AffiliateLink> = args => <AffiliateLink {...args} />;
+
+export const Primary = Template.bind({});
+
+Primary.args = {
+  icon: 'Amazon',
+  text: 'Buy now for $15',
+  title: 'Link Title',
+  url: 'https://www.amazon.com',
+  name: '',
+  onClick: () => {},
+  readerLabel: '',
+};
