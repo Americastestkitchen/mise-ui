@@ -1,3 +1,17 @@
+# v1.33.31 (Wed Aug 03 2022)
+
+#### 🐛 Bug Fix
+
+- Empty commit [#877](https://github.com/Americastestkitchen/mise-ui/pull/877) ([@harry-atk](https://github.com/harry-atk))
+- WEB-187: Pass styled html to inner html [#869](https://github.com/Americastestkitchen/mise-ui/pull/869) ([@harry-atk](https://github.com/harry-atk))
+- WEB-185: Add styled markup to RelatedContentCard [#868](https://github.com/Americastestkitchen/mise-ui/pull/868) ([@harry-atk](https://github.com/harry-atk))
+
+#### Authors: 1
+
+- Harry Scheuerle ([@harry-atk](https://github.com/harry-atk))
+
+---
+
 # v1.33.30 (Thu Jul 28 2022)
 
 #### 🐛 Bug Fix
