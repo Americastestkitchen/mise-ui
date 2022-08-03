@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import { color, font, fontSize, lineHeight, spacing } from '../../../styles';
@@ -7,6 +6,7 @@ import Badge from '../../Badge/Badge';
 import Image from '../shared/Image/Image';
 import Sticker from '../shared/Sticker';
 import Byline from '../../Byline/Byline';
+import { StickerType } from '../Cards';
 
 const MarqueeCardWrapper = styled.article.attrs({
   className: 'article-card',
@@ -97,6 +97,19 @@ const StyledByline = styled(Byline)`
   }
 `;
 
+export type MarqueeCardPropTypes = {
+  author: string,
+  authorImageCloudinaryId?: string,
+  imageUrl: string,
+  publishDate?: string,
+  description?: string,
+  href: string,
+  siteKey: ThemeSiteKey,
+  stickers?: StickerType[],
+  title: string,
+  onClick?: () => void,
+}
+
 const MarqueeCard = ({
   author,
   authorImageCloudinaryId,
@@ -105,10 +118,10 @@ const MarqueeCard = ({
   description,
   href,
   siteKey,
-  stickers,
+  stickers = [],
   title,
-  onClick,
-}) => (
+  onClick = () => {},
+}: MarqueeCardPropTypes) => (
   <MarqueeCardWrapper>
     <a
       href={href}
@@ -139,30 +152,5 @@ const MarqueeCard = ({
     </a>
   </MarqueeCardWrapper>
 );
-
-MarqueeCard.propTypes = {
-  /** Author Name */
-  author: PropTypes.string.isRequired,
-  /** Image id for author */
-  authorImageCloudinaryId: PropTypes.string,
-  /** Image for card. */
-  imageUrl: PropTypes.string.isRequired,
-  publishDate: PropTypes.string,
-  description: PropTypes.string,
-  href: PropTypes.string.isRequired,
-  siteKey: PropTypes.oneOf(['atk', 'cco', 'cio', 'kids', 'school', 'shop']).isRequired,
-  /** Optional: Data used to render stickers */
-  stickers: PropTypes.array,
-  title: PropTypes.string.isRequired,
-  onClick: PropTypes.func,
-};
-
-MarqueeCard.defaultProps = {
-  authorImageCloudinaryId: '',
-  description: null,
-  publishDate: '',
-  stickers: null,
-  onClick: () => {},
-};
 
 export default MarqueeCard;
