@@ -121,8 +121,9 @@ export const BoxBottomImageWideWidth = () => (
   </ArticleTextBlockStoryWrapper>
 );
 
-export const TextBlockWithOrderedList = () => (
+export const TextBlockWithOrderedListAndTitleLink = () => (
   <ArticleTextBlock 
+    title={"Render Links in <a>Title</a>"}
     content={`<ol>
       <li>Text with <strong>strong element</strong> will wrap weirdly when longer than the container will wrap weirdly when longer than the container will wrap weirdly when longer than the container</li>
       </ol>`

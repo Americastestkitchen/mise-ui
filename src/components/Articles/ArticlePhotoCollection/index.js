@@ -6,6 +6,7 @@ import styled, { css } from 'styled-components';
 import ArticleFigcaption from '../shared/ArticleFigcaption';
 import { color, font, fontSize, mixins, withThemes } from '../../../styles';
 import { getImageUrl } from '../../../lib/cloudinary';
+import { cssThemedLink } from '../../../styles/mixins';
 
 const PhotoCollectionWrapper = styled.div`
   margin-bottom: 3rem;
@@ -120,6 +121,10 @@ const CollectionTitleTheme = {
 
 const CollectionTitle = styled.h3`
   ${withThemes(CollectionTitleTheme)}
+
+  a {
+    ${cssThemedLink}
+  }
 `;
 
 const cropMap = {
@@ -151,7 +156,7 @@ const ArticlePhotoCollection = ({
   width,
 }) => (
   <PhotoCollectionWrapper>
-    { title && <CollectionTitle>{title}</CollectionTitle> }
+    { title && <CollectionTitle dangerouslySetInnerHTML={{ __html: title }} /> }
     <PhotoCollection className={`photo-collection__${width}`}>
       <ImagesWrapper>
         {images.map((image, i) => {

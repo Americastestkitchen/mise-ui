@@ -32,7 +32,7 @@ export const DefaultWidth = Template.bind({});
 DefaultWidth.args = {
   images,
   siteKey: 'atk',
-  title: 'Image List Container',
+  title: 'Image List Container with <a>Link</a>',
   width: 'default',
 };
 

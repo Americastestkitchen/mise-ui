@@ -6,6 +6,7 @@ import breakpoint from 'styled-components-breakpoint';
 import ArticleTextBlockFloatImage from './components/ArticleTextBlockFloatImage';
 import SidebarCard from '../SidebarCard';
 import { color, font, fontSize, lineHeight, mixins, withThemes } from '../../../styles';
+import { cssThemedLink } from '../../../styles/mixins';
 
 const ArticleTextBlockWrapper = styled.div`
   margin-bottom: 2.4rem;
@@ -95,6 +96,9 @@ const ArticleTextBlockHeadingTheme = {
 
 const ArticleTextBlockHeading = styled.h3`
   ${withThemes(ArticleTextBlockHeadingTheme)}
+  a {
+    ${cssThemedLink}
+  }
 `;
 
 const ArticleTextBlockContentTheme = {
@@ -235,9 +239,11 @@ const ArticleTextBlock = ({
     >
       {
         title && (
-          <ArticleTextBlockHeading className="article-text-block__heading" as={as}>
-            {title}
-          </ArticleTextBlockHeading>
+          <ArticleTextBlockHeading
+            className="article-text-block__heading"
+            as={as}
+            dangerouslySetInnerHTML={{ __html: title }}
+          />
         )
       }
       <ArticleTextBlockCopy className="article-text-block__copy">

@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components';
 
 import ImageListItem from '../ImageListItem';
 import { color, font, fontSize, mixins, withThemes } from '../../../../styles';
-import { cssThemedColor } from '../../../../styles/mixins';
+import { cssThemedColor, cssThemedLink } from '../../../../styles/mixins';
 
 const ImageListWrapper = styled.aside`
   background-color: ${color.white};
@@ -33,6 +33,10 @@ const ImageListTitle = styled.h3`
   font: ${fontSize.xl}/2.6rem ${font.pnb};
   letter-spacing: normal;
   margin-bottom: 0.4rem;
+
+  a {
+    ${cssThemedLink}
+  }
 `;
 
 const Intro = styled.div`
@@ -51,7 +55,7 @@ const ImageListContainer = ({
   width,
 }) => (
   <ImageListWrapper className={className} width={width}>
-    {title && <ImageListTitle>{title}</ImageListTitle>}
+    {title && <ImageListTitle dangerouslySetInnerHTML={{ __html: title }} />}
     {!!intro && <Intro>{intro}</Intro> }
     {
       images.map(image => (
