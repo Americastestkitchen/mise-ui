@@ -23,9 +23,16 @@ export type AdAdminImagesProps = AltTextProps & { backgroundImages: AdAdminImage
 
 export type DisplayAdSplitProps = Omit<DisplayContentProps, 'displayImageComponent'> & AdAdminImagesProps;
 
-const EdgeAnchoredLeft = styled.img`
+const EdgeAnchoredLeftFixed = styled.img`
   position: absolute;
   height: 128px;
+  left: 0;
+  max-width: unset;
+`;
+
+const EdgeAnchoredLeft = styled.img`
+  position: absolute;
+  height: 100%;
   left: 0;
   max-width: unset;
 `;
@@ -155,7 +162,7 @@ function DisplayBeltImage({ backgroundImages, altTextLeft, altTextRight } : AdAd
 
   if (isMobile) {
     return (
-      <EdgeAnchoredLeft
+      <EdgeAnchoredLeftFixed
         src={cloudinaryInstance.url(backgroundImages?.mobile, {
           ...baseImageConfig,
           height: 130,
