@@ -37,14 +37,14 @@ const EdgeAnchoredRight = styled.img`
   max-width: unset;
 `;
 
-const OffsetMiddleLeft = styled.img`
+const OffsetMiddleRight = styled.img`
   position: absolute;
   height: 100%;
   left: calc(50% + 164px);
   max-width: unset;
 `;
 
-const OffsetMiddleRight = styled.img`
+const OffsetMiddleLeft = styled.img`
   position: absolute;
   height: 100%;
   right: calc(50% + 164px);
@@ -77,23 +77,24 @@ function DisplayBeltImage({ backgroundImages, altTextLeft, altTextRight } : AdAd
             ...baseImageConfig,
             height: 150,
             width: 500,
-            gravity: 'west',
-            crop: 'fit',
-          })}
-          {...shared}
-          alt={altTextLeft}
-        />
-        <OffsetMiddleRight
-          src={cloudinaryInstance.url(backgroundImages?.desktopRight, {
-            ...baseImageConfig,
-            height: 150,
-            width: 500,
             gravity: 'east',
             crop: 'fit',
           })}
           {...shared}
           alt={altTextRight}
         />
+        <OffsetMiddleRight
+          src={cloudinaryInstance.url(backgroundImages?.desktopRight, {
+            ...baseImageConfig,
+            height: 150,
+            width: 500,
+            gravity: 'west',
+            crop: 'fit',
+          })}
+          {...shared}
+          alt={altTextLeft}
+        />
+
       </>
     );
   }
