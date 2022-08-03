@@ -99,7 +99,7 @@ const typeMap = {
 type CardWrapperProps = {
   ctaText?: string,
   ctaUrl?: string,
-  item: unknown; // TODO: redefine unknown when card improvements are made
+  item: any; // TODO: redefine unknown when card improvements are made
   onClick?(): void,
   title: string,
   type: 'feature' | 'standard' | 'tall',
