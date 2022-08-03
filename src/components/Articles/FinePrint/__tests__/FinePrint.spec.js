@@ -3,7 +3,7 @@ import { ThemeProvider } from 'styled-components';
 import { render, screen } from '@testing-library/react';
 import 'jest-styled-components';
 
-import FinePrint from '../index';
+import FinePrint from '../FinePrint';
 import breakpoints from '../../../../styles/breakpoints';
 
 describe('FinePrint component should', () => {
