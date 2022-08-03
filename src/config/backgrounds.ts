@@ -25,4 +25,11 @@ const backgrounds = {
   ],
 };
 
+type Prev = Record<string, string> | Record<string, never>;
+export const backgroundColors = backgrounds.values.reduce((prev: Prev, curr)
+:Record<string, string> => {
+  prev[curr.name] = curr.value;
+  return prev;
+}, {});
+
 export default backgrounds;

@@ -1,30 +1,13 @@
 import React from 'react';
-import styled, { css, ThemeProvider } from 'styled-components';
-import { withKnobs, text } from '@storybook/addon-knobs';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import CardWrapper from './CardWrapper';
-import { breakpoints, color, withThemes } from '../../../styles';
+import DarkModeWrapper from '../../../config/decorators/DarkMode';
+import backgroundParameters from '../../../config/backgrounds';
+import { TallCardPropTypes } from '../TallCard/TallCard';
 import { FeatureCardPropTypes } from '../FeatureCard/FeatureCard';
+import { StandardCardPropTypes } from '../StandardCard/StandardCard';
 
-export default {
-  title: 'Components/Cards/CardWrapper',
-  component: CardWrapper,
-  decorators: [withKnobs],
-};
-
-const StoryWrapperTheme = {
-  default: css`
-    padding: 2rem 0 2rem 1.6rem;
-  `,
-  dark: css`
-    background-color: ${color.gunmetal};
-  `,
-};
-
-const StoryWrapper = styled.div`
-  ${withThemes(StoryWrapperTheme)}
-`;
-
-const wideCard: FeatureCardPropTypes = {
+const featureStandard : StandardCardPropTypes | FeatureCardPropTypes = {
   attributions: 'Episode • America’s Test Kitchen',
   contentType: 'episode',
   displayFavoritesButton: true,
@@ -41,48 +24,50 @@ const wideCard: FeatureCardPropTypes = {
   title: 'Savory and Sweet Italian',
 };
 
-const standardCard = { ...wideCard };
+const tallCardProps : TallCardPropTypes = {
+  contentType: 'episode',
+  dek: 'New episodes weekly',
+  href: 'https://www.google.com',
+  logoKey: 'atk',
+  imageAlt: '',
+  imageUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/v1592937037/mise-play/tall-card.jpg',
+  overlayColor: '#a53015',
+  siteKey: 'cco',
+  stickers: [{ type: 'priority', text: 'Popular' }],
+};
 
-export const Wide = () => (
-  <ThemeProvider
-    theme={{ breakpoints, mode: 'dark' }}
-  >
-    <StoryWrapper className="story-wrapper">
-      <CardWrapper
-        ctaText={text('Cta Text', 'Explore Recipes')}
-        ctaUrl="https://www.americastestkitchen.com/episodes/1234"
-        item={wideCard}
-        title={text('Title', 'Start Cooking')}
-        type="feature"
-      />
-    </StoryWrapper>
-  </ThemeProvider>
-);
+export default {
+  title: 'Components/Cards/CardWrapper',
+  component: CardWrapper,
+  decorators: [DarkModeWrapper()],
+  parameters: { actions: { argTypesRegex: '^on.*' }, backgrounds: { default: 'atk-dark-alt', ...backgroundParameters } },
+} as ComponentMeta<typeof CardWrapper>;
 
-export const Standard = () => (
-  <ThemeProvider theme={{ breakpoints, mode: 'dark' }}>
-    <StoryWrapper className="story-wrapper">
-      <CardWrapper
-        ctaText={text('Cta Text', 'Explore Recipes')}
-        ctaUrl="https://www.americastestkitchen.com/episodes/1234"
-        item={standardCard}
-        title={text('Title', 'Start Cooking')}
-        type="standard"
-      />
-    </StoryWrapper>
-  </ThemeProvider>
-);
+const Template:ComponentStory<typeof CardWrapper> = args => <CardWrapper {...args} />;
 
-export const Tall = () => (
-  <ThemeProvider theme={{ breakpoints, mode: 'dark' }}>
-    <StoryWrapper className="story-wrapper">
-      <CardWrapper
-        ctaText={text('Cta Text', 'Explore Recipes')}
-        ctaUrl="https://www.americastestkitchen.com/episodes/1234"
-        item={standardCard}
-        title={text('Title', 'Start Cooking')}
-        type="tall"
-      />
-    </StoryWrapper>
-  </ThemeProvider>
-);
+export const Feature = Template.bind({});
+Feature.args = {
+  ctaText: 'Explore Recipes',
+  ctaUrl: 'https://www.americastestkitchen.com/episodes/1234',
+  item: featureStandard,
+  title: 'Start Cooking',
+  type: 'feature',
+};
+
+export const Standard = Template.bind({});
+Standard.args = {
+  ctaText: 'Explore Recipes',
+  ctaUrl: 'https://www.americastestkitchen.com/episodes/1234',
+  item: featureStandard,
+  title: 'Start Cooking',
+  type: 'standard',
+};
+
+export const Tall = Template.bind({});
+Tall.args = {
+  ctaText: 'Explore Recipes',
+  ctaUrl: 'https://www.americastestkitchen.com/episodes/1234',
+  item: tallCardProps,
+  title: 'Start Cooking',
+  type: 'tall',
+};

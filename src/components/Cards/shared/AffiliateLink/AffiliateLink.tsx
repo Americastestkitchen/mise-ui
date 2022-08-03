@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { HTMLProps } from 'react';
 import styled, { css } from 'styled-components';
 
 import { color, font, fontSize, lineHeight, withThemes } from '../../../../styles';
@@ -66,7 +66,7 @@ const AffiliateLinkEl = styled.a.attrs({
 })`${withThemes(AffiliateLinkTheme)}`;
 
 type AffiliateLinkPropTypes = {
-  dataAttrs?: Record<string, unknown>,
+  dataAttrs?: Record<string, HTMLProps<HTMLAnchorElement>>,
   icon?: 'Amazon' | 'BlueApron' | 'Houzz' | 'KingArthur' | 'SurLaTable' | 'ThermoWorks' | 'Victorinox' | 'WilliamsSonoma',
   readerLabel?: string,
   name?: string,

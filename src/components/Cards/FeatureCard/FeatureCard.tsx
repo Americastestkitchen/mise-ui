@@ -10,7 +10,7 @@ import Image from '../shared/Image';
 import PersonHeadShot, { PersonHeadshotPropTypes } from '../shared/PersonHeadShot/PersonHeadShot';
 import Sticker from '../shared/Sticker';
 import Title from '../shared/Title';
-import { BaseCardPropType } from '../Cards';
+import { StandardFeatureSharedProps } from '../Cards';
 
 const featureCardWidth = grid.columnWidth;
 const featureCardWideWidth = `${parseFloat(grid.columnWidth) * 2 + parseFloat(grid.gutterWidth)}rem`;
@@ -162,27 +162,14 @@ const OriginalPricing = styled.p`
   text-decoration: line-through;
 `;
 
-export type FeatureCardPropTypes = BaseCardPropType & {
-  attributions?: string,
-  avgRating?: number,
-  ctaDataAttrs?: Record<string, unknown>,
-  ctaText?: string,
-  ctaUrl?: string,
-  commentsCount?: number,
-  dataAttrs?: Record<string, unknown>,
-  discountedPrice?: string,
-  displayFavoritesButton?: boolean,
-  imageUrl: string,
-  isFavorited?: boolean,
-  isWide?: boolean,
-  lazyImage?: boolean,
-  numRatings?: number,
-  objectId: string,
-  originalPrice?: string,
-  personHeadShot?: PersonHeadshotPropTypes,
-  siteKeyFavorites?: DomainSiteKey,
-  themedTitle?: boolean,
-  title: string,
+export interface FeatureCardPropTypes extends StandardFeatureSharedProps {
+  attributions?: string;
+  commentsCount?: number;
+  discountedPrice?: string;
+  isWide?: boolean;
+  lazyImage?: boolean;
+  personHeadShot?: PersonHeadshotPropTypes;
+  themedTitle?: boolean;
 }
 
 function FeatureCard({

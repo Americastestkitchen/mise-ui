@@ -11,7 +11,7 @@ import Image from '../shared/Image';
 import ImageCollage from '../shared/ImageCollage';
 import Sticker from '../shared/Sticker';
 import Title from '../shared/Title';
-import { BaseCardPropType } from '../Cards';
+import { StandardFeatureSharedProps } from '../Cards';
 
 const StandardCardTheme = {
   default: css`
@@ -169,29 +169,17 @@ export const StyledBadge = styled(Badge)`
   `}
 `;
 
-export type StandardCardPropTypes = BaseCardPropType & {
-  avgRating?: number,
-  ctaDataAttrs?: Record<string, unknown>,
-  ctaText?: string,
-  ctaUrl?: string,
-  contentTypeFormatted?: string,
-  dataAttrs?: Record<string, unknown>,
-  displayFavoritesButton?: boolean,
-  displayCookbook?: boolean,
-  displayRecipeAttribution?: boolean,
-  displaySecondaryAttribution?: boolean,
-  displayLockIcon?: boolean,
-  favoriteRibbonColor?: string, // TODO: pull from list of colors
-  imageUrl: string,
-  isFavorited?: boolean,
-  numRatings?: number,
-  objectId: string,
-  searchAttribution?: boolean,
-  searchComments?: number,
-  secondaryAttribution?: number | string,
-  shopPrices?: ShopPrices,
-  siteKeyFavorites?: DomainSiteKey,
-  title: string,
+export interface StandardCardPropTypes extends StandardFeatureSharedProps {
+  contentTypeFormatted?: string;
+  displayCookbook?: boolean;
+  displayRecipeAttribution?: boolean;
+  displaySecondaryAttribution?: boolean;
+  displayLockIcon?: boolean;
+  favoriteRibbonColor?: string, // TODO: pull from list of color;
+  searchAttribution?: boolean;
+  searchComments?: number;
+  secondaryAttribution?: number | string;
+  shopPrices?: ShopPrices;
   renderImage?(): Element;
   quickViewButton?: Element;
 }

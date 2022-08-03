@@ -2,9 +2,9 @@ import breakpoint from 'styled-components-breakpoint';
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import FeatureCard from '../FeatureCard/FeatureCard';
-import StandardCard from '../StandardCard/StandardCard';
-import TallCard from '../TallCard/TallCard';
+import FeatureCard, { FeatureCardPropTypes } from '../FeatureCard/FeatureCard';
+import StandardCard, { StandardCardPropTypes } from '../StandardCard/StandardCard';
+import TallCard, { TallCardPropTypes } from '../TallCard/TallCard';
 
 import {
   color,
@@ -90,19 +90,14 @@ const CardWrapperCta = styled.a.attrs({
   className: 'card-wrapper__cta',
 })`${withThemes(CardWrapperCtaTheme)}`;
 
-const typeMap = {
-  feature: FeatureCard,
-  standard: StandardCard,
-  tall: TallCard,
-};
-
-type CardWrapperProps = {
-  ctaText?: string,
-  ctaUrl?: string,
-  item: unknown; // TODO: redefine unknown when card improvements are made
-  onClick?(): void,
-  title: string,
-  type: 'feature' | 'standard' | 'tall',
+export type CardProps= FeatureCardPropTypes | StandardCardPropTypes | TallCardPropTypes;
+interface CardWrapperProps {
+  ctaText?: string;
+  ctaUrl?: string;
+  item: CardProps;
+  onClick?(): void;
+  title: string;
+  type: 'feature' | 'standard' | 'tall';
 }
 
 export default function CardWrapper({
@@ -113,8 +108,6 @@ export default function CardWrapper({
   title,
   type = 'feature',
 }: CardWrapperProps) {
-  const El = typeMap[type];
-
   return (
     <CardWrapperWrapper onClick={onClick}>
       <CardWrapperInfoWrapper>
@@ -127,9 +120,11 @@ export default function CardWrapper({
           </CardWrapperCta>
         )}
       </CardWrapperInfoWrapper>
-      <El
-        {...item}
-      />
+      { {
+        feature: <FeatureCard {...item} />,
+        standard: <StandardCard {...item} />,
+        tall: <TallCard {...item} />,
+      }[type]}
     </CardWrapperWrapper>
   );
 }
