@@ -99,24 +99,50 @@ Headings include page titles, carousel headers, card names
    </p>
 </Canvas>
 
-**$fLetteringSpacing:** 2.88px;
+## Letter Spacing
+
+**$fLSMd:** 2.88px;
+
+Typically used on CTAs with either $proximaNova or $proximaNovaBold.
+
 <Canvas>
-  <p className={styles.fCtaMd}>
-    BROWSE ALL
+  <p className={styles.fCtaPnr}>
+    BROWSE ALL >
+   </p>
+</Canvas>
+
+<Canvas>
+  <p className={styles.fCtaPnb}>
+    SAVE 56% >
    </p>
 </Canvas>
 
 ## Font Size Range Suggestion
 ### Body
-* 12px - may want to drop this
+
+All body copy seems to fall into this font range. The most common font for body
+text is 16px, and so it is our base font size. Supplementary text (typically
+in sidebar content) uses a 14px font size. A font size of 10px is not common
+across components, but is used for our sticker component which appears on most
+pages across our sites.
+
+* 10px
 * 14px
 * 16px - BASE
 * 20px
+
 ### Headings
+
+All headings on our site seem to fall into this font range. At the moment, 36px
+is only used for headings in lead marquee cards on homepages. Most pages on the
+site are only using heading levels 1-3 which map to font sizes 1-32px, 2-28px, 
+3-24px. We can use smaller font sizes from the range above if we plan on
+using more heading levels.
+
 * 24px
 * 28px
 * 32px 
-* 36px - may want to drop this
+* 36px
 
 ## Line Height Suggestions
 ### Explicitly defined in mise
@@ -127,8 +153,8 @@ Headings include page titles, carousel headers, card names
 
 On top of these explicitly defined line heights, there is a wide range of line
 heights across our different pages. I believe we should consider assigning line
-heights based on use cases (heading,body,etc.) rather than creating a list of
-useable line heights.
+heights based on use cases (heading,body,etc.) or a component by component basis
+rather than creating a list of useable line heights to give out to components.
 
 ## Letter Spacing Suggestions
 ### Explicitly defined in mise

@@ -1,5 +1,10 @@
 @import "../../styles/typography/_fonts.scss";
 
+/*
+ * This module is documentation-only. It is not meant to be pulled into any
+ * particular component.
+ */
+
 html {
   font-size: $baseFontSize;
 }
@@ -24,9 +29,14 @@ html {
   font: $fBodyMd;
 }
 
-.fCtaMd {
+.fCtaPnr {
   font: $fBodyMd;
-  letter-spacing: $fLSpacing;
+  letter-spacing: $fLSMd;
+}
+
+.fCtaPnb {
+  font: 1rem/1.5 $proximaNovaBold;
+  letter-spacing: $fLSMd;
 }
 
 .proximaNova {

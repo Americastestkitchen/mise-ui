@@ -1,0 +1,48 @@
+import { Meta, IconGallery, IconItem } from '@storybook/addon-docs/';
+
+import Icon from './Icon';
+import { iconMap } from './svgs/useIconMap';
+
+<Meta title="Design Tokens/Icons" />
+
+# Icons
+
+## Usage
+The `Icon` component takes a `type` and optional `fill` prop and returns an
+svg. The dimensions of the svg, as well accessibility features such as aria
+labels, should be handled by whatever component implements the `Icon`.
+
+```tsx filename="Icon.tsx"
+// icons/svgs/IconSvgProps.ts
+type IconSvgProps = { fill?: string; };
+
+// design-tokens/icons/Icon.tsx
+export type IconProps = IconSvgProps & {
+  type: IconType; // See grid further down in this doc for a list of IconType values
+};
+
+const Icon = ({ fill = '#3D3D3D', type }: IconProps) => {
+  const Icon = useIconMap(type);
+  return <Icon fill={fill} />
+};
+
+// How to pull Icon into another component
+import Icon from 'design-tokens/icons/Icon';
+
+<Icon type="favoriteRibbon" />
+```
+
+## Icon Types
+
+Below is a list of valid `type` props for the `Icon` component. Pass any of the
+labels below as the `type` prop to `Icon` and receive the corresponding svg.
+
+<IconGallery>
+  {
+    Object.keys(iconMap).map(iconKey => (
+      <IconItem name={iconKey}>
+        <Icon type={iconKey} />
+      </IconItem>
+    ))
+  }
+</IconGallery>
