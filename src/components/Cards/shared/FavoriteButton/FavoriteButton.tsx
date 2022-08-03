@@ -100,7 +100,7 @@ type FavoriteButtonPropTypes = {
   fill?: ColorName,
   isFavorited?: boolean,
   objectId: string,
-  siteKey: string,
+  siteKey: DomainSiteKey,
   title: string,
 }
 
@@ -120,7 +120,7 @@ const FavoriteButton = ({
     data-favoritable-id={objectId}
     data-origin-site={siteKey}
     data-testid="favorite-button"
-    fill={fill || color.eclipse}
+    fill={fill || 'eclipse'}
   >
     <FavoriteRibbon
       ariaHidden
