@@ -22,4 +22,11 @@ const images = [
   },
 ];
 
+export interface Image{
+  alt: string;
+  height: number;
+  publicId: string;
+  width: number;
+}
+
 export default images;
