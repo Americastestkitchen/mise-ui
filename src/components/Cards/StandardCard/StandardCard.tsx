@@ -12,6 +12,7 @@ import ImageCollage from '../shared/ImageCollage';
 import Sticker from '../shared/Sticker';
 import Title from '../shared/Title';
 import { BaseCardPropType } from '../Cards';
+import { ColorName } from '../../../styles/colors';
 
 const StandardCardTheme = {
   default: css`
@@ -181,7 +182,7 @@ export type StandardCardPropTypes = BaseCardPropType & {
   displayRecipeAttribution?: boolean,
   displaySecondaryAttribution?: boolean,
   displayLockIcon?: boolean,
-  favoriteRibbonColor?: string, // TODO: pull from list of colors
+  favoriteRibbonColor?: ColorName,
   imageUrl: string,
   isFavorited?: boolean,
   numRatings?: number,
@@ -299,7 +300,7 @@ function StandardCard({
               fill={favoriteRibbonColor}
               isFavorited={isFavorited}
               objectId={objectId}
-              siteKey={siteKeyFavorites}
+              siteKey={siteKeyFavorites || 'atk'}
               title={title}
             />
           ) : null }
