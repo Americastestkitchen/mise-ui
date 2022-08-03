@@ -14,7 +14,7 @@ import {
 
 import Checkmark from '../../../DesignTokens/Icon/svgs/Checkmark2';
 import EmailForm from '../../../Forms/EmailForm';
-import Image from '../../../Cards/shared/Image';
+import Image from '../../../Cards/shared/Image/Image';
 
 const LandingEmailTheme = {
   default: css`
@@ -42,7 +42,7 @@ const LandingEmailTheme = {
     `}
 
     ${breakpoint('xlg')`
-      height: 33rem; 
+      height: 33rem;
       width: 113.6rem;
 
       .landing-ad-image-tablet {
@@ -90,7 +90,7 @@ const LandingEmailWrapper = styled.div.attrs({
 })`${withThemes(LandingEmailTheme)}`;
 
 const ImageWrapper = styled.div`
-  background-size: cover;    
+  background-size: cover;
   margin-bottom: 1rem;
   width: 100%;
 
@@ -118,7 +118,7 @@ const FormColumnWrapper = styled.div`
 
   ${breakpoint('md')`
     width: 50%;
-  `} 
+  `}
 `;
 
 const FormBodyContent = styled.div`
@@ -193,7 +193,7 @@ const ContentTitleTheme = {
 
     ${breakpoint('sm')`
       width: 31rem;
-    `}  
+    `}
 
     ${breakpoint('xlg')`
       width: 34.4rem;

@@ -5,7 +5,7 @@ import { color, font, withThemes } from '../../../styles';
 import { UserAttributions } from '../shared/UserAttributions';
 import mixins, { cssThemedColor } from '../../../styles/mixins';
 import { InferStyledTypes } from '../../../styles/utility-types';
-import Image from '../shared/Image';
+import Image from '../shared/Image/Image';
 import Sticker from '../shared/Sticker';
 
 const CtaLink = styled.a`

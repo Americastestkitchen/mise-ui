@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { color, font, fontSize, grid, lineHeight, spacing } from '../../../styles';
 import { md } from '../../../styles/breakpoints';
 import Badge from '../../Badge/Badge';
-import Image from '../shared/Image';
+import Image from '../shared/Image/Image';
 import { keyToLogo } from '../../DesignTokens/Logo';
 import Sticker from '../shared/Sticker';
 import { BaseCardPropType } from '../Cards';

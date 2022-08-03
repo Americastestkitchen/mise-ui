@@ -7,7 +7,7 @@ import Attributions, { ShopPrices } from '../shared/Attributions/Attributions';
 import Badge from '../../Badge/Badge';
 import CtaLink from '../shared/CtaLink/CtaLink';
 import FavoriteButton from '../shared/FavoriteButton/FavoriteButton';
-import Image from '../shared/Image';
+import Image from '../shared/Image/Image';
 import ImageCollage from '../shared/ImageCollage/ImageCollage';
 import Sticker from '../shared/Sticker';
 import Title from '../shared/Title';

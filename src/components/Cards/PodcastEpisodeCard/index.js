@@ -8,7 +8,7 @@ import { VideoPlay } from '../../DesignTokens/Icon';
 
 import Badge from '../../Badge/Badge';
 import Sticker from '../shared/Sticker';
-import Image from '../shared/Image';
+import Image from '../shared/Image/Image';
 
 const PodcastEpisodeCardWrapper = styled.div`
   background-color: ${color.asphalt};

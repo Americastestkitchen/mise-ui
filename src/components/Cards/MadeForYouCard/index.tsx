@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import React from 'react';
 import styled from 'styled-components';
-import Image from '../shared/Image';
+import Image from '../shared/Image/Image';
 
 import { color, font, fontSize } from '../../../styles';
 

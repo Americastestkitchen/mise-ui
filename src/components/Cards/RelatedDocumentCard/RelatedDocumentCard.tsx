@@ -4,7 +4,7 @@ import { color, font, fontSize, letterSpacing, lineHeight, mixins, spacing, with
 import { md } from '../../../styles/breakpoints';
 import { cssThemedColor, cssThemedLink } from '../../../styles/mixins';
 import Badge from '../../Badge/Badge';
-import Image from '../shared/Image';
+import Image from '../shared/Image/Image';
 import Sticker from '../shared/Sticker/Sticker';
 import { StickerType, StickerContentType } from '../Cards';
 

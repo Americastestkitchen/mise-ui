@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { color, font, fontSize, spacing } from '../../../../styles';
 import { getImageUrl } from '../../../../lib/cloudinary';
-import Image from '../../../Cards/shared/Image';
+import Image from '../../../Cards/shared/Image/Image';
 
 const AdWrapper = styled.div`
   align-items: center;

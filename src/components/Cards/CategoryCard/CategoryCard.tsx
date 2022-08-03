@@ -4,7 +4,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 import IconMap from './iconMap';
-import Image from '../shared/Image';
+import Image from '../shared/Image/Image';
 import { color, font, fontSize, mixins, withThemes } from '../../../styles';
 import { getImageUrl } from '../../../lib/cloudinary';
 

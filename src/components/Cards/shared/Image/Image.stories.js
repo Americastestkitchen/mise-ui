@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from './index';
+import Image from './Image';
 
 export default {
   title: 'Components/Cards/shared/Image',

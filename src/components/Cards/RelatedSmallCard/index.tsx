@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { cards, color, fontSize, spacing } from '../../../styles';
-import Image from '../shared/Image';
+import Image from '../shared/Image/Image';
 
 import Title from '../shared/Title';
 
