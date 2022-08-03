@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import 'jest-styled-components';
 
-import ImageListItem from '../index';
+import ImageListItem from '../ImageListItem';
 import breakpoints from '../../../../../styles/breakpoints';
 
 describe('ImageListItem component should', () => {

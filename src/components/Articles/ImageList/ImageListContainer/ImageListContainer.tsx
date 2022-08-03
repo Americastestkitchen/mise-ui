@@ -1,25 +1,24 @@
-import breakpoint from 'styled-components-breakpoint';
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-
-import ImageListItem from '../ImageListItem';
+import { md, xlg } from '../../../../styles/breakpoints';
+import ImageListItem, { ImageListItemProps } from '../ImageListItem/ImageListItem';
 import { color, font, fontSize, mixins, withThemes } from '../../../../styles';
 import { cssThemedColor } from '../../../../styles/mixins';
+import ArticleComponentWidthType from '../../types/ArticleComponentWidth';
 
-const ImageListWrapper = styled.aside`
+const ImageListWrapper = styled.aside<{width: ArticleComponentWidthType}>`
   background-color: ${color.white};
   margin: 3rem 0 2.7rem;
   max-width: 100%;
   padding: 2.4rem 1rem 2rem;
 
-  ${breakpoint('md')`
+  ${md(css`
     padding: 2.4rem;
-  `}
+  `)}
 
-  ${breakpoint('xlg')`
-    ${({ width }) => (mixins.articlesWidth(width))};
-  `}
+  ${({ width }) => (
+    xlg(css`${mixins.articlesWidth(width)}`)
+  )}
 
   ${withThemes({
     cco: css`
@@ -43,40 +42,34 @@ const Intro = styled.div`
   padding-bottom: 8px;
 `;
 
+export type ImageListContainerProps = {
+  className?: string;
+  images: ImageListItemProps[];
+  intro?: string;
+  title?: string;
+  width: ArticleComponentWidthType;
+};
+
 const ImageListContainer = ({
-  images,
   className,
-  title,
+  images,
   intro,
+  title,
   width,
-}) => (
+}: ImageListContainerProps) => (
   <ImageListWrapper className={className} width={width}>
     {title && <ImageListTitle>{title}</ImageListTitle>}
-    {!!intro && <Intro>{intro}</Intro> }
+    {!!intro && <Intro>{intro}</Intro>}
     {
       images.map(image => (
         <ImageListItem
           key={image.cloudinaryId}
-          width={width}
           {...image}
+          width={width}
         />
       ))
     }
   </ImageListWrapper>
 );
-
-ImageListContainer.propTypes = {
-  images: PropTypes.array.isRequired,
-  className: PropTypes.string,
-  title: PropTypes.string,
-  intro: PropTypes.string,
-  width: PropTypes.oneOf(['default', 'wide']).isRequired,
-};
-
-ImageListContainer.defaultProps = {
-  className: '',
-  title: null,
-  intro: undefined,
-};
 
 export default ImageListContainer;
