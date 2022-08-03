@@ -27,7 +27,6 @@ TwoUp.args = {
   caption,
   count: 2,
   images: images.slice(0, 2),
-  siteKey: 'atk',
   title,
   width: 'default',
 };
@@ -37,7 +36,6 @@ ThreeUp.args = {
   caption,
   count: 3,
   images,
-  siteKey: 'atk',
   title,
   width: 'default',
 };

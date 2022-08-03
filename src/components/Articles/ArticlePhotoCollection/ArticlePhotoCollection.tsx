@@ -73,7 +73,7 @@ const PhotoCollection = styled.div`
   `)}
 `;
 
-const CollectionPicture = styled.picture<{ width: ArticleComponentWidthType }>`
+const CollectionPicture = styled.picture`
   ${md(css`
     .photo-two-up {
       max-height: 33.9rem;
@@ -87,11 +87,11 @@ const CollectionPicture = styled.picture<{ width: ArticleComponentWidthType }>`
 
   ${md(css`
     .photo-two-up {
-      ${({ width }) => mixins.articlesTwoUpImageCollection(width)}
+      ${({ width }:{ width: ArticleComponentWidthType }) => mixins.articlesTwoUpImageCollection(width)}
     }
 
     .photo-three-up {
-      ${({ width }) => mixins.articlesThreeUpImageCollection(width)}
+      ${({ width }:{ width: ArticleComponentWidthType }) => mixins.articlesThreeUpImageCollection(width)}
     }
   `)}
 `;
