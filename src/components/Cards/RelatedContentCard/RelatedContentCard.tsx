@@ -36,6 +36,18 @@ const cssBodyFont = css`
   font-size: 16px;
   line-height: 1.25;
   ${cssThemedColor}
+
+  em {
+    font-style: italic;
+  }
+
+  strong {
+    font-family: ${font.pnb};
+  }
+
+  a {
+    ${cssThemedLink}
+  }
 `;
 
 const cssLinkTextFont = css`
@@ -234,7 +246,7 @@ export default function RelatedContentCard({
       <ThemeProvider theme={mapPropsToThemeContext({ withButton })}>
         <WideCard.Headline>{headline}</WideCard.Headline>
         <WideCard.Title as="h4">{title}</WideCard.Title>
-        <WideCard.Body>{body}</WideCard.Body>
+        <WideCard.Body dangerouslySetInnerHTML={{ __html: body }} />
         <WideCard.LinkWrapper>
           {!!link && !!withButton ? (
             <WideCard.AffiliateLink text={link} url={buttonHref || href} />
