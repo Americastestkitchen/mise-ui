@@ -11,11 +11,11 @@ export default {
   argTypes: { siteKey },
 } as ComponentMeta<typeof ReviewsEmailCapture>;
 
-const Template = (args: ReviewsEmailCaptureProps) => (
+const Template: ComponentStory<typeof ReviewsEmailCapture> = (args: ReviewsEmailCaptureProps) => (
   <ReviewsEmailCapture {...args} />
 );
 
-export const Default: ComponentStory<typeof ReviewsEmailCapture> = Template.bind({});
+export const Default = Template.bind({});
 Default.args = {
   description: 'Shop smarter with our ATK Reviews team\'s expert guides and top picks',
   inputId: 'review-email-capture__detail',
@@ -24,7 +24,7 @@ Default.args = {
   success: false,
 };
 
-export const Wide: ComponentStory<typeof ReviewsEmailCapture> = Template.bind({});
+export const Wide = Template.bind({});
 Wide.args = {
   description: 'Shop smarter with our ATK Reviews team\'s expert guides and top picks',
   inputId: 'review-email-capture__detail',
@@ -34,8 +34,8 @@ Wide.args = {
   success: false,
 };
 
-export const DefaultSuccess: ComponentStory<typeof ReviewsEmailCapture> = Template.bind({});
+export const DefaultSuccess = Template.bind({});
 DefaultSuccess.args = { ...Default.args, success: true };
 
-export const DefaultWithKidsVariant: ComponentStory<typeof ReviewsEmailCapture> = Template.bind({});
+export const DefaultWithKidsVariant = Template.bind({});
 DefaultWithKidsVariant.args = { ...Default.args, variant: 'kidsVariant' };
