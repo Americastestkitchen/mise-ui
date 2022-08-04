@@ -93,7 +93,18 @@ const ReviewableSummaryItemTheme = {
 
 const ReviewableSummaryItemEl = styled.div.attrs({
   className: 'reviewable-summary-card',
-})`${withThemes(ReviewableSummaryItemTheme)}`;
+})`
+  ${withThemes(ReviewableSummaryItemTheme)}
+  &:focus {
+    ${mixins.focusIndicator(color.eclipse, '-3px')}
+  }
+  a {
+    margin-bottom: 0.5rem;
+
+    &:focus {
+      ${mixins.focusIndicator(color.eclipse, '0px')}
+    }
+  }`;
 
 const TitleImageWrapper = styled.div.attrs({
   className: 'reviewable-title-image-wrapper',
@@ -151,6 +162,11 @@ const TitleImageWrapper = styled.div.attrs({
 const TitleImageContent = styled.div.attrs({
   className: 'reviewable-title',
 })`
+  a {
+    &:focus, &:active {
+      ${mixins.focusIndicator(color.eclipse, '2px')};
+    }
+  }
   display: flex;
   flex-direction: column;
 

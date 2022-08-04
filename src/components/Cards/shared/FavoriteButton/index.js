@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import { color, withThemes } from '../../../../styles';
+import { color, withThemes, mixins } from '../../../../styles';
 import { FavoriteRibbon } from '../../../DesignTokens/Icon';
 
 const StyledFavoriteButtonTheme = {
@@ -14,6 +14,10 @@ const StyledFavoriteButtonTheme = {
     [class*="vertical-line"],
     [class*="horizontal-line"] {
       stroke: transparent;
+    }
+
+    &:focus, &:active {
+      ${mixins.focusIndicator(color.eclipse, '2px')};
     }
 
     @media(hover: hover) {
