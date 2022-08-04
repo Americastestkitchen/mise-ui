@@ -225,7 +225,7 @@ const StyledResetButtonTheme = {
     }
 
     &:hover svg g {
-      stroke: ${color.mint};
+      stroke: ${color.darkTeal};
     }
 
     && {
