@@ -1,3 +1,15 @@
+# v1.33.32 (Thu Aug 04 2022)
+
+#### 🐛 Bug Fix
+
+- web-92: added the updated Focus indicators to the links in the Articl… [#879](https://github.com/Americastestkitchen/mise-ui/pull/879) ([@tdorin](https://github.com/tdorin))
+
+#### Authors: 1
+
+- [@tdorin](https://github.com/tdorin)
+
+---
+
 # v1.33.31 (Wed Aug 03 2022)
 
 #### 🐛 Bug Fix
