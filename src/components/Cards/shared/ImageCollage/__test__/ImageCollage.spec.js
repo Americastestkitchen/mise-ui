@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import 'jest-styled-components';
 
-import ImageCollage from '../index';
+import ImageCollage from '../ImageCollage';
 
 const defaultProps = {
   imageAlt: 'kittens',

@@ -8,7 +8,7 @@ import Badge from '../../Badge/Badge';
 import CtaLink from '../shared/CtaLink/CtaLink';
 import FavoriteButton from '../shared/FavoriteButton';
 import Image from '../shared/Image';
-import ImageCollage from '../shared/ImageCollage';
+import ImageCollage from '../shared/ImageCollage/ImageCollage';
 import Sticker from '../shared/Sticker';
 import Title from '../shared/Title';
 import { BaseCardPropType } from '../Cards';
