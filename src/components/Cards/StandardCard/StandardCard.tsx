@@ -230,7 +230,6 @@ function StandardCard({
   href,
   quickViewButton,
 }: StandardCardPropTypes) {
-  const ImageItem = Array.isArray(imageUrl) ? ImageCollage : Image;
   let stickerAria = '';
   if (stickers) {
     stickers.forEach((el) => {
@@ -254,15 +253,21 @@ function StandardCard({
               rel={target && target === '_blank' ? 'noopener noreferrer' : ''}
               target={target}
             >
-              {
-                renderImage ? renderImage() : (
-                  <ImageItem
-                    aria-hidden="true"
-                    imageAlt={imageAlt || ''}
-                    imageUrl={imageUrl}
-                  />
-                )
-              }
+              { renderImage && renderImage() }
+              { !renderImage && Array.isArray(imageUrl) && (
+                <ImageCollage
+                  aria-hidden="true"
+                  imageAlt={imageAlt || ''}
+                  imageUrl={imageUrl}
+                />
+              )}
+              { !renderImage && !Array.isArray(imageUrl) && (
+                <Image
+                  aria-hidden="true"
+                  imageAlt={imageAlt || ''}
+                  imageUrl={imageUrl}
+                />
+              )}
             </a>
           ) : null }
           <StyledBadge
