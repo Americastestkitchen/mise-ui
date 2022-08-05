@@ -88,7 +88,7 @@ function DisplayBeltImage({ backgroundImages, altTextLeft, altTextRight } : AdAd
             crop: 'fit',
           })}
           {...shared}
-          alt={altTextRight}
+          alt={altTextLeft}
         />
         <OffsetMiddleRight
           src={cloudinaryInstance.url(backgroundImages?.desktopRight, {
@@ -99,7 +99,7 @@ function DisplayBeltImage({ backgroundImages, altTextLeft, altTextRight } : AdAd
             crop: 'fit',
           })}
           {...shared}
-          alt={altTextLeft}
+          alt={altTextRight}
         />
 
       </>
