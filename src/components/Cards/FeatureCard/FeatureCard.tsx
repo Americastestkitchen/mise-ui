@@ -232,7 +232,7 @@ function FeatureCard({
         <div className="feature-card__gradient-overlay" />
         <StyledImage
           className={`${className} feature-card__background-img`}
-          imageAlt={imageAlt}
+          imageAlt={imageAlt || ''}
           imageUrl={imageUrl}
           lazy={lazyImage}
         />
