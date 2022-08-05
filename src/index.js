@@ -45,7 +45,7 @@ import Listable from './components/Listable/Listable';
 import LandingEmailAd from './components/Ads/ShowcaseAds/LandingEmailAd';
 import LeadMarqueeCard from './components/Cards/LeadMarqueeCard';
 import LoadingCard from './components/Cards/LoadingCard';
-import LoadingCarousel from './components/Carousels/LoadingCarousel';
+import LoadingCarousel from './components/Carousels/LoadingCarousel/LoadingCarousel';
 import LoadingRelatedDocumentCard from './components/Cards/LoadingRelatedDocumentCard/LoadingRelatedDocumentCard';
 import MadeForYouCard from './components/Cards/MadeForYouCard';
 import MadeForYouCarousel from './components/Carousels/MadeForYouCarousel';
