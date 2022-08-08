@@ -10,7 +10,7 @@ const StyledImage = styled.img`
 
 const inlineSrc = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';
 
-type ImagePropTypes = {
+export type ImagePropTypes = {
   className?: string,
   height?: string | number,
   imageAlt: string,
