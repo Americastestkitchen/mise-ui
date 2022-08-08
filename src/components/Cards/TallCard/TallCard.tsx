@@ -158,7 +158,7 @@ const TallCard = ({
         />
         <StyledImage
           className={`${className} tall-card__background-img`}
-          imageAlt={imageAlt}
+          imageAlt={imageAlt || ''}
           imageUrl={imageUrl}
         />
         <StyledBadge
