@@ -165,7 +165,7 @@ function DisplayBeltImage({ backgroundImages, altTextLeft, altTextRight } : AdAd
       <EdgeAnchoredLeftFixed
         src={cloudinaryInstance.url(backgroundImages?.mobile, {
           ...baseImageConfig,
-          height: 130,
+          height: 128,
         })}
         {...shared}
         alt={altTextLeft}
