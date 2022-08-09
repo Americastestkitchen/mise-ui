@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { css } from 'styled-components';
 
@@ -32,13 +31,20 @@ const inlineTheme = {
   `,
 };
 
-const BLOCK = styled.div`${withThemes(blockTheme)}`;
-const INLINE = styled.div`${withThemes(inlineTheme)}`;
+const errors = {
+  block: styled.div`${withThemes(blockTheme)}`,
+  inline: styled.div`${withThemes(inlineTheme)}`,
+};
 
-const errors = { BLOCK, INLINE };
+type FormErrorPropType = {
+  renderAs?: 'block' | 'inline',
+}
 
-const FormError = ({ renderAs, ...props }) => {
-  const El = renderAs ? errors[renderAs.toUpperCase()] : INLINE;
+const FormError = ({
+  renderAs = 'inline',
+  ...props
+} :FormErrorPropType) => {
+  const El = renderAs ? errors[renderAs] : errors.inline;
   return (
     <El
       role="alert"
@@ -49,14 +55,4 @@ const FormError = ({ renderAs, ...props }) => {
   );
 };
 
-FormError.propTypes = {
-  /** Indicates which FormError to render. One of: [BLOCK, INLINE]. */
-  renderAs: PropTypes.oneOf(['block', 'inline']),
-};
-
-FormError.defaultProps = {
-  renderAs: 'inline',
-};
-
-/** @component */
 export default FormError;
