@@ -40,10 +40,10 @@ type FormErrorPropType = {
   renderAs?: 'block' | 'inline',
 }
 
-const FormError = ({
+export default function FormError({
   renderAs = 'inline',
   ...props
-} :FormErrorPropType) => {
+} :FormErrorPropType) {
   const El = renderAs ? errors[renderAs] : errors.inline;
   return (
     <El
@@ -53,6 +53,4 @@ const FormError = ({
       {...props}
     />
   );
-};
-
-export default FormError;
+}
