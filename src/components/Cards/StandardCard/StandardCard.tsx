@@ -6,12 +6,13 @@ import { StandardUserAttributions } from '../shared/UserAttributions/UserAttribu
 import Attributions, { ShopPrices } from '../shared/Attributions/Attributions';
 import Badge from '../../Badge/Badge';
 import CtaLink from '../shared/CtaLink/CtaLink';
-import FavoriteButton from '../shared/FavoriteButton';
+import FavoriteButton from '../shared/FavoriteButton/FavoriteButton';
 import Image from '../shared/Image';
 import ImageCollage from '../shared/ImageCollage/ImageCollage';
 import Sticker from '../shared/Sticker';
 import Title from '../shared/Title';
 import { BaseCardPropType } from '../Cards';
+import { ColorName } from '../../../styles/colors';
 
 const StandardCardTheme = {
   default: css`
@@ -181,7 +182,7 @@ export type StandardCardPropTypes = BaseCardPropType & {
   displayRecipeAttribution?: boolean,
   displaySecondaryAttribution?: boolean,
   displayLockIcon?: boolean,
-  favoriteRibbonColor?: string, // TODO: pull from list of colors
+  favoriteRibbonColor?: ColorName,
   imageUrl: string,
   isFavorited?: boolean,
   numRatings?: number,
@@ -299,7 +300,7 @@ function StandardCard({
               fill={favoriteRibbonColor}
               isFavorited={isFavorited}
               objectId={objectId}
-              siteKey={siteKeyFavorites}
+              siteKey={siteKeyFavorites || 'atk'}
               title={title}
             />
           ) : null }

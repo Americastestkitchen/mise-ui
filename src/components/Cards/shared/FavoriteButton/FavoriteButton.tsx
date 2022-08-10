@@ -1,11 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { color, withThemes } from '../../../../styles';
+import type { ColorName } from '../../../../styles/colors';
 import { FavoriteRibbon } from '../../../DesignTokens/Icon';
 
 const StyledFavoriteButtonTheme = {
-  default: css`
+  default: css<{fill: ColorName}>`
     [class*="ribbon"] {
       fill: transparent;
       transition: 0.1s all ease-in-out;
@@ -91,18 +91,27 @@ const StyledFavoriteButtonTheme = {
   `,
 };
 
-const StyledFavoriteButton = styled.button`
+const StyledFavoriteButton = styled.button<{fill: ColorName}>`
   ${withThemes(StyledFavoriteButtonTheme)}
 `;
 
+type FavoriteButtonPropTypes = {
+  className?: string,
+  fill?: ColorName,
+  isFavorited?: boolean,
+  objectId: string,
+  siteKey: DomainSiteKey,
+  title: string,
+}
+
 const FavoriteButton = ({
-  className,
+  className = '',
   fill,
   isFavorited,
   objectId,
   siteKey,
   title,
-}) => (
+}: FavoriteButtonPropTypes) => (
   <StyledFavoriteButton
     aria-label={isFavorited ? `Remove ${title} from favorites` : `Save ${title} to favorites`}
     aria-pressed={isFavorited}
@@ -111,7 +120,7 @@ const FavoriteButton = ({
     data-favoritable-id={objectId}
     data-origin-site={siteKey}
     data-testid="favorite-button"
-    fill={fill}
+    fill={fill || 'eclipse'}
   >
     <FavoriteRibbon
       ariaHidden
@@ -121,20 +130,5 @@ const FavoriteButton = ({
     />
   </StyledFavoriteButton>
 );
-
-FavoriteButton.propTypes = {
-  className: PropTypes.string,
-  fill: PropTypes.string,
-  isFavorited: PropTypes.bool,
-  objectId: PropTypes.string.isRequired,
-  siteKey: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-};
-
-FavoriteButton.defaultProps = {
-  className: '',
-  fill: `${color.eclipse}`,
-  isFavorited: false,
-};
 
 export default FavoriteButton;
