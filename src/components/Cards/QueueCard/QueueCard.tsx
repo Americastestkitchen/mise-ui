@@ -8,7 +8,7 @@ import Image from '../shared/Image/Image';
 import Sticker from '../shared/Sticker';
 import { StickerType } from '../Cards';
 import Title from '../shared/Title';
-import ProgressBar from '../shared/ProgressBar';
+import ProgressBar from '../shared/ProgressBar/ProgressBar';
 
 const QueueCardTheme = {
   default: css``,

@@ -1,13 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { color } from '../../../../styles';
 
-const StyledProgressBar = styled.div`
+const StyledProgressBar = styled.div<{progress: number}>`
   display: none;
 
   &.in-progress {
-    background-color: #b1b1b1;
+    background-color: ${color.silverChalise}; 
     display: block;
     position: relative;
     height: 6px;
@@ -18,30 +17,25 @@ const StyledProgressBar = styled.div`
       content: '';
       display: block;
       height: 6px;
-      width: ${({ progress }) => (`calc(${progress} * 100%);`)}
+      width: ${({ progress }) => (`calc(${progress} * 100%)`)}
     }
   }
 `;
 
+export type ProgressBarProps = {
+  progress?: number;
+  videoId?: string;
+};
+
 const ProgressBar = ({
-  progress,
-  videoId,
-}) => (
+  progress = 0,
+  videoId = '',
+}: ProgressBarProps) => (
   <StyledProgressBar
-    data-testid={`${progress === 0 ? '' : 'in-progress'}`}
+    data-testid={progress === 0 ? '' : 'in-progress'}
     className={`${videoId} progress-bar ${progress === 0 ? '' : 'in-progress'}`}
     progress={progress}
   />
 );
-
-ProgressBar.propTypes = {
-  progress: PropTypes.number,
-  videoId: PropTypes.string,
-};
-
-ProgressBar.defaultProps = {
-  progress: 0,
-  videoId: undefined,
-};
 
 export default ProgressBar;
