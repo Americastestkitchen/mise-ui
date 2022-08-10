@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import { withKnobs, select , text } from '@storybook/addon-knobs';
 
 import CardCarouselNotes from './CardCarousel.md';
-import LoadingCarousel from '../LoadingCarousel';
+import LoadingCarousel from '../LoadingCarousel/LoadingCarousel';
 import { breakpoints, color, spacing, withThemes } from '../../../styles'
 import LoadableVisibility from "react-loadable-visibility/react-loadable";
 
