@@ -57,8 +57,7 @@ describe('HeroCard component should', () => {
   it('render a VideoPlay icon', () => {
     renderComponent(watchCardProps);
     renderComponent(learnCardProps);
-    // The count is 3 because the learn card sticker renders a VideoPlay as well.
-    expect(screen.getAllByTestId('video-play-svg').length).toBe(3);
+    expect(screen.getAllByTestId('video-play-svg').length).toBe(2);
   });
 
   it('render a Logo when an iconKey prop is provided', () => {
