@@ -45,6 +45,7 @@ const determineIconType = (contentType: StickerContentType) => {
     'cooking school course': VideoPlay,
   };
   const El = contentTypes[contentType];
+
   return El ? <El fill={`${color.white}`} /> : null;
 };
 
