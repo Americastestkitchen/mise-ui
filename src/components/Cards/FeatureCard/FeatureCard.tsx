@@ -240,13 +240,13 @@ function FeatureCard({
           <div className="feature-card__subcomponents-content">
             {stickers ? (
               <StickerGroup>
-                {stickers.map(({ text, type }) => (
+                {stickers.map(sticker => (
                   <StyledSticker
                     className={className}
-                    key={text}
-                    contentType={contentType}
-                    type={type}
-                    text={text}
+                    key={sticker.text}
+                    contentType={sticker.contentType}
+                    type={sticker.type}
+                    text={sticker.text}
                   />
                 ))}
               </StickerGroup>

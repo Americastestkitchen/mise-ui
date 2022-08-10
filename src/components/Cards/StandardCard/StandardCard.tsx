@@ -276,13 +276,13 @@ function StandardCard({
           />
           { stickers ? (
             <StickerGroup>
-              {stickers.map(({ text, type }) => (
+              {stickers.map(sticker => (
                 <StyledSticker
                   className={className}
-                  key={text}
-                  contentType={contentType}
-                  type={type}
-                  text={text}
+                  key={sticker.text}
+                  contentType={sticker.contentType}
+                  type={sticker.type}
+                  text={sticker.text}
                 />
               ))}
             </StickerGroup>

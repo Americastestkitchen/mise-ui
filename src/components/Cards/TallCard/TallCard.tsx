@@ -168,13 +168,13 @@ const TallCard = ({
         <div className="tall-card__subcomponents-wrapper">
           { stickers && (
             <StickersWrapper>
-              {stickers.map(({ text, type }) => (
+              {stickers.map(sticker => (
                 <StyledSticker
                   className={className}
-                  key={text}
-                  contentType={contentType}
-                  type={type}
-                  text={text}
+                  key={sticker.text}
+                  contentType={sticker.contentType}
+                  type={sticker.type}
+                  text={sticker.text}
                 />
               ))}
             </StickersWrapper>
