@@ -4,7 +4,7 @@ import { untilLg } from '../../../styles/breakpoints';
 import { color, fontSize, spacing, lineHeight, font, letterSpacing, withThemes } from '../../../styles';
 
 import Badge from '../../Badge/Badge';
-import Image from '../shared/Image';
+import Image from '../shared/Image/Image';
 import Sticker from '../shared/Sticker';
 import { StickerType } from '../Cards';
 import Title from '../shared/Title';

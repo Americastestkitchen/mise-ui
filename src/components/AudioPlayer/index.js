@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import plyrStyles from './plyrStyles';
 
-import Image from '../Cards/shared/Image';
+import Image from '../Cards/shared/Image/Image';
 import utils from '../../lib/utils';
 import { Pause, VideoPlay, Rewind, FastForward } from '../DesignTokens/Icon';
 

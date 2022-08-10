@@ -12,7 +12,7 @@ import StandardCard, {
 } from '../StandardCard';
 import Attributions from '../../shared/Attributions/Attributions';
 import CtaLink from '../../shared/CtaLink/CtaLink';
-import Image from '../../shared/Image';
+import Image from '../../shared/Image/Image';
 import breakpoints from '../../../../styles/breakpoints';
 
 const baseRecipe = {

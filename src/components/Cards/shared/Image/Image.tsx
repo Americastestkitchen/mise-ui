@@ -1,8 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
-
 import useIntersection from '../../../hooks/useIntersection';
 import useMedia from '../../../hooks/useMedia';
 
@@ -12,8 +10,19 @@ const StyledImage = styled.img`
 
 const inlineSrc = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';
 
+export type ImagePropTypes = {
+  className?: string,
+  height?: string | number,
+  imageAlt: string,
+  imageUrl: string,
+  lazy?: boolean,
+  lowQualityImageUrl?: string,
+  testId?: string,
+  width?: string | number,
+}
+
 const Image = ({
-  className,
+  className = '',
   height,
   imageAlt,
   imageUrl,
@@ -21,7 +30,7 @@ const Image = ({
   lowQualityImageUrl,
   testId,
   width,
-}) => {
+}: ImagePropTypes) => {
   const intersectionRef = useRef(null);
   const isPrint = useMedia('print');
   const [imageLoaded, setImageLoaded] = useState(!lazy);
@@ -55,9 +64,9 @@ const Image = ({
     if (lazy && lowQualityImageUrl) {
       setSrc(lowQualityImageUrl);
     }
-    if (typeof dry !== 'undefined') {
+    if (typeof window.dry !== 'undefined') {
       // eslint-disable-next-line no-undef
-      const printSub = dry.events.subscribe('images:load', loadImage);
+      const printSub: any = window.dry.events.subscribe('images:load', loadImage);
       return () => printSub.remove();
     }
     return () => {};
@@ -76,26 +85,6 @@ const Image = ({
       width={width}
     />
   );
-};
-
-Image.propTypes = {
-  className: PropTypes.string,
-  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  imageAlt: PropTypes.string.isRequired,
-  imageUrl: PropTypes.string.isRequired,
-  lazy: PropTypes.bool,
-  lowQualityImageUrl: PropTypes.string,
-  testId: PropTypes.string,
-  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-};
-
-Image.defaultProps = {
-  className: '',
-  height: null,
-  lazy: true,
-  lowQualityImageUrl: null,
-  testId: '',
-  width: null,
 };
 
 export default Image;

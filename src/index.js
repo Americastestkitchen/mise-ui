@@ -40,7 +40,7 @@ import HomepageTagline from './components/HomepageTagline';
 import InlineNewsletter from './components/Newsletters/InlineNewsletter/InlineNewsletter';
 import ImageListContainer from './components/Articles/ImageList/ImageListContainer/ImageListContainer';
 import ImageListItem from './components/Articles/ImageList/ImageListItem/ImageListItem';
-import Image from './components/Cards/shared/Image';
+import Image from './components/Cards/shared/Image/Image';
 import Listable from './components/Listable/Listable';
 import LandingEmailAd from './components/Ads/ShowcaseAds/LandingEmailAd';
 import LeadMarqueeCard from './components/Cards/LeadMarqueeCard';

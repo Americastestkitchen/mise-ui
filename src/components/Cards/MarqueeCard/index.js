@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import { color, font, fontSize, lineHeight, spacing } from '../../../styles';
 import Badge from '../../Badge/Badge';
-import Image from '../shared/Image';
+import Image from '../shared/Image/Image';
 import Sticker from '../shared/Sticker';
 import Byline from '../../Byline/Byline';
 
@@ -83,7 +83,7 @@ const Description = styled.p`
 const StyledByline = styled(Byline)`
   align-items: center;
   flex-direction: row;
-  
+
   &.no-image {
     margin-top: ${spacing.md};
   }
