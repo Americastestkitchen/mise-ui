@@ -29,7 +29,7 @@ export const Description = styled.p`
   max-width: 208px;
 
   ${md(css`max-width: 300px;`)}
-  ${xlg(css`max-width: 100%`)}
+  ${xlg(css`max-width: 100%;`)}
 `;
 
 export const VariantDescription = styled(Description)`
@@ -86,4 +86,13 @@ export const ClickArea = styled.a`
   &:focus {
     ${mixins.focusIndicator()};
   }
+`;
+
+export const VerticalLine = styled.div`
+  ${lg(css`
+    margin: 0 16px;
+    width: 1px;
+    height: 78px;
+    background-color: #707070;
+  `)}
 `;
