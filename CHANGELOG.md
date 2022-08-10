@@ -1,3 +1,16 @@
+# v1.33.33 (Wed Aug 10 2022)
+
+#### 🐛 Bug Fix
+
+- rebuild [#888](https://github.com/Americastestkitchen/mise-ui/pull/888) ([@harry-atk](https://github.com/harry-atk))
+- feature ad admin r23 [#846](https://github.com/Americastestkitchen/mise-ui/pull/846) ([@harry-atk](https://github.com/harry-atk))
+
+#### Authors: 1
+
+- Harry Scheuerle ([@harry-atk](https://github.com/harry-atk))
+
+---
+
 # v1.33.32 (Thu Aug 04 2022)
 
 #### 🐛 Bug Fix
