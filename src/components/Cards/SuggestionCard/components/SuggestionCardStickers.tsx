@@ -1,7 +1,7 @@
 import breakpoint from 'styled-components-breakpoint';
 import React from 'react';
 import styled from 'styled-components';
-import Sticker from '../../shared/Sticker';
+import Sticker from '../../shared/Sticker/Sticker';
 import { StickerItem } from '../SuggestionCard';
 import { font, fontSize, color, mixins } from '../../../../styles';
 
