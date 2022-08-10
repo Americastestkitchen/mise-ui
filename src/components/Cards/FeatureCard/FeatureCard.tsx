@@ -8,8 +8,8 @@ import Badge from '../../Badge/Badge';
 import FavoriteRibbonWithBg from '../shared/FavoriteRibbonWithBg/FavoriteRibbonWithBg';
 import Image from '../shared/Image/Image';
 import PersonHeadShot, { PersonHeadshotPropTypes } from '../shared/PersonHeadShot/PersonHeadShot';
-import Sticker from '../shared/Sticker';
 import Title from '../shared/Title/Title';
+import Sticker from '../shared/Sticker/Sticker';
 import { BaseCardPropType } from '../Cards';
 
 const featureCardWidth = grid.columnWidth;

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { md, lg } from '../../../styles/breakpoints';
 
-import Sticker from '../shared/Sticker';
+import Sticker from '../shared/Sticker/Sticker';
 
 import { color, font, fontSize } from '../../../styles';
 import { getImageUrl } from '../../../lib/cloudinary';

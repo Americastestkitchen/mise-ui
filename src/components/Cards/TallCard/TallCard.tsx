@@ -5,7 +5,7 @@ import { md } from '../../../styles/breakpoints';
 import Badge from '../../Badge/Badge';
 import Image from '../shared/Image/Image';
 import { keyToLogo } from '../../DesignTokens/Logo';
-import Sticker from '../shared/Sticker';
+import Sticker from '../shared/Sticker/Sticker';
 import { BaseCardPropType } from '../Cards';
 
 const tallCardWidth = grid.columnWidth;

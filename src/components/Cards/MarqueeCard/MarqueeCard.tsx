@@ -4,7 +4,7 @@ import breakpoint from 'styled-components-breakpoint';
 import { color, font, fontSize, lineHeight, spacing } from '../../../styles';
 import Badge from '../../Badge/Badge';
 import Image from '../shared/Image/Image';
-import Sticker from '../shared/Sticker';
+import Sticker from '../shared/Sticker/Sticker';
 import Byline from '../../Byline/Byline';
 import { StickerType } from '../Cards';
 

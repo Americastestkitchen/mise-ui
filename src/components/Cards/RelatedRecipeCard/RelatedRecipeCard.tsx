@@ -6,7 +6,7 @@ import { UserAttributions } from '../shared/UserAttributions';
 import mixins, { cssThemedColor } from '../../../styles/mixins';
 import { InferStyledTypes } from '../../../styles/utility-types';
 import Image from '../shared/Image/Image';
-import Sticker from '../shared/Sticker';
+import Sticker from '../shared/Sticker/Sticker';
 
 const CtaLink = styled.a`
   display: flex;
