@@ -50,7 +50,7 @@ import LoadingRelatedDocumentCard from './components/Cards/LoadingRelatedDocumen
 import MadeForYouCard from './components/Cards/MadeForYouCard';
 import MadeForYouCarousel from './components/Carousels/MadeForYouCarousel';
 import MarqueeCard from './components/Cards/MarqueeCard';
-import MediaObjectCard from './components/Cards/MediaObjectCard';
+import MediaObjectCard from './components/Cards/MediaObjectCard/MediaObjectCard';
 import MembershipShowcaseAd from './components/Ads/ShowcaseAds/MembershipShowcaseAd/MembershipShowcaseAd';
 import PodcastEpisodeCard from './components/Cards/PodcastEpisodeCard';
 import QueueCard from './components/Cards/QueueCard/QueueCard';

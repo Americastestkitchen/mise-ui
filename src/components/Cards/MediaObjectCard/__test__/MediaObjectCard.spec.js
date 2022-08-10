@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import 'jest-styled-components';
 
-import MediaObjectCard from '../index';
+import MediaObjectCard from '../MediaObjectCard';
 import breakpoints from '../../../../styles/breakpoints';
 
 describe('MediaObjectCard component should', () => {
