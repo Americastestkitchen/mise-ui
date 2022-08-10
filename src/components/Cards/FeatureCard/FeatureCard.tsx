@@ -9,7 +9,7 @@ import FavoriteRibbonWithBg from '../shared/FavoriteRibbonWithBg/FavoriteRibbonW
 import Image from '../shared/Image/Image';
 import PersonHeadShot, { PersonHeadshotPropTypes } from '../shared/PersonHeadShot/PersonHeadShot';
 import Sticker from '../shared/Sticker';
-import Title from '../shared/Title';
+import Title from '../shared/Title/Title';
 import { BaseCardPropType } from '../Cards';
 
 const featureCardWidth = grid.columnWidth;

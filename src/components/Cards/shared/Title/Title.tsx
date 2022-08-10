@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { color, font, fontSize, lineHeight, withThemes } from '../../../../styles';
 
@@ -40,21 +39,17 @@ const StyledTitle = styled.p`
   ${withThemes(TitleTheme)};
 `;
 
-const Title = ({ className, title }) => (
+type TitleProps = {
+  className?: string,
+  title: string,
+}
+
+const Title = ({ className, title }: TitleProps) => (
   <StyledTitle
     className={className}
   >
     {title}
   </StyledTitle>
 );
-
-Title.propTypes = {
-  className: PropTypes.string,
-  title: PropTypes.string.isRequired,
-};
-
-Title.defaultProps = {
-  className: null,
-};
 
 export default Title;
