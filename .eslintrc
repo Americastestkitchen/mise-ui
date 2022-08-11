@@ -1,86 +1,95 @@
 {
-  "globals": {
-    "describe": true,
-    "document": true,
-    "expect": true,
-    "fetch": true,
-    "it": true,
-    "navigator": true,
-    "window": true,
-    "jest": true,
-    "IntersectionObserver": true
-  },
-  "parser": "@typescript-eslint/parser",
-  "rules": {
-    // Soft some rules.
-    "no-use-before-define": "off",
-    "@typescript-eslint/no-use-before-define": ["error"],
-    "import/extensions": [
-      "error",
-      "ignorePackages",
-      {
-        "js": "never",
-        "jsx": "never",
-        "ts": "never",
-        "tsx": "never"
-      }
-   ],
-    "default-case": 0, // Required default case is nonsense.
-    "new-cap": [2, {"capIsNew": false, "newIsCap": true}], // For Record() etc.
-    "no-nested-ternary": 0, // It's nice for JSX.
-    "no-param-reassign": 0, // We love param reassignment. Naming is hard.
-    "no-shadow": 0, // Shadowing is a nice language feature. Naming is hard.
-    // eslint-plugin-import
-    "import/no-unresolved": [2, {"commonjs": true}],
-    "import/named": 2,
-    "import/default": 2,
-    "import/namespace": 2,
-    "import/export": 2,
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
-    // Overide Stateless
-    "react/prefer-stateless-function": 0,
-    "react/jsx-no-bind": 0,
-    "react/jsx-filename-extension": 0,
-    "no-mixed-operators": 0,
-    "react/forbid-prop-types": 0,
-    "react/no-danger": 0,
-    "react/no-array-index-key": 0,
-    "jsx-a11y/no-static-element-interactions": 0,
-    "jsx-a11y/no-autofocus": 0,
-    "jsx-a11y/anchor-is-valid": 0,
-    "jsx-a11y/label-has-for": 0,
-    "jsx-a11y/media-has-caption": 0,
-    "class-methods-use-this": 0,
-    "function-paren-newline": 0,
-    "object-curly-newline": 0,
-    "prefer-destructuring": 0,
-    "jsx-a11y/click-events-have-key-events": 0,
-    "no-underscore-dangle": 0,
-    "no-case-declarations": 0,
-    "react/jsx-one-expression-per-line": 0,
-    "arrow-parens": [2, "as-needed", { "requireForBlockBody": true }],
-    "react/jsx-props-no-spreading": 0,
-    "react/jsx-fragments": 0,
-    "import/no-cycle": 0,
-    "react/require-default-props": [2, { "forbidDefaultForRequired": true, "ignoreFunctionalComponents": true }],
-    "@typescript-eslint/explicit-module-boundary-types": 0,
-    "@typescript-eslint/no-empty-function": 0
-  },
-  "extends": [
-    "airbnb",
-    "plugin:react-hooks/recommended",
-    "plugin:import/errors",
-    "plugin:import/warnings",
-    "plugin:import/typescript",
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended"
-  ],
-  "plugins": [
-    "import",
-    "react",
-    "@typescript-eslint"
-  ],
-  "settings": {
-    "import/parser": "babel-eslint"
-  }
+    "globals": {
+        "describe": true,
+        "document": true,
+        "expect": true,
+        "fetch": true,
+        "it": true,
+        "navigator": true,
+        "window": true,
+        "jest": true,
+        "IntersectionObserver": true
+    },
+    "parser": "@typescript-eslint/parser",
+    "rules": {
+        // Soft some rules.
+        "no-use-before-define": "off",
+        "@typescript-eslint/no-use-before-define": ["error"],
+        "import/extensions": [
+            "error",
+            "ignorePackages",
+            {
+                "js": "never",
+                "jsx": "never",
+                "ts": "never",
+                "tsx": "never"
+            }
+        ],
+        "default-case": 0, // Required default case is nonsense.
+        "new-cap": [2, { "capIsNew": false, "newIsCap": true }], // For Record() etc.
+        "no-nested-ternary": 0, // It's nice for JSX.
+        "no-param-reassign": 0, // We love param reassignment. Naming is hard.
+        "no-shadow": 0, // Shadowing is a nice language feature. Naming is hard.
+        // eslint-plugin-import
+        "import/no-unresolved": [2, { "commonjs": true }],
+        "import/named": 2,
+        "import/default": 2,
+        "import/namespace": 2,
+        "import/export": 2,
+        "import/no-extraneous-dependencies": [
+            "error",
+            { "devDependencies": true }
+        ],
+        // Overide Stateless
+        "react/prefer-stateless-function": 0,
+        "react/jsx-no-bind": 0,
+        "react/jsx-filename-extension": 0,
+        "no-mixed-operators": 0,
+        "react/forbid-prop-types": 0,
+        "react/no-danger": 0,
+        "react/no-array-index-key": 0,
+        "jsx-a11y/no-static-element-interactions": 0,
+        "jsx-a11y/no-autofocus": 0,
+        "jsx-a11y/anchor-is-valid": 0,
+        "jsx-a11y/label-has-for": 0,
+        "jsx-a11y/media-has-caption": 0,
+        "class-methods-use-this": 0,
+        "function-paren-newline": 0,
+        "object-curly-newline": 0,
+        "prefer-destructuring": 0,
+        "jsx-a11y/click-events-have-key-events": 0,
+        "no-underscore-dangle": 0,
+        "no-case-declarations": 0,
+        "react/jsx-one-expression-per-line": 0,
+        "react/jsx-props-no-spreading": 0,
+        "react/jsx-fragments": 0,
+        "import/no-cycle": 0,
+        "react/require-default-props": [
+            2,
+            {
+                "forbidDefaultForRequired": true,
+                "ignoreFunctionalComponents": true
+            }
+        ],
+        "@typescript-eslint/explicit-module-boundary-types": 0,
+        "@typescript-eslint/no-empty-function": 0,
+        "prettier/prettier": ["error"],
+        "arrow-body-style": "off",
+        "prefer-arrow-callback": "off"
+    },
+    "extends": [
+        "airbnb",
+        "plugin:react-hooks/recommended",
+        "plugin:import/errors",
+        "plugin:import/warnings",
+        "plugin:import/typescript",
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:storybook/recommended",
+        "prettier"
+    ],
+    "plugins": ["import", "react", "@typescript-eslint", "prettier"],
+    "settings": {
+        "import/parser": "babel-eslint"
+    }
 }
