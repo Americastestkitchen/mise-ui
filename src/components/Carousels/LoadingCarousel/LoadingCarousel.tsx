@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { md } from '../../../styles/breakpoints';
 import { color, spacing } from '../../../styles';
 
-import LoadingCard from '../../Cards/LoadingCard';
+import LoadingCard from '../../Cards/LoadingCard/LoadingCard';
 
 const LoadingCarouselWrapper = styled.div.attrs({ className: 'loading-carousel' })``;
 const LoadingCarouselIntro = styled.div.attrs({
