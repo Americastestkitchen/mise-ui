@@ -49,7 +49,7 @@ import LoadingCarousel from './components/Carousels/LoadingCarousel/LoadingCarou
 import LoadingRelatedDocumentCard from './components/Cards/LoadingRelatedDocumentCard/LoadingRelatedDocumentCard';
 import MadeForYouCard from './components/Cards/MadeForYouCard';
 import MadeForYouCarousel from './components/Carousels/MadeForYouCarousel';
-import MarqueeCard from './components/Cards/MarqueeCard';
+import MarqueeCard from './components/Cards/MarqueeCard/MarqueeCard';
 import MediaObjectCard from './components/Cards/MediaObjectCard/MediaObjectCard';
 import MembershipShowcaseAd from './components/Ads/ShowcaseAds/MembershipShowcaseAd/MembershipShowcaseAd';
 import PodcastEpisodeCard from './components/Cards/PodcastEpisodeCard';
