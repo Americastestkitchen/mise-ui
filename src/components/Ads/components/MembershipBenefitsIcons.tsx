@@ -39,6 +39,14 @@ const icons = {
   mobile: Phone,
 };
 
+const loopAnimation = () => {
+  let styles = '';
+  for (let i = 1; i < 6; i += 1) {
+    styles += `&:nth-child(${i}) { animation-delay: ${1.2 * i}s}; `;
+  }
+  return css`${styles}`;
+};
+
 const MembershipBenefitsIconsWrapper = styled.div.attrs({
   className: 'membership-benefits-icons',
 })`
@@ -52,12 +60,7 @@ const Benefit = styled.div<{animated: boolean}>`
   flex-direction: column;
   max-width: 6rem;
   ${({ animated }) => (animated ? 'animation: pulse 8s infinite ease-in-out;' : '')}
-
-  &:nth-child(1) { animation-delay: 1.2s; }
-  &:nth-child(2) { animation-delay: 2.4s; }
-  &:nth-child(3) { animation-delay: 3.6s; }
-  &:nth-child(4) { animation-delay: 4.8s; }
-  &:nth-child(5) { animation-delay: 6.0s; }
+  ${loopAnimation()}
 
   @keyframes pulse {
     3% {
