@@ -129,7 +129,9 @@ export type MembershipBenefitsIconsProps = {
 const MembershipBenefitIcons = ({
   animated = true,
 }: MembershipBenefitsIconsProps) => (
-  <MembershipBenefitsIconsWrapper>
+  <MembershipBenefitsIconsWrapper
+    data-testid="benefit-icons"
+  >
     {benefits.map((benefit, idx) => {
       const { icon: iconType, desc } = benefit;
       const Icon = icons[iconType];
