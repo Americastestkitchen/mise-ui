@@ -9,6 +9,7 @@ import { Author, BylineListArticleCard } from '../../BylineList';
 import { InferStyledTypes } from '../../../styles/utility-types';
 import FavoriteRibbonWithBg from '../shared/FavoriteRibbonWithBg/FavoriteRibbonWithBg';
 import Badge from '../../Badge/Badge';
+import { StickerType } from '../Cards';
 
 const Stack = styled.div`
   display: grid;
@@ -144,7 +145,7 @@ function SplitCard({
 export type ArticleCardProps = {
   title: string;
   description: string;
-  stickers: { text: string, type: string }[];
+  stickers: StickerType[];
   authors: Pick<Author, 'firstName' | 'lastName' | 'photo' | 'id'>[];
   attribution: string;
   cloudinaryId: string;
