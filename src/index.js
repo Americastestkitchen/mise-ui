@@ -54,7 +54,7 @@ import MediaObjectCard from './components/Cards/MediaObjectCard/MediaObjectCard'
 import MembershipShowcaseAd from './components/Ads/ShowcaseAds/MembershipShowcaseAd/MembershipShowcaseAd';
 import PodcastEpisodeCard from './components/Cards/PodcastEpisodeCard';
 import QueueCard from './components/Cards/QueueCard/QueueCard';
-import PairedProductAd from './components/Ads/PairedProductAd';
+import PairedProductAd from './components/Ads/PairedProductAd/PairedProductAd';
 import PersonCard from './components/Cards/PersonCard';
 import PullQuote from './components/Articles/PullQuote';
 import RefinementListBasic from './components/Algolia/shared/RefinementListBasic';
