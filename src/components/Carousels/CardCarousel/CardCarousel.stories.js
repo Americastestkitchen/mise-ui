@@ -9,7 +9,7 @@ import { breakpoints, color, spacing, withThemes } from '../../../styles'
 import LoadableVisibility from "react-loadable-visibility/react-loadable";
 
 const CardCarousel = LoadableVisibility({
-  loader: () => import("./index"),
+  loader: () => import("./CardCarousel"),
   loading: () => (<LoadingCarousel type="standard" />),
   delay: 50,
 });

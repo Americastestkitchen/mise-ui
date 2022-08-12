@@ -2,6 +2,7 @@ import breakpoint from 'styled-components-breakpoint';
 import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { css } from 'styled-components';
+import { md, untilMd, lg } from '../../../styles/breakpoints';
 
 import Carousel from '../Carousel';
 import CategoryCard from '../../Cards/CategoryCard/CategoryCard';
@@ -42,7 +43,7 @@ const carouselTypeStyles = {
 };
 
 const CardCarouselTheme = {
-  default: css`
+  default: css<{type: keyof typeof typeMap}>`
     max-width: 100%;
     position: relative;
 
@@ -61,12 +62,14 @@ const CardCarouselTheme = {
     }
 
     .carousel {
-      ${({ type }) => (carouselTypeStyles[type] || '')};
+      ${({ type }) => (carouselTypeStyles[type as keyof typeof carouselTypeStyles] || '')};
     }
 
     .carousel-cell {
       margin-right: ${({ type }) => (type === 'category' ? '0.85rem' : `${spacing.sm}`)};
-      width: ${({ type }) => (typeWidths?.sm?.[type] || typeWidths.default[type] || typeWidths.default.default)};
+      width: ${({ type }) => (typeWidths.sm[type as keyof typeof typeWidths.sm]
+        || typeWidths.default[type as keyof typeof typeWidths.default]
+        || typeWidths.default.default)};
     }
 
     .standard-card {
@@ -89,13 +92,23 @@ const CardCarouselTheme = {
       }
     `}
 
-    ${breakpoint('md')`
-      .carousel-cell {
-        margin-right: ${({ type }) => (type === 'category' ? '0.5rem' : spacing.sm)};
+    ${untilMd(css`
+      &:not(.card-carousel--hero) {
+        .flickity-page-dots {
+          display: none;
+        }
       }
-    `}
+    `)}
 
-    ${breakpoint('lg')`
+
+    ${({ type }) => md(css`
+      .carousel-cell {
+        margin-right: ${type === 'category' ? '0.5rem' : spacing.sm};
+      }
+    `)}
+
+
+    ${({ type }) => lg(css`
       .linear-gradient {
         display: block;
         height: 100%;
@@ -111,7 +124,9 @@ const CardCarouselTheme = {
       }
 
       .carousel-cell {
-        width: ${({ type }) => (typeWidths?.lg?.[type] || typeWidths.default[type] || typeWidths.default.default)};
+        width: ${typeWidths?.lg?.[type as keyof typeof typeWidths.lg]
+        || typeWidths.default[type as keyof typeof typeWidths.default]
+        || typeWidths.default.default};
       }
 
       &.card-carousel--hero {
@@ -138,11 +153,11 @@ const CardCarouselTheme = {
         }
 
         &.next {
-          top: ${({ type }) => (type === 'category' ? '6rem' : '')};
-          right: ${({ type }) => (type === 'category' ? '.7rem' : '')};
+          top: ${type === 'category' ? '6rem' : ''};
+          right: ${type === 'category' ? '.7rem' : ''};
         }
       }
-    `}
+    `)}
 
     ${breakpoint('xlg')`
       max-width: 115rem;
@@ -172,7 +187,7 @@ const CardCarouselTheme = {
   `,
 };
 
-const CardCarouselWrapper = styled.div`
+const CardCarouselWrapper = styled.div<{type: string}>`
   ${withThemes(CardCarouselTheme)}
 `;
 
@@ -189,11 +204,52 @@ const typeMap = {
   relatedsmall: RelatedSmallCard,
 };
 
+type DotPosition = {
+  bottom?: string,
+  left?: string,
+  right?: string,
+  top?: string,
+};
+
+type CardCarouselTypes = {
+  adSourceKey?: string,
+  cellAlign?: 'center' | 'left',
+  className?: string,
+  dotPosition: Record<string, DotPosition>,
+  includesAdType?: 'book',
+  items: [],
+  gradient?: {
+    endColor: string,
+    startColor: string,
+  },
+  extraOptions?: Record<string, unknown>,
+  renderItem?: () => void,
+  title?: string,
+  type: keyof typeof typeMap,
+}
+
 const CardCarousel = ({
   adSourceKey,
-  cellAlign,
+  cellAlign = 'center',
   className,
-  dotPosition,
+  dotPosition = {
+    sm: {
+      right: spacing.sm,
+      top: '0',
+    },
+    md: {
+      right: spacing.sm,
+      top: `-${spacing.md}`,
+    },
+    lg: {
+      right: spacing.lg,
+      top: `-${spacing.md}`,
+    },
+    xlg: {
+      right: spacing.xxlg,
+      top: `-${spacing.md}`,
+    },
+  },
   extraOptions,
   includesAdType,
   items,
@@ -201,9 +257,13 @@ const CardCarousel = ({
   renderItem,
   title,
   type,
-}) => {
+}: CardCarouselTypes) => {
   const El = typeMap[type] || StandardCard;
-  const defaultRender = item => <El key={item.objectId} {...item} />;
+  // The El component accepts multiple cards with Types which are already declared.
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const defaultRender = ({ item }: {item: any}) => (
+    <El key={item.objectId} {...item} />
+  );
   const doRenderItem = renderItem || defaultRender;
   const options = {
     slideshow: false,

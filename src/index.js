@@ -19,7 +19,7 @@ import Byline from './components/Byline/Byline';
 import CustomStateResults from './components/CustomStateResults';
 import carousel from './styles/carousel';
 import Carousel from './components/Carousels/Carousel';
-import CardCarousel from './components/Carousels/CardCarousel';
+import CardCarousel from './components/Carousels/CardCarousel/CardCarousel';
 import CardWrapper from './components/Cards/CardWrapper/CardWrapper';
 import CategoryCard from './components/Cards/CategoryCard/CategoryCard';
 import ClearRefinements from './components/Algolia/shared/ClearRefinements';

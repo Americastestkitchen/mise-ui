@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import CardCarousel from '../CardCarousel';
+import CardCarousel from '../CardCarousel/CardCarousel';
 import { color, font, fontSize, letterSpacing, lineHeight, spacing, withThemes } from '../../../styles';
 
 const IntroTheme = {

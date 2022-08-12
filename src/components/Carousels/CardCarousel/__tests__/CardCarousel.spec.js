@@ -5,7 +5,7 @@ import '@testing-library/jest-dom/extend-expect';
 import 'jest-styled-components';
 
 import breakpoints from '../../../../styles/breakpoints';
-import CardCarousel from '../index';
+import CardCarousel from '../CardCarousel';
 import data from '../../DocumentListCarousel/__tests__/data';
 
 describe('DocumentListCarousel component should', () => {
