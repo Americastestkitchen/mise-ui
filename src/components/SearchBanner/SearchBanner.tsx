@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import breakpoint from 'styled-components-breakpoint';
-import styled from 'styled-components';
 import { connectQueryRules } from 'react-instantsearch-dom';
-
+import styled, { css } from 'styled-components';
+import { md } from '../../styles/breakpoints';
 import { color, font, fontSize, spacing } from '../../styles';
 import { Close } from '../DesignTokens/Icon/svgs';
 
@@ -41,13 +39,29 @@ const SearchBannerClose = styled.button`
   top: 1rem;
   width: 1.2rem;
 
-  ${breakpoint('md')`
+  ${md(css`
     right: 1.8rem;
     top: 1.4rem;
-  `}
+  `)}
 `;
 
-const SearchBanner = ({ message, url, mixpanelType, incode, handleClick, handleView }) => {
+export type SearchBannerProps = {
+  handleClick?: () => void;
+  handleView?: () => void;
+  incode?: string;
+  message: string;
+  mixpanelType?: string;
+  url: string;
+};
+
+const SearchBanner = ({
+  handleClick = () => {},
+  handleView = () => {},
+  incode = '',
+  message,
+  mixpanelType = '',
+  url,
+}: SearchBannerProps) => {
   useEffect(handleView, [mixpanelType, handleView]);
   const mixpanelParams = { mixpanelType, incode };
   const [closed, setClosed] = useState(false);
@@ -70,23 +84,23 @@ const SearchBanner = ({ message, url, mixpanelType, incode, handleClick, handleV
   ) : null;
 };
 
-SearchBanner.propTypes = {
-  message: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
-  mixpanelType: PropTypes.string,
-  incode: PropTypes.string,
-  handleClick: PropTypes.func,
-  handleView: PropTypes.func,
-};
+interface QueryItemsType extends SearchBannerProps {
+  anonymousOnly: boolean;
+}
 
-SearchBanner.defaultProps = {
-  mixpanelType: null,
-  incode: null,
-  handleClick: null,
-  handleView: () => {},
-};
+export type QueryRulesProps = {
+  items: QueryItemsType[];
+  isAnonymous?: boolean;
+  handleClickBanner?: () => void,
+  handleViewBanner?: () => void
+}
 
-const QueryRules = ({ items, isAnonymous, handleClickBanner, handleViewBanner }) => {
+const QueryRules = ({
+  items,
+  isAnonymous = true,
+  handleClickBanner = () => {},
+  handleViewBanner = () => {},
+}: QueryRulesProps) => {
   const loggedIn = !isAnonymous;
   const banner = items.find(item => !(item.anonymousOnly && loggedIn));
   if (banner) {
@@ -94,22 +108,10 @@ const QueryRules = ({ items, isAnonymous, handleClickBanner, handleViewBanner })
       banner.handleClick = handleClickBanner;
       banner.handleView = handleViewBanner;
     }
-    return [<SearchBanner {...banner} />];
   }
-  return [];
-};
-
-QueryRules.propTypes = {
-  items: PropTypes.array.isRequired,
-  isAnonymous: PropTypes.bool,
-  handleClickBanner: PropTypes.func,
-  handleViewBanner: PropTypes.func,
-};
-
-QueryRules.defaultProps = {
-  isAnonymous: true,
-  handleClickBanner: undefined,
-  handleViewBanner: undefined,
+  return banner ? (
+    <SearchBanner {...banner} />
+  ) : null;
 };
 
 const CustomQueryRules = connectQueryRules(QueryRules);
