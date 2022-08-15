@@ -1,8 +1,6 @@
-import breakpoint from 'styled-components-breakpoint';
-import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { md, untilMd, lg } from '../../../styles/breakpoints';
+import { md, untilMd, lg, xlg } from '../../../styles/breakpoints';
 
 import Carousel from '../Carousel';
 import CategoryCard from '../../Cards/CategoryCard/CategoryCard';
@@ -84,14 +82,6 @@ const CardCarouselTheme = {
       overflow: visible;
     }
 
-    ${breakpoint('xs', 'md')`
-      &:not(.card-carousel--hero) {
-        .flickity-page-dots {
-          display: none;
-        }
-      }
-    `}
-
     ${untilMd(css`
       &:not(.card-carousel--hero) {
         .flickity-page-dots {
@@ -159,7 +149,7 @@ const CardCarouselTheme = {
       }
     `)}
 
-    ${breakpoint('xlg')`
+    ${xlg(css`
       max-width: 115rem;
 
       .linear-gradient {
@@ -183,7 +173,8 @@ const CardCarouselTheme = {
           }
         }
       }
-    `}
+    `)}
+
   `,
 };
 
@@ -255,13 +246,12 @@ const CardCarousel = ({
   items,
   gradient,
   renderItem,
-  title,
+  title = '',
   type,
 }: CardCarouselTypes) => {
   const El = typeMap[type] || StandardCard;
-  // The El component accepts multiple cards with Types which are already declared.
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const defaultRender = ({ item }: {item: any}) => (
+  // @ts-expect-error The El component accepts multiple cards with Types which are already declared.
+  const defaultRender = item => (
     <El key={item.objectId} {...item} />
   );
   const doRenderItem = renderItem || defaultRender;
@@ -303,73 +293,6 @@ const CardCarousel = ({
       />
     </CardCarouselWrapper>
   );
-};
-
-CardCarousel.propTypes = {
-  /** SourceKey Included in Ad Link */
-  adSourceKey: PropTypes.string,
-  cellAlign: PropTypes.oneOf(['center', 'left']),
-  /** Additional classname */
-  className: PropTypes.string,
-  dotPosition: PropTypes.shape({
-    bottom: PropTypes.string,
-    left: PropTypes.string,
-    right: PropTypes.string,
-    top: PropTypes.string,
-  }),
-  /** Optional prop for Ad Placement */
-  includesAdType: PropTypes.oneOf(['book']),
-  /** List of items for the carousel */
-  items: PropTypes.array.isRequired,
-  gradient: PropTypes.shape({
-    endColor: PropTypes.string,
-    startColor: PropTypes.string,
-  }),
-  extraOptions: PropTypes.object,
-  /** Callback for rendering each carousel item */
-  renderItem: PropTypes.func,
-  title: PropTypes.string,
-  /** Sets the carousel-item styles for a particular card style */
-  type: PropTypes.oneOf([
-    'category',
-    'feature',
-    'hero',
-    'person',
-    'reviewable',
-    'standard',
-    'suggestion',
-    'tall',
-    'relatedsmall',
-  ]).isRequired,
-};
-
-CardCarousel.defaultProps = {
-  adSourceKey: null,
-  cellAlign: 'center',
-  className: undefined,
-  dotPosition: {
-    sm: {
-      right: spacing.sm,
-      top: '0',
-    },
-    md: {
-      right: spacing.sm,
-      top: `-${spacing.md}`,
-    },
-    lg: {
-      right: spacing.lg,
-      top: `-${spacing.md}`,
-    },
-    xlg: {
-      right: spacing.xxlg,
-      top: `-${spacing.md}`,
-    },
-  },
-  gradient: null,
-  extraOptions: null,
-  includesAdType: null,
-  renderItem: undefined,
-  title: '',
 };
 
 export default CardCarousel;
