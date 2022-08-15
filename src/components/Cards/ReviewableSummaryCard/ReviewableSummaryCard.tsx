@@ -4,7 +4,7 @@ import breakpoint from 'styled-components-breakpoint';
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import AffiliateLink from '../shared/AffiliateLink/AffiliateLink';
+import AffiliateLink, { AffiliateIconTypes } from '../shared/AffiliateLink/AffiliateLink';
 import Image from '../shared/Image/Image';
 import Sticker from '../shared/Sticker/Sticker';
 import { getImageUrl } from '../../../lib/cloudinary';
@@ -276,9 +276,9 @@ const ReviewableSummaryCard = React.memo(({
 }: ReviewableSummaryCardProps) => {
   const isDiscontinued = price?.toLowerCase()?.includes('discontinued') ?? false;
   const priceMarkup = price?.replace(parensRe, '<span>$1</span>') ?? null;
-  let buyNowIcon = asin ? 'Amazon' : null;
+  let buyNowIcon: AffiliateIconTypes = asin ? 'Amazon' : undefined;
   if (buyNowOverrideAffiliateActive) {
-    buyNowIcon = buyNowOverrideAffiliateName || null;
+    buyNowIcon = buyNowOverrideAffiliateName as AffiliateIconTypes || undefined;
   }
   if (buyNowLink && buyNowLink.includes('amazon')) {
     buyNowIcon = 'Amazon';
