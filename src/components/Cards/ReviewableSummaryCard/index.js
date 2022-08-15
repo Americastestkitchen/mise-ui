@@ -6,7 +6,7 @@ import styled, { css } from 'styled-components';
 
 import AffiliateLink from '../shared/AffiliateLink/AffiliateLink';
 import Image from '../shared/Image/Image';
-import Sticker from '../shared/Sticker';
+import Sticker from '../shared/Sticker/Sticker';
 import { getImageUrl } from '../../../lib/cloudinary';
 import { color, font, fontSize, lineHeight, mixins, spacing, withThemes } from '../../../styles';
 

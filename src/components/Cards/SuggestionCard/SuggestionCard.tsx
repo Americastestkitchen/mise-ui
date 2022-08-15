@@ -23,11 +23,7 @@ import {
   SuggestionCardSubTitle,
   SuggestionCardTitle,
 } from './components/SuggestionCardContent';
-
-export type StickerItem = {
-  type: string,
-  text: string,
-}
+import { StickerType } from '../Cards';
 
 export type SuggestionCardProps = {
   avgRating?: number | null,
@@ -38,7 +34,7 @@ export type SuggestionCardProps = {
   objectId: string,
   siteKey: string,
   subtitle?: string,
-  stickers?: StickerItem[],
+  stickers?: StickerType[],
   title: string,
   dataIdx?: number,
   resourceType: string,

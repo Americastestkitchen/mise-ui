@@ -5,6 +5,7 @@ import QueueCard, { QueueCardProps } from './QueueCard';
 import { siteKey } from '../../../config/argTypes';
 import { addThemedWrapper } from '../../../config/decorators';
 import { color, spacing, withThemes } from '../../../styles';
+import { StickerType } from '../Cards';
 
 export default {
   title: 'Components/Cards/QueueCard',
@@ -34,7 +35,7 @@ const Template = (args: QueueCardProps) => (
   </ThemeProvider>
 );
 
-const defaultArgs = {
+const defaultArgs: { href: string, stickers : StickerType[]} = {
   href: 'https://www.americastestkitchen.com/equipment_reviews/1879-plastic-food-storage-containers?ref=new_search_experience_2',
   stickers: [{ type: 'editorial', text: '28:08' }],
 };

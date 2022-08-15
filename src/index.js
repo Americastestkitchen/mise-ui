@@ -80,7 +80,7 @@ import SingleProductAd from './components/Ads/SingleProductAd';
 import SingleProductShowcaseAd from './components/Ads/ShowcaseAds/SingleProductShowcaseAd';
 import StandardCard from './components/Cards/StandardCard/StandardCard';
 import StationFinderForm from './components/Forms/StationFinderForm';
-import Sticker from './components/Cards/shared/Sticker';
+import Sticker from './components/Cards/shared/Sticker/Sticker';
 import SubscribeBubbles from './components/SubscribeBubbles/SubscribeBubbles';
 import { SuggestionCard } from './components/Cards/SuggestionCard/SuggestionCard';
 import SurveyCard from './components/Cards/SurveyCard';

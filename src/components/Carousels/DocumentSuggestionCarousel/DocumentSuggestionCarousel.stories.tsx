@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css, ThemeProvider } from 'styled-components';
 
-import data from './data';
+import suggestionItems from './data';
 import DocumentSuggestionCarousel from './index';
 import { breakpoints, color, withThemes } from '../../../styles';
 
@@ -33,7 +33,7 @@ export const ThemedDocumentSuggestionCarousel = ({ mode }: {mode: string}) => (
       <DocumentSuggestionCarousel
         title=""
         subtitle=""
-        items={data.suggestionItems}
+        items={suggestionItems}
       />
     </StoryWrapper>
   </ThemeProvider>

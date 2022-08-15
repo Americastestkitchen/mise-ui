@@ -5,7 +5,7 @@ import '@testing-library/jest-dom/extend-expect';
 import 'jest-styled-components';
 
 import breakpoints from '../../../../styles/breakpoints';
-import data from '../data';
+import suggestionItems from '../data';
 import DocumentSuggestionCarousel from '../index';
 
 class ResizeObserver {
@@ -21,7 +21,7 @@ describe('DocumentListCarousel component should', () => {
     render(
       <ThemeProvider theme={{ breakpoints }}>
         <DocumentSuggestionCarousel
-          items={data.suggestionItems}
+          items={suggestionItems}
           subtitle={subtitle}
           title={title}
         />

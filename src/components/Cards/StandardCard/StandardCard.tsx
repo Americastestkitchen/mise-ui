@@ -9,8 +9,8 @@ import CtaLink from '../shared/CtaLink/CtaLink';
 import FavoriteButton from '../shared/FavoriteButton/FavoriteButton';
 import Image from '../shared/Image/Image';
 import ImageCollage from '../shared/ImageCollage/ImageCollage';
-import Sticker from '../shared/Sticker';
 import Title from '../shared/Title/Title';
+import Sticker from '../shared/Sticker/Sticker';
 import { BaseCardPropType } from '../Cards';
 import { ColorName } from '../../../styles/colors';
 
@@ -276,13 +276,13 @@ function StandardCard({
           />
           { stickers ? (
             <StickerGroup>
-              {stickers.map(({ text, type }) => (
+              {stickers.map(sticker => (
                 <StyledSticker
                   className={className}
-                  key={text}
-                  contentType={contentType}
-                  type={type}
-                  text={text}
+                  key={sticker.text}
+                  contentType={sticker.contentType}
+                  type={sticker.type}
+                  text={sticker.text}
                 />
               ))}
             </StickerGroup>
