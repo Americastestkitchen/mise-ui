@@ -9,8 +9,10 @@ export const siteKey = {
 };
 
 export const disable = { control: { disable: true } };
+export const hidden = { table: { disable: true } };
 
 export default {
+  hidden,
   disable,
   mode,
   siteKey,
