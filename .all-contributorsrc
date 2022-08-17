@@ -109,6 +109,15 @@
         "code",
         "doc"
       ]
+    },
+    {
+      "login": "jbonAA",
+      "name": "Jess David Bon",
+      "avatar_url": "https://avatars.githubusercontent.com/u/52093281?v=4",
+      "profile": "https://github.com/jbonAA",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
