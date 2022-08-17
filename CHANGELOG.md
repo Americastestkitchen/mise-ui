@@ -1,3 +1,16 @@
+# v1.33.34 (Wed Aug 17 2022)
+
+#### 🐛 Bug Fix
+
+- WEB-53: Card Image min-heights for flickity safari [#831](https://github.com/Americastestkitchen/mise-ui/pull/831) (jess.bon@americastestkitchen.com [@jbonAA](https://github.com/jbonAA))
+
+#### Authors: 2
+
+- Jess Bon (jess.bon@americastestkitchen.com)
+- Jess David Bon ([@jbonAA](https://github.com/jbonAA))
+
+---
+
 # v1.33.33 (Wed Aug 10 2022)
 
 #### 🐛 Bug Fix
