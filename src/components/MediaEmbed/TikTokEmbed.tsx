@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import Caption from './Caption';
 import { EmbedProps, useOEmbed } from './utilities';
 
-function useTikTokOEmbed(source: string): { html?: string | undefined; } | undefined {
+function useTikTokOEmbed(source: string): string {
   return useOEmbed({
     baseUrl: 'https://www.tiktok.com/oembed?url=',
     script: 'https://www.tiktok.com/embed.js',
@@ -92,16 +92,16 @@ function useTikTokIframeListener(
 export default function TikTokEmbed({
   source, caption,
 }: EmbedProps) {
+  const embed = useTikTokOEmbed(source);
   const [height, setHeight] = useState<number | undefined>(undefined);
   const ref = useRef<HTMLDivElement>(null);
-  const embed = useTikTokOEmbed(source);
   const iframeSize = useTikTokIframeSize();
   useTikTokIframeListener(ref, setHeight);
 
   return (
     <div>
       <Trim trim={iframeSize} recieved={height}>
-        <Wrapper ref={ref} dangerouslySetInnerHTML={{ __html: embed?.html ?? '' }} />
+        <Wrapper ref={ref} dangerouslySetInnerHTML={{ __html: embed ?? '' }} />
       </Trim>
       <div style={{ width: iframeSize }}>
         <Caption caption={caption} />
