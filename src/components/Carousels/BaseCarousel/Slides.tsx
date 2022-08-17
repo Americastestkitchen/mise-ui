@@ -45,6 +45,9 @@ const StandardSlideThemed = styled.div`
         color: ${accentValue} !important;
       }
     }
+    img {
+      min-height: 272px;
+    }
   }
   .action-summary {
     color: ${colorValue} !important;
