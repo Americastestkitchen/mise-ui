@@ -65,9 +65,20 @@ const AffiliateLinkEl = styled.a.attrs({
   className: 'partner-link__anchor',
 })`${withThemes(AffiliateLinkTheme)}`;
 
+export type AffiliateIconTypes =
+  | 'Amazon'
+  | 'BlueApron'
+  | 'Houzz'
+  | 'KingArthur'
+  | 'SurLaTable'
+  | 'ThermoWorks'
+  | 'Victorinox'
+  | 'WilliamsSonoma'
+  | undefined
+
 type AffiliateLinkPropTypes = {
   dataAttrs?: Record<string, any>,
-  icon?: 'Amazon' | 'BlueApron' | 'Houzz' | 'KingArthur' | 'SurLaTable' | 'ThermoWorks' | 'Victorinox' | 'WilliamsSonoma',
+  icon?: AffiliateIconTypes,
   readerLabel?: string,
   name?: string,
   onClick?(): void,

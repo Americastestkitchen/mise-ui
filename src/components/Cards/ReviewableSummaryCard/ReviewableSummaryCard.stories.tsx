@@ -1,6 +1,7 @@
 import React from 'react';
 
-import ReviewableSummaryItem from './index';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import ReviewableSummaryCard from './ReviewableSummaryCard';
 import { siteKey } from '../../../config/argTypes';
 import { addThemedWrapper } from '../../../config/decorators';
 
@@ -10,8 +11,8 @@ const recommendationCategory = { table: { category: 'Recommendation Status' } };
 
 export default {
   title: 'Components/Cards/ReviewableSummaryItem',
-  component: ReviewableSummaryItem,
-  decorators: [ addThemedWrapper() ],
+  component: ReviewableSummaryCard,
+  decorators: [addThemedWrapper()],
   argTypes: {
     recommendationStatus: { ...recommendationCategory },
     winner: { ...recommendationCategory },
@@ -41,11 +42,14 @@ export default {
     price: { ...ctaCategory },
     siteKey,
   },
-};
+} as ComponentMeta<typeof ReviewableSummaryCard>;
 
-const Template = (args) => <ReviewableSummaryItem {...args} />;
+const Template: ComponentStory<typeof ReviewableSummaryCard> = args => (
+  <ReviewableSummaryCard {...args} />
+);
 
 export const Standard = Template.bind({});
+
 Standard.args = {
   asin: 'B004T6M702',
   buyNowLink: 'https://www.amazon.com/dp/B004T6M702/?tag=akoequippilot-20',
@@ -56,7 +60,7 @@ Standard.args = {
   name: 'All-Clad Stainless 2Qt Saucepan',
   price: '$15.99',
   recommendationStatus: 'Highly Recommended',
-  siteKey: 'atk',
   winner: true,
   winnerHeader: 'winner',
+  isShortList: false,
 };
