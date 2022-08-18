@@ -1,10 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 
 import PersonHeadShot, { PersonHeadshotPropTypes } from '../shared/PersonHeadShot/PersonHeadShot';
 import Sticker from '../shared/Sticker/Sticker';
+import { StickerType } from '../Cards';
 import { color, font, fontSize, lineHeight, spacing } from '../../../styles';
 import { getImageUrl } from '../../../lib/cloudinary';
 import { keyToLogo } from '../../DesignTokens/Logo';
@@ -160,7 +160,7 @@ type HeroCardProps = {
   description: string,
   iconKey?: string,
   personHeadShot: PersonHeadshotPropTypes,
-  sticker: PropTypes.InferProps<typeof Sticker.propTypes>,
+  sticker: StickerType,
   title?: string,
   onClick?: () => void,
 }
