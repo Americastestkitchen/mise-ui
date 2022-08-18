@@ -208,7 +208,7 @@ type CardCarouselTypes = {
   className?: string,
   dotPosition: Record<string, DotPosition>,
   includesAdType?: 'book',
-  items: [],
+  items: Record<string, unknown>[],
   gradient?: {
     endColor: string,
     startColor: string,
