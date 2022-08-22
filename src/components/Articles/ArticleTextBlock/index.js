@@ -52,6 +52,10 @@ const ArticleTextBlockWrapper = styled.div`
 
   }
 
+  &.has-img--sidebar {
+    min-height: 220px;
+  }
+
   ${breakpoint('md')`
     &.article-text-block--box {
       background-color: ${color.white};
