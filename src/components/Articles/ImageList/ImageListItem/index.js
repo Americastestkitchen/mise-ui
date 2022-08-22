@@ -29,7 +29,8 @@ const ListItemWrapper = styled.div`
     max-width: 100%;
     margin-bottom: 1.6rem;
     min-height: 24.1rem;
-    object-fit: cover;
+    object-fit: contain;
+    object-position: top center;
 
     &:not(:last-child) {
       margin-bottom: 1.6rem;
