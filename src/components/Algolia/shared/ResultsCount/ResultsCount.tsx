@@ -1,9 +1,8 @@
-import PropTypes from 'prop-types';
 import React from 'react';
-import breakpoint from 'styled-components-breakpoint';
 import styled, { css } from 'styled-components';
 import { connectStats } from 'react-instantsearch-dom';
-
+import { md, lg } from '../../../../styles/breakpoints';
+import { cssThemedColor } from '../../../../styles/mixins';
 import {
   color,
   font,
@@ -18,18 +17,9 @@ const StatsWrapperTheme = {
     font: ${fontSize.md}/${lineHeight.sm} ${font.pnb};
     margin-bottom: ${spacing.xsm};
 
-    ${breakpoint('md')`
+    ${md(css`
       float: left;
-    `}
-  `,
-  atk: css`
-    color: ${color.eclipse};
-  `,
-  cco: css`
-    color: ${color.black};
-  `,
-  cio: css`
-    color: ${color.cork};
+    `)}
   `,
   kidsSearch: css`
     color: ${color.black};
@@ -38,25 +28,25 @@ const StatsWrapperTheme = {
     margin-right: 1rem;
     text-transform: lowercase;
 
-    ${breakpoint('lg')`
+    ${lg(css`
       font-size: 2rem;
-    `}
+    `)}
   `,
 };
+
 const StatsWrapper = styled.p`
+  ${cssThemedColor}
   ${withThemes(StatsWrapperTheme)}
 `;
 
-export const Stats = ({ nbHits }) => (
+export type StatsProps = { nbHits: number; }
+
+const Stats = ({ nbHits }: StatsProps) => (
   <StatsWrapper className="search-results-count" role="status">
     {`${nbHits.toLocaleString()} Result${nbHits !== 1 ? 's' : ''}`}
   </StatsWrapper>
 );
 
-Stats.propTypes = {
-  nbHits: PropTypes.number.isRequired,
-};
-
 const CustomStats = connectStats(Stats);
 
-export default () => <CustomStats />;
+export default CustomStats;
