@@ -1,3 +1,15 @@
+# v1.33.36 (Tue Aug 23 2022)
+
+#### 🐛 Bug Fix
+
+- core-582: Issue loading TikTok videos on Firefox ATK, CIO, and CCO [#897](https://github.com/Americastestkitchen/mise-ui/pull/897) ([@tdorin](https://github.com/tdorin))
+
+#### Authors: 1
+
+- [@tdorin](https://github.com/tdorin)
+
+---
+
 # v1.33.35 (Tue Aug 23 2022)
 
 #### 🐛 Bug Fix
