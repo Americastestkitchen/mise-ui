@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import styled, { css } from 'styled-components';
 
 import {
@@ -36,9 +36,9 @@ const errors = {
   inline: styled.div`${withThemes(inlineTheme)}`,
 };
 
-type FormErrorPropType = {
+type FormErrorPropType = PropsWithChildren<{
   renderAs?: 'block' | 'inline',
-}
+}>
 
 export default function FormError({
   renderAs = 'inline',
