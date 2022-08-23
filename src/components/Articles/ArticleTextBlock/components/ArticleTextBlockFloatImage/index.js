@@ -85,6 +85,9 @@ const FloatImageFigure = styled.figure`
 const FloatImageWrapper = styled.div`
   max-width: calc(50% - 0.8rem);
   width: 100%;
+  @media print {
+    page-break-inside: avoid;
+  }
 
   &.no-caption {
     max-width: 100%;
