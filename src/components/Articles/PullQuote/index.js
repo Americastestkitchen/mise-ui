@@ -19,7 +19,10 @@ const PullQuoteWrapper = styled.div`
 
   ${md(css`
     flex-direction: row;
-    max-width: 56rem;
+    ${({ width }) => (width === 'wide'
+    ? 'max-width: 100%;'
+    : 'max-width: 56rem;'
+  )}
   `)}
 
   ${xlg(css`
