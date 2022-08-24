@@ -9,7 +9,7 @@ import { color, font, fontSize, letterSpacing, mixins, spacing, withThemes } fro
 
 export type IconSize = 'default' | 'large' | 'extraLarge';
 export type LabelElement = () => JSX.Element;
-export type Icon = 'chefHat' | 'content'| 'cookbook'| 'knife'| 'sort'| 'time';
+export type Icon = 'chefHat' | 'content'| 'cookbook'| 'knife'| 'sort'| 'time' | '';
 
 export type DefaultAccordion = {
   children: ReactNode | ReactNode[];

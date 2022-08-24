@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import 'jest-styled-components';
 
-import SearchSortBy from '../index';
+import SearchSortBy from '../SearchSortBy';
 import MiseInstantSearch from '../../../../../lib/algolia/MiseInstantSearch/MiseInstantSearch';
 import breakpoints from '../../../../../styles/breakpoints';
 
