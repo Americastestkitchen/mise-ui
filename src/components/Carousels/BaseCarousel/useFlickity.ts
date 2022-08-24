@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Flickity from 'flickity';
 import React, { useCallback, useState, useEffect, useRef, MutableRefObject, Dispatch, SetStateAction } from 'react';
-import useResizeObserver from 'use-resize-observer';
+import useResizeObserver from 'use-resize-observer/polyfilled';
 import { fixIosScrollBehavior, fixLeftOverflow, fixOverflowGroups } from './bug-fixes';
 
 /**
@@ -163,13 +163,15 @@ function useFlickityCallbackRefGroup(flickity: MutableRefObject<Flickity | null>
 
     flickity.current = flkty;
 
-    const resizeObserver = new ResizeObserver(() => {
-      if (flkty) {
-        flkty.resize();
-      }
-    });
+    if (typeof window !== 'undefined' && window.ResizeObserver) {
+      const resizeObserver = new ResizeObserver(() => {
+        if (flkty) {
+          flkty.resize();
+        }
+      });
 
-    resizeObserver.observe(elem);
+      resizeObserver.observe(elem);
+    }
   }, [flickity]);
 }
 
