@@ -1,3 +1,15 @@
+# v1.33.37 (Wed Aug 24 2022)
+
+#### 🐛 Bug Fix
+
+- hs-87606656: change to polyfil hook (should shim the global in this file for us) [#902](https://github.com/Americastestkitchen/mise-ui/pull/902) ([@harry-atk](https://github.com/harry-atk))
+
+#### Authors: 1
+
+- Harry Scheuerle ([@harry-atk](https://github.com/harry-atk))
+
+---
+
 # v1.33.36 (Tue Aug 23 2022)
 
 #### 🐛 Bug Fix
