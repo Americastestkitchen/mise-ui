@@ -1,25 +1,27 @@
 import React from 'react';
-
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import LabelFrame from '../../../LabelFrame';
 import MiseInstantSearch from '../../../../lib/algolia/MiseInstantSearch/MiseInstantSearch';
-import ResultsCount from './index';
+import ResultsCount from './ResultsCount';
 import { siteKey } from '../../../../config/argTypes';
 import { addThemedWrapper } from '../../../../config/decorators';
 
 export default {
   title: 'Components/Algolia/shared/ResultsCount',
   component: ResultsCount,
-  decorators: [ addThemedWrapper() ],
+  decorators: [addThemedWrapper()],
   argTypes: { siteKey },
-};
+} as ComponentMeta<typeof ResultsCount>;
 
-const Template = (args) => (
+const Template: ComponentStory<typeof ResultsCount> = args => (
   <MiseInstantSearch>
     <LabelFrame label="Component">
-      <ResultsCount />
+      <ResultsCount {...args} />
     </LabelFrame>
   </MiseInstantSearch>
 );
 
 export const Default = Template.bind({});
-Default.args = { siteKey: 'atk' };
+Default.args = {
+  nbHits: 2,
+};
