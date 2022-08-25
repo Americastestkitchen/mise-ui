@@ -2,7 +2,7 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { fireEvent, render, screen } from '@testing-library/react';
 
-import EmailForm from '../index';
+import EmailForm from '../EmailForm';
 import breakpoints from '../../../../styles/breakpoints';
 
 const onSubmit = jest.fn();

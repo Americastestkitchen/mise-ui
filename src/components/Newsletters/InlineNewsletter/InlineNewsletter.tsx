@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 import { md, lg, xlg } from '../../../styles/breakpoints';
 import { color, font, fontSize, lineHeight, mixins, spacing, withThemes } from '../../../styles';
 import Checkmark from '../../DesignTokens/Icon/svgs/Checkmark2';
-import EmailForm from '../../Forms/EmailForm';
+import EmailForm, { EmailFormProps } from '../../Forms/EmailForm/EmailForm';
 
 const NewsletterTitleTheme = {
   default: css`
@@ -163,20 +163,12 @@ const InlineNewsletterWrapper = styled.div.attrs({
   className: 'inline-newsletter',
 })`${withThemes(InlineNewsletterWrapperTheme)}`;
 
-export type InlineNewsletterProps = {
-  buttonColor?: string;
-  buttonTextColor?: string;
-  buttonText?: string;
-  errorText?: string;
-  inputLabel?: string;
-  inputId: string;
-  onSubmit: () => void;
-  placeholder?: string;
+export interface InlineNewsletterProps extends EmailFormProps {
   success?: boolean;
   successText?: string;
   subtitle: string;
   title: string;
-};
+}
 
 const InlineNewsletter = ({
   buttonColor = 'frog',

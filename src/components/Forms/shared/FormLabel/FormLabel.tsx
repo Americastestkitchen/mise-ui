@@ -11,6 +11,7 @@ export type FormLabelProps = PropsWithChildren<{
   inputId: string | undefined;
 }>
 const FormLabel = ({
+  children,
   hidden = false,
   inputId,
 }: FormLabelProps) => (
@@ -18,6 +19,8 @@ const FormLabel = ({
     className={hidden ? 'visually-hidden' : ''}
     data-testid="form-label"
     htmlFor={inputId}
-  />
+  >
+    {children}
+  </FormLabelEl>
 );
 export default FormLabel;

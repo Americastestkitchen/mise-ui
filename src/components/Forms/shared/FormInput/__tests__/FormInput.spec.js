@@ -1,7 +1,7 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 
-import FormInput from '../index';
+import FormInput from '../FormInput';
 
 const onChange = jest.fn();
 

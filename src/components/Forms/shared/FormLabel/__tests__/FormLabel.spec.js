@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import 'jest-styled-components';
 
-import FormLabel from '../index';
+import FormLabel from '../FormLabel';
 
 describe('components', () => {
   const renderComponent = (hidden = false) => (
