@@ -1,3 +1,15 @@
+# v1.33.38 (Fri Aug 26 2022)
+
+#### 🐛 Bug Fix
+
+- WEB-395: Honeybadger round 2 [#907](https://github.com/Americastestkitchen/mise-ui/pull/907) ([@harry-atk](https://github.com/harry-atk))
+
+#### Authors: 1
+
+- Harry Scheuerle ([@harry-atk](https://github.com/harry-atk))
+
+---
+
 # v1.33.37 (Wed Aug 24 2022)
 
 #### 🐛 Bug Fix
