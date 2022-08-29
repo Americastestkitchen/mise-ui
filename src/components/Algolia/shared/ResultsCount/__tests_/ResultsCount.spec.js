@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import 'jest-styled-components';
 
-import { Stats } from '../index';
+import { Stats } from '../ResultsCount';
 import breakpoints from '../../../../../styles/breakpoints';
 
 describe('ResultsCount component should', () => {

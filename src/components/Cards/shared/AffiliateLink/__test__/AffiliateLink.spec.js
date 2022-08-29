@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import 'jest-styled-components';
 
-import AffiliateLink from '../index';
+import AffiliateLink from '../AffiliateLink';
 import breakpoints from '../../../../../styles/breakpoints';
 
 const defaultProps = {

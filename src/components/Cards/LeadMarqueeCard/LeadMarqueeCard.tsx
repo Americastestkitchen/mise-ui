@@ -6,8 +6,8 @@ import { untilMd } from '../../../styles/breakpoints';
 import Badge from '../../Badge/Badge';
 import Byline from '../../Byline/Byline';
 import FavoriteRibbonWithBg from '../shared/FavoriteRibbonWithBg/FavoriteRibbonWithBg';
-import Image from '../shared/Image';
-import Sticker from '../shared/Sticker';
+import Image from '../shared/Image/Image';
+import Sticker from '../shared/Sticker/Sticker';
 import { Author, BylineListLight } from '../../BylineList';
 import { FeatureCardUserAttributions } from '../shared/UserAttributions/UserAttributions';
 

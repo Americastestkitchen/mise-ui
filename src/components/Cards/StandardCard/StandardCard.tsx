@@ -6,12 +6,13 @@ import { StandardUserAttributions } from '../shared/UserAttributions/UserAttribu
 import Attributions, { ShopPrices } from '../shared/Attributions/Attributions';
 import Badge from '../../Badge/Badge';
 import CtaLink from '../shared/CtaLink/CtaLink';
-import FavoriteButton from '../shared/FavoriteButton';
-import Image from '../shared/Image';
-import ImageCollage from '../shared/ImageCollage';
-import Sticker from '../shared/Sticker';
-import Title from '../shared/Title';
+import FavoriteButton from '../shared/FavoriteButton/FavoriteButton';
+import Image from '../shared/Image/Image';
+import ImageCollage from '../shared/ImageCollage/ImageCollage';
+import Title from '../shared/Title/Title';
+import Sticker from '../shared/Sticker/Sticker';
 import { BaseCardPropType } from '../Cards';
+import { ColorName } from '../../../styles/colors';
 
 const StandardCardTheme = {
   default: css`
@@ -181,7 +182,7 @@ export type StandardCardPropTypes = BaseCardPropType & {
   displayRecipeAttribution?: boolean,
   displaySecondaryAttribution?: boolean,
   displayLockIcon?: boolean,
-  favoriteRibbonColor?: string, // TODO: pull from list of colors
+  favoriteRibbonColor?: ColorName,
   imageUrl: string,
   isFavorited?: boolean,
   numRatings?: number,
@@ -229,7 +230,6 @@ function StandardCard({
   href,
   quickViewButton,
 }: StandardCardPropTypes) {
-  const ImageItem = Array.isArray(imageUrl) ? ImageCollage : Image;
   let stickerAria = '';
   if (stickers) {
     stickers.forEach((el) => {
@@ -253,15 +253,21 @@ function StandardCard({
               rel={target && target === '_blank' ? 'noopener noreferrer' : ''}
               target={target}
             >
-              {
-                renderImage ? renderImage() : (
-                  <ImageItem
-                    aria-hidden="true"
-                    imageAlt={imageAlt || ''}
-                    imageUrl={imageUrl}
-                  />
-                )
-              }
+              { renderImage && renderImage() }
+              { !renderImage && Array.isArray(imageUrl) && (
+                <ImageCollage
+                  aria-hidden="true"
+                  imageAlt={imageAlt || ''}
+                  imageUrl={imageUrl}
+                />
+              )}
+              { !renderImage && !Array.isArray(imageUrl) && (
+                <Image
+                  aria-hidden="true"
+                  imageAlt={imageAlt || ''}
+                  imageUrl={imageUrl}
+                />
+              )}
             </a>
           ) : null }
           <StyledBadge
@@ -270,13 +276,13 @@ function StandardCard({
           />
           { stickers ? (
             <StickerGroup>
-              {stickers.map(({ text, type }) => (
+              {stickers.map(sticker => (
                 <StyledSticker
                   className={className}
-                  key={text}
-                  contentType={contentType}
-                  type={type}
-                  text={text}
+                  key={sticker.text}
+                  contentType={sticker.contentType}
+                  type={sticker.type}
+                  text={sticker.text}
                 />
               ))}
             </StickerGroup>
@@ -299,7 +305,7 @@ function StandardCard({
               fill={favoriteRibbonColor}
               isFavorited={isFavorited}
               objectId={objectId}
-              siteKey={siteKeyFavorites}
+              siteKey={siteKeyFavorites || 'atk'}
               title={title}
             />
           ) : null }

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import { color, spacing } from '../../../styles';
-import LoadingCard from '../../Cards/LoadingCard';
+import LoadingCard from '../../Cards/LoadingCard/LoadingCard';
 
 const StyledLoadingCarousel = styled.div`
   .intro {

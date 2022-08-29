@@ -13,7 +13,7 @@ import {
 
 import Checkmark from '../../../DesignTokens/Icon/svgs/Checkmark2';
 import EmailForm from '../../../Forms/EmailForm';
-import Image from '../../../Cards/shared/Image';
+import Image from '../../../Cards/shared/Image/Image';
 
 const LandingEmailTheme = {
   default: css<{success: boolean}>`

@@ -8,7 +8,7 @@ import { useFlickityGroup } from '../BaseCarousel/useFlickity';
 import { StandardSlide } from '../BaseCarousel/Slides';
 import EmptyState from './EmptyState';
 import MadeForYouCard from '../../Cards/MadeForYouCard';
-import Sticker from '../../Cards/shared/Sticker';
+import Sticker from '../../Cards/shared/Sticker/Sticker';
 
 const StyledSticker = styled(Sticker)`
   margin: 0 0 8px 0;

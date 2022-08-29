@@ -111,6 +111,9 @@ const color = {
   tabascoNew: '#a72e14',
   salsaMexicana: '#a72e14',
   grayishCyan: '#437072',
+  alto: '#D8D8D8',
+  akaroa: '#d3c5a0',
+  silverChalise: '#b1b1b1',
 } as const;
 
 export default color;

@@ -4,11 +4,12 @@ import { lg, md, untilMd, xxlg } from '../../../styles/breakpoints';
 import { color, font } from '../../../styles';
 import { cssThemedColor, withThemes, cssThemedTextLinkBold } from '../../../styles/mixins';
 import cloudinaryInstance, { baseImageConfig } from '../../../lib/cloudinary';
-import Sticker from '../shared/Sticker';
+import Sticker from '../shared/Sticker/Sticker';
 import { Author, BylineListArticleCard } from '../../BylineList';
 import { InferStyledTypes } from '../../../styles/utility-types';
 import FavoriteRibbonWithBg from '../shared/FavoriteRibbonWithBg/FavoriteRibbonWithBg';
 import Badge from '../../Badge/Badge';
+import { StickerType } from '../Cards';
 
 const Stack = styled.div`
   display: grid;
@@ -144,7 +145,7 @@ function SplitCard({
 export type ArticleCardProps = {
   title: string;
   description: string;
-  stickers: { text: string, type: string }[];
+  stickers: StickerType[];
   authors: Pick<Author, 'firstName' | 'lastName' | 'photo' | 'id'>[];
   attribution: string;
   cloudinaryId: string;

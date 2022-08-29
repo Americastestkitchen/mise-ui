@@ -31,7 +31,6 @@ const defaultArgs: RelatedRecipeCardProps = {
       type: 'priority',
       text: 'New',
       className: 'sticker',
-      icon: '',
     },
     {
       className: 'sticker',

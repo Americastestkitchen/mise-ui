@@ -9,7 +9,7 @@ import FeatureCard from '../../Cards/FeatureCard/FeatureCard';
 import HeroCard from '../../Cards/HeroCard';
 import LinearGradient from '../../DesignTokens/LinearGradient';
 import PersonCard from '../../Cards/PersonCard';
-import ReviewableSummaryCard from '../../Cards/ReviewableSummaryCard';
+import ReviewableSummaryCard from '../../Cards/ReviewableSummaryCard/ReviewableSummaryCard';
 import StandardCard from '../../Cards/StandardCard/StandardCard';
 import { SuggestionCard } from '../../Cards/SuggestionCard/SuggestionCard';
 import TallCard from '../../Cards/TallCard/TallCard';

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 
 import PersonHeadShot from '../shared/PersonHeadShot/PersonHeadShot';
-import Sticker from '../shared/Sticker';
+import Sticker from '../shared/Sticker/Sticker';
 import { color, font, fontSize, lineHeight, spacing } from '../../../styles';
 import { getImageUrl } from '../../../lib/cloudinary';
 import { keyToLogo } from '../../DesignTokens/Logo';

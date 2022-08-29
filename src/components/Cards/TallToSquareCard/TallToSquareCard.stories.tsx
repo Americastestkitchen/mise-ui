@@ -1,12 +1,11 @@
 import React from 'react';
-import { withKnobs } from '@storybook/addon-knobs';
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import { addThemedWrapper } from '../../../config/decorators';
 import TallToSquareCard, { TallToSquareCardProps } from './TallToSquareCard';
 
 export default {
   title: 'Components/Cards/TallToSquareCard',
-  decorator: [addThemedWrapper(), withKnobs],
+  decorator: [addThemedWrapper()],
   component: TallToSquareCard,
 } as ComponentMeta<typeof TallToSquareCard>;
 

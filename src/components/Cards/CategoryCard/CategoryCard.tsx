@@ -1,10 +1,9 @@
 import breakpoint from 'styled-components-breakpoint';
-import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { css } from 'styled-components';
 
 import IconMap from './iconMap';
-import Image from '../shared/Image';
+import Image from '../shared/Image/Image';
 import { color, font, fontSize, mixins, withThemes } from '../../../styles';
 import { getImageUrl } from '../../../lib/cloudinary';
 
@@ -217,7 +216,7 @@ type CategoryCardProps = {
   filterValue?: string,
   lazy?: boolean,
   onClick?: () => void,
-  page: 'reviews' | 'recipes',
+  page?: 'reviews' | 'recipes',
   svgId?: SvgIdOptions,
   tagline: string,
 }

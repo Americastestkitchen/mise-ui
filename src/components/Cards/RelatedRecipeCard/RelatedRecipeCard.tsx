@@ -5,8 +5,9 @@ import { color, font, withThemes } from '../../../styles';
 import { UserAttributions } from '../shared/UserAttributions';
 import mixins, { cssThemedColor } from '../../../styles/mixins';
 import { InferStyledTypes } from '../../../styles/utility-types';
-import Image from '../shared/Image';
-import Sticker from '../shared/Sticker';
+import Image from '../shared/Image/Image';
+import Sticker from '../shared/Sticker/Sticker';
+import { StickerType } from '../Cards';
 
 const CtaLink = styled.a`
   display: flex;
@@ -76,22 +77,6 @@ const StyledSticker = styled(Sticker)`
   }
 `;
 
-type ContentTypeProps =
-  | 'collection'
-  | 'clip'
-  | 'episode'
-  | 'playlist'
-  | 'video'
-  | 'cooking school course';
-
-  interface IStickers {
-    className: string;
-    contentType: ContentTypeProps;
-    icon: string;
-    text: string;
-    type: string;
-  }
-
 export type RelatedRecipeCardProps = {
   altText?: string;
   avgRating?: number;
@@ -99,7 +84,7 @@ export type RelatedRecipeCardProps = {
   commentsCount?: number;
   headline: string;
   numRatings?: number;
-  stickers?: IStickers[];
+  stickers?: StickerType[];
   linkProps: InferStyledTypes<typeof CtaLink>;
 };
 
@@ -129,13 +114,13 @@ const RelatedRecipeCard = ({
       <Content className="related-recipe-card-content">
         {stickers ? (
           <StickerGroup>
-            {stickers.map(({ contentType, icon, text, type }) => (
+            {stickers.map(sticker => (
               <StyledSticker
-                contentType={contentType}
-                key={text}
-                icon={icon}
-                text={text}
-                type={type}
+                icon={sticker.icon}
+                key={sticker.text}
+                contentType={sticker.contentType}
+                type={sticker.type}
+                text={sticker.text}
               />
             ))}
           </StickerGroup>

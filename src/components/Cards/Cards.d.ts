@@ -14,7 +14,7 @@ export type StickerContentType = 'collection' | 'clip' | 'episode' | 'playlist' 
 export type StickerType = {
   className?: string;
   contentType?: StickerContentType,
-  icon?: boolean,
-  type: string,
+  icon?: 'collection' | 'video',
+  type: 'editorial' | 'priority',
   text: string
 };

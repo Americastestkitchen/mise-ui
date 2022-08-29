@@ -2,7 +2,7 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { render, screen } from '@testing-library/react';
 
-import MembershipShowcaseAd from '../index';
+import MembershipShowcaseAd from '../MembershipShowcaseAd';
 import breakpoints from '../../../../../styles/breakpoints';
 
 const defaultData = {

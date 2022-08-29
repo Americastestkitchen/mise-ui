@@ -3,9 +3,9 @@ import styled, { css } from 'styled-components';
 import { color, font, fontSize, grid, lineHeight, spacing } from '../../../styles';
 import { md } from '../../../styles/breakpoints';
 import Badge from '../../Badge/Badge';
-import Image from '../shared/Image';
+import Image from '../shared/Image/Image';
 import { keyToLogo } from '../../DesignTokens/Logo';
-import Sticker from '../shared/Sticker';
+import Sticker from '../shared/Sticker/Sticker';
 import { BaseCardPropType } from '../Cards';
 
 const tallCardWidth = grid.columnWidth;
@@ -158,7 +158,7 @@ const TallCard = ({
         />
         <StyledImage
           className={`${className} tall-card__background-img`}
-          imageAlt={imageAlt}
+          imageAlt={imageAlt || ''}
           imageUrl={imageUrl}
         />
         <StyledBadge
@@ -168,13 +168,13 @@ const TallCard = ({
         <div className="tall-card__subcomponents-wrapper">
           { stickers && (
             <StickersWrapper>
-              {stickers.map(({ text, type }) => (
+              {stickers.map(sticker => (
                 <StyledSticker
                   className={className}
-                  key={text}
-                  contentType={contentType}
-                  type={type}
-                  text={text}
+                  key={sticker.text}
+                  contentType={sticker.contentType}
+                  type={sticker.type}
+                  text={sticker.text}
                 />
               ))}
             </StickersWrapper>

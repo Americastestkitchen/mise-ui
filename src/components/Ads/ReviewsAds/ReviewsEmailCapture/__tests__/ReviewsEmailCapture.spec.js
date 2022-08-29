@@ -3,7 +3,7 @@ import { action } from '@storybook/addon-actions';
 import { ThemeProvider } from 'styled-components';
 import { render, screen } from '@testing-library/react';
 
-import ReviewsEmailCapture from '../index';
+import ReviewsEmailCapture from '../ReviewsEmailCapture';
 import breakpoints from '../../../../../styles/breakpoints';
 
 describe('ReviewsEmailCapture', () => {

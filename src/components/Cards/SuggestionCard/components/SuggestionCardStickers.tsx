@@ -1,9 +1,9 @@
 import breakpoint from 'styled-components-breakpoint';
 import React from 'react';
 import styled from 'styled-components';
-import Sticker from '../../shared/Sticker';
-import { StickerItem } from '../SuggestionCard';
+import Sticker from '../../shared/Sticker/Sticker';
 import { font, fontSize, color, mixins } from '../../../../styles';
+import { StickerType } from '../../Cards';
 
 const SitckersContainer = styled.div`
   display: flex;
@@ -31,16 +31,16 @@ const SitckersContainer = styled.div`
   `}
 `;
 
-const SuggestionCardStickers = ({ stickers }: {stickers: StickerItem[]}) => (
+const SuggestionCardStickers = ({ stickers }: {stickers: StickerType[]}) => (
   <SitckersContainer>
     <span className="suggestioncardstickers-intro">You might like:</span>
     {
-      stickers.map(({ text, type }) => (
+      stickers.map(sticker => (
         <Sticker
           className="sticker"
-          key={text}
-          type={type}
-          text={text}
+          key={sticker.text}
+          type={sticker.type}
+          text={sticker.text}
         />
       ))
     }
