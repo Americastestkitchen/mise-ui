@@ -24,7 +24,7 @@
         "ts": "never",
         "tsx": "never"
       }
-   ],
+  ],
     "default-case": 0, // Required default case is nonsense.
     "new-cap": [2, {"capIsNew": false, "newIsCap": true}], // For Record() etc.
     "no-nested-ternary": 0, // It's nice for JSX.
@@ -81,5 +81,8 @@
   ],
   "settings": {
     "import/parser": "babel-eslint"
-  }
+  },
+  "exclude": [
+    "/v2",
+  ]
 }
