@@ -1,4 +1,12 @@
-const images = [
+export interface ImageDetails {
+  publicId: string;
+  width: number;
+  height: number;
+  format: string;
+  altText: string;
+}
+
+const images: Array<ImageDetails> = [
   {
     publicId: 'TnT/2020/1_CCJJ_Dill%20Pickles/STP_Spear_Crunch_102',
     width: 400,

@@ -1,11 +1,12 @@
 import breakpoint from 'styled-components-breakpoint';
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
 import ArticleFigcaption from '../shared/ArticleFigcaption';
 import { color, font, fontSize, mixins, withThemes } from '../../../styles';
 import { getImageUrl } from '../../../lib/cloudinary';
+import { ImageDetails } from './imagesResponse';
+import { xlg } from '../../../styles/breakpoints';
 
 const PhotoCollectionWrapper = styled.div`
   margin-bottom: 3rem;
@@ -72,9 +73,7 @@ const PhotoCollection = styled.div`
   `}
 `;
 
-const CollectionPicture = styled.picture`
-
-
+const CollectionPicture = styled.picture<{width: string}>`
   ${breakpoint('md')`
     .photo-two-up {
       max-height: 33.9rem;
@@ -86,15 +85,15 @@ const CollectionPicture = styled.picture`
     }
   `}
 
-  ${breakpoint('xlg')`
+  ${({ width }) => (xlg(css`
     .photo-two-up {
-      ${({ width }) => mixins.articlesTwoUpImageCollection(width)}
+      ${mixins.articlesTwoUpImageCollection(width)}
     }
 
     .photo-three-up {
-      ${({ width }) => mixins.articlesThreeUpImageCollection(width)}
+      ${mixins.articlesThreeUpImageCollection(width)}
     }
-  `}
+  `))}
 `;
 
 const ImagesWrapper = styled.div`
@@ -143,13 +142,26 @@ const cropMap = {
   },
 };
 
+export interface ArticlePhotoCollectionPropTypes {
+  /* Editorial caption for collection */
+  caption: string;
+  /* Count of images, determines 2-up or 3-up treatment */
+  count: 2 | 3;
+  /* Array of image objects */
+  images: Array<ImageDetails>;
+  /* Heading level 3 title for collection */
+  title: string;
+  /* Width configuration for ArticlePhotoCollection */
+  width: 'default' | 'wide';
+}
+
 const ArticlePhotoCollection = ({
   caption,
   count,
   images,
   title,
   width,
-}) => (
+}: ArticlePhotoCollectionPropTypes) => (
   <PhotoCollectionWrapper>
     { title && <CollectionTitle>{title}</CollectionTitle> }
     <PhotoCollection className={`photo-collection__${width}`}>
@@ -157,7 +169,7 @@ const ArticlePhotoCollection = ({
         {images.map((image, i) => {
           const imageClass = count === 2 ? 'two-up' : 'three-up';
           const {
-            alt,
+            altText: alt,
             height: imageHeight,
             publicId,
             width: imageWidth,
@@ -199,23 +211,5 @@ const ArticlePhotoCollection = ({
     </PhotoCollection>
   </PhotoCollectionWrapper>
 );
-
-ArticlePhotoCollection.propTypes = {
-  /* Editorial caption for collection */
-  caption: PropTypes.string,
-  /* Count of images, determines 2-up or 3-up treatment */
-  count: PropTypes.oneOf([2, 3]).isRequired,
-  /* Array of image objects */
-  images: PropTypes.arrayOf(PropTypes.object).isRequired,
-  /* Heading level 3 title for collection */
-  title: PropTypes.string,
-  /* Width configuration for ArticlePhotoCollection */
-  width: PropTypes.oneOf(['default', 'wide']).isRequired,
-};
-
-ArticlePhotoCollection.defaultProps = {
-  caption: null,
-  title: null,
-};
 
 export default ArticlePhotoCollection;

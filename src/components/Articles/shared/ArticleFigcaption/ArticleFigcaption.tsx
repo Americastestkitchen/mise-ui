@@ -59,11 +59,12 @@ const ArticleFigcaptionWrapper = styled.figcaption<{ decorationPosition: Decorat
 export type ArticleFigcaptionProps = {
   caption: string;
   decorationPosition: DecorationPosition;
+  className?: string;
 };
 
-const ArticleFigcaption = ({ caption, decorationPosition }: ArticleFigcaptionProps) => (
+const ArticleFigcaption = ({ caption, decorationPosition, className }: ArticleFigcaptionProps) => (
   <ArticleFigcaptionWrapper
-    className="article-figcaption"
+    className={className || 'article-figcaption'}
     dangerouslySetInnerHTML={{ __html: caption }}
     decorationPosition={decorationPosition}
   />

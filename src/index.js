@@ -6,7 +6,7 @@ import AccordionRefinementList from './components/Algolia/shared/AccordionRefine
 import ActionSummaryItem from './components/ActionSummaryItem/ActionSummaryItem';
 import ArticleFigcaption from './components/Articles/shared/ArticleFigcaption';
 import ArticleImage from './components/Articles/ArticleImage/ArticleImage';
-import ArticlePhotoCollection from './components/Articles/ArticlePhotoCollection';
+import ArticlePhotoCollection from './components/Articles/ArticlePhotoCollection/ArticlePhotoCollection';
 import ArticleTextBlock from './components/Articles/ArticleTextBlock';
 import AtkMarketingHat from './components/MarketingHat';
 import RecipesMarketingHat from './components/RecipesMarketingHat';
