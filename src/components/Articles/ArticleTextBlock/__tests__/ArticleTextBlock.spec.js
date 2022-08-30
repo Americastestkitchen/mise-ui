@@ -1,54 +1,53 @@
 import React from 'react';
-import { ThemeProvider } from 'styled-components';
-import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import 'jest-styled-components';
+import { render } from '@testing-library/react';
 
-import ArticleTextBlock from '../ArticleTextBlock';
-import breakpoints from '../../../../styles/breakpoints';
-import storyProps from '../articleTextBlockStoryProps';
+import {
+  WithTheme,
+  DropCap,
+  BoxBottomImageDefaultWidth,
+  BoxTopImageDefaultWidth,
+} from '../ArticleTextBlock.stories';
 
 describe('ArticleTextBlock component should', () => {
-  const renderComponent = props => (
-    render(
-      <ThemeProvider theme={{ breakpoints }}>
-        <ArticleTextBlock {...props} />
-      </ThemeProvider>,
-    )
-  );
-
   it('render a heading when provided', () => {
-    renderComponent({ ...storyProps.noImageDefaultWidth });
-    expect(screen.getByRole('heading', { level: 3 }));
+    const { getByRole } = render(<WithTheme {...WithTheme.args} />);
+    expect(getByRole('heading', { level: 3 }));
   });
 
   it('not render a heading when not provided', () => {
-    renderComponent({ ...storyProps.noImageDefaultWidth, title: null });
-    expect(!screen.queryByRole('heading', { level: 3 }));
+    const { queryByRole } = render(<DropCap {...DropCap.args} />);
+    expect(!queryByRole('heading', { level: 3 }));
   });
 
   it('render content', () => {
-    renderComponent({ ...storyProps.noImageDefaultWidth });
-    expect(screen.queryByText('After crunching our way'));
+    const { queryByText } = render(<WithTheme {...WithTheme.args} />);
+    expect(queryByText('After crunching our way'));
   });
 
   it('render box treatment', () => {
-    const { container } = renderComponent({ ...storyProps.boxNoImageDefaultWidth });
-    expect(container.querySelector('.article-text-block--box'));
+    const { container } = render(
+      <BoxBottomImageDefaultWidth {...BoxBottomImageDefaultWidth.args} />,
+    );
+    const boxComponent = container.getElementsByClassName('article-text-block--box');
+    expect(boxComponent.length).toBe(1);
   });
 
   it('render an inline image above content', () => {
-    renderComponent({ ...storyProps.boxTopImageDefaultWidth });
-    expect(screen.getByAltText(storyProps.boxTopImageDefaultWidth.photo.altText)).toHaveStyleRule('order: 1;');
+    const { getByAltText } = render(<BoxTopImageDefaultWidth {...BoxTopImageDefaultWidth.args} />);
+    expect(getByAltText(BoxTopImageDefaultWidth.args.photo.altText)).toHaveStyleRule('order: 1;');
   });
 
   it('render an inline image below content', () => {
-    renderComponent({ ...storyProps.boxBottomImageDefaultWidth });
-    expect(screen.getByAltText(storyProps.boxBottomImageDefaultWidth.photo.altText)).toHaveStyleRule('order: 3;');
+    const { getByAltText } = render(
+      <BoxBottomImageDefaultWidth {...BoxBottomImageDefaultWidth.args} />,
+    );
+    expect(getByAltText(BoxBottomImageDefaultWidth.args.photo.altText)).toHaveStyleRule('order: 3;');
   });
 
   it('renders block with id for jumplink if includeInTOC', () => {
-    const { container } = renderComponent({ ...storyProps.includeInTOC });
-    expect(container.querySelector('#testingTOCTitle'));
+    const { getByTestId } = render(<WithTheme {...{ ...WithTheme.args, includeInTOC: 'testingTOCTitle' }} />);
+    expect(getByTestId('testingTOCTitle'));
   });
 });

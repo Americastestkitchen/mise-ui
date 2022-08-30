@@ -263,6 +263,7 @@ const ArticleTextBlock = ({
     <ArticleTextBlockWrapper
       className={`article-text-block--${displayOption}${photoPosition ? ` has-img--${photoPosition}` : ''}`}
       id={includeInTOC}
+      data-testid={includeInTOC}
       width={width}
     >
       {
