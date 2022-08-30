@@ -1,0 +1,24 @@
+@import "./_font_faces.scss";
+
+// Families
+$proximaNova: 'proximaNovaRegular';
+$proximaNovaBold: 'proximaNovaBold';
+$clarendonBold: 'Clarendon Bold';
+$merriweather: 'Merriweather';
+$chippewaFalls: 'chippewa-falls';
+
+// Base Font Properties
+$baseFontSize: 16px;
+$baseLineHeight: 1.5;
+$primaryFont: $proximaNova;
+$secondaryFont: $proximaNovaBold;
+
+// - $f
+$fBodySm: 0.875rem/1rem $primaryFont; // 14px/16px
+$fBodyMd: 1rem / 1.5 $primaryFont; // 16px/1.5
+$fHeadingSm: 1.5rem/1.625rem $secondaryFont; // 24px/26px
+$fHeadingMd: 1.625rem/2.063rem $secondaryFont; // 26px/33px
+$fHeadingLg: 2rem/2.25rem $secondaryFont; // 32px/36px
+
+// Letter spacing - $fLS
+$fLSMd: 2.88px;
