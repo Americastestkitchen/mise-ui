@@ -20,7 +20,6 @@ const PreviewHomepageTagline = ({ theme, props }: PreviewProps) => (
   </ThemeProvider>
 );
 
-// add props to component variations V
 export const AtkTagline = () => <PreviewHomepageTagline theme={{ siteKey: 'atk' }} props={{ siteKey: 'atk' }} />;
 export const CcoTagline = () => <PreviewHomepageTagline theme={{ siteKey: 'cco' }} props={{ siteKey: 'cco' }} />;
 export const CioTagline = () => <PreviewHomepageTagline theme={{ siteKey: 'cio' }} props={{ siteKey: 'cio' }} />;

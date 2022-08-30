@@ -40,11 +40,13 @@ export type FormInputProps = {
   error?: string;
   defaultValue?: string;
   id?: string;
+  inputmode?: 'numeric' | 'text';
   label: string;
   name: string;
   onBlur?: () => void;
   onChange?: (a: string) => void;
   onFocus?: () => void;
+  pattern?: string;
   placeholder?: string;
   readOnly?: boolean;
   renderAs?: 'block' | 'inline';
@@ -57,11 +59,13 @@ const FormInput = ({
   defaultValue = '',
   error = '',
   id = '',
+  inputmode = 'text',
   label,
   name,
   onBlur = () => {},
   onChange = () => {},
   onFocus = () => {},
+  pattern = undefined,
   placeholder = '',
   readOnly = false,
   renderAs = 'inline',
@@ -83,6 +87,7 @@ const FormInput = ({
         defaultValue={defaultValue}
         error={Boolean(error)}
         id={id}
+        inputMode={inputmode}
         name={name}
         onBlur={onBlur}
         onChange={(evt) => {
@@ -91,6 +96,7 @@ const FormInput = ({
         }}
         onFocus={onFocus}
         placeholder={placeholder}
+        pattern={pattern}
         readOnly={readOnly}
         type={type}
         value={val}

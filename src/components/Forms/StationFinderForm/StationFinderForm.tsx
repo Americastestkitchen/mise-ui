@@ -1,17 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Button from '../../Buttons/Button/Button';
 import FormInput from '../shared/FormInput/FormInput';
 import { Arrow } from '../../DesignTokens/Icon/svgs';
-import {
-  color,
-  font,
-  fontSize,
-} from '../../../styles';
+import { color, font, fontSize } from '../../../styles';
 
-const StationFinderFormWarpper = styled.form`
+const StationFinderFormWrapper = styled.form`
   display: flex;
   height: 4rem;
 
@@ -46,12 +41,23 @@ const StationFinderFormWarpper = styled.form`
   }
 `;
 
-const StationFinderForm = ({ ariaLabel, inputId, onSubmit, value }) => (
-  <StationFinderFormWarpper onSubmit={onSubmit}>
+export type StationFinderFormProps = {
+  ariaLabel: string;
+  inputId: string;
+  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  value?: string;
+}
+
+const StationFinderForm = ({
+  ariaLabel,
+  inputId,
+  onSubmit,
+  value = '',
+}: StationFinderFormProps) => (
+  <StationFinderFormWrapper onSubmit={onSubmit}>
     <FormInput
       aria-label={ariaLabel}
       defaultValue={value}
-      error=""
       id={inputId}
       inputmode="numeric"
       label="Enter your zipcode"
@@ -63,18 +69,7 @@ const StationFinderForm = ({ ariaLabel, inputId, onSubmit, value }) => (
     <Button aria-label="Submit and view station list" type="submit">
       <Arrow fill={color.jet} />
     </Button>
-  </StationFinderFormWarpper>
+  </StationFinderFormWrapper>
 );
-
-StationFinderForm.propTypes = {
-  ariaLabel: PropTypes.string.isRequired,
-  inputId: PropTypes.string.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  value: PropTypes.string,
-};
-
-StationFinderForm.defaultProps = {
-  value: '',
-};
 
 export default StationFinderForm;
