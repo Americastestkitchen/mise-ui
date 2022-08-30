@@ -65,7 +65,7 @@ const FormInput = ({
   onBlur = () => {},
   onChange = () => {},
   onFocus = () => {},
-  pattern = '',
+  pattern = undefined,
   placeholder = '',
   readOnly = false,
   renderAs = 'inline',
