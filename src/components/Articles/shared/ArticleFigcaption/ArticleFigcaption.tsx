@@ -64,7 +64,7 @@ export type ArticleFigcaptionProps = {
 
 const ArticleFigcaption = ({ caption, decorationPosition, className }: ArticleFigcaptionProps) => (
   <ArticleFigcaptionWrapper
-    className={className ? 'article-figcaption' : className}
+    className={className ? className : 'article-figcaption'}
     dangerouslySetInnerHTML={{ __html: caption }}
     decorationPosition={decorationPosition}
   />
