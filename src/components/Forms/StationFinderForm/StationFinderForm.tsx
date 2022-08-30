@@ -44,7 +44,7 @@ const StationFinderFormWrapper = styled.form`
 export type StationFinderFormProps = {
   ariaLabel: string;
   inputId: string;
-  onSubmit: () => void;
+  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   value?: string;
 }
 

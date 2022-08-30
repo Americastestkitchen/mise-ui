@@ -7,6 +7,11 @@ export default {
   title: 'Components/Forms/StationFinderForm',
   component: StationFinderForm,
   decorators: [DarkModeWrapper()],
+  parameters: {
+    actions: {
+      handles: ['submit'],
+    },
+  },
 } as ComponentMeta<typeof StationFinderForm>;
 
 const Template: ComponentStory<typeof StationFinderForm> = args => (
@@ -16,5 +21,5 @@ const Template: ComponentStory<typeof StationFinderForm> = args => (
 export const Default = Template.bind({});
 Default.args = {
   inputId: 'station-finder-form-story',
-  onSubmit: () => {},
+  onSubmit: (e) => { e.preventDefault(); },
 };
