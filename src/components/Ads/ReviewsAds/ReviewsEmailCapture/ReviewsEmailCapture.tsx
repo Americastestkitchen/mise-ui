@@ -6,7 +6,7 @@ import { md, lg, xlg } from '../../../../styles/breakpoints';
 import { cssThemedColor } from '../../../../styles/mixins';
 
 import Checkmark from '../../../DesignTokens/Icon/svgs/Checkmark2';
-import EmailForm from '../../../Forms/EmailForm';
+import EmailForm, { EmailFormProps } from '../../../Forms/EmailForm/EmailForm';
 
 const variantTheme = (variant: string) => (theme: Record<string, unknown>) => (
   variant ? ({ ...theme, [variant]: true }) : theme
@@ -303,21 +303,14 @@ const ContentWrapper = styled.div<{isWide: boolean, success: boolean}>`
   )}
 `;
 
-export type ReviewsEmailCaptureProps = {
-  buttonTextColor?: string;
-  buttonText?: string;
+export interface ReviewsEmailCaptureProps extends EmailFormProps {
   description: string;
-  errorText?: string;
   isWide?: boolean;
-  inputLabel?: string;
-  inputId: string;
-  onSubmit: () => void;
-  placeholder?: string;
   success?: boolean;
   successText: string;
   title: string;
   variant?: string;
-};
+}
 
 const ReviewsEmailCapture = ({
   buttonTextColor = 'white',

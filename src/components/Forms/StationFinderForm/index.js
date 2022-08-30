@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Button from '../../Buttons/Button/Button';
-import FormInput from '../shared/FormInput';
+import FormInput from '../shared/FormInput/FormInput';
 import { Arrow } from '../../DesignTokens/Icon/svgs';
 import {
   color,

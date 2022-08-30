@@ -114,6 +114,7 @@ const color = {
   alto: '#D8D8D8',
   akaroa: '#d3c5a0',
   silverChalise: '#b1b1b1',
+  bridesMaid: '#f9ded6',
 } as const;
 
 export default color;

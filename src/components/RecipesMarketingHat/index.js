@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import EmailForm from '../Forms/EmailForm';
+import EmailForm from '../Forms/EmailForm/EmailForm';
 import HeroHatBody from './components/HeroHatBody';
 import HeroHatContent from './components/HeroHatContent';
 import HeroHatDescription from './components/HeroHatDescription';

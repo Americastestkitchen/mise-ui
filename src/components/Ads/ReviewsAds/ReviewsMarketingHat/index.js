@@ -4,7 +4,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 // grab email for for bottom logic
-import EmailForm from '../../../Forms/EmailForm';
+import EmailForm from '../../../Forms/EmailForm/EmailForm';
 import { color, font, fontSize, letterSpacing, spacing } from '../../../../styles';
 
 const AdImage = styled.div`
