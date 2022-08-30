@@ -1,8 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
-
+import { md, untilMd, mdToXlg, xlg } from '../../../../../styles/breakpoints';
 import ArticleFigcaption from '../../../shared/ArticleFigcaption';
 
 const FloatImageFigure = styled.figure`
@@ -17,7 +16,7 @@ const FloatImageFigure = styled.figure`
     max-width: calc(50% - 0.8rem);
   }
 
-  ${breakpoint('xs', 'md')`
+  ${untilMd(css`
     margin-top: 3rem;
     order: 1;
 
@@ -28,9 +27,9 @@ const FloatImageFigure = styled.figure`
         top: 0;
       }
     }
-  `}
+  `)}
 
-  ${breakpoint('md')`
+  ${md(css`
     flex-direction: column;
 
     .article-figcaption {
@@ -41,21 +40,21 @@ const FloatImageFigure = styled.figure`
         top: 0;
       }
     }
-  `}
+  `)}
 
-  ${breakpoint('md', 'xlg')`
+  ${mdToXlg(css`
     float: right;
-  `}
+  `)}
 
   &.img-position--float {
-    ${breakpoint('md')`
+    ${md(css`
       margin: 0 0 0 1.6rem;
       max-width: calc(50% - 1.6rem);
       min-width: calc(50% - 1.6rem);
       position: relative;
-    `}
+    `)}
 
-    ${breakpoint('xlg')`
+    ${xlg(css`
       float: right;
       padding-bottom: 2.4rem;
 
@@ -65,20 +64,20 @@ const FloatImageFigure = styled.figure`
         right: 0;
         top: 100%;
       }
-    `}
+    `)}
   }
 
   &.img-position--sidebar {
-    ${breakpoint('md')`
+    ${md(css`
       margin-left: 1.6rem;
       max-width: 16.2rem;
       min-width: 16.2rem;
-    `}
+    `)}
 
-    ${breakpoint('xlg')`
+    ${xlg(css`
       position: absolute;
       right: -17.8rem;
-    `}
+    `)}
   }
 `;
 
@@ -90,12 +89,12 @@ const FloatImageWrapper = styled.div`
     max-width: 100%;
   }
 
-  ${breakpoint('md')`
+  ${md(css`
     max-width: 100%;
-  `}
+  `)}
 
   &.img-position--float {
-    ${breakpoint('md')`
+    ${md(css`
       margin-bottom: 2.4rem;
 
       &.no-caption {
@@ -104,9 +103,9 @@ const FloatImageWrapper = styled.div`
         max-width: calc(50% - 1.6rem);
         min-width: calc(50% - 1.6rem);
       }
-    `}
+    `)}
 
-    ${breakpoint('xlg')`
+    ${xlg(css`
       margin-bottom: 0;
 
       &.no-caption {
@@ -114,11 +113,11 @@ const FloatImageWrapper = styled.div`
         max-width: 41.6rem;
         min-width: 41.6rem;
       }
-    `}
+    `)}
   }
 
   &.img-position--sidebar {
-    ${breakpoint('md')`
+    ${md(css`
       margin-bottom: 1.6rem;
 
       &.no-caption {
@@ -127,14 +126,14 @@ const FloatImageWrapper = styled.div`
         max-width: 16.2rem;
         min-width: 16.2rem;
       }
-    `}
+    `)}
 
-    ${breakpoint('xlg')`
+    ${xlg(css`
       &.no-caption {
         position: absolute;
         right: -17.8rem;
       }
-    `}
+    `)}
   }
 `;
 
@@ -144,7 +143,17 @@ const FloatImage = styled.img`
   width: 100%;
 `;
 
-const ArticleTextBlockFloatImage = ({ altText, caption, photoDisplayOption, photoUrl }) => (
+export interface ArticleTextBlockFloatImageProps {
+  altText?: string;
+  caption?: string;
+  photoDisplayOption: string;
+  photoUrl: string;
+}
+
+const ArticleTextBlockFloatImage = (
+  { altText, caption, photoDisplayOption, photoUrl }:
+  ArticleTextBlockFloatImageProps,
+) => (
   <>
     {
       caption ? (
@@ -171,17 +180,5 @@ const ArticleTextBlockFloatImage = ({ altText, caption, photoDisplayOption, phot
     }
   </>
 );
-
-ArticleTextBlockFloatImage.propTypes = {
-  altText: PropTypes.string,
-  caption: PropTypes.string,
-  photoDisplayOption: PropTypes.string.isRequired,
-  photoUrl: PropTypes.string.isRequired,
-};
-
-ArticleTextBlockFloatImage.defaultProps = {
-  altText: '',
-  caption: null,
-};
 
 export default ArticleTextBlockFloatImage;

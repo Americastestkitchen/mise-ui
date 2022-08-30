@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import 'jest-styled-components';
 
-import ArticleTextBlock from '../index';
+import ArticleTextBlock from '../ArticleTextBlock';
 import breakpoints from '../../../../styles/breakpoints';
 import storyProps from '../articleTextBlockStoryProps';
 

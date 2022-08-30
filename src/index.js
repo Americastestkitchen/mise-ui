@@ -7,7 +7,7 @@ import ActionSummaryItem from './components/ActionSummaryItem/ActionSummaryItem'
 import ArticleFigcaption from './components/Articles/shared/ArticleFigcaption';
 import ArticleImage from './components/Articles/ArticleImage/ArticleImage';
 import ArticlePhotoCollection from './components/Articles/ArticlePhotoCollection/ArticlePhotoCollection';
-import ArticleTextBlock from './components/Articles/ArticleTextBlock';
+import ArticleTextBlock from './components/Articles/ArticleTextBlock/ArticleTextBlock';
 import AtkMarketingHat from './components/MarketingHat';
 import RecipesMarketingHat from './components/RecipesMarketingHat';
 import Badge from './components/Badge/Badge';

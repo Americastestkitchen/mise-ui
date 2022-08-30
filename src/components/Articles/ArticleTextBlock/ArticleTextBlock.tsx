@@ -1,13 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import breakpoint from 'styled-components-breakpoint';
 
-import ArticleTextBlockFloatImage from './components/ArticleTextBlockFloatImage';
-import SidebarCard from '../SidebarCard';
+import ArticleTextBlockFloatImage from './components/ArticleTextBlockFloatImage/ArticleTextBlockFloatimage';
+import SidebarCard, { SidebarCardProps } from '../SidebarCard';
 import { color, font, fontSize, lineHeight, mixins, withThemes } from '../../../styles';
+import { md, untilMd, xlg } from '../../../styles/breakpoints';
+import { cssThemedLink } from '../../../styles/mixins';
 
-const ArticleTextBlockWrapper = styled.div`
+const ArticleTextBlockWrapper = styled.div<{width: 'default' | 'wide'}>`
   margin-bottom: 2.4rem;
   width: 100%;
 
@@ -23,7 +23,7 @@ const ArticleTextBlockWrapper = styled.div`
         font-family: ${font.pnb};
         font-weight: 400;
       }
-      
+
     }
   }
 
@@ -42,16 +42,16 @@ const ArticleTextBlockWrapper = styled.div`
   }
 
   &.has-img--float {
-    ${breakpoint('xs', 'md')`
+    ${untilMd(css`
       .article-text-block__copy {
         display: flex;
         flex-direction: column;
       }
-    `}
+    `)}
 
   }
 
-  ${breakpoint('md')`
+  ${md(css`
     &.article-text-block--box {
       background-color: ${color.white};
       padding: 2.4rem;
@@ -64,17 +64,17 @@ const ArticleTextBlockWrapper = styled.div`
         ${mixins.articlesWidth('default')}
       }
     }
-  `}
+  `)}
 
-  ${breakpoint('xlg')`
-    ${({ width }) => (mixins.articlesWidth(width))}
-  `}
+  ${({ width }) => xlg(css`
+    ${(mixins.articlesWidth(width))}
+  `)}
 `;
 
 const ArticleTextBlockCopy = styled.div`
-  ${breakpoint('xlg')`
+  ${xlg(css`
     position: relative;
-  `}
+  `)}
 `;
 
 const ArticleTextBlockHeadingTheme = {
@@ -95,6 +95,10 @@ const ArticleTextBlockHeadingTheme = {
 
 const ArticleTextBlockHeading = styled.h3`
   ${withThemes(ArticleTextBlockHeadingTheme)}
+  a {
+    ${cssThemedLink}
+  }
+
 `;
 
 const ArticleTextBlockContentTheme = {
@@ -185,14 +189,21 @@ const ArticleTextBlockImage = styled.img`
 `;
 
 const ArticleTextBlockSidebarCard = styled.div`
-  ${breakpoint('xlg')`
+  ${xlg(css`
     left: calc(100% + 1.6rem);
     position: absolute;
     top: 0;
-  `}
+  `)}
 `;
 
-const generateImageElAndPosition = (photo) => {
+export interface PhotoProps {
+  altText: string,
+  photoDisplayOption: 'bottom'| 'float'| 'sidebar'| 'top';
+  photoUrl: string;
+  caption?: string;
+}
+
+const generateImageElAndPosition = (photo: PhotoProps) => {
   let imageEl = null;
   if (photo) {
     const { altText, photoDisplayOption, photoUrl } = photo;
@@ -212,17 +223,38 @@ const generateImageElAndPosition = (photo) => {
   return imageEl;
 };
 
+export interface ArticleTextBlockPropTypes {
+  /** styled-components as prop on heading, defaults h3 */
+  as: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  /** Text content */
+  content: string;
+  /** Default: no extra styles, box: wrap TextBlock in padded box */
+  displayOption: 'default' | 'box';
+  /** Display drop cap styles? */
+  dropCap: boolean;
+  /** Sets id for link to text block in TOC */
+  includeInTOC: string | undefined;
+  /** Photo configuration options */
+  photo: PhotoProps | null;
+  /** Sidebar card configuration options */
+  sidebarCard: SidebarCardProps | null;
+  /** Heading level 3 title for text block */
+  title: string | null;
+  /** Width configuration for PullQuote */
+  width: 'default'| 'wide';
+}
+
 const ArticleTextBlock = ({
-  as,
+  as = 'h3',
   content,
-  displayOption,
-  dropCap,
+  displayOption = 'default',
+  dropCap = false,
   includeInTOC,
-  photo,
-  sidebarCard,
-  title,
-  width,
-}) => {
+  photo = null,
+  sidebarCard = null,
+  title = null,
+  width = 'default',
+}:ArticleTextBlockPropTypes) => {
   let photoPosition = null;
   if (photo) photoPosition = photo.photoDisplayOption;
   const includePhoto = photo && photoPosition;
@@ -230,14 +262,16 @@ const ArticleTextBlock = ({
   return (
     <ArticleTextBlockWrapper
       className={`article-text-block--${displayOption}${photoPosition ? ` has-img--${photoPosition}` : ''}`}
-      id={includeInTOC || null}
+      id={includeInTOC}
       width={width}
     >
       {
         title && (
-          <ArticleTextBlockHeading className="article-text-block__heading" as={as}>
-            {title}
-          </ArticleTextBlockHeading>
+          <ArticleTextBlockHeading
+            className="article-text-block__heading"
+            as={as}
+            dangerouslySetInnerHTML={{ __html: title }}
+          />
         )
       }
       <ArticleTextBlockCopy className="article-text-block__copy">
@@ -254,44 +288,6 @@ const ArticleTextBlock = ({
       </ArticleTextBlockCopy>
     </ArticleTextBlockWrapper>
   );
-};
-
-ArticleTextBlock.propTypes = {
-  /** styled-components as prop on heading, defaults h3 */
-  as: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']),
-  /** Text content */
-  content: PropTypes.string.isRequired,
-  /** Default: no extra styles, box: wrap TextBlock in padded box */
-  displayOption: PropTypes.oneOf(['default', 'box']),
-  /** Display drop cap styles? */
-  dropCap: PropTypes.bool,
-  /** Sets id for link to text block in TOC */
-  includeInTOC: PropTypes.string,
-  /** Photo configuration options */
-  photo: PropTypes.shape({
-    altText: PropTypes.string,
-    photoDisplayOption: PropTypes.oneOf(['bottom', 'float', 'sidebar', 'top']).isRequired,
-    photoUrl: PropTypes.string.isRequired,
-  }),
-  /** Sidebar card configuration options */
-  sidebarCard: PropTypes.shape({
-    ...SidebarCard.propTypes,
-  }),
-  /** Heading level 3 title for text block */
-  title: PropTypes.string,
-  /** Width configuration for PullQuote */
-  width: PropTypes.oneOf(['default', 'wide']),
-};
-
-ArticleTextBlock.defaultProps = {
-  as: 'h3',
-  displayOption: 'default',
-  dropCap: false,
-  includeInTOC: null,
-  photo: null,
-  sidebarCard: null,
-  title: null,
-  width: 'default',
 };
 
 export default ArticleTextBlock;
