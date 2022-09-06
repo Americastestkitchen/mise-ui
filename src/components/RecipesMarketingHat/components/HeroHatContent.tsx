@@ -7,7 +7,6 @@ const HeroHatContent = styled.div.attrs<{ isTall: string; }>(
   color: ${color.eclipse};
   flex: 1 0 0;
 
-
   &.is-tall {
     align-items: center;
     color: #3d3d3d;
