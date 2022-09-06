@@ -1,13 +1,13 @@
-import styled from 'styled-components';
-import breakpoint from 'styled-components-breakpoint';
+import styled, { css } from 'styled-components';
+import { md } from '../../../styles/breakpoints';
 
 import { color, font } from '../../../styles';
 
-const RegistrantSubmit = styled.button.attrs({
-  className: 'hero-hat__button',
-})`
+const RegistrantSubmit = styled.button.attrs<{isTall: string}>(
+  ({ isTall }) => ({ className: `registrant-submit hero-hat__button ${isTall}` }))<{isTall: string}>`
   background-color: ${color.frog};
   color: ${color.white};
+  height: 4rem;
   text-transform: uppercase;
   width: 100%;
 
@@ -25,9 +25,9 @@ const RegistrantSubmit = styled.button.attrs({
     letter-spacing: 2.88px;
     text-align: center;
 
-    ${breakpoint('md')`
+    ${md(css`
       max-width: 24.5rem;
-    `}
+    `)}
   }
 `;
 

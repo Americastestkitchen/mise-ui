@@ -1,13 +1,9 @@
-import styled from 'styled-components';
-import breakpoint from 'styled-components-breakpoint';
-import {
-  font,
-  fontSize,
-} from '../../../styles';
+import styled, { css } from 'styled-components';
+import { md, lg, xlg } from '../../../styles/breakpoints';
+import { font, fontSize } from '../../../styles';
 
-const HeroHatDescription = styled.p.attrs({
-  className: 'hero-hat__description',
-})`
+const HeroHatDescription = styled.p.attrs<{ isTall: string; }>(
+  ({ isTall }) => ({ className: `hero-hat__description ${isTall}` }))<{isTall: string}>`
   font: ${fontSize.md}/2.2rem ${font.pnr};
   margin-bottom: 1rem;
   margin-right: 0.1rem;
@@ -51,25 +47,24 @@ const HeroHatDescription = styled.p.attrs({
     }
   }
 
-  ${breakpoint('md')`
+  ${md(css`
     margin-bottom: 0;
     margin-right: 0;
     line-height: 2rem;
     height: 4.8rem;
-  `}
+  `)}
 
-  ${breakpoint('lg')`
+  ${lg(css`
     line-height: 2.3rem;
 
     .hide-tablet {
       display: inline;
     }
-  `}
-  
-  ${breakpoint('xlg')`
+  `)}
+
+  ${xlg(css`
     font-size: 1.8rem;
-    white-space: nowrap;
-  `}
+  `)}
 
   @media screen and (min-width: 1680px) {
     margin: 0.6rem 0;

@@ -1,10 +1,9 @@
-import styled from 'styled-components';
-import breakpoint from 'styled-components-breakpoint';
+import styled, { css } from 'styled-components';
+import { md, lg } from '../../../styles/breakpoints';
 import { color } from '../../../styles';
 
-const HeroHatContent = styled.div.attrs({
-  className: 'hero-hat__content',
-})`
+const HeroHatContent = styled.div.attrs<{ isTall: string; }>(
+  ({ isTall }) => ({ className: `hero-hat__content ${isTall}` }))<{isTall: string;}>`
   color: ${color.eclipse};
   flex: 1 0 0;
 
@@ -17,13 +16,14 @@ const HeroHatContent = styled.div.attrs({
     text-align: center;
   }
 
-  ${breakpoint('md')`
+  ${md(css`
     padding-right: 1rem;
-  `}
+  `)}
 
-  ${breakpoint('lg')`
+  ${lg(css`
+    max-width: 52%;
     padding-right: 2rem;
-  `}
+  `)}
 `;
 
 export default HeroHatContent;
