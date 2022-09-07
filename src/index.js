@@ -63,7 +63,7 @@ import RelatedDocumentCard from './components/Cards/RelatedDocumentCard/RelatedD
 import ResultsCount from './components/Algolia/shared/ResultsCount/ResultsCount';
 import ReviewableSummaryCard from './components/Cards/ReviewableSummaryCard/ReviewableSummaryCard';
 import ReviewsEmailCapture from './components/Ads/ReviewsAds/ReviewsEmailCapture/ReviewsEmailCapture';
-import ReviewsMarketingHat from './components/Ads/ReviewsAds/ReviewsMarketingHat';
+import ReviewsMarketingHat from './components/Ads/ReviewsAds/ReviewsMarketingHat/ReviewsMarketingHat';
 import RelatedSmallCard from './components/Cards/RelatedSmallCard';
 import SchoolAd from './components/Ads/ShowcaseAds/SchoolAd/SchoolAd';
 import SearchBanner from './components/SearchBanner/SearchBanner';
