@@ -1,0 +1,19 @@
+@import '../../../styles/main.scss';
+
+.editorial {
+  background-color: $cNBlackTransparent;
+}
+
+.priority {
+  background-color: $cAAction;
+}
+
+.wrapper {
+  border-radius: 6px;
+  color: $cNWhite;
+  display: inline;
+  font: 0.625rem/1 $secondaryFont;
+  letter-spacing: 1.6px;
+  padding: 4px 8px;
+  text-transform: uppercase;
+}
