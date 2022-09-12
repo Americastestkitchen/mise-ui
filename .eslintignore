@@ -6,3 +6,4 @@ src/setupTests.js
 src/**/*.stories.js
 .git
 storybook-static
+v2/

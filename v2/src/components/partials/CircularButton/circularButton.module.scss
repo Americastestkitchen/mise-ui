@@ -1,0 +1,11 @@
+@import "../../../styles/main.scss";
+
+.button {
+  &:hover {
+    cursor: pointer;
+
+    :global(.circular-icon) {
+      background-color: $cBPrimaryHover;
+    }
+  }
+}
