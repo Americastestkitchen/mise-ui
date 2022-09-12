@@ -1,0 +1,15 @@
+@import "../../../../../styles/main.scss";
+
+.wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  max-width: 848px;
+  width: 100%;
+}
+
+.pageIndicator {
+  color: $cBFont;
+  font: 1rem/1 $secondaryFont;
+}
