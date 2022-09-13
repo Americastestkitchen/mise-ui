@@ -11,6 +11,10 @@ import { cssThemedLink } from '../../../styles/mixins';
 const ArticleTextBlockWrapper = styled.div`
   margin-bottom: 2.4rem;
   width: 100%;
+  display: inline-block;
+  @media print {
+    display: block !important;
+  }
 
   &.article-text-block--box {
     background-color: ${color.white};
@@ -77,6 +81,9 @@ const ArticleTextBlockWrapper = styled.div`
 `;
 
 const ArticleTextBlockCopy = styled.div`
+  @media print {
+    display: block !important;
+  }
   ${breakpoint('xlg')`
     position: relative;
   `}
@@ -156,6 +163,9 @@ const ArticleTextBlockContentTheme = {
 };
 
 const ArticleTextBlockContent = styled.div`
+  @media print {
+    page-break-inside: avoid !important;
+  }
   ${withThemes(ArticleTextBlockContentTheme)}
 `;
 

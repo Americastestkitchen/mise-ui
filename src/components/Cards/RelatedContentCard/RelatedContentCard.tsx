@@ -101,6 +101,7 @@ const Body = styled.span`
     display: none;
   `)}
   margin-bottom: 8px;
+    ${mixins.truncateLineClamp(3)}
 `;
 
 const LinkText = styled.a`
