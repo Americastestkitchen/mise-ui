@@ -42,7 +42,7 @@ import ImageListContainer from './components/Articles/ImageList/ImageListContain
 import ImageListItem from './components/Articles/ImageList/ImageListItem/ImageListItem';
 import Image from './components/Cards/shared/Image/Image';
 import Listable from './components/Listable/Listable';
-import LandingEmailAd from './components/Ads/ShowcaseAds/LandingEmailAd';
+import LandingEmailAd from './components/Ads/ShowcaseAds/LandingEmailAd/LandingEmailAd';
 import LeadMarqueeCard from './components/Cards/LeadMarqueeCard';
 import LoadingCard from './components/Cards/LoadingCard/LoadingCard';
 import LoadingCarousel from './components/Carousels/LoadingCarousel/LoadingCarousel';

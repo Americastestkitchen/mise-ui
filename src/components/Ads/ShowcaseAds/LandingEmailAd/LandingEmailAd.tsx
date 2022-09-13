@@ -1,7 +1,6 @@
-import breakpoint from 'styled-components-breakpoint';
-import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { css } from 'styled-components';
+import { sm, md, lg, xlg } from '../../../../styles/breakpoints';
 
 import {
   color,
@@ -17,7 +16,7 @@ import EmailForm from '../../../Forms/EmailForm/EmailForm';
 import Image from '../../../Cards/shared/Image/Image';
 
 const LandingEmailTheme = {
-  default: css`
+  default: css<{ success?: boolean }>`
     align-items: center;
     background-color: ${color.white};
     display: flex;
@@ -31,17 +30,17 @@ const LandingEmailTheme = {
       display: none;
     }
 
-    ${breakpoint('md')`
+    ${md(css`
       flex-direction: row;
       min-height: 33rem;
       width: calc(100% - 7.2rem);
-    `}
+    `)}
 
-    ${breakpoint('lg')`
+    ${lg(css`
       width: calc(100% - 3.2rem);
-    `}
+    `)}
 
-    ${breakpoint('xlg')`
+    ${xlg(css`
       height: 33rem;
       width: 113.6rem;
 
@@ -52,15 +51,15 @@ const LandingEmailTheme = {
       .landing-ad-image-desktop {
         display: block;
       }
-    `}
+    `)}
 
     .email-form button {
       background-color: ${color.coldPool};
       width: 100%;
 
-      ${breakpoint('xlg')`
+      ${xlg(css`
         max-width: 35rem;
-      `}
+      `)}
 
       &:hover {
         background-color: ${color.darkColdPool};
@@ -85,40 +84,40 @@ const LandingEmailTheme = {
   `,
 };
 
-const LandingEmailWrapper = styled.div.attrs({
+const LandingEmailWrapper = styled.div.attrs<{ success?: boolean }>({
   className: 'landing-email-ad-wrapper',
-})`${withThemes(LandingEmailTheme)}`;
+})<{ success?: boolean }>`${withThemes(LandingEmailTheme)}`;
 
 const ImageWrapper = styled.div`
   background-size: cover;
   margin-bottom: 1rem;
   width: 100%;
 
-  ${breakpoint('md')`
+  ${md(css`
     margin-bottom: 0;
     max-height: 33rem;
     overflow: hidden;
     width: 50%;
-  `}
+  `)}
 
   .landing-ad-image {
     height: 100%;
     width: 100%;
 
-    ${breakpoint('md')`
+    ${md(css`
       min-height: 32.9rem;
-    `}
+    `)}
   }
 `;
 
-const FormColumnWrapper = styled.div`
+const FormColumnWrapper = styled.div<{ success?: boolean }>`
   display: flex;
   justify-content: center;
   margin-bottom: ${({ success }) => (success ? '10%' : '0')};
 
-  ${breakpoint('md')`
+  ${md(css`
     width: 50%;
-  `}
+  `)}
 `;
 
 const FormBodyContent = styled.div`
@@ -128,10 +127,10 @@ const FormBodyContent = styled.div`
   margin-bottom: 1rem;
   width: 30rem;
 
-  ${breakpoint('xlg')`
+  ${xlg(css`
     margin-bottom: 0;
     width: 34.4rem;
-  `}
+  `)}
 
   .email-form {
     flex-direction: column;
@@ -171,9 +170,9 @@ const ContentHeadlineTheme = {
     margin-bottom: 0.9rem;
     text-transform: uppercase;
 
-    ${breakpoint('xlg')`
+    ${xlg(css`
       font: ${fontSize.md}/1.6rem ${font.pnr};
-    `}
+    `)}
   `,
   dark: css`
     color: ${color.white};
@@ -191,13 +190,13 @@ const ContentTitleTheme = {
     line-height: 3rem;
     width: 30rem;
 
-    ${breakpoint('sm')`
+    ${sm(css`
       width: 31rem;
-    `}
+    `)}
 
-    ${breakpoint('xlg')`
+    ${xlg(css`
       width: 34.4rem;
-    `}
+    `)}
   `,
   dark: css`
     color: ${color.white};
@@ -217,9 +216,9 @@ const NewsletterSuccessTheme = {
       width: 2.1rem;
     }
 
-    ${breakpoint('xlg')`
+    ${xlg(css`
       width: 85%;
-    `}
+    `)}
   `,
   dark: css`
     color: ${color.white};
@@ -234,18 +233,31 @@ const ContentTitle = styled.p.attrs({
   className: 'landing-ad-content-title',
 })`${withThemes(ContentTitleTheme)}`;
 
+export type LandingEmailAdProps = {
+  buttonText?: string,
+  desktopImageUrl: string,
+  errorText?: string,
+  inputId: string,
+  headline: string,
+  onSubmit: () => void,
+  tabletImageUrl: string,
+  title: string,
+  success?: boolean,
+  successText?: string,
+}
+
 const LandingEmailAd = ({
-  buttonText,
   desktopImageUrl,
-  errorText,
-  headline,
   inputId,
   onSubmit,
-  success,
-  successText,
   tabletImageUrl,
   title,
-}) => (
+  buttonText = 'Sign me up',
+  errorText = 'Invalid email address',
+  headline = '',
+  success = false,
+  successText = 'Thank you! Get ready for watch and cook newsletter in your inbox.',
+}: LandingEmailAdProps) => (
   <LandingEmailWrapper success={success}>
     <ImageWrapper>
       <Image
@@ -262,7 +274,7 @@ const LandingEmailAd = ({
       />
     </ImageWrapper>
     <FormColumnWrapper success={success}>
-      <FormBodyContent success={success}>
+      <FormBodyContent>
         {headline ? <ContentHeadline>{headline}</ContentHeadline> : null}
         {!success && (<ContentTitle>{title}</ContentTitle>)}
         {success
@@ -285,26 +297,5 @@ const LandingEmailAd = ({
     </FormColumnWrapper>
   </LandingEmailWrapper>
 );
-
-LandingEmailAd.propTypes = {
-  buttonText: PropTypes.string,
-  desktopImageUrl: PropTypes.string.isRequired,
-  errorText: PropTypes.string,
-  inputId: PropTypes.string.isRequired,
-  headline: PropTypes.string,
-  onSubmit: PropTypes.func.isRequired,
-  tabletImageUrl: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  success: PropTypes.bool,
-  successText: PropTypes.string,
-};
-
-LandingEmailAd.defaultProps = {
-  buttonText: 'Sign me up',
-  errorText: 'Invalid email address',
-  headline: '',
-  success: false,
-  successText: 'Thank you! Get ready for watch and cook newsletter in your inbox.',
-};
 
 export default LandingEmailAd;

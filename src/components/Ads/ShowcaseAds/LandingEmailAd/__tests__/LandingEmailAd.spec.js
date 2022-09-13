@@ -2,7 +2,7 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { render, screen } from '@testing-library/react';
 
-import LandingEmailAd from '../index';
+import LandingEmailAd from '../LandingEmailAd';
 import breakpoints from '../../../../../styles/breakpoints';
 
 const onFormSubmit = jest.fn();
