@@ -81,8 +81,5 @@
   ],
   "settings": {
     "import/parser": "babel-eslint"
-  },
-  "exclude": [
-    "/v2",
-  ]
+  }
 }
