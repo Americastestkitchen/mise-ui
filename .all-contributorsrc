@@ -118,6 +118,18 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "bradwaropay",
+      "name": "Brad Waropay",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4742568?v=4",
+      "profile": "http://www.bradwaropay.com/",
+      "contributions": [
+        "doc",
+        "example",
+        "test",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
