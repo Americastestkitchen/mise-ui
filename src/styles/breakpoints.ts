@@ -50,4 +50,6 @@ export const untilSmmd: BreakpointFn = interp => breakpoint('xs', 'smmd')`${inte
 export const untilLg: BreakpointFn = interp => breakpoint('xs', 'lg')`${interp}`;
 export const untilXlg: BreakpointFn = interp => breakpoint('xs', 'xlg')`${interp}`;
 
+export const mdToLg: BreakpointFn = interp => breakpoint('md', 'lg')`${interp}`;
 export const mdToXlg: BreakpointFn = interp => breakpoint('md', 'xlg')`${interp}`;
+export const lgToXlg: BreakpointFn = interp => breakpoint('lg', 'xlg')`${interp}`;
