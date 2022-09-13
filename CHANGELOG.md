@@ -1,3 +1,19 @@
+# v1.33.39 (Tue Sep 13 2022)
+
+#### 🐛 Bug Fix
+
+- Web rob 8/29 [#908](https://github.com/Americastestkitchen/mise-ui/pull/908) (jess.bon@americastestkitchen.com [@tdorin](https://github.com/tdorin) [@jbonAA](https://github.com/jbonAA))
+- feat: :tada: Init Mise 2.0, set up react and storybook [#910](https://github.com/Americastestkitchen/mise-ui/pull/910) ([@bradwaropay](https://github.com/bradwaropay))
+
+#### Authors: 4
+
+- [@tdorin](https://github.com/tdorin)
+- Brad Waropay ([@bradwaropay](https://github.com/bradwaropay))
+- Jess Bon (jess.bon@americastestkitchen.com)
+- Jess David Bon ([@jbonAA](https://github.com/jbonAA))
+
+---
+
 # v1.33.38 (Fri Aug 26 2022)
 
 #### 🐛 Bug Fix
