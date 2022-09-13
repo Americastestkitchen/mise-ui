@@ -24,7 +24,7 @@ const RefinementFilterWrapperTheme = {
   atk: css`
     &:hover {
       .search-refinement-list__label {
-        color: ${color.mint};
+        color: ${color.darkTeal};
       }
     }
   `,
@@ -56,7 +56,7 @@ const RefinementFilterLabelTheme = {
   `,
   atk: css`
     &:hover {
-      color: ${color.mint};
+      color: ${color.darkTeal};
       cursor: pointer;
     }
   `,

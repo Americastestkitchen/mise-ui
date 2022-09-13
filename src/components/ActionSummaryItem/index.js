@@ -40,6 +40,9 @@ const ActionSummaryTheme = {
 
     svg path {
       fill: ${color.darkTeal};
+      &:hover {
+        fill: ${color.eclipse};
+      }
     }
   `,
   cco: css`
@@ -47,6 +50,9 @@ const ActionSummaryTheme = {
 
     svg path {
       fill: ${color.denim};
+      &:hover {
+        fill: ${color.arapawa};
+      }
     }
   `,
   cio: css`
@@ -54,6 +60,9 @@ const ActionSummaryTheme = {
 
     svg path {
       fill: ${color.emailHover};
+      &:hover {
+      fill: ${color.cork};
+    }
     }
   `,
 };

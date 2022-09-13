@@ -30,11 +30,11 @@ const SearchSortByItemTheme = {
       cursor: pointer;
 
       .search-sort-by__circle {
-        background-color: ${color.mint};
+        background-color: ${color.darkTeal};
       }
 
       .search-sort-by__label {
-        color: ${color.mint};
+        color: ${color.darkTeal};
       }
     }
   `,
@@ -117,7 +117,7 @@ const SearchSortByCircleTheme = {
     border: solid 1px ${color.nobel};
 
     ${({ isRefined }) => (isRefined ? `
-        background-color: ${color.mint};
+        background-color: ${color.darkTeal};
     ` : `
         background-color: transparent;
     `)}
@@ -126,7 +126,7 @@ const SearchSortByCircleTheme = {
     border: solid 1px ${color.nobel};
 
     ${({ isRefined }) => (isRefined ? `
-        background-color: ${color.mint};
+        background-color: ${color.darkTeal};
     ` : `
         background-color: transparent;
     `)}

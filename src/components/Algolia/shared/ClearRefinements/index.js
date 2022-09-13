@@ -18,7 +18,7 @@ const StyledClearRefinementsTheme = {
     color: ${color.eclipse};
 
     &:hover {
-      color: ${color.mint};
+      color: ${color.darkTeal};
       cursor: pointer;
     }
   `,

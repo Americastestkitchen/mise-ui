@@ -22,14 +22,14 @@ const RefinementFilterLabelTheme = {
     }
 
     .search-refinement-list__label-text {
-      ${({ isRefined }) => (isRefined ? `color: ${color.mint}; font-family: ${font.pnb};` : '')}
+      ${({ isRefined }) => (isRefined ? `color: ${color.darkTeal}; font-family: ${font.pnb};` : '')}
     }
 
     &:hover {
       cursor: pointer;
 
       .search-refinement-list__label-text {
-        color: ${color.mint};
+        color: ${color.darkTeal};
       }
 
       svg {
