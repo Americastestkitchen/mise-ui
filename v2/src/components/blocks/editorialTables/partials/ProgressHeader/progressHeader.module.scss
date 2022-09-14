@@ -13,3 +13,10 @@
   color: $cBFont;
   font: 1rem/1 $secondaryFont;
 }
+
+.hideDesktop {
+  // TODO: add breakpoint tokens
+  @media (min-width: 1025px) {
+    display: none;
+  }
+}

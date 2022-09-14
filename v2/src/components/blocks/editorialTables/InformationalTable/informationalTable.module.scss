@@ -1,0 +1,14 @@
+@import "../../../../styles/main.scss";
+
+.wrapper {
+  color: $cBFont;
+}
+
+.heading {
+  font: $fHeadingMd;
+}
+
+.description {
+  font: $fBodyMd;
+  margin-top: 16px;
+}
