@@ -11,6 +11,9 @@ const ListItemWrapper = styled.div`
   background-color: ${color.white};
   display: flex;
   flex-direction: column;
+  @media print {
+    display: block !important;
+  }
 
   &:not(:last-child){
     margin-bottom: 1.6rem;
@@ -31,6 +34,10 @@ const ListItemWrapper = styled.div`
     min-height: 24.1rem;
     object-fit: contain;
     object-position: top center;
+    @media print {
+      max-width: 50% !important;
+      min-height: auto !important;
+    }
 
     &:not(:last-child) {
       margin-bottom: 1.6rem;
@@ -91,6 +98,11 @@ const ListItemContentTheme = {
 
 const ListItemContent = styled.div`
   ${withThemes(ListItemContentTheme)}
+  p {
+    @media print {
+      page-break-inside: avoid;
+    }
+  }
   a {
     ${cssThemedLink}
   }

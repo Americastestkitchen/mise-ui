@@ -12,6 +12,9 @@ const FloatImageFigure = styled.figure`
   margin: 0;
   padding: 0;
   width: 100%;
+  @media print {
+    page-break-inside: avoid;
+  }
 
   .article-figcaption {
     max-width: calc(50% - 0.8rem);
@@ -85,9 +88,6 @@ const FloatImageFigure = styled.figure`
 const FloatImageWrapper = styled.div`
   max-width: calc(50% - 0.8rem);
   width: 100%;
-  @media print {
-    page-break-inside: avoid;
-  }
 
   &.no-caption {
     max-width: 100%;
@@ -145,6 +145,9 @@ const FloatImage = styled.img`
   display: flex;
   max-width: 100%;
   width: 100%;
+  @media print {
+    max-width: 50%;
+  }
 `;
 
 const ArticleTextBlockFloatImage = ({ altText, caption, photoDisplayOption, photoUrl }) => (
