@@ -24,20 +24,20 @@ const RefinementTheme = {
     }
   `,
   atk: css`
-    /* Change color of p child to mint when hovered. */
+    /* Change color of p child to darkTeal when hovered. */
     &:hover > p {
-      color: ${color.mint}
+      color: ${color.darkTeal}
     }
 
     /* Change svg stroke color when parent and 'x' button child are hovered. */
     &:hover > button:hover {
       svg g {
-        stroke: ${color.mint};
+        stroke: ${color.darkTeal};
       }
     }
   `,
   cco: css`
-    /* Change color of p child to mint when hovered. */
+    /* Change color of p child to darkTeal when hovered. */
     &:hover > p {
       color: ${color.denim}
     }
@@ -50,7 +50,7 @@ const RefinementTheme = {
     }
   `,
   cio: css`
-    /* Change color of p child to mint when hovered. */
+    /* Change color of p child to Squirrel when hovered. */
     &:hover > p {
       color: ${color.squirrel}
     }
@@ -68,7 +68,7 @@ const RefinementTheme = {
     color: ${color.black};
     padding: 0.3rem 1rem 0.4rem;
 
-    /* Change color of p child to mint when hovered. */
+    /* Change color of p child to Jade when hovered. */
     &:hover > p {
       color: ${color.jade}
     }

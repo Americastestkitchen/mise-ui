@@ -103,7 +103,7 @@ const ImageWrapperTheme = {
   atk: css`
     .svg-reviews {
       svg path {
-        fill: ${color.mint};
+        fill: ${color.darkTeal};
       }
     }
     .svg-recipes {

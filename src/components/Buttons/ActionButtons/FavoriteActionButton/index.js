@@ -44,7 +44,7 @@ const StyledButton = styled(Button)`
   }
 
   &.favorite-manage {
-    background: ${color.mint};
+    background: ${color.eclipse};
     flex-basis: 6rem;
   }
 
