@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import breakpoint from 'styled-components-breakpoint';
+import styled, { css } from 'styled-components';
+import { md, lg, xlg } from '../../../styles/breakpoints';
 import {
   color,
   font,
@@ -9,10 +9,8 @@ import {
   spacing,
 } from '../../../styles';
 
-/* eslint-enable indent */
-const HeroHatBody = styled.div.attrs({
-  className: 'hero-hat__body',
-})`
+const HeroHatBody = styled.div.attrs<{ isTall: string; }>(
+  ({ isTall }) => ({ className: `hero-hat__body ${isTall}` }))<{isTall: string;}>`
   background-color: #e2eced;
   display: flex;
   flex-direction: column;
@@ -123,7 +121,7 @@ const HeroHatBody = styled.div.attrs({
     ${mixins.focusIndicator(color.eclipse, '0px')}
   }
 
-  ${breakpoint('md')`
+  ${md(css`
     align-items: center;
     background-color: transparent;
     flex-direction: row;
@@ -165,9 +163,9 @@ const HeroHatBody = styled.div.attrs({
       left: 0;
       line-height: 1.2rem;
     }
-  `}
+  `)}
 
-  ${breakpoint('lg')`
+  ${lg(css`
     max-width: 124rem;
 
     #article-page-hat-form-submit {
@@ -201,9 +199,9 @@ const HeroHatBody = styled.div.attrs({
       right: 0;
       left: auto;
     }
-  `}
+  `)}
 
-  ${breakpoint('xlg')`
+  ${xlg(css`
     justify-content: space-between;
     padding: 0 9.8rem 0 7.6rem;
 
@@ -220,7 +218,7 @@ const HeroHatBody = styled.div.attrs({
         max-width: 22.6rem;
       }
     }
-  `}
+  `)}
 
   &.is-tall {
     flex-direction: column;
@@ -248,7 +246,7 @@ const HeroHatBody = styled.div.attrs({
       }
     }
 
-    ${breakpoint('md')`
+    ${md(css`
       padding-top: 4.8rem;
 
       .email-form {
@@ -270,7 +268,7 @@ const HeroHatBody = styled.div.attrs({
           max-width: 26rem;
         }
       }
-    `}
+    `)}
   }
 `;
 
