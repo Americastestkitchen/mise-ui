@@ -4,7 +4,7 @@ import algoliasearch from 'algoliasearch/lite';
 import { InstantSearch, Hits } from 'react-instantsearch-dom';
 import styled from 'styled-components';
 
-import LabelFrame from '../../../components/LabelFrame';
+import LabelFrame from '../../../components/LabelFrame/LabelFrame';
 
 const searchClient = algoliasearch(
   'Y1FNZXUI30',

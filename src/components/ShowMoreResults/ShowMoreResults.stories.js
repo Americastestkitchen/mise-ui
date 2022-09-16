@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import fetch from 'cross-fetch';
 
-import LabelFrame from '../LabelFrame';
+import LabelFrame from '../LabelFrame/LabelFrame';
 import ShowMoreResults from './index';
 import MiseInstantSearch from '../../lib/algolia/MiseInstantSearch/MiseInstantSearch';
 import PodcastEpisodeCard from '../Cards/PodcastEpisodeCard';

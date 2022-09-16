@@ -1,6 +1,6 @@
 import React from 'react';
 
-import LabelFrame from '../../../LabelFrame';
+import LabelFrame from '../../../LabelFrame/LabelFrame';
 import MiseInstantSearch from '../../../../lib/algolia/MiseInstantSearch/MiseInstantSearch';
 import ToggleRefinement from './index';
 import { siteKey } from '../../../../config/argTypes';
