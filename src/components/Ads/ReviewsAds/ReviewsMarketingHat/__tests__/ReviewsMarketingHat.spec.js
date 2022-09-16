@@ -3,7 +3,7 @@ import { action } from '@storybook/addon-actions';
 import { ThemeProvider } from 'styled-components';
 import { render, screen } from '@testing-library/react';
 
-import ReviewsMarketingHat from '../index';
+import ReviewsMarketingHat from '../ReviewsMarketingHat';
 import breakpoints from '../../../../../styles/breakpoints';
 
 const defaultResponse = {
