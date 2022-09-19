@@ -1,7 +1,14 @@
+// **** CELLS ****
 type EditorialTableHeaderCell = {
   content: string;
   id: string;
   type: 'header';
+};
+
+type EditorialTableRowHeaderCell = {
+  content: string;
+  id: string;
+  type: 'rowHeader';
 };
 
 type EditorialTableTextCell = {
@@ -23,13 +30,33 @@ type EditorialTableEmptyCell = {
 };
 
 export type EditorialTableCell = EditorialTableEmptyCell
-| EditorialTableHeaderCell
-| EditorialTableIconCell
-| EditorialTableTextCell;
+  | EditorialTableHeaderCell
+  | EditorialTableRowHeaderCell
+  | EditorialTableIconCell
+  | EditorialTableTextCell;
 
-export type EditorialTableRow = {
+// **** ROWS ****
+type ComparisonTableRow = {
+  cells: [
+    EditorialTableRowHeaderCell, ...Array<EditorialTableCell>,
+  ],
+  id: string;
+};
+
+type InformationalTableRow = {
   cells: EditorialTableCell[];
   id: string;
 };
 
-export type EditorialTable = EditorialTableRow[];
+// **** TABLES ****
+type ComparisonTable = {
+  rows: ComparisonTableRow[],
+  type: 'comparison';
+};
+
+type InformationalTable = {
+  rows: InformationalTableRow[];
+  type: 'informational';
+};
+
+export type EditorialTableType = InformationalTable | ComparisonTable;

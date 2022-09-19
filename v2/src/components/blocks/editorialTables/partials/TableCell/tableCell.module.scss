@@ -1,0 +1,107 @@
+@import "../../../../../styles/main.scss";
+
+.cell {
+  display: flex;
+  flex-direction: column;
+  background-color: $cNWhite;
+  padding: 0 12px 20px;
+  width: 100%;
+}
+
+.informationalCell {
+  max-width: 272px;
+}
+
+.comparisonCell {
+  max-width: 200px;
+}
+
+.divider {
+  background-color: $cNGray;
+  margin-bottom: 20px;
+  height: 1px;
+  width: 100%;
+}
+
+// TODO: add breakpoint tokens
+.oobMobile {
+  @media (max-width: 768px) {
+    filter: opacity(0.5);
+  }
+}
+
+.oobTablet {
+  @media (min-width: 769px) and (max-width: 1024px) {
+    filter: opacity(0.5);
+  }
+}
+
+.oobDesktop {
+  @media (min-width: 1025px) {
+    filter: opacity(0.5);
+  }
+}
+
+.header {
+  font: 1.125rem/1 $secondaryFont;
+  padding-top: 20px;
+}
+
+.rowHeader {
+  background-color: transparent;
+  font: 1.125rem/1 $secondaryFont;
+  padding-left: 0;
+  padding-right: 0;
+
+  @media(max-width: 768px) {
+    display: none;
+  }
+}
+
+.rowHeaderPadding {
+  padding-top: 20px;
+}
+
+.icon,
+.text {
+  font: 1rem/1.63 $primaryFont;
+}
+
+.inlineRowHeading {
+  background-color: #E9F0F0;
+  font: 1rem/1 $secondaryFont;
+  margin-bottom: 8px;
+  width: fit-content;
+
+  @media (min-width: 769px) {
+    display: none;
+  }
+}
+
+.no {
+  :global(.circular-icon) {
+    // TODO: add this to color accent token
+    background-color: #a72e14;
+  }
+}
+
+.yes {
+  :global(.circular-icon) {
+    // TODO: add this to color accent token
+    background-color: #40861e;
+  }
+}
+
+.iconWrapper {
+  align-items: center;
+  display: flex;
+}
+
+.iconSvg {
+  margin-right: 8px;
+
+  :global(.circular-icon) {
+    max-height: 15px;
+    max-width: 15px;
+  }
+}
