@@ -6,65 +6,7 @@
   margin-top: 16px;
 }
 
-.header {
-  font: 1.125rem/1 $secondaryFont;
-  padding-top: 20px;
-}
-
 .row {
   display: flex;
   gap: 16px;
-}
-
-.cell {
-  display: flex;
-  flex-direction: column;
-  background-color: $cNWhite;
-  padding: 0 12px 20px;
-  min-width: 272px;
-  max-width: 272px;
-}
-
-.divider {
-  background-color: $cNGray;
-  margin-bottom: 20px;
-  height: 1px;
-  width: 100%;
-}
-
-.oob {
-  filter: opacity(0.5);
-}
-
-.icon,
-.text {
-  font: 1rem/1.63 $primaryFont;
-}
-
-.no {
-  :global(.circular-icon) {
-    // TODO: add this to color accent token
-    background-color: #a72e14;
-  }
-}
-
-.yes {
-  :global(.circular-icon) {
-    // TODO: add this to color accent token
-    background-color: #40861e;
-  }
-}
-
-.iconWrapper {
-  align-items: center;
-  display: flex;
-}
-
-.iconSvg {
-  margin-right: 8px;
-
-  :global(.circular-icon) {
-    max-height: 15px;
-    max-width: 15px;
-  }
 }
