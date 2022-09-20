@@ -1,8 +1,6 @@
-import breakpoint from 'styled-components-breakpoint';
-import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { css } from 'styled-components';
-
+import { md, lg, xlg, untilMd } from '../../../styles/breakpoints';
 import { getImageUrl } from '../../../lib/cloudinary';
 import {
   color,
@@ -16,10 +14,10 @@ import {
 
 const SingleProductWrapperTheme = {
   default: css`
-    ${breakpoint('xlg')`
+    ${xlg(css`
       height: 16.2rem;
       margin: 0 auto;
-    `}
+    `)}
   `,
   dark: css`
     background-color: ${color.asphalt};
@@ -33,58 +31,54 @@ const SingleProductWrapper = styled.div.attrs({
 const SingleProductInner = styled.div.attrs({
   className: 'single-product-ad__inner',
 })`
-  ${breakpoint('md')`
+  ${md(css`
     align-items: center;
     display: flex;
     height: 18rem;
     justify-content: space-between;
-  `}
+  `)}
 
-  ${breakpoint('lg')`
+  ${lg(css`
     margin: 0 auto;
     max-width: 113.6rem;
-  `}
+  `)}
 `;
-
-const SingleProductPictureTheme = {
-  default: css`
-    display: block;
-
-    img {
-      display: block;
-    }
-
-    ${breakpoint('xs', 'md')`
-      left: 50%;
-      max-width: 130%;
-      position: relative;
-      transform: translateX(-50%);
-      width: 130%;
-    `}
-
-    ${breakpoint('md')`
-      flex: 1 0 calc(100% - 27.2rem);
-      max-width: 60rem;
-      width: calc(100% - 27.2rem);
-
-      img {
-        max-width: 100%;
-      }
-    `}
-  `,
-};
 
 const SingleProductPicture = styled.picture.attrs({
   className: 'single-product-ad__picture',
-})`${withThemes(SingleProductPictureTheme)}`;
+})`
+  display: block;
+
+  img {
+    display: block;
+  }
+
+  ${untilMd(css`
+    left: 50%;
+    max-width: 130%;
+    position: relative;
+    transform: translateX(-50%);
+    width: 130%;
+  `)}
+
+  ${md(css`
+    flex: 1 0 calc(100% - 27.2rem);
+    max-width: 60rem;
+    width: calc(100% - 27.2rem);
+
+    img {
+      max-width: 100%;
+    }
+  `)}
+`;
 
 const SingleProductContentTheme = {
   default: css`
     padding: ${spacing.sm} 2rem;
 
-    ${breakpoint('md')`
+    ${md(css`
       padding: ${spacing.sm};
-    `}
+    `)}
   `,
   dark: css`
     color: ${color.white};
@@ -97,54 +91,55 @@ const SingleProductContent = styled.div.attrs({
 
 const SingleProductContentInner = styled.div``;
 
-const SingleProductTitleTheme = {
-  default: css`
-    font: 2.6rem/${lineHeight.sm} ${font.pnb};
-    margin-bottom: ${spacing.sm};
-    text-align: center;
-
-    ${breakpoint('md')`
-      text-align: left;
-    `}
-  `,
-};
-
 const SingleProductTitle = styled.div.attrs({
   className: 'single-product-ad__title',
-})`${withThemes(SingleProductTitleTheme)}`;
+})`
+  font: 2.6rem/${lineHeight.sm} ${font.pnb};
+  margin-bottom: ${spacing.sm};
+  text-align: center;
 
-const SingleProductCtaTheme = {
-  default: css`
-    background-color: ${color.coldPool};
-    color: ${color.white};
-    display: block;
-    font: ${fontSize.lg}/4rem ${font.pnb};
-    letter-spacing: ${letterSpacing.cta};
-    height: 4rem;
-    text-align: center;
-    text-transform: uppercase;
-    transition: 0.2s background-color ease-in-out;
-    width: 100%;
-
-    @media(hover: hover) {
-      &:hover {
-        background-color: ${color.darkColdPool};
-      }
-    }
-
-    ${breakpoint('md')`
-      width: 27.2rem;
-    `}
-
-    ${breakpoint('lg')`
-      width: 34.4rem;
-    `}
-  `,
-};
+  ${md(css`
+    text-align: left;
+  `)}
+`;
 
 const SingleProductCta = styled.a.attrs({
   className: 'single-product-ad__cta',
-})`${withThemes(SingleProductCtaTheme)}`;
+})`
+  background-color: ${color.coldPool};
+  color: ${color.white};
+  display: block;
+  font: ${fontSize.lg}/4rem ${font.pnb};
+  letter-spacing: ${letterSpacing.cta};
+  height: 4rem;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.2s background-color ease-in-out;
+  width: 100%;
+
+  @media(hover: hover) {
+    &:hover {
+      background-color: ${color.darkColdPool};
+    }
+  }
+
+  ${md(css`
+    width: 27.2rem;
+  `)}
+
+  ${lg(css`
+    width: 34.4rem;
+  `)}
+`;
+
+export type SingleProductAdProps = {
+  cloudinaryId: string;
+  cta: string;
+  ctaHref: string;
+  ctaTarget?: string;
+  onClick?: () => void;
+  title: string;
+}
 
 const SingleProductAd = ({
   cloudinaryId,
@@ -153,14 +148,12 @@ const SingleProductAd = ({
   ctaTarget,
   onClick,
   title,
-}) => (
+}: SingleProductAdProps) => (
   <SingleProductWrapper>
     <SingleProductInner>
       <SingleProductContent>
         <SingleProductContentInner>
-          <SingleProductTitle>
-            {title}
-          </SingleProductTitle>
+          <SingleProductTitle>{title}</SingleProductTitle>
           <SingleProductCta
             href={ctaHref}
             onClick={onClick}
@@ -200,19 +193,5 @@ const SingleProductAd = ({
     </SingleProductInner>
   </SingleProductWrapper>
 );
-
-SingleProductAd.propTypes = {
-  cloudinaryId: PropTypes.string.isRequired,
-  cta: PropTypes.string.isRequired,
-  ctaHref: PropTypes.string.isRequired,
-  ctaTarget: PropTypes.string,
-  onClick: PropTypes.func,
-  title: PropTypes.string.isRequired,
-};
-
-SingleProductAd.defaultProps = {
-  ctaTarget: null,
-  onClick: null,
-};
 
 export default SingleProductAd;
