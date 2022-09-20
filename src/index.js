@@ -73,7 +73,7 @@ import SearchNumericMenuBasic from './components/Algolia/search/SearchNumericMen
 import SearchRefinementList from './components/Algolia/search/SearchRefinementList';
 import SearchSortBy from './components/Algolia/search/SearchSortBy/SearchSortBy';
 import ShowMoreLess from './components/ShowMoreLess/ShowMoreLess';
-import ShowMoreResults from './components/ShowMoreResults';
+import ShowMoreResults from './components/ShowMoreResults/ShowMoreResults';
 import SidebarCard from './components/Articles/SidebarCard';
 import SingleMembershipAd from './components/Ads/SingleMembershipAd/SingleMembershipAd';
 import SingleProductAd from './components/Ads/SingleProductAd/SingleProductAd';
