@@ -12,6 +12,7 @@
     "lodash.orderby": "^4.6.0",
     "lodash.throttle": "^4.1.1",
     "prop-types": "^15.7.2",
+    "react-instantsearch-core": "^6.33.0",
     "react-instantsearch-dom": "^6.3.0",
     "react-loadable": "^5.5.0",
     "react-loadable-visibility": "^3.0.2",
