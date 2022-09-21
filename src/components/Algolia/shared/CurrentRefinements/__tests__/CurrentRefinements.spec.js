@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import 'jest-styled-components';
 
-import { CustomCurrentRefinements } from '../index';
+import { CustomCurrentRefinements } from '../CurrentRefinements';
 import breakpoints from '../../../../../styles/breakpoints';
 
 describe('CurrentRefinements component should', () => {

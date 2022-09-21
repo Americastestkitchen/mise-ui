@@ -280,6 +280,13 @@ export const cssThemedColor = withThemes({
   cio: css`color: ${color.cork};`,
 });
 
+export const cssThemedStroke = withThemes({
+  default: css`stroke: ${color.eclipse};`,
+  atk: css`stroke: ${color.eclipse};`,
+  cco: css`stroke: ${color.black};`,
+  cio: css`stroke: ${color.cork};`,
+});
+
 export const cssTransitionColor = css`
   transition: color 0.2s ease;
 `;
@@ -289,6 +296,13 @@ export const cssThemedHoverColor = withThemes({
   atk: css`color: ${color.mint};`,
   cco: css`color: ${color.denim};`,
   cio: css`color: ${color.squirrel};`,
+});
+
+export const cssThemedHoverStroke = withThemes({
+  default: css`stroke: ${color.mint}`,
+  atk: css`stroke: ${color.mint}`,
+  cco: css`stroke: ${color.denim}`,
+  cio: css`stroke: ${color.squirrel}`,
 });
 
 export const cssThemedFill = withThemes({

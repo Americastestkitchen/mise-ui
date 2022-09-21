@@ -1,7 +1,7 @@
 import React from 'react';
-
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import LabelFrame from '../../../LabelFrame/LabelFrame';
-import CurrentRefinements from './index';
+import CurrentRefinements from './CurrentRefinements';
 import MiseInstantSearch from '../../../../lib/algolia/MiseInstantSearch/MiseInstantSearch';
 import SearchRefinementList from '../../search/SearchRefinementList';
 import { siteKey } from '../../../../config/argTypes';
@@ -10,11 +10,11 @@ import { addThemedWrapper } from '../../../../config/decorators';
 export default {
   title: 'Components/Algolia/shared/CurrentRefinements',
   component: CurrentRefinements,
-  decorators: [ addThemedWrapper() ],
+  decorators: [addThemedWrapper()],
   argTypes: { siteKey },
-};
+} as ComponentMeta<typeof CurrentRefinements>;
 
-const Template = (args) => (
+const Template: ComponentStory<typeof CurrentRefinements> = () => (
   <MiseInstantSearch>
     <LabelFrame label="Component">
       <CurrentRefinements />
@@ -30,4 +30,3 @@ const Template = (args) => (
 );
 
 export const Default = Template.bind({});
-Default.args = { siteKey: 'atk' };

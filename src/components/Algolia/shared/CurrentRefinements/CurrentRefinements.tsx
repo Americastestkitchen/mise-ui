@@ -1,12 +1,18 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { connectCurrentRefinements } from 'react-instantsearch-dom';
+import { Refinement, RefinementValue } from 'react-instantsearch-core';
 
 import { Close } from '../../../DesignTokens/Icon/svgs';
 import { color, font, fontSize, lineHeight, spacing, withThemes } from '../../../../styles';
+import {
+  cssThemedColor,
+  cssThemedStroke,
+  cssThemedHoverColor,
+  cssThemedHoverStroke,
+} from '../../../../styles/mixins';
 
-const RefinementTheme = {
+const RefinementItemTheme = {
   default: css`
     display: flex;
     float: left;
@@ -20,45 +26,6 @@ const RefinementTheme = {
     /* Trigger mouse event in Refinment only if direct 'x' button child is hovered. */
     & > button {
       pointer-events: auto;
-    }
-  `,
-  atk: css`
-    /* Change color of p child to mint when hovered. */
-    &:hover > p {
-      color: ${color.mint}
-    }
-
-    /* Change svg stroke color when parent and 'x' button child are hovered. */
-    &:hover > button:hover {
-      svg g {
-        stroke: ${color.mint};
-      }
-    }
-  `,
-  cco: css`
-    /* Change color of p child to mint when hovered. */
-    &:hover > p {
-      color: ${color.denim}
-    }
-
-    /* Change svg stroke color when parent and 'x' button child are hovered. */
-    &:hover > button:hover {
-      svg g {
-        stroke: ${color.denim};
-      }
-    }
-  `,
-  cio: css`
-    /* Change color of p child to mint when hovered. */
-    &:hover > p {
-      color: ${color.squirrel}
-    }
-
-    /* Change svg stroke color when parent and 'x' button child are hovered. */
-    &:hover > button:hover {
-      svg g {
-        stroke: ${color.squirrel};
-      }
     }
   `,
   kidsSearch: css`
@@ -81,23 +48,24 @@ const RefinementTheme = {
   `,
 };
 
-const Refinement = styled.div`
-  ${withThemes(RefinementTheme)}
+const RefinementItem = styled.div`
+  &:hover > p {
+    ${cssThemedHoverColor}
+  }
+
+  &:hover > button:hover {
+    svg g {
+      ${cssThemedHoverStroke}
+    }
+  }
+
+  ${withThemes(RefinementItemTheme)}
 `;
 
 const RefinementLabelTheme = {
   default: css`
     font: ${fontSize.md}/${lineHeight.sm} ${font.pnr};
     margin-right: ${spacing.xsm};
-  `,
-  atk: css`
-    color: ${color.eclipse};
-  `,
-  cco: css`
-    color: ${color.black};
-  `,
-  cio: css`
-    color: ${color.cork};
   `,
   kidsSearch: css`
     color: ${color.black};
@@ -106,10 +74,11 @@ const RefinementLabelTheme = {
       text-transform: capitalize;
     }
   `,
-
 };
 
 const RefinementLabel = styled.p`
+  ${cssThemedColor}
+
   ${withThemes(RefinementLabelTheme)}
 `;
 
@@ -122,21 +91,6 @@ const RefinementClearButtonTheme = {
       height: 0.8rem;
     }
   `,
-  atk: css`
-    svg g {
-      stroke: ${color.eclipse};
-    }
-  `,
-  cco: css`
-    svg g {
-      stroke: ${color.black};
-    }
-  `,
-  cio: css`
-    svg g {
-      stroke: ${color.cork};
-    }
-  `,
   kidsSearch: css`
     svg g {
       stroke: ${color.black};
@@ -145,10 +99,14 @@ const RefinementClearButtonTheme = {
 };
 
 const RefinementClearButton = styled.button`
+  svg g {
+    ${cssThemedStroke}
+  }
+
   ${withThemes(RefinementClearButtonTheme)}
 `;
 
-const labelMap = {
+const labelMap: Record<string, any> = {
   atk: 'America\'s Test Kitchen',
   cco: 'Cook\'s Country',
   cio: 'Cook\'s Illustrated',
@@ -157,16 +115,26 @@ const labelMap = {
   shop: 'ATK Shop',
 };
 
+export type CustomCurrentRefinementProps = {
+  handleClick?: (label: string) => void;
+  items: Refinement[];
+  refine: ((refinement: RefinementValue | RefinementValue[] | Refinement[]) => void);
+}
+
 // NOTE: when `category.items` is undefined, that means the underlying
 // facet only allows one value at a time. Exampel is NumericInput
-export const CustomCurrentRefinements = ({ handleClick, items, refine }) => (
+export const CustomCurrentRefinements = ({
+  handleClick,
+  items,
+  refine,
+}: CustomCurrentRefinementProps) => (
   <>
     {
       items.map((category) => {
         const items = category.items || [{ ...category, label: category.currentRefinement }];
         return (
           items.map(({ label, value }) => (
-            <Refinement
+            <RefinementItem
               className="current-refinement-item"
               key={`clear-refinement--${label}`}
             >
@@ -185,22 +153,12 @@ export const CustomCurrentRefinements = ({ handleClick, items, refine }) => (
                   fill={color.nobel}
                 />
               </RefinementClearButton>
-            </Refinement>
+            </RefinementItem>
           ))
         );
       })
     }
   </>
 );
-
-CustomCurrentRefinements.propTypes = {
-  handleClick: PropTypes.func,
-  items: PropTypes.array.isRequired,
-  refine: PropTypes.func.isRequired,
-};
-
-CustomCurrentRefinements.defaultProps = {
-  handleClick: null,
-};
 
 export default connectCurrentRefinements(CustomCurrentRefinements);
