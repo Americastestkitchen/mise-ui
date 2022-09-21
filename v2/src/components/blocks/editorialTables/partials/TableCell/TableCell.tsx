@@ -4,6 +4,7 @@ import cx from 'classnames';
 
 import CircularIcon from '../../../../partials/CircularIcon/CircularIcon';
 import styles from './tableCell.module.scss';
+import Sticker from '../../../../partials/Sticker/Sticker';
 
 type TableCellProps = EditorialTableCell & {
   indexInRow: number;
@@ -22,19 +23,45 @@ const TableCell = ({ content, isInFirstRow, rowHeaderContent, tableType, type, i
     { [styles.oobTablet]: indexInRow > 1 },
     { [styles.oobDesktop]: indexInRow > 2 }
   );
+
+  const cellContentClassNames = cx(
+    styles.content,
+    styles.divider,
+  );
   
   const rowHeaderEl = rowHeaderContent ? <p className={styles.inlineRowHeading}>{rowHeaderContent}</p> : null;
-  const dividerEl = <hr aria-hidden="true" className={styles.divider} />;
 
   switch(type) {
     case 'rowHeader':
+      const rowHeaderContentClassNames = cx(
+        styles.content,
+        { [styles.divider]: !isInFirstRow },
+      );
       return (
-        <th className={cellClassNames} >
-          {!isInFirstRow ? dividerEl : null}
-          {content}
+        <th className={cellClassNames}>
+          <div className={rowHeaderContentClassNames}>
+            {content}
+          </div>
         </th>
       );
-    case 'header':
+    case 'colHeaderDetailed':
+      const { affiliate, image, stickerText, title} = content;
+      return (
+        <th className={cellClassNames}>
+          {rowHeaderEl}
+          {image ? <img alt={image.altText ?? ''} className={styles.chdImage} src={image.cloudinaryUrl} /> : null}
+          {stickerText ? <Sticker text={stickerText} type="editorial" /> : null}
+          <span className={styles.chdTitle}>{title}</span>
+          {
+            affiliate ? (
+              <a className={styles.affiliate} href={affiliate.url}>
+                {affiliate.text} <span className={styles.affiliateArrow}>▸</span>
+              </a> 
+            ) : null
+          }
+        </th>
+      );
+    case 'colHeader':
       return (
         <th className={cellClassNames}>
           {rowHeaderEl}
@@ -47,22 +74,24 @@ const TableCell = ({ content, isInFirstRow, rowHeaderContent, tableType, type, i
       // when icon cell type is selected
       return (
         <td className={cellClassNames}>
-          {dividerEl}
-          {rowHeaderEl}
-          <div className={styles.iconWrapper}>
-            <div className={`${styles[content]} ${styles.iconSvg}`}>
-              <CircularIcon type={content === 'yes' ? 'checkmark' : 'close'} />
+          <div className={cellContentClassNames}>
+            {rowHeaderEl}
+            <div className={styles.iconWrapper}>
+              <div className={`${styles[content]} ${styles.iconSvg}`}>
+                <CircularIcon type={content === 'yes' ? 'checkmark' : 'close'} />
+              </div>
+              {content}
             </div>
-            {content}
           </div>
         </td>
       );
     case 'text':
       return (
         <td className={cellClassNames}>
-          {dividerEl}
-          {rowHeaderEl}
-          <span dangerouslySetInnerHTML={{ __html: content }} />
+          <div className={cellContentClassNames}>
+            {rowHeaderEl}
+            <span dangerouslySetInnerHTML={{ __html: content }} />
+          </div>
         </td>
       );
     default:

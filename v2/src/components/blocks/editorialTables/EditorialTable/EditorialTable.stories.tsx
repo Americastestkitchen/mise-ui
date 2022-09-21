@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import EditorialTable from './EditorialTable';
 
 export default {
-  title: 'Components/Blocks/Editorial Tables/EditorialTable',
+  title: 'Components/Blocks/EditorialTable',
   component: EditorialTable,
 } as ComponentMeta<typeof EditorialTable>;
 
@@ -20,28 +20,68 @@ ComparisonTablePaginated.args = {
         cells: [
           {
             id: 'row-one-cell-one',
-            content: 'Row Heading 1',
+            content: 'The Soda Maker',
             type: 'rowHeader',
           },
           {
             id: 'row-one-cell-two',
-            content: 'Column Heading 1',
-            type: 'header',
+            content: {
+              affiliate: {
+                text: 'Buy On Amazon',
+                url: 'https://www.amazon.com/dp/B097TD8V5P/?tag=atkequipchart-20',
+              },
+              image: {
+                cloudinaryUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/c_fill,dpr_2.0,f_auto,fl_lossy.progressive.strip_profile,g_faces:auto,q_auto:low,w_270/SIL_SodaStream_Terra_dbrqwh',
+              },
+              stickerText: 'Best For Most People',
+              title: 'SodaStream Terra',
+            },
+            type: 'colHeaderDetailed',
           },
           {
             id: 'row-one-cell-three',
-            content: 'Column Heading 2',
-            type: 'header',
+            content: {
+              affiliate: {
+                text: 'Buy On Williams Sonoma',
+                url: 'https://www.americastestkitchen.com',
+              },
+              image: {
+                cloudinaryUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/c_fill,dpr_2.0,f_auto,fl_lossy.progressive.strip_profile,g_faces:auto,q_auto:low,w_270/v1/ATK%20Reviews/2021/6_CIND_Soda%20Makers/SIL_SodaStream_AquaFizz_1876',
+              },
+              stickerText: 'Best With Glass',
+              title: 'SodaStream AquaFizz',
+            },
+            type: 'colHeaderDetailed',
           },
           {
             id: 'row-one-cell-four',
-            content: 'Column Heading 3',
-            type: 'header',
+            content: {
+              affiliate: {
+                text: 'Buy On Amazon',
+                url: '',
+              },
+              image: {
+                cloudinaryUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/c_fill,dpr_2.0,f_auto,fl_lossy.progressive.strip_profile,g_faces:auto,q_auto:low,w_270/v1/ATK%20Reviews/2021/6_CIND_Soda%20Makers/SIL_SodaStream_OneTouch-Electric_1842',
+              },
+              stickerText: 'Easiest To Use',
+              title: 'SodaStream OneTouch',
+            },
+            type: 'colHeaderDetailed',
           },
           {
             id: 'row-one-cell-five',
-            content: 'Column Heading 4',
-            type: 'header',
+            content: {
+              affiliate: {
+                text: 'Buy On Amazon',
+                url: '',
+              },
+              image: {
+                cloudinaryUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/c_fill,dpr_2.0,f_auto,fl_lossy.progressive.strip_profile,g_faces:auto,q_auto:low,w_270/v1/ATK%20Reviews/2021/6_CIND_Soda%20Makers/SIL_Aarke_Carbonator-III_1743',
+              },
+              stickerText: 'Most Stylish',
+              title: 'Column Heading 4',
+            },
+            type: 'colHeaderDetailed',
           },
         ],
         id: 'row-one',
@@ -50,27 +90,27 @@ ComparisonTablePaginated.args = {
         cells: [
           {
             id: 'row-two-cell-one',
-            content: 'Row Heading 2',
+            content: 'Carbonation Source',
             type: 'rowHeader',
           },
           {
             id: 'row-two-cell-two',
-            content: '<p>Text Cell 1</p>',
+            content: '<p>60-liter “quick connect” CO2 canisters</p>',
             type: 'text',
           },
           {
             id: 'row-two-cell-three',
-            content: '<p>Text Cell 2</p>',
+            content: '<p>60-liter CO2 canisters</p>',
             type: 'text',
           },
           {
             id: 'row-two-cell-four',
-            content: '<p>Text Cell 3</p>',
+            content: '<p>60-liter CO2 canisters</p>',
             type: 'text',
           },
           {
             id: 'row-two-cell-five',
-            content: '<p>Text Cell 4</p>',
+            content: '<p>60-liter CO2 canisters</p>',
             type: 'text',
           },
         ],
@@ -80,61 +120,120 @@ ComparisonTablePaginated.args = {
         cells: [
           {
             id: 'row-three-cell-one',
-            content: 'Row Heading 3',
+            content: 'Type of Water Bottle',
             type: 'rowHeader',
           },
           {
             id: 'row-three-cell-two',
-            content: 'yes',
-            type: 'icon',
+            content: '<p>Plastic (dishwasher-safe)</p>',
+            type: 'text',
           },
           {
             id: 'row-three-cell-three',
-            content: 'no',
-            type: 'icon',
+            content: '<p>Glass (dishwasher-safe)</p>',
+            type: 'text',
           },
           {
             id: 'row-three-cell-four',
-            content: 'yes',
-            type: 'icon',
+            content: '<p>Plastic (must be hand-washed)</p>',
+            type: 'text',
           },
           {
             id: 'row-three-cell-five',
-            content: 'no',
-            type: 'icon',
+            content: '<p>Plastic (must be hand-washed)</p>',
+            type: 'text',
           },
         ],
         id: 'row-three',
-      },
-      {
+      },      {
         cells: [
           {
             id: 'row-four-cell-one',
-            content: 'Row Header 4',
+            content: 'How It Works',
             type: 'rowHeader',
           },
           {
             id: 'row-four-cell-two',
-            content: 'Test',
+            content: '<p>Manually, by repeatedly pressing a button</p>',
             type: 'text',
           },
           {
             id: 'row-four-cell-three',
-            content: '',
-            type: 'empty',
+            content: '<p>Manually, by repeatedly pressing a button</p>',
+            type: 'text',
           },
           {
             id: 'row-four-cell-four',
-            content: '',
-            type: 'empty',
+            content: '<p>Automatically, by pressing a button that corresponds to a preprogrammed carbonation (low, medium, high)</p>',
+            type: 'text',
           },
           {
             id: 'row-four-cell-five',
-            content: '',
-            type: 'empty',
+            content: '<p>Manually, by repeatedly pressing a button</p>',
+            type: 'text',
           },
         ],
         id: 'row-four',
+      },
+      {
+        cells: [
+          {
+            id: 'row-five-cell-one',
+            content: 'Carbonate Liquids Other Than Water',
+            type: 'rowHeader',
+          },
+          {
+            id: 'row-five-cell-two',
+            content: 'no',
+            type: 'icon',
+          },
+          {
+            id: 'row-five-cell-three',
+            content: 'no',
+            type: 'icon',
+          },
+          {
+            id: 'row-five-cell-four',
+            content: 'no',
+            type: 'icon',
+          },
+          {
+            id: 'row-five-cell-five',
+            content: 'no',
+            type: 'icon',
+          },
+        ],
+        id: 'row-five',
+      },
+      {
+        cells: [
+          {
+            id: 'row-six-cell-one',
+            content: 'Requies Electricity',
+            type: 'rowHeader',
+          },
+          {
+            id: 'row-six-cell-two',
+            content: 'no',
+            type: 'icon',
+          },
+          {
+            id: 'row-six-cell-three',
+            content: 'no',
+            type: 'icon',
+          },
+          {
+            id: 'row-six-cell-four',
+            content: 'yes',
+            type: 'icon',
+          },
+          {
+            id: 'row-six-cell-five',
+            content: 'no',
+            type: 'icon',
+          },
+        ],
+        id: 'row-six',
       },
     ],
     type: 'comparison',
@@ -157,12 +256,12 @@ ComparisonTableNoPagination.args = {
           {
             id: 'row-one-cell-two',
             content: 'Column Heading 1',
-            type: 'header',
+            type: 'colHeader',
           },
           {
             id: 'row-one-cell-three',
             content: 'Column Heading 2',
-            type: 'header',
+            type: 'colHeader',
           },
         ],
         id: 'row-one',
@@ -243,22 +342,22 @@ InformationalTablePaginated.args = {
           {
             id: 'y5z24',
             content: 'Yes',
-            type: 'header',
+            type: 'colHeader',
           },
           {
             id: 'tof2t',
             content: 'No',
-            type: 'header',
+            type: 'colHeader',
           },
           {
             id: 'r4fot',
             content: 'Moderate',
-            type: 'header',
+            type: 'colHeader',
           },
           {
             id: 'hlr6f',
             content: 'Maybe',
-            type: 'header',
+            type: 'colHeader',
           },
         ],
         id: '0mx0g',
@@ -354,17 +453,17 @@ InformationalTableNoPagination.args = {
           {
             id: 'y5z24',
             content: 'Yes',
-            type: 'header',
+            type: 'colHeader',
           },
           {
             id: 'tof2t',
             content: 'No',
-            type: 'header',
+            type: 'colHeader',
           },
           {
             id: 'r4fot',
             content: 'Moderate',
-            type: 'header',
+            type: 'colHeader',
           },
         ],
         id: '0mx0g',
