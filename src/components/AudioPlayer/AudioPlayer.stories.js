@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import fetch from 'cross-fetch';
 
 import AudioPlayer from './index';
-import LabelFrame from '../LabelFrame';
+import LabelFrame from '../LabelFrame/LabelFrame';
 import PodcastEpisodeCard from '../Cards/PodcastEpisodeCard';
 import { getImageUrl } from '../../lib/cloudinary';
 

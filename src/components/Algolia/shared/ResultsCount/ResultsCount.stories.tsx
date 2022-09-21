@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import LabelFrame from '../../../LabelFrame';
+import LabelFrame from '../../../LabelFrame/LabelFrame';
 import MiseInstantSearch from '../../../../lib/algolia/MiseInstantSearch/MiseInstantSearch';
 import ResultsCount from './ResultsCount';
 import { siteKey } from '../../../../config/argTypes';

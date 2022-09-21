@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-import LabelFrame from '../../../LabelFrame';
+import LabelFrame from '../../../LabelFrame/LabelFrame';
 import RefinementListBasic from './index';
 import MiseInstantSearch from '../../../../lib/algolia/MiseInstantSearch/MiseInstantSearch';
 import { color, spacing } from '../../../../styles';

@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { PropsWithChildren } from 'react';
 import styled from 'styled-components';
 
 import { color, font, fontSize } from '../../styles';
@@ -52,26 +51,20 @@ const Label = styled.p.attrs({
   top: 0;
 `;
 
-const LabelFrame = ({ className, children, label }) => (
+export type LabelFrameProps = PropsWithChildren<{
+  className?: string;
+  label: string;
+}>;
+
+const LabelFrame = ({
+  className,
+  children,
+  label,
+}: LabelFrameProps) => (
   <Frame className={className}>
-    <Label>
-      {label}
-    </Label>
+    <Label>{label}</Label>
     {children}
   </Frame>
 );
-
-LabelFrame.propTypes = {
-  className: PropTypes.string,
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]).isRequired,
-  label: PropTypes.string.isRequired,
-};
-
-LabelFrame.defaultProps = {
-  className: '',
-};
 
 export default LabelFrame;
