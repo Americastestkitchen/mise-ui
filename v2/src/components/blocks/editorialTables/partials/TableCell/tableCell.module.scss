@@ -1,5 +1,6 @@
 @import "../../../../../styles/main.scss";
 
+// **** General Cell Styles ****
 .cell {
   display: flex;
   flex-direction: column;
@@ -9,20 +10,28 @@
 }
 
 .informationalCell {
+  min-width: 272px;
   max-width: 272px;
 }
 
 .comparisonCell {
+  min-width: 200px;
   max-width: 200px;
 }
 
-.divider {
-  background-color: $cNGray;
-  margin-bottom: 20px;
-  height: 1px;
-  width: 100%;
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding-top: 20px;
 }
 
+.divider {
+  border-top: solid 1px $cNGray;
+}
+
+// **** Out of Bounds Styles ****
 // TODO: add breakpoint tokens
 .oobMobile {
   @media (max-width: 768px) {
@@ -42,11 +51,42 @@
   }
 }
 
-.header {
+// **** Column Header Styles ****
+.colHeader {
   font: 1.125rem/1 $secondaryFont;
   padding-top: 20px;
 }
 
+.colHeaderDetailed {
+  justify-content: flex-start;
+  padding-top: 20px;
+
+  :global(.sticker) {
+    margin-top: 14px;
+  }
+}
+
+.chdImage {
+  max-height: 100px;
+  max-width: 100px;
+}
+
+.chdTitle {
+  font: 1rem/1.25 $secondaryFont;
+  margin-top: 14px
+}
+
+.affiliate {
+  font: 1rem/1.38 $primaryFont;
+  margin-top: 6px;
+  width: 97%;
+}
+
+.affiliateArrow {
+  color: $cAAction;
+}
+
+// **** Row Header Styles ****
 .rowHeader {
   background-color: transparent;
   font: 1.125rem/1 $secondaryFont;
@@ -62,11 +102,6 @@
   padding-top: 20px;
 }
 
-.icon,
-.text {
-  font: 1rem/1.63 $primaryFont;
-}
-
 .inlineRowHeading {
   background-color: #E9F0F0;
   font: 1rem/1 $secondaryFont;
@@ -76,6 +111,16 @@
   @media (min-width: 769px) {
     display: none;
   }
+}
+
+// **** Icon and Text Cell Styles ****
+.icon,
+.text {
+  font: 1rem/1.63 $primaryFont;
+}
+
+.icon {
+  text-transform: capitalize;
 }
 
 .no {

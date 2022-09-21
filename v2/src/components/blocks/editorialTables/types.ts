@@ -2,10 +2,24 @@
 type EditorialTableHeaderCell = {
   content: string;
   id: string;
-  type: 'header';
+  type: 'colHeader';
 };
 
-type EditorialTableRowHeaderCell = {
+type EditorialTableDetailedHeaderCell = {
+  content: {
+    affiliate?: { text: string; url: string; };
+    image?: {
+      altText?: string;
+      cloudinaryUrl: string;
+    },
+    stickerText?: string;
+    title: string;
+  }
+  id: string;
+  type: 'colHeaderDetailed';
+};
+
+export type EditorialTableRowHeaderCell = {
   content: string;
   id: string;
   type: 'rowHeader';
@@ -31,6 +45,7 @@ type EditorialTableEmptyCell = {
 
 export type EditorialTableCell = EditorialTableEmptyCell
   | EditorialTableHeaderCell
+  | EditorialTableDetailedHeaderCell
   | EditorialTableRowHeaderCell
   | EditorialTableIconCell
   | EditorialTableTextCell;
