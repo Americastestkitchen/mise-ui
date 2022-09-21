@@ -41,9 +41,9 @@ const TableCard = ({ currentPage, table }: TableCardProps) => {
                         <TableCell
                           {...cell}
                           key={cell.id}
-                          rowHeaderContent={rowHeader?.content}
+                          rowHeaderContent={typeof rowHeader?.content === 'string' ? rowHeader.content : undefined}
                           indexInRow={index}
-                      tableType={type}
+                          tableType={type}
                         />
                       )
                   })}

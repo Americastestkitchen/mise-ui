@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'classnames';
 
 import CircularButton from '../../../../partials/CircularButton/CircularButton';
 import styles from './progressHeader.module.scss';
@@ -12,8 +13,13 @@ type ProgressHeaderProps = {
 
 // TODO (A11Y): add aria labels for pages and buttons
 const ProgressHeader = ({ currentPage, maxPage, decrementPage, incrementPage }: ProgressHeaderProps) => {
+  const classNames = cx(
+    styles.wrapper,
+    { [styles.hideDesktop]: maxPage <= 3 },
+  );
+
   return (
-    <div className={`${maxPage <= 3 && styles.hideDesktop} ${styles.wrapper}`}>
+    <div className={classNames}>
       <p className={styles.pageIndicator}>
         {currentPage + 1} of {maxPage}
       </p>
