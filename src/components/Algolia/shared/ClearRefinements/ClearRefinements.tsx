@@ -1,9 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { connectCurrentRefinements } from 'react-instantsearch-dom';
 import styled, { css } from 'styled-components';
+import { connectCurrentRefinements } from 'react-instantsearch-dom';
+import { Refinement, RefinementValue } from 'react-instantsearch-core';
 
 import { color, font, fontSize, lineHeight, spacing, withThemes } from '../../../../styles';
+import { cssThemedFill, cssThemedHoverColor } from '../../../../styles/mixins';
 
 const StyledClearRefinementsTheme = {
   default: css`
@@ -12,30 +13,6 @@ const StyledClearRefinementsTheme = {
 
     &[disabled] {
       display: none;
-    }
-  `,
-  atk: css`
-    color: ${color.eclipse};
-
-    &:hover {
-      color: ${color.mint};
-      cursor: pointer;
-    }
-  `,
-  cco: css`
-    color: ${color.black};
-
-    &:hover {
-      color: ${color.denim};
-      cursor: pointer;
-    }
-  `,
-  cio: css`
-    color: ${color.cork};
-
-    &:hover {
-      color: ${color.squirrel};
-      cursor: pointer;
     }
   `,
   kidsSearch: css`
@@ -52,15 +29,36 @@ const StyledClearRefinementsTheme = {
 };
 
 const StyledClearRefinements = styled.button`
+  ${cssThemedFill}
+
+  @media(hover: hover) {
+    &:hover {
+      ${cssThemedHoverColor}
+      cursor: pointer;
+    }
+  }
+
   ${withThemes(StyledClearRefinementsTheme)}
 `;
 
-export const CustomClearRefinements = ({ handleClick, items, refine }) => (
+export type CustomClearRefinementsProps = {
+  handleClick?: () => void;
+  items: Refinement[];
+  refine: ((refinement: RefinementValue | RefinementValue[] | Refinement[]) => void);
+}
+
+export const CustomClearRefinements = ({
+  handleClick,
+  items,
+  refine,
+}: CustomClearRefinementsProps) => (
   <StyledClearRefinements
     className="clear-refinements-button"
     disabled={!items.length}
     onClick={() => {
-      refine(items);
+      if (items) {
+        refine(items);
+      }
       if (handleClick) handleClick();
     }}
     type="button"
@@ -68,15 +66,5 @@ export const CustomClearRefinements = ({ handleClick, items, refine }) => (
     Clear filters
   </StyledClearRefinements>
 );
-
-CustomClearRefinements.propTypes = {
-  handleClick: PropTypes.func,
-  items: PropTypes.array.isRequired,
-  refine: PropTypes.func.isRequired,
-};
-
-CustomClearRefinements.defaultProps = {
-  handleClick: null,
-};
 
 export default connectCurrentRefinements(CustomClearRefinements);

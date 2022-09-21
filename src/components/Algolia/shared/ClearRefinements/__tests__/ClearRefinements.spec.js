@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import 'jest-styled-components';
 
-import { CustomClearRefinements } from '../index';
+import { CustomClearRefinements } from '../ClearRefinements';
 import breakpoints from '../../../../../styles/breakpoints';
 
 describe('ClearRefinements component should', () => {
