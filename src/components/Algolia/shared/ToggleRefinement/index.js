@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connectRefinementList } from 'react-instantsearch-dom';
 
-import RefinementFilter2 from '../RefinementFilter2';
+import RefinementFilter2 from '../RefinementFilter2/RefinementFilter2';
 import { cssThemedColor, cssThemedLink } from '../../../../styles/mixins';
 import { font, fontSize } from '../../../../styles';
 
