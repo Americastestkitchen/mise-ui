@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'classnames';
 
 import CircularIcon from '../CircularIcon/CircularIcon';
 import { IconType } from '../../tokens/icons/svgs/useIconMap';
@@ -9,10 +10,17 @@ type CircularButtonProps = {
   onClick: () => void;
 };
 
-const CircularButton = ({ iconType, onClick }: CircularButtonProps) => (
-  <button className={styles.button} onClick={onClick}>
-    <CircularIcon type={iconType} />
-  </button>
-);
+const CircularButton = ({ iconType, onClick }: CircularButtonProps) => {
+  const classNames = cx(
+    'circular-button',
+    styles.button,
+  );
+
+  return (
+    <button className={classNames} onClick={onClick}>
+      <CircularIcon type={iconType} />
+    </button>
+  );
+};
 
 export default CircularButton;

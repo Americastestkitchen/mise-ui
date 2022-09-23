@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from 'react';
+import cx from 'classnames';
 
 import ProgressHeader from '../partials/ProgressHeader/ProgressHeader';
 import TableCard from '../partials/TableCard/TableCard';
@@ -7,11 +8,18 @@ import { EditorialTableType } from '../types';
 
 type EditorialTableProps = {
   description?: string;
+  brandKey: 'atk' | 'cco' | 'cio';
   heading: string;
   table: EditorialTableType;
 };
 
-const EditorialTable = ({ description, heading, table }: EditorialTableProps) => {
+const EditorialTable = ({ description, heading, table, brandKey }: EditorialTableProps) => {
+  const wrapperClassNames = cx(
+    styles.wrapper,
+    `${table.type}`,
+    { [styles[brandKey]]: brandKey !== 'atk'},
+  );
+
   const { rows, type } = table;
   const firstRowCells = rows[0].cells;
   // Subtract a page for comparison table because row header column
@@ -29,7 +37,7 @@ const EditorialTable = ({ description, heading, table }: EditorialTableProps) =>
   }, []);
 
   return (
-    <div className={styles.wrapper}>
+    <div className={wrapperClassNames}>
       <div>
         <h2 className={styles.heading}>{heading}</h2>
         {description && <p className={styles.description}>{description}</p>}

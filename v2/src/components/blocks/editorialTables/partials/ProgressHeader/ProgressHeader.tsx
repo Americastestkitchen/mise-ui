@@ -13,14 +13,20 @@ type ProgressHeaderProps = {
 
 // TODO (A11Y): add aria labels for pages and buttons
 const ProgressHeader = ({ currentPage, maxPage, decrementPage, incrementPage }: ProgressHeaderProps) => {
-  const classNames = cx(
+  const wrapperClassNames = cx(
+    'progress-header',
     styles.wrapper,
     { [styles.hideDesktop]: maxPage <= 3 },
   );
 
+  const pageIndicatorClassNames = cx(
+    'progress-header__page-indicator',
+    styles.pageIndicator,
+  );
+
   return (
-    <div className={classNames}>
-      <p className={styles.pageIndicator}>
+    <div className={wrapperClassNames}>
+      <p className={pageIndicatorClassNames}>
         {currentPage + 1} of {maxPage}
       </p>
       <div>

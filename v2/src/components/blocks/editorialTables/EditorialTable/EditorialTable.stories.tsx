@@ -238,6 +238,7 @@ ComparisonTablePaginated.args = {
     ],
     type: 'comparison',
   },
+  brandKey: 'atk',
 };
 
 export const ComparisonTableNoPagination = Template.bind({});
@@ -329,6 +330,7 @@ ComparisonTableNoPagination.args = {
     ],
     type: 'comparison',
   },
+  brandKey: 'atk',
 };
 
 export const InformationalTablePaginated = Template.bind({});
@@ -440,6 +442,7 @@ InformationalTablePaginated.args = {
     ],
     type: 'informational',
   },
+  brandKey: 'atk',
 };
 
 export const InformationalTableNoPagination = Template.bind({});
@@ -511,4 +514,5 @@ InformationalTableNoPagination.args = {
     ],
     type: 'informational',
   },
+  brandKey: 'atk',
 };
