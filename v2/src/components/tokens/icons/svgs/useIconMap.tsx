@@ -1,6 +1,7 @@
 import AlertIcon from './AlertIcon';
 import BellIcon from './BellIcon';
 import CheckmarkIcon from './CheckmarkIcon';
+import CloseIcon from './CloseIcon';
 import CollectionIcon from './CollectionIcon';
 import CommentIcon from './CommentIcon';
 import CookbookIcon from './CookbookIcon';
@@ -9,6 +10,7 @@ import FavoriteRibbonIcon from './FavoriteRibbon';
 import FavoriteRibbonIconWithBg from './FavoriteRibbonWithBg';
 import FilterIcon from './FilterIcon'
 import FolderIcon from './FolderIcon';
+import LeftProgressArrow from './LeftProgressArrowIcon';
 import LightbulbIcon from './LightbulbIcon';
 import LockIcon from './LockIcon';
 import PhoneIcon from './PhoneIcon';
@@ -17,6 +19,7 @@ import PrintIcon from './PrintIcon';
 import QuoteIcon from './QuoteIcon';
 import RecipeCardIcon from './RecipeCardIcon';
 import ReviewRibbonIcon from './ReviewRibbonIcon';
+import RightProgressArrow from './RightProgressArrowIcon';
 import RoosterIcon from './RoosterIcon';
 import ShoppingCartIcon from './ShoppingCartIcon';
 import SpyglassIcon from './SpyglassIcon';
@@ -26,6 +29,7 @@ export const iconMap = {
   alert: AlertIcon,
   bell: BellIcon,
   checkmark: CheckmarkIcon,
+  close: CloseIcon,
   collection: CollectionIcon,
   comment: CommentIcon,
   cookbook: CookbookIcon,
@@ -34,6 +38,7 @@ export const iconMap = {
   favoriteRibbonBg: FavoriteRibbonIconWithBg,
   filter: FilterIcon,
   folder: FolderIcon,
+  leftArrow: LeftProgressArrow,
   lightbulb: LightbulbIcon,
   lock: LockIcon,
   phone: PhoneIcon,
@@ -42,6 +47,7 @@ export const iconMap = {
   quote: QuoteIcon,
   recipeCard: RecipeCardIcon,
   reviewRibbon: ReviewRibbonIcon,
+  rightArrow: RightProgressArrow,
   rooster: RoosterIcon,
   shoppingCart: ShoppingCartIcon,
   spyglass: SpyglassIcon,

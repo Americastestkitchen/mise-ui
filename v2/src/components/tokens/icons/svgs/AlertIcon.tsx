@@ -2,7 +2,7 @@ import React from 'react';
 
 import IconSvgProps from './iconSvgProps';
 
-export default function Alert({ fill }: IconSvgProps) {
+export default function AlertIcon({ fill }: IconSvgProps) {
   return (
     <svg
       aria-hidden="true"
