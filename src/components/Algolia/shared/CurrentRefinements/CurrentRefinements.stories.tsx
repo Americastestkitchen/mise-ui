@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import LabelFrame from '../../../LabelFrame/LabelFrame';
 import CurrentRefinements from './CurrentRefinements';
 import MiseInstantSearch from '../../../../lib/algolia/MiseInstantSearch/MiseInstantSearch';
-import SearchRefinementList from '../../search/SearchRefinementList';
+import SearchRefinementList from '../../search/SearchRefinementList/SearchRefinementList';
 import { siteKey } from '../../../../config/argTypes';
 import { addThemedWrapper } from '../../../../config/decorators';
 

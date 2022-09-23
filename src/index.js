@@ -70,7 +70,7 @@ import SearchBanner from './components/SearchBanner/SearchBanner';
 import SearchInput from './components/SearchInput';
 import SearchNumericMenu from './components/Algolia/search/SearchNumericMenu';
 import SearchNumericMenuBasic from './components/Algolia/search/SearchNumericMenuBasic';
-import SearchRefinementList from './components/Algolia/search/SearchRefinementList';
+import SearchRefinementList from './components/Algolia/search/SearchRefinementList/SearchRefinementList';
 import SearchSortBy from './components/Algolia/search/SearchSortBy/SearchSortBy';
 import ShowMoreLess from './components/ShowMoreLess/ShowMoreLess';
 import ShowMoreResults from './components/ShowMoreResults/ShowMoreResults';
