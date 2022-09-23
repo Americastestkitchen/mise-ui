@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import Menu from '../Menu';
+import Menu from '../Menu/Menu';
 import ToggleRefinement from '../ToggleRefinement';
 
 const ToggleRefinementMenuWrapper = styled.div`

@@ -1,10 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connectMenu } from 'react-instantsearch-dom';
-import RefinementFilter from '../RefinementFilter2';
+import { MenuProvided } from 'react-instantsearch-core';
+import RefinementFilter from '../RefinementFilter2/RefinementFilter2';
 
-const MenuWrapper = styled.ul`
+const MenuWrapper = styled.ul<{hasItems: boolean}>`
   ${({ hasItems }) => (hasItems ? 'margin-bottom: 4rem;' : '')}
 
   .refinement-filter__wrapper {
@@ -16,7 +16,11 @@ const MenuWrapper = styled.ul`
   }
 `;
 
-const Menu = ({ items, onClickItem, ...restProps }) => (
+export interface MenuProps extends MenuProvided {
+  onClickItem: () => void;
+}
+
+const Menu = ({ items, onClickItem, ...restProps }: MenuProps) => (
   <MenuWrapper hasItems={items && items.length > 0}>
     {
       items.map(item => (
@@ -31,10 +35,5 @@ const Menu = ({ items, onClickItem, ...restProps }) => (
     }
   </MenuWrapper>
 );
-
-Menu.propTypes = {
-  items: PropTypes.array.isRequired,
-  onClickItem: PropTypes.func,
-};
 
 export default connectMenu(Menu);

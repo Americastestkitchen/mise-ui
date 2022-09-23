@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import ShowMoreLess from '../../../ShowMoreLess/ShowMoreLess';
-import RefinementFilter2 from '../RefinementFilter2';
+import RefinementFilter2 from '../RefinementFilter2/RefinementFilter2';
 
 export const CustomRefinementList = ({
   attribute,
