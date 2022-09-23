@@ -24,7 +24,7 @@ import CardWrapper from './components/Cards/CardWrapper/CardWrapper';
 import CategoryCard from './components/Cards/CategoryCard/CategoryCard';
 import ClearRefinements from './components/Algolia/shared/ClearRefinements/ClearRefinements';
 import CookingSchoolAd from './components/Ads/ReviewsAds/CookingSchoolAd/CookingSchoolAd';
-import CurrentRefinements from './components/Algolia/shared/CurrentRefinements';
+import CurrentRefinements from './components/Algolia/shared/CurrentRefinements/CurrentRefinements';
 import DocumentListCarousel from './components/Carousels/DocumentListCarousel';
 import DocumentSuggestionCarousel from './components/Carousels/DocumentSuggestionCarousel';
 import FavoriteActionButton from './components/Buttons/ActionButtons/FavoriteActionButton/FavoriteActionButton';
