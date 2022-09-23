@@ -15,6 +15,7 @@ type TableCellProps = EditorialTableCell & {
 
 const TableCell = ({ content, isInFirstRow, rowHeaderContent, tableType, type, indexInRow }: TableCellProps) => {
   const cellClassNames = cx(
+    type.includes('Header') ? 'editorial-table-header-cell' : 'editorial-table-data-cell',
     styles.cell,
     styles[type],
     styles[`${tableType}Cell`],

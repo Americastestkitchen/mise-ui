@@ -12,3 +12,68 @@
   font: $fBodyMd;
   margin-top: 16px;
 }
+
+
+// **** Temprorary Brand Style Overrides ****
+.cco {
+  color: $ccoCBFont !important;
+
+  :global(.progress-header):global(__page-indicator) {
+    color: $ccoCBFont !important;
+  }
+  
+  :global(.circular-button) {
+    :global(.circular-icon) {
+      background-color: $ccoCBPrimary !important;
+
+      &:hover {
+        background-color: $ccoCBPrimaryHover !important;
+      }
+    }
+  }
+
+  :global(.editorial-table-header-cell) {
+    border: solid 4px $cNGrayLight;
+    border-bottom: none;
+  }
+
+  &:global(.comparison) {
+    :global(.editorial-table-header-cell) {
+      &:first-child {
+        border: none;
+      }
+    }
+  }
+  
+  :global(.editorial-table-data-cell) {
+    border: solid 4px $cNGrayLight;
+    border-top: none;
+    border-bottom: none;
+  }
+
+  :global(.editorial-table-row) {
+    &:last-child {
+      :global(.editorial-table-data-cell) {
+        border-bottom: solid 4px $cNGrayLight;
+      }
+    }
+  }
+}
+
+.cio {
+  color: $cioCBFont !important;
+
+  :global(.progress-header):global(__page-indicator) {
+    color: $cioCBFont !important;
+  }
+  
+  :global(.circular-button) {
+    :global(.circular-icon) {
+      background-color: $cioCBPrimary !important;
+
+      &:hover {
+        background-color: $cioCBPrimaryHover !important;
+      }
+    }
+  }
+}

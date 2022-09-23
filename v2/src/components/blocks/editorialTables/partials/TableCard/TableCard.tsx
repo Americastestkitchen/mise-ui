@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'classnames';
 
 import TableCell from '../TableCell/TableCell';
 import styles from './tableCard.module.scss';
@@ -22,8 +23,12 @@ const TableCard = ({ currentPage, table }: TableCardProps) => {
               rowHeader = row.cells[0];
               pageSlice = currentPage + 1;
             }
+            const rowClassNames = cx(
+              'editorial-table-row',
+              styles.row,
+            );
             return (
-              <tr className={styles.row} key={row.id}>
+              <tr className={rowClassNames} key={row.id}>
                 {
                   rowHeader ? (
                     <TableCell
