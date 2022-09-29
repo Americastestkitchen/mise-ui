@@ -1,0 +1,12 @@
+@mixin underlined-link {
+  a {
+    background-image: linear-gradient(transparent 91%,  $cBLink 91%);
+    transition: background-color 0.2s ease-in-out 0s;
+
+    @media(hover: hover) {
+      &:hover {
+        background-color: $cBLinkHover;
+      }
+    }
+  }
+}
