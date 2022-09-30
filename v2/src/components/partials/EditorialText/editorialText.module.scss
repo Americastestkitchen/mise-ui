@@ -1,0 +1,25 @@
+@import "../../../styles/main.scss";
+
+.wrapper {
+  @include underlined-link;
+
+  em {
+    font-style: italic;
+  }
+}
+
+.primary {
+  font-family: $primaryFont;
+
+  strong {
+    font-family: $secondaryFont;
+  }
+}
+
+.accent {
+  font-family: $accentFont;
+
+  strong {
+    font-weight: bold;
+  }
+}
