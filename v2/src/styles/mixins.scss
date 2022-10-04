@@ -32,3 +32,8 @@
     }
   }
 }
+
+@mixin focus-indicator {
+  outline: 2px dotted $cEclipse;
+  outline-offset: 3px;
+}
