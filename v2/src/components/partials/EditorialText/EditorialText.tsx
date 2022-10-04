@@ -5,7 +5,7 @@ import styles from './editorialText.module.scss';
 
 type EditorialTextProps = {
   content: string;
-  fontStyle?: 'accent' | 'primary';
+  fontStyle?: 'accent' | 'primary' | 'secondary';
 };
 
 const EditorialText = ({ content, fontStyle = 'primary' }: EditorialTextProps) => {
