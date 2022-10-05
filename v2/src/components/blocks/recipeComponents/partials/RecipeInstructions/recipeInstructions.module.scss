@@ -1,0 +1,44 @@
+@import "../../../../../styles/main.scss";
+
+.wrapper {
+  margin-bottom: 1rem;
+}
+
+.headline {
+  text-transform: uppercase;
+  font: 1.125rem/1.625rem $secondaryFont;
+  border-bottom: 1px solid $cSicNGrayver;
+  padding-bottom: 5px;
+  margin-bottom: 18px;
+  letter-spacing: 1.6px;
+}
+
+.group {
+  margin-bottom: 20px;
+}
+
+.countWrapper {
+  height: 30px;
+  width: 30px;
+  background-color: $cBPrimary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.count {
+  font-size: 18px;
+  font: 1.125rem/1.625rem $secondaryFont;
+  color: $cNWhite;
+}
+
+.instruction {
+  border-top: 1px solid $cNGray;
+  padding: 15px 0;
+
+  :global(.editorial-text) {
+    line-height: 26px;
+  }
+}

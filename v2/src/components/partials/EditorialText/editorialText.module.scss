@@ -2,7 +2,7 @@
 
 .wrapper {
   @include underlined-link;
-
+  color: $cBFont;
   em {
     font-style: italic;
   }

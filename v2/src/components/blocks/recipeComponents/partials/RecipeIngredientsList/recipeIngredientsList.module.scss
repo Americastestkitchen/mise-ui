@@ -7,13 +7,14 @@
 .headline {
 	text-transform: uppercase;
 	font: 1.125rem/1.625rem $secondaryFont;
-	border-bottom: 1px solid $cSilver;
+	border-bottom: 1px solid $cNGray;
 	padding-bottom: 5px;
 	margin-bottom: 18px;
+	letter-spacing: 1.6px;
 }
 
 .groupName {
-	font: 1rem/1rem $merriweather;
+	font: 1rem/1rem $accentFont;
 	font-style: italic;
 	margin-bottom: 16px;
 }

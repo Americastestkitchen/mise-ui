@@ -25,3 +25,11 @@ export type Group = {
 	name: string,
 	items: IngredientItems[];
 }
+
+export type SubSteps = {
+  content: string
+}
+export type InstructionList = {
+  content: string;
+  subSteps?: SubSteps[]; 
+}

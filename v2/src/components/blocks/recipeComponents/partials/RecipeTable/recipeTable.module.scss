@@ -44,8 +44,8 @@
 }
 
 .checkboxInput:checked~.checkboxIndicator {
-	background: $cMint;
-	border: 2px solid $cMint;
+	background: $cBPrimary;
+	border: 2px solid $cBPrimary;
 
 	&::after {
 		display: block;
@@ -57,11 +57,11 @@
 }
 
 .checkbox:hover .checkboxInput~.checkboxIndicator {
-	background: $cSilver;
+	background: $cNGray;
 }
 
 .checkbox:hover .checkboxInput:not([disabled]):checked~.checkboxIndicator {
-	background: $cMint;
+	background: $cBPrimary;
 }
 
 .textWrapper {

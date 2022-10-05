@@ -11,23 +11,23 @@ const RecipeIngredientsList = ({ ingredientsList }: IngredientTable) => {
   return (
     <div className={styles.wrapper}>
       <h2 className={styles.headline}>Gather Your Ingredients</h2>
-      {ingredientsList.map((group) => {
+      {ingredientsList.map((group, index: number) => {
         const halfwayIndex = Math.ceil(group.items.length / 2);
         const firstHalf = group.items.slice(0, halfwayIndex);
         const secondHalf = group.items.slice(halfwayIndex);
         return (
-          <div>
+          <div key={`group ${index}`}>
             <h3 className={styles.groupName}>{group.name}</h3>
             <div className={styles.ingredientGroup}>
               <div className={styles.ingredientColumn}>
                 {firstHalf.map((item) => (
-                  <RecipeTable
+                  <RecipeTable key={item.name}
                     {...item} />
                 ))}
               </div>
               {secondHalf.length > 0 && <div className={styles.ingredientColumn}>
                 {secondHalf.map((item) => (
-                  <RecipeTable
+                  <RecipeTable key={item.name}
                     {...item} />
                 ))}
               </div>}

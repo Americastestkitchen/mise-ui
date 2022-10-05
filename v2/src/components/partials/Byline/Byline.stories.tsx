@@ -4,7 +4,7 @@ import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import BylineList, { ByLineListProps } from './Byline';
 
 export default {
-  title: 'Components/Partials/BylineList',
+  title: 'Components/Partials/Byline',
   component: BylineList,
 } as ComponentMeta<typeof BylineList>;
 
