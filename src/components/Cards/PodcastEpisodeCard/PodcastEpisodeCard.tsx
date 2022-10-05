@@ -7,7 +7,7 @@ import { VideoPlay } from '../../DesignTokens/Icon';
 
 import Badge, { BadgeType } from '../../Badge/Badge';
 import { StickerType } from '../Cards';
-import Sticker from '../shared/Sticker';
+import Sticker from '../shared/Sticker/Sticker';
 import Image from '../shared/Image/Image';
 
 const PodcastEpisodeCardWrapper = styled.div`
@@ -252,8 +252,8 @@ type PodcastEpisodeCardProps = {
   isPlaying?: boolean,
   imageAlt?: string,
   imageUrl?: string,
-  siteKey: BadgeType,
-  stickers: StickerType[],
+  siteKey: string,
+  stickers?: StickerType[],
   setEpisode?: (value: Record<string, unknown>) => void,
 }
 
@@ -270,6 +270,8 @@ const PodcastEpisodeCard = ({
   isPlaying = false,
   setEpisode = () => {},
 }: PodcastEpisodeCardProps) => {
+  const Site = siteKey as BadgeType;
+
   const handleClick = () => {
     setEpisode({
       episode,
@@ -279,7 +281,7 @@ const PodcastEpisodeCard = ({
       id,
       imageAlt,
       imageUrl,
-      siteKey,
+      Site,
       stickers,
     });
   };
@@ -305,7 +307,7 @@ const PodcastEpisodeCard = ({
       <div>
         <div className="place-hold">
           <StyledBadge
-            type={siteKey}
+            type={Site}
           />
           {stickers.map(({ text, type }) => (
             <StyledSticker

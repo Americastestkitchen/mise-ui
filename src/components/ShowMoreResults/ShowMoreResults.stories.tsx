@@ -6,11 +6,11 @@ import ShowMoreResults, { ShowMoreResultsProps } from './ShowMoreResults';
 import MiseInstantSearch from '../../lib/algolia/MiseInstantSearch/MiseInstantSearch';
 import LabelFrame from '../LabelFrame/LabelFrame';
 import { color, font, fontSize, lineHeight, spacing } from '../../styles';
-import PodcastEpisodeCard from '../Cards/PodcastEpisodeCard';
+import PodcastEpisodeCard from '../Cards/PodcastEpisodeCard/PodcastEpisodeCard';
 
 const episodes = [
   {
-    id: 1,
+    id: '1',
     title: 'testtitle',
     description: 'test',
     episode: 64,
@@ -18,7 +18,7 @@ const episodes = [
     imageUrl: getImageUrl('play-listen/proof-s3e8-vertical'),
   },
   {
-    id: 1,
+    id: '1',
     title: 'testtitle',
     description: 'test',
     episode: 64,
@@ -49,12 +49,12 @@ Default.args = {
 
 const StyledLabelFrame = styled(LabelFrame)`
   padding: ${spacing.xlg} 0 ${spacing.sm};
-  
+
   h1 {
     font: ${fontSize.lg}/${lineHeight.md} ${font.pnb};
     margin: ${spacing.lg};
   }
-  
+
   .podcast-episode-card {
     margin: ${spacing.sm} 0;
   }
