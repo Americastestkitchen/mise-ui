@@ -3,7 +3,7 @@ import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import RecipeHeader from './RecipeHeader';
 
 export default {
-  title: 'Components/Blocks/RecipeHeader/RecipeHeader',
+  title: 'Components/Blocks/RecipeComponent/RecipeHeader',
   component: RecipeHeader,
 } as ComponentMeta<typeof RecipeHeader>;
 
@@ -34,5 +34,5 @@ const defaultArgs = {
 
 const Template: ComponentStory<typeof RecipeHeader> = args => <RecipeHeader {...args} />;
 
-export const Default: ComponentStory<typeof RecipeHeader> = Template.bind({});
-Default.args = { ...defaultArgs };
+export const Header: ComponentStory<typeof RecipeHeader> = Template.bind({});
+Header.args = { ...defaultArgs };

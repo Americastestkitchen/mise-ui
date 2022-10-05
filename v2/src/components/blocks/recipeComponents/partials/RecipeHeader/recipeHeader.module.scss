@@ -1,6 +1,7 @@
 @import "../../../../../styles/main.scss";
 
 .wrapper {
+	color: $cBFont;
 	:global(.editorial-text) {
 		line-height: 1.63;
 	}
@@ -12,7 +13,7 @@
 }
 
 .metaText {
-	font: 1rem/1.63 $merriweather;
+	font: 1rem/1.63 $accentFont;
 	margin: 18px 0;
 	letter-spacing: normal;
 }
