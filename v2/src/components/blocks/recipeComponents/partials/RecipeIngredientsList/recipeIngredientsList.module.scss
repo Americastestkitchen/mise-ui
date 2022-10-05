@@ -1,0 +1,37 @@
+@import "../../../../../styles/main.scss";
+
+.wrapper {
+	margin-bottom: 1rem;
+}
+
+.headline {
+	text-transform: uppercase;
+	font: 1.125rem/1.625rem $secondaryFont;
+	border-bottom: 1px solid $cSilver;
+	padding-bottom: 5px;
+	margin-bottom: 18px;
+}
+
+.groupName {
+	font: 1rem/1rem $merriweather;
+	font-style: italic;
+	margin-bottom: 16px;
+}
+
+.ingredientGroup {
+	display: block;
+	margin-bottom: 18px;
+
+	@media (min-width: 1025px) {
+		flex-wrap: wrap;
+		justify-content: space-between;
+		display: flex;
+	}
+}
+
+.ingredientColumn {
+	@media (min-width: 1025px) {
+		max-width: calc(50% - 0.8rem);
+		width: calc(50% - 0.8rem);
+	}
+}

@@ -14,3 +14,14 @@ export type Header = {
   yields?: string;
   headnote?: string;
 }
+export type IngredientItems = {
+	name: string,
+	post?: string,
+	quantity?: string,
+	measurement?: string,
+}
+
+export type Group = {
+	name: string,
+	items: IngredientItems[];
+}
