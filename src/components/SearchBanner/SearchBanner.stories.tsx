@@ -4,7 +4,7 @@ import { addThemedWrapper } from '../../config/decorators';
 import LabelFrame from '../LabelFrame/LabelFrame';
 import MiseInstantSearch from '../../lib/algolia/MiseInstantSearch/MiseInstantSearch';
 import SearchBanner, { SearchBannerProps } from './SearchBanner';
-import SearchInput from '../SearchInput';
+import SearchInput from '../SearchInput/SearchInput';
 
 export default {
   title: 'Components/SearchBanner',
@@ -18,7 +18,14 @@ const Template: ComponentStory<typeof SearchBanner> = (args: SearchBannerProps) 
       <SearchBanner {...args} />
     </LabelFrame>
     <LabelFrame label="Supplemental Component">
-      <SearchInput />
+      <SearchInput
+        handleClickClose={() => {
+          const SearchInputEl: HTMLInputElement | null = document.querySelector('.search-input__input');
+          if (SearchInputEl) {
+            SearchInputEl.focus();
+          }
+        }}
+      />
     </LabelFrame>
   </MiseInstantSearch>
 );
