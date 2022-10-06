@@ -1,8 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connectRefinementList } from 'react-instantsearch-dom';
-
+import { RefinementListProvided } from 'react-instantsearch-core';
 import RefinementFilter2 from '../RefinementFilter2/RefinementFilter2';
 import { cssThemedColor, cssThemedLink } from '../../../../styles/mixins';
 import { font, fontSize } from '../../../../styles';
@@ -29,12 +28,18 @@ const ToggleRefinementWrapper = styled.div`
   }
 `;
 
+export interface ToggleRefinementProps extends RefinementListProvided {
+  attribute: string;
+  label: string;
+  value: string;
+}
+
 const ToggleRefinement = ({
   attribute,
   label,
   value,
   ...restProps
-}) => (
+}: ToggleRefinementProps) => (
   <ToggleRefinementWrapper className="toggle-refinement">
     <RefinementFilter2
       attribute={attribute}
@@ -46,14 +51,5 @@ const ToggleRefinement = ({
     />
   </ToggleRefinementWrapper>
 );
-
-ToggleRefinement.propTypes = {
-  /** Algolia attribute that is used to pull refinement values. */
-  attribute: PropTypes.string.isRequired,
-  /** Filter label */
-  label: PropTypes.string.isRequired,
-  /** Value of filter to be used for refining results. */
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.array], PropTypes.string).isRequired,
-};
 
 export default connectRefinementList(ToggleRefinement);

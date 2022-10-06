@@ -105,8 +105,8 @@ export type RefinementFilterProps = {
   includeCount?: boolean;
   isRefined?: boolean;
   label: string;
-  refine: ((refinement: string | RefinementValue | RefinementValue[] | Refinement[]) => void);
-  handleClick: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  refine: (x: string[]) => void;
+  handleClick?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   value: string;
 }
 
@@ -132,9 +132,9 @@ const RefinementFilter = ({
   const onChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     if (!isActuallyRefined && typeof handleClick === 'function') handleClick(e);
     if (filterType === 'refinementList') {
-      refine(value);
+      refine([value]);
     } else if (filterType === 'toggleRefinement') {
-      refine(isActuallyRefined ? '' : value);
+      refine(isActuallyRefined ? [''] : [value]);
     }
   }, [isActuallyRefined, handleClick, filterType, refine, value]);
 
