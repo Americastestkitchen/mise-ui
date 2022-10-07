@@ -87,7 +87,7 @@ import SurveyCard from './components/Cards/SurveyCard';
 import TallCard from './components/Cards/TallCard/TallCard';
 import TallToSquareCard from './components/Cards/TallToSquareCard/TallToSquareCard';
 import TextDecorations, { CircledText, SquiggledText, UnderlinedText } from './components/DesignTokens/TextDecoration';
-import ToggleRefinement from './components/Algolia/shared/ToggleRefinement';
+import ToggleRefinement from './components/Algolia/shared/ToggleRefinement/ToggleRefinement';
 import ToggleRefinementMenu from './components/Algolia/shared/ToggleRefinementMenu';
 import * as Icons from './components/DesignTokens/Icon';
 import fonts from './styles/fonts';

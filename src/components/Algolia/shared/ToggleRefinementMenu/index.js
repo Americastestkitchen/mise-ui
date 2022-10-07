@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Menu from '../Menu/Menu';
-import ToggleRefinement from '../ToggleRefinement';
+import ToggleRefinement from '../ToggleRefinement/ToggleRefinement';
 
 const ToggleRefinementMenuWrapper = styled.div`
   .toggle-refinement {
