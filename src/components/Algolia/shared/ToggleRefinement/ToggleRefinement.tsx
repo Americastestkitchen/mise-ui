@@ -30,6 +30,7 @@ const ToggleRefinementWrapper = styled.div`
 
 export interface ToggleRefinementProps extends RefinementListProvided {
   attribute: string;
+  handleClick: () => void;
   label: string;
   value: string;
 }

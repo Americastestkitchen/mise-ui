@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Menu from '../Menu/Menu';
@@ -11,6 +10,16 @@ const ToggleRefinementMenuWrapper = styled.div`
   }
 `;
 
+export type ToggleRefinementMenuProps = {
+  menuAttribute: string;
+  menuOnClickItem: () => void;
+  menuTransformItems: () => void;
+  toggleRefinementAttribute: string;
+  toggleRefinementClick: () => void;
+  toggleRefinementLabel: string;
+  toggleRefinementValue: string;
+}
+
 const ToggleRefinementMenu = ({
   menuAttribute,
   menuOnClickItem,
@@ -19,7 +28,7 @@ const ToggleRefinementMenu = ({
   toggleRefinementClick,
   toggleRefinementLabel,
   toggleRefinementValue,
-}) => (
+}: ToggleRefinementMenuProps) => (
   <ToggleRefinementMenuWrapper>
     <ToggleRefinement
       attribute={toggleRefinementAttribute}
@@ -35,19 +44,4 @@ const ToggleRefinementMenu = ({
   </ToggleRefinementMenuWrapper>
 );
 
-ToggleRefinementMenu.propTypes = {
-  menuAttribute: PropTypes.string.isRequired,
-  menuOnClickItem: PropTypes.func,
-  menuTransformItems: PropTypes.func,
-  toggleRefinementAttribute: PropTypes.string.isRequired,
-  toggleRefinementClick: PropTypes.func,
-  toggleRefinementLabel: PropTypes.string.isRequired,
-  toggleRefinementValue: PropTypes.string.isRequired,
-};
-
-ToggleRefinementMenu.defaultProps = {
-  toggleRefinementClick: null,
-  menuTransformItems: null,
-  menuOnClickItem: null,
-};
 export default ToggleRefinementMenu;
