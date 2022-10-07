@@ -4,13 +4,14 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import RecipeIngredientsList from './RecipeIngredientsList';
 
 export default {
-  title: 'Components/Blocks/RecipeComponent/RecipeIngredientsList',
+  title: 'Components/Blocks/RecipeCard/Partials/RecipeIngredientsList',
   component: RecipeIngredientsList,
 } as ComponentMeta<typeof RecipeIngredientsList>;
 
 const Template: ComponentStory<typeof RecipeIngredientsList> = args => <RecipeIngredientsList {...args} />;
 
-const ingredientListObject = [
+const ingredientListObject = {
+  group: [
   {
     name: "This is the First Ingredient Group Name",
     items: [
@@ -129,14 +130,14 @@ const ingredientListObject = [
       }
     ]
   },
-]
+]}
 
 export const OneGroup = Template.bind({});
 OneGroup.args = {
-  ingredientsList: [ingredientListObject[0]]
+  group: [ingredientListObject.group[0]]
 };
 export const TwoGroups = Template.bind({});
 TwoGroups.args = {
-  ingredientsList: [ingredientListObject[0], ingredientListObject[1]]
+  group: [ingredientListObject.group[0], ingredientListObject.group[1]]
 };
 

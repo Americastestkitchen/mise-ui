@@ -1,23 +1,19 @@
 import React from 'react';
-import { Group } from '../../types';
+import { IngredientListPropTypes } from '../../types';
 import styles from './recipeIngredientsList.module.scss';
 import RecipeTable from '../RecipeTable/RecipeTable';
 
-type IngredientTable = {
-  ingredientsList: Group[]
-};
-
-const RecipeIngredientsList = ({ ingredientsList }: IngredientTable) => {
+const RecipeIngredientsList = ({ group }: IngredientListPropTypes) => {
   return (
     <div className={styles.wrapper}>
       <h2 className={styles.headline}>Gather Your Ingredients</h2>
-      {ingredientsList.map((group, index: number) => {
-        const halfwayIndex = Math.ceil(group.items.length / 2);
-        const firstHalf = group.items.slice(0, halfwayIndex);
-        const secondHalf = group.items.slice(halfwayIndex);
+      {group.map((ingredient, index: number) => {
+        const halfwayIndex = Math.ceil(ingredient.items.length / 2);
+        const firstHalf = ingredient.items.slice(0, halfwayIndex);
+        const secondHalf = ingredient.items.slice(halfwayIndex);
         return (
           <div key={`group ${index}`}>
-            <h3 className={styles.groupName}>{group.name}</h3>
+            <h3 className={styles.groupName}>{ingredient.name}</h3>
             <div className={styles.ingredientGroup}>
               <div className={styles.ingredientColumn}>
                 {firstHalf.map((item) => (
