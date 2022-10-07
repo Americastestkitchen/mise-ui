@@ -3,8 +3,20 @@
 .wrapper {
   @include underlined-link;
 
+  color: $cBFont;
+
   em {
     font-style: italic;
+  }
+
+  // TODO(Brand Theme): remove after brand consolidation
+  :global(.cco-theme) & {
+    color: $ccoCBFont;
+  }
+
+  // TODO(Brand Theme): remove after brand consolidation
+  :global(.cio-theme) & {
+    color: $cioCBFont;
   }
 }
 
