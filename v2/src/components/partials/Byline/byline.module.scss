@@ -1,53 +1,53 @@
 @import "../../../styles/main.scss";
 
 .wrapper {
-	display: block;
-	flex-direction: column;
-	align-items: center;
-	flex-direction: row;
+  display: block;
+  flex-direction: column;
+  align-items: center;
+  flex-direction: row;
 
-	@media (min-width: 1025px) {
-		display: flex;
-	}
+  @media (min-width: 1025px) {
+    display: flex;
+  }
 }
 
 .authorWrapper {
-	@include underlined-link;
-	align-items: center;
-	display: flex;
+  @include underlined-link;
+  align-items: center;
+  display: flex;
 }
 
 .headShotWrapper {
-	flex-shrink: 0;
-	overflow: hidden;
-	border-radius: 50%;
-	margin-right: 12px;
-	height: 40px;
-	width: 40px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 50%;
+  margin-right: 12px;
+  height: 40px;
+  width: 40px;
 }
 
 .author {
-	color: $cBFont;
-	font: 1rem/1.63 $secondaryFont;
+  color: $cBFont;
+  font: 1rem/1.63 $secondaryFont;
 }
 
 .headShot {
-	height: 100%;
-	object-fit: cover;
-	width: 100%;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
 }
 
 .attribution {
-	display: block;
-	font: 1rem/1.63 $primaryFont;
-	margin: 4px 0;
+  display: block;
+  font: 1rem/1.63 $primaryFont;
+  margin: 4px 0;
 }
 
 .atLeastOneAuthor {
-	@media (min-width: 1025px) {
-		&::before {
-			content: " | ";
-			margin: 0px 4px 0 7px;
-		}
-	}
+  @media (min-width: 1025px) {
+    &::before {
+      content: " | ";
+      margin: 0px 4px 0 7px;
+    }
+  }
 }

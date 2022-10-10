@@ -1,60 +1,60 @@
 @import "../../../../../styles/main.scss";
 
 .wrapper {
-	color: $cBFont;
-	margin-bottom: 30px;
+  color: $cBFont;
+  margin-bottom: 30px;
 
-	// TODO(Brand Theme): remove after brand consolidation
-	:global(.cco-theme) & {
-		color: $ccoCBFont;
-	}
+  // TODO(Brand Theme): remove after brand consolidation
+  :global(.cco-theme) & {
+    color: $ccoCBFont;
+  }
 
-	// TODO(Brand Theme): remove after brand consolidation
-	:global(.cio-theme) & {
-		color: $cioCBFont;
-	}
+  // TODO(Brand Theme): remove after brand consolidation
+  :global(.cio-theme) & {
+    color: $cioCBFont;
+  }
 }
 
 .headline {
-	text-transform: uppercase;
-	font: 1.125rem/1.625rem $secondaryFont;
-	border-bottom: 1px solid $cNGray;
-	padding-bottom: 5px;
-	margin-bottom: 18px;
-	letter-spacing: 1.6px;
+  text-transform: uppercase;
+  font: 1.125rem/1.625rem $secondaryFont;
+  border-bottom: 1px solid $cNGray;
+  padding-bottom: 5px;
+  margin-bottom: 18px;
+  letter-spacing: 1.6px;
 
-	// TODO(Brand Theme): remove after brand consolidation
-	:global(.cco-theme) & {
-		border-bottom: 1px solid $ccoCBFont;
-	}
+  // TODO(Brand Theme): remove after brand consolidation
+  :global(.cco-theme) & {
+    border-bottom: 1px solid $ccoCBFont;
+  }
 
-	// TODO(Brand Theme): remove after brand consolidation
-	:global(.cio-theme) & {
-		border-bottom: 1px solid #d9cca7;
-	}
+  // TODO(Brand Theme): remove after brand consolidation
+  :global(.cio-theme) & {
+    border-bottom: 1px solid #d9cca7;
+  }
 
 }
 
 .groupName {
-	font: 1rem/1rem $accentFont;
-	font-style: italic;
-	margin-bottom: 16px;
+  font: 1rem/1rem $accentFont;
+  font-style: italic;
+  margin-bottom: 16px;
 }
 
 .ingredientGroup {
-	display: block;
-	margin-bottom: 18px;
+  display: block;
+  margin-bottom: 18px;
 
-	@media (min-width: 1025px) {
-		flex-wrap: wrap;
-		justify-content: space-between;
-		display: flex;
-	}
+  @media (min-width: 1025px) {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    display: flex;
+  }
 }
 
 .ingredientColumn {
-	@media (min-width: 1025px) {
-		max-width: calc(50% - 0.8rem);
-		width: calc(50% - 0.8rem);
-	}
+  @media (min-width: 1025px) {
+    max-width: calc(50% - 0.8rem);
+    width: calc(50% - 0.8rem);
+  }
 }
