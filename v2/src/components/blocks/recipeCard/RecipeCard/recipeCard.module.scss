@@ -1,13 +1,20 @@
-@import "../../../../../styles/main.scss";
+@import "../../../../styles/main.scss";
 
 .wrapper {
   margin-bottom: 1rem;
+  padding: 25px;
+  background-color: $cNWhite;
+
+  // TODO(Brand Theme): remove after brand consolidation
+  :global(.cco-theme) & {
+    border: 4px solid $cNGrayLight;
+  }
 }
 
 .headline {
   text-transform: uppercase;
   font: 1.125rem/1.625rem $secondaryFont;
-  border-bottom: 1px solid $cSicNGrayver;
+  border-bottom: 1px solid $cNGray;
   padding-bottom: 5px;
   margin-bottom: 18px;
   letter-spacing: 1.6px;

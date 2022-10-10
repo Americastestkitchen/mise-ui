@@ -1,13 +1,7 @@
 import React from 'react';
 import styles from './recipeInstructions.module.scss';
-import { InstructionList } from '../../types';
+import { InstructionsPropTypes } from '../../types';
 import EditorialText from '../../../../partials/EditorialText/EditorialText';
-
-
-export type InstructionsPropTypes = {
-  header: string;
-  list: InstructionList[];
-}
 
 const RecipeInstructions = ({
   header,

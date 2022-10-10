@@ -3,7 +3,7 @@ import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import RecipeHeader from './RecipeHeader';
 
 export default {
-  title: 'Components/Blocks/RecipeComponent/RecipeHeader',
+  title: 'Components/Blocks/RecipeCard/Partials/RecipeHeader',
   component: RecipeHeader,
 } as ComponentMeta<typeof RecipeHeader>;
 

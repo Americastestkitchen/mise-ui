@@ -1,29 +1,20 @@
 import React from 'react';
 import BylineList from '../../../../partials/Byline/Byline';
 import EditorialText from '../../../../partials/EditorialText/EditorialText';
-import { Author, Header, OnClick } from '../../types';
+import { RecipeHeaderPropTypes } from '../../types';
 import styles from './recipeHeader.module.scss';
-
-export type RecipePropTypes = {
-  authors: Author[];
-  attribution?: string;
-  header: Header;
-  onClick?: OnClick;
-}
 
 const RecipeHeader = ({
   authors,
-  attribution,
   header,
   onClick
-}: RecipePropTypes) => {
+}: RecipeHeaderPropTypes) => {
   const { yields, time, name, headnote } = header
   return (
     <div className={styles.wrapper}>
       <h2 className={styles.headline}>{name}</h2>
       <BylineList
         authors={authors}
-        attribution={attribution}
         onClick={onClick}
       ></BylineList>
       {(yields || time) &&

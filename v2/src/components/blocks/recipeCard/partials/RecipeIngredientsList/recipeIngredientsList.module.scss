@@ -1,7 +1,18 @@
 @import "../../../../../styles/main.scss";
 
 .wrapper {
-	margin-bottom: 1rem;
+	color: $cBFont;
+	margin-bottom: 30px;
+
+	// TODO(Brand Theme): remove after brand consolidation
+	:global(.cco-theme) & {
+		color: $ccoCBFont;
+	}
+
+	// TODO(Brand Theme): remove after brand consolidation
+	:global(.cio-theme) & {
+		color: $cioCBFont;
+	}
 }
 
 .headline {
@@ -11,6 +22,17 @@
 	padding-bottom: 5px;
 	margin-bottom: 18px;
 	letter-spacing: 1.6px;
+
+	// TODO(Brand Theme): remove after brand consolidation
+	:global(.cco-theme) & {
+		border-bottom: 1px solid $ccoCBFont;
+	}
+
+	// TODO(Brand Theme): remove after brand consolidation
+	:global(.cio-theme) & {
+		border-bottom: 1px solid #d9cca7;
+	}
+
 }
 
 .groupName {

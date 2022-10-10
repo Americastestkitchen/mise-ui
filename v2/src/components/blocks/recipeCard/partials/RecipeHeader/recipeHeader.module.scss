@@ -2,8 +2,20 @@
 
 .wrapper {
 	color: $cBFont;
+	margin-bottom: 30px;
+
 	:global(.editorial-text) {
 		line-height: 1.63;
+	}
+
+	// TODO(Brand Theme): remove after brand consolidation
+	:global(.cco-theme) & {
+		color: $ccoCBFont;
+	}
+
+	// TODO(Brand Theme): remove after brand consolidation
+	:global(.cio-theme) & {
+		color: $cioCBFont;
 	}
 }
 

@@ -3,7 +3,7 @@ import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import RecipeInstructions from './RecipeInstructions';
 
 export default {
-  title: 'Components/Blocks/RecipeComponent/RecipeInstructions',
+  title: 'Components/Blocks/RecipeCard/Partials/RecipeInstructions',
   component: RecipeInstructions,
 } as ComponentMeta<typeof RecipeInstructions>;
 
