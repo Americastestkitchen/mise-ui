@@ -1,113 +1,113 @@
 @import "../../../../../styles/main.scss";
 
 .checkbox {
-	cursor: pointer;
-	display: block;
-	margin-bottom: 12px;
-	min-height: 20px;
-	padding-right: 3px;
-	position: relative;
-	padding-left: 30px;
+  cursor: pointer;
+  display: block;
+  margin-bottom: 12px;
+  min-height: 20px;
+  padding-right: 3px;
+  position: relative;
+  padding-left: 30px;
 
-	:global(.editorial-text) {
-		font-size: 1rem;
-		margin-right: 5px;
-	}
+  :global(.editorial-text) {
+    font-size: 1rem;
+    margin-right: 5px;
+  }
 }
 
 .checkboxInput {
-	opacity: 0;
-	position: absolute;
-	z-index: -1;
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
 }
 
 .checkboxIndicator {
-	background-color: $cNWhite;
-	border: 1px solid $cSilver;
-	height: 20px;
-	left: 0;
-	position: absolute;
-	width: 20px;
+  background-color: $cNWhite;
+  border: 1px solid $cSilver;
+  height: 20px;
+  left: 0;
+  position: absolute;
+  width: 20px;
 
-	&::after {
-		border: solid $cNWhite;
-		border-width: 0 2px 2px 0;
-		content: '';
-		display: none;
-		height: 8px;
-		left: 7px;
-		position: absolute;
-		top: 4px;
-		transform: rotate(45deg);
-		width: 4px;
-	}
+  &::after {
+    border: solid $cNWhite;
+    border-width: 0 2px 2px 0;
+    content: '';
+    display: none;
+    height: 8px;
+    left: 7px;
+    position: absolute;
+    top: 4px;
+    transform: rotate(45deg);
+    width: 4px;
+  }
 
-	// TODO(Brand Theme): remove after brand consolidation
-	:global(.cio-theme) & {
-		border: 1px solid #d9cca7;
-	}
+  // TODO(Brand Theme): remove after brand consolidation
+  :global(.cio-theme) & {
+    border: 1px solid #d9cca7;
+  }
 
-	// TODO(Brand Theme): remove after brand consolidation
-	:global(.cco-theme) & {
-		border: 1px solid $ccoCBFont;
-	}
+  // TODO(Brand Theme): remove after brand consolidation
+  :global(.cco-theme) & {
+    border: 1px solid $ccoCBFont;
+  }
 }
 
 .checkboxInput:checked~.checkboxIndicator {
-	background-color: $cBPrimary;
-	border: 2px solid $cBPrimary;
+  background-color: $cBPrimary;
+  border: 2px solid $cBPrimary;
 
-	&::after {
-		display: block;
-	}
+  &::after {
+    display: block;
+  }
 
-	// TODO(Brand Theme): remove after brand consolidation
-	:global(.cio-theme) & {
-		background-color: $cioCBSecondary;
-		border: 2px solid $cioCBSecondary;
-	}
+  // TODO(Brand Theme): remove after brand consolidation
+  :global(.cio-theme) & {
+    background-color: $cioCBSecondary;
+    border: 2px solid $cioCBSecondary;
+  }
 
-	// TODO(Brand Theme): remove after brand consolidation
-	:global(.cco-theme) & {
-		background-color: $ccoCBPrimary;
-		border: 2px solid $ccoCBPrimary;
-	}
+  // TODO(Brand Theme): remove after brand consolidation
+  :global(.cco-theme) & {
+    background-color: $ccoCBPrimary;
+    border: 2px solid $ccoCBPrimary;
+  }
 
 }
 
 .checkboxInput:focus~.checkboxIndicator {
-	@include focus-indicator;
+  @include focus-indicator;
 }
 
 .checkbox:hover .checkboxInput~.checkboxIndicator {
-	background-color: $cNGray;
+  background-color: $cNGray;
 
-	// TODO(Brand Theme): remove after brand consolidation
-	:global(.cio-theme) & {
-		background-color: #f1ece5;
-	}
+  // TODO(Brand Theme): remove after brand consolidation
+  :global(.cio-theme) & {
+    background-color: #f1ece5;
+  }
 
-	// TODO(Brand Theme): remove after brand consolidation
-	:global(.cco-theme) & {
-		background-color: $cNGrayLight;
-	}
+  // TODO(Brand Theme): remove after brand consolidation
+  :global(.cco-theme) & {
+    background-color: $cNGrayLight;
+  }
 }
 
 .checkbox:hover .checkboxInput:not([disabled]):checked~.checkboxIndicator {
-	background-color: $cBPrimary;
+  background-color: $cBPrimary;
 
-	// TODO(Brand Theme): remove after brand consolidation
-	:global(.cio-theme) & {
-		background-color: $cioCBSecondary;
-	}
+  // TODO(Brand Theme): remove after brand consolidation
+  :global(.cio-theme) & {
+    background-color: $cioCBSecondary;
+  }
 
-	// TODO(Brand Theme): remove after brand consolidation
-	:global(.cco-theme) & {
-		background-color: $ccoCBPrimary;
-	}
+  // TODO(Brand Theme): remove after brand consolidation
+  :global(.cco-theme) & {
+    background-color: $ccoCBPrimary;
+  }
 }
 
 .textWrapper {
-	display: flex;
-	align-items: baseline;
+  display: flex;
+  align-items: baseline;
 }
