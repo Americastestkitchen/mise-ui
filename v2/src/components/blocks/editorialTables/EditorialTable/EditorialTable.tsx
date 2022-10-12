@@ -16,7 +16,7 @@ type EditorialTableProps = {
 const EditorialTable = ({ description, heading, table, brandKey }: EditorialTableProps) => {
   const wrapperClassNames = cx(
     styles.wrapper,
-    `${table.type}`,
+    `${table.type}-table`,
     { [styles[brandKey]]: brandKey !== 'atk'},
   );
 
@@ -50,6 +50,8 @@ const EditorialTable = ({ description, heading, table, brandKey }: EditorialTabl
       />
       <TableCard
         currentPage={page}
+        decrementPage={decrementPage}
+        incrementPage={incrementPage}
         table={table}
       />
     </div>

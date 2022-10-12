@@ -37,9 +37,10 @@
     border-bottom: none;
   }
 
-  &:global(.comparison) {
+  &:global(.comparison-table) {
     :global(.editorial-table-header-cell) {
       &:first-child {
+        background-color: $ccoCBGPage;
         border: none;
       }
     }
@@ -67,6 +68,15 @@
     color: $cioCBFont !important;
   }
   
+  &:global(.comparison-table) {
+    :global(.editorial-table-header-cell) {
+      &:first-child {
+        background-color: $cioCBGPage;
+        border: none;
+      }
+    }
+  }
+
   :global(.circular-button) {
     :global(.circular-icon) {
       background-color: $cioCBPrimary !important;
