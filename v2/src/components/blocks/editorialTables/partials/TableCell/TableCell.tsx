@@ -7,22 +7,25 @@ import styles from './tableCell.module.scss';
 import Sticker from '../../../../partials/Sticker/Sticker';
 
 type TableCellProps = EditorialTableCell & {
+  currentPage: number;
   indexInRow: number;
   isInFirstRow?: boolean;
   rowHeaderContent?: string;
   tableType: 'comparison' | 'informational';
 };
 
-const TableCell = ({ content, isInFirstRow, rowHeaderContent, tableType, type, indexInRow }: TableCellProps) => {
+const TableCell = ({ content, currentPage, isInFirstRow, rowHeaderContent, tableType, type, indexInRow }: TableCellProps) => {
+  const distanceFromCurrentPage = type !== 'rowHeader' ? indexInRow - currentPage : 0;
   const cellClassNames = cx(
     type.includes('Header') ? 'editorial-table-header-cell' : 'editorial-table-data-cell',
     styles.cell,
     styles[type],
     styles[`${tableType}Cell`],
+    { [styles.negativeMargin]: type !== 'rowHeader' && indexInRow < currentPage },
     { [styles.rowHeaderPadding]: type === 'rowHeader' && isInFirstRow },
-    { [styles.oobMobile]: indexInRow > 0 },
-    { [styles.oobTablet]: indexInRow > 1 },
-    { [styles.oobDesktop]: indexInRow > 2 }
+    { [styles.oobMobile]: distanceFromCurrentPage >= 1 },
+    { [styles.oobTablet]: distanceFromCurrentPage >= 2 },
+    { [styles.oobDesktop]: distanceFromCurrentPage >= 3 }
   );
 
   const cellContentClassNames = cx(

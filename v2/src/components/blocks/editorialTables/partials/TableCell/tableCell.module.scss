@@ -7,6 +7,7 @@
   background-color: $cNWhite;
   padding: 0 12px 20px;
   width: 100%;
+  transition: margin 0.2s ease;
 }
 
 .informationalCell {
@@ -51,6 +52,24 @@
   }
 }
 
+.negativeMargin {
+  z-index: -1;
+
+  :global(.comparison-table) & {
+    // px value here is cell width + gutter
+    // cell width: 200px
+    // gutter width: 16px
+    margin-left: -216px;
+  }
+
+  :global(.informational-table) & {
+    // px value here is cell width + gutter
+    // cell width: 272px
+    // gutter width: 16px
+    margin-left: -288px;
+  }
+}
+
 // **** Column Header Styles ****
 .colHeader {
   font: 1.125rem/1 $secondaryFont;
@@ -88,10 +107,11 @@
 
 // **** Row Header Styles ****
 .rowHeader {
-  background-color: transparent;
+  background-color: $cBGPage;
   font: 1.125rem/1 $secondaryFont;
   padding-left: 0;
   padding-right: 0;
+  z-index: 1;
 
   @media(max-width: 768px) {
     display: none;

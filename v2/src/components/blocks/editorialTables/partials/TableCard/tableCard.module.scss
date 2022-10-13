@@ -4,9 +4,11 @@
   display: flex;
   flex-direction: column;
   margin-top: 16px;
+  overflow: hidden;
 }
 
 .row {
   display: flex;
   gap: 16px;
+  z-index: 1;
 }
