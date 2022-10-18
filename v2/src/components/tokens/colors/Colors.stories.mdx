@@ -1,325 +1,85 @@
-import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs';
+import { Meta, ColorPalette, ColorItem } from "@storybook/addon-docs";
+import { SourceColors, MiseColors } from "./Colors";
+import { getTokenTitle } from '../utils'
 
 <Meta title="Design Tokens/Colors" />
 
-# ATK Colors
-## Color Palette
+# Colors
+
+Color styling is located in the `./v2/src/styles/_tokens/_colors.scss` and is part of `tokens.scss`.
+
+## Mise Color Palette
+
+`Mise Colors` are **the only colors that can be used** to style Mise components.
+
+### Primary | `primary`
+
 <ColorPalette>
-  <ColorItem
-    colors={{ '$cEclipse': '#3D3D3D'}}
-    title="Eclipse"
-  />
-  <ColorItem
-    colors={{ '$cMint': '#6BA6AA' }}
-    title="Mint"
-  />
-  <ColorItem
-    colors={{ '$cDarkTeal': '#4D7A7C' }}
-    title="Dark Teal"
-  />
-  <ColorItem
-    colors={{ '$cTurquoise': '#8FDEE3' }}
-    title="Turquoise"
-  />
-  <ColorItem
-    colors={{ '$cSeaSalt': '#D1FCFF' }}
-    title="Sea Salt"
-  />
-  <ColorItem
-    colors={{ '$cFrost': '#E9F0F0' }}
-    title="Frost"
-  />
+  {Object.keys(MiseColors.primary).map((key, i) => {
+    return <ColorItem title={getTokenTitle(key)} subtitle={key} colors={MiseColors.primary[key]} />;
+  })}
 </ColorPalette>
 
-## Brand Colors - $cB
+### Accent | `accent`
+
 <ColorPalette>
-  <ColorItem
-    colors={{ '$cBPrimary': '#3D3D3D', '$cBPrimaryHover': '#4D7A7C' }}
-    title="Primary Button"
-  />
-  <ColorItem
-    title="Secondary Button"
-    colors={{ '$cBSecondary': '#6BA6AA', '$cBSecondaryHover': '#4D7A7C' }}
-  />
-  <ColorItem
-    title="Font"
-    colors={{ '$cBFont': '#3D3D3D', '$cBFontHover': '#4D7A7C' }}
-  />
-  <ColorItem
-    title="Link"
-    colors={{ '$cBLink': '#8FDEE3', '$cBLinkHover': '#D1FCFF' }}
-  />
+  {Object.keys(MiseColors.accent).map((key, i) => {
+    return <ColorItem title={getTokenTitle(key)} subtitle={key} colors={MiseColors.accent[key]} />;
+  })}
 </ColorPalette>
 
-## Background Colors - $cBG
+### Marketing | `marketing`
+
 <ColorPalette>
-  <ColorItem
-    title="Background"
-    colors={{ '$cBGPage': '#F5F5F5' }}
-  />
-  <ColorItem
-    title="Callout"
-    colors={{ '$cBGCallout': '#E9F0F0' }}
-  />
+  <ColorItem title="Mid" subtitle="mid" colors={MiseColors.marketing.mid} />
 </ColorPalette>
 
-# CCO Colors
-## Color Palette
+### Editorial | `editorial`
+
 <ColorPalette>
-  <ColorItem
-    colors={{ '$cBlack': '#000000' }}
-    title="Black"
-  />
-  <ColorItem
-    colors={{ '$cDenim': '#416490' }}
-    title="Denim"
-  />
-  <ColorItem
-    colors={{ '$cArapawa': '#2E4A69' }}
-    title="Arapawa"
-  />
-  <ColorItem
-    colors={{ '$cMalibu': '#69A0E1' }}
-    title="Malibu"
-  />
-  <ColorItem
-    colors={{ '$cCornflower': '#E6F1FF' }}
-    title="Cornflower"
-  />
-  <ColorItem
-    colors={{ '$cAliceBlue': '#F7FAFF' }}
-    title="Alice Blue"
-  />
+  {Object.keys(MiseColors.editorial).map((key, i) => {
+    return <ColorItem title={getTokenTitle(key)} subtitle={key} colors={MiseColors.editorial[key]} />;
+  })}
 </ColorPalette>
 
-## Brand Colors - $cB
+### Neutral | `neutral`
+
 <ColorPalette>
-  <ColorItem
-    colors={{ '$cBPrimary': '#416490', '$cBPrimaryHover': '#2E4A69' }}
-    title="Primary Button"
-  />
-  <ColorItem
-    title="Font"
-    colors={{ '$cBFont': '#000000', '$cBFontHover': '#416490' }}
-  />
-  <ColorItem
-    title="Link"
-    colors={{ '$cBLink': '#69A0E1', '$cBLinkHover': '#E6F1FF' }}
-  />
+  {Object.keys(MiseColors.neutral).map((key, i) => {
+    return <ColorItem title={getTokenTitle(key)} subtitle={key} colors={MiseColors.neutral[key]} />;
+  })}
 </ColorPalette>
 
-## Background Colors - $cBG
-<ColorPalette>
-  <ColorItem
-    title="Background"
-    colors={{ '$cBGPage': '#FFFFFF' }}
-  />
-  <ColorItem
-    title="Callout"
-    colors={{ '$cBGCallout': '#F7FAFF' }}
-  />
-</ColorPalette>
+### Using the Mise Color Palette
 
-# CIO Colors
-## Color Palette
-<ColorPalette>
-  <ColorItem
-    colors={{ '$cCork': '#3F2B1E' }}
-    title="Cork"
-  />
-  <ColorItem
-    colors={{ '$cSquirrel': '#94856B' }}
-    title="Squirrel"
-  />
-  <ColorItem
-    colors={{ '$cDijon': '#EED681' }}
-    title="Dijon"
-  />
-  <ColorItem
-    colors={{ '$cSand': '#FFF5C2' }}
-    title="Sand"
-  />
-  <ColorItem
-    colors={{ '$cLinen': '#FCF9F3' }}
-    title="Linen"
-  />
-  <ColorItem
-    colors={{ '$cIvory': '#FFFDEB' }}
-    title="Ivory"
-  />
-</ColorPalette>
+Colors can be used with the `MiseColor` function. This custom SASS function takes a `category` and optional `color`, and `variant` arguments.
 
-## Brand Colors - $cB
-<ColorPalette>
-  <ColorItem
-    colors={{ '$cBPrimary': '#3F2B1E', '$cBPrimaryHover': '#94856B' }}
-    title="Primary Button"
-  />
-  <ColorItem
-    title="Secondary Button"
-    colors={{ '$cBSecondary': '#94856B', '$cBSecondaryHover': '#3F2B1E' }}
-  />
-  <ColorItem
-    title="Font"
-    colors={{ '$cBFont': '#3F2B1E', '$cBFontHover': '#94856B' }}
-  />
-  <ColorItem
-    title="Link"
-    colors={{ '$cBLink': '#EED681', '$cBLinkHover': '#FFF5C2' }}
-  />
-</ColorPalette>
+> Note: All colors have the `variant`: `base`, the default color, and all categories have the `color`: `mid`, excluding Editorial colors.
 
-## Background Colors - $cBG
-<ColorPalette>
-  <ColorItem
-    title="Background"
-    colors={{ '$cBGPage': '#FCF9F3' }}
-  />
-  <ColorItem
-    title="Callout"
-    colors={{ '$cBGCallout': '#FFFDEB' }}
-  />
-</ColorPalette>
+**SASS | *.scss**
 
-# Shared Colors
-## Color Palette
-<ColorPalette>
-  <ColorItem
-    colors={{ '$cTomato': '#D73A15' }}
-    title="Tomato"
-  />
-  <ColorItem
-    colors={{ '$cRust': '#A72E12' }}
-    title="Rust"
-  />
-  <ColorItem
-    colors={{ '$cColdPool': '#1A7AC4' }}
-    title="Cold Pool"
-  />
-  <ColorItem
-    colors={{ '$cDarkColdPool': '#0466B0' }}
-    title="Dark Cold Pool"
-  />
-  <ColorItem
-    colors={{ '$cMidnight': '#1A3352' }}
-    title="Midnight"
-  />
-  <ColorItem
-    colors={{ '$cSienna': '#B25B18' }}
-    title="Sienna"
-  />
-  <ColorItem
-    colors={{ '$cViolet': '#321A52' }}
-    title="Violet"
-  />
-  <ColorItem
-    colors={{ '$cPacific': '#1775C2' }}
-    title="Pacific"
-  />
-  <ColorItem
-    colors={{ '$cGoldClay': '#857351' }}
-    title="Gold Clay"
-  />
-  <ColorItem
-    colors={{ '$cDarkMagenta': '#521A2D' }}
-    title="Dark Magenta"
-  />
-  <ColorItem
-    colors={{ '$cTimber': '#405700' }}
-    title="Timber"
-  />
-  <ColorItem
-    colors={{ '$cBlueLagoon': '#005E71' }}
-    title="Blue Lagoon"
-  />
-  <ColorItem
-    colors={{ '$cTeal': '#167A7A' }}
-    title="Teal"
-  />
-  <ColorItem
-    colors={{ '$cDeepSea': '#0B3C3D' }}
-    title="Deep Sea"
-  />
-</ColorPalette>
+```
+// Import from `./v2/src/styles/styles.scss` or `./v2/src/styles/tokens.scss`
+// Usage: MiseColor(category, color, variant)
 
+.example {
+  background-color: MiseColor(brand, mid, base);
+  border-color: MiseColor(brand, dark, base);
+  color: MiseColor(netural, white, base);
 
-## Accent Colors - $cA
-<ColorPalette>
-  <ColorItem
-    title="Action"
-    subtitle="CTAs such as ex: 'Buy The Winner'"
-    colors={{ '$cAAction': '#D73A15', '$cAActionHover': '#A72E12' }}
-  />
-  <ColorItem
-    title="Marketing Buttons"
-    colors={{ '$cAMarketing': '#1A7AC4', '$cAMarketingHover': '#0466B0' }}
-  />
-</ColorPalette>
+  &:hover {
+    background-color: MiseColor(brand, mid, shade);
+    border-color: MiseColor(brand, dark, shade);
+  }
+}
+```
 
-## Neutral Colors
-<ColorPalette>
-  <ColorItem
-    title="Black"
-    colors={{ '$cNBlack': '#000000' }}
-  />
-  <ColorItem
-    title="White"
-    colors={{ '$cNWhite': '#FFFFFF' }}
-  />
-  <ColorItem
-    title="Gray Light"
-    colors={{ '$cNGrayLight': '#F5F5F5' }}
-  />
-  <ColorItem
-    title="Gray"
-    colors={{ '$cNGray': '#C2C2C2' }}
-  />
-  <ColorItem
-    title="Gray Dark"
-    colors={{ '$cNGrayDark': '#999999' }}
-  />
-</ColorPalette>
+## Source Color Palette
 
-## Background Colors - $cBG
+The following color palette is for **reference only**. These represent the source color values and names that are mapped to `Mise Colors` and should not be used directly in code.
+
 <ColorPalette>
-  <ColorItem
-    colors={{ '$cBGHeroOne': '#1A3352' }}
-    title="Hero One"
-  />
-  <ColorItem
-    colors={{ '$cBGHeroTwo': '#B25B18' }}
-    title="Hero Two"
-  />
-  <ColorItem
-    colors={{ '$cBGHeroThree': '#321A52' }}
-    title="Hero Three"
-  />
-  <ColorItem
-    colors={{ '$cBGHeroFour': '#1775C2' }}
-    title="Hero Four"
-  />
-  <ColorItem
-    colors={{ '$cBGHeroFive': '#857351' }}
-    title="Hero Five"
-  />
-  <ColorItem
-    colors={{ '$cBGHeroSix': '#521A2D' }}
-    title="Hero Six"
-  />
-  <ColorItem
-    colors={{ '$cBGHeroSeven': '#405700' }}
-    title="Hero Seven"
-  />
-  <ColorItem
-    colors={{ '$cBGHeroEight': '#005E71' }}
-    title="Hero Eight"
-  />
-  <ColorItem
-    colors={{ '$cBGHeroNine': '#167A7A' }}
-    title="Hero Nine"
-  />
-  <ColorItem
-    colors={{ '$cBGHeroTen': '#0B3C3D' }}
-    title="Hero Ten"
-  />
+  {Object.keys(SourceColors).map((key, i) => {
+    return <ColorItem title={getTokenTitle(key)} colors={{ [key]: SourceColors[key] }} />;
+  })}
 </ColorPalette>

@@ -1,0 +1,178 @@
+// Import web fonts from TypeKit
+@import url("https://use.typekit.net/dol0wxv.css");
+
+$fontFamilies: (
+  merriweather: (
+    family: #{Merriweather, serif},
+    style: (
+      normal,
+      italic,
+    ),
+    weight: (
+      normal: 400,
+      bold: 700,
+    ),
+  ),
+  proximaNova: (
+    family: #{"Proxima Nova", sans-serif},
+    style: (
+      normal,
+      italic,
+    ),
+    weight: (
+      normal: 400,
+      bold: 700,
+    ),
+  ),
+  moret: (
+    family: #{Moret, serif},
+    style: (
+      normal,
+    ),
+    weight: (
+      bold: 700,
+    ),
+  ),
+);
+
+@function fontFamily($keys...) {
+  $value: $fontFamilies;
+  @each $key in $keys {
+    $value: map-get($value, $key);
+  }
+  @return $value;
+}
+
+$resetTypography: (
+  family: fontFamily(merriweather, family),
+  size: 16px,
+  lineHeight: 1.625,
+  weight: fontFamily(merriweather, weight, normal),
+);
+
+@function resetTypography($prop) {
+  @return map-get($resetTypography, $prop);
+}
+
+@mixin resetTypography {
+  font-family: resetTypography(family);
+  font-size: resetTypography(size);
+  line-height: resetTypography(lineHeight);
+  weight: resetTypography(weight);
+}
+
+$miseTypography: (
+  text: (
+    primary: (
+      family: fontFamily(merriweather, family),
+      lineHeight: 1.625,
+      size: (
+        sm: 0.875rem,
+        md: 1rem,
+        lg: 1.125rem,
+        xl: 1.5rem,
+      ),
+      style: (
+        normal,
+        italic,
+      ),
+      weight: (
+        normal: 400,
+        bold: 700,
+      ),
+    ),
+    secondary: (
+      family: fontFamily(proximaNova, family),
+      lineHeight: 1.625,
+      size: (
+        sm: 0.875rem,
+        md: 1rem,
+        lg: 1.125rem,
+        xl: 1.5rem,
+      ),
+      style: (
+        normal,
+        italic,
+        caps,
+      ),
+      weight: (
+        normal: 400,
+        bold: 700,
+      ),
+    ),
+  ),
+  display: (
+    primary: (
+      family: fontFamily(moret, family),
+      lineHeight: 1.125,
+      size: (
+        sm: 2rem,
+        md: 2.25rem,
+        lg: 3rem,
+      ),
+      style: (
+        normal,
+      ),
+      weight: (
+        bold: 700,
+      ),
+    ),
+  ),
+);
+
+@function miseTypography($keys...) {
+  $value: $map;
+  @each $key in $keys {
+    $value: map-get($value, $key);
+  }
+  @return $value;
+}
+
+@mixin miseFont($category, $font, $size: md, $weight: normal, $style: normal) {
+  font-family: miseTypography($miseTypography, $category, $font, family);
+  font-size: miseTypography($miseTypography, $category, $font, size, $size);
+  line-height: miseTypography($miseTypography, $category, $font, lineHeight);
+  weight: miseTypography($miseTypography, $category, $font, weight, $weight);
+  @if $style == italic and miseTypography($miseTypography, $category, $font, style, italic) {
+    font-style: italic;
+  }
+  @if $style == caps and typography($miseTypography, $category, $font, style, caps) {
+    letter-spacing: calc(1em * 0.0625);
+    text-transform: uppercase;
+  }
+}
+
+// Exports
+// This allows variables to be used with ./src/components/tokens/typography/typography.ts
+:export {
+  // Font Family
+  @each $name, $value in $fontFamilies {
+    @each $prop, $value in $value {
+      @if type-of($value) == map {
+        @each $option, $value in $value {
+          fontFamilies-#{$name}-#{$prop}-#{$option}: $value;
+        }
+      } @else {
+        fontFamilies-#{$name}-#{$prop}: $value;
+      }
+    }
+  }
+  // Reset Typography
+  @each $prop, $value in $resetTypography {
+    resetTypography-#{$prop}: $value;
+  }
+  // Mise Typography
+  @each $use, $value in $miseTypography {
+    @each $category, $value in $value {
+      @each $prop, $value in $value {
+        @if type-of($value) == map {
+          @each $option, $value in $value {
+            miseTypography-#{$use}-#{$category}-#{$prop}-#{$option}: $value;
+          }
+        } @else {
+          miseTypography-#{$use}-#{$category}-#{$prop}: $value;
+        }
+      }
+    }
+  }
+}

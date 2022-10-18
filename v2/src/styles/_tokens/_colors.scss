@@ -1,0 +1,146 @@
+$sourceColorPalette: (
+  chantilly: #f9efec,
+  tomato: #d73a19,
+  darkMaroon: #752f34,
+  seaSalt: #d9fbfe,
+  turquoise: #8fdee3,
+  mint: #6ba6aa,
+  whiteSmoke: #f5f5f5,
+  ash: #c2c2c2,
+  regentGray: #767f81,
+  eclipse: #3d3d3d,
+  sienna: #b25b18,
+  goldClay: #857351,
+  timber: #405700,
+  seaweed: #167a7a,
+  deepSea: #0b3c3d,
+  blueLagoon: #005e71,
+  pacific: #1775c2,
+  midnight: #1a3352,
+  violet: #321a52,
+);
+
+@function sourceColor($color) {
+  @return map-get($sourceColorPalette, $color);
+}
+
+$miseColorPalette: (
+  primary: (
+    light: (
+      tint: lighten(sourceColor(chantilly), 2.5%),
+      base: sourceColor(chantilly),
+      shade: darken(sourceColor(chantilly), 2.5%),
+    ),
+    mid: (
+      tint: lighten(sourceColor(tomato), 10%),
+      base: sourceColor(tomato),
+      shade: darken(sourceColor(tomato), 10%),
+    ),
+    dark: (
+      tint: lighten(sourceColor(darkMaroon), 10%),
+      base: sourceColor(darkMaroon),
+      shade: darken(sourceColor(darkMaroon), 10%),
+    ),
+  ),
+  accent: (
+    light: (
+      tint: lighten(sourceColor(seaSalt), 5%),
+      base: sourceColor(seaSalt),
+      shade: darken(sourceColor(seaSalt), 5%),
+    ),
+    mid: (
+      tint: lighten(sourceColor(turquoise), 15%),
+      base: sourceColor(turquoise),
+      shade: darken(sourceColor(turquoise), 15%),
+    ),
+    dark: (
+      tint: lighten(sourceColor(mint), 20%),
+      base: sourceColor(mint),
+      shade: darken(sourceColor(mint), 20%),
+    ),
+  ),
+  neutral: (
+    white: (
+      base: #ffffff,
+    ),
+    light: (
+      base: sourceColor(whiteSmoke),
+    ),
+    mid: (
+      base: sourceColor(ash),
+    ),
+    dark: (
+      base: sourceColor(regentGray),
+    ),
+    extraDark: (
+      base: sourceColor(eclipse),
+    ),
+    black: (
+      base: #000000,
+    ),
+  ),
+  editorial: (
+    color1: (
+      base: sourceColor(darkMaroon),
+    ),
+    color2: (
+      base: sourceColor(sienna),
+    ),
+    color3: (
+      base: sourceColor(goldClay),
+    ),
+    color4: (
+      base: sourceColor(timber),
+    ),
+    color5: (
+      base: sourceColor(seaweed),
+    ),
+    color6: (
+      base: sourceColor(deepSea),
+    ),
+    color7: (
+      base: sourceColor(blueLagoon),
+    ),
+    color8: (
+      base: sourceColor(pacific),
+    ),
+    color9: (
+      base: sourceColor(midnight),
+    ),
+    color10: (
+      base: sourceColor(violet),
+    ),
+  ),
+  marketing: (
+    mid: (
+      tint: lighten(sourceColor(pacific), 15%),
+      base: sourceColor(pacific),
+      shade: darken(sourceColor(pacific), 15%),
+    ),
+  ),
+);
+
+@function miseColor($keys...) {
+  $value: $miseColorPalette;
+  @each $key in $keys {
+    $value: map-get($value, $key);
+  }
+  @return $value;
+}
+
+// Exports
+// This allows variables to be used with ./src/components/tokens/colors/colors.ts
+:export {
+  // Color Palette
+  @each $color, $value in $sourceColorPalette {
+    sourceColorPalette-#{$color}: $value;
+  }
+  // Mise Color
+  @each $category, $value in $miseColorPalette {
+    @each $color, $value in $value {
+      @each $variant, $value in $value {
+        miseColorPalette-#{$category}-#{$color}-#{$variant}: $value;
+      }
+    }
+  }
+}
