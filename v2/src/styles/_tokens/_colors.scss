@@ -27,7 +27,6 @@ $sourceColorPalette: (
 $miseColorPalette: (
   primary: (
     light: (
-      tint: lighten(sourceColor(chantilly), 2.5%),
       base: sourceColor(chantilly),
       shade: darken(sourceColor(chantilly), 2.5%),
     ),
@@ -44,9 +43,8 @@ $miseColorPalette: (
   ),
   accent: (
     light: (
-      tint: lighten(sourceColor(seaSalt), 5%),
       base: sourceColor(seaSalt),
-      shade: darken(sourceColor(seaSalt), 5%),
+      shade: darken(sourceColor(seaSalt), 10%),
     ),
     mid: (
       tint: lighten(sourceColor(turquoise), 15%),
@@ -113,7 +111,6 @@ $miseColorPalette: (
   ),
   marketing: (
     mid: (
-      tint: lighten(sourceColor(pacific), 15%),
       base: sourceColor(pacific),
       shade: darken(sourceColor(pacific), 15%),
     ),

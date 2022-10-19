@@ -27,5 +27,10 @@ export const getTokenObject = (prefix: string, tokens: {[key: string]: number | 
 
 // Converts a token camelCase key to Title Case, e.g. tokenName -> Token Name
 export const getTokenTitle= (token: string) => {
-  return token[0].toUpperCase() + token.slice(1).replace(/([A-Z])/g, ' $1').trim()
+  let title = token;
+  // Capitalize words
+  title = title[0].toUpperCase() + title.slice(1).replace(/([A-Z])/g, ' $1');
+  // Add Spaces between letters and numbers
+  title = title.replace(/[^0-9](?=[0-9])/g, '$& ');
+  return title
 }

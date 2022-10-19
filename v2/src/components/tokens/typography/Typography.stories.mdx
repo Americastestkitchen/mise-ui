@@ -1,10 +1,112 @@
 import { Canvas, Meta, Typeset } from "@storybook/addon-docs";
 import { FontFamilies, ResetTypography, MiseTypography } from "./Typography";
+import { getTokenTitle } from '../utils'
 
 <Meta title="Design Tokens/Typography" />
 
 export const SampleText = "The five boxing wizards jump quickly.";
 
+export const fontListSizeConversion = (sizes, baseSize) => {
+  
+
+  return sizes
+};
+
+export const FontList = ({font}) => {
+  return (
+    <>
+      {Object.keys(font).map((name) => {
+        return (
+          <>
+            <h3>{
+              font[name].size
+                ? getTokenTitle(name)
+                : font[name].family.split(',').shift()}</h3>
+            <p>
+              <strong>Fallback: </strong>
+              {font[name].family.split(',').pop()}
+              <br/>
+              <strong>Styles: </strong>
+              {Object.keys(font[name].style).map((style, i) => {
+                if (Object.keys(font[name].style).length === i + 1) {
+                  return style
+                }
+                return style + ', '
+              })}
+              <br/>
+              <strong>Weights: </strong>
+              {Object.keys(font[name].weight).map((weight, i) => {
+                if (Object.keys(font[name].weight).length === i + 1) {
+                  return font[name].weight[weight] + '/' + weight
+                }
+                return font[name].weight[weight] + '/' + weight + ', '
+              })}
+            </p>
+            <hr/>
+            {Object.keys(font[name].weight).map((weight) => {
+              return (
+                Object.keys(font[name].style).map((style) => {
+                  return (
+                    <>
+                      <p>
+                        <b>Weight:</b> {font[name].weight[weight] + '/' + weight}
+                        <br/>
+                        <b>Style:</b> {font[name].style[style]}
+                      </p>
+                      <Typeset
+                        style={{fontStyle: font[name].style[style]}}
+                        sampleText={SampleText}
+                        fontFamily={font[name].family}
+                        fontWeight={font[name].weight[weight]}
+                        fontSizes={
+                          font[name].size
+                            ? fontListSizeConversion(Object.values(font[name].size), ResetTypography.size)
+                            : [ResetTypography.size]}
+                      />
+                    </>
+                  )
+                })
+              )
+            })}
+          </>
+        )
+      })}
+    </>
+  )
+};
+
 # Typography
 
 Typography styling is located in the `./v2/src/styles/_tokens/_typography.scss` and is part of `tokens.scss`.
+
+## Mise Fonts
+
+TEXT GOES HERE
+
+## Text
+
+TEXT GOES HERE
+
+<FontList font={MiseTypography.text} />
+
+## Display
+
+TEXT GOES HERE
+
+<FontList font={MiseTypography.display} />
+
+### Using Mise Fonts
+
+TEXT GOES HERE
+
+#### SCSS | *scss
+
+```
+CODE GOES HERE
+```
+
+## Font Families
+
+The following families are **for reference only**. These represent the families, styles, and weights that are mapped to `Mise Typography` and should not be used directly in code.
+
+<FontList font={FontFamilies} />

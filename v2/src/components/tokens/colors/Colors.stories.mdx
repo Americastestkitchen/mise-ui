@@ -10,7 +10,7 @@ Color styling is located in the `./v2/src/styles/_tokens/_colors.scss` and is pa
 
 ## Mise Color Palette
 
-`Mise Colors` are **the only colors that can be used** to style Mise components.
+The following colors are **the only colors that can be used** to style Mise components.
 
 ### Primary | `primary`
 
@@ -31,7 +31,9 @@ Color styling is located in the `./v2/src/styles/_tokens/_colors.scss` and is pa
 ### Marketing | `marketing`
 
 <ColorPalette>
-  <ColorItem title="Mid" subtitle="mid" colors={MiseColors.marketing.mid} />
+  {Object.keys(MiseColors.marketing).map((key, i) => {
+    return <ColorItem title={getTokenTitle(key)} subtitle={key} colors={MiseColors.marketing[key]} />;
+  })}
 </ColorPalette>
 
 ### Editorial | `editorial`
@@ -54,9 +56,9 @@ Color styling is located in the `./v2/src/styles/_tokens/_colors.scss` and is pa
 
 Colors can be used with the `MiseColor` function. This custom SASS function takes a `category` and optional `color`, and `variant` arguments.
 
-> Note: All colors have the `variant`: `base`, the default color, and all categories have the `color`: `mid`, excluding Editorial colors.
+> **Note:** All colors have the `variant`: `base`, the default color, and all categories have the `color`: `mid`, **excluding Editorial** colors which are numbered, starting with `color1`.
 
-**SASS | *.scss**
+#### SASS | *.scss
 
 ```
 // Import from `./v2/src/styles/styles.scss` or `./v2/src/styles/tokens.scss`

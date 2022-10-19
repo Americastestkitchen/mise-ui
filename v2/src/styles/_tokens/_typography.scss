@@ -5,8 +5,8 @@ $fontFamilies: (
   merriweather: (
     family: #{Merriweather, serif},
     style: (
-      normal,
-      italic,
+      normal: normal,
+      italic: italic,
     ),
     weight: (
       normal: 400,
@@ -16,8 +16,8 @@ $fontFamilies: (
   proximaNova: (
     family: #{"Proxima Nova", sans-serif},
     style: (
-      normal,
-      italic,
+      normal: normal,
+      italic: italic,
     ),
     weight: (
       normal: 400,
@@ -27,7 +27,7 @@ $fontFamilies: (
   moret: (
     family: #{Moret, serif},
     style: (
-      normal,
+      normal: normal,
     ),
     weight: (
       bold: 700,
@@ -73,8 +73,8 @@ $miseTypography: (
         xl: 1.5rem,
       ),
       style: (
-        normal,
-        italic,
+        normal: normal,
+        italic: italic,
       ),
       weight: (
         normal: 400,
@@ -91,9 +91,9 @@ $miseTypography: (
         xl: 1.5rem,
       ),
       style: (
-        normal,
-        italic,
-        caps,
+        normal: normal,
+        italic: italic,
+        caps: caps,
       ),
       weight: (
         normal: 400,
@@ -111,7 +111,7 @@ $miseTypography: (
         lg: 3rem,
       ),
       style: (
-        normal,
+        normal: normal,
       ),
       weight: (
         bold: 700,
@@ -128,12 +128,12 @@ $miseTypography: (
   @return $value;
 }
 
-@mixin miseFont($category, $font, $size: md, $weight: normal, $style: normal) {
-  font-family: miseTypography($miseTypography, $category, $font, family);
-  font-size: miseTypography($miseTypography, $category, $font, size, $size);
-  line-height: miseTypography($miseTypography, $category, $font, lineHeight);
-  weight: miseTypography($miseTypography, $category, $font, weight, $weight);
-  @if $style == italic and miseTypography($miseTypography, $category, $font, style, italic) {
+@mixin miseFont($use, $category, $font, $size: md, $weight: normal, $style: normal) {
+  font-family: miseTypography($miseTypography, $use, $category, $font, family);
+  font-size: miseTypography($miseTypography, $use, $category, $font, size, $size);
+  line-height: miseTypography($miseTypography, $use, $category, $font, lineHeight);
+  weight: miseTypography($miseTypography, $use, $category, $font, weight, $weight);
+  @if $style == italic and miseTypography($miseTypography, $use, $category, $font, style, italic) {
     font-style: italic;
   }
   @if $style == caps and typography($miseTypography, $category, $font, style, caps) {
