@@ -9,12 +9,12 @@ $space: 0.25rem; // 4px
 
 $spacing: (
   $xs: $space,     // 0.25rem/4px
-  $sm: $space * 2, // 0.5rem/8px
-  $md: $space * 4, // 1rem/16px
-  $lg: $space * 6, // 1.5rem/24px
-  $xl: $space * 8, // 2rem/32px
-  $xxl: $space * 10, // 2rem/40px
-  $xxxl: $space * 12, // 2rem/48px
+  $sm: #{$space} * 2, // 0.5rem/8px
+  $md: #{$space} * 4, // 1rem/16px
+  $lg: #{$space} * 6, // 1.5rem/24px
+  $xl: #{$space} * 8, // 2rem/32px
+  $xxl: #{$space} * 10, // 2rem/40px
+  $xxxl: #{$space} * 12, // 2rem/48px
 );
 
 @function miseSpacing($size) {
