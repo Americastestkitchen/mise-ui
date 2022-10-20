@@ -5,31 +5,30 @@ $breakpoints: (
   xl: 1200px,
 );
 
-$space: 0.25rem; // 4px
+$spacingUnit: 0.25rem; // 4px
 
 $spacing: (
-  $xs: $space,     // 0.25rem/4px
-  $sm: #{$space} * 2, // 0.5rem/8px
-  $md: #{$space} * 4, // 1rem/16px
-  $lg: #{$space} * 6, // 1.5rem/24px
-  $xl: #{$space} * 8, // 2rem/32px
-  $xxl: #{$space} * 10, // 2rem/40px
-  $xxxl: #{$space} * 12, // 2rem/48px
+  xs: $spacingUnit,     // 0.25rem/4px
+  sm: $spacingUnit * 2, // 0.5rem/8px
+  md: $spacingUnit * 4, // 1rem/16px
+  lg: $spacingUnit * 6, // 1.5rem/24px
+  xl: $spacingUnit * 8, // 2rem/32px
+  xxl: $spacingUnit * 10, // 2rem/40px
+  xxxl: $spacingUnit * 12, // 2rem/48px
 );
 
 @function miseSpacing($size) {
-  @return map-get($spacing);
+  @return map-get($spacing, $size);
 }
 
-$content: (
+$contentLayout: (
   container: 1200px,
-  maxContainer: calc(#{$container} - #{$xl}),
   containerGutter: (
-    bpXs: $xs,
-    bpSm: $xs,
-    bpMd: $md, 
-    bpLg: $xl,
-    bpXl: $xl,
+    bpXs: miseSpacing(xs),
+    bpSm: miseSpacing(xs),
+    bpMd: miseSpacing(md), 
+    bpLg: miseSpacing(xl),
+    bpXl: miseSpacing(xl),
   ),
   column: (
     full: 100%,
@@ -40,11 +39,11 @@ $content: (
     quarter: 25%,
   ),
   columnGutter: (
-    bpXs: $xs,
-    bpSm: $xs,
-    bpMd: $md, 
-    bpLg: $md,
-    bpXl: $md,
+    bpXs: miseSpacing(xs),
+    bpSm: miseSpacing(xs),
+    bpMd: miseSpacing(md), 
+    bpLg: miseSpacing(md),
+    bpXl: miseSpacing(md),
   )
 );
 
@@ -54,4 +53,29 @@ $content: (
     $value: map-get($value, $key);
   }
   @return $value;
+}
+
+// Exports
+// This allows variables to be used with ./src/components/tokens/layout/Layout.ts
+:export {
+  // Breakpoints
+  @each $breakpoint, $value in $breakpoints {
+    breakpoint-#{$breakpoint}: $value;
+  }
+  // Spacing Unit
+  spacingUnit: $spacingUnit;
+  // Spacing
+  @each $spacingSize, $value in $spacing {
+    spacing-#{$spacingSize}: $value;
+  }
+  // Content Layout
+  @each $key, $value in $contentLayout {
+    @if type-of($value) == map {
+      @each $option, $value in $value {
+        contentLayout-#{$key}-#{$option}: $value;
+      }
+    } @else {
+      contentLayout-#{$key}: $value;
+    }
+  }
 }

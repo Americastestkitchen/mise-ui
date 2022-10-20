@@ -126,7 +126,7 @@ $miseColorPalette: (
 }
 
 // Exports
-// This allows variables to be used with ./src/components/tokens/colors/colors.ts
+// This allows variables to be used with ./src/components/tokens/colors/Colors.ts
 :export {
   // Color Palette
   @each $color, $value in $sourceColorPalette {
