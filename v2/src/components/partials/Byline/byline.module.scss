@@ -1,0 +1,53 @@
+@import "../../../styles/styles.scss";
+
+.wrapper {
+  display: block;
+  flex-direction: column;
+  align-items: center;
+  flex-direction: row;
+
+  @media (min-width: 1025px) {
+    display: flex;
+  }
+}
+
+.authorWrapper {
+  @include underlined-link;
+  align-items: center;
+  display: flex;
+}
+
+.headShotWrapper {
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 50%;
+  margin-right: 12px;
+  height: 40px;
+  width: 40px;
+}
+
+.author {
+  color: miseColor(neutral, extraDark, base);
+  // font: 1rem/1.63 $secondaryFont; TODO: include the typefact styling
+}
+
+.headShot {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.attribution {
+  display: block;
+  // font: 1rem/1.63 $primaryFont; TODO: include the typefact styling
+  margin: 4px 0;
+}
+
+.atLeastOneAuthor {
+  @media (min-width: 1025px) {
+    &::before {
+      content: " | ";
+      margin: 0px 4px 0 7px;
+    }
+  }
+}
