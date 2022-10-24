@@ -1,74 +1,52 @@
-// // @import "../../../styles/styles.scss";
+@use "./src/styles/mise.scss";
 
-// @mixin underlined-link {
-//   a {
-//     background-image: linear-gradient(transparent 91%,  miseColor(accent, mid, base) 91%);
-//     transition: background-color 0.2s ease-in-out 0s;
+.wrapper {
+  display: block;
+  flex-direction: column;
+  align-items: center;
+  flex-direction: row;
 
-//     @media(hover: hover) {
-//       &:hover {
-//         background-color: miseColor(accent, light, base);
-//       }
-//     }
-//     &:focus, &:active {
-//       @include focus-indicator;
-//     }
-//   }
-// }
+  @media (min-width: 1025px) {
+    display: flex;
+  }
+}
 
-// @mixin focus-indicator {
-//   outline: 2px dotted miseColor(neutral, extraDark, base);
-//   outline-offset: 3px;
-// }
+.authorWrapper {
+  align-items: center;
+  display: flex;
+}
 
-// .wrapper {
-//   display: block;
-//   flex-direction: column;
-//   align-items: center;
-//   flex-direction: row;
+.headShotWrapper {
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 50%;
+  margin-right: 12px;
+  height: 40px;
+  width: 40px;
+}
 
-//   @media (min-width: 1025px) {
-//     display: flex;
-//   }
-// }
+.author {
+  color: mise.color(neutral, dark, base);
+  @include mise.font(text, secondary, md);
+}
 
-// .authorWrapper {
-//   @include underlined-link;
-//   align-items: center;
-//   display: flex;
-// }
+.headShot {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
 
-// .headShotWrapper {
-//   flex-shrink: 0;
-//   overflow: hidden;
-//   border-radius: 50%;
-//   margin-right: 12px;
-//   height: 40px;
-//   width: 40px;
-// }
+.attribution {
+  display: block;
+  @include mise.font(text, secondary, md);
+  margin: 4px 0;
+}
 
-// .author {
-//   color: miseColor(neutral, extraDark, base);
-//   // font: 1rem/1.63 $secondaryFont; TODO: include the typefact styling
-// }
-
-// .headShot {
-//   height: 100%;
-//   object-fit: cover;
-//   width: 100%;
-// }
-
-// .attribution {
-//   display: block;
-//   // font: 1rem/1.63 $primaryFont; TODO: include the typefact styling
-//   margin: 4px 0;
-// }
-
-// .atLeastOneAuthor {
-//   @media (min-width: 1025px) {
-//     &::before {
-//       content: " | ";
-//       margin: 0px 4px 0 7px;
-//     }
-//   }
-// }
+.atLeastOneAuthor {
+  @media (min-width: 1025px) {
+    &::before {
+      content: " | ";
+      margin: 0px 4px 0 7px;
+    }
+  }
+}

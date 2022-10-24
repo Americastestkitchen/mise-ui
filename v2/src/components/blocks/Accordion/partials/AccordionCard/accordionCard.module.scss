@@ -1,0 +1,48 @@
+@use "./src/styles/mise.scss";
+
+.label {
+  max-width: 100%;
+  color: mise.color(neutral, dark, base);
+  @include mise.font(text, primary, md,)
+}
+
+.itemButton {
+  align-items: center;
+  position: relative;
+  justify-content: space-between;
+  display: block;
+  background-color: mise.color(neutral, light, base);
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 20px;
+  text-align: left;
+  @media(hover: hover) {
+    cursor: pointer;
+  }
+}
+
+.actionIcon {
+  background: none;
+  border: none;
+  right: 35px;
+  height: 24px;
+  width:24px;
+  position: absolute;
+  top: 50%;
+  transform: translate(50%,-50%);
+}
+
+.content {
+  display: block;
+  padding: 14px 20px;
+  :global(.editorial-text) {
+    line-height: 1.5;
+    p {
+      margin-bottom: 16px;
+    }
+	}
+}
+
+.toggleVisible {
+  display: none;
+}
