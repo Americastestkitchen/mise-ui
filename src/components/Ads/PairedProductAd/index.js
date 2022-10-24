@@ -236,7 +236,7 @@ const PairedProductCta = styled.a.attrs({
   className: 'paired-product__cta',
 })`${withThemes(PairedProductCtaTheme)}`;
 
-const PairedProducts = ({ onClick, products, title }) => (
+const PairedProducts = ({ alt, onClick, products, title }) => (
   <PairedProductWrapper>
     <PairedProductInnerWrapper>
       <PairedProductMainTitle>
@@ -254,7 +254,7 @@ const PairedProducts = ({ onClick, products, title }) => (
           key={ctaHref}
         >
           <PairedProductImage
-            alt=""
+            alt={alt}
             data-testid={`paired-img-${idx}`}
             src={getImageUrl(
               cloudinaryId,
@@ -284,6 +284,7 @@ const PairedProducts = ({ onClick, products, title }) => (
 );
 
 PairedProducts.propTypes = {
+  alt: PropTypes.string,
   title: PropTypes.string.isRequired,
   onClick: PropTypes.func,
   products: PropTypes.arrayOf(
@@ -299,6 +300,7 @@ PairedProducts.propTypes = {
 };
 
 PairedProducts.defaultProps = {
+  alt: '',
   onClick: null,
 };
 
