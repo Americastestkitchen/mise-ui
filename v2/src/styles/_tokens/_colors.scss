@@ -24,11 +24,12 @@ $sourceColorPalette: (
   @return map-get($sourceColorPalette, $color);
 }
 
-$miseColorPalette: (
+$colorPalette: (
   primary: (
     light: (
+      tint: lighten(sourceColor(chantilly), 2.5%),
       base: sourceColor(chantilly),
-      shade: darken(sourceColor(chantilly), 2.5%),
+      shade: darken(sourceColor(chantilly), 5%),
     ),
     mid: (
       tint: lighten(sourceColor(tomato), 10%),
@@ -43,6 +44,7 @@ $miseColorPalette: (
   ),
   accent: (
     light: (
+      tint: lighten(sourceColor(seaSalt), 5%),
       base: sourceColor(seaSalt),
       shade: darken(sourceColor(seaSalt), 10%),
     ),
@@ -57,24 +59,11 @@ $miseColorPalette: (
       shade: darken(sourceColor(mint), 20%),
     ),
   ),
-  neutral: (
-    white: (
-      base: #ffffff,
-    ),
-    light: (
-      base: sourceColor(whiteSmoke),
-    ),
+  marketing: (
     mid: (
-      base: sourceColor(ash),
-    ),
-    dark: (
-      base: sourceColor(regentGray),
-    ),
-    extraDark: (
-      base: sourceColor(eclipse),
-    ),
-    black: (
-      base: #000000,
+      tint: lighten(sourceColor(pacific), 15%),
+      base: sourceColor(pacific),
+      shade: darken(sourceColor(pacific), 15%),
     ),
   ),
   editorial: (
@@ -109,16 +98,30 @@ $miseColorPalette: (
       base: sourceColor(violet),
     ),
   ),
-  marketing: (
+  neutral: (
+    white: (
+      base: #ffffff,
+    ),
+    light: (
+      base: sourceColor(whiteSmoke),
+    ),
     mid: (
-      base: sourceColor(pacific),
-      shade: darken(sourceColor(pacific), 15%),
+      base: sourceColor(ash),
+    ),
+    dark: (
+      base: sourceColor(regentGray),
+    ),
+    extraDark: (
+      base: sourceColor(eclipse),
+    ),
+    black: (
+      base: #000000,
     ),
   ),
 );
 
-@function miseColor($keys...) {
-  $value: $miseColorPalette;
+@function color($keys...) {
+  $value: $colorPalette;
   @each $key in $keys {
     $value: map-get($value, $key);
   }
@@ -133,10 +136,10 @@ $miseColorPalette: (
     sourceColorPalette-#{$color}: $value;
   }
   // Mise Color
-  @each $category, $value in $miseColorPalette {
+  @each $category, $value in $colorPalette {
     @each $color, $value in $value {
       @each $variant, $value in $value {
-        miseColorPalette-#{$category}-#{$color}-#{$variant}: $value;
+        colorPalette-#{$category}-#{$color}-#{$variant}: $value;
       }
     }
   }

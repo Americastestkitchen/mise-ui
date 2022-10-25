@@ -1,0 +1,7 @@
+@use "./src/styles/mise.scss";
+
+.test {
+  @include mise.font(text, primary);
+  background-color: mise.color(primary, mid, base);
+  color: mise.color(neutral, white, base);
+}

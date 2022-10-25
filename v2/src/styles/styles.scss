@@ -1,4 +1,2 @@
-@import "./tokens.scss";
-@import "./reset.scss";
-@import "./utilities.scss";
-@import "./mixins.scss";
+@forward "./reset.scss";
+@forward "./utilities.scss";

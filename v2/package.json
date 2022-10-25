@@ -22,7 +22,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "new-component": "node scaffold-component.js"
   },
   "eslintConfig": {
     "extends": [
@@ -67,6 +68,7 @@
     "babel-plugin-named-exports-order": "^0.0.2",
     "prop-types": "^15.8.1",
     "sass": "^1.54.6",
+    "storybook-addon-designs": "^6.3.1",
     "webpack": "^5.74.0"
   }
 }

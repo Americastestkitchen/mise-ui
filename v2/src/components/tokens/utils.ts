@@ -1,5 +1,23 @@
 // Helper token utilities
 
+// Default Storybook Token Params
+export const tokenParams = {
+  backgrounds: {
+    disable: true,
+    grid: {
+      disable: true,
+    },
+  },
+  options: {
+    showToolbar: false
+  },
+  previewTabs: { 
+    canvas: { hidden: true },
+    
+  },
+  viewMode: 'docs',
+};
+
 // Creates a deep object from an array of keys and nested value
 export const setDeepObject = (obj: {[key: string]: {}}, keys: string[], val: number | string) => { 
   const lastKey = keys.pop();
@@ -33,4 +51,4 @@ export const getTokenTitle= (token: string) => {
   // Add Spaces between letters and numbers
   title = title.replace(/[^0-9](?=[0-9])/g, '$& ');
   return title
-}
+};

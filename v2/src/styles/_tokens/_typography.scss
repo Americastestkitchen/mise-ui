@@ -61,7 +61,7 @@ $resetTypography: (
   weight: resetTypography(weight);
 }
 
-$miseTypography: (
+$typography: (
   text: (
     primary: (
       family: fontFamily(merriweather, family),
@@ -120,23 +120,23 @@ $miseTypography: (
   ),
 );
 
-@function miseTypography($keys...) {
-  $value: $map;
+@function typography($keys...) {
+  $value: $typography;
   @each $key in $keys {
     $value: map-get($value, $key);
   }
   @return $value;
 }
 
-@mixin miseFont($use, $category, $font, $size: md, $weight: normal, $style: normal) {
-  font-family: miseTypography($miseTypography, $use, $category, $font, family);
-  font-size: miseTypography($miseTypography, $use, $category, $font, size, $size);
-  line-height: miseTypography($miseTypography, $use, $category, $font, lineHeight);
-  weight: miseTypography($miseTypography, $use, $category, $font, weight, $weight);
-  @if $style == italic and miseTypography($miseTypography, $use, $category, $font, style, italic) {
+@mixin font($category, $name, $size: md, $weight: normal, $style: normal) {
+  font-family: typography($category, $name, family);
+  font-size: typography($category, $name, size, $size);
+  line-height: typography($category, $name, lineHeight);
+  weight: typography($category, $name, weight, $weight);
+  @if $style == italic and typography($category, $name, style, italic) {
     font-style: italic;
   }
-  @if $style == caps and typography($miseTypography, $category, $font, style, caps) {
+  @if $style == caps and typography($category, $name, style, caps) {
     letter-spacing: calc(1em * 0.0625);
     text-transform: uppercase;
   }
@@ -162,15 +162,15 @@ $miseTypography: (
     resetTypography-#{$prop}: $value;
   }
   // Mise Typography
-  @each $use, $value in $miseTypography {
-    @each $category, $value in $value {
+  @each $category, $value in $typography {
+    @each $name, $value in $value {
       @each $prop, $value in $value {
         @if type-of($value) == map {
           @each $option, $value in $value {
-            miseTypography-#{$use}-#{$category}-#{$prop}-#{$option}: $value;
+            typography-#{$category}-#{$name}-#{$prop}-#{$option}: $value;
           }
         } @else {
-          miseTypography-#{$use}-#{$category}-#{$prop}: $value;
+          typography-#{$category}-#{$name}-#{$prop}: $value;
         }
       }
     }

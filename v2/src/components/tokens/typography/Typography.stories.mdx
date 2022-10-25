@@ -1,16 +1,14 @@
 import { Canvas, Meta, Typeset } from "@storybook/addon-docs";
-import { FontFamilies, ResetTypography, MiseTypography } from "./Typography";
-import { getTokenTitle } from '../utils'
+import { FontFamilies, ResetTypography, Typography } from "./Typography";
+import { getTokenTitle, tokenParams } from '../utils'
+import { FontPreview } from './FontPreview/FontPreview'
 
-<Meta title="Tokens/Typography" />
+<Meta
+  title="Tokens/Typography"
+  parameters={tokenParams}
+/>
 
 export const SampleText = "The five boxing wizards jump quickly.";
-
-export const fontListSizeConversion = (sizes, baseSize) => {
-  
-
-  return sizes
-};
 
 export const FontList = ({font}) => {
   return (
@@ -60,7 +58,7 @@ export const FontList = ({font}) => {
                         fontWeight={font[name].weight[weight]}
                         fontSizes={
                           font[name].size
-                            ? fontListSizeConversion(Object.values(font[name].size), ResetTypography.size)
+                            ? Object.values(font[name].size)
                             : [ResetTypography.size]}
                       />
                     </>
@@ -87,13 +85,15 @@ TEXT GOES HERE
 
 TEXT GOES HERE
 
-<FontList font={MiseTypography.text} />
+<FontPreview />
+
+<FontList font={Typography.text} />
 
 ## Display | `display`
 
 TEXT GOES HERE
 
-<FontList font={MiseTypography.display} />
+<FontList font={Typography.display} />
 
 ### Using Mise Fonts
 

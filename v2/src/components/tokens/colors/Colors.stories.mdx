@@ -1,84 +1,98 @@
 import { Meta, ColorPalette, ColorItem } from "@storybook/addon-docs";
-import { SourceColors, MiseColors } from "./Colors";
-import { getTokenTitle } from '../utils'
+import { SourceColors, Colors } from "./Colors";
+import { getTokenTitle, tokenParams } from '../utils'
 
-<Meta title="Tokens/Colors" />
+<Meta
+  title="Tokens/Colors"
+  parameters={tokenParams}
+/>
 
 # Colors
 
-Color styling is located in the `./v2/src/styles/_tokens/_colors.scss` and is part of `tokens.scss`.
+## For Designers
 
-## Mise Color Palette
+!!! **TODO:** EMBED FIGMA DOCUMENTATION HERE !!!
 
-The following colors are **the only colors that can be used** to style Mise components.
+## For Developers
 
-### Primary | `primary`
+### Using the Color Palette
 
-<ColorPalette>
-  {Object.keys(MiseColors.primary).map((key, i) => {
-    return <ColorItem title={getTokenTitle(key)} subtitle={key} colors={MiseColors.primary[key]} />;
-  })}
-</ColorPalette>
+Colors can be used with the `mise.color()` function. This custom SASS function takes a `hue` and optional `color`, and `variant` arguments. All colors should be implemented with `mise.color()`, **no hex codes, rgba, sass transforms, etc…** should be used directly in component styling. 
 
-### Accent | `accent`
-
-<ColorPalette>
-  {Object.keys(MiseColors.accent).map((key, i) => {
-    return <ColorItem title={getTokenTitle(key)} subtitle={key} colors={MiseColors.accent[key]} />;
-  })}
-</ColorPalette>
-
-### Marketing | `marketing`
-
-<ColorPalette>
-  {Object.keys(MiseColors.marketing).map((key, i) => {
-    return <ColorItem title={getTokenTitle(key)} subtitle={key} colors={MiseColors.marketing[key]} />;
-  })}
-</ColorPalette>
-
-### Editorial | `editorial`
-
-<ColorPalette>
-  {Object.keys(MiseColors.editorial).map((key, i) => {
-    return <ColorItem title={getTokenTitle(key)} subtitle={key} colors={MiseColors.editorial[key]} />;
-  })}
-</ColorPalette>
-
-### Neutral | `neutral`
-
-<ColorPalette>
-  {Object.keys(MiseColors.neutral).map((key, i) => {
-    return <ColorItem title={getTokenTitle(key)} subtitle={key} colors={MiseColors.neutral[key]} />;
-  })}
-</ColorPalette>
-
-### Using the Mise Color Palette
-
-Colors can be used with the `MiseColor` function. This custom SASS function takes a `category` and optional `color`, and `variant` arguments.
-
-> **Note:** All colors have the `variant`: `base`, the default color, and all categories have the `color`: `mid`, **excluding Editorial** colors which are numbered, starting with `color1`.
+> **Note:** All colors have the `variant`: `base`, and all hues have the `color`: `mid`, **excluding Editorial** colors which are numbered, starting with `color1`.
 
 #### SASS | *.scss
 
 ```
-// Import from `./v2/src/styles/styles.scss` or `./v2/src/styles/tokens.scss`
-// Usage: MiseColor(category, color, variant)
+@use "./src/styles/mise.scss"
 
 .example {
-  background-color: MiseColor(brand, mid, base);
-  border-color: MiseColor(brand, dark, base);
-  color: MiseColor(netural, white, base);
+  background-color: mise.color(brand, mid, base);
+  border-color: mise.color(brand, dark, base);
+  color: mise.color(netural, white, base);
 
   &:hover {
-    background-color: MiseColor(brand, mid, shade);
-    border-color: MiseColor(brand, dark, shade);
+    background-color: mise.color(brand, mid, shade);
+    border-color: mise.color(brand, dark, shade);
   }
 }
 ```
 
+## Color Palette
+
+The following colors are **the only colors that can be used** to style Mise components.
+
+### Primary
+
+<ColorPalette>
+  {Object.keys(Colors.primary).map((key, i) => {
+    return <ColorItem title={getTokenTitle(key)} subtitle={key} colors={Colors.primary[key]} />;
+  })}
+</ColorPalette>
+
+---
+
+### Accent
+
+<ColorPalette>
+  {Object.keys(Colors.accent).map((key, i) => {
+    return <ColorItem title={getTokenTitle(key)} subtitle={key} colors={Colors.accent[key]} />;
+  })}
+</ColorPalette>
+
+---
+
+### Marketing
+
+<ColorPalette>
+  {Object.keys(Colors.marketing).map((key, i) => {
+    return <ColorItem title={getTokenTitle(key)} subtitle={key} colors={Colors.marketing[key]} />;
+  })}
+</ColorPalette>
+
+---
+
+### Editorial
+
+<ColorPalette>
+  {Object.keys(Colors.editorial).map((key, i) => {
+    return <ColorItem title={getTokenTitle(key)} subtitle={key} colors={Colors.editorial[key]} />;
+  })}
+</ColorPalette>
+
+---
+
+### Neutral
+
+<ColorPalette>
+  {Object.keys(Colors.neutral).map((key, i) => {
+    return <ColorItem title={getTokenTitle(key)} subtitle={key} colors={Colors.neutral[key]} />;
+  })}
+</ColorPalette>
+
 ## Source Color Palette
 
-The following color palette is for **reference only**. These represent the source color values and names that are mapped to `Mise Colors` and should not be used directly in code.
+The following color palette is for **reference only**. These represent the source color values and names that are mapped to `mise.color()` and should not be used directly in code.
 
 <ColorPalette>
   {Object.keys(SourceColors).map((key, i) => {
