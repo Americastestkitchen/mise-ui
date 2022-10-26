@@ -3,15 +3,11 @@ import { Breakpoints, SpacingUnit, Spacing, Content, Grid } from "./Layout.ts";
 import { getTokenTitle, tokenParams } from '../utils'
 
 <Meta
-  title="Tokens/Layout"
-  parameters={tokenParams}
+  title="Tokens/Layout/Grid"
+  parameters={{...tokenParams}}
 />
 
-# Layout
-
-Typography styling is located in the `./v2/src/styles/_tokens/_layout.scss` and is part of `tokens.scss`.
-
-## Breakpoints
+# Grid
 
 <table style={{textAlign: "left", width: "100%"}}>
   <tr>
@@ -41,6 +37,33 @@ Typography styling is located in the `./v2/src/styles/_tokens/_layout.scss` and 
   })}
 </table>
 
+## For Designers
+
+> **TODO:** EMBED FIGMA DOCUMENTATION HERE
+
+## For Developers
+
+Layout styling is located in the `./v2/src/styles/_tokens/_layout.scss` and is part of `mise.scss`.
+
+### Using Breakpoints
+
+#### SASS | *.scss
+
+```
+@use "./src/styles/mise.scss"
+
+.example {
+  background-color: mise.color(brand, mid, base);
+  border-color: mise.color(brand, dark, base);
+  color: mise.color(netural, white, base);
+
+  &:hover {
+    background-color: mise.color(brand, mid, shade);
+    border-color: mise.color(brand, dark, shade);
+  }
+}
+```
+
 ## Spacing
 
 **Spacing Unit:** {SpacingUnit}
@@ -55,27 +78,33 @@ Typography styling is located in the `./v2/src/styles/_tokens/_layout.scss` and 
   )
 })}
 
-### How to Use Spacing
+## For Designers
 
-Text
+> **TODO:** EMBED FIGMA DOCUMENTATION HERE
 
-**SCSS | /*.scss**
+## For Developers
 
-```
-EXAMPLE HERE
-```
+Layout styling is located in the `./v2/src/styles/_tokens/_layout.scss` and is part of `mise.scss`.
 
-### How to Use Spacing
+### Using Spacing
 
-Text
-
-**SCSS | /*.scss**
+#### SASS | *.scss
 
 ```
-EXAMPLE HERE
-```
+@use "./src/styles/mise.scss"
 
-## Content
+.example {
+  background-color: mise.color(brand, mid, base);
+  border-color: mise.color(brand, dark, base);
+  color: mise.color(netural, white, base);
+
+  &:hover {
+    background-color: mise.color(brand, mid, shade);
+    border-color: mise.color(brand, dark, shade);
+  }
+}
+```
+## Content Container
 
 **Max Width:** {Content.maxWidth}
 

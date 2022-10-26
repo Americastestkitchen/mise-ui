@@ -1,11 +1,11 @@
 import { Canvas, Meta, Typeset } from "@storybook/addon-docs";
 import { FontFamilies, ResetTypography, Typography } from "./Typography";
 import { getTokenTitle, tokenParams } from '../utils'
-import { FontPreview } from './FontPreview/FontPreview'
+// import { FontPreview } from './FontPreview/FontPreview'
 
 <Meta
   title="Tokens/Typography"
-  parameters={tokenParams}
+  parameters={{...tokenParams}}
 />
 
 export const SampleText = "The five boxing wizards jump quickly.";
@@ -75,23 +75,43 @@ export const FontList = ({font}) => {
 
 # Typography
 
-Typography styling is located in the `./v2/src/styles/_tokens/_typography.scss` and is part of `tokens.scss`.
+<br/>
 
-## Mise Fonts
+## For Designers
 
-TEXT GOES HERE
+!!! **TODO:** EMBED FIGMA DOCUMENTATION HERE !!!
 
-## Text | `text`
+## For Developers
 
-TEXT GOES HERE
+Typography styling is located in the `./v2/src/styles/_tokens/_typography.scss` and is part of `mise.scss`.
 
-<FontPreview />
+### Using Fonts
+
+Fonts can be used with the `mise.font()` mixin. This custom SASS mixin takes a `category`, `name`, and optional `size`, `weight`, and `style` arguments. All fonts should be implemented with `mise.font()`, **overrides to properties should be agreed upon by both development and design** and should be done at the component level. 
+
+#### SASS | *.scss
+
+```
+@use "./src/styles/mise.scss"
+
+// Example: mise.font(category, name, size, weight, style)
+
+.display {
+  @include mise.font(display, primary, md, normal, normal);
+}
+
+.text {
+  @include mise.font(text, primary, md, normal, normal);
+}
+```
+
+## Fonts
+
+### Text
 
 <FontList font={Typography.text} />
 
-## Display | `display`
-
-TEXT GOES HERE
+## Display
 
 <FontList font={Typography.display} />
 

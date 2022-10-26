@@ -4,10 +4,12 @@ import { getTokenTitle, tokenParams } from '../utils'
 
 <Meta
   title="Tokens/Colors"
-  parameters={tokenParams}
+  parameters={{...tokenParams}}
 />
 
 # Colors
+
+<br/>
 
 ## For Designers
 
@@ -15,80 +17,50 @@ import { getTokenTitle, tokenParams } from '../utils'
 
 ## For Developers
 
+Color styling is located in the `./v2/src/styles/_tokens/_colors.scss` and is part of `mise.scss`.
+
 ### Using the Color Palette
 
-Colors can be used with the `mise.color()` function. This custom SASS function takes a `hue` and optional `color`, and `variant` arguments. All colors should be implemented with `mise.color()`, **no hex codes, rgba, sass transforms, etc…** should be used directly in component styling. 
+Colors can be used with the `mise.color()` function. This custom SASS function takes a `category` and optional `hue`, and `variant` arguments. All colors should be implemented with `mise.color()`, **no hex codes, rgba, sass transforms, etc…** should be used directly in component styling. 
 
-> **Note:** All colors have the `variant`: `base`, and all hues have the `color`: `mid`, **excluding Editorial** colors which are numbered, starting with `color1`.
+> **Note:** All colors have the `variant`: `base`, the default color. `hues` vary by `category`, see the [color palette](#color-palette) below to see available options.
 
 #### SASS | *.scss
 
 ```
 @use "./src/styles/mise.scss"
 
+// Example: mise.color(category, hue, variant)
+
 .example {
-  background-color: mise.color(brand, mid, base);
-  border-color: mise.color(brand, dark, base);
-  color: mise.color(netural, white, base);
+  background-color: mise.color(primary, mid, base);
+  border-color: mise.color(primary, dark, base);
+  color: mise.color(netural, light, tint);
 
   &:hover {
-    background-color: mise.color(brand, mid, shade);
-    border-color: mise.color(brand, dark, shade);
+    background-color: mise.color(primary, mid, shade);
+    border-color: mise.color(primary, dark, shade);
   }
 }
 ```
 
-## Color Palette
+## <a name="color-palette" />Color Palette
 
 The following colors are **the only colors that can be used** to style Mise components.
 
-### Primary
-
-<ColorPalette>
-  {Object.keys(Colors.primary).map((key, i) => {
-    return <ColorItem title={getTokenTitle(key)} subtitle={key} colors={Colors.primary[key]} />;
-  })}
-</ColorPalette>
-
----
-
-### Accent
-
-<ColorPalette>
-  {Object.keys(Colors.accent).map((key, i) => {
-    return <ColorItem title={getTokenTitle(key)} subtitle={key} colors={Colors.accent[key]} />;
-  })}
-</ColorPalette>
-
----
-
-### Marketing
-
-<ColorPalette>
-  {Object.keys(Colors.marketing).map((key, i) => {
-    return <ColorItem title={getTokenTitle(key)} subtitle={key} colors={Colors.marketing[key]} />;
-  })}
-</ColorPalette>
-
----
-
-### Editorial
-
-<ColorPalette>
-  {Object.keys(Colors.editorial).map((key, i) => {
-    return <ColorItem title={getTokenTitle(key)} subtitle={key} colors={Colors.editorial[key]} />;
-  })}
-</ColorPalette>
-
----
-
-### Neutral
-
-<ColorPalette>
-  {Object.keys(Colors.neutral).map((key, i) => {
-    return <ColorItem title={getTokenTitle(key)} subtitle={key} colors={Colors.neutral[key]} />;
-  })}
-</ColorPalette>
+{Object.keys(Colors).map((hue, i) => {
+  return (
+    <>
+      {i === 0 ? "" : <hr/>}
+      <h3><a name={hue} />{getTokenTitle(hue)}</h3>
+      <ColorPalette>
+        {Object.keys(Colors[hue]).map((color) => {
+          return <ColorItem title={getTokenTitle(color)} subtitle={color} colors={Colors[hue][color]} />;
+        })}
+      </ColorPalette>
+    </>
+  )
+})}
 
 ## Source Color Palette
 
