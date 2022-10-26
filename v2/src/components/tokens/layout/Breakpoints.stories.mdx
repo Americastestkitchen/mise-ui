@@ -1,5 +1,5 @@
 import { Canvas, Meta, Typeset } from "@storybook/addon-docs";
-import { Breakpoints, SpacingUnit, Spacing, Content, Grid } from "./Layout.ts";
+import { Breakpoints } from "./Layout.ts";
 import { getTokenTitle, tokenParams } from '../utils'
 
 <Meta
@@ -9,84 +9,21 @@ import { getTokenTitle, tokenParams } from '../utils'
 
 # Breakpoints
 
-<table style={{textAlign: "left", width: "100%"}}>
-  <tr>
-    <th>Key</th>
-    <th>rem</th>
-    <th>Pixel Range</th>
-  </tr>
-  <tr>
-    <td>base</td>
-    <td>0</td>
-    <td>0 - {Breakpoints.sm}</td>
-  </tr>
-  {Object.keys(Breakpoints).map((key, i, arr) => {
-    return (
-      <tr>
-        <td>
-          {key}
-        </td>
-        <td>
-          {Breakpoints[key]}
-        </td>
-        <td>
-          {i + 1 < arr.length ? `${Breakpoints[key]} - ${Breakpoints[arr[i + 1]]}` :  Breakpoints[key]}
-        </td>
-      </tr>
-    )
-  })}
-</table>
+<br/>
 
 ## For Designers
 
-> **TODO:** EMBED FIGMA DOCUMENTATION HERE
+!!! **TODO:** EMBED FIGMA DOCUMENTATION HERE !!!
 
 ## For Developers
 
-Layout styling is located in the `./v2/src/styles/_tokens/_layout.scss` and is part of `mise.scss`.
+Breakpoint styling is located in the `./v2/src/styles/_tokens/_layout.scss` and is part of `mise.scss`.
 
 ### Using Breakpoints
 
-#### SASS | *.scss
+Breakpoints can be used with the `mise.breakpoint()` function. This custom SASS function takes a single `breakpoint` argument.
 
-```
-@use "./src/styles/mise.scss"
-
-.example {
-  background-color: mise.color(brand, mid, base);
-  border-color: mise.color(brand, dark, base);
-  color: mise.color(netural, white, base);
-
-  &:hover {
-    background-color: mise.color(brand, mid, shade);
-    border-color: mise.color(brand, dark, shade);
-  }
-}
-```
-
-## Spacing
-
-**Spacing Unit:** {SpacingUnit}
-
-{Object.keys(Spacing).map((key, i) => {
-  return (
-    <div style={{borderBottom: "1px solid #eee", marginBottom: '1rem', paddingBottom: '1rem'}}>
-      <span style={{display: 'inline-block', width: '3rem'}}><strong>{key}:</strong></span>
-      <span style={{display: 'inline-block', marginLeft: "1rem", width: '4rem'}}>{Spacing[key]}</span>
-      <span style={{backgroundColor: "red", display: 'inline-block', height: Spacing[key], marginLeft: "2rem", width: Spacing[key]}}></span>
-    </div>
-  )
-})}
-
-## For Designers
-
-> **TODO:** EMBED FIGMA DOCUMENTATION HERE
-
-## For Developers
-
-Layout styling is located in the `./v2/src/styles/_tokens/_layout.scss` and is part of `mise.scss`.
-
-### Using Spacing
+> **Note:** Media Queries should always set breakpoints with `min-width`.
 
 #### SASS | *.scss
 
@@ -94,48 +31,12 @@ Layout styling is located in the `./v2/src/styles/_tokens/_layout.scss` and is p
 @use "./src/styles/mise.scss"
 
 .example {
-  background-color: mise.color(brand, mid, base);
-  border-color: mise.color(brand, dark, base);
-  color: mise.color(netural, white, base);
 
-  &:hover {
-    background-color: mise.color(brand, mid, shade);
-    border-color: mise.color(brand, dark, shade);
-  }
 }
 ```
-## Content Container
 
-**Max Width:** {Content.maxWidth}
+## Breakpoints
 
-### Gutter per Breakpoint
-
-{Object.keys(Content.gutter).map((key, i) => {
-  return (
-    <p>
-      <strong>{key}:</strong> {Content.gutter[key]}
-    </p>
-  )
-})}
-
-## Grid
-
-### Column Widths
-
-{Object.keys(Grid.column).map((key, i) => {
-  return (
-    <p>
-      <strong>{key}:</strong> {Grid.column[key]}
-    </p>
-  )
-})}
-
-### Gap per Breakpoint
-
-{Object.keys(Grid.gap).map((key, i) => {
-  return (
-    <p>
-      <strong>{key}:</strong> {Grid.gap[key]}
-    </p>
-  )
+{Object.keys(Breakpoints).map((key, i) => {
+  return <p>{key}: {Breakpoints[key]}</p>
 })}

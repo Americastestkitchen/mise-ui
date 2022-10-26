@@ -10,10 +10,10 @@ function makeDirs(fileName) {
 function generate(fileName) {
   makeDirs(fileName);
   fs.writeFileSync(
-    `./components/${fileName}/${fileName}.tsx`,
+    `./src/components/${fileName}/${fileName}.tsx`,
     `import React from "react";
 
-import styles from "./styles/${fileName}.module.scss";
+import styles from "./src/styles/${fileName}.module.scss";
 
 export interface ${fileName}Props {
   className?: string 
@@ -26,7 +26,7 @@ export const ${fileName}: React.FC<${fileName}Props> = ({ className }: ${fileNam
 export default ${fileName};`
   );
   fs.writeFileSync(
-    `./components/${fileName}/${fileName}.stories.tsx`,
+    `./src/components/${fileName}/${fileName}.stories.tsx`,
     `import React from "react";
 
 import { Story, Meta } from "@storybook/react/types-6-0";
@@ -50,7 +50,7 @@ export const Basic: Story<${fileName}Props> = ({ ...args }) => {
 };`
   );
   fs.writeFileSync(
-    `./components/${fileName}/styles/${fileName}.module.scss`,
+    `./src/components/${fileName}/styles/${fileName}.module.scss`,
     `@use "./src/styles/mise.scss";`
   );
 }
