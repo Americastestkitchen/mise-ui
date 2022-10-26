@@ -5,6 +5,31 @@ $breakpoints: (
   xl: 75rem, // 1200px
 );
 
+@function breakpoint($breakpoint) {
+  @return map-get($breakpoints, $breakpoint);
+}
+
+$zIndexes: (
+  pageBehind: -100,
+  page: 0,
+  pageFront: 100,
+  overlay: 200,
+  overlayFront: 300,
+);
+
+@function zIndex($level, $adjustment) {
+  $zIndex: map-get($zIndexes, $level);
+  @if $zIndex >= 0 and $adjustment > 99 {
+    @return $zIndex + 99;
+  } @else if $zIndex == -100 $adjustment > 0 {
+    @return $zIndex - $adjustment;
+  } @else if $zIndex == -100 $adjustment < -99 {
+    @return $zIndex - 99;
+  } @else {
+    @return $zIndex + $adjustment;
+  }
+}
+
 $spacingUnit: 0.25rem; // 4px
 
 $spacing: (
@@ -18,19 +43,19 @@ $spacing: (
   x12: $spacingUnit * 12, // 2rem/48px
 );
 
-@function miseSpacing($multiplier) {
+@function spacing($multiplier) {
   @return map-get($spacing, $multiplier);
 }
 
 $content: (
   maxWidth: 1200px,
   gutter: (
-    base: miseSpacing(x1),
-    bpXs: miseSpacing(x1),
-    bpSm: miseSpacing(x1),
-    bpMd: miseSpacing(x4), 
-    bpLg: miseSpacing(x8),
-    bpXl: miseSpacing(x8),
+    base: spacing(x1),
+    bpXs: spacing(x1),
+    bpSm: spacing(x1),
+    bpMd: spacing(x4), 
+    bpLg: spacing(x8),
+    bpXl: spacing(x8),
   ),
 );
 
@@ -44,12 +69,12 @@ $grid: (
     quarter: 25%,
   ),
   gap: (
-    base: miseSpacing(x1),
-    bpXs: miseSpacing(x1),
-    bpSm: miseSpacing(x1),
-    bpMd: miseSpacing(x4), 
-    bpLg: miseSpacing(x4),
-    bpXl: miseSpacing(x4),
+    base: spacing(x1),
+    bpXs: spacing(x1),
+    bpSm: spacing(x1),
+    bpMd: spacing(x4), 
+    bpLg: spacing(x4),
+    bpXl: spacing(x4),
   )
 );
 
@@ -59,6 +84,10 @@ $grid: (
   // Breakpoints
   @each $breakpoint, $value in $breakpoints {
     breakpoint-#{$breakpoint}: $value;
+  }
+  // Z-Indexes
+  @each $zIndex, $value in $zIndexes {
+    zIndex-#{$zIndex}: $value;
   }
   // Spacing Unit
   spacingUnit: $spacingUnit;

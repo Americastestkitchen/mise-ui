@@ -1,5 +1,5 @@
 import { Canvas, Meta, Typeset } from "@storybook/addon-docs";
-import { Breakpoints, SpacingUnit, Spacing, Content, Grid } from "./Layout.ts";
+import { ZIndex } from "./Layout.ts";
 import { getTokenTitle, tokenParams } from '../utils'
 
 <Meta
@@ -9,43 +9,15 @@ import { getTokenTitle, tokenParams } from '../utils'
 
 # Z-Index
 
-<table style={{textAlign: "left", width: "100%"}}>
-  <tr>
-    <th>Key</th>
-    <th>rem</th>
-    <th>Pixel Range</th>
-  </tr>
-  <tr>
-    <td>base</td>
-    <td>0</td>
-    <td>0 - {Breakpoints.sm}</td>
-  </tr>
-  {Object.keys(Breakpoints).map((key, i, arr) => {
-    return (
-      <tr>
-        <td>
-          {key}
-        </td>
-        <td>
-          {Breakpoints[key]}
-        </td>
-        <td>
-          {i + 1 < arr.length ? `${Breakpoints[key]} - ${Breakpoints[arr[i + 1]]}` :  Breakpoints[key]}
-        </td>
-      </tr>
-    )
-  })}
-</table>
-
-## For Designers
-
-> **TODO:** EMBED FIGMA DOCUMENTATION HERE
+<br/>
 
 ## For Developers
 
-Layout styling is located in the `./v2/src/styles/_tokens/_layout.scss` and is part of `mise.scss`.
+Z-index styling is located in the `./v2/src/styles/_tokens/_layout.scss` and is part of `mise.scss`.
 
-### Using Breakpoints
+### Using Z-Indexes
+
+Z-indexes can be used with the `mise.zIndex()` function. This custom SASS function takes a `level` and optional `adjustment`. `adjustment` can be anywhere between `1` and `99`, and allows for indexes to exist on the same level with a heirarchy, e.g. 101, 102. 103, etc…
 
 #### SASS | *.scss
 
@@ -53,89 +25,14 @@ Layout styling is located in the `./v2/src/styles/_tokens/_layout.scss` and is p
 @use "./src/styles/mise.scss"
 
 .example {
-  background-color: mise.color(brand, mid, base);
-  border-color: mise.color(brand, dark, base);
-  color: mise.color(netural, white, base);
+  z-index: mise.color(page); // returns 100
 
-  &:hover {
-    background-color: mise.color(brand, mid, shade);
-    border-color: mise.color(brand, dark, shade);
+  &__adjusted {
+    z-index: mise.color(page, 1); // returns 101
   }
 }
 ```
 
-## Spacing
-
-**Spacing Unit:** {SpacingUnit}
-
-{Object.keys(Spacing).map((key, i) => {
-  return (
-    <div style={{borderBottom: "1px solid #eee", marginBottom: '1rem', paddingBottom: '1rem'}}>
-      <span style={{display: 'inline-block', width: '3rem'}}><strong>{key}:</strong></span>
-      <span style={{display: 'inline-block', marginLeft: "1rem", width: '4rem'}}>{Spacing[key]}</span>
-      <span style={{backgroundColor: "red", display: 'inline-block', height: Spacing[key], marginLeft: "2rem", width: Spacing[key]}}></span>
-    </div>
-  )
-})}
-
-## For Designers
-
-> **TODO:** EMBED FIGMA DOCUMENTATION HERE
-
-## For Developers
-
-Layout styling is located in the `./v2/src/styles/_tokens/_layout.scss` and is part of `mise.scss`.
-
-### Using Spacing
-
-#### SASS | *.scss
-
-```
-@use "./src/styles/mise.scss"
-
-.example {
-  background-color: mise.color(brand, mid, base);
-  border-color: mise.color(brand, dark, base);
-  color: mise.color(netural, white, base);
-
-  &:hover {
-    background-color: mise.color(brand, mid, shade);
-    border-color: mise.color(brand, dark, shade);
-  }
-}
-```
-## Content Container
-
-**Max Width:** {Content.maxWidth}
-
-### Gutter per Breakpoint
-
-{Object.keys(Content.gutter).map((key, i) => {
-  return (
-    <p>
-      <strong>{key}:</strong> {Content.gutter[key]}
-    </p>
-  )
-})}
-
-## Grid
-
-### Column Widths
-
-{Object.keys(Grid.column).map((key, i) => {
-  return (
-    <p>
-      <strong>{key}:</strong> {Grid.column[key]}
-    </p>
-  )
-})}
-
-### Gap per Breakpoint
-
-{Object.keys(Grid.gap).map((key, i) => {
-  return (
-    <p>
-      <strong>{key}:</strong> {Grid.gap[key]}
-    </p>
-  )
+{Object.keys(ZIndex).map((key, i) => {
+  return <p>{key}: {ZIndex[key]}</p>
 })}
