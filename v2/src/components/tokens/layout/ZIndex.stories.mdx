@@ -1,8 +1,10 @@
 import { Canvas, Meta, Typeset } from "@storybook/addon-docs";
 
-import { ZIndex } from "./Layout.ts";
+import { ZIndexes } from "./Layout.ts";
 
 import { getTokenTitle, tokenParams } from "../utils/scripts/utils";
+
+import KeyValuePreview from "../utils/KeyValuePreview/KeyValuePreview";
 
 <Meta
   title="Tokens/Layout/Z-Indexes"
@@ -37,6 +39,4 @@ Z-indexes can be used with the `mise.zIndex()` function. This custom SASS functi
 
 ## Z-Indexes
 
-{Object.keys(ZIndex).map((key, i) => {
-  return <p>{key}: {ZIndex[key]}</p>
-})}
+<KeyValuePreview keyLabel="Level" valueLabel="Value" list={ZIndexes} /

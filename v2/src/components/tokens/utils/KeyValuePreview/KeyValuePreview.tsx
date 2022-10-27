@@ -40,7 +40,7 @@ export const KeyValuePreview: React.FC<KeyValuePreviewProps> = ({
         return (
           <li className={`${styles["item"]}`}>
             <span className={`${styles["item__key"]}`}>
-              {`${key}:`}
+              {key}
             </span>
             <span className={`${styles["item__value"]}`}>
               {list[key]}
