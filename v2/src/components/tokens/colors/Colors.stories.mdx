@@ -23,7 +23,7 @@ Color styling is located in the `./v2/src/styles/_tokens/_colors.scss` and is pa
 
 Colors can be used with the `mise.color()` function. This custom SASS function takes a `category` and optional `hue`, and `variant` arguments. All colors should be implemented with `mise.color()`, **no hex codes, rgba, sass transforms, etc…** should be used directly in component styling. 
 
-> **Note:** All colors have the `variant`: `base`, the default color. `hues` vary by `category`, see the [color palette](#color-palette) below to see available options.
+> **Note:** All colors have the `variant`: `base`, the default color. `hues` vary by `category`, see the [color palette](#color-palette) below for available options.
 
 #### SASS | *.scss
 
@@ -48,23 +48,23 @@ Colors can be used with the `mise.color()` function. This custom SASS function t
 
 The following colors are **the only colors that can be used** to style Mise components.
 
-{Object.keys(Colors).map((hue, i) => {
+{Object.keys(Colors).map((category, i) => {
   return (
     <>
-      {i === 0 ? "" : <hr/>}
-      <h3><a name={hue} />{getTokenTitle(hue)}</h3>
+      {i === 0 ? "" : <hr />}
+      <h3><a name={category} />{getTokenTitle(category)}</h3>
       <ColorPalette>
-        {Object.keys(Colors[hue]).map((color) => {
-          return <ColorItem title={getTokenTitle(color)} subtitle={color} colors={Colors[hue][color]} />;
+        {Object.keys(Colors[category]).map((hue) => {
+          return <ColorItem title={getTokenTitle(hue)} subtitle={hue} colors={Colors[category][hue]} />
         })}
       </ColorPalette>
     </>
   )
 })}
 
-## Source Color Palette
+## Source Colors
 
-The following color palette is for **reference only**. These represent the source color values and names that are mapped to `mise.color()` and should not be used directly in code.
+The following color palette is for **reference only**. These represent the source color values that are mapped to the color palatte and `mise.color()` and should not be used directly in code.
 
 <ColorPalette>
   {Object.keys(SourceColors).map((key, i) => {

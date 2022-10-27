@@ -1,141 +1,60 @@
 import { Canvas, Meta, Typeset } from "@storybook/addon-docs";
-import { Breakpoints, SpacingUnit, Spacing, Content, Grid } from "./Layout.ts";
+import { ContentContainer } from "./Layout.ts";
 import { getTokenTitle, tokenParams } from '../utils'
 
 <Meta
-  title="Tokens/Layout/Grid"
+  title="Tokens/Layout/Grid/Usage"
   parameters={{...tokenParams}}
 />
 
 # Grid
 
-<table style={{textAlign: "left", width: "100%"}}>
-  <tr>
-    <th>Key</th>
-    <th>rem</th>
-    <th>Pixel Range</th>
-  </tr>
-  <tr>
-    <td>base</td>
-    <td>0</td>
-    <td>0 - {Breakpoints.sm}</td>
-  </tr>
-  {Object.keys(Breakpoints).map((key, i, arr) => {
-    return (
-      <tr>
-        <td>
-          {key}
-        </td>
-        <td>
-          {Breakpoints[key]}
-        </td>
-        <td>
-          {i + 1 < arr.length ? `${Breakpoints[key]} - ${Breakpoints[arr[i + 1]]}` :  Breakpoints[key]}
-        </td>
-      </tr>
-    )
-  })}
-</table>
+<br/>
 
 ## For Designers
 
-> **TODO:** EMBED FIGMA DOCUMENTATION HERE
+!!! **TODO:** EMBED FIGMA DOCUMENTATION HERE !!!
 
 ## For Developers
 
-Layout styling is located in the `./v2/src/styles/_tokens/_layout.scss` and is part of `mise.scss`.
+Content container styling is located in the `./v2/src/styles/_tokens/_layout.scss` and is part of `mise.scss`.
 
-### Using Breakpoints
+### Using Grid Components
 
-#### SASS | *.scss
+#### GridRow
 
-```
-@use "./src/styles/mise.scss"
+DOC HERE
+alignment
+wrap
 
-.example {
-  background-color: mise.color(brand, mid, base);
-  border-color: mise.color(brand, dark, base);
-  color: mise.color(netural, white, base);
+#### GridColumn
 
-  &:hover {
-    background-color: mise.color(brand, mid, shade);
-    border-color: mise.color(brand, dark, shade);
-  }
-}
-```
+DOC HERE
+width
 
-## Spacing
-
-**Spacing Unit:** {SpacingUnit}
-
-{Object.keys(Spacing).map((key, i) => {
-  return (
-    <div style={{borderBottom: "1px solid #eee", marginBottom: '1rem', paddingBottom: '1rem'}}>
-      <span style={{display: 'inline-block', width: '3rem'}}><strong>{key}:</strong></span>
-      <span style={{display: 'inline-block', marginLeft: "1rem", width: '4rem'}}>{Spacing[key]}</span>
-      <span style={{backgroundColor: "red", display: 'inline-block', height: Spacing[key], marginLeft: "2rem", width: Spacing[key]}}></span>
-    </div>
-  )
-})}
-
-## For Designers
-
-> **TODO:** EMBED FIGMA DOCUMENTATION HERE
-
-## For Developers
-
-Layout styling is located in the `./v2/src/styles/_tokens/_layout.scss` and is part of `mise.scss`.
-
-### Using Spacing
-
-#### SASS | *.scss
+**TSX | \*.tsx**
 
 ```
-@use "./src/styles/mise.scss"
+@import { Row, Column } from "./mise/v2/src/components/Tokens/Layout/Grid"
 
-.example {
-  background-color: mise.color(brand, mid, base);
-  border-color: mise.color(brand, dark, base);
-  color: mise.color(netural, white, base);
-
-  &:hover {
-    background-color: mise.color(brand, mid, shade);
-    border-color: mise.color(brand, dark, shade);
-  }
-}
+export const Example: React.FC = () => {
+  return (
+    <GridRow>
+      <GridColumn width="half">
+        ...Children
+      </GridColumn>
+      <GridColumn width="half">
+        ...Children
+      </GridColumn>
+    </GridRow>
+  );
+};
 ```
-## Content Container
 
-**Max Width:** {Content.maxWidth}
+## Grid Styling
 
-### Gutter per Breakpoint
+max width: {ContentContainer.maxWidth}
 
-{Object.keys(Content.gutter).map((key, i) => {
-  return (
-    <p>
-      <strong>{key}:</strong> {Content.gutter[key]}
-    </p>
-  )
-})}
-
-## Grid
-
-### Column Widths
-
-{Object.keys(Grid.column).map((key, i) => {
-  return (
-    <p>
-      <strong>{key}:</strong> {Grid.column[key]}
-    </p>
-  )
-})}
-
-### Gap per Breakpoint
-
-{Object.keys(Grid.gap).map((key, i) => {
-  return (
-    <p>
-      <strong>{key}:</strong> {Grid.gap[key]}
-    </p>
-  )
+{Object.keys(ContentContainer.gutter).map((key, i) => {
+  return <p>{key}: {ContentContainer.gutter[key]}</p>
 })}

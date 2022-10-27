@@ -47,8 +47,8 @@ $spacing: (
   @return map-get($spacing, $multiplier);
 }
 
-$content: (
-  maxWidth: 1200px,
+$contentContainer: (
+  maxWidth: 75rem, // 1200px
   gutter: (
     base: spacing(x1),
     bpXs: spacing(x1),
@@ -58,6 +58,23 @@ $content: (
     bpXl: spacing(x8),
   ),
 );
+
+@function contentContainer($keys...) {
+  $value: $contentContainer;
+  @each $key in $keys {
+    $value: map-get($value, $key);
+  }
+  @return $value;
+}
+@mixin contentContainer() {
+  max-width: contentContainer(maxWidth);
+  padding: 0 contentContainer(gutter base);
+  padding: 0 contentContainer(gutter bpXs);
+  padding: 0 contentContainer(gutter bpSm);
+  padding: 0 contentContainer(gutter bpMd);
+  padding: 0 contentContainer(gutter bpLg);
+  padding: 0 contentContainer(gutter bpXl);
+}
 
 $grid: (
   column: (
@@ -95,14 +112,14 @@ $grid: (
   @each $multiplier, $value in $spacing {
     spacing-#{$multiplier}: $value;
   }
-  // Content
-  @each $prop, $value in $content {
+  // Content Container
+  @each $prop, $value in $contentContainer {
     @if type-of($value) == map {
       @each $option, $value in $value {
-        content-#{$prop}-#{$option}: $value;
+        contentContainer-#{$prop}-#{$option}: $value;
       }
     } @else {
-      content-#{$prop}: $value;
+      contentContainer-#{$prop}: $value;
     }
   }
   // Grid

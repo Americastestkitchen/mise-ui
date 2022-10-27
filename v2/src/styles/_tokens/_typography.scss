@@ -65,7 +65,12 @@ $typography: (
   text: (
     primary: (
       family: fontFamily(merriweather, family),
-      lineHeight: 1.625,
+      lineHeight: (
+        sm: 1.625,
+        md: 1.625,
+        lg: 1.625,
+        xl: 1.625,
+      ),
       size: (
         sm: 0.875rem,
         md: 1rem,
@@ -83,7 +88,12 @@ $typography: (
     ),
     secondary: (
       family: fontFamily(proximaNova, family),
-      lineHeight: 1.625,
+      lineHeight: (
+        sm: 1.625,
+        md: 1.625,
+        lg: 1.625,
+        xl: 1.625,
+      ),
       size: (
         sm: 0.875rem,
         md: 1rem,
@@ -93,7 +103,6 @@ $typography: (
       style: (
         normal: normal,
         italic: italic,
-        caps: caps,
       ),
       weight: (
         normal: 400,
@@ -104,7 +113,11 @@ $typography: (
   display: (
     primary: (
       family: fontFamily(moret, family),
-      lineHeight: 1.125,
+      lineHeight: (
+        sm: 1.125,
+        md: 1.125,
+        lg: 1.125,
+      ),
       size: (
         sm: 2rem,
         md: 2.25rem,
@@ -114,6 +127,28 @@ $typography: (
         normal: normal,
       ),
       weight: (
+        bold: 700,
+      ),
+    ),
+    secondary: (
+      family: fontFamily(proximaNova, family),
+      lineHeight: (
+        sm: 1.625,
+        md: 1.625,
+        lg: 1.625,
+        xl: 1.625,
+      ),
+      size: (
+        sm: 0.875rem,
+        md: 1rem,
+        lg: 1.125rem,
+        xl: 1.5rem,
+      ),
+      style: (
+        normal: normal,
+      ),
+      weight: (
+        normal: 400,
         bold: 700,
       ),
     ),
@@ -131,13 +166,13 @@ $typography: (
 @mixin font($category, $name, $size: md, $weight: normal, $style: normal) {
   font-family: typography($category, $name, family);
   font-size: typography($category, $name, size, $size);
-  line-height: typography($category, $name, lineHeight);
+  line-height: typography($category, $name, lineHeight, $size);
   weight: typography($category, $name, weight, $weight);
   @if $style == italic and typography($category, $name, style, italic) {
     font-style: italic;
   }
-  @if $style == caps and typography($category, $name, style, caps) {
-    letter-spacing: calc(1em * 0.0625);
+  @if $category == display and $name == secondary {
+    letter-spacing: calc(1em / 1rem);
     text-transform: uppercase;
   }
 }
@@ -161,7 +196,7 @@ $typography: (
   @each $prop, $value in $resetTypography {
     resetTypography-#{$prop}: $value;
   }
-  // Mise Typography
+  // Typography
   @each $category, $value in $typography {
     @each $name, $value in $value {
       @each $prop, $value in $value {
