@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { getTokenTitle, remToPx } from '../../utils'
+import { getTokenTitle, remToPx } from '../../utils/utils'
 
 import styles from "./FontPreview.module.scss";
 export interface FontPreviewProps {
@@ -123,7 +123,7 @@ export const FontPreview: React.FC<FontPreviewProps> = ({
                   {sampleText}
                 </span>
                 <span className={`${styles["font__details"]}`}>
-                  {`${size}: ${remToPx(font.size[size])}/${font.size[size]}/${font.lineHeight[size]}`}
+                  {`${size}: size: ${remToPx(font.size[size])}/${font.size[size]} | line-height: ${remToPx(String(font.lineHeight[size]))}/${font.lineHeight[size]}`}
                 </span>
               </li>
             )
