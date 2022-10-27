@@ -41,24 +41,24 @@ export const FontPreview: React.FC<FontPreviewProps> = ({
     <div className={`${styles["container"]} ${className}`}>
       <h3 className={`${styles["font-title"]}`}>{getTokenTitle(name)}</h3>
       <ul className={`${styles["font-prop-list"]}`}>
-        <li className={`${styles["font-prop-item"]}`}>
-          <span className={`${styles["font-prop-item__label"]}`}>
+        <li className={`${styles["font-prop"]}`}>
+          <span className={`${styles["font-prop__label"]}`}>
             Family:
           </span>
-          <span className={`${styles["font-prop-item__value"]}`}>
+          <span className={`${styles["font-prop__value"]}`}>
             {font.family.split(',').shift()}
           </span>
         </li>
-        <li className={`${styles["font-prop-item"]}`}>
-          <span className={`${styles["font-prop-item__label"]}`}>
+        <li className={`${styles["font-prop"]}`}>
+          <span className={`${styles["font-prop__label"]}`}>
             Fallbacks:
           </span>
-          <span  className={`${styles["font-prop-item__value"]}`}>
+          <span  className={`${styles["font-prop__value"]}`}>
             {font.family.split(',').pop()?.trim()}
           </span>
         </li>
-        <li className={`${styles["font-prop-item"]}`}>
-          <span className={`${styles["font-prop-item__label"]}`}>
+        <li className={`${styles["font-prop"]}`}>
+          <span className={`${styles["font-prop__label"]}`}>
             Styles:
           </span>
           {Object.keys(font.style).map((style, i) => {
@@ -67,9 +67,9 @@ export const FontPreview: React.FC<FontPreviewProps> = ({
                   { i !== 0 ? ", " : "" }
                   <span
                     className={`
-                      ${styles["font-prop-item__value"]}
-                      ${styles["font-prop-item__value--is-clickable"]}
-                      ${activeStyle === font.style[style as keyof typeof font.style] ? styles["font-prop-item__value--is-active"] : ""}
+                      ${styles["font-prop__value"]}
+                      ${styles["font-prop__value--is-clickable"]}
+                      ${activeStyle === font.style[style as keyof typeof font.style] ? styles["font-prop__value--is-active"] : ""}
                     `}
                     role="button"
                     onClick={() => setActiveStyle(font.style[style as keyof typeof font.style] || "normal")}
@@ -80,8 +80,8 @@ export const FontPreview: React.FC<FontPreviewProps> = ({
               )
           })}
         </li>
-        <li className={`${styles["font-prop-item"]}`}>
-          <span  className={`${styles["font-prop-item__label"]}`}>
+        <li className={`${styles["font-prop"]}`}>
+          <span  className={`${styles["font-prop__label"]}`}>
             Weights:
           </span>
           {Object.keys(font.weight).map((weight, i) => {
@@ -90,9 +90,9 @@ export const FontPreview: React.FC<FontPreviewProps> = ({
                   { i !== 0 ? ", " : "" }
                   <span
                     className={`
-                      ${styles["font-prop-item__value"]}
-                      ${styles["font-prop-item__value--is-clickable"]}
-                      ${activeWeight === font.weight[weight as keyof typeof font.weight] ? styles["font-prop-item__value--is-active"] : ""}
+                      ${styles["font-prop__value"]}
+                      ${styles["font-prop__value--is-clickable"]}
+                      ${activeWeight === font.weight[weight as keyof typeof font.weight] ? styles["font-prop__value--is-active"] : ""}
                     `}
                     role="button"
                     onClick={() => setActiveWeight(font.weight[weight as keyof typeof font.weight] || 400)}
