@@ -39,43 +39,90 @@ export const FontPreview: React.FC<FontPreviewProps> = ({
 
   return (
     <div className={`${styles["container"]} ${className}`}>
-      <h3>{getTokenTitle(name)}</h3>
-      <span>Family:{font.family.split(',').shift()}</span>
-      <span>Fallbacks: {font.family.split(',').pop()}</span>
-      <span>Styles:</span>
-      {Object.keys(font.style).map((style, i) => {
-          return (
-            <span role="button" onClick={() => setActiveStyle(font.style[style as keyof typeof font.style] || "normal")}>
-              {font.style[style as keyof typeof font.style]}
-              {Object.keys(font.style).length === i + 1 ? `` : `, `}
-            </span>
-          )
-      })}
-      <span>Weights:</span>
-      {Object.keys(font.weight).map((weight, i) => {
-          const weightName = `${weight}${Object.keys(font.weight).length === i + 1 ? `` : `, `}`
-          return (
-            <span role="button" onClick={() => setActiveWeight(font.weight[weight as keyof typeof font.weight] || 400)}>
-              {`${font.weight[weight as keyof typeof font.weight]}/${weightName}`}
-            </span>
-          )
-      })}
-      <ul>
+      <h3 className={`${styles["font-title"]}`}>{getTokenTitle(name)}</h3>
+      <ul className={`${styles["font-prop-list"]}`}>
+        <li className={`${styles["font-prop-item"]}`}>
+          <span className={`${styles["font-prop-item__label"]}`}>
+            Family:
+          </span>
+          <span className={`${styles["font-prop-item__value"]}`}>
+            {font.family.split(',').shift()}
+          </span>
+        </li>
+        <li className={`${styles["font-prop-item"]}`}>
+          <span className={`${styles["font-prop-item__label"]}`}>
+            Fallbacks:
+          </span>
+          <span  className={`${styles["font-prop-item__value"]}`}>
+            {font.family.split(',').pop()?.trim()}
+          </span>
+        </li>
+        <li className={`${styles["font-prop-item"]}`}>
+          <span className={`${styles["font-prop-item__label"]}`}>
+            Styles:
+          </span>
+          {Object.keys(font.style).map((style, i) => {
+              return (
+                <>
+                  { i !== 0 ? ", " : "" }
+                  <span
+                    className={`
+                      ${styles["font-prop-item__value"]}
+                      ${styles["font-prop-item__value--is-clickable"]}
+                      ${activeStyle === font.style[style as keyof typeof font.style] ? styles["font-prop-item__value--is-active"] : ""}
+                    `}
+                    role="button"
+                    onClick={() => setActiveStyle(font.style[style as keyof typeof font.style] || "normal")}
+                  >
+                    {font.style[style as keyof typeof font.style]}
+                  </span>
+                </>
+              )
+          })}
+        </li>
+        <li className={`${styles["font-prop-item"]}`}>
+          <span  className={`${styles["font-prop-item__label"]}`}>
+            Weights:
+          </span>
+          {Object.keys(font.weight).map((weight, i) => {
+              return (
+                <>
+                  { i !== 0 ? ", " : "" }
+                  <span
+                    className={`
+                      ${styles["font-prop-item__value"]}
+                      ${styles["font-prop-item__value--is-clickable"]}
+                      ${activeWeight === font.weight[weight as keyof typeof font.weight] ? styles["font-prop-item__value--is-active"] : ""}
+                    `}
+                    role="button"
+                    onClick={() => setActiveWeight(font.weight[weight as keyof typeof font.weight] || 400)}
+                  >
+                    {`${font.weight[weight as keyof typeof font.weight]}/${weight}`}
+                  </span>
+                </>
+              )
+          })}
+        </li>
+      </ul>
+      <ul className={`${styles["font-list"]}`}>
         {Object.keys(font.size).map((size, i) => {
             return (
-              <li>
-                <span style={{
-                  fontFamily: font.family,
-                  fontSize: font.size[size],
-                  fontStyle: activeStyle,
-                  fontWeight: activeWeight,
-                  lineHeight: font.lineHeight[size],
-                  textTransform: font.uppercase ? "uppercase" : "none",
-                  letterSpacing: font.letterSpacing || "normal"
-                }}>
+              <li className={`${styles["font"]}`}>
+                <span
+                  className={`${styles["font__preview"]}`}
+                  style={{
+                    fontFamily: font.family,
+                    fontSize: font.size[size],
+                    fontStyle: activeStyle,
+                    fontWeight: activeWeight,
+                    lineHeight: font.lineHeight[size],
+                    textTransform: font.uppercase ? "uppercase" : "none",
+                    letterSpacing: font.letterSpacing || "normal"
+                  }}
+                >
                   {sampleText}
                 </span>
-                <span>
+                <span className={`${styles["font__details"]}`}>
                   {`${size}: ${remToPx(font.size[size])}/${font.size[size]}/${font.lineHeight[size]}`}
                 </span>
               </li>
