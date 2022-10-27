@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 
 import { getTokenTitle, remToPx } from '../../utils'
 
@@ -22,6 +22,8 @@ export interface FontPreviewProps {
       normal?: 400,
       bold?: 700,
     }
+    uppercase?: boolean,
+    letterSpacing?: string | "normal",
   }
   sampleText?: string,
 }
@@ -32,6 +34,9 @@ export const FontPreview: React.FC<FontPreviewProps> = ({
   font,
   sampleText = "The five boxing wizards jump quickly",
 }: FontPreviewProps) => {
+  const [activeStyle, setActiveStyle] = useState(font.style[Object.keys(font.style)[0] as keyof typeof font.style] || "normal")
+  const [activeWeight, setActiveWeight] = useState(font.weight[Object.keys(font.weight)[0] as keyof typeof font.weight] || 400)
+
   return (
     <div className={`${styles["container"]} ${className}`}>
       <h3>{getTokenTitle(name)}</h3>
@@ -39,12 +44,21 @@ export const FontPreview: React.FC<FontPreviewProps> = ({
       <span>Fallbacks: {font.family.split(',').pop()}</span>
       <span>Styles:</span>
       {Object.keys(font.style).map((style, i) => {
-          return `${font.style[style as keyof typeof font.style]}${Object.keys(font.style).length === i + 1 ? `` : `, `}`
+          return (
+            <span role="button" onClick={() => setActiveStyle(font.style[style as keyof typeof font.style] || "normal")}>
+              {font.style[style as keyof typeof font.style]}
+              {Object.keys(font.style).length === i + 1 ? `` : `, `}
+            </span>
+          )
       })}
       <span>Weights:</span>
       {Object.keys(font.weight).map((weight, i) => {
           const weightName = `${weight}${Object.keys(font.weight).length === i + 1 ? `` : `, `}`
-          return `${font.weight[weight as keyof typeof font.weight]}/${weightName}`
+          return (
+            <span role="button" onClick={() => setActiveWeight(font.weight[weight as keyof typeof font.weight] || 400)}>
+              {`${font.weight[weight as keyof typeof font.weight]}/${weightName}`}
+            </span>
+          )
       })}
       <ul>
         {Object.keys(font.size).map((size, i) => {
@@ -53,13 +67,16 @@ export const FontPreview: React.FC<FontPreviewProps> = ({
                 <span style={{
                   fontFamily: font.family,
                   fontSize: font.size[size],
-                  lineHeight:
-                  font.lineHeight[size]
+                  fontStyle: activeStyle,
+                  fontWeight: activeWeight,
+                  lineHeight: font.lineHeight[size],
+                  textTransform: font.uppercase ? "uppercase" : "none",
+                  letterSpacing: font.letterSpacing || "normal"
                 }}>
                   {sampleText}
                 </span>
                 <span>
-                  {`${font.size[size]}/${remToPx(font.size[size])}/${font.lineHeight[size]}`}
+                  {`${size}: ${remToPx(font.size[size])}/${font.size[size]}/${font.lineHeight[size]}`}
                 </span>
               </li>
             )
@@ -70,42 +87,3 @@ export const FontPreview: React.FC<FontPreviewProps> = ({
 };
 
 export default FontPreview;
-
-// export const FontList = ({font}) => {
-//   return (
-//     <>
-//       {Object.keys(font).map((name) => {
-//         return (
-//           <>
-//             <hr/>
-//             {Object.keys(font[name].weight).map((weight) => {
-//               return (
-//                 Object.keys(font[name].style).map((style) => {
-//                   return (
-//                     <>
-//                       <p>
-//                         <b>Weight:</b> {font[name].weight[weight] + '/' + weight}
-//                         <br/>
-//                         <b>Style:</b> {font[name].style[style]}
-//                       </p>
-//                       <Typeset
-//                         style={{fontStyle: font[name].style[style]}}
-//                         sampleText={SampleText}
-//                         fontFamily={font[name].family}
-//                         fontWeight={font[name].weight[weight]}
-//                         fontSizes={
-//                           font[name].size
-//                             ? Object.values(font[name].size)
-//                             : [ResetTypography.size]}
-//                       />
-//                     </>
-//                   )
-//                 })
-//               )
-//             })}
-//           </>
-//         )
-//       })}
-//     </>
-//   )
-// };

@@ -151,6 +151,8 @@ $typography: (
         normal: 400,
         bold: 700,
       ),
+      uppercase: true,
+      letterSpacing: 1px,
     ),
   ),
 );
@@ -167,13 +169,21 @@ $typography: (
   font-family: typography($category, $name, family);
   font-size: typography($category, $name, size, $size);
   line-height: typography($category, $name, lineHeight, $size);
-  weight: typography($category, $name, weight, $weight);
+  @if typography($category, $name, style, normal) {
+    weight: typography($category, $name, weight, $weight);
+  } @else if typography($category, $name, weight, bold) {
+    weight: typography($category, $name, weight, bold);
+  } @else {
+    weight: typography($category, $name, weight, normal);
+  }
   @if $style == italic and typography($category, $name, style, italic) {
     font-style: italic;
   }
-  @if $category == display and $name == secondary {
-    letter-spacing: calc(1em / 1rem);
+  @if typography($category, $name, uppercase) {
     text-transform: uppercase;
+  }
+  @if typography($category, $name, letterSpacing) {
+    letter-spacing: typography($category, $name, letterSpacing);
   }
 }
 
