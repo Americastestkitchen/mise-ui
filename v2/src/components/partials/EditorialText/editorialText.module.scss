@@ -3,18 +3,17 @@
 .wrapper {
   color: mise.color(neutral, dark, base);
   @include mise.font(text, primary, md);
+  a {
+    background-image: linear-gradient(transparent 91%, mise.color(secondary, mid, base) 91%);
+    transition: background-color 0.2s ease-in-out 0s;
+    @media(hover: hover) {
+      &:hover {
+        background-color: mise.color(secondary, mid, tint);
+      }
+    }
+  }
 
   em {
     font-style: italic;
   }
-}
-// Components using the EditorialList can pass an arg that can use the secondary or display font. 
-.primary {
-  @include mise.font(text, primary, md);
-}
-.secondary {
-  @include mise.font(text, secondary, md);
-}
-.display {
-  @include mise.font(display, primary, sm);
 }
