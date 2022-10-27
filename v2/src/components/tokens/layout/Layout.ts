@@ -1,5 +1,6 @@
 import layout from "../../../styles/_tokens/_layout.scss";
-import { getTokenObject } from '../utils/getTokenObject'
+
+import { getTokenObject } from "../utils/scripts/getTokenObject";
 
 export const Breakpoints = getTokenObject('breakpoint', layout);
 export const ZIndex = getTokenObject('zIndex', layout);

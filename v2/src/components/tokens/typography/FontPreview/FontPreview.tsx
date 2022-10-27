@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { getTokenTitle, remToPx } from '../../utils/utils'
+import { getTokenTitle, remToPx } from "../../utils/scripts/utils";
 
 import styles from "./FontPreview.module.scss";
 export interface FontPreviewProps {

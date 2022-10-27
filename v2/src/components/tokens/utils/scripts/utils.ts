@@ -1,4 +1,4 @@
-import { ResetTypography } from "../Typography/Typography";
+import { ResetTypography } from "../../Typography/Typography";
 
 // Helper token utilities
 

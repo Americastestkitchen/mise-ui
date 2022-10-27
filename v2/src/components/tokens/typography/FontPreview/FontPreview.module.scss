@@ -1,5 +1,5 @@
 @use "./src/styles/mise.scss";
-@use "../../utils/styles/tokens.scss";
+@use "./src/components/tokens/utils/styles/utils.scss";
 
 .container {
   font-family: "Nunito Sans",-apple-system,".SFNSText-Regular","San Francisco",BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -34,7 +34,7 @@
 }
 
 .font-list {
-  @include tokens.previewContainer();
+  @include utils.previewContainer();
   margin-top: 2rem;
 }
 
