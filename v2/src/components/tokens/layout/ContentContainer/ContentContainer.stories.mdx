@@ -1,8 +1,10 @@
 import { Canvas, Meta, Typeset } from "@storybook/addon-docs";
 
-import { ContentContainer } from "./Layout.ts";
+import { ContentContainer } from "../Layout.ts";
 
-import { getTokenTitle, tokenParams } from "../utils/scripts/utils";
+import { tokenParams, remAndPx } from "../../utils/scripts/utils";
+
+import KeyValuePreview from "../../utils/KeyValuePreview/KeyValuePreview"
 
 <Meta
   title="Tokens/Layout/Content Container"
@@ -18,6 +20,8 @@ import { getTokenTitle, tokenParams } from "../utils/scripts/utils";
 !!! **TODO:** EMBED FIGMA DOCUMENTATION HERE !!!
 
 ## For Developers
+
+Content container styling is located in the `./v2/src/styles/_tokens/_layout.scss` and is part of `mise.scss`.
 
 ### Using the Content Container
 
@@ -41,10 +45,26 @@ export const Example: React.FC = () => {
 
 ## Content Container Styling
 
-Content container styling is located in the `./v2/src/styles/_tokens/_layout.scss` and is part of `mise.scss`.
+## Sizes
 
-max width: {ContentContainer.maxWidth}
+**Max Width:** {remAndPx(ContentContainer.maxWidth)}
 
-{Object.keys(ContentContainer.gutter).map((key, i) => {
-  return <p>{key}: {ContentContainer.gutter[key]}</p>
-})}
+<KeyValuePreview
+  keyLabel="Size"
+  keyColumnWidth="8rem"
+  valueLabel="Measurement"
+  valueColumnWidth="12rem"
+  list={ContentContainer.gutter}
+  previewFormat={(list, key, value, index, array) => {
+    return (
+      <span
+        style={{
+          display: "inline-block",
+          backgroundColor: "red",
+          height: "1rem",
+          width: value,
+        }}  
+      />
+    )
+  }}
+/>
