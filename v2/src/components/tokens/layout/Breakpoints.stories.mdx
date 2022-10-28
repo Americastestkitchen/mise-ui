@@ -2,7 +2,7 @@ import { Canvas, Meta, Typeset } from "@storybook/addon-docs";
 
 import { Breakpoints } from "./Layout.ts";
 
-import { tokenParams, remAndPx, breakpointRange } from "../utils/scripts/utils";
+import { tokenParams, remAndPx, remToPx } from "../utils/scripts/utils";
 
 import KeyValuePreview from "../utils/KeyValuePreview/KeyValuePreview";
 
@@ -41,15 +41,18 @@ Breakpoints can be used with the `mise.breakpoint()` function. This custom SASS 
 }
 ```
 
-## Breakpoints
+## Ranges
 
 <KeyValuePreview
   keyLabel="Breakpoint"
-  keyColumnWidth="10rem"
+  keyColumnWidth="11rem"
   valueLabel="Min-Width"
-  valueColumnWidth="10rem"
+  valueColumnWidth="12rem"
   valueFormat={remAndPx}
   previewLabel="Range"
-  preview={breakpointRange}
+  previewFormat={(list, value, index, array) => {
+    const rangeEnd = list[array[index + 1]] ? ` - ${Number(remToPx(String(list[array[index + 1]])).split('px').shift()) - 1}px` : " +";
+    return `${remToPx(value)}${rangeEnd}`
+  }}
   list={Breakpoints}
 />

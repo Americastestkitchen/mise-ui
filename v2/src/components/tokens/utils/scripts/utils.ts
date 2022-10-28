@@ -39,16 +39,3 @@ export const remToPx = (value: string) => {
 export const remAndPx = (value: string) => {
   return `${value} / ${remToPx(value)}`
 };
-
-// MOVE TO BREAKPOINTS
-export const breakpointRange = (
-  list: {
-    [key: string]: number | string
-  },
-  value: string,
-  index: number,
-  array: string[]
-) => {
-  const rangeEnd = list[array[index + 1]] ? ` - ${Number(remToPx(String(list[array[index + 1]])).split('px').shift()) - 1}px` : " +";
-  return `${remToPx(value)}${rangeEnd}`
-};
