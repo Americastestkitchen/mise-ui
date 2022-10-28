@@ -37,9 +37,10 @@ export const remToPx = (value: string) => {
 };
 
 export const remAndPx = (value: string) => {
-  return `${value}/${remToPx(value)}`
+  return `${value} / ${remToPx(value)}`
 };
 
+// MOVE TO BREAKPOINTS
 export const breakpointRange = (
   list: {
     [key: string]: number | string
@@ -48,6 +49,6 @@ export const breakpointRange = (
   index: number,
   array: string[]
 ) => {
-  const rangeEnd = list[array[index + 1]] ? `-${Number(remToPx(String(list[array[index + 1]])).split('px').shift()) - 1}px` : "+";
+  const rangeEnd = list[array[index + 1]] ? ` - ${Number(remToPx(String(list[array[index + 1]])).split('px').shift()) - 1}px` : " +";
   return `${remToPx(value)}${rangeEnd}`
 };
