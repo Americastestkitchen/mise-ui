@@ -35,7 +35,6 @@ export const SpacingPreview: React.FC<SpacingPreviewProps> = ({
   previewLabel = "Preview",
   previewColumnWidth = "1fr",
   previewFormat,
-  previewChild,
   list = {},
 }: SpacingPreviewProps) => {
   return (
@@ -67,7 +66,7 @@ export const SpacingPreview: React.FC<SpacingPreviewProps> = ({
             {valueLabel}
         </span>
         {
-          (!!previewFormat || !!previewChild) &&
+          !!previewFormat &&
           <span
             className={`
               ${styles["item__value"]}
