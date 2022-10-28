@@ -1,8 +1,10 @@
 import { Canvas, Meta, Typeset } from "@storybook/addon-docs";
 
-import { ContentContainer } from "../Layout.ts";
+import { Grid } from "../Layout.ts";
 
-import { getTokenTitle, tokenParams } from "../../utils/scripts/utils";
+import { tokenParams } from "../../utils/scripts/utils";
+
+import KeyValuePreview from "../../utils/KeyValuePreview/KeyValuePreview";
 
 <Meta
   title="Tokens/Layout/Grid/Usage"
@@ -53,10 +55,48 @@ export const Example: React.FC = () => {
 };
 ```
 
-## Grid Styling
+## Columns
 
-max width: {ContentContainer.maxWidth}
+### Width
 
-{Object.keys(ContentContainer.gutter).map((key, i) => {
-  return <p>{key}: {ContentContainer.gutter[key]}</p>
-})}
+<KeyValuePreview
+  keyLabel="Size"
+  keyColumnWidth="8rem"
+  valueLabel="Measurement"
+  valueColumnWidth="12rem"
+  list={Grid.column}
+  previewFormat={(list, key, value, index, array) => {
+    return (
+      <span
+        style={{
+          display: "inline-block",
+          backgroundColor: "red",
+          height: "1rem",
+          width: value,
+        }}  
+      />
+    )
+  }}
+/>
+
+### Gap
+
+<KeyValuePreview
+  keyLabel="Breakpoint"
+  keyColumnWidth="8rem"
+  valueLabel="Measurement"
+  valueColumnWidth="12rem"
+  list={Grid.gap}
+  previewFormat={(list, key, value, index, array) => {
+    return (
+      <span
+        style={{
+          display: "inline-block",
+          backgroundColor: "red",
+          height: "1rem",
+          width: value,
+        }}  
+      />
+    )
+  }}
+/>
