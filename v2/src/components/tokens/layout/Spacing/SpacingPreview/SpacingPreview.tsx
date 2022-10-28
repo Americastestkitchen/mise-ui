@@ -1,4 +1,4 @@
-import styles from "./KeyValuePreview.module.scss";
+import styles from "./SpacingPreview.module.scss";
 
 export interface SpacingPreviewProps {
   className?: string,
@@ -6,19 +6,7 @@ export interface SpacingPreviewProps {
   keyColumnWidth?: string,
   valueLabel?: string,
   valueColumnWidth?: string,
-  valueFormat?(
-    value: number | string
-  ): number | string,
-  previewLabel?: string,
-  previewColumnWidth?: string,
-  preview?(
-    list: {
-      [key: string]: number | string
-    },
-    value: number | string,
-    index: number,
-    array: string[],
-  ): number | string | JSX.Element,
+  valueFormat?(value: number | string): number | string,
   list?: {
     [key: string]: number | string
   },
@@ -30,10 +18,6 @@ export const SpacingPreview: React.FC<SpacingPreviewProps> = ({
   keyColumnWidth = "1fr",
   valueLabel = "Value",
   valueColumnWidth = "1fr",
-  valueFormat,
-  previewLabel = "Preview",
-  previewColumnWidth = "1fr",
-  preview,
   list = {},
 }: SpacingPreviewProps) => {
   return (
@@ -64,21 +48,18 @@ export const SpacingPreview: React.FC<SpacingPreviewProps> = ({
           `}>
             {valueLabel}
         </span>
-        {
-          !!preview &&
-          <span
-            className={`
-              ${styles["item__value"]}
-              ${styles["item__heading"]}
-            `}>
-              {previewLabel}
-          </span>
-        }
+        <span
+          className={`
+            ${styles["item__value"]}
+            ${styles["item__heading"]}
+          `}>
+            Preview
+        </span>
       </li>
-      {Object.keys(list).map((key, i, arr) => {
+      {Object.keys(list).map((key, i) => {
+  
         return (
           <li
-            key={key}
             className={`${styles["item"]}`}
             style={{
               gridTemplateColumns: `minmax(1rem, ${keyColumnWidth}) minmax(1rem, ${valueColumnWidth})  minmax(1rem, 1fr)`
@@ -88,14 +69,14 @@ export const SpacingPreview: React.FC<SpacingPreviewProps> = ({
               {key}
             </span>
             <span className={`${styles["item__value"]}`}>
-              {!!valueFormat ? valueFormat(list[key]) : list[key]}
+              {list[key]}
             </span>
-            { 
-              !!preview &&
-              <span className={`${styles["item__preview"]}`}>
-                {preview(list, list[key], i, arr)}
-              </span>
-            }
+            <span className={`${styles["item__preview"]}`}>
+              <span
+                style={{height: list[key], width: list[key]}}
+                className={`${styles["spacing"]}`}
+              />
+            </span>
           </li>
         );
       })}

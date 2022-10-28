@@ -30,8 +30,24 @@ export const getTokenTitle= (token: string) => {
   return title
 };
 
-export const remToPx= (rem: string) => {
-  const strippedRem = Number(rem.split('rem').shift());
+export const remToPx = (value: string) => {
+  const strippedRem = Number(value.split('rem').shift());
   const strippedPx = Number(ResetTypography.size.split('px').shift());
   return `${strippedPx * strippedRem}px`
+};
+
+export const remAndPx = (value: string) => {
+  return `${value}/${remToPx(value)}`
+};
+
+export const breakpointRange = (
+  list: {
+    [key: string]: number | string
+  },
+  value: string,
+  index: number,
+  array: string[]
+) => {
+  const rangeEnd = list[array[index + 1]] ? `-${Number(remToPx(String(list[array[index + 1]])).split('px').shift()) - 1}px` : "+";
+  return `${remToPx(value)}${rangeEnd}`
 };

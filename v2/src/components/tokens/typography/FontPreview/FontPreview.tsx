@@ -123,7 +123,7 @@ export const FontPreview: React.FC<FontPreviewProps> = ({
                   {sampleText}
                 </span>
                 <span className={`${styles["font__details"]}`}>
-                  {`${size}: size: ${remToPx(font.size[size])}/${font.size[size]} | line-height: ${remToPx(String(font.lineHeight[size]))}/${font.lineHeight[size]}`}
+                  {`${size} - size: ${remToPx(font.size[size])}/${font.size[size]} | line-height: ${remToPx(String(font.lineHeight[size]))}/${font.lineHeight[size]}`}
                 </span>
               </li>
             )

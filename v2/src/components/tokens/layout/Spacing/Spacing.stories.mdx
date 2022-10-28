@@ -1,8 +1,10 @@
 import { Canvas, Meta, Typeset } from "@storybook/addon-docs";
 
-import { SpacingUnit, Spacing } from "./Layout.ts";
+import { SpacingUnit, Spacing } from "../Layout.ts";
 
-import { getTokenTitle, tokenParams } from "../utils/scripts/utils";
+import { tokenParams, remToPx } from "../../utils/scripts/utils";
+
+import KeyValuePreview from "../../utils/KeyValuePreview/KeyValuePreview";
 
 <Meta
   title="Tokens/Layout/Spacing"
@@ -35,10 +37,22 @@ Spacing can be used with the `mise.spacing()` function. This custom SASS functio
 }
 ```
 
-## Spacing
+## Sizes
 
-Spacing Unit: {SpacingUnit}
+**Spacing Unit:** {SpacingUnit}
 
-{Object.keys(Spacing).map((key, i) => {
-  return <p>{key}: {Spacing[key]}</p>
-})}
+export const formattedList = () => {
+  const list = {...Spacing};
+  Object.keys(list).forEach((space, i, arr) => {
+    list[space] = `${remToPx(list[space])}/${list[space]}`
+  })
+  return list
+}
+
+<KeyValuePreview
+  keyLabel="Size"
+  keyColumnWidth="10rem"
+  valueLabel="Measurement"
+  valueColumnWidth="15rem"
+  list={Spacing}
+/>
