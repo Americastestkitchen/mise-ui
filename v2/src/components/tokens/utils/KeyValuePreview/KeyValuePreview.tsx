@@ -15,14 +15,11 @@ export interface SpacingPreviewProps {
     list: {
       [key: string]: number | string
     },
+    key: string,
     value: number | string,
     index: number,
     array: string[],
-  ): number | string,
-  previewChild?(
-    key: string,
-    value: string | number
-  ): JSX.Element,
+  ): number | string | JSX.Element,
   list?: {
     [key: string]: number | string
   },
@@ -96,10 +93,9 @@ export const SpacingPreview: React.FC<SpacingPreviewProps> = ({
               {!!valueFormat ? valueFormat(list[key]) : list[key]}
             </span>
             { 
-              (!!previewFormat || !!previewChild) &&
+              !!previewFormat &&
               <span className={`${styles["item__preview"]}`}>
-                {!!previewFormat && !previewChild && previewFormat(list, list[key], i, arr)}
-                {!previewFormat && !!previewChild && previewChild(key, list[key])}
+                {previewFormat(list, key, list[key], i, arr)}
               </span>
             }
           </li>

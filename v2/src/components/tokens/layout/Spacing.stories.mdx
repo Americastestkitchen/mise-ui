@@ -55,7 +55,7 @@ export const formattedList = () => {
   valueLabel="Measurement"
   valueColumnWidth="12rem"
   list={Spacing}
-  previewChild={(key, value) => {
+  previewFormat={(list, key, value, index, array) => {
     return (
       <spanv 
         style={{
