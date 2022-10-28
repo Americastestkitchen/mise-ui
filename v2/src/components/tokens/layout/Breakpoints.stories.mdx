@@ -50,7 +50,7 @@ Breakpoints can be used with the `mise.breakpoint()` function. This custom SASS 
   valueColumnWidth="12rem"
   valueFormat={remAndPx}
   previewLabel="Range"
-  previewFormat={(list, value, index, array) => {
+  previewFormat={(list, key, value, index, array) => {
     const rangeEnd = list[array[index + 1]] ? ` - ${Number(remToPx(String(list[array[index + 1]])).split('px').shift()) - 1}px` : " +";
     return `${remToPx(value)}${rangeEnd}`
   }}
