@@ -1,0 +1,20 @@
+@use "./src/styles/mise.scss";
+
+.wrapper {
+  color: mise.color(neutral, dark, base);
+  @include mise.font(text, primary, md);
+
+  em {
+    font-style: italic;
+  }
+}
+// Components using the EditorialList can pass an arg that can use the secondary or display font. 
+.primary {
+  @include mise.font(text, primary, md);
+}
+.secondary {
+  @include mise.font(text, secondary, md);
+}
+.display {
+  @include mise.font(display, primary, sm);
+}
