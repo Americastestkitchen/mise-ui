@@ -12,7 +12,4 @@ export const Template: ComponentStory<typeof HeroCard> = args => {
   return <HeroCard {...args} />;
 };
 
-
-// const Template: ComponentStory<typeof Accordion> = args => <Accordion {...args} />;
-
 export const HeroCardStory: ComponentStory<typeof HeroCard> = Template.bind({});
