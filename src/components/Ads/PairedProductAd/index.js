@@ -243,6 +243,7 @@ const PairedProducts = ({ onClick, products, title }) => (
         {title}
       </PairedProductMainTitle>
       {products.map(({
+        alt,
         cloudinaryId,
         cta,
         ctaHref,
@@ -254,7 +255,7 @@ const PairedProducts = ({ onClick, products, title }) => (
           key={ctaHref}
         >
           <PairedProductImage
-            alt=""
+            alt={alt}
             data-testid={`paired-img-${idx}`}
             src={getImageUrl(
               cloudinaryId,

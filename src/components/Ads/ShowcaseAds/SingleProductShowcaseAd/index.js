@@ -166,6 +166,7 @@ const ProductCta = styled.a.attrs({
 })`${withThemes(ProductCtaTheme)}`;
 
 const SingleProductShowcaseAd = ({
+  alt,
   cloudinaryId,
   cta,
   ctaHref,
@@ -192,7 +193,7 @@ const SingleProductShowcaseAd = ({
         )}
       />
       <img
-        alt=""
+        alt={alt}
         crossOrigin="anonymous"
         decoding="async"
         data-testid="product-img"
@@ -227,6 +228,7 @@ const SingleProductShowcaseAd = ({
 );
 
 SingleProductShowcaseAd.propTypes = {
+  alt: PropTypes.string,
   cloudinaryId: PropTypes.string.isRequired,
   cta: PropTypes.string.isRequired,
   ctaHref: PropTypes.string.isRequired,
@@ -238,6 +240,7 @@ SingleProductShowcaseAd.propTypes = {
 };
 
 SingleProductShowcaseAd.defaultProps = {
+  alt: '',
   ctaTarget: null,
   onClick: null,
 };
