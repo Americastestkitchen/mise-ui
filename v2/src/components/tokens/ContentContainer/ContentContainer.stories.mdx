@@ -1,13 +1,13 @@
 import { Canvas, Meta, Typeset } from "@storybook/addon-docs";
 
-import { ContentContainer } from "../Layout.ts";
+import { ContentContainer } from "./ContentContainer.ts";
 
-import { tokenParams, remAndPx } from "../../utils/scripts/utils";
+import { tokenParams, remAndPx } from "../utils/scripts/utils";
 
-import KeyValuePreview from "../../utils/KeyValuePreview/KeyValuePreview"
+import KeyValuePreview from "../utils/KeyValuePreview/KeyValuePreview"
 
 <Meta
-  title="Tokens/Layout/Content Container"
+  title="Tokens/Content Container"
   parameters={{...tokenParams}}
 />
 
@@ -39,7 +39,7 @@ export const Example: React.FC = () => {
     <ContentContainer>
       ...Children
     </ContentContainer>
-  );
+  )
 };
 ```
 

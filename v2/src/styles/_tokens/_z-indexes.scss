@@ -1,0 +1,28 @@
+$zIndexes: (
+  pageBehind: -100,
+  page: 0,
+  pageFront: 100,
+  overlay: 200,
+  overlayFront: 300,
+);
+
+@function zIndex($level, $adjustment) {
+  $zIndex: map-get($zIndexes, $level);
+  @if $zIndex >= 0 and $adjustment > 99 {
+    @return $zIndex + 99;
+  } @else if $zIndex == -100 $adjustment > 0 {
+    @return $zIndex - $adjustment;
+  } @else if $zIndex == -100 $adjustment < -99 {
+    @return $zIndex - 99;
+  } @else {
+    @return $zIndex + $adjustment;
+  }
+}
+
+// Exports
+// This allows variables to be used with ./src/components/tokens/layout/Layout.ts
+:export {
+  @each $zIndex, $value in $zIndexes {
+    zIndexes-#{$zIndex}: $value;
+  }
+}

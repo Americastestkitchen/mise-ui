@@ -1,0 +1,27 @@
+$spacingUnit: 0.25rem; // 4px
+
+$spacing: (
+  x1: $spacingUnit,       // 0.25rem/4px
+  x2: $spacingUnit * 2,   // 0.5rem/8px
+  x3: $spacingUnit * 3,   // 0.5rem/12px
+  x4: $spacingUnit * 4,   // 1rem/16px
+  x6: $spacingUnit * 6,   // 1.5rem/24px
+  x8: $spacingUnit * 8,   // 2rem/32px
+  x10: $spacingUnit * 10, // 2rem/40px
+  x12: $spacingUnit * 12, // 2rem/48px
+);
+
+@function spacing($multiplier) {
+  @return map-get($spacing, $multiplier);
+}
+
+// Exports
+// This allows variables to be used with ./src/components/tokens/Spacing/Spacing.ts
+:export {
+  // Spacing Unit
+  spacingUnit: $spacingUnit;
+  // Spacing
+  @each $multiplier, $value in $spacing {
+    spacing-#{$multiplier}: $value;
+  }
+}

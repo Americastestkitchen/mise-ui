@@ -1,13 +1,13 @@
 import { Canvas, Meta, Typeset } from "@storybook/addon-docs";
 
-import { Grid } from "../Layout.ts";
+import { Grid } from "./Grid.ts";
 
-import { tokenParams } from "../../utils/scripts/utils";
+import { tokenParams } from "../utils/scripts/utils";
 
-import KeyValuePreview from "../../utils/KeyValuePreview/KeyValuePreview";
+import KeyValuePreview from "../utils/KeyValuePreview/KeyValuePreview";
 
 <Meta
-  title="Tokens/Layout/Grid/Usage"
+  title="Tokens/Grid"
   parameters={{...tokenParams}}
 />
 
@@ -51,7 +51,7 @@ export const Example: React.FC = () => {
         ...Children
       </GridColumn>
     </GridRow>
-  );
+  )
 };
 ```
 

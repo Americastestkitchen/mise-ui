@@ -1,0 +1,31 @@
+@use "./spacing";
+
+$grid: (
+  column: (
+    full: 100%,
+    threeQuarters: 75%,
+    twoThirds: 66.666%,
+    half: 50%,
+    third: 33.333%,
+    quarter: 25%,
+  ),
+  gap: (
+    base: spacing.spacing(x1),
+    bpXs: spacing.spacing(x1),
+    bpSm: spacing.spacing(x1),
+    bpMd: spacing.spacing(x4), 
+    bpLg: spacing.spacing(x4),
+    bpXl: spacing.spacing(x4),
+  )
+);
+
+// Exports
+// This allows variables to be used with ./src/components/tokens/Grid/Grid.ts
+:export {
+  // Grid
+  @each $prop, $value in $grid {
+    @each $option, $value in $value {
+      grid-#{$prop}-#{$option}: $value;
+    }
+  }
+}

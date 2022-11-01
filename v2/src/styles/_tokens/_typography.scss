@@ -210,7 +210,7 @@ $typography: (
 }
 
 // Exports
-// This allows variables to be used with ./src/components/tokens/typography/Typography.ts
+// This allows variables to be used with ./src/components/tokens/Typography/Typography.ts
 :export {
   // Font Family
   @each $name, $value in $fontFamilies {

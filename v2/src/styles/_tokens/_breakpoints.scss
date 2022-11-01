@@ -1,0 +1,18 @@
+$breakpoints: (
+  sm: 30rem, // 480px
+  md: 48rem, // 768px
+  lg: 64rem, // 1024xx
+  xl: 75rem, // 1200px
+);
+
+@function breakpoint($breakpoint) {
+  @return map-get($breakpoints, $breakpoint);
+}
+
+// Exports
+// This allows variables to be used with ./src/components/tokens/Breakpoints/Breakpoints.ts
+:export {
+  @each $breakpoint, $value in $breakpoints {
+    breakpoints-#{$breakpoint}: $value;
+  }
+}
