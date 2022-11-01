@@ -1,0 +1,16 @@
+@use "./src/styles/mise.scss";
+
+.plusIcon {
+  height: 100%;
+  transition: all 0.2s ease;
+  width: 100%;
+  fill: mise.color(neutral, light, shade);
+}
+.toggleExpanded {
+  transform: rotate(90deg);
+  rect {
+    &:first-child {
+      opacity: 0;
+    }
+  }
+}
