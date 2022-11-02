@@ -2,4 +2,5 @@
 
 .container {
     background-color: mise.color(primary, dark, base);
+    @include mise.font(text, secondary, md);
 }
