@@ -1,3 +1,21 @@
+# v1.33.40 (Wed Nov 02 2022)
+
+#### 🐛 Bug Fix
+
+- Feature/web 1052 [#949](https://github.com/Americastestkitchen/mise-ui/pull/949) (jess.bon@americastestkitchen.com [@jbonAA](https://github.com/jbonAA))
+- Including alt text on our ad components [#947](https://github.com/Americastestkitchen/mise-ui/pull/947) (jess.bon@americastestkitchen.com [@jbonAA](https://github.com/jbonAA))
+- refactor: :recycle: updating temporary brand theming solution in v2 [#941](https://github.com/Americastestkitchen/mise-ui/pull/941) ([@ttornese](https://github.com/ttornese))
+- feat: ✨ creating EditorialText component to be used to render WSYIWYG content from barista [#934](https://github.com/Americastestkitchen/mise-ui/pull/934) ([@ttornese](https://github.com/ttornese))
+- Feature/web 417 [#932](https://github.com/Americastestkitchen/mise-ui/pull/932) ([@ttornese](https://github.com/ttornese))
+
+#### Authors: 3
+
+- Jess Bon (jess.bon@americastestkitchen.com)
+- Jess David Bon ([@jbonAA](https://github.com/jbonAA))
+- Tom Tornese ([@ttornese](https://github.com/ttornese))
+
+---
+
 # v1.33.39 (Tue Sep 13 2022)
 
 #### 🐛 Bug Fix
