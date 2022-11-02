@@ -190,6 +190,7 @@ const HeroAdCta = styled.span.attrs({
 })`${withThemes(HeroAdCtaTheme)}`;
 
 const HeroAds = ({
+  alt,
   backgroundColor,
   buttonColor,
   buttonHoverColor,
@@ -222,7 +223,7 @@ const HeroAds = ({
             </HeroAdSubtitle>
           )}
           <HeroAdImage
-            alt=""
+            alt={alt}
             data-testid="hero-ad__image"
             src={getImageUrl(
               cloudinaryId,
@@ -243,6 +244,7 @@ const HeroAds = ({
 );
 
 HeroAds.propTypes = {
+  alt: PropTypes.string,
   backgroundColor: PropTypes.string,
   buttonColor: PropTypes.string,
   buttonHoverColor: PropTypes.string,
@@ -256,6 +258,7 @@ HeroAds.propTypes = {
 };
 
 HeroAds.defaultProps = {
+  alt: '',
   backgroundColor: 'transparent',
   buttonColor: 'tomato',
   buttonHoverColor: null,
