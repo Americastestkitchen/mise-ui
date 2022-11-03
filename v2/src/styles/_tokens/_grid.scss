@@ -6,10 +6,18 @@ $grid: (
     threeQuarters: 75%,
     twoThirds: 66.666%,
     half: 50%,
-    third: 33.333%,
-    quarter: 25%,
+    oneThird: 33.333%,
+    oneQuarter: 25%,
   ),
-  gap: (
+  rowGap: (
+    base: spacing.spacing(x4),
+    bpXs: spacing.spacing(x4),
+    bpSm: spacing.spacing(x4),
+    bpMd: spacing.spacing(x4), 
+    bpLg: spacing.spacing(x4),
+    bpXl: spacing.spacing(x4),
+  ),
+  columnGap: (
     base: spacing.spacing(x1),
     bpXs: spacing.spacing(x1),
     bpSm: spacing.spacing(x1),
@@ -18,6 +26,38 @@ $grid: (
     bpXl: spacing.spacing(x4),
   )
 );
+
+@function grid($keys...) {
+  $value: $contentContainer;
+  @each $key in $keys {
+    $value: map-get($value, $key);
+  }
+  @return $value;
+}
+
+@mixin grid() {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minMax(1rem, 1fr));
+  column-gap: grid(columnGap base);
+  row-gap: grid(rowGap base);
+  @media only screen and (min-width: mise.breakpoint(sm)) {
+    column-gap: grid(columnGap bpSm);
+    row-gap: grid(rowGap bpSm);
+  }
+  @media only screen and (min-width: mise.breakpoint(md)) {
+    column-gap: grid(columnGap bpMd);
+    row-gap: grid(rowGap bpMd);
+  }
+  @media only screen and (min-width: mise.breakpoint(lg)) {
+    column-gap: grid(columnGap bpLg);
+    row-gap: grid(rowGap bpLg);
+  }
+  @media only screen and (min-width: mise.breakpoint(xl)) {
+    column-gap: grid(columnGap bpXl);
+    row-gap: grid(rowGap bpXl);
+  }
+}
+
 
 // Exports
 // This allows variables to be used with ./src/components/tokens/Grid/Grid.ts
