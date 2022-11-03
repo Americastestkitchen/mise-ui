@@ -1,0 +1,26 @@
+@use "./src/styles/mise.scss";
+
+.container {
+  @include mise.contentContainer();
+  margin: 0 auto;
+  
+  &--has-no-gutters {
+    padding: 0;
+    @media only screen and (min-width: mise.breakpoint(sm)) {
+      padding: 0;
+    }
+    @media only screen and (min-width: mise.breakpoint(md)) {
+      padding: 0;
+    }
+    @media only screen and (min-width: mise.breakpoint(lg)) {
+      padding: 0;
+    }
+    @media only screen and (min-width: mise.breakpoint(xl)) {
+      padding: 0;
+    }
+  }
+
+  &--has-no-max-width {
+    max-width: 100%;
+  }
+}

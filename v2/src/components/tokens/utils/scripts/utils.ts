@@ -1,23 +1,23 @@
-import { ResetTypography } from "../../Typography/Typography";
+import { ResetTypography } from "../TokenObjects"
 
 // Helper token utilities
 
 // Default Storybook Token Params
 export const tokenParams = {
-  backgrounds: {
-    disable: true,
-    grid: {
-      disable: true,
-    },
-  },
-  options: {
-    showToolbar: false
-  },
-  previewTabs: { 
-    canvas: { hidden: true },
+  // backgrounds: {
+  //   disable: true,
+  //   grid: {
+  //     disable: true,
+  //   },
+  // },
+  // options: {
+  //   showToolbar: false
+  // },
+  // previewTabs: { 
+  //   canvas: { hidden: true },
     
-  },
-  viewMode: 'docs',
+  // },
+  // viewMode: 'docs',
 };
 
 // Converts a token camelCase key to Title Case, e.g. tokenName -> Token Name

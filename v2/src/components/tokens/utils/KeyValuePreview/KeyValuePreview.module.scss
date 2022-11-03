@@ -20,10 +20,14 @@
     border-top: 1px solid rgba(51,51,51,0.1);
   }
 
+  &:last-child {
+    padding-bottom: 0;
+  }
+
   &--is-heading {
     color: rgba(51,51,51,0.6);
     font-weight: 700;
-    padding-bottom: 2rem;
+    padding: 0 0 2rem;
 
     & + .item {
       border-top-color: rgba(51,51,51,0.6);
