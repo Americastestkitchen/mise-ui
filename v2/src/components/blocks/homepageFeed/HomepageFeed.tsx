@@ -1,6 +1,6 @@
 import React from 'react';
 // import cx from 'classnames';
-import { FeedTypes } from '../cards/types/cardType';
+import { FeedTypes } from '../PeekCard/PeekCard';
 
 export type FeedProps = {
   onClick?(): void;

@@ -24,7 +24,7 @@ export interface ${fileName}Props {
 export const ${fileName}: React.FC<${fileName}Props> = ({ className }: ${fileName}Props) => {
   const classNames = cx({
     'component': true,
-    [$className]: !!className,
+    $className: !!className,
   });
   return <div className={\`\${classNames}\`}>${fileName}</div>
 };
@@ -32,7 +32,7 @@ export const ${fileName}: React.FC<${fileName}Props> = ({ className }: ${fileNam
 export default ${fileName};`
   );
   fs.writeFileSync(
-    `./src/components/${fileName}/${fileName}.stories.tsx`,
+    `./src/components/${fileName}/${fileName}.stories.mdx`,
     `import { Canvas, Meta, Story } from "@storybook/addon-docs";
 import { withDesign } from "storybook-addon-designs";
 import { ${fileName}, ${fileName}Props } from "./${fileName}";
