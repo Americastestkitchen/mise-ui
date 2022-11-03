@@ -65,7 +65,7 @@ $resetTypography: (
   family: fontFamily(merriweather, family),
   size: 16px,
   lineHeight: 1.625,
-  weight: fontFamily(merriweather, weight, normal),
+  font-weight: fontFamily(merriweather, weight, normal),
 );
 
 @function resetTypography($prop) {
