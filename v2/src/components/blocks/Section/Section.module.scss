@@ -1,0 +1,23 @@
+@use "./src/styles/mise.scss";
+
+$colors: red orange yellow green blueGreen blue purple;
+
+@mixin colors {
+  @each $current-color in $colors {
+    &--is-#{$current-color} { 
+      background-color: mise.color(editorial, $current-color);
+    }
+  }
+}
+
+.container {
+  color: mise.color(neutral, white);
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+
+  @include colors;
+}
+
+.content {
+  padding: mise.spacing(x4);
+}
