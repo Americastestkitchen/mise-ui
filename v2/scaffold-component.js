@@ -11,14 +11,22 @@ function generate(fileName) {
   makeDirs(fileName);
   fs.writeFileSync(
     `./src/components/${fileName}/${fileName}.tsx`,
-    `import styles from "./${fileName}.module.scss";
+    `import classNames from 'classnames/bind';
+
+import styles from "./${fileName}.module.scss";
+
+const cx = classNames.bind(styles);
 
 export interface ${fileName}Props {
   className?: string 
 }
 
 export const ${fileName}: React.FC<${fileName}Props> = ({ className }: ${fileName}Props) => {
-  return <div className={\`\${styles["component"]} \${className}\`}>${fileName}</div>
+  const classNames = cx({
+    'component': true,
+    [$className]: !!className,
+  });
+  return <div className={\`\${classNames}\`}>${fileName}</div>
 };
 
 export default ${fileName};`
