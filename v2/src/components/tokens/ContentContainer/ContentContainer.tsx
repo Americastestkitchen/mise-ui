@@ -1,4 +1,4 @@
-import React from "react";
+import React, { JSXElementConstructor } from "react";
 import classNames from 'classnames/bind';
 
 import styles from "./ContentContainer.module.scss";
@@ -7,7 +7,7 @@ const cx = classNames.bind(styles);
 
 export interface ContentContainerProps {
   className?: string ,
-  children: JSX.Element,
+  children: JSX.Element | JSX.Element[],
   disableGutters?: boolean,
   disableMaxWidth?: boolean,
 }
