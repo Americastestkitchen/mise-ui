@@ -2,7 +2,7 @@ import { Canvas, Meta, Typeset } from "@storybook/addon-docs";
 
 import { SpacingUnit, Spacing } from "./Spacing.ts";
 
-import { tokenParams, remToPx, spacingPreview } from "../utils/scripts/utils";
+import { tokenParams, remToPx, remAndPx, spacingPreview } from "../utils/scripts/utils";
 
 import KeyValuePreview from "../utils/KeyValuePreview/KeyValuePreview";
 
@@ -50,11 +50,12 @@ export const formattedList = () => {
 }
 
 <KeyValuePreview
+  list={Spacing}
   keyLabel="Size"
   keyColumnWidth="8rem"
   valueLabel="Measurement"
   valueColumnWidth="12rem"
-  list={Spacing}
+  valueFormat={remAndPx}
   previewFormat={(list, key, value, index, array) => {
     return (
       <span

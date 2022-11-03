@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import EditorialText from './EditorialText';
 
 export default {
-  title: 'Components/Partials/EditorialText',
+  title: 'Partials/EditorialText',
   component: EditorialText,
 } as ComponentMeta<typeof EditorialText>;
 

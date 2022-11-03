@@ -32,6 +32,9 @@ $sourceColors: (
 
 $colors: (
   neutral: (
+    white: (
+      base: #ffffff,
+    ),
     light: (
       tint: #ffffff,
       base: sourceColor(smoke),
@@ -41,6 +44,9 @@ $colors: (
       tint: sourceColor(iron),
       base: sourceColor(eclipse),
       shade: #000000,
+    ),
+    black: (
+      base: #000000,
     ),
   ),
   primary: (
@@ -85,16 +91,13 @@ $colors: (
     ),
   ),
   editorial: (
-    primary: (
+    red: (
       base: sourceColor(beet),
-    ),
-    secondary: (
-      base: sourceColor(mintShade),
     ),
     orange: (
       base: sourceColor(sienna),
     ),
-    gold: (
+    yellow: (
       base: sourceColor(goldClay),
     ),
     green: (
@@ -117,7 +120,11 @@ $colors: (
   @each $key in $keys {
     $value: map-get($value, $key);
   }
-  @return $value;
+  @if type-of($value) == map {
+    @return map-get($value, base);
+  } @else {
+    @return $value;
+  }
 }
 
 // Exports

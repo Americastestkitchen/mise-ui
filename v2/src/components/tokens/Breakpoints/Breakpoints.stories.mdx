@@ -44,6 +44,7 @@ Breakpoints can be used with the `mise.breakpoint()` function. This custom SASS 
 ## Ranges
 
 <KeyValuePreview
+  list={Breakpoints}
   keyLabel="Breakpoint"
   keyColumnWidth="11rem"
   valueLabel="Min-Width"
@@ -54,5 +55,4 @@ Breakpoints can be used with the `mise.breakpoint()` function. This custom SASS 
     const rangeEnd = list[array[index + 1]] ? ` - ${Number(remToPx(String(list[array[index + 1]])).split('px').shift()) - 1}px` : " +";
     return `${remToPx(value)}${rangeEnd}`
   }}
-  list={Breakpoints}
 />

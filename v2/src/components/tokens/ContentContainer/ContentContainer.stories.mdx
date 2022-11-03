@@ -50,11 +50,12 @@ export const Example: React.FC = () => {
 **Max Width:** {remAndPx(ContentContainer.maxWidth)}
 
 <KeyValuePreview
+  list={ContentContainer.gutter}
   keyLabel="Size"
   keyColumnWidth="8rem"
   valueLabel="Measurement"
   valueColumnWidth="12rem"
-  list={ContentContainer.gutter}
+  valueFormat={remAndPx}
   previewFormat={(list, key, value, index, array) => {
     return (
       <span

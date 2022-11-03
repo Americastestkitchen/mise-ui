@@ -2,7 +2,7 @@ import { Canvas, Meta, Typeset } from "@storybook/addon-docs";
 
 import { Grid } from "./Grid.ts";
 
-import { tokenParams } from "../utils/scripts/utils";
+import { tokenParams, remAndPx } from "../utils/scripts/utils";
 
 import KeyValuePreview from "../utils/KeyValuePreview/KeyValuePreview";
 
@@ -60,11 +60,11 @@ export const Example: React.FC = () => {
 ### Width
 
 <KeyValuePreview
+  list={Grid.column}
   keyLabel="Size"
   keyColumnWidth="8rem"
   valueLabel="Measurement"
   valueColumnWidth="12rem"
-  list={Grid.column}
   previewFormat={(list, key, value, index, array) => {
     return (
       <span
@@ -82,11 +82,12 @@ export const Example: React.FC = () => {
 ### Gap
 
 <KeyValuePreview
+  list={Grid.gap}
   keyLabel="Breakpoint"
   keyColumnWidth="8rem"
   valueLabel="Measurement"
   valueColumnWidth="12rem"
-  list={Grid.gap}
+  valueFormat={remAndPx}
   previewFormat={(list, key, value, index, array) => {
     return (
       <span
