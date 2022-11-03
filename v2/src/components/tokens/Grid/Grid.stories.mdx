@@ -79,10 +79,35 @@ export const Example: React.FC = () => {
   }}
 />
 
-### Gap
+### Gaps
+
+#### Row
 
 <KeyValuePreview
-  list={Grid.gap}
+  list={Grid.rowGap}
+  keyLabel="Breakpoint"
+  keyColumnWidth="8rem"
+  valueLabel="Measurement"
+  valueColumnWidth="12rem"
+  valueFormat={remAndPx}
+  previewFormat={(list, key, value, index, array) => {
+    return (
+      <span
+        style={{
+          display: "inline-block",
+          backgroundColor: "red",
+          height: value,
+          width: "1rem",
+        }}  
+      />
+    )
+  }}
+/>
+
+#### Column
+
+<KeyValuePreview
+  list={Grid.columnGap}
   keyLabel="Breakpoint"
   keyColumnWidth="8rem"
   valueLabel="Measurement"
