@@ -1,25 +1,36 @@
 import React from "react";
+import BylineList, { Author } from "../../partials/Byline/Byline";
 
 import styles from "./styles/HeroCard.module.scss";
 
-export interface HeroCardProps {
+export type HeroCardProps = {
   image?: { altText?: string, cloudinaryUrl: string };
+  author: Author;
 }
 
-export const HeroCard: React.FC<HeroCardProps> = ({ image }: HeroCardProps) => {
+export const HeroCard: React.FC<HeroCardProps> = ({
+  image,
+  author,
+}: HeroCardProps) => {
+  console.log('herocard', author);
   return (
     <div className={styles.container}>
       <div className={styles.info}>
-        <img
-          className={styles.headShot}
-          crossOrigin="anonymous"
-          decoding="async"
-          alt={image?.altText}
-          src={image?.cloudinaryUrl}
-          // onError={() => { setImageError(true); }}
-        />
-        <img src="/" alt="Tomato Sandwich" />
+        {image && (
+          <img
+            className={styles.headShot}
+            crossOrigin="anonymous"
+            decoding="async"
+            alt={image?.altText}
+            src={image?.cloudinaryUrl}
+            // onError={() => { setImageError(true); }}
+          />
+        )}
         <h1>Your Summer Needs These Three Tomato Sandwiches</h1>
+        <div>
+          {/* <BylineList authors={[author]} /> */}
+
+        </div>
       </div>
     </div>
   );

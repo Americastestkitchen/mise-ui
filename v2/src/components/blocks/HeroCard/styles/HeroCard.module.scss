@@ -1,11 +1,13 @@
 @use "./src/styles/mise.scss";
 
 .container {
-    background-color: mise.color(primary, dark, base);
     @include mise.font(display, primary, sm);
+
+    background-color: mise.color(primary, dark, base);
+    color: mise.color(neutral, white, base);
 }
 
-.info {
+.attribution {
     &::before {
         content: '';
         border-top: 1px solid mise.color(primary, mid, base);
