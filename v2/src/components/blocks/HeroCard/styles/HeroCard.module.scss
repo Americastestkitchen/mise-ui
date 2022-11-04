@@ -13,6 +13,13 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+
+    @media only screen and (min-width: mise.breakpoint(lg)) {
+        background-image: none;
+        background-color: mise.color(primary, dark, base);
+
+        @include contentContainer;
+    }
 }
 
 .info {
@@ -22,6 +29,16 @@
         width: 100%;
         display: block;
         height: 78px;
+
+    }
+
+
+    @media only screen and (min-width: mise.breakpoint(lg)) {
+        display: flex;
+
+        &::before {
+            display: none;
+        }
     }
 }
 
@@ -30,6 +47,9 @@
     background-color: mise.color(primary, dark, base);
     padding: mise.spacing(x4);
 
+    @media only screen and (min-width: mise.breakpoint(lg)) {
+        background-color: transparent;
+    }
 }
 
 .headline {
@@ -47,4 +67,10 @@
 
 .heroImage {
     display: none;
+
+    @media only screen and (min-width: mise.breakpoint(lg)) {
+        display: block;
+        height: 476px;
+        width: 854px;
+    }
 }
