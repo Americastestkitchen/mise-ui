@@ -1,7 +1,6 @@
-import React from 'react';
-
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import HomepageFeed from './HomepageFeed';
+import { FeedTypes } from './HomepageFeed';
 
 export default {
   title: 'Components/Blocks/HomepageFeed',
@@ -37,7 +36,7 @@ const defaultArgs = [
         },
       ],
       image: {
-        alt: '',
+        altText: '',
         cloudinaryUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/SFS_Broiled_Chicken_with_Gravy_379_rx4dzb.jpg'
       },
       title: "Broiled Chicken with Gravy"
@@ -69,7 +68,7 @@ const defaultArgs = [
         },
       ],
       image: {
-        alt: '',
+        altText: '',
         cloudinaryUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/SFS_Broiled_Chicken_with_Gravy_379_rx4dzb.jpg'
       },
       title: "Broiled Chicken with Gravy"
@@ -101,7 +100,7 @@ const defaultArgs = [
         },
       ],
       image: {
-        alt: '',
+        altText: '',
         cloudinaryUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/SFS_Broiled_Chicken_with_Gravy_379_rx4dzb.jpg'
       },
       title: "Broiled Chicken with Gravy"
@@ -133,7 +132,7 @@ const defaultArgs = [
         },
       ],
       image: {
-        alt: '',
+        altText: '',
         cloudinaryUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/SFS_Broiled_Chicken_with_Gravy_379_rx4dzb.jpg'
       },
       title: "Broiled Chicken with Gravy"
@@ -165,7 +164,7 @@ const defaultArgs = [
         },
       ],
       image: {
-        alt: '',
+        altText: '',
         cloudinaryUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/SFS_Broiled_Chicken_with_Gravy_379_rx4dzb.jpg'
       },
       title: "Broiled Chicken with Gravy"
@@ -197,7 +196,7 @@ const defaultArgs = [
         },
       ],
       image: {
-        alt: '',
+        altText: '',
         cloudinaryUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/SFS_Broiled_Chicken_with_Gravy_379_rx4dzb.jpg'
       },
       title: "Broiled Chicken with Gravy"
@@ -229,7 +228,7 @@ const defaultArgs = [
         },
       ],
       image: {
-        alt: '',
+        altText: '',
         cloudinaryUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/SFS_Broiled_Chicken_with_Gravy_379_rx4dzb.jpg'
       },
       title: "Broiled Chicken with Gravy"
@@ -263,7 +262,7 @@ const defaultArgs = [
       title: "Broiled Chicken with Gravy", 
       video: {
         image: {
-          alt: '',
+          altText: '',
           clourdinaryUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/SFS_Broiled_Chicken_with_Gravy_379_rx4dzb.jpg'
         },
         zypeId: "6226a328874a99000187da6b"
@@ -298,14 +297,14 @@ const defaultArgs = [
       title: "Broiled Chicken with Gravy", 
       video: {
         image: {
-          alt: '',
+          altText: '',
           clourdinaryUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/SFS_Broiled_Chicken_with_Gravy_379_rx4dzb.jpg'
         },
         zypeId: "6226a328874a99000187da6b"
       }
     }
   },
-]
+] as FeedTypes[]
 
 export const DefaultFeed: ComponentStory<typeof HomepageFeed> = Template.bind({});
 DefaultFeed.args = {feed: defaultArgs}

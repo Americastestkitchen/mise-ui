@@ -1,6 +1,11 @@
 import React from 'react';
 // import cx from 'classnames';
-import { FeedTypes } from '../PeekCard/PeekCard';
+import { StandardCard, VideoCard } from '../PeekCard/PeekCard';
+
+export type FeedTypes = {
+  documentType: 'recipe' | 'article' | 'howTo' | 'reviews' | 'magazine' | 'episode' | 'video'; // values are TBD for now
+  card: StandardCard | VideoCard
+}
 
 export type FeedProps = {
   onClick?(): void;
