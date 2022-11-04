@@ -9,13 +9,13 @@
     background-size: cover;
     background-position: center bottom;
     position: relative;
-}
 
-.info {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+}
 
+.info {
     &::before {
         background: linear-gradient(180deg, rgba(117, 47, 52, 0) 0%, mise.color(primary, dark, base) 100%);
         content: '';
@@ -27,7 +27,6 @@
 
 .text {
     width: 100%;
-    border-top: 1px solid mise.color(primary, mid, base);
     background-color: mise.color(primary, dark, base);
     padding: mise.spacing(x4);
 
@@ -39,7 +38,11 @@
 }
 
 .attribution {
-    // background-color: pink;
+    border-top: 2px solid mise.color(primary, mid, base);
+    padding-top: mise.spacing(x3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .heroImage {
