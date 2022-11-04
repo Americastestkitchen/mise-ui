@@ -22,10 +22,11 @@ export const HeroCard: React.FC<HeroCardProps> = ({
             src={image?.cloudinaryUrl}
           />
         )}
-        <h1>Your Summer Needs These Three Tomato Sandwiches</h1>
-        <div className={styles.attribution}>
-          <BylineList authors={[author]} />
-
+        <div className={styles.text}>
+          <h1 className={styles.headline}>Your Summer Needs These Three Tomato Sandwiches</h1>
+          <div className={styles.attribution}>
+            <BylineList authors={[author]} />
+          </div>
         </div>
       </div>
     </div>

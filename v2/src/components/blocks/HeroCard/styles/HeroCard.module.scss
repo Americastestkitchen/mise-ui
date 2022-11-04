@@ -11,21 +11,35 @@
     position: relative;
 }
 
-.attribution {
-    background-color: mise.color(primary, dark, base);
-    // background-color: pink;
-    width: 100%;
-    bottom: 0;
-    position: absolute;
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 
     &::before {
-        border-top: 1px solid mise.color(primary, mid, base);
-        background: linear-gradient(180deg, rgba(117, 47, 52, 0) 0%, rgba(117, 47, 52, 0) 100%);;
+        background: linear-gradient(180deg, rgba(117, 47, 52, 0) 0%, mise.color(primary, dark, base) 100%);
         content: '';
         width: 100%;
         display: block;
         height: 78px;
     }
+}
+
+.text {
+    width: 100%;
+    border-top: 1px solid mise.color(primary, mid, base);
+    background-color: mise.color(primary, dark, base);
+    padding: mise.spacing(x4);
+
+}
+
+.headline {
+    margin-top: 0;
+    font-size: 32px;  // TODO: lock at 32 px
+}
+
+.attribution {
+    // background-color: pink;
 }
 
 .heroImage {
