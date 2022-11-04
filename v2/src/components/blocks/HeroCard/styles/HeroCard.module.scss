@@ -2,5 +2,12 @@
 
 .container {
     background-color: mise.color(primary, dark, base);
-    @include mise.font(text, secondary, md);
+    @include mise.font(display, primary, sm);
+}
+
+.info {
+    &::before {
+        content: '';
+        border-top: 1px solid mise.color(primary, mid, base);
+    }
 }
