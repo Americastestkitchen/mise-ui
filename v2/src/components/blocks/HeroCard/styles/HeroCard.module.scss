@@ -3,13 +3,31 @@
 .container {
     @include mise.font(display, primary, sm);
 
-    background-color: mise.color(primary, dark, base);
     color: mise.color(neutral, white, base);
+    height: 548px;
+    background-image: url('https://res.cloudinary.com/hksqkdlah/image/upload/SFS_Broiled_Chicken_with_Gravy_379_rx4dzb.jpg');
+    background-size: cover;
+    background-position: center bottom;
+    position: relative;
 }
 
 .attribution {
+    background-color: mise.color(primary, dark, base);
+    // background-color: pink;
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+
     &::before {
-        content: '';
         border-top: 1px solid mise.color(primary, mid, base);
+        background: linear-gradient(180deg, rgba(117, 47, 52, 0) 0%, rgba(117, 47, 52, 0) 100%);;
+        content: '';
+        width: 100%;
+        display: block;
+        height: 78px;
     }
+}
+
+.heroImage {
+    display: none;
 }

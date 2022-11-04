@@ -12,23 +12,19 @@ export const HeroCard: React.FC<HeroCardProps> = ({
   image,
   author,
 }: HeroCardProps) => {
-  console.log('herocard', author);
   return (
     <div className={styles.container}>
       <div className={styles.info}>
         {image && (
           <img
-            className={styles.headShot}
-            crossOrigin="anonymous"
-            decoding="async"
+            className={styles.heroImage}
             alt={image?.altText}
             src={image?.cloudinaryUrl}
-            // onError={() => { setImageError(true); }}
           />
         )}
         <h1>Your Summer Needs These Three Tomato Sandwiches</h1>
-        <div>
-          {/* <BylineList authors={[author]} /> */}
+        <div className={styles.attribution}>
+          <BylineList authors={[author]} />
 
         </div>
       </div>
