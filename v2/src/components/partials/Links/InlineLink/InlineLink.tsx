@@ -12,7 +12,7 @@ export interface InlineLinkProps {
 
 export const InlineLink = ({
   className,
-  label = "This is a Block Link",
+  label = "This is an Inline Link",
   path = "/",
 }: InlineLinkProps) => {
   const Link = path.startsWith('http') || path.startsWith('https')  ? "a" : NextLink;
