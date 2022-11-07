@@ -10,6 +10,7 @@
     "@types/node": "^16.7.13",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
+    "next": "^13.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
@@ -23,7 +24,8 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "new-component": "node scaffold-component.js"
+    "new-component": "node scaffold-component.js",
+    "chromatic": "npx chromatic --project-token=9e79f5fd4582"
   },
   "eslintConfig": {
     "extends": [
@@ -66,9 +68,12 @@
     "@storybook/react": "^6.5.10",
     "@storybook/testing-library": "^0.0.13",
     "babel-plugin-named-exports-order": "^0.0.2",
+    "chromatic": "^6.11.4",
     "prop-types": "^15.8.1",
     "sass": "^1.54.6",
     "storybook-addon-designs": "^6.3.1",
     "webpack": "^5.74.0"
-  }
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "Mise@2.0.0"
 }

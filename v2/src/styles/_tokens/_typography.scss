@@ -83,6 +83,7 @@ $typography: (
   text: (
     primary: (
       family: fontFamily(merriweather, family),
+      letterSpacing: -0.02em,
       lineHeight: (
         sm: 1.625,
         md: 1.625,
@@ -106,6 +107,7 @@ $typography: (
     ),
     secondary: (
       family: fontFamily(proximaNova, family),
+      letterSpacing: -0.02em,
       lineHeight: (
         sm: 1.625,
         md: 1.625,
@@ -135,6 +137,7 @@ $typography: (
   display: (
     primary: (
       family: fontFamily(moret, family),
+      letterSpacing: 0,
       lineHeight: (
         sm: 1.125,
         md: 1.125,
@@ -154,6 +157,7 @@ $typography: (
     ),
     secondary: (
       family: fontFamily(proximaNova, family),
+      letterSpacing: 1px,
       lineHeight: (
         sm: 1.625,
         md: 1.625,
@@ -174,7 +178,6 @@ $typography: (
         bold: 700,
       ),
       uppercase: true,
-      letterSpacing: 1px,
     ),
   ),
 );
@@ -190,13 +193,14 @@ $typography: (
 @mixin font($category, $name, $size: md, $weight: normal, $style: normal) {
   font-family: typography($category, $name, family);
   font-size: typography($category, $name, size, $size);
+  letter-spacing: typography($category, $name, letterSpacing);
   line-height: typography($category, $name, lineHeight, $size);
   @if typography($category, $name, weight, $weight) {
-    weight: typography($category, $name, weight, $weight);
+    font-weight: typography($category, $name, weight, $weight);
   } @else if typography($category, $name, weight, normal) {
-    weight: typography($category, $name, weight, normal);
+    font-weight: typography($category, $name, weight, normal);
   } @else {
-    weight: typography($category, $name, weight, bold);
+    font-weight: typography($category, $name, weight, bold);
   }
   @if $style == italic and typography($category, $name, style, italic) {
     font-style: italic;

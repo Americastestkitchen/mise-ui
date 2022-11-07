@@ -10,7 +10,7 @@ function generate(fileName) {
   makeDirs(fileName);
   fs.writeFileSync(
     `./src/components/${fileName}/${fileName}.tsx`,
-    `import classNames from 'classnames/bind';
+    `import classNames from "classnames/bind";
 
 import styles from "./${fileName}.module.scss";
 
@@ -22,7 +22,7 @@ export interface ${fileName}Props {
 
 export const ${fileName} = ({ className }: ${fileName}Props) => {
   const classNames = cx({
-    'component': true,
+    "component": true,
     $className: !!className,
   });
   return <div className={\`\${classNames}\`}>${fileName}</div>
