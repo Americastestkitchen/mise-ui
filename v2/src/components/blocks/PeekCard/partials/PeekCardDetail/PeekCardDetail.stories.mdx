@@ -1,0 +1,24 @@
+import { Canvas, Meta, Story } from "@storybook/addon-docs";
+import { withDesign } from "storybook-addon-designs";
+import { PeekCardDetail } from "./PeekCardDetail";
+
+<Meta
+  title="Components/PeekCard/partials/PeekCardDetail"
+  component={PeekCardDetail}
+/>
+
+export const Template = (args) => <PeekCardDetail {...args} />
+
+# PeekCardDetail
+
+<Canvas>
+  <Story
+    name="PeekCardDetail"
+    args={{
+      title: 'An innovative method for cooking short ribs results in ribs that eat like luxuriously rich steaks.',
+      body: 'For a different take on a tougher cut of beef, we applied a tried-and-true technique for cooking steaks: reverse searing. We first cooked the ribs until they were medium-rare—about an hour in a 275-degree oven. Next, we quickly browned them over high heat on the stovetop to create a flavorful crust. Salting the short ribs and letting them sit for at least 2 hours or up to 24 hours before cooking seasoned them all the way through and aided in tenderizing the meat and retaining juices. The slow cook also helped break down the muscle fibers to ensure tenderness. For a luxurious sauce, we dressed up browned butter with shallot, garlic, Worcestershire sauce, and Dijon mustard.',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

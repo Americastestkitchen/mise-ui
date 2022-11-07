@@ -11,7 +11,7 @@ type Author = {
   inactive?: boolean;
 };
 
-type CardLinks = {
+export type CardLinks = {
   url: string,
   title: string,
 }
@@ -29,7 +29,7 @@ interface VideoCardBody {
 }
 interface CardBody {
   id: number,
-  image?: Image;
+  image: Image;
   title: string,
   body: string,
 }

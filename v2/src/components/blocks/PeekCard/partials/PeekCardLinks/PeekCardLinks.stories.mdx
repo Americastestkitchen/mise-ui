@@ -1,0 +1,42 @@
+import { Canvas, Meta, Story } from "@storybook/addon-docs";
+import { withDesign } from "storybook-addon-designs";
+import { PeekCardLinks } from "./PeekCardLinks";
+
+<Meta
+  title="Components/PeekCard/partials/PeekCardLinks"
+  component={PeekCardLinks}
+/>
+
+export const Template = (args) => <PeekCardLinks {...args} />;
+
+# PeekCardLinks
+
+<Canvas>
+  <Story 
+    name="PeekCardLinks One"
+    args={{
+      links: [{
+        url: `/recipes/13545-broiled-chicken-with-gravy`, 
+        title: "Start Cooking"
+      }]
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+
+  <Story
+    name="PeekCardLinks Multiple"
+    args={{
+      links: [{
+        url: "/recipes/13545-broiled-chicken-with-gravy", 
+        title: "Start Cooking"
+      },
+      {
+        url: "/recipes/13545-broiled-chicken-with-gravy", 
+        title: "Buy the winner",
+      }]
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

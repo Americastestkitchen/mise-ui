@@ -187,16 +187,30 @@ $typography: (
   @return $value;
 }
 
+@mixin truncate($width: 100%) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: $width;
+}
+
+@mixin truncateLineClamp($lines: 3) {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+}
+
 @mixin font($category, $name, $size: md, $weight: normal, $style: normal) {
   font-family: typography($category, $name, family);
   font-size: typography($category, $name, size, $size);
   line-height: typography($category, $name, lineHeight, $size);
   @if typography($category, $name, weight, $weight) {
-    weight: typography($category, $name, weight, $weight);
+    font-weight: typography($category, $name, weight, $weight);
   } @else if typography($category, $name, weight, normal) {
-    weight: typography($category, $name, weight, normal);
+    font-weight: typography($category, $name, weight, normal);
   } @else {
-    weight: typography($category, $name, weight, bold);
+    font-weight: typography($category, $name, weight, bold);
   }
   @if $style == italic and typography($category, $name, style, italic) {
     font-style: italic;
