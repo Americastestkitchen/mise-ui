@@ -4,11 +4,11 @@
     @include mise.font(display, primary, sm);
 
     color: mise.color(neutral, white, base);
-    height: 548px;
     background-size: cover;
     background-position: center bottom;
     position: relative;
-
+    overflow: hidden;
+    height: 548px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -19,30 +19,19 @@
     }
 }
 
-.info {
-    &::before {
-        background: linear-gradient(180deg, rgba(117, 47, 52, 0) 0%, mise.color(primary, dark, base) 100%);
-        content: '';
-        width: 100%;
-        display: block;
-        height: 78px;
-
-    }
-
-
-    @media only screen and (min-width: mise.breakpoint(lg)) {
-        display: flex;
-
-        &::before {
-            display: none;
-        }
-    }
-}
-
 .text {
     width: 100%;
-    background-color: mise.color(primary, dark, base);
+    height: 250px;
+    background: linear-gradient(
+        0deg,
+        mise.color(primary, dark, base) 0%,
+        85%,
+        rgba(117, 47, 52, 0) 100%,
+    );
     padding: mise.spacing(x4);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 
     @media only screen and (min-width: mise.breakpoint(lg)) {
         background-color: transparent;
@@ -63,7 +52,10 @@
 }
 
 .heroImage {
-    display: none;
+    position: absolute;
+    object-fit: cover;
+    object-position: center;
+    z-index: -1;
 
     @media only screen and (min-width: mise.breakpoint(lg)) {
         display: block;
