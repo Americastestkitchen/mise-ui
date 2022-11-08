@@ -1,0 +1,107 @@
+@use "./src/styles/mise.scss";
+
+.wrapper {
+  border-top: 4px solid mise.color(primary, mid, base);
+  background-color:mise.color(primary, dark, base);
+  padding: 24px 16px;
+  color: mise.color(neutral, light, tint);
+  min-height: 315px;
+  display: flex;
+  flex-direction:column; flex:1;
+}
+.headerWrapper {
+  :global(.editorial-text) {
+    margin-bottom: 16px;
+    color: mise.color(neutral, light, tint);
+	}
+}
+.content {
+  display: block;
+}
+.frequency {
+  @include mise.font(display, secondary, sm, bold);
+}
+.title {
+  margin: 16px 0;
+  @include mise.font(display, primary, sm);
+}
+.label {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  @include mise.font(text, secondary, md, bold);
+}
+.formWrapper {
+  display: block;
+  width: 100%;
+  position: relative;
+  @media screen and (min-width: mise.breakpoint(md)) {
+    display: flex;
+    width: 90%;
+  }
+}
+.input {
+  height: 45px;
+  padding: 0 10px;
+  width: 100%;
+  background-color: mise.color(neutral, light, tint);
+  color: mise.color(neutral, dark, base);
+  @include mise.font(text, primary, md);
+  margin-bottom: 10px;
+}
+.error {
+  background-color: mise.color(primary, light, shade);
+  border: 2px solid;
+  border-color: mise.color(primary, mid, base);;
+}
+.button {
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  height: 45px;
+  background-color: mise.color(primary, mid, base);
+  @include mise.font(display, secondary, md, bold);
+  @media screen and (min-width: mise.breakpoint(md)) {
+    padding: 0 42px;
+    width: auto;
+  }
+  @media(hover: hover) {
+    &:hover {
+      background-color: mise.color(primary, mid, shade);
+    }
+  }
+}
+.button[disabled=disabled], .button:disabled, .button:hover:disabled {
+  background-color: mise.color(neutral, light, base);
+  color: mise.color(neutral, light, shade);
+  cursor: not-allowed;
+}
+.successMessage {
+  display: flex;
+  margin-top: 30px;
+  @include mise.font(text, primary, md);
+  :global(.icon) {
+    width: 20px;
+    margin-right: 5px;
+	}
+  :global(.icon-fill) {
+    fill: mise.color(primary, light, base);
+	}
+  :global(.editorial-text) {
+    color: mise.color(neutral, light, tint);
+	}
+}
+.terms {
+  color: mise.color(primary, light, base);
+  @include mise.font(text, secondary, sm);
+  margin-top: auto;
+  a {
+    border-bottom: 1px solid mise.color(primary, light, base);
+  }
+}
+.formError {
+  color: mise.color(primary, mid, base);
+  @include mise.font(display, secondary, sm, bold);
+  position: absolute;
+  right: 170px;
+  top: 10px;
+}
