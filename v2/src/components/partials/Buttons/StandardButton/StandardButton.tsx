@@ -25,7 +25,7 @@ export const StandardButton = ({
 
   return (
     <button
-      className={`${classNames}`}
+      className={classNames}
       onClick={() => onClick()}
     >
       {label}
