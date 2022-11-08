@@ -1,0 +1,8 @@
+@use "./src/styles/mise.scss";
+
+.wrapper {
+  display: flex;
+  div:first-child {
+    margin-right: mise.spacing(x3);
+  }
+}

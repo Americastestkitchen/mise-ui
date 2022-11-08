@@ -1,0 +1,17 @@
+@use "./src/styles/mise.scss";
+
+.wrapper {
+  display: flex;
+  :global(.icon) {
+    width: 16px;
+    margin-right: mise.spacing(x1);
+  }
+  :global(.icon-fill) {
+    fill:  mise.color(secondary, dark, tint);
+  }
+}
+
+.content {
+  @include mise.font(text, secondary, md, bold);
+  margin-right: mise.spacing(x1)
+}
