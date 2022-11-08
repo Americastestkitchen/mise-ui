@@ -23,7 +23,7 @@ export interface ${fileName}Props {
 export const ${fileName} = ({ className }: ${fileName}Props) => {
   const classNames = cx({
     "component": true,
-    $className: !!className,
+    className: !!className,
   });
   return <div className={\`\${classNames}\`}>${fileName}</div>
 };

@@ -75,8 +75,8 @@ $resetTypography: (
 @mixin resetTypography {
   font-family: resetTypography(family);
   font-size: resetTypography(size);
+  font-weight: resetTypography(weight);
   line-height: resetTypography(lineHeight);
-  weight: resetTypography(weight);
 }
 
 $typography: (

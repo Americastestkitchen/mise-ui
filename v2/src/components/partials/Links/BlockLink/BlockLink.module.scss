@@ -5,8 +5,9 @@
 
   border-bottom: 2px solid mise.color(secondary, mid);
   color: mise.color(neutral, dark);
-  display: inline-block;
+  display: block;
   transition: background-color 0.2s linear;
+  width: max-content;
 
   &:focus,
   &:hover {

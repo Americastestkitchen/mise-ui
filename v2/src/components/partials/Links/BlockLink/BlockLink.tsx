@@ -12,7 +12,7 @@ export interface BlockLinkProps {
 
 export const BlockLink = ({
   className,
-  label = "This is a Block Link",
+  label = "Block Link",
   path = "/",
 }: BlockLinkProps) => {
   const Link = path.startsWith('http') || path.startsWith('https')  ? "a" : NextLink;
