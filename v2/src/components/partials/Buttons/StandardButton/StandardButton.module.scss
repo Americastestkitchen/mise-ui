@@ -2,6 +2,7 @@
 
 .button {
   @include mise.font(text, secondary, md, bold);
+
   border-radius: 1.5rem;
   cursor: pointer;
   line-height: 1;

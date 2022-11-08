@@ -22,6 +22,7 @@ export const StandardButton = ({
     `button--is-${variant}`,
     className,
   );
+
   return (
     <button
       className={`${classNames}`}

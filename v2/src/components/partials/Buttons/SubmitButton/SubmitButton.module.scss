@@ -1,0 +1,28 @@
+@use "./src/styles/mise.scss";
+
+.button {
+  @include mise.font(display, secondary, md, bold);
+
+  background-color: mise.color(primary, mid);
+  color: mise.color(primary, light, tint);
+  cursor: pointer;
+  line-height: 1;
+  padding: mise.spacing(x4) mise.spacing(x8);
+  text-align: center;
+  transition:
+    background-color 0.2s linear,
+    color 0.2s linear;
+  width: 100%;
+
+  &:disabled,
+  &:disabled:hover {
+    background-color: mise.color(primary, mid);
+    color: mise.color(primary, mid, shade);
+    cursor: not-allowed;
+  }
+  
+  &:hover {
+    background-color: mise.color(primary, mid, shade);
+    color: mise.color(primary, light);
+  }
+}
