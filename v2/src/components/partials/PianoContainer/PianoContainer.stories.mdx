@@ -1,0 +1,38 @@
+import { Canvas, Meta, Story } from "@storybook/addon-docs";
+import { withDesign } from "storybook-addon-designs";
+import { PianoContainer, PianoContainerProps } from "./PianoContainer";
+
+<Meta
+  title="partials/PianoContainer"
+  component={PianoContainer}
+/>
+
+export const Template = (args) => <PianoContainer {...args} />
+
+# PianoContainer
+
+<Canvas>
+  <Story 
+    name="PianoMarketingHat Thanksgiving"
+    args={{
+      containerSelector: 'piano-marketing-hat thanksgiving-landing',
+      segment: 'anonymous',
+      tags: 'default',
+      url: '/thanksgiving'
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+
+  <Story 
+    name="PianoMarketingHat Homepage"
+    args={{
+      containerSelector: 'piano-marketing-hat reviews-landing-page',
+      segment: 'anonymous',
+      tags: 'default',
+      url: '/reviews'
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
