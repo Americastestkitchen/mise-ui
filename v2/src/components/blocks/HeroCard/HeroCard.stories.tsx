@@ -25,5 +25,6 @@ const defaultAuthor = {
 export const HeroCardStory: ComponentStory<typeof HeroCard> = Template.bind({});
 HeroCardStory.args = {
   author: defaultAuthor,
-  image: {altText: 'Warm Cherry Tomatoes', cloudinaryUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/SFS_Broiled_Chicken_with_Gravy_379_rx4dzb.jpg'}
+  image: {altText: 'Warm Cherry Tomatoes', cloudinaryUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/SFS_Broiled_Chicken_with_Gravy_379_rx4dzb.jpg'},
+  headlineText: 'Your Summer Needs These Three Tomato Sandwiches',
 }
