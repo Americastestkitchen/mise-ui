@@ -17,8 +17,6 @@
     @media only screen and (min-width: mise.breakpoint(lg)) {
         background-image: none;
         background-color: mise.color(primary, dark, base);
-
-        @include contentContainer;
     }
 }
 
