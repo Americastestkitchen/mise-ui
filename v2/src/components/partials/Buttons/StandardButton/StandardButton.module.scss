@@ -3,8 +3,9 @@
 .button {
   @include mise.font(text, secondary, md, bold);
 
-  border-radius: 1.5rem;
+  border-radius: 1.5em;
   cursor: pointer;
+  display: block;
   line-height: 1;
   padding: mise.spacing(x4) mise.spacing(x8);
   transition:

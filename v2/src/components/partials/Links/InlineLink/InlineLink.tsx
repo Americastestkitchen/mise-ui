@@ -21,7 +21,7 @@ export const InlineLink = ({
     href={path}
     passHref
   >
-    <a className={styles['inline-link']}>
+    <a className={styles['link']}>
       {label}
     </a>
   </Link>

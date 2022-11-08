@@ -21,7 +21,7 @@ export const BlockLink = ({
     href={path}
     passHref
   >
-    <a className={styles['block-link']}>
+    <a className={styles['link']}>
       {label}
     </a>
   </Link>

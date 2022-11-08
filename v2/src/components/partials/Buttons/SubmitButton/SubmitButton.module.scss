@@ -6,6 +6,7 @@
   background-color: mise.color(primary, mid);
   color: mise.color(primary, light, tint);
   cursor: pointer;
+  display: block;
   line-height: 1;
   padding: mise.spacing(x4) mise.spacing(x8);
   text-align: center;

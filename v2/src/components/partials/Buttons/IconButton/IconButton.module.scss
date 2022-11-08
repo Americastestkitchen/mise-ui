@@ -1,0 +1,31 @@
+@use "./src/styles/mise.scss";
+
+.button {
+  @include mise.font(text, secondary, md, bold);
+
+  color: inherit;
+  cursor: pointer;
+
+  &--has-background {
+    border-radius: 50%;
+    background-color: mise.color(secondary, dark);
+    color: mise.color(neutral, white);
+    padding: mise.spacing(x1);
+    text-align: center;
+    transition:
+      background-color 0.2s linear,
+      color 0.2s linear;
+  
+    &:hover {
+      background-color: mise.color(neutral, dark);
+    }
+  }
+}
+
+.icon {
+  // Placeholder for Icon component
+  display: block;
+  line-height: 1;
+  height: 1rem;
+  width: 1rem;
+}

@@ -1,6 +1,6 @@
 @use "./src/styles/mise.scss";
 
-.block-link {
+.link {
   @include mise.font(text, secondary, md, bold, normal);
 
   border-bottom: 2px solid mise.color(secondary, mid);
