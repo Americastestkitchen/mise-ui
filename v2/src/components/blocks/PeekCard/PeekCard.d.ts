@@ -50,8 +50,3 @@ export type ReviewsCardPropTypes = { card: StandardCard }
 export type MagazineCardPropTypes = { card: StandardCard }
 export type EpisodeCardPropTypes = { card: VideoCard }
 export type VideoCardPropTypes = { card: VideoCard }
-
-export type FeedTypes = {
-  documentType: 'recipe' | 'article' | 'howTo' | 'reviews' | 'magazine' | 'episode' | 'video'; // values are TBD for now
-  card: StandardCard | VideoCard
-}

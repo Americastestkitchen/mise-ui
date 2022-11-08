@@ -4,14 +4,13 @@ const args = process.argv.slice(2);
 
 function makeDirs(fileName) {
   fs.mkdirSync(`./src/components/${fileName}`, { recursive: true });
-  fs.mkdirSync(`./src/components/${fileName}/styles`, { recursive: true });
 }
 
 function generate(fileName) {
   makeDirs(fileName);
   fs.writeFileSync(
     `./src/components/${fileName}/${fileName}.tsx`,
-    `import classNames from 'classnames/bind';
+    `import classNames from "classnames/bind";
 
 import styles from "./${fileName}.module.scss";
 
@@ -21,10 +20,10 @@ export interface ${fileName}Props {
   className?: string 
 }
 
-export const ${fileName}: React.FC<${fileName}Props> = ({ className }: ${fileName}Props) => {
+export const ${fileName} = ({ className }: ${fileName}Props) => {
   const classNames = cx({
-    'component': true,
-    $className: !!className,
+    "component": true,
+    className: !!className,
   });
   return <div className={\`\${classNames}\`}>${fileName}</div>
 };
@@ -52,7 +51,7 @@ This is a new component.
 </Canvas>`
   );
   fs.writeFileSync(
-    `./src/components/${fileName}/styles/${fileName}.module.scss`,
+    `./src/components/${fileName}/${fileName}.module.scss`,
     `@use "./src/styles/mise.scss";`
   );
 }

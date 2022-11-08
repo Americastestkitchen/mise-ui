@@ -7,6 +7,9 @@
     Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property
     - The "symbol *" part is to solve Firefox SVG sprite bug
 */
+@use "./_tokens/_colors.scss";
+@use "./_tokens/_typography.scss";
+
 *:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol
       *)) {
   all: unset;
@@ -87,19 +90,33 @@ meter {
   -webkit-user-drag: element;
 }
 
-/* Rerversions */
+/* Revert */
 h1,
 h2,
 h3,
 h4,
 h5,
 h6,
-strong {
+b,
+strong,
+i,
+em {
   all: revert;
 }
 
 /* Custom */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &:focus {
+    box-shadow: none;
+    outline: colors.color(neutral, dark) dotted 2px;
+    outline-offset: 2px;
+  }
+}
+
 html,
 body {
-
+  @include typography.resetTypography();
 }

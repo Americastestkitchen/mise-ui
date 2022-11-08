@@ -1,0 +1,16 @@
+@use "./src/styles/mise.scss";
+
+.link {
+  @include mise.font(text, secondary, md, bold, normal);
+
+  border-bottom: 2px solid mise.color(secondary, mid);
+  color: mise.color(neutral, dark);
+  display: block;
+  transition: background-color 0.2s linear;
+  width: max-content;
+
+  &:focus,
+  &:hover {
+    background-color: mise.color(secondary, mid, tint);
+  }
+}

@@ -1,7 +1,6 @@
-import React from 'react';
-
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import HomepageFeed from './HomepageFeed';
+import { FeedTypes } from './HomepageFeed';
 
 export default {
   title: 'Components/Blocks/HomepageFeed',
