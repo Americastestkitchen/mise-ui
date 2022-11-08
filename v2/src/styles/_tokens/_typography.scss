@@ -190,6 +190,20 @@ $typography: (
   @return $value;
 }
 
+@mixin truncate($width: 100%) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: $width;
+}
+
+@mixin truncateLineClamp($lines: 3) {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+}
+
 @mixin font($category, $name, $size: md, $weight: normal, $style: normal) {
   font-family: typography($category, $name, family);
   font-size: typography($category, $name, size, $size);

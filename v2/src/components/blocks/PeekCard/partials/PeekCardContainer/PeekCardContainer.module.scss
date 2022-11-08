@@ -1,1 +1,13 @@
 @use "./src/styles/mise.scss";
+
+.peekCardContainer {
+  width: calc(100% - 2rem);
+
+  @media screen and (min-width: mise.breakpoint(md)) {
+    width: 590px;
+  }
+
+  @media screen and (min-width: mise.breakpoint(xl)) {
+    width: 704px;
+  }
+}

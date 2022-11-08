@@ -1,0 +1,17 @@
+@use "./src/styles/mise.scss";
+
+.peekCardDetailContainer {
+  padding: mise.spacing(x2) mise.spacing(x4); 
+  width: 100%;
+}
+
+.peekCardDetailTitle {
+  @include mise.font(display, primary, sm, bold);
+  color: mise.color(neutral, dark, base);
+}
+
+.peekCardDetailBody {
+  @include mise.font(text, primary);
+  @include mise.truncateLineClamp(6);
+  color: mise.color(neutral, dark, base);
+}
