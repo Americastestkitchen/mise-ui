@@ -1,0 +1,34 @@
+import { Canvas, Meta, Story } from "@storybook/addon-docs";
+import EmailCapture from './EmailCapture';
+
+<Meta
+  title="Components/blocks/EmailCapture"
+  component={EmailCapture}
+/>
+
+export const Template = (args) => <EmailCapture {...args} />
+
+<Canvas>
+  <Story
+    name="Email Capture"
+    args={{
+      view: {
+        frequency: 'Weekly',
+        days: 'Mondays',
+        title:
+          'Notes From the Test Kitchen',
+        description:
+          'The latest from the test kitchen—our best seasonal recipes, equipment reviews, cooking advice, and behind-the-scenes spotlights of our cast, crew, and staff.',
+        successText:
+          '<strong>Thank you!</strong> Get ready for weeknight meals from the Dinner Tonight cook in your inbox.',
+      },
+      meta: {
+        newsletter_id: '16',
+      },
+      validSubmission: false,
+      onSubmitCallback: () => {}
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
