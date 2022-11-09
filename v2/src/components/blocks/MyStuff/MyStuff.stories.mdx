@@ -12,6 +12,48 @@ export const Template = (args) => <MyStuff {...args} />
   <Story
     name="MyStuffCard"
     args={{
+      authCode: 'Member',
+      favoritesList: [
+          {
+          url: "/taste_tests/2274-bottled-cold-brew-coffee",
+          image: {
+            altText: "",
+            cloudinaryUrl: "https://res.cloudinary.com/hksqkdlah/image/upload/ar_16:9,c_fill,dpr_2.0,f_auto,fl_lossy.progressive.strip_profile,g_faces:auto,q_auto:low,w_400/v1/ATK%20Reviews/2021/1_CCJJ_Bottled%20Cold%20Brew/SPS_Beverages_Bottled_Cold_Brew-Hero_0943"
+          },
+          title: "Bottled Cold-Brew Coffee",
+          commentsCount: 11
+        },
+        {
+          url: "/articles/6366-cheese-in-a-can-thats-actually-good",
+          image: {
+            altText: "",
+            cloudinaryUrl: "https://res.cloudinary.com/hksqkdlah/image/upload/c_fill,dpr_2.0,f_auto,fl_lossy.progressive.strip_profile,g_faces:auto,h_400,q_auto:low,w_272/v1/AKO%20Articles/2022%20Articles%20/Reviews%20Team/SPS_Canned-Cheeses_AKO-Article_Hero"
+          },
+          title: "Cheese in a Can That’s Actually Good",
+        },
+        {
+          url: "/recipes/14585-matzo-brei-with-smoked-salmon-and-dill",
+          image: {
+            altText: "Matzo Brei with Smoked Salmon and Dill",
+            cloudinaryUrl: "https://res.cloudinary.com/hksqkdlah/image/upload/ar_1:1,c_fill,dpr_2.0,f_auto,fl_lossy.progressive.strip_profile,g_faces:auto,q_auto:low,w_344/SFS_Matzo_Brei_with_Smoked_Salmon_and_Dill_402_ge32zm"
+          },
+          title: "Matzo Brei with Smoked Salmon and Dill",
+          commentsCount: 9,
+          rating: {
+            avgRating: 4.8,
+            numRating: 46
+          }
+        }
+      ]
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+<Canvas>
+  <Story
+    name="MyStuffCardNoFavorites"
+    args={{
       authCode: 'Anon'
     }}
   >

@@ -1,6 +1,8 @@
 import styles from './styles/myStuff.module.scss';
 import Icon from './partials/Icon';
 import EditorialText from '../../partials/EditorialText/EditorialText';
+import FavoriteCard from './partials/FavoriteCard/FavoriteCard'
+import {Favorite} from './types'
 
 const content = {
   favorites: {
@@ -13,6 +15,7 @@ const content = {
       ctaCopy: "Personalized picks based on your favorites.",
       headline: "Fresh Picks For You",
       icon: "lightning",
+      linkAgnostic: false,
       url: "/favorite_collections/fresh_picks", 
       visibilityRules: ["Member", "Anon", "Registrant", "Cancelled"]
     },
@@ -20,19 +23,21 @@ const content = {
       ctaCopy: "Find a new exciting recipe to try today!",
       headline: "Surprise Me",
       icon: "sparkle",
-      linkVariable: true,
+      linkAgnostic: true,
       url: "/", //TODO: Will this be a value from BE vs. being a static url?
       visibilityRules: ["Member", "Anon", "Registrant", "Cancelled"]
     },
     {
       headline: "My Account",
       icon: "user",
+      linkAgnostic: false,
       url: "/user",
       visibilityRules: ["Member"]
     },
     {
       headline: "Manage Profile",
       icon: "user",
+      linkAgnostic: false,
       url: "/user", //TODO: get the URL for this profile
       visibilityRules: ["Registrant", "Cancelled"]
     }
@@ -49,13 +54,14 @@ export type Icons = "lightning" | "save" | "user" | "sparkle"
 type Auth = "Member" | "Anon" | "Registrant" | "Cancelled" //TODO: These are TBD until known values from BE
 
 export type MyStuffProps = {
-  authCode: Auth,
-  // props for possible OnClick for tracking?
-  // Props for Favorited recipe Object to populate the Favorites cards
+  authCode: Auth;
+  favoritesList?: Favorite[];
+  onClick?(): void;
 }
 
-export const MyStuff: React.FC<MyStuffProps> = ({ authCode }: MyStuffProps) => {
+export const MyStuff: React.FC<MyStuffProps> = ({ authCode, favoritesList, onClick }: MyStuffProps) => {
   const { personalized, favorites, ctaFooter } = content
+  const hasNoFavorites = !favoritesList || authCode === 'Anon'
   return (
     <div>
       <div className={styles.topBar}></div>
@@ -64,17 +70,29 @@ export const MyStuff: React.FC<MyStuffProps> = ({ authCode }: MyStuffProps) => {
         <div className={styles.favoritesWrapper}>
           <div className={styles.subHeadWrapper}>
             <Icon type="save" />
-            {/* TODO: set up a variable link if favorites are present */}
-            <h3 className={styles.subHeading}>{favorites.headline}</h3>
+            {hasNoFavorites ? (
+              <h3 className={styles.subHeading}>{favorites.headline}</h3>
+              ) : (
+                <a href={favorites.url} className={styles.subHeading}>{favorites.headline}<span className={styles.arrowRight} /></a>
+            )}
           </div>
-          {/* TODO: CTA copy hidden if favorites cards present */}
-          <p className={styles.ctaCopy}>{favorites.ctaCopy}</p>
-          {/* TODO: Set up code for favorites cards */}
+          {hasNoFavorites && 
+            <p className={styles.ctaCopy}>{favorites.ctaCopy}</p>
+          }
+          {(favoritesList && authCode !== 'Anon') && (
+            <div className={styles.favoritesListWrapper}>
+            {favoritesList.map((favorite, index: number) => (
+              <div key={index} className={styles.favoritesList}>
+                <FavoriteCard favorite={favorite}/>
+              </div>
+            ))}
+            </div>
+          )}
         </div>
         {
         personalized.map((pzn, index: number) => {
           const icon = pzn.icon as Icons
-          const hasLink = (authCode !== "Anon") || (authCode === "Anon" && pzn.linkVariable)
+          const hasLink = (authCode !== "Anon") || (authCode === "Anon" && pzn.linkAgnostic)
           return (
             <>
               {pzn.visibilityRules.includes(authCode) && (
@@ -96,9 +114,11 @@ export const MyStuff: React.FC<MyStuffProps> = ({ authCode }: MyStuffProps) => {
           )
         })
       }
-      {authCode !== "Member" && (<div className={styles.signupFooter}>
-        <EditorialText content={ctaFooter[authCode]} />
-      </div>)}
+      {authCode !== "Member" && 
+        <div className={styles.signupFooter}>
+          <EditorialText content={ctaFooter[authCode]} />
+        </div>
+      }
       </div>
     </div>
   );
