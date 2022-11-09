@@ -4,6 +4,7 @@ import { EmailCaptureProps } from './types';
 import cx from 'classnames';
 import Icon from '../../tokens/Icons/Icon';
 import EditorialText from '../../partials/EditorialText/EditorialText'
+import SubmitButton from '../../partials/Buttons/SubmitButton/SubmitButton'
 
 // eslint-disable-next-line no-useless-escape
 const emailRe = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -12,7 +13,7 @@ const EmailCapture = ({
   view,
   meta,
   validSubmission,
-  onClick,
+  onSubmitCallback,
 }: EmailCaptureProps) => {
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState('');
@@ -26,7 +27,7 @@ const EmailCapture = ({
     } else {
       setDisabled(true);
       setEmailError('');
-      onClick(email, meta);
+      onSubmitCallback(email);
     }
   }
   const classStyles = cx(
@@ -66,14 +67,7 @@ const EmailCapture = ({
                 }}
               />
               {emailError && <p id="emailAddressError" role="alert"  className={styles.formError}>{emailError}</p>}
-              <button
-                disabled={disabled}
-                data-testid="email-submit-button"
-                type="submit"
-                className={styles.button}
-              >
-                Submit
-              </button>
+              <SubmitButton className={styles.button} disabled={disabled} label='submit' />
             </div>
           </form>
         }

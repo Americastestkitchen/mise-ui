@@ -15,11 +15,11 @@ type Meta = {
   de_name?: string;
 }
 
-type OnClick = (email: string, meta: Meta) => void;
+type OnSubmit = (email: string) => void;
 
 export type EmailCaptureProps = {
   view: View;
   meta: Meta;
-  onClick: OnClick;
+  onSubmitCallback: OnSubmit;
   validSubmission: boolean; // Assumed for API response if valid
 }

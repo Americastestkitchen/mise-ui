@@ -1,6 +1,6 @@
 type Image = {
-  altText?: string,
-  cloudinaryUrl: string,
+  altText?: string;
+  cloudinaryUrl: string;
 }
 
 type Author = {
@@ -12,41 +12,34 @@ type Author = {
 };
 
 export type CardLinks = {
-  url: string,
-  title: string,
+  url: string;
+  title: string;
 }
 
 type Video = {
-  image?: Image;
-  zypeId: string,
+  image: Image;
+  zypeId: string;
 }
 
 interface VideoCardBody {
-  id: number,
-  video: Video,
-  title: string,
-  body: string,
+  id: number;
+  video: Video;
+  title: string;
+  body: string;
 }
 interface CardBody {
-  id: number,
+  id: number;
   image: Image;
-  title: string,
-  body: string,
+  title: string;
+  body: string;
 }
 
 interface CardFooter {
-  author?: Author[],
-  links: CardLinks[],
-  isFavorited: boolean,
+  author?: Author[];
+  links: CardLinks[];
+  isFavorited: boolean;
 }
-// As the individual cards begin to differ from the `standard card`, more unique cards will be added.
-interface StandardCard extends CardFooter, CardBody { }
-interface VideoCard extends CardFooter, VideoCardBody { }
 
-export type ArticleCardPropTypes = { card: StandardCard }
-export type RecipeCardPropTypes = { card: StandardCard }
-export type HowToCardPropTypes = { card: StandardCard }
-export type ReviewsCardPropTypes = { card: StandardCard }
-export type MagazineCardPropTypes = { card: StandardCard }
-export type EpisodeCardPropTypes = { card: VideoCard }
-export type VideoCardPropTypes = { card: VideoCard }
+// As the individual cards begin to differ from the `standard card`, more unique cards will be added.
+interface StandardCard extends CardFooter, CardBody {cardType: 'standard'};
+interface VideoCard extends CardFooter, VideoCardBody {cardType: 'video'};
