@@ -40,7 +40,7 @@ const FavoriteRibbonWithBg = ({ ariaLabel, className }) => (
         color="#3d3d3d"
         fill="rgba(0,0,0,0.7)"
       />
-      <g className="is-favorited" transform="matrix(1, 0, 0, 1, -3.5, -2.5)" filter="url(#SAVE)">
+      <g className="is-favorited" transform="matrix(1, 0, 0, 1, -3.5, -2.5)">
         <path
           id="SAVE-2"
           data-name="SAVE"
@@ -51,6 +51,7 @@ const FavoriteRibbonWithBg = ({ ariaLabel, className }) => (
           strokeMiterlimit={10}
           strokeWidth={2}
         />
+        <use xlinkHref="#SAVE" />
       </g>
       <g className="favorite-hover" id="Group_1368" data-name="Group 1368" transform="translate(-147 397)">
         <line
