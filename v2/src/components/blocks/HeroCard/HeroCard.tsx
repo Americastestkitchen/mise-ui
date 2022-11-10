@@ -19,8 +19,8 @@ export const HeroCard: React.FC<HeroCardProps> = ({
       {image && (
         <img
           className={styles.heroImage}
-          alt={image?.altText}
-          src={image?.cloudinaryUrl}
+          alt={image.altText}
+          src={image.cloudinaryUrl}
         />
       )}
       <div className={styles.text}>
