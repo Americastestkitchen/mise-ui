@@ -20,8 +20,9 @@
             mise.color(neutral, light, base) 100%,
         );
         padding-top: 20px;
+        padding-bottom: 20px;
         flex-direction: row;
-        justify-content: center;
+        justify-content: space-between;
     }
 }
 
@@ -81,9 +82,8 @@
 
     @media only screen and (min-width: mise.breakpoint(lg)) {
         position: relative;
-        object-fit: contain;
         object-position: unset;
-        height: unset;
+        height: 478px;
         width: 854px;
         z-index: unset;
     }
