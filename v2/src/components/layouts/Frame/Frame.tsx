@@ -1,4 +1,4 @@
-import styles from "./src/styles/Frame.module.scss";
+import styles from "./Frame.module.scss";
 
 export interface FrameProps {
   className?: string;
@@ -8,7 +8,7 @@ export interface FrameProps {
 export const Frame: React.FC<FrameProps> = ({
   className,
   children,
-}: FrameProps) => {
+}) => {
   return <main className={`${styles["container"]} ${className}`}>{children}</main>
 };
 

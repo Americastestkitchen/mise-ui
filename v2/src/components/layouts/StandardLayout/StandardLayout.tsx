@@ -1,21 +1,19 @@
-import React from "react";
-
 import Frame from "../Frame/Frame"
 import ContentContainer from "../../tokens/ContentContainer/ContentContainer";
 
-import styles from "./src/styles/Basic.module.scss";
+import styles from "./StandardLayout.module.scss";
 
-export interface BasicProps {
+export interface StandardLayoutProps {
   className?: string;
   before?: JSX.Element | JSX.Element[];
   children: JSX.Element | JSX.Element[];
   after?: JSX.Element | JSX.Element[];
 }
 
-export const Basic: React.FC<BasicProps> = ({
+export const StandardLayout: React.FC<StandardLayoutProps> = ({
   className,
   children,
-}: BasicProps) => {
+}) => {
   return (
     <Frame className={`${styles["container"]} ${className}`}>
       <ContentContainer>
@@ -25,4 +23,4 @@ export const Basic: React.FC<BasicProps> = ({
   )
 };
 
-export default Basic;
+export default StandardLayout;

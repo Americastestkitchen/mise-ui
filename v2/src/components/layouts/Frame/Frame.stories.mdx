@@ -1,7 +1,17 @@
-import { Canvas, Meta } from "@storybook/addon-docs";
+import { Canvas, Meta, Story } from "@storybook/addon-docs";
+import { withDesign } from "storybook-addon-designs";
+import { Frame, FrameProps }  from "./Frame";
 
 <Meta
   title="Layouts/Frame"
 />
 
 # Frame
+
+<Canvas>
+  <Story name="Frame">
+    <Frame>
+      <p>This is a frame…</p>
+    </Frame>
+  </Story>
+</Canvas>

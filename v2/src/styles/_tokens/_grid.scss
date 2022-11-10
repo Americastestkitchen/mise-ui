@@ -1,3 +1,4 @@
+@use "./breakpoints.scss";
 @use "./spacing.scss";
 
 $grid: (
@@ -28,7 +29,7 @@ $grid: (
 );
 
 @function grid($keys...) {
-  $value: $contentContainer;
+  $value: $grid;
   @each $key in $keys {
     $value: map-get($value, $key);
   }
@@ -37,24 +38,24 @@ $grid: (
 
 @mixin grid() {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minMax(1rem, 1fr));
-  column-gap: grid(columnGap base);
-  row-gap: grid(rowGap base);
-  @media only screen and (min-width: mise.breakpoint(sm)) {
-    column-gap: grid(columnGap bpSm);
-    row-gap: grid(rowGap bpSm);
+  grid-template-columns: repeat(8, minmax(1rem, 1fr));
+  column-gap: grid(columnGap, base);
+  row-gap: grid(rowGap, base);
+  @media only screen and (min-width: breakpoints.breakpoint(sm)) {
+    column-gap: grid(columnGap, bpSm);
+    row-gap: grid(rowGap, bpSm);
   }
-  @media only screen and (min-width: mise.breakpoint(md)) {
-    column-gap: grid(columnGap bpMd);
-    row-gap: grid(rowGap bpMd);
+  @media only screen and (min-width: breakpoints.breakpoint(md)) {
+    column-gap: grid(columnGap, bpMd);
+    row-gap: grid(rowGap, bpMd);
   }
-  @media only screen and (min-width: mise.breakpoint(lg)) {
-    column-gap: grid(columnGap bpLg);
-    row-gap: grid(rowGap bpLg);
+  @media only screen and (min-width: breakpoints.breakpoint(lg)) {
+    column-gap: grid(columnGap, bpLg);
+    row-gap: grid(rowGap, bpLg);
   }
-  @media only screen and (min-width: mise.breakpoint(xl)) {
-    column-gap: grid(columnGap bpXl);
-    row-gap: grid(rowGap bpXl);
+  @media only screen and (min-width: breakpoints.breakpoint(xl)) {
+    column-gap: grid(columnGap, bpXl);
+    row-gap: grid(rowGap, bpXl);
   }
 }
 

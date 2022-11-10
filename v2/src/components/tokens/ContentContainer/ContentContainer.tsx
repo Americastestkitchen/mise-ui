@@ -1,4 +1,3 @@
-import React, { JSXElementConstructor } from "react";
 import classNames from 'classnames/bind';
 
 import styles from "./ContentContainer.module.scss";
@@ -7,7 +6,7 @@ const cx = classNames.bind(styles);
 
 export interface ContentContainerProps {
   className?: string ,
-  children: JSX.Element | JSX.Element[],
+  children: React.ReactNode,
   disableGutters?: boolean,
   disableMaxWidth?: boolean,
 }
@@ -15,9 +14,9 @@ export interface ContentContainerProps {
 export const ContentContainer: React.FC<ContentContainerProps> = ({
   className,
   children,
-  disableGutters,
-  disableMaxWidth,
-}: ContentContainerProps) => {
+  disableGutters = false,
+  disableMaxWidth = false,
+}) => {
   const classNames = cx({
     'container': true,
     'container--has-no-max-width': disableGutters,

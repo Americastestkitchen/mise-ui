@@ -1,0 +1,28 @@
+import { Canvas, Meta, Story } from "@storybook/addon-docs";
+import { withDesign } from "storybook-addon-designs";
+import { ContentSidebarLayout, ContentSidebarLayoutProps }  from "./ContentSidebarLayout";
+
+<Meta
+  title="Layouts/Content Sidebar"
+/>
+
+# Frame
+
+<Canvas>
+  <Story name="Content Sidebar">
+    <ContentSidebarLayout
+      before={
+        <p>This is a before content…</p>
+      }
+      children={
+        <p>This is content…</p>
+      }
+      sidebar={
+        <p>This is a sidebar…</p>
+      }
+      after = {
+        <p>This is a after content…</p>
+      }
+    />
+  </Story>
+</Canvas>

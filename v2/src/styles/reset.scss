@@ -117,6 +117,11 @@ em {
 }
 
 html,
-body {
+body,
+:global(#root),
+:global(#__next) {
   @include typography.resetTypography();
+
+  height: 100%;
 }
+

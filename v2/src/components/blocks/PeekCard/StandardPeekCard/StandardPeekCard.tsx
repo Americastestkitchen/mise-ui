@@ -1,8 +1,8 @@
 import classNames from 'classnames/bind';
-import PeekCardContainer from '../partials/PeekCardContainer/PeekCardContainer';
-import PeekCardDetail from '../partials/PeekCardDetail/PeekCardDetail';
-import PeekCardLinks from '../partials/PeekCardLinks/PeekCardLinks';
-import PeekCardFooter from '../partials/PeekCardFooter/PeekCardFooter';
+import PeekCardContainer from '../_partials/PeekCardContainer/PeekCardContainer';
+import PeekCardDetail from '../_partials/PeekCardDetail/PeekCardDetail';
+import PeekCardLinks from '../_partials/PeekCardLinks/PeekCardLinks';
+import PeekCardFooter from '../_partials/PeekCardFooter/PeekCardFooter';
 import { StandardCard } from '../PeekCard';
 import styles from "./StandardPeekCard.module.scss";
 

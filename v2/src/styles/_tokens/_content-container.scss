@@ -1,3 +1,4 @@
+@use "./breakpoints.scss";
 @use "./spacing.scss";
 
 $contentContainer: (
@@ -22,18 +23,18 @@ $contentContainer: (
 @mixin contentContainer() {
   width: 100%;
   max-width: contentContainer(maxWidth);
-  padding: 0 contentContainer(gutter base);
-  @media only screen and (min-width: mise.breakpoint(sm)) {
-    padding: 0 contentContainer(gutter bpXs);
+  padding: 0 contentContainer(gutter, base);
+  @media only screen and (min-width: breakpoints.breakpoint(sm)) {
+    padding: 0 contentContainer(gutter, bpSm);
   }
-  @media only screen and (min-width: mise.breakpoint(md)) {
-    padding: 0 contentContainer(gutter bpXs);
+  @media only screen and (min-width: breakpoints.breakpoint(md)) {
+    padding: 0 contentContainer(gutter, bpMd);
   }
-  @media only screen and (min-width: mise.breakpoint(lg)) {
-    padding: 0 contentContainer(gutter bpXs);
+  @media only screen and (min-width: breakpoints.breakpoint(lg)) {
+    padding: 0 contentContainer(gutter, bpLg);
   }
-  @media only screen and (min-width: mise.breakpoint(xl)) {
-    padding: 0 contentContainer(gutter bpXs);
+  @media only screen and (min-width: breakpoints.breakpoint(xl)) {
+    padding: 0 contentContainer(gutter, bpXl);
   }
 }
 
