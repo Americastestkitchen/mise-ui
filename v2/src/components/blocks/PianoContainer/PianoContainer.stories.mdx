@@ -3,15 +3,32 @@ import { withDesign } from "storybook-addon-designs";
 import { PianoContainer, PianoContainerProps } from "./PianoContainer";
 
 <Meta
-  title="partials/PianoContainer"
+  title="Components/Blocks/PianoContainer"
   component={PianoContainer}
 />
 
 export const Template = (args) => <PianoContainer {...args} />
+export const TemplateWithContainer = (args) => (
+  <div className="Bounds Container">
+    <PianoContainer {...args} />
+  </div>
+);
 
 # PianoContainer
 
 <Canvas>
+  <Story
+    name="Sandbox"
+    args={{
+      containerSelector: 'mise piano-sandbox',
+      segment: 'anonymous',
+      tags: 'default',
+      url: '/sandbox?mise=true',
+    }}
+  >
+    {TemplateWithContainer.bind({})}
+  </Story>
+
   <Story 
     name="PianoMarketingHat Thanksgiving"
     args={{
