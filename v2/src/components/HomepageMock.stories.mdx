@@ -1,0 +1,44 @@
+import { Canvas, Meta, Story } from "@storybook/addon-docs";
+
+import ContentSidebarLayout from "./layouts/ContentSidebarLayout/ContentSidebarLayout";
+import HeroCard from "./blocks/HeroCard/HeroCard";
+
+<Meta title="Mock/Homepage Mock" />
+
+# Homepage Mock
+
+<Canvas>
+  <Story name="Homepage Mock">
+    <ContentSidebarLayout
+      before={
+        <HeroCard
+          image={{
+            altText: 'Warm Cherry Tomatoes',
+            url: 'https://res.cloudinary.com/hksqkdlah/image/upload/SFS_Broiled_Chicken_with_Gravy_379_rx4dzb.jpg',
+          }}
+          author={{
+            id: 156,
+            firstName: 'Kevin',
+            lastName: 'Pang',
+            image:
+            {
+              altText: 'Kevin Pang',
+              cloudinaryUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/c_fill,dpr_2.0,f_auto,fl_lossy.progressive.strip_profile,g_faces:auto,q_auto:low/AKO%20Articles/Author_Headshots/staff_kevin_pang'
+            },
+            inactive: false,
+          }}
+          headline="Your Summer Needs These Three Tomato Sandwiches"
+        />
+      }
+      children={
+        <p>This is content…</p>
+      }
+      sidebar={
+        <p>This is a sidebar…</p>
+      }
+      after = {
+        <p>This is a after content…</p>
+      }
+    />
+  </Story>
+</Canvas>
