@@ -1,6 +1,7 @@
 import { Canvas, Meta, Story } from "@storybook/addon-docs";
 import { withDesign } from "storybook-addon-designs";
 import { PianoContainer, PianoContainerProps } from "./PianoContainer";
+import { PianoStoryWrapper } from "./PianoStoryWrapper";
 
 <Meta
   title="Components/Blocks/PianoContainer"
@@ -9,9 +10,9 @@ import { PianoContainer, PianoContainerProps } from "./PianoContainer";
 
 export const Template = (args) => <PianoContainer {...args} />
 export const TemplateWithContainer = (args) => (
-  <div className="Bounds Container">
+  <PianoStoryWrapper>
     <PianoContainer {...args} />
-  </div>
+  </PianoStoryWrapper>
 );
 
 # PianoContainer
