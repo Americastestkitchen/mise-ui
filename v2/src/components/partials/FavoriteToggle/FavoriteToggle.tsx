@@ -27,6 +27,7 @@ export const FavoriteToggle: React.FC<FavoriteToggleProps> = ({
     <svg 
       className={`${classNames} ${className}`}
       role="button"
+      onClick={onClick}
       width="24"
       height="24"
       viewBox="0 0 24 24"

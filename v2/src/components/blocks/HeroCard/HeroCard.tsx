@@ -1,6 +1,7 @@
 import { UrlObject } from "url";
 
 import Link from "../../partials/Links/Link/Link";
+import FavoriteToggle from "../../partials/FavoriteToggle/FavoriteToggle";
 import Byline, { Author } from "../../partials/Byline/Byline";
 
 import styles from "./HeroCard.module.scss";
@@ -44,7 +45,11 @@ export const HeroCard: React.FC<HeroCardProps> = ({
           <Byline
             authors={authors}
           />
-          {/* TODO: Add Favorite Toggle */}
+          <FavoriteToggle
+            onClick={() => alert("Toggle Favorite")}
+            favorite={false}
+            theme="light"
+          />
         </footer>
       </div>
     </article>
