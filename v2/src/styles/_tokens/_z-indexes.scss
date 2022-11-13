@@ -6,7 +6,7 @@ $zIndexes: (
   overlayFront: 300,
 );
 
-@function zIndex($level, $adjustment) {
+@function zIndex($level, $adjustment: 0) {
   $zIndex: map-get($zIndexes, $level);
   @if $zIndex >= 0 and $adjustment > 99 {
     @return $zIndex + 99;

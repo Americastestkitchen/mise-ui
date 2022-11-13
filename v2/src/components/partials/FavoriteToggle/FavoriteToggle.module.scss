@@ -1,0 +1,27 @@
+@use "./src/styles/mise.scss";
+
+.toggle {
+  cursor: pointer;
+
+  &--is-favorite {
+    fill: currentColor;
+  }
+
+  &--is-light {
+    color: mise.color(neutral, white);
+  }
+
+  &--is-dark {
+    color: mise.color(primary, mid);
+  }
+
+  &:hover {
+    .toggle-plus {
+      stroke: currentColor;
+    }
+  }
+}
+
+.toggle-plus {
+  transition: stroke 0.2s linear;
+}

@@ -6,7 +6,7 @@ export interface LinkProps {
   className?: string,
   children: React.ReactNode,
   path: string | (UrlObject & string),
-  target: "_blank" | "_self" | "_parent" | "_top",
+  target?: "_blank" | "_self" | "_parent" | "_top",
 }
 
 export const Link = ({

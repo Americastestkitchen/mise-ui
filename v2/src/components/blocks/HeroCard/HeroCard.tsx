@@ -1,45 +1,48 @@
-import React from "react";
+import { UrlObject } from "url";
+
+import Link from "../../partials/Links/Link/Link";
 import Byline, { Author } from "../../partials/Byline/Byline";
 
 import styles from "./HeroCard.module.scss";
 
 export type HeroCardProps = {
+  documentPath: string | (UrlObject & string),
   image: { 
     altText: string,
-    url: string
+    url: string | (UrlObject & string),
   };
-  author: Author,
-  headline: string,
+  authors: Author[],
+  headline: string | (UrlObject & string),
   favorite?: boolean,
 }
 
 export const HeroCard: React.FC<HeroCardProps> = ({
+  documentPath = "#",
   image,
-  author,
+  authors,
   headline,
   favorite = false,
 }) => {
   return (
     <article className={styles.container}>
       {/* TODO: Add Link component */}
-      <a
+      <Link
         className={styles["image-link"]}
-        href="#"
+        path={documentPath}
       >
         <img
           className={styles["image"]}
           alt={image.altText}
           src={image.url}
         />
-      </a>
+      </Link>
       <div className={styles.details}>
         <h1 className={styles.headline}>
-          {/* TODO: Add Link component */}
-          <a href="#">{headline}</a>
+          <Link path={documentPath}>{headline}</Link>
         </h1>
         <footer className={styles.footer}>
           <Byline
-            authors={[author]}
+            authors={authors}
           />
           {/* TODO: Add Favorite Toggle */}
         </footer>
