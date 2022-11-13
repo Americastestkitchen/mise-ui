@@ -17,7 +17,7 @@ const authorList = [
     image:
     {
       altText: '',
-      cloudinaryUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/c_fill,dpr_2.0,f_auto,fl_lossy.progressive.strip_profile,g_faces:auto,q_auto:low/AKO%20Articles/Author_Headshots/staff_kevin_pang'
+      url: 'https://res.cloudinary.com/hksqkdlah/image/upload/c_fill,dpr_2.0,f_auto,fl_lossy.progressive.strip_profile,g_faces:auto,q_auto:low/AKO%20Articles/Author_Headshots/staff_kevin_pang'
     },
     inactive: false,
   },
@@ -28,7 +28,7 @@ const authorList = [
     image:
     {
       altText: '',
-      cloudinaryUrl: ''
+      url: ''
     },
     inactive: false,
   },
@@ -39,7 +39,7 @@ const authorList = [
     image:
     {
       altText: '',
-      cloudinaryUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/c_fill,dpr_2.0,f_auto,fl_lossy.progressive.strip_profile,g_faces:auto,q_auto:low/AKO%20Articles/Author_Headshots/staff_brian_davis.jpg'
+      url: 'https://res.cloudinary.com/hksqkdlah/image/upload/c_fill,dpr_2.0,f_auto,fl_lossy.progressive.strip_profile,g_faces:auto,q_auto:low/AKO%20Articles/Author_Headshots/staff_brian_davis.jpg'
     },
     inactive: true,
   },

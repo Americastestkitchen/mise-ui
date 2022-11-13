@@ -3,11 +3,11 @@
 .container {
   @include mise.font(display, primary, sm);
 
-  display: flex;
   color: mise.color(neutral, white, base);
   position: relative;
 
   @media only screen and (min-width: mise.breakpoint(lg)) {
+    display: flex;
     margin-bottom:mise.spacing(x12);
     padding-top: mise.spacing(x6);
   }
@@ -51,16 +51,6 @@
   padding: mise.spacing(x6) 0 mise.spacing(x8) mise.spacing(x8);
   width: 25%;
   z-index: 1;
-  // background: linear-gradient(
-  //     0deg,
-  //     mise.color(primary, dark, base) 0%,
-  //     85%,
-  //     rgba(117, 47, 52, 0) 100%,
-  // );
-
-  @media only screen and (min-width: mise.breakpoint(lg)) {
-
-  }
 }
 
 .headline {
@@ -69,21 +59,8 @@
   border-bottom: 2px solid mise.color(primary, mid, base);
   margin-left: calc(mise.spacing(x12) * -2);
   padding: 0 mise.spacing(x4) mise.spacing(x6) calc(mise.spacing(x12) * 2);
-
-  @media only screen and (min-width: mise.breakpoint(lg)) {
-
-  }
 }
 
 .footer {
   margin-top: mise.spacing(x4);
-  // border-top: 2px solid mise.color(primary, mid, base);
-  // padding-top: mise.spacing(x3);
-  // display: flex;
-  // justify-content: space-between;
-  // align-items: center;
-
-  @media only screen and (min-width: mise.breakpoint(lg)) {
-      // padding-left: 90px;
-  }
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import Byline, { Author } from "../../partials/Byline/Byline";
 
-import styles from "./styles/HeroCard.module.scss";
+import styles from "./HeroCard.module.scss";
 
 export type HeroCardProps = {
   image: { 
@@ -40,7 +40,6 @@ export const HeroCard: React.FC<HeroCardProps> = ({
         <footer className={styles.footer}>
           <Byline
             authors={[author]}
-            theme="light"
           />
           {/* TODO: Add Favorite Toggle */}
         </footer>

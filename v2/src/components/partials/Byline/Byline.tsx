@@ -8,7 +8,7 @@ export type Author = {
   id?: number;
   firstName: string;
   lastName: string;
-  image?: { altText?: string, cloudinaryUrl: string };
+  image?: { altText?: string, url: string };
   inactive?: boolean;
 };
 export interface ByLineListProps {
@@ -58,7 +58,7 @@ export default function BylineList({
   attribution,
   onClick
 }: ByLineListProps) {
-  const shouldRenderImage = authors.length === 1 && authors[0]?.image?.cloudinaryUrl
+  const shouldRenderImage = authors.length === 1 && authors[0]?.image?.url
   const atLeastOneAuthor = authors?.length > 0
   const [imageError, setImageError] = useState(false);
   const classStyles = cx(
@@ -78,7 +78,7 @@ export default function BylineList({
               crossOrigin="anonymous"
               decoding="async"
               alt={authors[0].image?.altText}
-              src={authors[0].image?.cloudinaryUrl}
+              src={authors[0].image?.url}
               onError={() => { setImageError(true); }}
             />
           </div>

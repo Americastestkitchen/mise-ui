@@ -17,7 +17,7 @@ const defaultAuthor = {
   image:
   {
     altText: 'Kevin Pang',
-    cloudinaryUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/c_fill,dpr_2.0,f_auto,fl_lossy.progressive.strip_profile,g_faces:auto,q_auto:low/AKO%20Articles/Author_Headshots/staff_kevin_pang'
+    url: 'https://res.cloudinary.com/hksqkdlah/image/upload/c_fill,dpr_2.0,f_auto,fl_lossy.progressive.strip_profile,g_faces:auto,q_auto:low/AKO%20Articles/Author_Headshots/staff_kevin_pang'
   },
   inactive: false,
 }
@@ -25,6 +25,6 @@ const defaultAuthor = {
 export const HeroCardStory: ComponentStory<typeof HeroCard> = Template.bind({});
 HeroCardStory.args = {
   author: defaultAuthor,
-  image: {altText: 'Warm Cherry Tomatoes', cloudinaryUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/SFS_Broiled_Chicken_with_Gravy_379_rx4dzb.jpg'},
-  headlineText: 'Your Summer Needs These Three Tomato Sandwiches',
+  image: {altText: 'Warm Cherry Tomatoes', url: 'https://res.cloudinary.com/hksqkdlah/image/upload/SFS_Broiled_Chicken_with_Gravy_379_rx4dzb.jpg'},
+  headline: 'Your Summer Needs These Three Tomato Sandwiches',
 }
