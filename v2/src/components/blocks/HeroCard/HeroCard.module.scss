@@ -4,62 +4,86 @@
   @include mise.font(display, primary, sm);
 
   color: mise.color(neutral, white, base);
+  margin: 0 calc(mise.spacing(x1) * -1);
   position: relative;
 
   @media only screen and (min-width: mise.breakpoint(lg)) {
     display: flex;
-    margin-bottom:mise.spacing(x12);
+    margin: 0 0 mise.spacing(x12);
     padding-top: mise.spacing(x6);
-  }
 
-  &::before {
-    background-color: mise.color(primary, dark, base);
-    content: "";
-    display: block;
-    height: 100%;
-    left: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-    position: absolute;
-    right: 50%;
-    top: 0;
-    width: 100vw;
+    &::before {
+      background-color: mise.color(primary, dark, base);
+      content: "";
+      display: block;
+      height: 100%;
+      left: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      position: absolute;
+      right: 50%;
+      top: 0;
+      width: 100vw;
+    }
   }
 }
 
 .image-link {
   display: block;
-  width: 75%;
   margin-bottom: calc(mise.spacing(x12) * -1);
+  position: relative;
   z-index: mise.zIndex(page);
+
+  @media only screen and (min-width: mise.breakpoint(lg)) {
+    width: 75%;
+  }
 }
 
 .image {
+  aspect-ratio: 1;
   object-fit: cover;
   object-position: center;
 
   @media only screen and (min-width: mise.breakpoint(lg)) {
-    position: relative;
-    object-position: unset;
     aspect-ratio: 16 / 9;
   }
 }
 
 .details {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: mise.spacing(x6) 0 mise.spacing(x8) mise.spacing(x8);
-  width: 25%;
+  background: linear-gradient(0deg, mise.color(primary, dark, base), mise.color(primary, dark, base) 80%, transparent);
+  margin-top: calc(mise.spacing(x12) * -2);
+  padding: mise.spacing(x12) mise.spacing(x4) mise.spacing(x4);
+  position: relative;
   z-index: mise.zIndex(page);
+
+  @media only screen and (min-width: mise.breakpoint(lg)) {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-top: 0;
+    padding: mise.spacing(x6) 0 mise.spacing(x8) mise.spacing(x8);
+    position: relative;
+    width: 25%;
+  }
 }
 
 .headline {
   @include mise.font(display, primary, md);
 
   border-bottom: 2px solid mise.color(primary, mid, base);
-  margin-left: calc(mise.spacing(x12) * -2);
-  padding: 0 mise.spacing(x4) mise.spacing(x6) calc(mise.spacing(x12) * 2);
+  padding-bottom: mise.spacing(x6);
+
+  @media only screen and (min-width: mise.breakpoint(lg)) {
+    margin-left: calc(mise.spacing(x12) * -2);
+    padding: 0 mise.spacing(x4) mise.spacing(x6) calc(mise.spacing(x12) * 2);
+  }
+
+  &__link {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+  }
 }
 
 .footer {

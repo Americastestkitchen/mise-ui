@@ -39,7 +39,7 @@ export const HeroCard: React.FC<HeroCardProps> = ({
       </Link>
       <div className={styles.details}>
         <h1 className={styles.headline}>
-          <Link path={documentPath}>{headline}</Link>
+          <Link className={styles["headline__link"]} path={documentPath}>{headline}</Link>
         </h1>
         <footer className={styles.footer}>
           <Byline
