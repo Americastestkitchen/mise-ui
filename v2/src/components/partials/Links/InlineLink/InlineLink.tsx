@@ -2,28 +2,26 @@
 import { default as NextLink } from "next/link";
 import { UrlObject } from "url";
 
+import { Link, LinkProps } from "../Link/Link";
+
 import styles from "./InlineLink.module.scss";
 
-export interface InlineLinkProps {
-  className?: string,
+export interface InlineLinkProps extends Omit<LinkProps, "children"> {
   label: string,
-  path: string | (UrlObject & string),
 }
 
 export const InlineLink = ({
   className,
   label = "Inline Link",
   path = "/",
+  target = "_self",
 }: InlineLinkProps) => {
-  const Link = path.startsWith('http') || path.startsWith('https')  ? "a" : NextLink;
-
   return <Link
-    href={path}
-    passHref
+    className={`${styles['link']} ${className}`}
+    path={path}
+    target={target}
   >
-    <a className={styles['link']}>
-      {label}
-    </a>
+    {label}
   </Link>
 };
 

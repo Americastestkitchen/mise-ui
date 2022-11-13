@@ -2,28 +2,26 @@
 import { default as NextLink } from "next/link";
 import { UrlObject } from "url";
 
+import { Link, LinkProps } from "../Link/Link";
+
 import styles from "./BlockLink.module.scss";
 
-export interface BlockLinkProps {
-  className?: string,
+export interface BlockLinkProps extends Omit<LinkProps, "children"> {
   label: string,
-  path: string | (UrlObject & string),
 }
 
 export const BlockLink = ({
   className,
-  label = "Block Link",
+  label = "Inline Link",
   path = "/",
+  target = "_self",
 }: BlockLinkProps) => {
-  const Link = path.startsWith('http') || path.startsWith('https')  ? "a" : NextLink;
-
   return <Link
-    href={path}
-    passHref
+    className={`${styles['link']} ${className}`}
+    path={path}
+    target={target}
   >
-    <a className={styles['link']}>
-      {label}
-    </a>
+    {label}
   </Link>
 };
 
