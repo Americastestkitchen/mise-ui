@@ -34,7 +34,7 @@ export const Byline: React.FC<BylineProps> = ({
     <div className={`${classNames} ${className}`}>
       <ul className={styles["author-image-list"]}>
         { authors.map((author, i) => {
-          const path = `${author.id}-${author.firstName}-${author.lastName}`;
+          const path = `/authors/${author.id}-${author.firstName}-${author.lastName}`;
 
           if (i <= 2) {
             return (
@@ -62,7 +62,7 @@ export const Byline: React.FC<BylineProps> = ({
             ? author.firstName
             : `${author.firstName} ${author.lastName}`;
 
-          const path = `${author.id}-${author.firstName}-${author.lastName}`;
+          const path = `/authors/${author.id}-${author.firstName}-${author.lastName}`;
 
           const conjunction = () => {
             if (arr.length === 1 || i === arr.length -1) {

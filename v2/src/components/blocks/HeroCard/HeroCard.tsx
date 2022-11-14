@@ -44,6 +44,7 @@ export const HeroCard: React.FC<HeroCardProps> = ({
         <footer className={styles.footer}>
           <Byline
             authors={authors}
+            theme="light"
           />
           <FavoriteToggle
             onClick={() => alert("Toggle Favorite")}

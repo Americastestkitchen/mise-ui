@@ -5,6 +5,18 @@
   align-items: center;
   column-gap: mise.spacing(x2);
 
+  &--is-light {
+    .author-names {
+      color: mise.color(neutral, white);
+    }
+  }
+
+  &--is-dark {
+    .author-names {
+      color: mise.color(neutral, dark, mid);
+    }
+  }
+
   &--has-two {
     .author-image-list__item + .author-image-list__item {    
       margin-left: calc(mise.spacing(x1) * -1);

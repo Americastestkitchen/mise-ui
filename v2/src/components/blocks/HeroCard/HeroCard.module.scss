@@ -1,7 +1,6 @@
 @use "./src/styles/mise.scss";
 
 .container {
-  color: mise.color(neutral, white, base);
   margin: 0 calc(mise.spacing(x1) * -1);
   position: relative;
 
@@ -69,6 +68,7 @@
   @include mise.font(display, primary, sm);
 
   border-bottom: 2px solid mise.color(primary, mid, base);
+  color: mise.color(neutral, white, base);
   padding-bottom: mise.spacing(x6);
 
   @media only screen and (min-width: mise.breakpoint(lg)) {
