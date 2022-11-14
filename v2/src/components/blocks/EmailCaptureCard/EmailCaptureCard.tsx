@@ -82,25 +82,27 @@ const EmailCaptureCard: React.FC<EmailCaptureProps> = ({
               onSubmit={handleSubmit}
             >
               <label className={styles["form__label"]} htmlFor="emailAddress">Your Email</label>
-              <div className={styles["form__input-container"]}>
-                <input
-                  id="emailAddress"
-                  className={classNames}
-                  name="emailAddress"
-                  aria-describedby="emailAddressError"
-                  data-valid={!emailError}
-                  type="text"
-                  value={email}
-                  onChange={(evt) => {
-                    if (emailError) {
-                      setEmailError('');
-                    }
-                    setEmail(evt.target.value);
-                  }}
-                />
+              <div className={styles["form__interior"]}>
+                <div className={styles["form__input-container"]}>
+                  <input
+                    id="emailAddress"
+                    className={classNames}
+                    name="emailAddress"
+                    aria-describedby="emailAddressError"
+                    data-valid={!emailError}
+                    type="text"
+                    value={email}
+                    onChange={(evt) => {
+                      if (emailError) {
+                        setEmailError('');
+                      }
+                      setEmail(evt.target.value);
+                    }}
+                  />
+                  {emailError && <p id="emailAddressError" role="alert" className={styles["form__error"]}>{emailError}</p>}
+                </div>
                 <SubmitButton className={styles["form__submit"]} disabled={disabled} label='submit' />
               </div>
-              {emailError && <p id="emailAddressError" role="alert" className={styles["form__error"]}>{emailError}</p>}
             </form>
         }
       </>
