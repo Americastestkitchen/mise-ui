@@ -1,8 +1,15 @@
 import ZypeEmbed from "./partials/ZypeEmbed/ZypeEmbed";
-import { Video } from '../../blocks/PeekCard/PeekCard';
 
 type MediaTokens = {
   zype?: string;
+}
+
+export type Video = {
+  image?: {
+    altText?: string;
+    cloudinaryUrl: string;
+  };
+  zypeId: string;
 }
 
 export interface EmbedMediaProps {
@@ -18,7 +25,6 @@ MediaEmbed.tsx which currently supports: youtube, tiktok, instagram, other
 
 const EmbedMedia = ({ source, tokens }: EmbedMediaProps) => {
   const { zype: zypeToken } = tokens;
-  console.log(zypeToken, 'zypeToken')
   const { zypeId, image } = source;
   return zypeToken ? (
     <ZypeEmbed

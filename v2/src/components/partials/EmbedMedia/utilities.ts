@@ -20,4 +20,3 @@ export const useScript = (src: string, onLoad?: () => void): void => {
     };
   }, [src, onLoad]);
 };
-   
