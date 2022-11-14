@@ -49,8 +49,12 @@
 
 $authorImageSize: 2.5rem;
 
+.author-image-link,
 .author-image {
   display: block;
+}
+
+.author-image {
   border: 1px solid mise.color(neutral, white);
   border-radius: calc($authorImageSize / 2);
   height: $authorImageSize;

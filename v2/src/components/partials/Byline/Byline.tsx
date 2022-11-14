@@ -42,7 +42,10 @@ export const Byline: React.FC<BylineProps> = ({
                 key={`${path}-${i}-image`}
                 className={styles["author-image-list__item"]}
               >
-                <Link path={path}>
+                <Link
+                  className={styles["author-image-link"]}
+                  path={path}
+                >
                   <img
                     className={styles["author-image"]}
                     alt={author.image?.altText}
