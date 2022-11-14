@@ -6,18 +6,14 @@
   column-gap: mise.spacing(x2);
 
   &--has-two {
-    .author-image-list__item  {    
-      & + & {
-        margin-left: calc(mise.spacing(x1) * -1);
-      }
+    .author-image-list__item + .author-image-list__item {    
+      margin-left: calc(mise.spacing(x1) * -1);
     }
   }
 
   &--has-many {
-    .author-image-list__item  {    
-      + & {
-        margin-left: calc(mise.spacing(x2) * -1);
-      }
+    .author-image-list__item + .author-image-list__item {    
+      margin-left: calc(mise.spacing(x2) * -1);
     }
   }
 }
@@ -55,7 +51,7 @@ $authorImageSize: 2.5rem;
   display: -webkit-box;
   line-height: 1.125;
   overflow: hidden;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
 
