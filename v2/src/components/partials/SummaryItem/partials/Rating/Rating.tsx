@@ -1,4 +1,4 @@
-import Icon from '../../../../tokens/Icons/Icon';
+import Icon from '../../../../tokens/Icons/Icon/Icon';
 import styles from "./rating.module.scss";
 
 export interface RatingProps {

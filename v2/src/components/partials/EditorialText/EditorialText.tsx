@@ -1,23 +1,19 @@
 import React from 'react';
-import cx from 'classnames';
 
 import styles from './editorialText.module.scss';
 
 type EditorialTextProps = {
+  className?: string;
   content: string;
-  fontStyle?: 'display' | 'primary' | 'secondary';
 };
 
-const EditorialText = ({ content, fontStyle = 'primary'}: EditorialTextProps) => {
-  const classNames = cx(
-    'editorial-text',
-    styles.wrapper,
-    styles[fontStyle],
-  );
-
+const EditorialText: React.FC<EditorialTextProps> = ({
+  className,
+  content
+}) => {
   return (
     <div
-      className={classNames}
+      className={`${styles["content"]} ${className}`}
       dangerouslySetInnerHTML={{ __html: content }}
     />
   );

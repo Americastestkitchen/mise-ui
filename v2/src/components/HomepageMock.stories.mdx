@@ -3,6 +3,7 @@ import { Canvas, Meta, Story } from "@storybook/addon-docs";
 import ContentSidebarLayout from "./layouts/ContentSidebar/ContentSidebarLayout";
 import HeroCard from "./blocks/HeroCard/HeroCard";
 import ContentFeed from "./blocks/ContentFeed/ContentFeed"
+import EmailCaptureCard from "./blocks/EmailCaptureCard/EmailCaptureCard";
 
 <Meta title="Mock/Homepage" />
 
@@ -97,7 +98,27 @@ import ContentFeed from "./blocks/ContentFeed/ContentFeed"
               title: "An innovative method for cooking short ribs results in ribs that eat like luxuriously rich steaks."
             },
           ]}
-          onClick={() => alert('Load More Feed Content')}
+          emailCard={
+            <EmailCaptureCard
+              view={{
+                frequency: 'Weekly',
+                days: 'Mondays',
+                title:
+                  'Notes From the Test Kitchen',
+                description:
+                  'The latest from the test kitchen—our best seasonal recipes, equipment reviews, cooking advice, and behind-the-scenes spotlights of our cast, crew, and staff.',
+                successText:
+                  '<strong>Thank you!</strong> Get ready for weeknight meals from the Dinner Tonight cook in your inbox.',
+              }}
+              meta={{
+                newsletter_id: '16',
+              }}
+              validSubmission={false}
+              onClick={() => alert("Submit Newsletter")}
+            />
+          }
+          toggleFavorite={() => alert("Toggle Favorite")}
+          loadMore={() => alert("Load More Feed Content")}
         />
       }
       sidebar={

@@ -1,0 +1,93 @@
+
+@use "./src/styles/mise.scss";
+
+.container {
+  background-color:mise.color(primary, dark);
+  border-top: 4px solid mise.color(primary, mid);
+  color: mise.color(neutral, white);
+  padding: mise.spacing(x5) mise.spacing(x4);
+}
+
+.frequency {
+  @include mise.font(display, secondary, sm, bold);
+}
+
+.header {
+  &__title {
+    @include mise.font(display, primary, sm);
+
+    margin-top: mise.spacing(x4);
+  }
+}
+
+.form {
+  &__label {
+    @include mise.font(display, secondary, md, bold);
+
+    display: block;
+    margin-top: mise.spacing(x4);
+  }
+
+  &__input-container {
+    display: block;
+    width: 100%;
+
+    @media screen and (min-width: mise.breakpoint(lg)) {
+      display: flex;
+      width: 90%;
+    }
+  }
+
+  &__input {
+    @include mise.font(text, primary, md);
+
+    background-color: mise.color(neutral, white);
+    color: mise.color(neutral, dark, base);
+    width: 75%;
+    padding: 0 mise.spacing(x3);
+
+    &--has-error {
+      background-color: mise.color(primary, light, shade);
+      border: 2px solid mise.color(primary, mid);
+
+      &::placeholder {
+        color: mise.color(primary, mid);
+      }
+    }
+  }
+
+  &__submit {
+    width: 25%;
+  }
+
+  &__error {
+    @include mise.font(display, secondary, sm, bold);
+
+    color: mise.color(primary, mid);
+  }
+}
+
+.success-message {
+  display: flex;
+  align-items: center;
+  column-gap: mise.spacing(x3);
+  margin-top: mise.spacing(x8);
+
+  &__icon {
+    height: 1.5rem;
+  }
+
+  & + .footer {
+    margin-top:  mise.spacing(x8);
+  }
+}
+
+.footer {
+  @include mise.font(text, secondary, sm);
+  
+  margin-top: mise.spacing(x2);
+  
+  &__disclaimer-link {
+    border-bottom: 1px solid mise.color(primary, light, base);
+  }
+}

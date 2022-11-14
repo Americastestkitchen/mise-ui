@@ -1,4 +1,4 @@
-import Icon from '../../../../tokens/Icons/Icon';
+import Icon from '../../../../tokens/Icons/Icon/Icon';
 import styles from "./comment.module.scss";
 
 export interface CommentProps {

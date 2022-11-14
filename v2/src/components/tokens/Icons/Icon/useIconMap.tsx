@@ -1,6 +1,6 @@
-import CheckmarkIcon from './CheckmarkIcon';
-import StarIcon from './StarIcon';
-import CommentIcon from './CommentIcon';
+import CheckmarkIcon from '../svgs/CheckmarkIcon';
+import StarIcon from '../svgs/StarIcon';
+import CommentIcon from '../svgs/CommentIcon';
 
 export const iconMap = {
   checkmark: CheckmarkIcon,

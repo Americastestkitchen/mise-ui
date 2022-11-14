@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
-import EmailCapture from './EmailCapture';
+import EmailCapture from './EmailCaptureCard';
 
 export default {
   title: 'Components/Email Capture',
