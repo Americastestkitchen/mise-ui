@@ -1,0 +1,28 @@
+@use "./src/styles/mise.scss";
+
+.container {
+  padding: mise.spacing(x3) mise.spacing(x4) 0; 
+}
+
+.heading {
+  @include mise.font(display, primary, sm);
+
+  &__link {
+    display: block;
+  }
+}
+
+.description {
+  @include mise.font(text, primary);
+  @include mise.truncateLineClamp(6);
+}
+
+.link-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: mise.spacing(x2);
+}
+
+.link {
+  display: inline-block;
+}

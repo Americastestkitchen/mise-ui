@@ -1,0 +1,8 @@
+@use "./src/styles/mise.scss";
+
+.container {
+  background-color: mise.color(neutral, white);
+  border-radius: 0.25rem;
+  overflow: hidden;
+  min-width: 100%;
+}

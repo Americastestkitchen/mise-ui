@@ -90,22 +90,9 @@ meter {
   -webkit-user-drag: element;
 }
 
-/* Revert */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-b,
-strong,
-i,
-em {
-  font-weight: revert;
-}
-
 /* Custom */
 * {
+  font-weight: revert;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
@@ -122,6 +109,5 @@ body,
 :global(#__next) {
   @include typography.resetTypography();
 
-  height: 100%;
+  min-height: 100%;
 }
-

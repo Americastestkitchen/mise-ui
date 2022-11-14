@@ -1,14 +1,31 @@
-import classNames from 'classnames/bind';
-import PeekCardContainer from '../_partials/PeekCardContainer/PeekCardContainer';
-import PeekCardDetail from '../_partials/PeekCardDetail/PeekCardDetail';
-import PeekCardLinks from '../_partials/PeekCardLinks/PeekCardLinks';
-import PeekCardFooter from '../_partials/PeekCardFooter/PeekCardFooter';
-import { StandardCard } from '../PeekCard';
+import PeekCardContainer from '../partials/PeekCardContainer/PeekCardContainer';
+import PeekCardDetail from '../partials/PeekCardDetail/PeekCardDetail';
+import PeekCardFooter from '../partials/PeekCardFooter/PeekCardFooter';
+
+import { Author } from '../../../partials/Byline/Byline';
+
+import Link from '../../../partials/Links/Link/Link';
+
 import styles from "./StandardPeekCard.module.scss";
 
 export interface StandardPeekCardProps {
   className?: string;
-  card: StandardCard;
+  card: {
+    image: {
+      url: string;
+      altText: string;
+    };
+    title: string;
+    description: string;
+    links: {
+      url: string,
+      label: string,
+      target: string,
+    }[];
+    authors: Author[];
+  };
+  favorite: boolean;
+  toggleFavorite(): void;
 }
 
 /*
@@ -16,21 +33,29 @@ export interface StandardPeekCardProps {
   i.e. turning the img into a picture w/ sources at each breakpoint
 */
 
-export const StandardPeekCard: React.FC<StandardPeekCardProps> = ({ className, card }: StandardPeekCardProps) => {
-  const { author, body, image, isFavorited, links, title } = card;
-  const { altText, cloudinaryUrl } = image;
+export const StandardPeekCard: React.FC<StandardPeekCardProps> = ({
+  className,
+  card,
+  favorite = false,
+  toggleFavorite,
+}) => {
+  const { image, title, description, links, authors } = card;
+  const { altText, url } = image;
+
   return (
-    <PeekCardContainer>
-      <img alt={altText} src={cloudinaryUrl} />
+    <PeekCardContainer className={className}>
+      <Link className={`${styles["image-link"]}`} path={"#"}>
+        <img className={`${styles["image"]}`} alt={altText} src={url} />
+      </Link>
       <PeekCardDetail 
-        body={body}
         title={title}
-      />
-      <PeekCardLinks
+        description={description}
         links={links}
       />
       <PeekCardFooter
-        authors={author}
+        authors={authors}
+        favorite={favorite}
+        onClick={toggleFavorite}
       />
     </PeekCardContainer>
   );

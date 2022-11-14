@@ -13,13 +13,15 @@ export interface ContentFeedProps {
   className?: string;
   headline?: string;
   feed: FeedContent[];
-  onClick?(): void;
+  toggleFavorite(): void;
+  loadMore?(): void;
 }
 
 const ContentFeed: React.FC<ContentFeedProps> = ({
   className,
   headline,
-  onClick,
+  toggleFavorite,
+  loadMore,
   feed
 }) => {
   return (
@@ -36,20 +38,18 @@ const ContentFeed: React.FC<ContentFeedProps> = ({
               key={`${content.id}-${i}`}
               className={styles["feed-list__item"]}
             >
-              {content.cardType === 'standard' && (
-                <StandardPeekCard card={content} />
-              )}
+              <StandardPeekCard card={content} toggleFavorite={toggleFavorite} favorite={false} />
             </li>
           )
         })
       }
       </ul>
-      { !!onClick &&
+      { !!loadMore &&
         <footer className={styles["footer"]}>
           <StandardButton
             className={styles["footer__load-more"]}
             label="Load More"
-            onClick={onClick}
+            onClick={loadMore}
           />
         </footer>
       }

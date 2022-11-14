@@ -1,1 +1,10 @@
 @use "./src/styles/mise.scss";
+
+.image-link,
+.image {
+  display: block;
+}
+
+.image {
+  min-width: 100%;
+}

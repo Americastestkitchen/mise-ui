@@ -1,8 +1,8 @@
 @use "./src/styles/mise.scss";
 
-.peekCardFooterWrapper {
+.footer {
   align-items: center;
   display: flex;
   justify-content: space-between;
-  padding: mise.spacing(x2) mise.spacing(x4);
+  padding: mise.spacing(x4);
 }
