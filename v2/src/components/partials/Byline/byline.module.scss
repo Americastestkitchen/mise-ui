@@ -1,52 +1,66 @@
 @use "./src/styles/mise.scss";
 
-.wrapper {
-  display: block;
-  flex-direction: column;
+.authors {
+  display: flex;
   align-items: center;
-  flex-direction: row;
+  column-gap: mise.spacing(x2);
 
-  @media (min-width: 1025px) {
-    display: flex;
+  &--has-two {
+    .author-image-list__item  {    
+      & + & {
+        margin-left: calc(mise.spacing(x1) * -1);
+      }
+    }
+  }
+
+  &--has-many {
+    .author-image-list__item  {    
+      + & {
+        margin-left: calc(mise.spacing(x2) * -1);
+      }
+    }
   }
 }
 
-.authorWrapper {
-  align-items: center;
+.author-image-list  {
   display: flex;
-}
+  
+  &__item  {
+    position: relative;
+    z-index: mise.zIndex(page, 2);
 
-.headShotWrapper {
-  flex-shrink: 0;
-  overflow: hidden;
-  border-radius: 50%;
-  margin-right: 12px;
-  height: 40px;
-  width: 40px;
-}
-
-.author {
-  color: mise.color(neutral, dark, base);
-  @include mise.font(text, secondary, md);
-}
-
-.headShot {
-  height: 100%;
-  object-fit: cover;
-  width: 100%;
-}
-
-.attribution {
-  display: block;
-  @include mise.font(text, secondary, md);
-  margin: 4px 0;
-}
-
-.atLeastOneAuthor {
-  @media (min-width: 1025px) {
-    &::before {
-      content: " | ";
-      margin: 0px 4px 0 7px;
+    &:first-child {
+      z-index: mise.zIndex(page, 3);
     }
+
+    &:last-child {
+      z-index: mise.zIndex(page, 1);
+    }
+  }
+}
+
+$authorImageSize: 2.5rem;
+
+.author-image {
+  display: block;
+  border: 1px solid mise.color(neutral, white);
+  border-radius: calc($authorImageSize / 2);
+  height: $authorImageSize;
+  min-width: $authorImageSize;
+}
+
+.author-names {
+  @include mise.font(text, secondary, md);
+
+  display: -webkit-box;
+  line-height: 1.125;
+  overflow: hidden;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.author-name {
+  &:hover {
+    text-decoration: underline;
   }
 }

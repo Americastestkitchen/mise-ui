@@ -10,9 +10,9 @@ $zIndexes: (
   $zIndex: map-get($zIndexes, $level);
   @if $zIndex >= 0 and $adjustment > 99 {
     @return $zIndex + 99;
-  } @else if $zIndex == -100 $adjustment > 0 {
+  } @else if $zIndex == -100 and $adjustment > 0 {
     @return $zIndex - $adjustment;
-  } @else if $zIndex == -100 $adjustment < -99 {
+  } @else if $zIndex == -100 and $adjustment < -99 {
     @return $zIndex - 99;
   } @else {
     @return $zIndex + $adjustment;

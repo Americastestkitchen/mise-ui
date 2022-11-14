@@ -86,6 +86,7 @@
 
 .footer {
   display: flex;
+  column-gap: mise.spacing(x3);
   align-items: center;
   justify-content: space-between;
   margin-top: mise.spacing(x4);

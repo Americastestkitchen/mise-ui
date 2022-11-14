@@ -19,24 +19,29 @@ export interface BylineProps {
   theme?: "light" | "dark";
 }
 
-export default function BylineList({
+export const Byline: React.FC<BylineProps> = ({
   className,
   authors,
   theme = "dark",
-}: BylineProps) {
-  const classNames = cx(
-    "authors",
-    `authors--is-${theme}`,
-  )
+}) => {
+  const classNames = cx({
+    "authors": true,
+    [`authors--is-${theme}`]: true,
+    [`authors--has-${authors.length === 2 ? "two" : "many"}`]: authors.length >= 2,
+  })
+
   return (
     <div className={`${classNames} ${className}`}>
-      <ul className={styles["author-images"]}>
+      <ul className={styles["author-image-list"]}>
         { authors.map((author, i) => {
           const path = `${author.id}-${author.firstName}-${author.lastName}`;
 
           if (i <= 2) {
             return (
-              <li className={styles["author-images__item"]}>
+              <li
+                key={`${path}-${i}-image`}
+                className={styles["author-image-list__item"]}
+              >
                 <Link path={path}>
                   <img
                     className={styles["author-image"]}
@@ -75,6 +80,7 @@ export default function BylineList({
             return (
               <>
                 <Link
+                  key={`${path}-${i}-name`}
                   className={styles["author-name"]}
                   path={path}
                 >
@@ -91,3 +97,5 @@ export default function BylineList({
     </div>
   );
 }
+
+export default Byline;
