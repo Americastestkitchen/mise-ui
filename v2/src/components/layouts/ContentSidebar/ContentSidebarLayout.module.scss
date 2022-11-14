@@ -1,1 +1,20 @@
 @use "./src/styles/mise.scss";
+
+.grid {
+  &__content {
+    order: 2;
+
+    @media only screen and (min-width: mise.breakpoint(lg)) {
+      order: 1;
+    }
+  }
+
+  &__sidebar {
+    order: 1;
+
+    @media only screen and (min-width: mise.breakpoint(lg)) {
+      order: 2;
+    }
+  }
+}
+

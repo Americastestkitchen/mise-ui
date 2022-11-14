@@ -2,15 +2,19 @@
 
 @mixin noGaps($prop) {
   #{$prop}-gap: 0;
+
   @media only screen and (min-width: mise.breakpoint(sm)) {
     #{$prop}-gap: 0;
   }
+  
   @media only screen and (min-width: mise.breakpoint(md)) {
     #{$prop}-gap: 0;
   }
+
   @media only screen and (min-width: mise.breakpoint(lg)) {
     #{$prop}-gap:0;
   }
+
   @media only screen and (min-width: mise.breakpoint(xl)) {
     #{$prop}-gap: 0;
   }
@@ -18,11 +22,11 @@
 
 .row {
   @include mise.grid();
-  
+
   &--has-no-column-gaps {
     @include noGaps(column)
   }
-  
+
   &--has-no-row-gaps {
     @include noGaps(row)
   }
@@ -34,27 +38,31 @@
 }
 
 .column {
-  &--is-1 {
-    grid-column: auto / span 8;
-  }
+  grid-column: auto / span 8;
 
-  &--is-3-4 {
-    grid-column: auto / span 6;
-  }
-
-  &--is-5-8 {
-    grid-column: auto / span 5;
-  }
-
-  &--is-1-2 {
-    grid-column: auto / span 4;
-  }
-
-  &--is-3-8 {
-    grid-column: auto / span 3;
-  }
-
-  &--is-1-4 {
-    grid-column: auto / span 2;
+  @media only screen and (min-width: mise.breakpoint(lg)) {
+    &--is-1 {
+      grid-column: auto / span 8;
+    }
+  
+    &--is-3-4 {
+      grid-column: auto / span 6;
+    }
+  
+    &--is-5-8 {
+      grid-column: auto / span 5;
+    }
+  
+    &--is-1-2 {
+      grid-column: auto / span 4;
+    }
+  
+    &--is-3-8 {
+      grid-column: auto / span 3;
+    }
+  
+    &--is-1-4 {
+      grid-column: auto / span 2;
+    }
   }
 }

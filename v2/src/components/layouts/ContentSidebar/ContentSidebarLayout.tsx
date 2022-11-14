@@ -22,11 +22,17 @@ export const ContentSidebarLayout: React.FC<ContentSidebarProps> = ({
   return (
     <StandardLayout className={`${styles["container"]} ${className}`}>
       <>{before}</>
-      <GridRow>
-        <GridColumn width="fiveEighths">
+      <GridRow className="grid">
+        <GridColumn
+          className={styles["grid__content"]}
+          width="fiveEighths"
+        >
           {children}
         </GridColumn>
-        <GridColumn width="threeEighths">
+        <GridColumn
+          className={styles["grid__sidebar"]}
+          width="threeEighths"
+        >
           {sidebar}
         </GridColumn>
       </GridRow>
