@@ -13,6 +13,8 @@ export interface ContentFeedProps {
   className?: string;
   headline?: string;
   feed: FeedContent[];
+  user: { [key: string]: any } | boolean | null;
+  emailCard?: React.ReactNode;
   toggleFavorite(): void;
   loadMore?(): void;
 }
@@ -20,9 +22,11 @@ export interface ContentFeedProps {
 const ContentFeed: React.FC<ContentFeedProps> = ({
   className,
   headline,
+  feed,
+  user = null,
+  emailCard,
   toggleFavorite,
   loadMore,
-  feed
 }) => {
   return (
     <section className={`${styles["section"]} ${className}`}>
@@ -32,14 +36,24 @@ const ContentFeed: React.FC<ContentFeedProps> = ({
         </header>
       }
       <ul className={styles["feed-list"]}>
-        {feed.map((content, i) => {
-          return ( 
-            <li
-              key={`${content.id}-${i}`}
-              className={styles["feed-list__item"]}
-            >
-              <StandardPeekCard card={content} toggleFavorite={toggleFavorite} favorite={false} />
-            </li>
+        {feed.map((content, i, arr) => {
+          return (
+            <>
+              <li
+                key={`${content.id}-${i}`}
+                className={styles["feed-list__item"]}
+              >
+                <StandardPeekCard card={content} toggleFavorite={toggleFavorite} favorite={false} />
+              </li>
+              { !!emailCard && !user && (i === 4 || i === arr.length -1) &&
+                <li
+                  key={`${content.id}-${i}`}
+                  className={styles["feed-list__item"]}
+                >
+                  {emailCard}
+                </li>
+              }
+            </>
           )
         })
       }
