@@ -4,6 +4,7 @@ import ContentSidebarLayout from "./layouts/ContentSidebar/ContentSidebarLayout"
 import HeroCard from "./blocks/HeroCard/HeroCard";
 import ContentFeed from "./blocks/ContentFeed/ContentFeed"
 import EmailCaptureCard from "./blocks/EmailCaptureCard/EmailCaptureCard";
+import Section from "./blocks/Section/Section"
 
 <Meta title="Mock/Homepage" />
 
@@ -127,7 +128,9 @@ import EmailCaptureCard from "./blocks/EmailCaptureCard/EmailCaptureCard";
         <p>This is a sidebar…</p>
       }
       after = {
-        <p>This is a after content…</p>
+        <Section bgColorName="white">
+          <p>This is a after content…</p>
+        </Section>
       }
     />
   </Story>

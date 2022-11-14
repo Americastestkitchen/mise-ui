@@ -7,7 +7,7 @@ const cx = classNames.bind(styles);
 export interface SectionProps {
   className?: string;
   children: JSX.Element | JSX.Element[];
-  bgColorName?: "red" | "orange" | "yellow" | "green" | "blueGreen" | "blue" | "purple";
+  bgColorName?: "red" | "orange" | "yellow" | "green" | "blueGreen" | "blue" | "purple" | "white";
   bgColorHex?: `#${string}`;
 }
 

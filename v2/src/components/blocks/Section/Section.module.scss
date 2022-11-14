@@ -4,18 +4,42 @@ $colors: red orange yellow green blueGreen blue purple;
 
 @mixin colors {
   @each $current-color in $colors {
-    &--is-#{$current-color} { 
-      background-color: mise.color(editorial, $current-color);
+    &--is-#{$current-color} {
+      color: mise.color(neutral, white);
+      
+      &::before {
+        background-color: mise.color(editorial, $current-color);
+      }
     }
   }
 }
 
 .container {
-  color: mise.color(neutral, white);
-  
   @include colors;
+
+  &--is-white {
+    &::before {
+      background-color: mise.color(neutral, white);
+    }
+  }
+
+  padding: mise.spacing(x4) 0;
+  position: relative;
+
+  &::before {
+    content: "";
+    display: block;
+    height: 100%;
+    left: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    position: absolute;
+    right: 50%;
+    top: 0;
+    width: 100vw;
+  }
 }
 
 .content {
-  padding: mise.spacing(x4);
+  position: relative;
 }
