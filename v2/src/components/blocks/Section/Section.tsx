@@ -7,6 +7,7 @@ const cx = classNames.bind(styles);
 export interface SectionProps {
   className?: string;
   children: JSX.Element | JSX.Element[];
+  parentColumn?: "1" | "5-8";
   bgColorName?: "red" | "orange" | "yellow" | "green" | "blueGreen" | "blue" | "purple" | "white";
   bgColorHex?: `#${string}`;
 }
@@ -14,12 +15,14 @@ export interface SectionProps {
 export const Section: React.FC<SectionProps> = ({
   className,
   children,
+  parentColumn = "1",
   bgColorHex,
   bgColorName = "red",
 }: SectionProps) => {
   const classNames = cx({
     'container': true,
     [`container--is-${bgColorName}`]: !!bgColorName,
+    [`container--is-column-${parentColumn}`]: !!parentColumn,
   });
 
   return (

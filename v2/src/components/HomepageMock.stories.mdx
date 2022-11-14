@@ -65,72 +65,74 @@ import Section from "./blocks/Section/Section"
         />
       }
       children={
-        <ContentFeed
-          headline="Dig in, Discover, and Cook"
-          feed={[
-            {
-              cardType: 'standard',
-              authors: [
-                {
-                  id: 156,
-                  firstName: 'Mark',
-                  lastName: 'Huxsoll',
-                  image:
+        <>
+          <ContentFeed
+            headline="Dig in, Discover, and Cook"
+            feed={[
+              {
+                cardType: 'standard',
+                authors: [
                   {
-                    altText: '',
-                    url: 'https://res.cloudinary.com/hksqkdlah/image/upload/c_fill,dpr_2.0,f_auto,fl_lossy.progressive.strip_profile,g_faces:auto,h_40,q_auto:low,w_40/v1/AKO%20Articles/Author_Headshots/staff_mark_huxsoll'
+                    id: 156,
+                    firstName: 'Mark',
+                    lastName: 'Huxsoll',
+                    image:
+                    {
+                      altText: '',
+                      url: 'https://res.cloudinary.com/hksqkdlah/image/upload/c_fill,dpr_2.0,f_auto,fl_lossy.progressive.strip_profile,g_faces:auto,h_40,q_auto:low,w_40/v1/AKO%20Articles/Author_Headshots/staff_mark_huxsoll'
+                    },
+                    inactive: false,
                   },
-                  inactive: false,
+                ],
+                description: "For a different take on a tougher cut of beef, we applied a tried-and-true technique for cooking steaks: reverse searing. We first cooked the ribs until they were medium-rare—about an hour in a 275-degree oven. Next, we quickly browned them over high heat on the stovetop to create a flavorful crust. Salting the short ribs and letting them sit for at least 2 hours or up to 24 hours before cooking seasoned them all the way through and aided in tenderizing the meat and retaining juices. The slow cook also helped break down the muscle fibers to ensure tenderness. For a luxurious sauce, we dressed up browned butter with shallot, garlic, Worcestershire sauce, and Dijon mustard.",
+                id: 1234,
+                links: [
+                  {
+                    url: `/`, 
+                    title: "Get the recipe"
+                  },
+                ],
+                image: {
+                  altText: '',
+                  url: 'https://res.cloudinary.com/hksqkdlah/image/upload/ar_1:1,c_fill,dpr_2.0,f_auto,fl_lossy.progressive.strip_profile,g_faces:auto,q_auto:low,w_344/SFS_SlowRoastedMediumRareBeefShortRibs_33_kdjhyd'
                 },
-              ],
-              body: "For a different take on a tougher cut of beef, we applied a tried-and-true technique for cooking steaks: reverse searing. We first cooked the ribs until they were medium-rare—about an hour in a 275-degree oven. Next, we quickly browned them over high heat on the stovetop to create a flavorful crust. Salting the short ribs and letting them sit for at least 2 hours or up to 24 hours before cooking seasoned them all the way through and aided in tenderizing the meat and retaining juices. The slow cook also helped break down the muscle fibers to ensure tenderness. For a luxurious sauce, we dressed up browned butter with shallot, garlic, Worcestershire sauce, and Dijon mustard.",
-              id: 1234,
-              isFavorited: true,
-              links: [
-                {
-                  url: `/`, 
-                  title: "Get the recipe"
-                },
-              ],
-              image: {
-                altText: '',
-                url: 'https://res.cloudinary.com/hksqkdlah/image/upload/ar_1:1,c_fill,dpr_2.0,f_auto,fl_lossy.progressive.strip_profile,g_faces:auto,q_auto:low,w_344/SFS_SlowRoastedMediumRareBeefShortRibs_33_kdjhyd'
+                title: "An innovative method for cooking short ribs results in ribs that eat like luxuriously rich steaks."
               },
-              title: "An innovative method for cooking short ribs results in ribs that eat like luxuriously rich steaks."
-            },
-          ]}
-          emailCard={
-            <EmailCaptureCard
-              view={{
-                frequency: 'Weekly',
-                days: 'Mondays',
-                title:
-                  'Notes From the Test Kitchen',
-                description:
-                  'The latest from the test kitchen—our best seasonal recipes, equipment reviews, cooking advice, and behind-the-scenes spotlights of our cast, crew, and staff.',
-                successText:
-                  '<strong>Thank you!</strong> Get ready for weeknight meals from the Dinner Tonight cook in your inbox.',
-              }}
-              meta={{
-                newsletter_id: '16',
-              }}
-              onSubmit={(emailAddress) => { 
-                alert(emailAddress);
-                return true
-              }}
-            />
-          }
-          toggleFavorite={() => alert("Toggle Favorite")}
-          loadMore={() => alert("Load More Feed Content")}
-        />
+            ]}
+            emailCard={
+              <EmailCaptureCard
+                view={{
+                  frequency: 'Weekly',
+                  days: 'Mondays',
+                  title:
+                    'Notes From the Test Kitchen',
+                  description:
+                    'The latest from the test kitchen—our best seasonal recipes, equipment reviews, cooking advice, and behind-the-scenes spotlights of our cast, crew, and staff.',
+                  successText:
+                    '<strong>Thank you!</strong> Get ready for weeknight meals from the Dinner Tonight cook in your inbox.',
+                }}
+                meta={{
+                  newsletter_id: '16',
+                }}
+                onSubmit={(emailAddress) => { 
+                  alert(emailAddress);
+                  return true
+                }}
+              />
+            }
+            toggleFavorite={() => alert("Toggle Favorite")}
+            loadMore={() => alert("Load More Feed Content")}
+          />
+          <Section parentColumn="5-8" bgColorName="white">
+            <p>This is a after content…</p>
+          </Section>
+        </>
       }
       sidebar={
         <p>This is a sidebar…</p>
       }
       after = {
-        <Section bgColorName="white">
-          <p>This is a after content…</p>
-        </Section>
+        <p>This is a after content…</p>
       }
     />
   </Story>
