@@ -1,0 +1,23 @@
+@use "./src/styles/mise.scss";
+
+.header {
+  &__headline {
+    @include mise.font(display, primary, sm)
+  }
+}
+
+.feed-list {
+  margin-top: mise.spacing(x4);
+
+  &__item {
+    & + & {
+      margin-top: mise.spacing(x4);
+    }
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  padding: mise.spacing(x10) 0;
+}

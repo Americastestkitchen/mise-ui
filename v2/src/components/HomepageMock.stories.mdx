@@ -2,6 +2,7 @@ import { Canvas, Meta, Story } from "@storybook/addon-docs";
 
 import ContentSidebarLayout from "./layouts/ContentSidebar/ContentSidebarLayout";
 import HeroCard from "./blocks/HeroCard/HeroCard";
+import ContentFeed from "./blocks/ContentFeed/ContentFeed"
 
 <Meta title="Mock/Homepage" />
 
@@ -62,7 +63,42 @@ import HeroCard from "./blocks/HeroCard/HeroCard";
         />
       }
       children={
-        <p>This is content…</p>
+        <ContentFeed
+          headline="Dig in, Discover, and Cook"
+          feed={[
+            {
+              cardType: 'standard',
+              author: [
+                {
+                  id: 156,
+                  firstName: 'Mark',
+                  lastName: 'Huxsoll',
+                  image:
+                  {
+                    altText: '',
+                    cloudinaryUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/c_fill,dpr_2.0,f_auto,fl_lossy.progressive.strip_profile,g_faces:auto,h_40,q_auto:low,w_40/v1/AKO%20Articles/Author_Headshots/staff_mark_huxsoll'
+                  },
+                  inactive: false,
+                },
+              ],
+              body: "For a different take on a tougher cut of beef, we applied a tried-and-true technique for cooking steaks: reverse searing. We first cooked the ribs until they were medium-rare—about an hour in a 275-degree oven. Next, we quickly browned them over high heat on the stovetop to create a flavorful crust. Salting the short ribs and letting them sit for at least 2 hours or up to 24 hours before cooking seasoned them all the way through and aided in tenderizing the meat and retaining juices. The slow cook also helped break down the muscle fibers to ensure tenderness. For a luxurious sauce, we dressed up browned butter with shallot, garlic, Worcestershire sauce, and Dijon mustard.",
+              id: 1234,
+              isFavorited: true,
+              links: [
+                {
+                  url: `/`, 
+                  title: "Get the recipe"
+                },
+              ],
+              image: {
+                altText: '',
+                cloudinaryUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/ar_1:1,c_fill,dpr_2.0,f_auto,fl_lossy.progressive.strip_profile,g_faces:auto,q_auto:low,w_344/SFS_SlowRoastedMediumRareBeefShortRibs_33_kdjhyd'
+              },
+              title: "An innovative method for cooking short ribs results in ribs that eat like luxuriously rich steaks."
+            },
+          ]}
+          onClick={() => alert('Load More Feed Content')}
+        />
       }
       sidebar={
         <p>This is a sidebar…</p>
