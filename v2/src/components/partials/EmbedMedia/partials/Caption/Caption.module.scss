@@ -1,0 +1,17 @@
+@use "./src/styles/mise.scss";
+
+.descriptionWrapper {
+  padding-top: 16px;
+}
+
+.description {
+  @include mise.font(text, secondary, normal, bold);
+  /// TODO: Confirm doveGray will be color
+}
+
+.accentRectangle {
+  /// TODO: Confirm mint will be background-color
+  height: 7px;
+  margin-top: 8px;
+  width: 19px;
+}

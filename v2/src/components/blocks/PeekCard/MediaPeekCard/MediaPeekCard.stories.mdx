@@ -1,0 +1,54 @@
+import { Canvas, Meta, Story } from "@storybook/addon-docs";
+import { withDesign } from "storybook-addon-designs";
+import { MediaPeekCard } from "./MediaPeekCard";
+
+<Meta
+  title="Components/Peek Card/MediaPeekCard"
+  component={MediaPeekCard}
+/>
+
+export const Template = (args) => <MediaPeekCard {...args} />
+
+# MediaPeekCard
+
+<Canvas>
+  <Story 
+    name="MediaPeekCard Zype"
+    args={{
+      card: {
+        author: [
+          {
+            id: 156,
+            firstName: 'Kevin',
+            lastName: 'Pang',
+            image:
+            {
+              altText: '',
+              cloudinaryUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/c_fill,dpr_2.0,f_auto,fl_lossy.progressive.strip_profile,g_faces:auto,q_auto:low/AKO%20Articles/Author_Headshots/staff_kevin_pang'
+            },
+            inactive: false,
+          },
+        ],
+        description: "Spatchcock a bird and slide it under the broiler. While it cooks to juicy, crispy-skinned perfection, use our novel method to whip up a luscious, savory gravy.",
+        id: 1234,
+        isFavorited: false,
+        links: [
+          {
+            url: `/recipes/13545-broiled-chicken-with-gravy`, 
+            title: "Start Cooking"
+          },
+        ],
+        title: "Broiled Chicken with Gravy", 
+        video: {
+          image: {
+            altText: '',
+            cloudinaryUrl: 'https://res.cloudinary.com/hksqkdlah/image/upload/SFS_Broiled_Chicken_with_Gravy_379_rx4dzb.jpg'
+          },
+          zypeId: "6226a328874a99000187da6b"
+        }
+      }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
