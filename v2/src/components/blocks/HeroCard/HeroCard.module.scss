@@ -1,8 +1,6 @@
 @use "./src/styles/mise.scss";
 
 .container {
-  @include mise.font(display, primary, sm);
-
   color: mise.color(neutral, white, base);
   margin: 0 calc(mise.spacing(x1) * -1);
   position: relative;
@@ -68,7 +66,7 @@
 }
 
 .headline {
-  @include mise.font(display, primary, md);
+  @include mise.font(display, primary, sm);
 
   border-bottom: 2px solid mise.color(primary, mid, base);
   padding-bottom: mise.spacing(x6);
@@ -81,7 +79,7 @@
   &__link {
     display: -webkit-box;
     overflow: hidden;
-    -webkit-line-clamp: 5;
+    -webkit-line-clamp: 6;
     -webkit-box-orient: vertical;
   }
 }

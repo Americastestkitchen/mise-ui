@@ -1,95 +1,93 @@
-import React, { useState } from 'react';
+import Link from "../Links/Link/Link";
+
+import classNames from "classnames/bind";
+
 import styles from './byline.module.scss';
-import cx from 'classnames';
 
-export type OnClick = (id: number, name: string) => void;
-
-export type Author = {
-  id?: number;
+const cx = classNames.bind(styles);
+export interface Author {
+  id: number;
   firstName: string;
   lastName: string;
-  image?: { altText?: string, url: string };
+  image: { altText: string, url: string };
   inactive?: boolean;
 };
-export interface ByLineListProps {
+
+export interface BylineProps {
+  className?: string;
   authors: Author[];
-  attribution?: string;
-  onClick?: OnClick
+  theme?: "light" | "dark";
 }
 
-type AuthorListInnerProps = { authors: Author[], onClick?: OnClick };
-
-const AuthorListInner = ({ authors, onClick }: AuthorListInnerProps) => {
-  const fullNames = authors.map(
-    (author, idx) => {
-      const { firstName, lastName, id: authorId } = author
-      if (!!onClick && !author?.inactive && authorId !== undefined) {
-        return (
-          <a
-            href={`/authors/${authorId}-${firstName}-${lastName}`}
-            className={styles.author}
-            aria-label={`${firstName} ${lastName}: Go to author page`}
-            key={authorId}
-            onClick={(e) => {
-              e.preventDefault();
-              onClick(authorId, `${firstName.toLowerCase()}-${lastName.toLowerCase()}`)
-            }
-            }
-          >
-            {firstName} {lastName}
-          </a>
-        );
-      }
-      return <span className={styles.author} key={authorId || idx}>{firstName} {lastName}</span>;
-    },
-  );
-  switch (fullNames.length) {
-    case 0: return <></>;
-    case 1: return <span className={styles.author} >{fullNames[0]}</span>;
-    case 2: return <span className={styles.author} >{fullNames[0]} and {fullNames[1]}</span>;
-    default: {
-      const firstPart = fullNames.slice(0, -1).reduce((acc, item) => [...acc, item, ', '], [] as (string | JSX.Element)[]);
-      return <span className={styles.author} >{firstPart}and {fullNames.slice(-1)}</span>;
-    }
-  }
-};
 export default function BylineList({
+  className,
   authors,
-  attribution,
-  onClick
-}: ByLineListProps) {
-  const shouldRenderImage = authors.length === 1 && authors[0]?.image?.url
-  const atLeastOneAuthor = authors?.length > 0
-  const [imageError, setImageError] = useState(false);
-  const classStyles = cx(
-    styles.attribution,
-    { [styles.atLeastOneAuthor]: atLeastOneAuthor },
+  theme = "dark",
+}: BylineProps) {
+  const classNames = cx(
+    "authors",
+    `authors--is-${theme}`,
   )
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.authorWrapper}>
-        {shouldRenderImage && !imageError &&
-          <div
-            className={styles.headShotWrapper}
-            data-testid="person-head-shot"
-          >
-            <img
-              className={styles.headShot}
-              crossOrigin="anonymous"
-              decoding="async"
-              alt={authors[0].image?.altText}
-              src={authors[0].image?.url}
-              onError={() => { setImageError(true); }}
-            />
-          </div>
-        }
-        <AuthorListInner authors={authors} onClick={onClick} />
-      </div>
-      {attribution &&
-        <div className={classStyles}>
-          {attribution}
-        </div>
-      }
+    <div className={`${classNames} ${className}`}>
+      <ul className={styles["author-images"]}>
+        { authors.map((author, i) => {
+          const path = `${author.id}-${author.firstName}-${author.lastName}`;
+
+          if (i <= 2) {
+            return (
+              <li className={styles["author-images__item"]}>
+                <Link path={path}>
+                  <img
+                    className={styles["author-image"]}
+                    alt={author.image?.altText}
+                    src={author.image?.url}
+                  />
+                </Link>
+              </li>
+            )
+          } else {
+            return null
+          }
+        })}
+      </ul>
+      <span className={styles["author-names"]}>
+      { authors.map((author, i, arr) => {
+          const name = arr.length > 1
+            ? author.firstName
+            : `${author.firstName} ${author.lastName}`;
+
+          const path = `${author.id}-${author.firstName}-${author.lastName}`;
+
+          const conjunction = () => {
+            if (arr.length === 1 || i === arr.length -1) {
+              return 
+            } else if (arr.length <= 3 && i === arr.length - 2) {
+              return " and "
+            } else if (arr.length > 3 && i === 2) {
+              return " and others"
+            } else {
+              return ", "
+            }
+          }
+          
+          if (i <= 2) {
+            return (
+              <>
+                <Link
+                  className={styles["author-name"]}
+                  path={path}
+                >
+                  {name}
+                </Link>
+                {conjunction()}
+              </>
+            )
+          } else {
+            return null
+          }
+        })}
+      </span>
     </div>
   );
 }

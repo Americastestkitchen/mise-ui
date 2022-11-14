@@ -2,6 +2,7 @@
 
 .toggle {
   cursor: pointer;
+  min-width: 1.5rem;
 
   &--is-favorite {
     fill: currentColor;

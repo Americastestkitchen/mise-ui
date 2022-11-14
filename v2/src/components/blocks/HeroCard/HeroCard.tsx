@@ -7,21 +7,21 @@ import Byline, { Author } from "../../partials/Byline/Byline";
 import styles from "./HeroCard.module.scss";
 
 export type HeroCardProps = {
-  documentPath: string | (UrlObject & string),
+  path: string | (UrlObject & string);
   image: { 
-    altText: string,
-    url: string | (UrlObject & string),
+    altText: string;
+    url: string | (UrlObject & string);
   };
-  authors: Author[],
-  headline: string | (UrlObject & string),
-  favorite?: boolean,
+  headline: string | (UrlObject & string);
+  authors: Author[];
+  favorite?: boolean;
 }
 
 export const HeroCard: React.FC<HeroCardProps> = ({
-  documentPath = "#",
+  path = "#",
   image,
-  authors,
   headline,
+  authors,
   favorite = false,
 }) => {
   return (
@@ -29,7 +29,7 @@ export const HeroCard: React.FC<HeroCardProps> = ({
       {/* TODO: Add Link component */}
       <Link
         className={styles["image-link"]}
-        path={documentPath}
+        path={path}
       >
         <img
           className={styles["image"]}
@@ -39,7 +39,7 @@ export const HeroCard: React.FC<HeroCardProps> = ({
       </Link>
       <div className={styles.details}>
         <h1 className={styles.headline}>
-          <Link className={styles["headline__link"]} path={documentPath}>{headline}</Link>
+          <Link className={styles["headline__link"]} path={path}>{headline}</Link>
         </h1>
         <footer className={styles.footer}>
           <Byline
