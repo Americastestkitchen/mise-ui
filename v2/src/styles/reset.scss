@@ -110,5 +110,6 @@ body,
 :global(#__next) {
   @include typography.resetTypography();
 
+  color: colors.color(neutral, dark);
   min-height: 100%;
 }
