@@ -26,33 +26,32 @@ export interface EmailCaptureProps {
     event_definition_key?: string;
     de_name?: string;
   };
-  onSubmitCallback(email: string): void;
-  validSubmission: boolean; // Assumed for API response if valid
+  onSubmit(email: string): boolean;
 }
 
 // eslint-disable-next-line no-useless-escape
-const emailRe = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const emailAddressRe = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 const EmailCaptureCard: React.FC<EmailCaptureProps> = ({
   view,
   meta,
-  validSubmission,
-  onSubmitCallback,
+  onSubmit,
 }) => {
-  const [email, setEmail] = useState('');
+  const [emailAddress, setEmailAddress] = useState('');
   const [emailError, setEmailError] = useState('');
   const [disabled, setDisabled] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
-    if (!email) {
+    setDisabled(true);
+    if (!emailAddress) {
       setEmailError('Email Is Required');
-    } else if (email && !emailRe.test(email)) {
+    } else if (emailAddress && !emailAddressRe.test(emailAddress)) {
       setEmailError('Invalid Email Address');
     } else {
-      setDisabled(true);
       setEmailError('');
-      onSubmitCallback(email);
+      setSuccess(onSubmit(emailAddress));
     }
   }
   
@@ -72,7 +71,7 @@ const EmailCaptureCard: React.FC<EmailCaptureProps> = ({
           />
       </header>
       <>
-        { validSubmission
+        { success
           ? <div className={styles["success-message"]}>
               <Icon className={styles["success-message__icon"]} type="checkmark"/>
               <EditorialText className={styles["success-message__description"]} content={view.successText} />
@@ -91,12 +90,13 @@ const EmailCaptureCard: React.FC<EmailCaptureProps> = ({
                     aria-describedby="emailAddressError"
                     data-valid={!emailError}
                     type="text"
-                    value={email}
-                    onChange={(evt) => {
+                    value={emailAddress}
+                    onChange={(e) => {
                       if (emailError) {
                         setEmailError('');
+                        setDisabled(false);
                       }
-                      setEmail(evt.target.value);
+                      setEmailAddress(e.target.value);
                     }}
                   />
                   {emailError && <p id="emailAddressError" role="alert" className={styles["form__error"]}>{emailError}</p>}

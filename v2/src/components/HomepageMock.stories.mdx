@@ -113,8 +113,10 @@ import EmailCaptureCard from "./blocks/EmailCaptureCard/EmailCaptureCard";
               meta={{
                 newsletter_id: '16',
               }}
-              validSubmission={false}
-              onClick={() => alert("Submit Newsletter")}
+              onSubmit={(emailAddress) => { 
+                alert(emailAddress);
+                return true
+              }}
             />
           }
           toggleFavorite={() => alert("Toggle Favorite")}
