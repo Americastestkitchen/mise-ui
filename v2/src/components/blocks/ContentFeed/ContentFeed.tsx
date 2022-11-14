@@ -33,7 +33,7 @@ const ContentFeed: React.FC<ContentFeedProps> = ({
         {feed.map((content, i) => {
           return ( 
             <li
-              key={i}
+              key={`${content.id}-${i}`}
               className={styles["feed-list__item"]}
             >
               {content.cardType === 'standard' && (
