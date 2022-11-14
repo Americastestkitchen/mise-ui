@@ -1,0 +1,21 @@
+@use "./src/styles/mise.scss";
+
+.container {
+  padding: mise.spacing(x10) 0;
+}
+
+.header {
+  padding: 0 mise.spacing(x4);
+
+  &__title {
+    @include mise.font(display, primary);
+  }
+
+  &__description {
+    margin-top: mise.spacing(x2)
+  }
+}
+
+.section-list {
+  margin-top: mise.spacing(x4)
+}

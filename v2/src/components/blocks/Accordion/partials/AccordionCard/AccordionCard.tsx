@@ -16,7 +16,7 @@ const AccordionCard = ({label, content}: AccordionCardProps) => {
     { [styles.toggleVisible]: hidden },
   )
   return (
-    <div className={styles.contentWrapper}>
+    <li className={styles.contentWrapper}>
       <button 
       className={styles.itemButton}
       onClick={() => {
@@ -32,7 +32,7 @@ const AccordionCard = ({label, content}: AccordionCardProps) => {
       <div className={classStyles}>
         <EditorialText content={content} />
       </div>
-    </div>
+    </li>
   )
 }
 

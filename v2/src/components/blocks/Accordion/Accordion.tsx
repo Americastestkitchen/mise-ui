@@ -1,25 +1,38 @@
-import React from 'react';
 import AccordionCard from './partials/AccordionCard/AccordionCard'
+import EditorialText from '../../partials/EditorialText/EditorialText';
 
-export type AccordionCardProps = {
-  label: string;
-  content: string;
-}
+import styles from "./Accordion.module.scss";
+
 export type AccordionProps = {
-  accordion: AccordionCardProps[];
+  className?: string;
+  title?: string;
+  description?: string;
+  sections: {
+    label: string;
+    content: string;
+  }[];
 }
 
-const Accordion = ({accordion}: AccordionProps) => {
+const Accordion: React.FC<AccordionProps> = ({
+  className,
+  title,
+  description,
+  sections
+}) => {
   return (
-    <div>
-      {
-        accordion.map((card, index: number) => {
-          return (
-            <AccordionCard key={index} label={card.label} content={card.content}/>
-          )
-        })
+    <section className={`${styles["container"]} ${className}`}>
+      { (!!title || !!description) &&
+        <header className={styles["header"]}>
+          {!!title && <h2 className={styles["header__title"]}>{title}</h2>}
+          {!!description && <EditorialText className={styles["header__description"]} content={description} />}
+        </header>
       }
-    </div>
+      <ul className={styles["section-list"]}>
+        {sections.map((section, i) => {
+          return <AccordionCard key={i} label={section.label} content={section.content}/>
+        })}
+      </ul>
+    </section>
   )
 }
 

@@ -6,7 +6,6 @@ export type AccordionControlProps = {
   isExpanded: boolean;
 }
 
-
 const AccordionControl = ({isExpanded}: AccordionControlProps) => {
   const classStyles = cx(
     styles.plusIcon,
