@@ -2,11 +2,12 @@ import { Canvas, Meta, Story } from "@storybook/addon-docs";
 
 import ContentSidebarLayout from "./layouts/ContentSidebar/ContentSidebarLayout";
 import HeroCard from "./blocks/HeroCard/HeroCard";
-import ContentFeed from "./blocks/ContentFeed/ContentFeed"
+import MyStuff from "./blocks/MyStuff/MyStuff";
+import ContentFeed from "./blocks/ContentFeed/ContentFeed";
 import EmailCaptureCard from "./blocks/EmailCaptureCard/EmailCaptureCard";
-import Section from "./blocks/Section/Section"
-import Accordion from "./blocks/Accordion/Accordion"
-import InlineLink from "./partials/Links/InlineLink/InlineLink"
+import Section from "./blocks/Section/Section";
+import Accordion from "./blocks/Accordion/Accordion";
+import InlineLink from "./partials/Links/InlineLink/InlineLink";
 
 <Meta title="Mock/Homepage" />
 
@@ -113,9 +114,6 @@ import InlineLink from "./partials/Links/InlineLink/InlineLink"
                   successText:
                     '<strong>Thank you!</strong> Get ready for weeknight meals from the Dinner Tonight cook in your inbox.',
                 }}
-                meta={{
-                  newsletter_id: '16',
-                }}
                 onSubmit={(emailAddress) => { 
                   alert(emailAddress);
                   return true
@@ -128,7 +126,7 @@ import InlineLink from "./partials/Links/InlineLink/InlineLink"
           <Section parentColumn="5-8" bgColorName="white">
             <Accordion
               title="Failproof Recipes for Curious, Creative Cooks"
-              description="<p>Our recipes are tested dozens of times in our test kitchen until we know how and why they work. (They’re also tested by at-home volunteer recipe testers.) When you cook with our recipes and resources, you’ll become a better cook. Guaranteed. Have questions that aren’t answered here? <a href='#'>Contact us</a>.</p>"
+              description="<p>Our recipes are tested dozens of times in our test kitchen until we know how and why they work. (They're also tested by at-home volunteer recipe testers.) When you cook with our recipes and resources, you'll become a better cook. Guaranteed. Have questions that aren't answered here? <a href='#'>Contact us</a>.</p>"
               sections={[
                 {
                   label: "Who exactly reviews all of these products?",
@@ -148,7 +146,7 @@ import InlineLink from "./partials/Links/InlineLink/InlineLink"
         </>
       }
       sidebar={
-        <p>This is a sidebar…</p>
+        <MyStuff authCode="Anon" />
       }
     />
   </Story>

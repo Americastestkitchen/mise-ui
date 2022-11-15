@@ -1,8 +1,10 @@
-import styles from './styles/myStuff.module.scss';
-import Icon from './partials/Icon';
+import styles from './MyStuff.module.scss';
+import Icon from '../../tokens/Icons/Icon/Icon';
 import EditorialText from '../../partials/EditorialText/EditorialText';
 import FavoriteCard from './partials/FavoriteCard/FavoriteCard'
 import {Favorite} from './types'
+
+import Link from '../../partials/Links/Link/Link';
 
 const content = {
   favorites: {
@@ -12,6 +14,7 @@ const content = {
   },
   personalized: [
     {
+      key: "fresh-picks",
       ctaCopy: "Personalized picks based on your favorites.",
       headline: "Fresh Picks For You",
       icon: "lightning",
@@ -20,6 +23,7 @@ const content = {
       visibilityRules: ["Member", "Anon", "Registrant", "Cancelled"]
     },
     {
+      key: "surprise-me",
       ctaCopy: "Find a new exciting recipe to try today!",
       headline: "Surprise Me",
       icon: "sparkle",
@@ -28,6 +32,7 @@ const content = {
       visibilityRules: ["Member", "Anon", "Registrant", "Cancelled"]
     },
     {
+      key: "my-account",
       headline: "My Account",
       icon: "user",
       linkAgnostic: false,
@@ -35,6 +40,7 @@ const content = {
       visibilityRules: ["Member"]
     },
     {
+      key: "manage-profile",
       headline: "Manage Profile",
       icon: "user",
       linkAgnostic: false,
@@ -59,36 +65,42 @@ export type MyStuffProps = {
   onClick?(): void;
 }
 
-export const MyStuff: React.FC<MyStuffProps> = ({ authCode, favoritesList, onClick }: MyStuffProps) => {
+export const MyStuff: React.FC<MyStuffProps> = ({ authCode, favoritesList, onClick }) => {
   const { personalized, favorites, ctaFooter } = content
   const hasNoFavorites = !favoritesList || authCode === 'Anon'
   return (
-    <div>
-      <div className={styles.topBar}></div>
-      <div className={styles.wrapper}>
-        <h2 className={styles.headline}>My Stuff</h2>
-        <div className={styles.favoritesWrapper}>
-          <div className={styles.subHeadWrapper}>
-            <Icon type="save" />
-            {hasNoFavorites ? (
-              <h3 className={styles.subHeading}>{favorites.headline}</h3>
-              ) : (
-                <a href={favorites.url} className={styles.subHeading}>{favorites.headline}<span className={styles.arrowRight} /></a>
-            )}
-          </div>
-          {hasNoFavorites && 
-            <p className={styles.ctaCopy}>{favorites.ctaCopy}</p>
-          }
-          {(favoritesList && authCode !== 'Anon') && (
-            <div className={styles.favoritesListWrapper}>
-            {favoritesList.map((favorite, index: number) => (
-              <div key={index} className={styles.favoritesList}>
-                <FavoriteCard favorite={favorite}/>
-              </div>
-            ))}
+    <aside className={`${styles["container"]} ${styles["container--is-sticky"]}`}>
+      <header className={styles["header"]}>
+        <h2 className={styles["header__title"]}>My Stuff</h2>
+      </header>
+      <section className={`${styles["section"]} ${styles["section--is-favorites"]}`}>
+        <header className={styles["section-header"]}>
+          <h3 className={styles["section-header__heading"]}>
+            <Icon 
+              className={styles["section-header__icon"]}
+              type="save"
+            />
+            <Link
+              className={styles["section-header__link"]}
+              path={favorites.url}
+            >
+              {favorites.headline}
+            </Link>
+          </h3>
+        </header>
+        {hasNoFavorites && 
+          <p className={styles["section__description"]}>{favorites.ctaCopy}</p>
+        }
+        {(!!favoritesList && authCode !== 'Anon') && (
+          <div className={styles.favoritesListWrapper}>
+          {favoritesList.map((favorite, index: number) => (
+            <div key={index} className={styles.favoritesList}>
+              <FavoriteCard favorite={favorite}/>
             </div>
-          )}
-        </div>
+          ))}
+          </div>
+        )}
+      </section>
         {
         personalized.map((pzn, index: number) => {
           const icon = pzn.icon as Icons
@@ -96,31 +108,34 @@ export const MyStuff: React.FC<MyStuffProps> = ({ authCode, favoritesList, onCli
           return (
             <>
               {pzn.visibilityRules.includes(authCode) && (
-                  <div key={index} className={styles.personalizedWrapper}>
-                  <div className={styles.subHeadWrapper}>
-                    <Icon type={icon} />
-                    {
-                      hasLink ? (
-                        <a href={pzn.url} className={styles.subHeading}>{pzn.headline}<span className={styles.arrowRight} /></a>
-                      ) : (
-                        <h3 className={styles.subHeading}>{pzn.headline}</h3>
-                      )
-                    }
-                  </div>
-                  {authCode === "Anon" && <p className={styles.ctaCopy}>{pzn.ctaCopy}</p>}
-                </div>
+                <section key={`${pzn.key}-${index}`} className={`${styles["section"]} ${styles[`section--is-${pzn.key}`]}`}>
+                  <header className={styles["section-header"]}>
+                    <h3 className={styles["section-header__heading"]}>
+                      <Icon
+                        className={styles["section-header__icon"]}
+                        type={icon}
+                      />
+                      <Link
+                        className={styles["section-header__link"]}
+                        path={pzn.url}
+                      >
+                        {pzn.headline}
+                      </Link>
+                    </h3>
+                  </header>
+                  <p className={styles["section__description"]}>{pzn.ctaCopy}</p>
+                </section>
               )}
             </>
           )
         })
       }
       {authCode !== "Member" && 
-        <div className={styles.signupFooter}>
+        <footer className={styles["footer"]}>
           <EditorialText content={ctaFooter[authCode]} />
-        </div>
+        </footer>
       }
-      </div>
-    </div>
+    </aside>
   );
 }
 

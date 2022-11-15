@@ -1,9 +1,12 @@
-import React from 'react';
+import IconProps from "./IconProps";
 
-export default function LightningIcon() {
+export const LightningIcon: React.FC<IconProps> = ({
+  className,
+}) => {
   return (
     <svg
-      className="icon"
+      className={className}
+      fill="currentColor"
       aria-hidden="true"
       focusable="false"
       role="img"
@@ -14,3 +17,5 @@ export default function LightningIcon() {
     </svg>
   );
 }
+
+export default LightningIcon

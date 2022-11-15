@@ -161,12 +161,14 @@ $typography: (
       family: fontFamily(proximaNova, family),
       letterSpacing: 1px,
       lineHeight: (
+        xs: 1.625,  
         sm: 1.625,
         md: 1.625,
         lg: 1.625,
         xl: 1.625,
       ),
       size: (
+        xs: 0.625rem,
         sm: 0.875rem,
         md: 1rem,
         lg: 1.125rem,

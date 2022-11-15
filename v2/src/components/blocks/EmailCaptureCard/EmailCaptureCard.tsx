@@ -21,7 +21,7 @@ export interface EmailCaptureProps {
     description: string;
     successText: string;
   };
-  meta: {
+  meta?: {
     newsletter_id?: string;
     event_definition_key?: string;
     de_name?: string;

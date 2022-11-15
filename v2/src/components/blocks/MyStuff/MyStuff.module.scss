@@ -1,0 +1,81 @@
+@use "./src/styles/mise.scss";
+
+.container {
+  background-color: mise.color(neutral, white);
+  border-radius: 4px 4px 0 0;
+  overflow: hidden;
+  padding: mise.spacing(x4);
+
+  &--is-sticky {
+    position: sticky;
+    top: mise.spacing(x4);
+  }
+
+  &::before {
+    display: block;
+    content: "";
+    height: 4px;
+    width: calc(100% + calc(mise.spacing(x8)));
+    background-color: mise.color(primary, mid);
+    margin: calc(mise.spacing(x4) * -1) calc(mise.spacing(x4) * -1) 0;
+  }
+}
+
+.header {
+  margin-top: mise.spacing(x2);
+
+  &__title {
+    @include mise.font(display, primary, sm, bold);
+  }
+}
+
+.section {
+  &__description {
+    @include mise.font(text, primary, md, normal, italic);
+
+    margin-top: mise.spacing(x1);
+  }
+
+  &:first-of-type {
+    margin-top: mise.spacing(x4);
+
+    & + .section {
+      margin-top: calc(mise.spacing(x12) * 1.5);
+    }
+  }
+
+  & + & {
+    border-top: 1px solid mise.color(neutral, light);
+    margin-top: mise.spacing(x3);
+    padding-top:  mise.spacing(x2);
+  }
+}
+
+.section-header {
+  margin-top: mise.spacing(x1);
+  
+  &__heading {
+    display: flex;
+    align-items: center;
+    column-gap: mise.spacing(x2);
+  }
+
+  &__icon {
+    color: mise.color(primary, mid);
+    height: 0.75rem;
+    // TODO: Remove when Icon viewboxes are standardized.
+    min-width: 0.75rem;
+  }
+
+  &__link {
+    @include mise.font(display, secondary, xs, bold);
+
+    color: mise.color(neutral, dark, tint);
+  }
+}
+
+.footer {
+  background-color: mise.color(neutral, light);
+  margin-top: mise.spacing(x3);
+  padding: mise.spacing(x3); 
+}

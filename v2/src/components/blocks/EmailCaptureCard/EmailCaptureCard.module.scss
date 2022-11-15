@@ -9,7 +9,7 @@
 }
 
 .frequency {
-  @include mise.font(display, secondary, sm, bold);
+  @include mise.font(display, secondary, xs, bold);
 }
 
 .header {
@@ -22,7 +22,7 @@
 
 .form {
   &__label {
-    @include mise.font(display, secondary, md, bold);
+    @include mise.font(display, secondary, sm, bold);
 
     display: block;
     margin-top: mise.spacing(x4);
@@ -30,6 +30,7 @@
 
   &__interior {
     width: 100%;
+    margin-top:  mise.spacing(x1);
 
     @media screen and (min-width: mise.breakpoint(lg)) {
       display: flex;
