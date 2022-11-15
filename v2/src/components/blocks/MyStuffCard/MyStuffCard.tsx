@@ -131,7 +131,10 @@ export const MyStuff: React.FC<MyStuffProps> = ({ authCode, favoritesList, onCli
       }
       {authCode !== "Member" && 
         <footer className={styles["footer"]}>
-          <EditorialText content={ctaFooter[authCode]} />
+          <EditorialText
+            content={ctaFooter[authCode]}
+            theme="primary"
+          />
         </footer>
       }
     </aside>

@@ -1,15 +1,31 @@
 @use "./src/styles/mise.scss";
 
 .content {
+  &--is-primary {
+    a {
+      border-bottom: 2px solid mise.color(primary, mid);
+    
+      &:focus,
+      &:hover {
+        background-color: mise.color(primary, light, shade);
+      }
+    }
+  }
+
+  &--is-secondary {
+    a {
+      border-bottom: 2px solid mise.color(secondary, mid);
+
+      &:focus,
+      &:hover {
+        background-color: mise.color(secondary, mid, tint);
+      }
+    }
+  }
+
   a {
-    border-bottom: 2px solid mise.color(secondary, mid);
     color: mise.color(neutral, dark);
     display: inline-block;
     transition: background-color 0.2s linear;
-  
-    &:focus,
-    &:hover {
-      background-color: mise.color(secondary, mid, tint);
-    }
   }
 }
