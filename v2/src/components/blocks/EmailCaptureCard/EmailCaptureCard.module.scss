@@ -16,7 +16,7 @@
   &__title {
     @include mise.font(display, primary, sm);
 
-    margin-top: mise.spacing(x4);
+    margin-top: mise.spacing(x2);
   }
 }
 
