@@ -1,9 +1,9 @@
 import { Canvas, Meta, Story } from "@storybook/addon-docs";
-import MyStuff from './MyStuff';
+import MyStuffCard from './MyStuffCard';
 
 <Meta
   title="Components/My Stuff Card"
-  component={MyStuff}
+  component={MyStuffCard}
 />
 
 export const Template = (args) => <MyStuff {...args} />
@@ -52,7 +52,7 @@ export const Template = (args) => <MyStuff {...args} />
 </Canvas>
 <Canvas>
   <Story
-    name="MyStuffCardNoFavorites"
+    name="My Stuff Card No Favorites"
     args={{
       authCode: 'Anon'
     }}

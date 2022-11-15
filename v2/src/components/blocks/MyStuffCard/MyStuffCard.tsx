@@ -1,4 +1,4 @@
-import styles from './MyStuff.module.scss';
+import styles from './MyStuffCard.module.scss';
 import Icon from '../../tokens/Icons/Icon/Icon';
 import EditorialText from '../../partials/EditorialText/EditorialText';
 import FavoriteCard from './partials/FavoriteCard/FavoriteCard'
