@@ -25,4 +25,4 @@ const defaultArgs = [
 const Template: ComponentStory<typeof Accordion> = args => <Accordion {...args} />;
 
 export const DefaultAccordion: ComponentStory<typeof Accordion> = Template.bind({});
-DefaultAccordion.args = {accordion: defaultArgs}  
+DefaultAccordion.args = {sections: defaultArgs}  

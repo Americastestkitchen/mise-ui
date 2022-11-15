@@ -3,7 +3,7 @@ import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import EmailCapture from './EmailCaptureCard';
 
 export default {
-  title: 'Components/Email Capture',
+  title: 'Components/Email Capture Card',
   component: EmailCapture,
   parameters: { actions: { validSubmission: true} },
 } as ComponentMeta<typeof EmailCapture>;
@@ -25,6 +25,5 @@ DefaultCapture.args = {view: {
 meta: {
   newsletter_id: '16',
 },
-validSubmission: false,
-onClick: () => {},
+onSubmit: () => { return true},
 }  

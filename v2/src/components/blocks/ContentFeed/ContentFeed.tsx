@@ -2,17 +2,14 @@
 
 
 import StandardPeekCard from '../PeekCard/StandardPeekCard/StandardPeekCard';
-import { StandardCard, VideoCard } from '../PeekCard/PeekCard';
 import StandardButton from '../../partials/Buttons/StandardButton/StandardButton';
 
 import styles from "./ContentFeed.module.scss";
 
-type FeedContent = StandardCard | VideoCard
-
 export interface ContentFeedProps {
   className?: string;
   headline?: string;
-  feed: FeedContent[];
+  feed: any[];
   user: { [key: string]: any } | boolean | null;
   emailCard?: React.ReactNode;
   toggleFavorite(): void;
