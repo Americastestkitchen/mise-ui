@@ -104,7 +104,6 @@ export const MyStuff: React.FC<MyStuffProps> = ({ authCode, favoritesList, onCli
         {
         personalized.map((pzn, index: number) => {
           const icon = pzn.icon as Icons
-          const hasLink = (authCode !== "Anon") || (authCode === "Anon" && pzn.linkAgnostic)
           return (
             <>
               {pzn.visibilityRules.includes(authCode) && (
