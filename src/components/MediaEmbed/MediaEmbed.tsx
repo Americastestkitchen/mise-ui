@@ -63,6 +63,13 @@ const InstagramEmbedWrapper = styled.div<{lessThan542: boolean}>`
   width: ${({ lessThan542 }) => (lessThan542 ? '323px' : '542px')} !important;
 `;
 
+/**
+ * For dev and QA issues going forward, make sure to check network for 429 issues.
+ * Too many requests errors coming up in QA for the /embed.js script. This should
+ *  only need to load once per device and has max-age plus stale-while-revalidate
+ *  etag checks. If we keep hitting this js file from a device with no-cache and
+ *  skipping service worker, we'll get errors that look like regression issues.
+ */
 export function InstagramEmbed({ source, caption }: EmbedProps) {
   const { width = 0, ref } = useResizeObserver();
   useScript('//www.instagram.com/embed.js', () => window.instgrm?.Embeds.process());
