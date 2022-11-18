@@ -1,3 +1,17 @@
+# v1.33.41 (Fri Nov 18 2022)
+
+#### 🐛 Bug Fix
+
+- WEB-1278: Fix Instagram Embeds [#962](https://github.com/Americastestkitchen/mise-ui/pull/962) ([@harry-atk](https://github.com/harry-atk))
+- ribbon delay fix [#951](https://github.com/Americastestkitchen/mise-ui/pull/951) (jthomas@jthomas-mbp.attlocal.net)
+
+#### Authors: 2
+
+- Harry Scheuerle ([@harry-atk](https://github.com/harry-atk))
+- Jenner Thomas ([@jwinnfeild2517](https://github.com/jwinnfeild2517))
+
+---
+
 # v1.33.40 (Wed Nov 02 2022)
 
 #### 🐛 Bug Fix
