@@ -14,7 +14,7 @@ import {
 import Checkmark from '../../../DesignTokens/Icon/svgs/Checkmark2';
 import EmailForm from '../../../Forms/EmailForm';
 import { cssThemedColor } from '../../../../styles/mixins';
-import { lg, md, xlg } from '../../../../styles/breakpoints';
+import { untilMd, md, lg, xlg } from '../../../../styles/breakpoints';
 
 const variantTheme = variant => theme => (variant ? ({ ...theme, [variant]: true }) : theme);
 
@@ -42,6 +42,12 @@ const AdDescription = styled.p`
   font: ${fontSize.md}/2.1rem ${font.mwr};
   letter-spacing: normal;
   margin-bottom: ${spacing.sm};
+  ${untilMd(css`
+    &.tng {
+      font-size: 18px !important;
+      line-height: 28px !important;
+    }
+  `)}
   ${md(css`
     font: ${fontSize.md}/2.6rem ${font.mwr};
     min-width: 35rem;
@@ -90,6 +96,12 @@ const AdTitle = styled.h2`
   ${cssThemedColor}
   ${kidsVariant(css`
     font: ${fontSize.xl}/2.6rem ${font.gdn} !important;
+  `)}
+  ${untilMd(css`
+    &.tng {
+      font-size: 24px !important;
+      line-height: 28px !important;
+    }
   `)}
   ${md(css`
     margin-bottom: ${spacing.xxsm};
@@ -171,6 +183,12 @@ const AdWrapper = styled.div`
       margin-top: 0.3rem;
     `)}
   }
+
+  ${untilMd(css`
+    &.tng-wrapper {
+      min-height: 296px;
+    }
+  `)}
 
   ${md(css`
     margin: ${spacing.xlg} -3.6rem 0;
@@ -303,6 +321,7 @@ const ContentWrapper = styled.div`
 `;
 
 const ReviewsEmailCapture = ({
+  className = '',
   isWide,
   variant,
   description,
@@ -313,12 +332,18 @@ const ReviewsEmailCapture = ({
   ...emailFormProps
 }) => (
   <ThemeProvider theme={variantTheme(variant)}>
-    <AdWrapper success={success} isWide={isWide}>
+    <AdWrapper className={`${className}-wrapper`} success={success} isWide={isWide}>
       <ContentWrapper success={success} isWide={isWide}>
         <MainContent isWide={isWide}>
-          <AdTitle dangerouslySetInnerHTML={{ __html: title }} />
+          <AdTitle
+            className={className}
+            dangerouslySetInnerHTML={{ __html: title }}
+          />
           {!success && (
-          <AdDescription dangerouslySetInnerHTML={{ __html: description }} />
+            <AdDescription
+              className={className}
+              dangerouslySetInnerHTML={{ __html: description }}
+            />
           )}
         </MainContent>
         {success
@@ -344,9 +369,9 @@ const ReviewsEmailCapture = ({
 );
 
 ReviewsEmailCapture.propTypes = {
-  variant: PropTypes.string,
   buttonTextColor: PropTypes.string,
   buttonText: PropTypes.string,
+  className: PropTypes.string,
   description: PropTypes.string.isRequired,
   errorText: PropTypes.string,
   isWide: PropTypes.bool,
@@ -357,9 +382,11 @@ ReviewsEmailCapture.propTypes = {
   success: PropTypes.bool,
   successText: PropTypes.string,
   title: PropTypes.string.isRequired,
+  variant: PropTypes.string,
 };
 
 ReviewsEmailCapture.defaultProps = {
+  className: null,
   isWide: false,
   variant: null,
   success: false,

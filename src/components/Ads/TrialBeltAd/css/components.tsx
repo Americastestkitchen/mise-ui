@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { font, color, mixins } from '../../../../styles';
 import { cssThemedColor } from '../../../../styles/mixins';
-import { md, lg, xlg } from '../../../../styles/breakpoints';
+import { untilMd, md, lg, xlg } from '../../../../styles/breakpoints';
 import { cssThemedButton } from './shared';
 
 export const AccentHeadline = styled.p`
@@ -27,6 +27,20 @@ export const Description = styled.p`
   font-size: 18px;
   line-height: 22px;
   max-width: 208px;
+
+  ${untilMd(css`
+    &.freevee {
+      font-size: 24px !important;
+      line-height: 29px !important;
+      max-width: unset;
+    }
+
+    &.amazonFresh {
+      font-size: 23px !important;
+      line-height: 26px !important;
+      max-width: unset;
+    }
+  `)}
 
   ${md(css`max-width: 300px;`)}
   ${xlg(css`max-width: 100%;`)}

@@ -55,6 +55,8 @@ export type TextImageTrialBeltProps = {
 }
 
 export type TrialBeltAdProps = TextTrialBeltProps & {
+  /** Classname to apply specific styling to particular ad instances */
+  className?: string;
   /** Reduced font sizes for larger text options. All defined in ./css/reducedTextSizing.ts. */
   reducedTextSizing?: boolean;
   /** Image to render in 100x100 area */
@@ -124,6 +126,7 @@ export function TextImageTrialBeltAd({
 }
 
 export default function TrialBeltAd({
+  className = '',
   href,
   cloudinaryId,
   imageAlt,
@@ -149,7 +152,10 @@ export default function TrialBeltAd({
         </ImageArea>
         <TextArea>
           <Headline dangerouslySetInnerHTML={{ __html: headline }} />
-          <Description dangerouslySetInnerHTML={{ __html: description }} />
+          <Description
+            className={className}
+            dangerouslySetInnerHTML={{ __html: description }}
+          />
         </TextArea>
         <ButtonArea>
           {cta}<DetailTriangleRight />
