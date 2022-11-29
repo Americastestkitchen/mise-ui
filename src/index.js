@@ -35,7 +35,7 @@ import FilterButton from './components/FilterButton/FilterButton';
 import FinePrint from './components/Articles/FinePrint/FinePrint';
 import FreeTrialAd from './components/Ads/ShowcaseAds/FreeTrialAd/FreeTrialAd';
 import HeroAd from './components/Ads/HeroAd/HeroAd';
-import HeroCard from './components/Cards/HeroCard';
+import HeroCard from './components/Cards/HeroCard/HeroCard';
 import HomepageTagline from './components/HomepageTagline';
 import InlineNewsletter from './components/Newsletters/InlineNewsletter/InlineNewsletter';
 import ImageListContainer from './components/Articles/ImageList/ImageListContainer/ImageListContainer';

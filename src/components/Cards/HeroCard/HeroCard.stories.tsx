@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import HeroCard from './index';
+import HeroCard from './HeroCard';
 
 export default {
   title: 'Components/Cards/HeroCard',
