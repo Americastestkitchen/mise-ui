@@ -157,7 +157,7 @@ export default {
 
   /**
    * Truncates text with ellipsis
-   * @param  {Number} width optional - set the width of the element
+   * @param  {?Number} width optional - set the width of the element
    * @return {String}       CSS Text
    */
   truncate(width) {
