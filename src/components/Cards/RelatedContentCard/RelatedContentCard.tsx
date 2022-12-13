@@ -4,7 +4,7 @@ import { font, color, withThemes, mixins } from '../../../styles';
 import { md, untilMd } from '../../../styles/breakpoints';
 import { cssThemedColor, cssThemedFontAccentColorAlt, cssThemedLink } from '../../../styles/mixins';
 import useMedia from '../../hooks/useMedia';
-import AffiliateLink from '../shared/AffiliateLink';
+import AffiliateFakeButton from './AffiliateFakeButton';
 
 const mobileCard = untilMd;
 const desktopCard = md;
@@ -104,7 +104,7 @@ const Body = styled.span`
     ${mixins.truncateLineClamp(3)}
 `;
 
-const LinkText = styled.a`
+const LinkText = styled.div`
   ${cssLinkTextFont}
 `;
 
@@ -203,7 +203,7 @@ export const WideCard = {
   Body,
   LinkWrapper,
   LinkText,
-  AffiliateLink,
+  AffiliateLink: AffiliateFakeButton,
 };
 
 export type RelatedContentCardProps = {
@@ -232,7 +232,6 @@ export type RelatedContentCardProps = {
 /** Preview helper, example implemenation, and validating exports */
 export default function RelatedContentCard({
   href,
-  buttonHref,
   src,
   headline,
   title,
@@ -253,9 +252,9 @@ export default function RelatedContentCard({
         <WideCard.Body dangerouslySetInnerHTML={{ __html: body }} />
         <WideCard.LinkWrapper>
           {!!link && !!withButton ? (
-            <WideCard.AffiliateLink text={link} url={buttonHref || href} />
+            <WideCard.AffiliateLink text={link} />
           ) : (
-            <WideCard.LinkText href={href}>{link}</WideCard.LinkText>
+            <WideCard.LinkText>{link}</WideCard.LinkText>
           )}
         </WideCard.LinkWrapper>
       </ThemeProvider>
