@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components';
 import cloudinaryInstance, { baseImageConfig } from '../../../../lib/cloudinary';
 import { withThemes, color, font } from '../../../../styles';
 import { cssThemedLink } from '../../../../styles/mixins';
+import ConditionalAnchor from '../../../Articles/shared/ConditionalAnchor';
 
 export type PhotoCarouselCellProps = {
   /** Carousel uses id value for reconciliation of its cell items. */
@@ -19,6 +20,8 @@ export type PhotoCarouselCellProps = {
   alt?: string;
   /** Description text under image. */
   description: string;
+  href?: string;
+  hrefTitle?: string;
 }
 
 const Img = styled.img`
@@ -55,6 +58,8 @@ const cloudinaryOptions = { ...baseImageConfig, aspectRatio: '3:2' };
  */
 export default function PhotoCarouselCell({
   img,
+  href,
+  hrefTitle,
   alt = '',
   description,
 }: PhotoCarouselCellProps) {
@@ -64,20 +69,24 @@ export default function PhotoCarouselCell({
         <picture>
           <source media="(min-width: 1148px)" srcSet={cloudinaryInstance.url(img.cloudinaryId, { ...cloudinaryOptions, width: 1200 })} />
           <source media="(min-width: 768px)" srcSet={cloudinaryInstance.url(img.cloudinaryId, { ...cloudinaryOptions, width: 800 })} />
+          <ConditionalAnchor showAnchor={!!href} href={href} title={hrefTitle}>
+            <Img
+              src={cloudinaryInstance.url(img.cloudinaryId, { ...cloudinaryOptions, width: 400 })}
+              alt={alt}
+              crossOrigin="anonymous"
+              decoding="async"
+            />
+          </ConditionalAnchor>
+        </picture>
+      ) : (
+        <ConditionalAnchor showAnchor={!!href} href={href} title={hrefTitle}>
           <Img
-            src={cloudinaryInstance.url(img.cloudinaryId, { ...cloudinaryOptions, width: 400 })}
+            src={img.src}
             alt={alt}
             crossOrigin="anonymous"
             decoding="async"
           />
-        </picture>
-      ) : (
-        <Img
-          src={img.src}
-          alt={alt}
-          crossOrigin="anonymous"
-          decoding="async"
-        />
+        </ConditionalAnchor>
       )}
 
       {!!description && (
