@@ -1,3 +1,15 @@
+# v1.33.43 (Mon Jan 30 2023)
+
+#### 🐛 Bug Fix
+
+- WEB-1504: Article links [#971](https://github.com/Americastestkitchen/mise-ui/pull/971) ([@harry-atk](https://github.com/harry-atk))
+
+#### Authors: 1
+
+- Harry Scheuerle ([@harry-atk](https://github.com/harry-atk))
+
+---
+
 # v1.33.42 (Tue Dec 13 2022)
 
 #### 🐛 Bug Fix
