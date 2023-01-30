@@ -7,6 +7,7 @@ import ArticleFigcaption from '../shared/ArticleFigcaption';
 import { color, font, fontSize, mixins, withThemes } from '../../../styles';
 import { getImageUrl } from '../../../lib/cloudinary';
 import { cssThemedLink } from '../../../styles/mixins';
+import ConditionalAnchor from '../shared/ConditionalAnchor';
 
 const PhotoCollectionWrapper = styled.div`
   margin-bottom: 3rem;
@@ -166,6 +167,8 @@ const ArticlePhotoCollection = ({
             height: imageHeight,
             publicId,
             width: imageWidth,
+            href,
+            hrefTitle,
           } = image;
           const ar = imageHeight && imageWidth ? imageWidth / imageHeight : null;
 
@@ -183,13 +186,15 @@ const ArticlePhotoCollection = ({
                 srcSet={getImageUrl(publicId, { aspectRatio: ar, ...cropMap.tablet[imageClass], crop: 'fill' })}
                 media="(min-width: 768px)"
               />
-              <img
-                alt={alt}
-                className={`photo-${imageClass}`}
-                crossOrigin="anonymous"
-                decoding="async"
-                src={getImageUrl(publicId, { aspectRatio: ar, ...cropMap.mobile[imageClass], crop: 'fill' })}
-              />
+              <ConditionalAnchor showAnchor={!!href} href={href} title={hrefTitle}>
+                <img
+                  alt={alt}
+                  className={`photo-${imageClass}`}
+                  crossOrigin="anonymous"
+                  decoding="async"
+                  src={getImageUrl(publicId, { aspectRatio: ar, ...cropMap.mobile[imageClass], crop: 'fill' })}
+                />
+              </ConditionalAnchor>
             </CollectionPicture>
           );
         })}

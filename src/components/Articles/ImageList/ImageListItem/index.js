@@ -6,6 +6,7 @@ import styled, { css } from 'styled-components';
 import { color, font, fontSize, withThemes } from '../../../../styles';
 import { getImageUrl } from '../../../../lib/cloudinary';
 import { cssArticleBoxStyles, cssThemedLink } from '../../../../styles/mixins';
+import ConditionalAnchor from '../../shared/ConditionalAnchor';
 
 const ListItemWrapper = styled.div`
   background-color: ${color.white};
@@ -101,6 +102,8 @@ const ImageListItem = ({
   cloudinaryId,
   content,
   width,
+  href,
+  hrefTitle,
 }) => (
   <ListItemWrapper>
     <picture>
@@ -110,13 +113,15 @@ const ImageListItem = ({
         srcSet={getImageUrl(cloudinaryId, { aspectRatio: '16:9', width: 272 })}
         media="(min-width: 768px)"
       />
-      <img
-        alt={altText}
-        className="list-item__image"
-        crossOrigin="anonymous"
-        decoding="async"
-        src={getImageUrl(cloudinaryId, { aspectRatio: '16:9', width: 321 })}
-      />
+      <ConditionalAnchor showAnchor={!!href} href={href} title={hrefTitle}>
+        <img
+          alt={altText}
+          className="list-item__image"
+          crossOrigin="anonymous"
+          decoding="async"
+          src={getImageUrl(cloudinaryId, { aspectRatio: '16:9', width: 321 })}
+        />
+      </ConditionalAnchor>
     </picture>
     <ListItemContent
       className={width === 'default' ? 'default-content' : 'wide-content'}
@@ -131,6 +136,8 @@ ImageListItem.propTypes = {
   cloudinaryId: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
   width: PropTypes.oneOf(['default', 'wide']).isRequired,
+  href: PropTypes.string,
+  hrefTitle: PropTypes.string,
 };
 
 export default ImageListItem;

@@ -5,6 +5,7 @@ import breakpoint from 'styled-components-breakpoint';
 
 import ArticleFigcaption from '../shared/ArticleFigcaption';
 import { mixins } from '../../../styles';
+import ConditionalAnchor from '../shared/ConditionalAnchor';
 
 const ArticleImageFigure = styled.figure`
   padding: 0;
@@ -57,7 +58,7 @@ const ArticleImagePicture = styled.picture`
   }
 `;
 
-const ArticleImage = ({ alt, caption, desktopSrc, imgSrc, tabletSrc, width }) => (
+const ArticleImage = ({ alt, caption, desktopSrc, imgSrc, tabletSrc, width, href, hrefTitle }) => (
   <ArticleImageFigure className={`article-image__figure--${width}`}>
     <ArticleImagePicture className={`article-image__picture--${width}`}>
       {
@@ -76,12 +77,14 @@ const ArticleImage = ({ alt, caption, desktopSrc, imgSrc, tabletSrc, width }) =>
           />
         )
       }
-      <img
-        alt={alt}
-        crossOrigin="anonymous"
-        decoding="async"
-        src={imgSrc}
-      />
+      <ConditionalAnchor showAnchor={!!href} href={href} title={hrefTitle}>
+        <img
+          alt={alt}
+          crossOrigin="anonymous"
+          decoding="async"
+          src={imgSrc}
+        />
+      </ConditionalAnchor>
     </ArticleImagePicture>
     {
       caption && (
@@ -107,6 +110,8 @@ ArticleImage.propTypes = {
   tabletSrc: PropTypes.string,
   /** Width configuration for PullQuote */
   width: PropTypes.oneOf(['default', 'wide']),
+  href: PropTypes.string,
+  hrefTitle: PropTypes.string,
 };
 
 ArticleImage.defaultProps = {
