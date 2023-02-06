@@ -79,6 +79,7 @@ const items: PhotoCarouselCellProps[] = [
     id: '2124_cvr-sfs-juicy-pub-burger-clr-020-article',
     img: { cloudinaryId: '2124_cvr-sfs-juicy-pub-burger-clr-020-article' },
     description: 'Once you have your digital thermometer, remember 125 degrees Fahrenheit is medium-rare, 135 is medium.',
+    href: '/some-link',
   },
   {
     id: 'v1592840035/mise-play/feature-card-wide.jpg',

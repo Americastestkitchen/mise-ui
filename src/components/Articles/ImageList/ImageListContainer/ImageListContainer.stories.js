@@ -16,7 +16,8 @@ const images = [
     altText: 'picture of a thing',
     cloudinaryId: 'TnT/2020/1_CCJJ_Dill%20Pickles/SPS_Dill_Pickle_Hero_123',
     content: '\u003cp\u003eThere are many things about this picture to say. There are many things about this picture to say. There are many things about this picture to say.\u003cp\u003e',
-    lazy: true
+    lazy: true,
+    href: '/test-link'
   },
   {
     altText: 'picture of a thing',

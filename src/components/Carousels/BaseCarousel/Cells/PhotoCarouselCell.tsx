@@ -66,18 +66,18 @@ export default function PhotoCarouselCell({
   return (
     <>
       { 'cloudinaryId' in img ? (
-        <picture>
-          <source media="(min-width: 1148px)" srcSet={cloudinaryInstance.url(img.cloudinaryId, { ...cloudinaryOptions, width: 1200 })} />
-          <source media="(min-width: 768px)" srcSet={cloudinaryInstance.url(img.cloudinaryId, { ...cloudinaryOptions, width: 800 })} />
-          <ConditionalAnchor showAnchor={!!href} href={href} title={hrefTitle}>
+        <ConditionalAnchor showAnchor={!!href} href={href} title={hrefTitle} displayBlock>
+          <picture>
+            <source media="(min-width: 1148px)" srcSet={cloudinaryInstance.url(img.cloudinaryId, { ...cloudinaryOptions, width: 1200 })} />
+            <source media="(min-width: 768px)" srcSet={cloudinaryInstance.url(img.cloudinaryId, { ...cloudinaryOptions, width: 800 })} />
             <Img
               src={cloudinaryInstance.url(img.cloudinaryId, { ...cloudinaryOptions, width: 400 })}
               alt={alt}
               crossOrigin="anonymous"
               decoding="async"
             />
-          </ConditionalAnchor>
-        </picture>
+          </picture>
+        </ConditionalAnchor>
       ) : (
         <ConditionalAnchor showAnchor={!!href} href={href} title={hrefTitle}>
           <Img

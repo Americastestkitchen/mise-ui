@@ -60,8 +60,9 @@ const ArticleImagePicture = styled.picture`
 
 const ArticleImage = ({ alt, caption, desktopSrc, imgSrc, tabletSrc, width, href, hrefTitle }) => (
   <ArticleImageFigure className={`article-image__figure--${width}`}>
-    <ArticleImagePicture className={`article-image__picture--${width}`}>
-      {
+    <ConditionalAnchor showAnchor={!!href} href={href} title={hrefTitle} displayBlock>
+      <ArticleImagePicture className={`article-image__picture--${width}`}>
+        {
         desktopSrc && (
           <source
             media="(min-width: 1136px)"
@@ -69,7 +70,7 @@ const ArticleImage = ({ alt, caption, desktopSrc, imgSrc, tabletSrc, width, href
           />
         )
       }
-      {
+        {
         tabletSrc && (
           <source
             media="(min-width: 768px)"
@@ -77,15 +78,14 @@ const ArticleImage = ({ alt, caption, desktopSrc, imgSrc, tabletSrc, width, href
           />
         )
       }
-      <ConditionalAnchor showAnchor={!!href} href={href} title={hrefTitle}>
         <img
           alt={alt}
           crossOrigin="anonymous"
           decoding="async"
           src={imgSrc}
         />
-      </ConditionalAnchor>
-    </ArticleImagePicture>
+      </ArticleImagePicture>
+    </ConditionalAnchor>
     {
       caption && (
         <ArticleFigcaption

@@ -106,14 +106,14 @@ const ImageListItem = ({
   hrefTitle,
 }) => (
   <ListItemWrapper>
-    <picture>
-      <source
-        alt={altText}
-        className="list-item__source"
-        srcSet={getImageUrl(cloudinaryId, { aspectRatio: '16:9', width: 272 })}
-        media="(min-width: 768px)"
-      />
-      <ConditionalAnchor showAnchor={!!href} href={href} title={hrefTitle}>
+    <ConditionalAnchor showAnchor={!!href} href={href} title={hrefTitle} displayBlock>
+      <picture>
+        <source
+          alt={altText}
+          className="list-item__source"
+          srcSet={getImageUrl(cloudinaryId, { aspectRatio: '16:9', width: 272 })}
+          media="(min-width: 768px)"
+        />
         <img
           alt={altText}
           className="list-item__image"
@@ -121,8 +121,8 @@ const ImageListItem = ({
           decoding="async"
           src={getImageUrl(cloudinaryId, { aspectRatio: '16:9', width: 321 })}
         />
-      </ConditionalAnchor>
-    </picture>
+      </picture>
+    </ConditionalAnchor>
     <ListItemContent
       className={width === 'default' ? 'default-content' : 'wide-content'}
       dangerouslySetInnerHTML={{ __html: content }}
