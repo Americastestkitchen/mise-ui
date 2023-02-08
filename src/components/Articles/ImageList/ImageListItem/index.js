@@ -102,11 +102,10 @@ const ImageListItem = ({
   cloudinaryId,
   content,
   width,
-  href,
-  hrefTitle,
+  anchor,
 }) => (
   <ListItemWrapper>
-    <ConditionalAnchor showAnchor={!!href} href={href} title={hrefTitle} displayBlock>
+    <ConditionalAnchor showAnchor={!!anchor?.href} displayBlock {...anchor}>
       <picture>
         <source
           alt={altText}
@@ -136,8 +135,7 @@ ImageListItem.propTypes = {
   cloudinaryId: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
   width: PropTypes.oneOf(['default', 'wide']).isRequired,
-  href: PropTypes.string,
-  hrefTitle: PropTypes.string,
+  anchor: PropTypes.object,
 };
 
 export default ImageListItem;

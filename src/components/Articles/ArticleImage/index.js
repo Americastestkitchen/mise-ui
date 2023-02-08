@@ -58,9 +58,9 @@ const ArticleImagePicture = styled.picture`
   }
 `;
 
-const ArticleImage = ({ alt, caption, desktopSrc, imgSrc, tabletSrc, width, href, hrefTitle }) => (
+const ArticleImage = ({ alt, caption, desktopSrc, imgSrc, tabletSrc, width, anchor }) => (
   <ArticleImageFigure className={`article-image__figure--${width}`}>
-    <ConditionalAnchor showAnchor={!!href} href={href} title={hrefTitle} displayBlock>
+    <ConditionalAnchor showAnchor={!!anchor?.href} displayBlock {...anchor}>
       <ArticleImagePicture className={`article-image__picture--${width}`}>
         {
         desktopSrc && (
@@ -110,8 +110,7 @@ ArticleImage.propTypes = {
   tabletSrc: PropTypes.string,
   /** Width configuration for PullQuote */
   width: PropTypes.oneOf(['default', 'wide']),
-  href: PropTypes.string,
-  hrefTitle: PropTypes.string,
+  anchor: PropTypes.object,
 };
 
 ArticleImage.defaultProps = {

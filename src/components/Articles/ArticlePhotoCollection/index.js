@@ -167,13 +167,12 @@ const ArticlePhotoCollection = ({
             height: imageHeight,
             publicId,
             width: imageWidth,
-            href,
-            hrefTitle,
+            anchor,
           } = image;
           const ar = imageHeight && imageWidth ? imageWidth / imageHeight : null;
 
           return (
-            <ConditionalAnchor showAnchor={!!href} href={href} title={hrefTitle} displayBlock>
+            <ConditionalAnchor showAnchor={!!anchor?.href} displayBlock {...anchor}>
               <CollectionPicture
                 className={`photo-collection__${imageClass}`}
                 key={`${publicId.slice(-10)}-${i}`}
