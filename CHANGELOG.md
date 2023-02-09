@@ -1,3 +1,15 @@
+# v1.33.44 (Thu Feb 09 2023)
+
+#### 🐛 Bug Fix
+
+- conditional anchor updates [#972](https://github.com/Americastestkitchen/mise-ui/pull/972) ([@harry-atk](https://github.com/harry-atk))
+
+#### Authors: 1
+
+- Harry Scheuerle ([@harry-atk](https://github.com/harry-atk))
+
+---
+
 # v1.33.43 (Mon Jan 30 2023)
 
 #### 🐛 Bug Fix
