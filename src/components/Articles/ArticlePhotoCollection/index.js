@@ -33,7 +33,7 @@ const PhotoCollectionWrapper = styled.div`
           width: 100%;
         }
 
-        picture:not(:last-child) {
+        picture:not(:last-child), a:not(:last-child) {
           margin-right: 1.6rem;
         }
       }
@@ -46,7 +46,7 @@ const PhotoCollectionWrapper = styled.div`
           width: 100%;
         }
 
-        picture:not(:last-child) {
+        picture:not(:last-child), a:not(:last-child) {
           margin-right: 2.2rem;
         }
       }
@@ -57,14 +57,14 @@ const PhotoCollection = styled.div`
   display: flex;
   max-width: 100%;
 
-  picture:not(:last-child) {
+  picture:not(:last-child), a:not(:last-child) {
     margin-right: 0.9rem;
   }
 
   ${breakpoint('md')`
     max-width: 69.7rem;
 
-    picture:not(:last-child) {
+    picture:not(:last-child), a:not(:last-child) {
       margin-right: 1.9rem;
     }
   `}
@@ -167,26 +167,26 @@ const ArticlePhotoCollection = ({
             height: imageHeight,
             publicId,
             width: imageWidth,
-            href,
-            hrefTitle,
+            anchor,
           } = image;
           const ar = imageHeight && imageWidth ? imageWidth / imageHeight : null;
 
           return (
-            <CollectionPicture
-              className={`photo-collection__${imageClass}`}
-              key={`${publicId.slice(-10)}-${i}`}
-              width={width}
-            >
-              <source
-                srcSet={getImageUrl(publicId, { aspectRatio: ar, ...cropMap.desktop[width][imageClass], crop: 'fill' })}
-                media="(min-width: 1136px)"
-              />
-              <source
-                srcSet={getImageUrl(publicId, { aspectRatio: ar, ...cropMap.tablet[imageClass], crop: 'fill' })}
-                media="(min-width: 768px)"
-              />
-              <ConditionalAnchor showAnchor={!!href} href={href} title={hrefTitle}>
+            <ConditionalAnchor showAnchor={!!anchor?.href} displayBlock {...anchor}>
+              <CollectionPicture
+                className={`photo-collection__${imageClass}`}
+                key={`${publicId.slice(-10)}-${i}`}
+                width={width}
+              >
+
+                <source
+                  srcSet={getImageUrl(publicId, { aspectRatio: ar, ...cropMap.desktop[width][imageClass], crop: 'fill' })}
+                  media="(min-width: 1136px)"
+                />
+                <source
+                  srcSet={getImageUrl(publicId, { aspectRatio: ar, ...cropMap.tablet[imageClass], crop: 'fill' })}
+                  media="(min-width: 768px)"
+                />
                 <img
                   alt={alt}
                   className={`photo-${imageClass}`}
@@ -194,8 +194,8 @@ const ArticlePhotoCollection = ({
                   decoding="async"
                   src={getImageUrl(publicId, { aspectRatio: ar, ...cropMap.mobile[imageClass], crop: 'fill' })}
                 />
-              </ConditionalAnchor>
-            </CollectionPicture>
+              </CollectionPicture>
+            </ConditionalAnchor>
           );
         })}
       </ImagesWrapper>

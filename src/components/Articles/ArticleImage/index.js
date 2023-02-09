@@ -58,10 +58,11 @@ const ArticleImagePicture = styled.picture`
   }
 `;
 
-const ArticleImage = ({ alt, caption, desktopSrc, imgSrc, tabletSrc, width, href, hrefTitle }) => (
+const ArticleImage = ({ alt, caption, desktopSrc, imgSrc, tabletSrc, width, anchor }) => (
   <ArticleImageFigure className={`article-image__figure--${width}`}>
-    <ArticleImagePicture className={`article-image__picture--${width}`}>
-      {
+    <ConditionalAnchor showAnchor={!!anchor?.href} displayBlock {...anchor}>
+      <ArticleImagePicture className={`article-image__picture--${width}`}>
+        {
         desktopSrc && (
           <source
             media="(min-width: 1136px)"
@@ -69,7 +70,7 @@ const ArticleImage = ({ alt, caption, desktopSrc, imgSrc, tabletSrc, width, href
           />
         )
       }
-      {
+        {
         tabletSrc && (
           <source
             media="(min-width: 768px)"
@@ -77,15 +78,14 @@ const ArticleImage = ({ alt, caption, desktopSrc, imgSrc, tabletSrc, width, href
           />
         )
       }
-      <ConditionalAnchor showAnchor={!!href} href={href} title={hrefTitle}>
         <img
           alt={alt}
           crossOrigin="anonymous"
           decoding="async"
           src={imgSrc}
         />
-      </ConditionalAnchor>
-    </ArticleImagePicture>
+      </ArticleImagePicture>
+    </ConditionalAnchor>
     {
       caption && (
         <ArticleFigcaption
@@ -110,8 +110,7 @@ ArticleImage.propTypes = {
   tabletSrc: PropTypes.string,
   /** Width configuration for PullQuote */
   width: PropTypes.oneOf(['default', 'wide']),
-  href: PropTypes.string,
-  hrefTitle: PropTypes.string,
+  anchor: PropTypes.object,
 };
 
 ArticleImage.defaultProps = {

@@ -1,5 +1,5 @@
 /* eslint-disable react/require-default-props */
-import React from 'react';
+import React, { HTMLProps } from 'react';
 import styled, { css } from 'styled-components';
 import cloudinaryInstance, { baseImageConfig } from '../../../../lib/cloudinary';
 import { withThemes, color, font } from '../../../../styles';
@@ -20,8 +20,7 @@ export type PhotoCarouselCellProps = {
   alt?: string;
   /** Description text under image. */
   description: string;
-  href?: string;
-  hrefTitle?: string;
+  anchor?: HTMLProps<HTMLAnchorElement>;
 }
 
 const Img = styled.img`
@@ -58,28 +57,27 @@ const cloudinaryOptions = { ...baseImageConfig, aspectRatio: '3:2' };
  */
 export default function PhotoCarouselCell({
   img,
-  href,
-  hrefTitle,
   alt = '',
   description,
+  anchor,
 }: PhotoCarouselCellProps) {
   return (
     <>
       { 'cloudinaryId' in img ? (
-        <picture>
-          <source media="(min-width: 1148px)" srcSet={cloudinaryInstance.url(img.cloudinaryId, { ...cloudinaryOptions, width: 1200 })} />
-          <source media="(min-width: 768px)" srcSet={cloudinaryInstance.url(img.cloudinaryId, { ...cloudinaryOptions, width: 800 })} />
-          <ConditionalAnchor showAnchor={!!href} href={href} title={hrefTitle}>
+        <ConditionalAnchor showAnchor={!!anchor?.href} displayBlock {...anchor}>
+          <picture>
+            <source media="(min-width: 1148px)" srcSet={cloudinaryInstance.url(img.cloudinaryId, { ...cloudinaryOptions, width: 1200 })} />
+            <source media="(min-width: 768px)" srcSet={cloudinaryInstance.url(img.cloudinaryId, { ...cloudinaryOptions, width: 800 })} />
             <Img
               src={cloudinaryInstance.url(img.cloudinaryId, { ...cloudinaryOptions, width: 400 })}
               alt={alt}
               crossOrigin="anonymous"
               decoding="async"
             />
-          </ConditionalAnchor>
-        </picture>
+          </picture>
+        </ConditionalAnchor>
       ) : (
-        <ConditionalAnchor showAnchor={!!href} href={href} title={hrefTitle}>
+        <ConditionalAnchor showAnchor={!!anchor?.href} displayBlock {...anchor}>
           <Img
             src={img.src}
             alt={alt}
