@@ -15,6 +15,10 @@ const PhotoCollectionWrapper = styled.div`
   .photo-collection__default {
     display: flex;
     flex-direction: column;
+    @media print {
+      display: block !important;
+      page-break-inside: avoid;
+    }
   }
 
   .photo-collection__wide {
@@ -75,7 +79,11 @@ const PhotoCollection = styled.div`
 `;
 
 const CollectionPicture = styled.picture`
-
+  img {
+    @media print {
+        max-width: 50% !important
+      }
+  }
 
   ${breakpoint('md')`
     .photo-two-up {

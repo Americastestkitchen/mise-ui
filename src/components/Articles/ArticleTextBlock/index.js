@@ -163,8 +163,10 @@ const ArticleTextBlockContentTheme = {
 };
 
 const ArticleTextBlockContent = styled.div`
-  @media print {
-    page-break-inside: avoid !important;
+  p, ul, ol {
+    @media print {
+      page-break-inside: avoid !important;
+    }
   }
   ${withThemes(ArticleTextBlockContentTheme)}
 `;
@@ -188,6 +190,9 @@ const ArticleTextBlockImage = styled.img`
   display: block;
   max-width: 100%;
   width: 100%;
+  @media print {
+    max-width: 50%;
+  }
 `;
 
 const ArticleTextBlockSidebarCard = styled.div`

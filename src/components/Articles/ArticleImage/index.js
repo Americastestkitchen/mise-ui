@@ -10,6 +10,9 @@ import ConditionalAnchor from '../shared/ConditionalAnchor';
 const ArticleImageFigure = styled.figure`
   padding: 0;
   margin: 0 0 2.8rem;
+  @media print {
+    page-break-inside: avoid !important;
+  }
 
   ${breakpoint('xs', 'xlg')`
     .article-figcaption {
@@ -40,6 +43,9 @@ const ArticleImagePicture = styled.picture`
   img {
     display: block;
     margin-bottom: 1.2rem;
+    @media print {
+      max-width: 50% !important;
+    }
 
     ${breakpoint('xlg')`
       margin-right: 1.6rem;

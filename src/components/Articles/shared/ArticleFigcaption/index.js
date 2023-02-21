@@ -71,6 +71,11 @@ const ArticleFigcaptionTheme = {
 
 const ArticleFigcaptionWrapper = styled.figcaption`
   ${withThemes(ArticleFigcaptionTheme)}
+  @media print {
+    margin: 1.7rem 0;
+    left: 0 !important;
+    position:relative !important;
+  }
 `;
 
 const ArticleFigcaption = ({ caption, decorationPosition }) => (
