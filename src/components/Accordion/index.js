@@ -334,7 +334,7 @@ function Accordion({
   }, []);
 
   return (
-    <AccordionWrapper>
+    <AccordionWrapper id={id}>
       <AccordionButton
         aria-controls={`show-hide--${idVal}`}
         aria-expanded={!hidden}
