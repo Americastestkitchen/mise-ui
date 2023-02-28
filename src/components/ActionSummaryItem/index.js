@@ -56,6 +56,12 @@ const ActionSummaryTheme = {
       fill: ${color.emailHover};
     }
   `,
+  play: css`
+    color: ${color.white};
+    svg path {
+      fill: ${color.mint};
+    }
+  `,
 };
 
 const ActionSummaryWrapper = styled.div.attrs({
