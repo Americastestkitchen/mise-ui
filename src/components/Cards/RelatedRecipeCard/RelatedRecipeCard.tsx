@@ -101,6 +101,7 @@ export type RelatedRecipeCardProps = {
   numRatings?: number;
   stickers?: IStickers[];
   linkProps: InferStyledTypes<typeof CtaLink>;
+  onClick?: () => void;
 };
 
 const RelatedRecipeCard = ({
@@ -112,6 +113,7 @@ const RelatedRecipeCard = ({
   commentsCount = 0,
   numRatings = 0,
   stickers,
+  onClick,
 }: RelatedRecipeCardProps) => {
   const src = cloudinaryInstance.url(cloudinaryId, {
     ...baseImageConfig,
@@ -124,6 +126,7 @@ const RelatedRecipeCard = ({
       aria-label={`Go to ${headline}`}
       className="related-recipe-card"
       title={headline}
+      onClick={onClick}
     >
       <Image
         imageAlt={altText}
