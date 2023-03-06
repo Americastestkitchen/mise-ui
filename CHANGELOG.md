@@ -1,3 +1,15 @@
+# v1.33.45 (Mon Mar 06 2023)
+
+#### 🐛 Bug Fix
+
+- Jt web 1546 [#975](https://github.com/Americastestkitchen/mise-ui/pull/975) (jthomas@jthomas-mbp.attlocal.net)
+
+#### Authors: 1
+
+- Jenner Thomas ([@jwinnfeild2517](https://github.com/jwinnfeild2517))
+
+---
+
 # v1.33.44 (Thu Feb 09 2023)
 
 #### 🐛 Bug Fix
