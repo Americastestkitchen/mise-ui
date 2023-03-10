@@ -327,7 +327,7 @@ const ReviewsEmailCapture = ({
               <div className="success-svg-wrapper">
                 <Checkmark fill={color.mint} />
               </div>
-              <span>{successText}</span>
+              <span dangerouslySetInnerHTML={{ __html: successText }} />
             </AdSuccess>
           )
           : (
