@@ -3,6 +3,7 @@ import breakpoint from 'styled-components-breakpoint';
 import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { css } from 'styled-components';
+import utils from '../../../lib/utils';
 
 import AffiliateLink from '../shared/AffiliateLink';
 import Image from '../shared/Image';
@@ -265,6 +266,7 @@ const ReviewableSummaryCard = React.memo(({
   cloudinaryId,
   dek,
   displayPrice,
+  headlineJumpLink,
   href,
   hrefDataAttrs,
   imageAltText,
@@ -289,6 +291,11 @@ const ReviewableSummaryCard = React.memo(({
     ? winnerHeader || 'Winner'
     : recommendationStatus;
 
+  const scrollOnClick = (evt, jumpLink) => {
+    evt.preventDefault();
+    utils.scrollToElement(jumpLink, 50);
+  };
+
   return (
     <ReviewableSummaryItemEl
       data-discontinued={isDiscontinued}
@@ -307,7 +314,13 @@ const ReviewableSummaryCard = React.memo(({
             </StickerWrapper>
           )}
           <ReviewableLink href={href} hrefDataAttrs={hrefDataAttrs}>
-            <h3>{name}</h3>
+            {headlineJumpLink ? (
+              <a onClick={e => scrollOnClick(e, headlineJumpLink)}>
+                <h3>{name}</h3>
+              </a>
+            ) : (
+              <h3>{name}</h3>
+            )}
             {dek && (<p>{dek}</p>)}
           </ReviewableLink>
           {!buyNowLink && priceMarkup && (
@@ -363,6 +376,7 @@ ReviewableSummaryCard.propTypes = {
   cloudinaryId: PropTypes.string,
   dek: PropTypes.string,
   displayPrice: PropTypes.bool,
+  headlineJumpLink: PropTypes.string,
   href: PropTypes.string,
   hrefDataAttrs: PropTypes.object,
   imageAltText: PropTypes.string,
@@ -382,6 +396,7 @@ ReviewableSummaryCard.defaultProps = {
   cloudinaryId: null,
   dek: null,
   displayPrice: false,
+  headlineJumpLink: '',
   href: null,
   hrefDataAttrs: {},
   imageAltText: '',

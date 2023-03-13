@@ -36,6 +36,26 @@ const utils = {
       scrollToWithAnimation(el, 'scrollTop', yPos, duration, 'easeInOutCirc');
     });
   },
+  getPosition(el) {
+    const rect = el.getBoundingClientRect();
+    const win = el.ownerDocument.defaultView;
+
+    return {
+      top: parseInt(rect.top + win.pageYOffset, 10),
+      left: parseInt(rect.left + win.pageXOffset, 10),
+    };
+  },
+  scrollToElement(elementId, topMargin = 40, duration = 250) {
+    let el;
+    if (typeof elementId === 'string') {
+      el = document.querySelector(`#${elementId}`);
+    }
+    if (el) {
+      let pos = this.getPosition(el).top - topMargin;
+      if (pos < 100) pos = 0;
+      this.scrollTo(pos, duration);
+    }
+  },
 };
 
 export default utils;
