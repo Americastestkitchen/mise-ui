@@ -1,3 +1,16 @@
+# v1.33.46 (Mon Mar 13 2023)
+
+#### 🐛 Bug Fix
+
+- ScrollTo utils and reviewable summary card headline jumplink [#973](https://github.com/Americastestkitchen/mise-ui/pull/973) (jess.bon@americastestkitchen.com [@jbonAA](https://github.com/jbonAA))
+
+#### Authors: 2
+
+- Jess Bon (jess.bon@americastestkitchen.com)
+- Jess David Bon ([@jbonAA](https://github.com/jbonAA))
+
+---
+
 # v1.33.45 (Mon Mar 06 2023)
 
 #### 🐛 Bug Fix
