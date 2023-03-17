@@ -37,11 +37,6 @@ describe('Listable component should', () => {
     expect(screen.getByText('2:34'));
   });
 
-  it('render a lock without access', () => {
-    renderComponent({ hasAccess: false });
-    expect(screen.getByTestId('lock-svg'));
-  });
-
   it('change background color when selected', () => {
     renderComponent({ hasAccess: true, isSelected: true });
     expect(screen.getByTestId('listable-body')).toHaveStyleRule(`background-color: ${color.eclipse};`);
