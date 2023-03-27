@@ -1,3 +1,16 @@
+# v1.33.47 (Mon Mar 27 2023)
+
+#### 🐛 Bug Fix
+
+- Dangerously set inner html to support ems in success text [#977](https://github.com/Americastestkitchen/mise-ui/pull/977) (jess.bon@americastestkitchen.com [@jbonAA](https://github.com/jbonAA))
+
+#### Authors: 2
+
+- Jess Bon (jess.bon@americastestkitchen.com)
+- Jess David Bon ([@jbonAA](https://github.com/jbonAA))
+
+---
+
 # v1.33.46 (Mon Mar 13 2023)
 
 #### 🐛 Bug Fix
