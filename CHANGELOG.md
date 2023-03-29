@@ -1,3 +1,15 @@
+# v1.33.48 (Wed Mar 29 2023)
+
+#### 🐛 Bug Fix
+
+- update results count and sort by bug [#978](https://github.com/Americastestkitchen/mise-ui/pull/978) (jthomas@jthomas-mbp.attlocal.net)
+
+#### Authors: 1
+
+- Jenner Thomas ([@jwinnfeild2517](https://github.com/jwinnfeild2517))
+
+---
+
 # v1.33.47 (Mon Mar 27 2023)
 
 #### 🐛 Bug Fix
