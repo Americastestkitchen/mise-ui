@@ -47,16 +47,31 @@ const StatsWrapper = styled.p`
   ${withThemes(StatsWrapperTheme)}
 `;
 
-export const Stats = ({ nbHits }) => (
-  <StatsWrapper className="search-results-count" role="status">
-    {`${nbHits.toLocaleString()} Result${nbHits !== 1 ? 's' : ''}`}
+export const Stats = ({ nbHits, page }) => (
+  <StatsWrapper
+    className="search-results-count"
+    role="status"
+  >
+    {(() => {
+      switch (page) {
+        case 'search':
+          return `${nbHits !== 1 ? 'All' : ''} ${nbHits.toLocaleString()} Result${nbHits !== 1 ? 's' : ''}`;
+        default:
+          return `${nbHits.toLocaleString()} Result${nbHits !== 1 ? 's' : ''}`;
+      }
+    })()}
   </StatsWrapper>
 );
 
 Stats.propTypes = {
   nbHits: PropTypes.number.isRequired,
+  page: PropTypes.string,
+};
+
+Stats.defaultProps = {
+  page: '',
 };
 
 const CustomStats = connectStats(Stats);
 
-export default () => <CustomStats />;
+export default CustomStats;

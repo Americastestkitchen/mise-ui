@@ -19,6 +19,7 @@ const SearchSortByItemTheme = {
     display: flex;
     margin: ${spacing.xxsm} 0.25rem ${spacing.xsm} -${spacing.xxsm};
     padding-left: ${spacing.xxsm};
+    width: 100%;
 
     &:focus-within {
       ${mixins.focusIndicator()};
@@ -75,7 +76,7 @@ const SearchSortByItemTheme = {
   `,
 };
 
-const SearchSortByItem = styled.div`
+const SearchSortByItem = styled.button`
   ${withThemes(SearchSortByItemTheme)}
 `;
 
@@ -121,6 +122,10 @@ const SearchSortByCircleTheme = {
     ` : `
         background-color: transparent;
     `)}
+
+    &:hover {
+      cursor: pointer;
+    }
   `,
   atk: css`
     border: solid 1px ${color.nobel};
@@ -133,6 +138,10 @@ const SearchSortByCircleTheme = {
   `,
   cco: css`
     border: solid 1px ${color.black};
+
+    &:hover {
+      cursor: pointer;
+    }
 
     ${({ isRefined }) => (isRefined ? `
         background-color: ${color.denim};
@@ -226,6 +235,10 @@ export const CustomSortBy = ({ items, refine }) => (
       items.map(({ isRefined, label, isNew, value }) => (
         <SearchSortByItem
           key={value}
+          type="button"
+          onClick={() => {
+            refine(value);
+          }}
         >
           <SearchSortByCircle
             data-testid="sort-by__radio"
@@ -238,13 +251,11 @@ export const CustomSortBy = ({ items, refine }) => (
             {label}
           </SearchSortByLabel>
           <SearchSortByRadioInput
+            tabIndex={-1}
             className={isRefined ? 'refined' : ''}
             checked={isRefined}
             id={value}
             name="sortby"
-            onChange={() => {
-              refine(value);
-            }}
             type="radio"
           />
           {isNew && <SearchSortByNew>New</SearchSortByNew>}
