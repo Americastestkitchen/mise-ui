@@ -253,6 +253,7 @@ const Carousel = ({
   options,
   renderItem,
   onChange,
+  meteredOnClick,
 }) => {
   const elRef = useRef(null);
   const flktyRef = useRef();
@@ -367,6 +368,7 @@ const Carousel = ({
         className={`${className} flkty-ref`}
         dotPosition={dotPosition}
         ref={elRef}
+        meteredOnClick={meteredOnClick}
       >
         {items.map((item, idx) => (
           <div
@@ -422,6 +424,7 @@ Carousel.propTypes = {
   renderItem: PropTypes.func.isRequired,
   /** Callback for flickity change event */
   onChange: PropTypes.func,
+  meteredOnClick: PropTypes.func,
 };
 
 Carousel.defaultProps = {
@@ -448,6 +451,7 @@ Carousel.defaultProps = {
   includesAdType: null,
   options: {},
   onChange: undefined,
+  meteredOnClick: null,
 };
 
 export default Carousel;
