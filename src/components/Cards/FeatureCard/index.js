@@ -182,6 +182,7 @@ function FeatureCard({
   isFavorited,
   isWide,
   lazyImage,
+  meteredOnClick,
   numRatings,
   objectId,
   onClick,
@@ -263,6 +264,7 @@ function FeatureCard({
             siteKey={siteKeyFavorites}
             role="button"
             isFavorited={isFavorited}
+            meteredOnClick={meteredOnClick}
             objectId={objectId}
             title={title}
           />
@@ -303,6 +305,7 @@ FeatureCard.propTypes = {
   lazyImage: PropTypes.bool,
   commentsCount: PropTypes.number,
   avgRating: PropTypes.number,
+  meteredOnClick: PropTypes.func,
   numRatings: PropTypes.number,
   objectId: PropTypes.string.isRequired,
   onClick: PropTypes.func,
@@ -334,6 +337,7 @@ FeatureCard.defaultProps = {
   lazyImage: true,
   commentsCount: 0,
   avgRating: null,
+  meteredOnClick: null,
   numRatings: null,
   onClick: null,
   originalPrice: null,

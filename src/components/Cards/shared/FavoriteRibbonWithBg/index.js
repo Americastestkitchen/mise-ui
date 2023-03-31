@@ -35,6 +35,7 @@ const FavoriteButtonWithBg = ({
   className,
   fill,
   isFavorited,
+  meteredOnClick,
   objectId,
   siteKey,
   title,
@@ -48,6 +49,7 @@ const FavoriteButtonWithBg = ({
     data-origin-site={siteKey}
     data-testid="favorite-button"
     fill={fill}
+    onClick={meteredOnClick || null}
   >
     <FavoriteRibbonWithBg
       ariaHidden
@@ -62,6 +64,7 @@ FavoriteButtonWithBg.propTypes = {
   fill: PropTypes.string,
   isFavorited: PropTypes.bool,
   siteKey: PropTypes.string.isRequired,
+  meteredOnClick: PropTypes.func,
   objectId: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
 };
@@ -70,6 +73,7 @@ FavoriteButtonWithBg.defaultProps = {
   className: '',
   fill: `${color.eclipse}`,
   isFavorited: false,
+  meteredOnClick: null,
 };
 
 export default FavoriteButtonWithBg;
