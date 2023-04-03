@@ -188,6 +188,7 @@ function StandardCard({
   imageAlt,
   imageUrl,
   isFavorited,
+  meteredOnClick,
   numRatings,
   objectId,
   onClick,
@@ -214,6 +215,7 @@ function StandardCard({
     <StyledStandardCard
       className={`standard-card${imageUrl ? '' : ' no-image'}`}
       data-qa="standard-card"
+      onClick={meteredOnClick ?? null}
       {...dataAttrs}
     >
       <>
@@ -330,6 +332,7 @@ StandardCard.propTypes = {
   imageAlt: PropTypes.string,
   imageUrl: PropTypes.string,
   isFavorited: PropTypes.bool,
+  meteredOnClick: PropTypes.func,
   numRatings: PropTypes.number,
   objectId: PropTypes.string.isRequired,
   onClick: PropTypes.func,
@@ -366,6 +369,7 @@ StandardCard.defaultProps = {
   imageAlt: '',
   imageUrl: '',
   isFavorited: false,
+  meteredOnClick: null,
   numRatings: null,
   onClick: null,
   searchComments: null,
