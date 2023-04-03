@@ -90,9 +90,10 @@ function FavoriteActionButton({
   isFavorited,
   onClick,
   title,
+  meteredOnClick,
 }) {
   return (
-    <ButtonWrapper>
+    <ButtonWrapper onClick={meteredOnClick}>
       <StyledButton
         data-favoritable-id={favoritableId}
         data-document-title={title}
@@ -132,6 +133,7 @@ FavoriteActionButton.propTypes = {
   favoritableId: PropTypes.string,
   isFavorited: PropTypes.bool,
   onClick: PropTypes.func,
+  meteredOnClick: PropTypes.func,
   title: PropTypes.string,
 };
 
@@ -140,6 +142,7 @@ FavoriteActionButton.defaultProps = {
   favoritableId: null,
   isFavorited: false,
   onClick: () => {},
+  meteredOnClick: null,
   title: null,
 };
 

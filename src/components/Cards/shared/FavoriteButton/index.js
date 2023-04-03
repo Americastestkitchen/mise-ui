@@ -106,6 +106,7 @@ const FavoriteButton = ({
   objectId,
   siteKey,
   title,
+  meteredOnClick,
 }) => (
   <StyledFavoriteButton
     aria-label={isFavorited ? `Remove ${title} from favorites` : `Save ${title} to favorites`}
@@ -116,6 +117,7 @@ const FavoriteButton = ({
     data-origin-site={siteKey}
     data-testid="favorite-button"
     fill={fill}
+    onClick={meteredOnClick}
   >
     <FavoriteRibbon
       ariaHidden
@@ -133,12 +135,14 @@ FavoriteButton.propTypes = {
   objectId: PropTypes.string.isRequired,
   siteKey: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
+  meteredOnClick: PropTypes.func,
 };
 
 FavoriteButton.defaultProps = {
   className: '',
   fill: `${color.eclipse}`,
   isFavorited: false,
+  meteredOnClick: null,
 };
 
 export default FavoriteButton;
