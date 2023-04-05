@@ -150,7 +150,6 @@ const DocumentListCarousel = ({
   renderItem,
   title,
   type,
-  meteredOnClick,
 }) => (
   <DocumentListCarouselWrapper
     className="document-list-carousel"
@@ -179,7 +178,6 @@ const DocumentListCarousel = ({
       renderItem={renderItem}
       title={title}
       type={type}
-      meteredOnClick={meteredOnClick}
     />
   </DocumentListCarouselWrapper>
 );
@@ -221,7 +219,6 @@ DocumentListCarousel.propTypes = {
     'tall',
     'relatedsmall',
   ]).isRequired,
-  meteredOnClick: PropTypes.func,
 };
 
 DocumentListCarousel.defaultProps = {
@@ -236,7 +233,6 @@ DocumentListCarousel.defaultProps = {
   gradient: null,
   options: null,
   renderItem: null,
-  meteredOnClick: null,
 };
 
 export default DocumentListCarousel;

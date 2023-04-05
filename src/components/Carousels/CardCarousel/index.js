@@ -201,13 +201,11 @@ const CardCarousel = ({
   renderItem,
   title,
   type,
-  meteredOnClick,
 }) => {
   const El = typeMap[type] || StandardCard;
   const defaultRender = item => (
     <El
       key={item.objectId}
-      meteredOnClick={meteredOnClick}
       {...item}
     />
   );
@@ -236,7 +234,6 @@ const CardCarousel = ({
         items={items}
         renderItem={doRenderItem}
         options={options}
-        meteredOnClick={meteredOnClick}
       />
       {cellAlign === 'center' && (
         <LinearGradient
@@ -289,7 +286,6 @@ CardCarousel.propTypes = {
     'tall',
     'relatedsmall',
   ]).isRequired,
-  meteredOnClick: PropTypes.func,
 };
 
 CardCarousel.defaultProps = {
@@ -319,7 +315,6 @@ CardCarousel.defaultProps = {
   includesAdType: null,
   renderItem: undefined,
   title: '',
-  meteredOnClick: null,
 };
 
 export default CardCarousel;

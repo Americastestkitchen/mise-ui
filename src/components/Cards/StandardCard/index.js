@@ -202,7 +202,6 @@ function StandardCard({
   title,
   href,
   quickViewButton,
-  meteredOnClick,
 }) {
   const ImageItem = Array.isArray(imageUrl) ? ImageCollage : Image;
   let stickerAria = '';
@@ -277,7 +276,6 @@ function StandardCard({
               objectId={objectId}
               siteKey={siteKeyFavorites}
               title={title}
-              meteredOnClick={meteredOnClick}
             />
           ) : null }
           {quickViewButton}
@@ -349,7 +347,6 @@ StandardCard.propTypes = {
   title: PropTypes.string.isRequired,
   renderImage: PropTypes.func,
   quickViewButton: PropTypes.node,
-  meteredOnClick: PropTypes.func,
 };
 
 StandardCard.defaultProps = {
@@ -380,7 +377,6 @@ StandardCard.defaultProps = {
   target: null,
   renderImage: null,
   quickViewButton: null,
-  meteredOnClick: null,
 };
 
 export default React.memo(StandardCard, (prev, next) => (
