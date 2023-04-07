@@ -117,7 +117,7 @@ const FavoriteButton = ({
     data-origin-site={siteKey}
     data-testid="favorite-button"
     fill={fill}
-    onClick={meteredOnClick} // NOTE: for the Save button
+    onClick={meteredOnClick}
   >
     <FavoriteRibbon
       ariaHidden
