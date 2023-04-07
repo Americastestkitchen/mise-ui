@@ -133,7 +133,7 @@ FavoriteActionButton.propTypes = {
   favoritableId: PropTypes.string,
   isFavorited: PropTypes.bool,
   onClick: PropTypes.func,
-  meteredOnClick: PropTypes.func, // NOTE: For the Save Action button Clicks
+  meteredOnClick: PropTypes.func,
   title: PropTypes.string,
 };
 
