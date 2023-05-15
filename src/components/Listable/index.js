@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { Lock, VideoPlay } from '../DesignTokens/Icon/index';
+import { VideoPlay } from '../DesignTokens/Icon/index';
 import { color, fontSize, font, grid, lineHeight, spacing } from '../../styles';
 import { getImageUrl } from '../../lib/cloudinary';
 
@@ -74,7 +74,6 @@ const ListableDuration = styled.span`
 const Listable = ({
   cloudinaryId,
   duration,
-  hasAccess,
   isCompleted,
   isSelected,
   title,
@@ -91,13 +90,6 @@ const Listable = ({
       data-testid="listable-body"
     >
       <ListableTitle>
-        {
-          !hasAccess && (
-            <Lock
-              fill={color.white}
-            />
-          )
-        }
         {title}
       </ListableTitle>
       <ListableDuration>
@@ -111,7 +103,6 @@ const Listable = ({
 Listable.propTypes = {
   cloudinaryId: PropTypes.string.isRequired,
   duration: PropTypes.string.isRequired,
-  hasAccess: PropTypes.bool.isRequired,
   isCompleted: PropTypes.bool,
   isSelected: PropTypes.bool,
   title: PropTypes.string.isRequired,

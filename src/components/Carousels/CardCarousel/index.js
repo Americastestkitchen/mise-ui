@@ -203,7 +203,12 @@ const CardCarousel = ({
   type,
 }) => {
   const El = typeMap[type] || StandardCard;
-  const defaultRender = item => <El key={item.objectId} {...item} />;
+  const defaultRender = item => (
+    <El
+      key={item.objectId}
+      {...item}
+    />
+  );
   const doRenderItem = renderItem || defaultRender;
   const options = {
     slideshow: false,
