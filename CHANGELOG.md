@@ -1,3 +1,23 @@
+# v1.33.49 (Tue May 16 2023)
+
+#### 🐛 Bug Fix
+
+- test build [#988](https://github.com/Americastestkitchen/mise-ui/pull/988) (jess.bon@americastestkitchen.com [@jbonAA](https://github.com/jbonAA))
+- reposting Feature [#987](https://github.com/Americastestkitchen/mise-ui/pull/987) ([@tdorin](https://github.com/tdorin))
+- Feature/metered paywalls [#986](https://github.com/Americastestkitchen/mise-ui/pull/986) (jess.bon@americastestkitchen.com [@jbonAA](https://github.com/jbonAA) [@tdorin](https://github.com/tdorin))
+- Refactoring meteredOnClick functionality [#985](https://github.com/Americastestkitchen/mise-ui/pull/985) (jess.bon@americastestkitchen.com [@jbonAA](https://github.com/jbonAA))
+- web-2060 Remove single experience [#983](https://github.com/Americastestkitchen/mise-ui/pull/983) ([@tdorin](https://github.com/tdorin))
+- web-1981: passing metered fucntion to fibbons and save button in Mise [#981](https://github.com/Americastestkitchen/mise-ui/pull/981) ([@tdorin](https://github.com/tdorin))
+- Support metered clicks on feature card carousels review detail [#980](https://github.com/Americastestkitchen/mise-ui/pull/980) (jess.bon@americastestkitchen.com [@jbonAA](https://github.com/jbonAA))
+
+#### Authors: 3
+
+- [@tdorin](https://github.com/tdorin)
+- Jess Bon (jess.bon@americastestkitchen.com)
+- Jess David Bon ([@jbonAA](https://github.com/jbonAA))
+
+---
+
 # v1.33.48 (Wed Mar 29 2023)
 
 #### 🐛 Bug Fix
