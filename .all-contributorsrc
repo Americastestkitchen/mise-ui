@@ -96,7 +96,8 @@
       "contributions": [
         "doc",
         "example",
-        "code"
+        "code",
+        "test"
       ]
     },
     {
