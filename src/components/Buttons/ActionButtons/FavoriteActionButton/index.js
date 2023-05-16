@@ -17,6 +17,7 @@ const ButtonWrapper = styled.div.attrs({
 `;
 
 const StyledFavoriteRibbon = styled(FavoriteRibbon)``;
+
 const StyledButton = styled(Button)`
   align-items: center;
   display: inline-flex;
