@@ -4,7 +4,7 @@ export const mode = {
 };
 
 export const siteKey = {
-  options: ['atk', 'cco', 'cio', 'play'],
+  options: ['atk', 'cco', 'cio', 'play', 'shop'],
   control: { type: 'inline-radio' },
 };
 

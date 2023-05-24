@@ -45,11 +45,6 @@ describe('SuggestionCard component', () => {
     expect(screen.getByTestId('suggestion-img-false'));
   });
 
-  it('does renders a badge', () => {
-    renderComponent(baseRecipe);
-    expect(screen.getByTestId('atk-badge'));
-  });
-
   it('does renders a title', () => {
     renderComponent(baseRecipe);
     expect(screen.getByTestId('suggestion-title'));

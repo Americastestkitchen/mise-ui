@@ -14,6 +14,7 @@ import SuggestionCardSubTitle from './components/SuggestionCardSubTitle';
 import SuggestionCardTitle from './components/SuggestionCardTitle';
 import SuggestionCardWrapper from './components/SuggestionCardWrapper';
 import SuggestionCardStickers from './components/SuggestionCardStickers';
+import hasBrandBadge from '../../Badge/utilities/hasBrandBadge';
 import { Save, Close2 } from '../../DesignTokens/Icon';
 import { color } from '../../../styles';
 
@@ -30,89 +31,94 @@ const SuggestionCard = ({
   comments,
   numRatings,
   resourceType,
-}) => (
-  <SuggestionCardWrapper
-    data-idx={dataIdx}
-  >
-    <SuggestionCardImage
-      data-testid={`suggestion-img-${Boolean(imageUrl)}`}
-      imageUrl={imageUrl}
-      href={href}
-      aria-label={`Go to the ${title} recipe`}
+}) => {
+  const BrandBadge = hasBrandBadge(siteKey);
+  return (
+    <SuggestionCardWrapper
+      data-idx={dataIdx}
     >
-      <SuggestionCardBadge
-        type={siteKey}
-      />
-      <SuggestionCardActions>
-        <div className="button-container">
-          <SuggestionCardAction
-            className="remove-cell primary-hover"
-            data-event-name="RECOMMENDATION_REJECTED"
-            data-document-title={title}
-            data-href={href}
-            data-document-url={href}
-            data-document-type={resourceType}
-            data-object-id={objectId}
-            data-origin-site={siteKey}
-            data-testid="suggestion-action__skip"
-            aria-label={`reject ${title} recipe suggestion`}
+      <SuggestionCardImage
+        data-testid={`suggestion-img-${Boolean(imageUrl)}`}
+        imageUrl={imageUrl}
+        href={href}
+        aria-label={`Go to the ${title} recipe`}
+      >
+        {BrandBadge && (
+        <SuggestionCardBadge
+          type={siteKey}
+        />
+        )}
+        <SuggestionCardActions>
+          <div className="button-container">
+            <SuggestionCardAction
+              className="remove-cell primary-hover"
+              data-event-name="RECOMMENDATION_REJECTED"
+              data-document-title={title}
+              data-href={href}
+              data-document-url={href}
+              data-document-type={resourceType}
+              data-object-id={objectId}
+              data-origin-site={siteKey}
+              data-testid="suggestion-action__skip"
+              aria-label={`reject ${title} recipe suggestion`}
+            >
+              <Close2 />
+            </SuggestionCardAction>
+            <span>Pass</span>
+          </div>
+          <div className="button-container">
+            <SuggestionCardAction
+              className="favorite-action remove-cell primary-hover"
+              data-event-name="RECOMMENDATION_ADDED"
+              data-document-title={title}
+              data-favoritable-id={objectId}
+              data-document-url={href}
+              data-document-type={resourceType}
+              data-object-id={objectId}
+              data-origin-site={siteKey}
+              data-testid="suggestion-action__favorite"
+              aria-label={`save ${title} recipe suggestion`}
+            >
+              <Save className="favorite-ribbon" fill={color.eclipse} />
+            </SuggestionCardAction>
+            <span>Save</span>
+          </div>
+        </SuggestionCardActions>
+      </SuggestionCardImage>
+      <SuggestionCardContent>
+        <SuggestionCardContentInner>
+          {stickers ? (
+            <SuggestionCardStickers
+              stickers={stickers}
+            />
+          ) : null}
+          <SuggestionCardTitle
+            aria-label={`Go to the ${title} recipe`}
+            data-testid="suggestion-title"
+            href={href}
           >
-            <Close2 />
-          </SuggestionCardAction>
-          <span>Pass</span>
-        </div>
-        <div className="button-container">
-          <SuggestionCardAction
-            className="favorite-action remove-cell primary-hover"
-            data-event-name="RECOMMENDATION_ADDED"
-            data-document-title={title}
-            data-favoritable-id={objectId}
-            data-document-url={href}
-            data-document-type={resourceType}
-            data-object-id={objectId}
-            data-origin-site={siteKey}
-            data-testid="suggestion-action__favorite"
-            aria-label={`save ${title} recipe suggestion`}
-          >
-            <Save className="favorite-ribbon" fill={color.eclipse} />
-          </SuggestionCardAction>
-          <span>Save</span>
-        </div>
-      </SuggestionCardActions>
-    </SuggestionCardImage>
-    <SuggestionCardContent>
-      <SuggestionCardContentInner>
-        {stickers ? (
-          <SuggestionCardStickers
-            stickers={stickers}
-          />
-        ) : null}
-        <SuggestionCardTitle
-          aria-label={`Go to the ${title} recipe`}
-          data-testid="suggestion-title"
-          href={href}
-        >
-          {title}
-        </SuggestionCardTitle>
-        {subtitle && (
+            {title}
+          </SuggestionCardTitle>
+          {subtitle && (
           <SuggestionCardSubTitle
             data-testid="suggestion-sub-title"
           >
             {subtitle}
           </SuggestionCardSubTitle>
-        )}
-        <ThemeProvider theme={{ siteKey: 'atk' }}>
-          <UserAttributions
-            avgRating={avgRating}
-            commentsCount={comments}
-            numRatings={numRatings}
-            className="recipe-attributions"
-          />
-        </ThemeProvider>
-      </SuggestionCardContentInner>
-    </SuggestionCardContent>
-  </SuggestionCardWrapper>
-);
+          )}
+          <ThemeProvider theme={{ siteKey: 'atk' }}>
+            <UserAttributions
+              avgRating={avgRating}
+              commentsCount={comments}
+              numRatings={numRatings}
+              className="recipe-attributions"
+            />
+          </ThemeProvider>
+        </SuggestionCardContentInner>
+      </SuggestionCardContent>
+    </SuggestionCardWrapper>
+  );
+};
 
 SuggestionCard.propTypes = {
   avgRating: PropTypes.number,

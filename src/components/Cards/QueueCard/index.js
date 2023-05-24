@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import { color, fontSize, spacing, lineHeight, font, letterSpacing, withThemes } from '../../../styles';
 import Badge from '../../Badge';
+import hasBrandBadge from '../../Badge/utilities/hasBrandBadge';
 import Image from '../shared/Image';
 import Sticker from '../shared/Sticker';
 import Title from '../shared/Title';
@@ -88,48 +89,53 @@ const QueueCard = ({
   title,
   type,
   videoId,
-}) => (
-  <StyledQueueCard
-    id={videoId}
-    data-testid="queue-card"
-  >
-    <a
-      className="queue-card__anchor"
-      href={href}
-      onClick={onClick}
-      rel={target && target === '_blank' ? 'noopener noreferrer' : null}
-      target={target}
+}) => {
+  const BrandBadge = hasBrandBadge(siteKey);
+  return (
+    <StyledQueueCard
+      id={videoId}
+      data-testid="queue-card"
     >
-      <ImageWrapper>
-        <StyledBadge
-          className={className}
-          type={siteKey}
-        />
-        <Image
-          aria-hidden="true"
-          imageAlt={imageAlt}
-          imageUrl={imageUrl}
-        />
-        { stickers ? (
-          <VideoInfo>
-            {stickers.map(({ text, type }) => (
-              <StyledSticker
-                className={className}
-                key={text}
-                contentType={contentType}
-                type={type}
-                text={text}
-              />
-            ))}
-            <ProgressBar progress={progress} />
-          </VideoInfo>
-        ) : null }
-      </ImageWrapper>
-      <h4>Resume {type} </h4>
-      <StyledTitle className={className} title={title} />
-    </a>
-  </StyledQueueCard>
-);
+      <a
+        className="queue-card__anchor"
+        href={href}
+        onClick={onClick}
+        rel={target && target === '_blank' ? 'noopener noreferrer' : null}
+        target={target}
+      >
+        <ImageWrapper>
+          {BrandBadge && (
+          <StyledBadge
+            className={className}
+            type={siteKey}
+          />
+          )}
+          <Image
+            aria-hidden="true"
+            imageAlt={imageAlt}
+            imageUrl={imageUrl}
+          />
+          { stickers ? (
+            <VideoInfo>
+              {stickers.map(({ text, type }) => (
+                <StyledSticker
+                  className={className}
+                  key={text}
+                  contentType={contentType}
+                  type={type}
+                  text={text}
+                />
+              ))}
+              <ProgressBar progress={progress} />
+            </VideoInfo>
+          ) : null }
+        </ImageWrapper>
+        <h4>Resume {type} </h4>
+        <StyledTitle className={className} title={title} />
+      </a>
+    </StyledQueueCard>
+  );
+};
 
 QueueCard.propTypes = {
   className: PropTypes.string,

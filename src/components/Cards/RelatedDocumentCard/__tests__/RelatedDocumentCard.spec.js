@@ -36,11 +36,6 @@ describe('RelatedDocumentCard component should', () => {
     expect(screen.getByText('This is the subtitle'));
   });
 
-  it('render a badge', () => {
-    renderComponent();
-    expect(screen.getByTestId('atk-badge'));
-  });
-
   it('render a priority sticker', () => {
     renderComponent();
     expect(screen.getByText('New'));

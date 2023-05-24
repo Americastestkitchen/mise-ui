@@ -27,11 +27,6 @@ describe('MarqueeCard component should', () => {
     )
   );
 
-  it('render a badge', () => {
-    renderComponent();
-    expect(screen.getByTestId('atk-badge'));
-  });
-
   it('render an editorial sticker', () => {
     renderComponent();
     expect(screen.getByText('Community'));

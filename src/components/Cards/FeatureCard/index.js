@@ -7,6 +7,7 @@ import { cssThemedFontBold } from '../../../styles/mixins';
 import { FeatureCardUserAttributions } from '../shared/UserAttributions';
 import { untilLg } from '../../../styles/breakpoints';
 import Badge from '../../Badge';
+import hasBrandBadge from '../../Badge/utilities/hasBrandBadge';
 import FavoriteRibbonWithBg from '../shared/FavoriteRibbonWithBg';
 import Image from '../shared/Image';
 import PersonHeadShot from '../shared/PersonHeadShot';
@@ -193,6 +194,7 @@ function FeatureCard({
   target,
   title,
 }) {
+  const BrandBadge = hasBrandBadge(siteKey);
   return (
     <StyledFeatureCard
       className={ctaUrl ? 'has-cta feature-card' : 'feature-card'}
@@ -256,7 +258,7 @@ function FeatureCard({
             </div>
           )}
         </div>
-        <StyledBadge className={className} type={siteKey} />
+        {BrandBadge && <StyledBadge className={className} type={siteKey} />}
         {displayFavoritesButton && siteKeyFavorites && objectId ? (
           <StyledFavoriteButtonWithBg
             className={className}

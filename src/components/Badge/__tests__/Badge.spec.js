@@ -14,11 +14,6 @@ describe('Badge', () => {
     )
   );
 
-  it('renders an atk badge', () => {
-    renderComponent({ type: 'atk' });
-    expect(screen.getByTestId('atk-badge'));
-  });
-
   it('renders an cio badge', () => {
     renderComponent({ type: 'cio' });
     expect(screen.getByTestId('cio-badge'));

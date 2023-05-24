@@ -7,6 +7,7 @@ import { color, font, fontSize, spacing, lineHeight, letterSpacing, mixins } fro
 import { VideoPlay } from '../../DesignTokens/Icon';
 
 import Badge from '../../Badge';
+import hasBrandBadge from '../../Badge/utilities/hasBrandBadge';
 import Sticker from '../shared/Sticker';
 import Image from '../shared/Image';
 
@@ -262,7 +263,7 @@ class PodcastEpisodeCard extends Component {
       stickers,
       isPlaying,
     } = this.props;
-
+    const BrandBadge = hasBrandBadge(siteKey);
     return (
       <PodcastEpisodeCardWrapper
         id={id}
@@ -293,9 +294,11 @@ class PodcastEpisodeCard extends Component {
         </div>
         <div>
           <div className="place-hold">
+            {BrandBadge && (
             <StyledBadge
               type={siteKey}
             />
+            )}
             {stickers.map(({ text, type }) => (
               <StyledSticker
                 key={text}
