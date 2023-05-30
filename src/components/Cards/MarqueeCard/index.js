@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import { color, font, fontSize, lineHeight, spacing } from '../../../styles';
 import Badge from '../../Badge';
+import hasBrandBadge from '../../Badge/utilities/hasBrandBadge';
 import Image from '../shared/Image';
 import Sticker from '../shared/Sticker';
 import Byline from '../../Byline';
@@ -108,37 +109,40 @@ const MarqueeCard = ({
   stickers,
   title,
   onClick,
-}) => (
-  <MarqueeCardWrapper>
-    <a
-      href={href}
-      onClick={onClick}
-    >
-      <StyledBadge type={siteKey} />
-      <Image className="article-card__background-image" imageUrl={imageUrl} imageAlt="" />
-      <ContentWrapper>
-        { stickers ? (
-          <StickerGroup>
-            {stickers.map(({ text, type }) => (
-              <StyledSticker
-                key={text}
-                type={type}
-                text={text}
-              />
-            ))}
-          </StickerGroup>
-        ) : null }
-        <Title>{title}</Title>
-        <Description>{description}</Description>
-        <StyledByline
-          author={author}
-          authorImageCloudinaryId={authorImageCloudinaryId}
-          attribution={publishDate}
-        />
-      </ContentWrapper>
-    </a>
-  </MarqueeCardWrapper>
-);
+}) => {
+  const BrandBadge = hasBrandBadge(siteKey);
+  return (
+    <MarqueeCardWrapper>
+      <a
+        href={href}
+        onClick={onClick}
+      >
+        {BrandBadge && (<StyledBadge type={siteKey} />)}
+        <Image className="article-card__background-image" imageUrl={imageUrl} imageAlt="" />
+        <ContentWrapper>
+          { stickers ? (
+            <StickerGroup>
+              {stickers.map(({ text, type }) => (
+                <StyledSticker
+                  key={text}
+                  type={type}
+                  text={text}
+                />
+              ))}
+            </StickerGroup>
+          ) : null }
+          <Title>{title}</Title>
+          <Description>{description}</Description>
+          <StyledByline
+            author={author}
+            authorImageCloudinaryId={authorImageCloudinaryId}
+            attribution={publishDate}
+          />
+        </ContentWrapper>
+      </a>
+    </MarqueeCardWrapper>
+  );
+};
 
 MarqueeCard.propTypes = {
   /** Author Name */

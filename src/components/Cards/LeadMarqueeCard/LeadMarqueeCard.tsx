@@ -4,6 +4,7 @@ import breakpoint from 'styled-components-breakpoint';
 import { color, font, fontSize, lineHeight, mixins, spacing, withThemes } from '../../../styles';
 import { md, untilMd } from '../../../styles/breakpoints';
 import Badge from '../../Badge';
+import hasBrandBadge from '../../Badge/utilities/hasBrandBadge';
 import Byline from '../../Byline';
 import FavoriteRibbonWithBg from '../shared/FavoriteRibbonWithBg';
 import Image from '../shared/Image';
@@ -274,72 +275,75 @@ const LeadMarqueeCard = ({
   stickers,
   title,
   onClick = () => {},
-}: LeadMarqueeCardProps) => (
-  <LeadMarqueeCardWrapper>
-    <a
-      href={href}
-      onClick={onClick}
-    >
-      <MarqueeImageWrapper className="lead-marquee-card__image-wrapper">
-        <StyledBadge type={siteKey} />
-        {
-          displayFavoritesRibbon && favoriteObjectId && (
-            <StyledFavoriteButtonWithBg
-              className="lead-marquee-card__favorites-ribbon"
-              siteKey={siteKey}
-              objectId={favoriteObjectId}
-              title={title}
-            />
-          )
-        }
-        <Image
-          className="lead-marquee-card__image"
-          imageUrl={imageUrl}
-          imageAlt={imageAlt}
-        />
-      </MarqueeImageWrapper>
-      <ContentWrapper
-        backgroundColor={backgroundColor}
-        className="lead-marquee-card__content-wrapper"
+}: LeadMarqueeCardProps) => {
+  const BrandBadge = hasBrandBadge(siteKey);
+  return (
+    <LeadMarqueeCardWrapper>
+      <a
+        href={href}
+        onClick={onClick}
       >
-        <div
-          className="lead-marquee-card__content"
-        >
-          { stickers ? (
-            <StickerGroup>
-              {stickers.map(({ text, type }) => (
-                <StyledSticker
-                  key={text}
-                  type={type}
-                  text={text}
-                />
-              ))}
-            </StickerGroup>
-          ) : null }
-          <Title dangerouslySetInnerHTML={{ __html: title }} />
+        <MarqueeImageWrapper className="lead-marquee-card__image-wrapper">
+          {BrandBadge && (<StyledBadge type={siteKey} />)}
           {
-            displayAttributions && (
-              <StyledAttributions
-                commentsCount={commentsCount}
-                numRatings={numRatings}
-                avgRating={avgRating}
+            displayFavoritesRibbon && favoriteObjectId && (
+              <StyledFavoriteButtonWithBg
+                className="lead-marquee-card__favorites-ribbon"
+                siteKey={siteKey}
+                objectId={favoriteObjectId}
+                title={title}
               />
             )
           }
-          <Description dangerouslySetInnerHTML={{ __html: description }} />
-          {authors.length ? (
-            <BylineListLight authors={authors} attribution="" />
-          ) : author ? (
-            <Byline
-              author={`By ${author}`}
-              authorImageCloudinaryId={authorImageCloudinaryId}
-            />
-          ) : null}
+          <Image
+            className="lead-marquee-card__image"
+            imageUrl={imageUrl}
+            imageAlt={imageAlt}
+          />
+        </MarqueeImageWrapper>
+        <ContentWrapper
+          backgroundColor={backgroundColor}
+          className="lead-marquee-card__content-wrapper"
+        >
+          <div
+            className="lead-marquee-card__content"
+          >
+            { stickers ? (
+              <StickerGroup>
+                {stickers.map(({ text, type }) => (
+                  <StyledSticker
+                    key={text}
+                    type={type}
+                    text={text}
+                  />
+                ))}
+              </StickerGroup>
+            ) : null }
+            <Title dangerouslySetInnerHTML={{ __html: title }} />
+            {
+              displayAttributions && (
+                <StyledAttributions
+                  commentsCount={commentsCount}
+                  numRatings={numRatings}
+                  avgRating={avgRating}
+                />
+              )
+            }
+            <Description dangerouslySetInnerHTML={{ __html: description }} />
+            {authors.length ? (
+              <BylineListLight authors={authors} attribution="" />
+            ) : author ? (
+              <Byline
+                author={`By ${author}`}
+                authorImageCloudinaryId={authorImageCloudinaryId}
+              />
+            ) : null}
 
-        </div>
-      </ContentWrapper>
-    </a>
-  </LeadMarqueeCardWrapper>
-);
+          </div>
+        </ContentWrapper>
+      </a>
+    </LeadMarqueeCardWrapper>
+  );
+};
 
 export default LeadMarqueeCard;

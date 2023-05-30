@@ -27,11 +27,6 @@ describe('LeadMarqueeCard component should', () => {
     )
   );
 
-  it('render a badge', () => {
-    renderComponent();
-    expect(screen.getByTestId('atk-badge'));
-  });
-
   it('render a priority sticker', () => {
     renderComponent();
     expect(screen.getByText('New'));

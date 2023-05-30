@@ -6,6 +6,7 @@ import { cards, color, fontSize, spacing, withThemes, mixins } from '../../../st
 import { StandardUserAttributions } from '../shared/UserAttributions/UserAttributions';
 import Attributions from '../shared/Attributions';
 import Badge from '../../Badge';
+import hasBrandBadge from '../../Badge/utilities/hasBrandBadge';
 import CtaLink from '../shared/CtaLink';
 import FavoriteButton from '../shared/FavoriteButton';
 import Image from '../shared/Image';
@@ -204,6 +205,7 @@ function StandardCard({
   quickViewButton,
 }) {
   const ImageItem = Array.isArray(imageUrl) ? ImageCollage : Image;
+  const BrandBadge = hasBrandBadge(siteKey);
   let stickerAria = '';
   if (stickers) {
     stickers.forEach((el) => {
@@ -238,10 +240,12 @@ function StandardCard({
               }
             </a>
           ) : null }
+          {BrandBadge && (
           <StyledBadge
             className={className}
             type={siteKey}
           />
+          )}
           { stickers ? (
             <StickerGroup>
               {stickers.map(({ text, type }) => (

@@ -90,11 +90,6 @@ describe('StandardCard component', () => {
     expect(testInstance.findAllByType(Image).length).toBe(0);
   });
 
-  it('Renders with a correct site badge', () => {
-    const testInstance = componentSetup(baseRecipe);
-    expect(testInstance.findByType(StyledBadge).props.type).toBe(baseRecipe.siteKey);
-  });
-
   it('Renders with a "new" sticker', () => {
     const testInstance = componentSetup(baseRecipe);
     expect(testInstance.findByType(StyledSticker).props.type).toBe('priority');

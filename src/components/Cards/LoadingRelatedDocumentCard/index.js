@@ -4,6 +4,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 import Badge from '../../Badge';
+import hasBrandBadge from '../../Badge/utilities/hasBrandBadge';
 import Image from '../shared/Image';
 import { color, mixins, spacing, withThemes } from '../../../styles';
 import { getImageUrl } from '../../../lib/cloudinary';
@@ -89,34 +90,35 @@ const LoadingRelatedDocumentCard = ({
   hasImage,
   imageAspectRatio,
   siteKey,
-}) => (
-  <LoadingRelatedDocumentCardEl>
-    {hasImage && (
-      <RelatedDocumentImageWrapper>
-        <StyledBadge
-          type={siteKey}
-        />
-        <Image
-          aspectRatio={imageAspectRatio}
-          imageAlt="loading-related-img"
-          imageUrl={getImageUrl(
-            'ATK-S20_20190523_09-46-54_41671_ojahbg',
-            'placeholder',
-            { aspectRatio: imageAspectRatio },
-          )}
-          lazy={false}
-        />
-      </RelatedDocumentImageWrapper>
-    )}
-    <LoadingRelatedDocumentCardContent>
-      <div className="animated-background">
-        <div className="mask-1" />
-        <div className="mask-2" />
-        <div className="mask-3" />
-      </div>
-    </LoadingRelatedDocumentCardContent>
-  </LoadingRelatedDocumentCardEl>
-);
+}) => {
+  const BrandBadge = hasBrandBadge(siteKey);
+  return (
+    <LoadingRelatedDocumentCardEl>
+      {hasImage && (
+        <RelatedDocumentImageWrapper>
+          {BrandBadge && (<StyledBadge type={siteKey} />)}
+          <Image
+            aspectRatio={imageAspectRatio}
+            imageAlt="loading-related-img"
+            imageUrl={getImageUrl(
+              'ATK-S20_20190523_09-46-54_41671_ojahbg',
+              'placeholder',
+              { aspectRatio: imageAspectRatio },
+            )}
+            lazy={false}
+          />
+        </RelatedDocumentImageWrapper>
+      )}
+      <LoadingRelatedDocumentCardContent>
+        <div className="animated-background">
+          <div className="mask-1" />
+          <div className="mask-2" />
+          <div className="mask-3" />
+        </div>
+      </LoadingRelatedDocumentCardContent>
+    </LoadingRelatedDocumentCardEl>
+  );
+};
 
 LoadingRelatedDocumentCard.propTypes = {
   hasImage: PropTypes.bool,

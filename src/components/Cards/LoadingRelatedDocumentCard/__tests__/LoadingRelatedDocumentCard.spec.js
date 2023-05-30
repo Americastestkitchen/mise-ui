@@ -23,9 +23,4 @@ describe('LoadingRelatedDocumentCard component should', () => {
     renderComponent();
     expect(screen.getByAltText('loading-related-img'));
   });
-
-  it('render a badge', () => {
-    renderComponent();
-    expect(screen.getByTestId('atk-badge'));
-  });
 });

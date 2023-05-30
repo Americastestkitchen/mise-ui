@@ -4,6 +4,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 import Badge from '../../../Badge';
+import hasBrandBadge from '../../../Badge/utilities/hasBrandBadge';
 import { getImageUrl } from '../../../../lib/cloudinary';
 import {
   color,
@@ -175,57 +176,58 @@ const SingleProductShowcaseAd = ({
   siteKey,
   subtitle,
   title,
-}) => (
-  <Product>
-    <ProductPicture>
-      <source
-        media="(min-width: 1024px)"
-        srcSet={getImageUrl(
-          cloudinaryId,
-          'showcaseFreeTrialDesktop',
-        )}
-      />
-      <source
-        media="(min-width: 768px)"
-        srcSet={getImageUrl(
-          cloudinaryId,
-          'showcaseFreeTrialTablet',
-        )}
-      />
-      <img
-        alt={alt}
-        crossOrigin="anonymous"
-        decoding="async"
-        data-testid="product-img"
-        src={getImageUrl(
-          cloudinaryId,
-          'showcaseFreeTrialMobile',
-        )}
-      />
-    </ProductPicture>
-    <ProductInfo>
-      <ProductInfoInner>
-        <ProductTitle>
-          {title}
-        </ProductTitle>
-        <ProductSubtitle>
-          {subtitle}
-        </ProductSubtitle>
-        <ProductCta
-          href={ctaHref}
-          onClick={onClick}
-          target={ctaTarget}
-          title={cta}
-        >
-          {cta}
-        </ProductCta>
-      </ProductInfoInner>
-    </ProductInfo>
-    <Badge
-      type={siteKey}
-    />
-  </Product>
-);
+}) => {
+  const BrandBadge = hasBrandBadge(siteKey);
+  return (
+    <Product>
+      <ProductPicture>
+        <source
+          media="(min-width: 1024px)"
+          srcSet={getImageUrl(
+            cloudinaryId,
+            'showcaseFreeTrialDesktop',
+          )}
+        />
+        <source
+          media="(min-width: 768px)"
+          srcSet={getImageUrl(
+            cloudinaryId,
+            'showcaseFreeTrialTablet',
+          )}
+        />
+        <img
+          alt={alt}
+          crossOrigin="anonymous"
+          decoding="async"
+          data-testid="product-img"
+          src={getImageUrl(
+            cloudinaryId,
+            'showcaseFreeTrialMobile',
+          )}
+        />
+      </ProductPicture>
+      <ProductInfo>
+        <ProductInfoInner>
+          <ProductTitle>
+            {title}
+          </ProductTitle>
+          <ProductSubtitle>
+            {subtitle}
+          </ProductSubtitle>
+          <ProductCta
+            href={ctaHref}
+            onClick={onClick}
+            target={ctaTarget}
+            title={cta}
+          >
+            {cta}
+          </ProductCta>
+        </ProductInfoInner>
+      </ProductInfo>
+      {BrandBadge && (<Badge type={siteKey} />)}
+    </Product>
+  );
+};
 
 SingleProductShowcaseAd.propTypes = {
   alt: PropTypes.string,

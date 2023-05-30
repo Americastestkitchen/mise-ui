@@ -38,11 +38,6 @@ describe('FeatureCard component should', () => {
     expect(screen.getByText('Tacos Two Ways'));
   });
 
-  it('render a badge', () => {
-    renderComponent();
-    expect(screen.getByTestId('cco-badge'));
-  });
-
   it('render a favorites button', () => {
     renderComponent();
     expect(screen.getByTestId('favorite-button'));

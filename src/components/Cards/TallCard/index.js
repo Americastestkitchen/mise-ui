@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import { color, font, fontSize, grid, lineHeight, spacing } from '../../../styles';
 import Badge from '../../Badge';
+import hasBrandBadge from '../../Badge/utilities/hasBrandBadge';
 import Image from '../shared/Image';
 import { keyToLogo } from '../../DesignTokens/Logo';
 import Sticker from '../shared/Sticker';
@@ -128,7 +129,7 @@ const TallCard = ({
   target,
 }) => {
   const Logo = keyToLogo(logoKey);
-
+  const BrandBadge = hasBrandBadge(siteKey);
   return (
     <StyledTallCard
       className={imageUrl ? '' : 'no-image'}
@@ -151,10 +152,12 @@ const TallCard = ({
           imageAlt={imageAlt}
           imageUrl={imageUrl}
         />
-        <StyledBadge
-          className={className}
-          type={siteKey}
-        />
+        {BrandBadge && (
+          <StyledBadge
+            className={className}
+            type={siteKey}
+          />
+        )}
         <div className="tall-card__subcomponents-wrapper">
           { stickers && (
             <StickersWrapper>
