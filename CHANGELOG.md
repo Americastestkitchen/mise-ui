@@ -1,3 +1,18 @@
+# v1.33.50 (Thu Jun 01 2023)
+
+#### 🐛 Bug Fix
+
+- Load proxima nova fonts through adobe [#990](https://github.com/Americastestkitchen/mise-ui/pull/990) (jess.bon@americastestkitchen.com [@jbonAA](https://github.com/jbonAA))
+- web-2539 Art19 Token [#991](https://github.com/Americastestkitchen/mise-ui/pull/991) ([@tdorin](https://github.com/tdorin))
+
+#### Authors: 3
+
+- [@tdorin](https://github.com/tdorin)
+- Jess Bon (jess.bon@americastestkitchen.com)
+- Jess David Bon ([@jbonAA](https://github.com/jbonAA))
+
+---
+
 # v1.33.49 (Tue May 16 2023)
 
 #### 🐛 Bug Fix
