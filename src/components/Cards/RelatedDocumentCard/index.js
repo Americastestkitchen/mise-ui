@@ -4,6 +4,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 import Badge from '../../Badge';
+import hasBrandBadge from '../../Badge/utilities/hasBrandBadge';
 import Image from '../shared/Image';
 import Sticker from '../shared/Sticker';
 import {
@@ -173,6 +174,7 @@ const RelatedDocumentCard = ({
   target,
   title,
 }) => {
+  const BrandBadge = hasBrandBadge(siteKey);
   let stickerContent = null;
   if (stickers && stickers.length > 0) {
     stickerContent = (
@@ -198,9 +200,11 @@ const RelatedDocumentCard = ({
     >
       {imageUrl && (
         <RelatedDocumentImageWrapper>
+          {BrandBadge && (
           <StyledBadge
             type={siteKey}
           />
+          )}
           <Image
             imageAlt=""
             aspectRatio={imageAspectRatio}

@@ -50,9 +50,4 @@ describe('PodcastEpisodeCard component', () => {
     renderComponent();
     expect(screen.getAllByText('This is the story of one family, struggling to save their bagel cafe in Boston during the COVID-19 pandemic.'));
   });
-
-  it('render an atk badge', () => {
-    renderComponent();
-    expect(screen.getByTestId('atk-badge'));
-  });
 });

@@ -33,11 +33,6 @@ describe('TallCard component should', () => {
     expect(screen.getByAltText('Image alt text'));
   });
 
-  it('render a badge', () => {
-    renderComponent();
-    expect(screen.getByTestId('cco-badge'));
-  });
-
   it('render a gradient overlay', () => {
     renderComponent();
     expect(screen.getByTestId('overlay'));

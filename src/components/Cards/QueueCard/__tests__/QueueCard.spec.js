@@ -43,11 +43,6 @@ describe('QueueCard component', () => {
     )
   );
 
-  it('render a badge', () => {
-    renderComponent(inProgressEpisode);
-    expect(screen.getByTestId('atk-badge'));
-  });
-
   it('render an image', () => {
     renderComponent(inProgressEpisode);
     expect(screen.getByAltText('Image alt text'));

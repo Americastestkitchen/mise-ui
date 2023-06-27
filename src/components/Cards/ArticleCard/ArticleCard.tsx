@@ -4,6 +4,7 @@ import { lg, md, untilMd, xxlg } from '../../../styles/breakpoints';
 import { color, font, mixins } from '../../../styles';
 import { cssThemedColor, withThemes, cssThemedTextLinkBold } from '../../../styles/mixins';
 import Badge from '../../Badge';
+import hasBrandBadge from '../../Badge/utilities/hasBrandBadge';
 import cloudinaryInstance, { baseImageConfig } from '../../../lib/cloudinary';
 import Sticker from '../shared/Sticker';
 import { Author, BylineListArticleCard } from '../../BylineList';
@@ -177,7 +178,7 @@ export default function ArticleCard({
 }: ArticleCardProps) {
   const src = cloudinaryInstance.url(cloudinaryId, { ...baseImageConfig, height: 190 });
   const srcLg = cloudinaryInstance.url(cloudinaryId, { ...baseImageConfig, height: 272 });
-
+  const BrandBadge = hasBrandBadge(documentSiteKey);
   return (
     <SplitCard
       linkProps={linkProps}
@@ -189,9 +190,11 @@ export default function ArticleCard({
       )}
       overlay={(
         <>
+          {BrandBadge && (
           <BadgePlacement>
             <Badge type={documentSiteKey} fill={color.transparentBlack} />
           </BadgePlacement>
+          )}
           {!!favoritesObjectId && (
             <FavoritesPlacement>
               <FavoriteRibbonWithBg
