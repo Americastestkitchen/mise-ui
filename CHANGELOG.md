@@ -1,3 +1,17 @@
+# v1.33.51 (Tue Jun 27 2023)
+
+#### 🐛 Bug Fix
+
+- Feature/recipe consolidation [#992](https://github.com/Americastestkitchen/mise-ui/pull/992) ([@tdorin](https://github.com/tdorin))
+- removing Travis yml from Mise-ui [#993](https://github.com/Americastestkitchen/mise-ui/pull/993) ([@tdorin](https://github.com/tdorin))
+- web-2464 Removing the Brand badge from all cards. [#989](https://github.com/Americastestkitchen/mise-ui/pull/989) ([@tdorin](https://github.com/tdorin))
+
+#### Authors: 1
+
+- [@tdorin](https://github.com/tdorin)
+
+---
+
 # v1.33.50 (Thu Jun 01 2023)
 
 #### 🐛 Bug Fix
