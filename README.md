@@ -96,6 +96,13 @@ Labels are located in the right hand column of the PR.
 
 Next, merge your PR, and navigate to your package on npm and hang tight for a few minutes while the package is updated.
 
+#### IMPORTANT
+Travis has been removed from Github which ran the build to provide the version number to add to associated Repos, such as `espresso`. This version will need to be generated manually. In the code editor, enter:
+```
+yarn build && yarn tsc && npx auto shipit
+```
+Wait for the build to complete, and the version number will be available to copy into your `package.json`.
+
 ## Previewing in `jarvis`, or other ATK repos with yalc
 
 When developing and authoring multiple packages (private or public), you often find yourself in need of using the latest/WIP versions in other projects that you are working on in your local environment without publishing those packages to the remote registry.

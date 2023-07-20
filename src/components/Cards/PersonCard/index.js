@@ -85,7 +85,6 @@ const PersonCard = ({ description, imgAlt, imgCloudinaryId, mode, name }) => (
   <PersonCardWrapper
     aria-label={imgAlt}
     className="person-card"
-    data-qa="person-card"
     data-testid="person-card"
     mode={mode}
     tabIndex={0}

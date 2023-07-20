@@ -214,8 +214,8 @@ function StandardCard({
   }
   return (
     <StyledStandardCard
+      data-testid="standard-card"
       className={`standard-card${imageUrl ? '' : ' no-image'}`}
-      data-qa="standard-card"
       {...dataAttrs}
     >
       <>
