@@ -199,7 +199,6 @@ function FeatureCard({
     <StyledFeatureCard
       className={ctaUrl ? 'has-cta feature-card' : 'feature-card'}
       contentType={contentType}
-      data-qa="feature-card"
       data-testid="feature-card"
       {...dataAttrs}
       isWide={isWide}
