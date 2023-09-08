@@ -1,3 +1,16 @@
+# v1.33.52 (Fri Sep 08 2023)
+
+#### 🐛 Bug Fix
+
+- adding note for merge [#996](https://github.com/Americastestkitchen/mise-ui/pull/996) ([@tdorin](https://github.com/tdorin))
+- web-2826 updating or removing any instance of data-qa [#994](https://github.com/Americastestkitchen/mise-ui/pull/994) ([@tdorin](https://github.com/tdorin))
+
+#### Authors: 1
+
+- [@tdorin](https://github.com/tdorin)
+
+---
+
 # v1.33.51 (Tue Jun 27 2023)
 
 #### 🐛 Bug Fix
