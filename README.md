@@ -97,7 +97,7 @@ Labels are located in the right hand column of the PR.
 Next, merge your PR, and navigate to your package on npm and hang tight for a few minutes while the package is updated.
 
 #### IMPORTANT
-Travis has been removed from Github which ran the build to provide the version number to add to associated Repos, such as `espresso`. This version will need to be generated manually. In the code editor, enter:
+Travis has been removed from Github which ran the build to provide the version number to add to associated Repos, such as `espresso`. This version will need to be generated manually. Before merging to master add 2 labels (patch and release). In the code editor, enter:
 ```
 yarn build && yarn tsc && npx auto shipit
 ```
