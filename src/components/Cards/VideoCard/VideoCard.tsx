@@ -106,7 +106,7 @@ const VideoCard = ({
   titleLinkProps,
   cardSlot,
 }: VideoCardProps) => (
-  <CardWrapper data-testid="video-card">
+  <CardWrapper data-qa="video-card">
     <PlayerWrapper>
       {children}
     </PlayerWrapper>

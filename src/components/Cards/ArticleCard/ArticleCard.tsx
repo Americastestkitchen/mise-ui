@@ -133,7 +133,7 @@ function SplitCard({
   const [imageError, setImageError] = useState(false);
 
   return (
-    <Card data-testid="article-card" {...linkProps}>
+    <Card data-qa="article-card" {...linkProps}>
       <CardBody>
         {children}
       </CardBody>
