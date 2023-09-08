@@ -1,6 +1,6 @@
 {
   "name": "@atk/mise-ui",
-  "version": "1.33.51",
+  "version": "1.33.52",
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.14.5",
     "@juggle/resize-observer": "^3.3.1",
