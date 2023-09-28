@@ -279,9 +279,13 @@ const ReviewableSummaryCard = React.memo(({
 }) => {
   const isDiscontinued = price?.toLowerCase()?.includes('discontinued') ?? false;
   const priceMarkup = price?.replace(parensRe, '<span>$1</span>') ?? null;
+  let affiliateTag;
   let buyNowIcon = asin ? 'Amazon' : null;
   if (buyNowOverrideAffiliateActive) {
     buyNowIcon = buyNowOverrideAffiliateName || null;
+  }
+  if (asin && buyNowLink) {
+    affiliateTag = buyNowLink.split('?')[1];
   }
   if (buyNowLink && buyNowLink.includes('amazon')) {
     buyNowIcon = 'Amazon';
@@ -333,6 +337,9 @@ const ReviewableSummaryCard = React.memo(({
                 'data-price': price || '',
                 'data-recommendation-status': recommendationStatus,
                 'data-reviewable': name,
+                'data-retailer': asin ? 'Amazon' : '',
+                'data-affiliate-tag': affiliateTag,
+                'data-affiliate-url': buyNowLink,
                 'aria-label': `Buy ${name} now`,
               }}
               text={displayPrice && price ? `Buy for ${price}` : 'Buy Now'}
