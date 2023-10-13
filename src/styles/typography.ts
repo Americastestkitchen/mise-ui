@@ -12,7 +12,7 @@ const fontSize = {
 const font = {
   clb: 'Clarendon Bold,serif',
   mwr: 'Merriweather, serif',
-  pnb: 'proximaNovaBold, sans-serif',
+  pnb: 'proxima-nova, sans-serif',
   pnr: 'proximaNovaRegular, sans-serif',
   cwf: 'chippewa-falls, sans-serif',
   gdn: 'gooddog-new, sans-serif',
