@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import { color, font, fontSize, lineHeight, withThemes } from '../../../../styles';
+import { color, fontSize, lineHeight, withThemes } from '../../../../styles';
 
 const TitleTheme = {
   default: css`
-    font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb};
+    font: ${fontSize.xl}/${lineHeight.sm} proxima-nova, sans-serif;
+    font-weight: 700;
     transition: color 0.2s ease;
 
     @media(hover: hover) {
