@@ -8,27 +8,5 @@
         background-color: $cBLinkHover;
       }
     }
-
-    // TODO(Brand Theme): remove after brand consolidation
-    :global(.cco-theme) & {
-      background-image: linear-gradient(transparent 91%,  $ccoCBLink 91%);
-
-      @media(hover: hover) {
-        &:hover {
-          background-color: $ccoCBLinkHover;
-        }
-      }
-    }
-
-    // TODO(Brand Theme): remove after brand consolidation
-    :global(.cio-theme) & {
-      background-image: linear-gradient(transparent 91%,  $cioCBLink 91%);
-
-      @media(hover: hover) {
-        &:hover {
-          background-color: $cioCBLinkHover;
-        }
-      }
-    }
   }
 }
