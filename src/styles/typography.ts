@@ -13,7 +13,7 @@ const font = {
   clb: 'Clarendon Bold,serif',
   mwr: 'Merriweather, serif',
   pnb: 'proxima-nova, sans-serif',
-  pnr: 'proximaNovaRegular, sans-serif',
+  pnr: 'proxima-nova, sans-serif',
   cwf: 'chippewa-falls, sans-serif',
   gdn: 'gooddog-new, sans-serif',
   msr: 'Montserrat, sans-serif',

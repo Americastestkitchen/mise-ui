@@ -73,10 +73,10 @@ const AdSuccess = styled.div`
     ${md(css`
       margin-right: ${spacing.xsm};
       width: 2.1rem;
-    `)}  
+    `)}
   }
   span {
-    font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb};
+    font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb} 700;
   }
   .success-svg-wrapper{
     max-width: 10%;
@@ -84,7 +84,7 @@ const AdSuccess = styled.div`
 `;
 
 const AdTitle = styled.h2`
-  font: ${fontSize.xl}/2.6rem ${font.pnb};
+  font: ${fontSize.xl}/2.6rem ${font.pnb} 700;
   letter-spacing: normal;
   margin-bottom: 1rem;
   ${cssThemedColor}

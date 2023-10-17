@@ -15,7 +15,7 @@ import {
 
 const StatsWrapperTheme = {
   default: css`
-    font: ${fontSize.md}/${lineHeight.sm} ${font.pnb};
+    font: ${fontSize.md}/${lineHeight.sm} ${font.pnb} 700;
     margin-bottom: ${spacing.xsm};
 
     ${breakpoint('md')`

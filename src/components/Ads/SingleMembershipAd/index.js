@@ -123,7 +123,7 @@ const SingleMembershipContent = styled.div`
 const SingleMembershipTitleTheme = {
   default: css`
     color: ${color.white};
-    font: 2rem/${lineHeight.sm} ${font.pnb};
+    font: 2rem/${lineHeight.sm} ${font.pnb} 700;
     margin-bottom: ${spacing.xsm};
 
     ${breakpoint('md', 'lg')`
@@ -132,7 +132,7 @@ const SingleMembershipTitleTheme = {
     `}
 
     ${breakpoint('lg')`
-      font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb};
+      font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb} 700;
     `}
   `,
   light: css`
@@ -149,7 +149,7 @@ const SingleMembershipCtaTheme = {
     background-color: ${color.frog};
     color: ${color.white};
     display: block;
-    font: ${fontSize.lg}/4rem ${font.pnb};
+    font: ${fontSize.lg}/4rem ${font.pnb} 700;
     height: 4rem;
     letter-spacing: ${letterSpacing.cta};
     margin-bottom: ${spacing.sm};

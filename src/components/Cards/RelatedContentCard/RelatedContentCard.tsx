@@ -17,6 +17,7 @@ const mapPropsToThemeContext = (
 
 const cssHeadlineFont = css`
   font-family: ${font.pnb};
+  font-weight: 700;
   font-size: 12px;
   line-height: 1.17;
   letter-spacing: 1.92px;
@@ -26,6 +27,7 @@ const cssHeadlineFont = css`
 
 const cssTitleFont = css`
   font-family: ${font.pnb};
+  font-weight: 700;
   font-size: 18px;
   line-height: 1.17;
   ${cssThemedColor}
@@ -43,6 +45,7 @@ const cssBodyFont = css`
 
   strong {
     font-family: ${font.pnb};
+    font-weight: 700;
   }
 
   a {
@@ -52,6 +55,7 @@ const cssBodyFont = css`
 
 const cssLinkTextFont = css`
   font-family: ${font.pnb};
+  font-weight: 700;
   font-size: 16px;
   line-height: 1.13;
   ${cssThemedColor}

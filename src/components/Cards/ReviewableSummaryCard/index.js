@@ -27,7 +27,7 @@ const ReviewableSummaryItemTheme = {
 
     h3 {
       cursor: pointer;
-      font: ${fontSize.lg}/${lineHeight.md} ${font.pnb};
+      font: ${fontSize.lg}/${lineHeight.md} ${font.pnb} 700;
     }
 
     .reviewable-img {
@@ -116,7 +116,7 @@ const TitleImageWrapper = styled.div.attrs({
   width: 100%;
 
   h3 {
-    font: ${fontSize.xl} / ${lineHeight.sm} ${font.pnb};
+    font: ${fontSize.xl} / ${lineHeight.sm} ${font.pnb} 700;
     margin-bottom: 1.4rem;
   }
 
@@ -205,6 +205,7 @@ const ItemPrice = styled.div`
 
   [data-discontinued="true"] & {
     font-family: ${font.pnb};
+    font-weight: 700;
   }
 
   ${breakpoint('xs', 'md')`

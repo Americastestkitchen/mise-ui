@@ -8,7 +8,7 @@ import { Print } from '../../../DesignTokens/Icon/svgs';
 const StyledActionButton = styled(Button)`
   align-items: center;
   display: inline-flex;
-  font: ${fontSize.sm}/${fontSize.sm} ${font.pnb};
+  font: ${fontSize.sm}/${fontSize.sm} ${font.pnb} 700;
   height: 3.5rem;
   justify-content: center;
   letter-spacing: ${letterSpacing.md};

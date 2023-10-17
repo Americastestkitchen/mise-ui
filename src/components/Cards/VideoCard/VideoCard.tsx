@@ -12,6 +12,7 @@ import { InferStyledTypes } from '../../../styles/utility-types';
 const cssThemedHeadlineFont = withThemes({
   default: css`
     font-family: ${font.pnb};
+    font-weight: 700;
   `,
   cco: css`
     font-family: ${font.clb};
@@ -65,7 +66,7 @@ const EpisodeDetails = styled.div`
 `;
 
 const Headline = styled.span`
-  font: ${fontSize.sm}/1.6rem ${font.pnb};
+  font: ${fontSize.sm}/1.6rem ${font.pnb} 700;
   letter-spacing: 2.24px;
   margin-bottom: 1.2rem;
   margin-top: 0.2rem;
@@ -80,7 +81,7 @@ const TitleLink = styled.a`
   margin-bottom: 1rem;
   // a tag is flexed and underline needs wrapping
   //  inline element; otherwise underline appears
-  //  under content box instead of text baseline. 
+  //  under content box instead of text baseline.
   //  setting inline not sufficient.
   span {
     ${cssThemedHeadlineFont}

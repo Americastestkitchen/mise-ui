@@ -60,6 +60,7 @@ const Headline = styled.span`
   ${mixins.truncateLineClamp(3)}
   font-size: 16px;
   font-family: ${font.pnb};
+  font-weight: 700;
   line-height: 23px;
 `;
 

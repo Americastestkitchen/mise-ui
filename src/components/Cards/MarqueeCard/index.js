@@ -62,7 +62,7 @@ export const StyledSticker = styled(Sticker)`
 
 const Title = styled.h2`
   color: ${color.eclipse};
-  font: 2rem/${lineHeight.sm} ${font.pnb};
+  font: 2rem/${lineHeight.sm} ${font.pnb} 700;
   margin-bottom: ${spacing.xsm};
 
   ${breakpoint('lg')`
@@ -84,7 +84,7 @@ const Description = styled.p`
 const StyledByline = styled(Byline)`
   align-items: center;
   flex-direction: row;
-  
+
   &.no-image {
     margin-top: ${spacing.md};
   }

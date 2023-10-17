@@ -72,27 +72,27 @@ const SidebarTextContent = styled.div`
 `;
 
 const HeadlineType = styled.p`
-  font: 1.2rem/1.4rem ${font.pnb};
+  font: 1.2rem/1.4rem ${font.pnb} 700;
   letter-spacing: ${letterSpacing.lg};
   margin-bottom: 1.1rem;
   text-transform: uppercase;
   ${cssThemedFontAccentColorAlt}
 
   ${md(css`
-    font: 1.3rem/1.5rem ${font.pnb};
+    font: 1.3rem/1.5rem ${font.pnb} 700;
     letter-spacing: 2.08px;
     margin-bottom: 1.3rem;
   `)}
 
   ${xlg(css`
-    font: 1.2rem/1.4rem ${font.pnb};
+    font: 1.2rem/1.4rem ${font.pnb} 700;
     letter-spacing: ${letterSpacing.lg};
     margin-bottom: 1.1rem;
   `)}
 `;
 
 const SidebarTitle = styled.h3`
-  font: ${fontSize.lg}/2.1rem ${font.pnb};
+  font: ${fontSize.lg}/2.1rem ${font.pnb} 700;
   letter-spacing: normal;
   min-width: 16.8rem;
   ${cssThemedColor}

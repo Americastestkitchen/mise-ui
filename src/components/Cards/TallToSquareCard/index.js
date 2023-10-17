@@ -76,7 +76,7 @@ const TallToSquareCardTitle = styled.h2.attrs({
   className: `${baseClassName}__title`,
 })`
   color: ${color.white};
-  font: 2.4rem/1 ${font.pnb};
+  font: 2.4rem/1 ${font.pnb} 700;
   text-align: center;
   ${({ textShadowColor }) => (textShadowColor ? `text-shadow: -1px 1px 0 ${textShadowColor};` : '')}
 
@@ -90,7 +90,7 @@ const TallToSquareCardDescription = styled.p.attrs({
   className: `${baseClassName}__description`,
 })`
   color: ${color.white};
-  font: ${fontSize.md}/1.31 ${font.pnb};
+  font: ${fontSize.md}/1.31 ${font.pnb} 700;
   text-align: center;
 
   span {

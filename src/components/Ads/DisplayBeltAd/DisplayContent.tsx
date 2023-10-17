@@ -54,7 +54,7 @@ const Cta = styled.a`
     align-items: center;
     color: ${color.white};
     display: flex;
-    font: ${fontSize.lg}/2rem ${font.pnb};
+    font: ${fontSize.lg}/2rem ${font.pnb} 700;
     height: 4rem;
     justify-content: center;
     letter-spacing: ${letterSpacing.cta};
@@ -91,7 +91,7 @@ const Headline = styled.p`
 `;
 
 const SaleCopy = styled.h2`
-  font: 2.8rem/2.2rem ${font.pnb};
+  font: 2.8rem/2.2rem ${font.pnb} 700;
 
   ${breakpoint('md')`
     font-size: 3.2rem;
@@ -122,11 +122,11 @@ const ImageBgWrapper = styled.div`
       position: relative;
       width: 100%;
       padding-bottom: 20px;
-    
+
       ${breakpoint('md')`
         height: 15rem;
       `}
-  
+
       ${cssBackgroundColor}
   `;
 

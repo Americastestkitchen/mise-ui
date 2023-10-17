@@ -52,7 +52,7 @@ const RefinementFilterLabelTheme = {
   default: css`
     color: ${color.eclipse};
     font: ${fontSize.md}/1.38 ${font.pnr};
-    ${({ isRefined }) => (isRefined ? `font: ${fontSize.md}/1.38 ${font.pnb};` : '')}
+    ${({ isRefined }) => (isRefined ? `font: ${fontSize.md}/1.38 ${font.pnb} 700;` : '')}
   `,
   atk: css`
     &:hover {

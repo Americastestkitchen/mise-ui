@@ -15,7 +15,7 @@ const StyledButtonTheme = {
   default: css`
     background-color: ${color.eclipse};
     color: ${color.white};
-    font: ${fontSize.lg}/${lineHeight.md} ${font.pnb};
+    font: ${fontSize.lg}/${lineHeight.md} ${font.pnb} 700;
     height: 4rem;
     letter-spacing: ${letterSpacing.xxlg};
     line-height: 4rem;

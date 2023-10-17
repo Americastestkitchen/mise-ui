@@ -19,7 +19,7 @@ const RegistrantSubmit = styled.button.attrs({
     align-items: center;
     border: none;
     display: flex;
-    font: 1.8rem/20px ${font.pnb};
+    font: 1.8rem/20px ${font.pnb} 700;
     height: 4rem;
     justify-content: center;
     letter-spacing: 2.88px;

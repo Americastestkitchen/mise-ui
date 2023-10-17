@@ -42,7 +42,7 @@ const LandingEmailTheme = {
     `}
 
     ${breakpoint('xlg')`
-      height: 33rem; 
+      height: 33rem;
       width: 113.6rem;
 
       .landing-ad-image-tablet {
@@ -90,7 +90,7 @@ const LandingEmailWrapper = styled.div.attrs({
 })`${withThemes(LandingEmailTheme)}`;
 
 const ImageWrapper = styled.div`
-  background-size: cover;    
+  background-size: cover;
   margin-bottom: 1rem;
   width: 100%;
 
@@ -118,7 +118,7 @@ const FormColumnWrapper = styled.div`
 
   ${breakpoint('md')`
     width: 50%;
-  `} 
+  `}
 `;
 
 const FormBodyContent = styled.div`
@@ -187,13 +187,13 @@ const ContentHeadline = styled.span.attrs({
 const ContentTitleTheme = {
   default: css`
     color: ${color.eclipse};
-    font: 2.6rem ${font.pnb};
+    font: 2.6rem ${font.pnb} 700;
     line-height: 3rem;
     width: 30rem;
 
     ${breakpoint('sm')`
       width: 31rem;
-    `}  
+    `}
 
     ${breakpoint('xlg')`
       width: 34.4rem;
@@ -208,7 +208,7 @@ const ContentTitleTheme = {
 const NewsletterSuccessTheme = {
   default: css`
     color: ${color.eclipse};
-    font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb};
+    font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb} 700;
     margin: 0 0 ${spacing.sm} 0;
     svg {
       display: inline-block;

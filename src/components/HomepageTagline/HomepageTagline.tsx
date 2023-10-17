@@ -14,14 +14,14 @@ const TaglineTheme = {
   default: css``,
   atk: css`
     color: ${color.eclipse};
-    font: ${fontSize.md}/2rem ${font.pnb};
+    font: ${fontSize.md}/2rem ${font.pnb} 700;
     ${untilMd(css`
       max-width: 27rem;
     `)}
   `,
   cco: css`
     color: ${color.black};
-    font: ${fontSize.md}/1.8rem ${font.pnb};
+    font: ${fontSize.md}/1.8rem ${font.pnb} 700;
   `,
   cio: css`
     color: ${color.cork};

@@ -37,7 +37,7 @@ const PersonCardWrapper = styled.div`
 
 const PersonCardNameTheme = {
   default: css`
-    font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb};
+    font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb} 700;
     margin-bottom: ${spacing.xsm};
   `,
   atk: css`

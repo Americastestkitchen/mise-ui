@@ -90,7 +90,7 @@ const SearchSortByNew = styled.span`
   border-radius: 0.6rem;
   background-color: ${color.tomato};
   color: ${color.white};
-  font: ${fontSize.xsm} / 1.8rem ${font.pnb};
+  font: ${fontSize.xsm} / 1.8rem ${font.pnb} 700;
   letter-spacing: 1.6px;
   text-transform: uppercase;
 `;
@@ -213,6 +213,7 @@ const SearchSortByLabelTheme = {
       background-color: ${color.jade};
       color: ${color.white};
       font-family: ${font.pnb};
+      font-weight: 700;
 
       &:hover {
         color: ${color.white};

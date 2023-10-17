@@ -75,7 +75,7 @@ const BenefitTheme = {
 
     p {
       color: ${color.white};
-      font: 1.2rem/1.17 ${font.pnb};
+      font: 1.2rem/1.17 ${font.pnb} 700;
       line-height: 1.2;
       margin-top: 1rem;
       text-align: center;

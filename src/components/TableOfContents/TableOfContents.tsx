@@ -15,6 +15,7 @@ const JumpLink = styled.a`
   font-size: 23px;
   line-height: 36px;
   font-family: ${font.pnb};
+  font-weight: 700;
   ${cssThemedColor}
   ${cssThemedLink}
 `;

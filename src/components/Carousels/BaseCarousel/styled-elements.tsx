@@ -56,7 +56,7 @@ export const Button = styled.button`
   position: relative;
 
   ${cssThemedBackgroundAccentColorAlt}
-  
+
   &:focus, &:active {
     ${mixins.focusIndicator()};
   }
@@ -117,7 +117,7 @@ export const Title = styled.h2`
   a {
     ${cssThemedLink}
     &:focus, &:active {
-        ${mixins.focusIndicator()}     
+        ${mixins.focusIndicator()}
       }
   }
 `;
@@ -136,6 +136,7 @@ export const Intro = styled.div`
 export const Topic = styled.div`
   ${cssThemedColor}
   font-family: ${font.pnb};
+  font-weight: 700;
   font-size: 16px;
   line-height: 1.1666;
   margin: 0 0 18px;

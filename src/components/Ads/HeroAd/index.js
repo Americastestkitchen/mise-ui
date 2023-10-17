@@ -89,7 +89,7 @@ const HeroAdContent = styled.div.attrs({
  */
 const HeroAdTitleTheme = {
   default: css`
-    font: 2.6rem/${lineHeight.sm} ${font.pnb};
+    font: 2.6rem/${lineHeight.sm} ${font.pnb} 700;
     margin-bottom: ${spacing.sm};
 
     ${breakpoint('md')`
@@ -111,7 +111,7 @@ const HeroAdTitle = styled.h3.attrs({
  */
 const HeroAdSubtitleTheme = {
   default: css`
-    font: ${fontSize.md}/${lineHeight.sm} ${font.pnb};
+    font: ${fontSize.md}/${lineHeight.sm} ${font.pnb} 700;
     margin-bottom: ${spacing.xsm};
     text-align: center;
 
@@ -168,7 +168,7 @@ const HeroAdCtaTheme = {
     color: ${color.white};
     background-color: ${({ backgroundColor }) => `${color[backgroundColor || 'eclipse']}`};
     display: block;
-    font: ${fontSize.md}/4rem ${font.pnb};
+    font: ${fontSize.md}/4rem ${font.pnb} 700;
     letter-spacing: ${letterSpacing.cta};
     height: 4rem;
     text-align: center;

@@ -30,7 +30,7 @@ const AuthorTheme = {
 
     span {
       color: ${color.eclipse};
-      font: ${fontSize.md}/${lineHeight.sm} ${font.pnb};
+      font: ${fontSize.md}/${lineHeight.sm} ${font.pnb} 700;
     }
 
     .person-head-shot {
@@ -69,7 +69,7 @@ const AttributionTheme = {
       font: ${fontSize.md}/${lineHeight.sm} ${font.pnr};
 
       &:first-child {
-        margin: ${props => (props.author && props.attribution ? `0 ${spacing.xsm}` : '0')};   
+        margin: ${props => (props.author && props.attribution ? `0 ${spacing.xsm}` : '0')};
       }
     }
 

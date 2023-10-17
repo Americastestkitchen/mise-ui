@@ -8,6 +8,7 @@ const DescriptionWrapper = styled.div`
 
 const Description = styled.span`
   font-family: ${font.pnb};
+  font-weight: 700;
   font-size: 16px;
   line-height: 1.5;
   color: ${color.doveGray};

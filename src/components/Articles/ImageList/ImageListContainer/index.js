@@ -30,7 +30,7 @@ const ImageListWrapper = styled.div`
 
 const ImageListTitle = styled.h3`
   ${cssThemedColor}
-  font: ${fontSize.xl}/2.6rem ${font.pnb};
+  font: ${fontSize.xl}/2.6rem ${font.pnb} 700;
   letter-spacing: normal;
   margin-bottom: 0.4rem;
 

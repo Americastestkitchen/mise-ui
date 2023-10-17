@@ -43,7 +43,7 @@ const HeroHatBody = styled.div.attrs({
     align-items: center;
     background-color: ${color.frog} !important;
     display: flex;
-    font: ${fontSize.lg}/2rem ${font.pnb};
+    font: ${fontSize.lg}/2rem ${font.pnb} 700;
     justify-content: center;
     letter-spacing: ${letterSpacing.cta};
 
@@ -237,11 +237,11 @@ const HeroHatBody = styled.div.attrs({
         margin-top: 0.3rem;
         width: 14rem;
       }
-    
+
       button {
         line-height: 2rem;
       }
-    
+
       input {
         border: 1px solid #707070;
         line-height: 2rem;

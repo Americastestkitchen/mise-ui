@@ -82,7 +82,7 @@ const HeroCardSticker = styled.div`
 
 const HeroCardTitle = styled.div`
   color: ${color.white};
-  font: ${fontSize.xxxl}/${lineHeight.sm} ${font.pnb};
+  font: ${fontSize.xxxl}/${lineHeight.sm} ${font.pnb} 700;
   margin-bottom: ${spacing.xxsm};
 `;
 
@@ -91,15 +91,15 @@ const HeroCardDescription = styled.div`
   margin-bottom: ${spacing.xsm};
 
   ${({ cardType }) => (cardType === 'learn' ? `
-    font: ${fontSize.lg}/${lineHeight.md} ${font.pnb};
+    font: ${fontSize.lg}/${lineHeight.md} ${font.pnb} 700;
     max-width: 24.6rem;
   ` : `
-    font: ${fontSize.sm}/${lineHeight.md} ${font.pnb};
+    font: ${fontSize.sm}/${lineHeight.md} ${font.pnb} 700;
     max-width: 32.6rem;
   `)}
 
   ${breakpoint('md')`
-    font: ${fontSize.lg}/${lineHeight.md} ${font.pnb};
+    font: ${fontSize.lg}/${lineHeight.md} ${font.pnb} 700;
     max-width: 45.4rem;
   `}
 
@@ -150,7 +150,7 @@ const HeroCardCtaIcon = styled.div`
 
 const HeroCardCtaText = styled.span`
   color: ${color.white};
-  font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb};
+  font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb} 700;
 `;
 
 const HeroCard = ({

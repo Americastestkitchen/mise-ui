@@ -10,7 +10,7 @@ const ShowMoreLessRest = styled.ul``;
 
 export const ShowMoreLessButtonTheme = {
   default: css`
-    font: 1.2rem/1 ${font.pnb};
+    font: 1.2rem/1 ${font.pnb} 700;
     letter-spacing: 1.2px;
     padding: ${spacing.xsm} 0;
     text-transform: uppercase;

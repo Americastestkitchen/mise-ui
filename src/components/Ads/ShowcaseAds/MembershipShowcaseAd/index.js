@@ -38,11 +38,11 @@ const MembershipShowcase = styled.article.attrs({
 const MembershipShowcaseTitleTheme = {
   default: css`
     color: ${color.whiteSmoke};
-    font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb};
+    font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb} 700;
     margin-bottom: ${spacing.sm};
 
     ${breakpoint('lg')`
-      font: 2.6rem/${lineHeight.sm} ${font.pnb};
+      font: 2.6rem/${lineHeight.sm} ${font.pnb} 700;
     `}
   `,
 };
@@ -82,7 +82,7 @@ const MembershipCtaTheme = {
     background-color: ${color.frog};
     color: ${color.white};
     display: block;
-    font: ${fontSize.lg}/4rem ${font.pnb};
+    font: ${fontSize.lg}/4rem ${font.pnb} 700;
     height: 4rem;
     letter-spacing: ${letterSpacing.cta};
     margin-bottom: ${spacing.sm};

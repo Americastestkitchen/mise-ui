@@ -20,7 +20,7 @@ const Stack = styled.div`
     ${mixins.focusIndicator()}
   }
   &:hover {
-    img {   
+    img {
       transform: translateY(-8px);
     }
   }
@@ -91,6 +91,7 @@ export const BackgroundCardTitle = styled.p`
   font-size: 23px;
   line-height: 1.13;
   font-family: ${font.pnb};
+  font-weight: 700;
   color: white;
   margin-bottom: 4px;
 `;

@@ -14,7 +14,7 @@ const ToggleRefinementWrapper = styled.div`
     label {
       ${cssThemedColor}
       ${cssThemedLink}
-      font: ${fontSize.md}/1.05 ${font.pnb};
+      font: ${fontSize.md}/1.05 ${font.pnb} 700;
     }
 
     &:hover {
@@ -23,7 +23,7 @@ const ToggleRefinementWrapper = styled.div`
       }
     }
   }
-  
+
   .refinement-filter__checkmark {
     top: 0.4rem;
   }

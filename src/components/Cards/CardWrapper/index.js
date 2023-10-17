@@ -41,7 +41,7 @@ const CardWrapperInfoWrapper = styled.div.attrs({
 
 const CardWrapperTitleTheme = {
   default: css`
-    font: ${fontSize.xl}/1 ${font.pnb};
+    font: ${fontSize.xl}/1 ${font.pnb} 700;
     margin-bottom: ${spacing.xsm};
     white-space: nowrap;
 

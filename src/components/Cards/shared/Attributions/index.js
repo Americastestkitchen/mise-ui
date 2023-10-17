@@ -19,7 +19,7 @@ const StyledAttributions = styled.div`
   }
 
   ins {
-    font: ${fontSize.md}/${lineHeight.md} ${font.pnb};
+    font: ${fontSize.md}/${lineHeight.md} ${font.pnb} 700;
   }
 
   ${breakpoint('xs', 'lg')`

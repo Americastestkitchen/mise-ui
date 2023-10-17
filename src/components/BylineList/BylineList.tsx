@@ -54,6 +54,7 @@ const MiddleAlignment = styled.span`
 const AuthorList = styled.span`
   vertical-align: baseline;
   font-family: ${font.pnb};
+  font-weight: 700;
   font-size: ${fontSize.md};
   line-height: 1.44;
   ${cssThemedColor}

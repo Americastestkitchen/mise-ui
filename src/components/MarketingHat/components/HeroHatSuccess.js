@@ -24,11 +24,11 @@ const HeroHatSuccess = styled.div.attrs({
 
     ${breakpoint('md')`
       margin-right: ${spacing.xsm};
-    `}  
+    `}
   }
 
   span {
-    font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb};
+    font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb} 700;
   }
 `;
 

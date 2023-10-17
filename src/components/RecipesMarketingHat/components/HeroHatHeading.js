@@ -8,15 +8,15 @@ const HeroHatHeading = styled.h2.attrs({
   font: 2.9rem/${spacing.lg} ${font.mwr};
   font-weight: 600;
   height: 4.1rem;
-  
+
   &.is-tall {
-    font: 1.6rem/1 ${font.pnb};
+    font: 1.6rem/1 ${font.pnb} 700;
     text-transform: uppercase;
     letter-spacing: 1.41px;
     margin-bottom: 0.6rem;
     height: auto;
   }
-  
+
   ${breakpoint('md')`
     font-size: 2.8rem;
     line-height: 1.39;

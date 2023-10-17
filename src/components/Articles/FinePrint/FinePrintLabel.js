@@ -24,7 +24,7 @@ const LabelWrapper = styled.div`
 
 const FinePrintTitleTheme = {
   default: css`
-    font: ${fontSize.xl}/2.6rem ${font.pnb};
+    font: ${fontSize.xl}/2.6rem ${font.pnb} 700;
     letter-spacing: normal;
     min-height: 3.3rem;
     width: 100%;

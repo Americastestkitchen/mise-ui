@@ -4,6 +4,7 @@ import { color, font, fontSize } from '../../styles';
 
 const cssFont = css`
   font-family: ${font.pnb};
+  font-weight: 700;
   font-size: ${fontSize.xsm};
   letter-spacing: 1.25px;
   text-transform: uppercase;

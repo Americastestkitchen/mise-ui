@@ -38,7 +38,7 @@ const HeroHatBody = styled.div.attrs({
     align-items: center;
     background-color: ${color.frog};
     display: flex;
-    font: ${fontSize.lg}/1 ${font.pnb};
+    font: ${fontSize.lg}/1 ${font.pnb} 700;
     justify-content: center;
     letter-spacing: ${letterSpacing.cta};
     padding: 0;
@@ -169,7 +169,7 @@ const HeroHatBody = styled.div.attrs({
           fill: ${color.white};
           height: 1rem;
           margin-left: 1rem;
-          width: 1rem; 
+          width: 1rem;
         }
       }
     }

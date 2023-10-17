@@ -32,7 +32,7 @@ const AffiliateLinkTheme = {
     border-radius: 3rem;
     color: ${color.rust};
     display: inline-block;
-    font: ${fontSize.md}/${lineHeight.md} ${font.pnb};
+    font: ${fontSize.md}/${lineHeight.md} ${font.pnb} 700;
     min-width: 16.2rem;
     padding: 1rem 2rem;
     position: relative;

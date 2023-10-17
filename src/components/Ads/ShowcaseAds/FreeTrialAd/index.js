@@ -90,7 +90,7 @@ const FreeTrialContentInner = styled.div`
 
 const FreeTrialTitleTheme = {
   default: css`
-    font: 2.6rem/${lineHeight.sm} ${font.pnb};
+    font: 2.6rem/${lineHeight.sm} ${font.pnb} 700;
     margin-bottom: ${spacing.sm};
   `,
 };
@@ -101,7 +101,7 @@ const FreeTrialTitle = styled.div.attrs({
 
 const FreeTrialSubtitleTheme = {
   default: css`
-    font: ${fontSize.lg}/${lineHeight.md} ${font.pnb};
+    font: ${fontSize.lg}/${lineHeight.md} ${font.pnb} 700;
     margin-bottom: ${spacing.xlg};
   `,
 };
@@ -115,7 +115,7 @@ const FreeTrialCtaTheme = {
     background-color: ${color.tomato};
     color: ${color.white};
     display: block;
-    font: ${fontSize.lg}/4rem ${font.pnb};
+    font: ${fontSize.lg}/4rem ${font.pnb} 700;
     letter-spacing: ${letterSpacing.cta};
     height: 4rem;
     text-align: center;

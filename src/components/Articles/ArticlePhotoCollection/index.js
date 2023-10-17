@@ -106,7 +106,7 @@ const ImagesWrapper = styled.div`
 
 const CollectionTitleTheme = {
   default: css`
-    font: ${fontSize.xl}/2.6rem ${font.pnb};
+    font: ${fontSize.xl}/2.6rem ${font.pnb} 700;
     margin-bottom: 0.7rem;
   `,
   atk: css`

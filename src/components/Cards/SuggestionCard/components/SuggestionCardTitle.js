@@ -8,6 +8,7 @@ const SuggestionCardTitle = styled.a.attrs({
 })`
   color: ${color.eclipse};
   font-family: ${font.pnb};
+  font-weight: 700;
   font-size: 2rem;
   line-height: ${lineHeight.md};
   margin: 1rem 0;

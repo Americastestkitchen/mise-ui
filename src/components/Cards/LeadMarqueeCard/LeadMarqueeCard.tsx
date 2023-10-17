@@ -26,7 +26,7 @@ const LeadMarqueeCardWrapper = styled.article.attrs({
       }
     }
   }
-  
+
   .lead-marquee-card__image {
     display: block;
     width: 100%;
@@ -42,7 +42,7 @@ const LeadMarqueeCardWrapper = styled.article.attrs({
       }
     }
   }
-  
+
   button:focus {
     ${mixins.focusIndicator('#ffffff', '2px')}
   }
@@ -156,7 +156,7 @@ export const StyledSticker = styled(Sticker)`
 const TitleTheme = {
   default: css`
     color: ${color.white};
-    font: ${fontSize.xxl}/${lineHeight.sm} ${font.pnb};
+    font: ${fontSize.xxl}/${lineHeight.sm} ${font.pnb} 700;
     margin-bottom: ${spacing.xsm};
 
     width: 34rem;

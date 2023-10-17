@@ -51,7 +51,7 @@ const ListableTitle = styled.h3.attrs({
   className: 'listable__title',
 })`
   color: ${color.white};
-  font: ${fontSize.md}/${lineHeight.sm} ${font.pnb};
+  font: ${fontSize.md}/${lineHeight.sm} ${font.pnb} 700;
 
   svg {
     height: 1rem;

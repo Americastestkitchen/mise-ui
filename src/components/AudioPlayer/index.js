@@ -63,23 +63,23 @@ const TitleWrapper = styled.div`
 
 const Title = styled.h2`
   color: ${color.white};
-  font: ${fontSize.lg}/${lineHeight.md} ${font.pnb};
+  font: ${fontSize.lg}/${lineHeight.md} ${font.pnb} 700;
   margin-bottom: ${spacing.xxsm};
 
   ${breakpoint('lg')`
-    font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb};
+    font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb} 700;
   `}
 `;
 
 const Subtitle = styled.h4`
   color: ${color.silver};
-  font: ${fontSize.xsm}/${lineHeight.sm} ${font.pnb};
+  font: ${fontSize.xsm}/${lineHeight.sm} ${font.pnb} 700;
   letter-spacing: ${letterSpacing.lg};
   margin-bottom: ${spacing.xsm};
   text-transform: uppercase;
 
   ${breakpoint('lg')`
-    font: 1.2rem/${lineHeight.md} ${font.pnb};
+    font: 1.2rem/${lineHeight.md} ${font.pnb} 700;
   `}
 `;
 
@@ -147,7 +147,7 @@ display: none;
     }
 
     a {
-      font: ${fontSize.sm} ${font.pnb};
+      font: ${fontSize.sm} ${font.pnb} 700;
       ${mixins.styledLink(color.turquoise, color.darkerMint)};
     }
   `}

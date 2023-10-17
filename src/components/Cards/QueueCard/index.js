@@ -31,7 +31,7 @@ const StyledQueueCard = styled.article`
 
   h4 {
     color: ${color.silver};
-    font: 1.2rem/${lineHeight.sm} ${font.pnb};
+    font: 1.2rem/${lineHeight.sm} ${font.pnb} 700;
     letter-spacing: ${letterSpacing.lg};
     margin-bottom: ${spacing.xsm};
     text-transform: uppercase;

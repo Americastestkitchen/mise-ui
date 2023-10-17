@@ -28,7 +28,7 @@ const ArticleTextBlockWrapper = styled.div`
         font-family: ${font.pnb};
         font-weight: 400;
       }
-      
+
     }
   }
 
@@ -91,7 +91,7 @@ const ArticleTextBlockCopy = styled.div`
 
 const ArticleTextBlockHeadingTheme = {
   default: css`
-    font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb};
+    font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb} 700;
     margin-bottom: 0.8rem;
   `,
   atk: css`

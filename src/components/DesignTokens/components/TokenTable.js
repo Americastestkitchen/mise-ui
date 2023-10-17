@@ -10,7 +10,7 @@ const TokenTableEl = styled.table`
 
   th {
     background-color: ${color.whiteSmoke};
-    font: ${fontSize.sm}/${lineHeight.sm} ${font.pnb};
+    font: ${fontSize.sm}/${lineHeight.sm} ${font.pnb} 700;
     text-align: left;
   }
 

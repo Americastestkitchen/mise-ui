@@ -44,6 +44,7 @@ const MadeForYouCardTitleWrapper = styled.div`
 
   h3 {
     font-family: ${font.pnb};
+    font-weight: 700;
     font-size: 26px;
     line-height: 1.15;
     text-align: center;

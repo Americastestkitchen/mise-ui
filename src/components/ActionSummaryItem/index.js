@@ -18,6 +18,7 @@ const ActionSummaryTheme = {
 
     strong {
       font-family: ${font.pnb};
+      font-weight: 700;
     }
 
     svg {

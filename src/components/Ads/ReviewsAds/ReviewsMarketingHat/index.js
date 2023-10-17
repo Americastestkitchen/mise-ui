@@ -207,13 +207,13 @@ const Description = styled.p`
 `;
 
 const Headline = styled.h2`
-  font: ${fontSize.md} ${font.pnb};
+  font: ${fontSize.md} ${font.pnb} 700;
   letter-spacing: 1.4px;
   text-transform: uppercase;
   margin-bottom: 1.2rem;
 
   ${breakpoint('md')`
-    font: ${fontSize.lg}/3rem ${font.pnb};
+    font: ${fontSize.lg}/3rem ${font.pnb} 700;
     letter-spacing: 1.8px;
   `}
 
@@ -259,7 +259,7 @@ const RegistrantSubmit = styled.button`
   background-color: ${color.frog};
   color: ${color.white};
   display: flex;
-  font: ${fontSize.md}/2rem ${font.pnb};
+  font: ${fontSize.md}/2rem ${font.pnb} 700;
   justify-content: center;
   letter-spacing: ${letterSpacing.md};
   max-height: ${spacing.xlg};
@@ -277,7 +277,7 @@ const RegistrantSubmit = styled.button`
 `;
 
 const Title = styled.h3`
-  font: bold 2.8rem/3rem ${font.pnb};
+  font: bold 2.8rem/3rem ${font.pnb} 700;
 
   letter-spacing: normal;
   margin-bottom: ${spacing.xsm};

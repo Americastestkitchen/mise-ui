@@ -22,7 +22,7 @@ const RefinementFilterLabelTheme = {
     }
 
     .search-refinement-list__label-text {
-      ${({ isRefined }) => (isRefined ? `color: ${color.mint}; font-family: ${font.pnb};` : '')}
+      ${({ isRefined }) => (isRefined ? `color: ${color.mint}; font-family: ${font.pnb}; font-weight: 700;` : '')}
     }
 
     &:hover {
@@ -99,7 +99,7 @@ const RefinementFilterLabelTheme = {
   `,
   dark: css`
     color: ${color.white};
-    ${({ isRefined }) => (isRefined ? `font-family: ${font.pnb};` : '')}
+    ${({ isRefined }) => (isRefined ? `font-family: ${font.pnb}; font-weight: 700;` : '')}
 
     .search-refinement-list__label-text {
       ${({ isRefined }) => (isRefined ? `color: ${color.white};` : '')}

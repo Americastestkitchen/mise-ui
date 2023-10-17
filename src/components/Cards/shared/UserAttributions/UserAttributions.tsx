@@ -70,7 +70,7 @@ export const StandardUserAttributions = styled(UserAttributions)`
 export const FeatureCardUserAttributions = styled(UserAttributions)`
   margin: 0.3rem 0 0.6rem 0;
   color: ${color.white};
-  font: ${fontSize.md}/${lineHeight.md} ${font.pnb};
+  font: ${fontSize.md}/${lineHeight.md} ${font.pnb} 700;
 
   .action-summary {
     color: ${color.white};

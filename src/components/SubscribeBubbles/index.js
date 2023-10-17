@@ -13,7 +13,7 @@ const SubscribeBubblesWrapper = styled.div`
 
 const SubscribeBubblesTitle = styled.h3`
   color: ${color.white};
-  font: ${fontSize.md}/1 ${font.pnb};
+  font: ${fontSize.md}/1 ${font.pnb} 700;
   letter-spacing: ${letterSpacing.md};
 `;
 

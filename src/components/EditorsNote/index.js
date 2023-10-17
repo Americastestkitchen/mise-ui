@@ -41,6 +41,7 @@ const EditorNoteTheme = {
     strong {
       font-weight: normal;
       font-family: ${font.pnb};
+      font-weight: 700;
     }
 
     &.note-alert {
@@ -180,7 +181,7 @@ const EditorNoteIcon = styled.span`
   width: 3rem;
   justify-content: center;
   ${cssEditorIconPositioning}
-  
+
   @media print {
     color: ${color.black};
 
@@ -197,7 +198,7 @@ const EditorNoteIcon = styled.span`
 const EditorNoteTitleTheme = {
   default: css`
     color: ${color.cuttySark};
-    font: ${fontSize.lg}/${lineHeight.lg} ${font.pnb};
+    font: ${fontSize.lg}/${lineHeight.lg} ${font.pnb} 700;
     margin-right: ${spacing.sm};
 
     .note-alert & {

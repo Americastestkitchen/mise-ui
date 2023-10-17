@@ -35,7 +35,7 @@ const AdDimensions = styled.a`
     &.cooking-school-ad__detail {
       justify-content: unset;
     }
-    
+
     &.cooking-school-ad__landing {
       width: 113.6rem;
     }
@@ -89,7 +89,7 @@ const AdWrapperTheme = {
       flex-direction: row;
       padding: 2.2rem 3.6rem;
       text-align: left;
-      
+
       &.cooking-school-ad__detail {
         margin: ${spacing.xlg} -3.6rem 0;
         width: calc(100% + 7.2rem);
@@ -183,7 +183,7 @@ const CtaLinkTheme = {
     align-items: center;
     color: ${color.white};
     display: flex;
-    font: ${fontSize.lg}/1.2rem ${font.pnb};
+    font: ${fontSize.lg}/1.2rem ${font.pnb} 700;
     justify-content: center;
     letter-spacing: ${letterSpacing.cta};
     min-height: ${spacing.xlg};
@@ -233,15 +233,15 @@ const CtaLink = styled.div`
 
 const DescriptionTheme = {
   default: css`
-    font: ${fontSize.lg}/2.1rem ${font.pnb};
+    font: ${fontSize.lg}/2.1rem ${font.pnb} 700;
     letter-spacing: normal;
 
     ${breakpoint('md')`
-      font: 2.1rem/2.4rem ${font.pnb};
+      font: 2.1rem/2.4rem ${font.pnb} 700;
     `}
 
     ${breakpoint('xlg')`
-      font: 2.1rem/2.6rem ${font.pnb};
+      font: 2.1rem/2.6rem ${font.pnb} 700;
     `}
   `,
   atk: css`

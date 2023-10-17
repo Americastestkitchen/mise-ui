@@ -5,7 +5,7 @@ import { md, lg, xlg } from '../../../../styles/breakpoints';
 import { cssThemedButton } from './shared';
 
 export const AccentHeadline = styled.p`
-  font-family: 'Univers LT Std', sans-serif; 
+  font-family: 'Univers LT Std', sans-serif;
   padding-top: 14px; /* embedded visual metrics need fixing? */
   font-size: 46px;
   line-height: 26px;
@@ -24,6 +24,7 @@ export const Headline = styled.p`
 
 export const Description = styled.p`
   font-family: ${font.pnb};
+  font-weight: 700;
   font-size: 18px;
   line-height: 22px;
   max-width: 208px;
@@ -67,6 +68,7 @@ export const ButtonArea = styled.div`
   place-items: center;
   place-content: center;
   font-family: ${font.pnb};
+  font-weight: 700;
   font-size: 18px;
   line-height: 1.11;
   letter-spacing: 2.88px;
@@ -79,10 +81,10 @@ export const VariantButtonArea = styled(ButtonArea)`
 `;
 
 export const ClickArea = styled.a`
-  display: grid; 
-  gap: 0px 0px; 
+  display: grid;
+  gap: 0px 0px;
   width: 100%;
-  
+
   &:focus {
     ${mixins.focusIndicator()};
   }

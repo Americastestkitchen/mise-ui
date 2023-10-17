@@ -25,7 +25,7 @@ const Intro = styled.h4.attrs({
 
 const TitleTheme = {
   default: css`
-    font: ${fontSize.xl}/1 ${font.pnb};
+    font: ${fontSize.xl}/1 ${font.pnb} 700;
     padding: 0 0 ${spacing.xsm};
     margin-right: ${spacing.md};
 

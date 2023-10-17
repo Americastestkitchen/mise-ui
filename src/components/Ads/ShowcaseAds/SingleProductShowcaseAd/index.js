@@ -97,7 +97,7 @@ const ProductInfoInner = styled.div`
  */
 const ProductTitleTheme = {
   default: css`
-    font: 2.6rem/${lineHeight.sm} ${font.pnb};
+    font: 2.6rem/${lineHeight.sm} ${font.pnb} 700;
     margin-bottom: ${spacing.sm};
   `,
   dark: css`
@@ -134,7 +134,7 @@ const ProductCtaTheme = {
     background-color: ${color.tomato};
     display: block;
     flex: 1 0 100%;
-    font: ${fontSize.lg}/4rem ${font.pnb};
+    font: ${fontSize.lg}/4rem ${font.pnb} 700;
     letter-spacing: ${letterSpacing.cta};
     height: 4rem;
     margin-top: ${spacing.xsm};

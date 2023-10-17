@@ -29,6 +29,7 @@ const Img = styled.img`
 
 const Description = styled.div`
   font-family: ${font.pnb};
+  font-weight: 700;
   font-size: 16px;
   line-height: 1.5;
   color: ${color.doveGray};

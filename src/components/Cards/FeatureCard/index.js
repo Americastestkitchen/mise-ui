@@ -137,7 +137,7 @@ const Attributions = styled.p.attrs({
 const CtaLink = styled.a`
   ${mixins.styledLink(color.tomato, color.rust, color.white)};
   bottom: ${spacing.sm};
-  font: ${fontSize.md}/${lineHeight.sm} ${font.pnb};
+  font: ${fontSize.md}/${lineHeight.sm} ${font.pnb} 700;
   left: ${spacing.xsm};
   position: absolute;
   z-index: 2;
@@ -154,7 +154,7 @@ const PricingWrapper = styled.div`
 `;
 
 const DiscountPricing = styled.p`
-  font: ${fontSize.md}/1 ${font.pnb};
+  font: ${fontSize.md}/1 ${font.pnb} 700;
   line-height: 1.2rem;
 `;
 

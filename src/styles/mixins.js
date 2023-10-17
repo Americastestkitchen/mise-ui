@@ -58,7 +58,7 @@ export default {
             left: 0;
             content: counter(li)".";
             color: ${numberColor};
-            font: ${fontSize.sm}/1.5 ${font.pnb};
+            font: ${fontSize.sm}/1.5 ${font.pnb} 700;
             display: inline-block;
             margin-top: 0.2rem;
             min-width: 1.8rem;
@@ -256,16 +256,16 @@ export default {
 };
 
 export const cssThemedFont = withThemes({
-  default: css`font-family: ${font.pnb};`,
-  atk: css`font-family: ${font.pnb};`,
+  default: css`font-family: ${font.pnb}; font-weight: 700;`,
+  atk: css`font-family: ${font.pnb}; font-weight: 700;`,
   cco: css`font-family: ${font.clb};`,
   cio: css`font-family: ${font.mwr};`,
 });
 
 /** Headers */
 export const cssThemedFontBold = withThemes({
-  default: css`font-family: ${font.pnb};`,
-  atk: css`font-family: ${font.pnb};`,
+  default: css`font-family: ${font.pnb}; font-weight: 700;`,
+  atk: css`font-family: ${font.pnb}; font-weight: 700;`,
   cco: css`font-family: ${font.clb};`,
   cio: css`
     font-family: ${font.mwr};
