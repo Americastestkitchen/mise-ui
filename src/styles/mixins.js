@@ -404,7 +404,7 @@ export const cssArticleBoxStyles = css`
         left: 0;
         content: counter(li)".";
         ${cssThemedColor}
-        font: ${fontSize.sm}/1.5 ${font.pnb} 700s;
+        font: 700 ${fontSize.sm}/1.5 ${font.pnb};
         display: inline-block;
         margin-top: 0.2rem;
         min-width: 1.8rem;
