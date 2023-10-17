@@ -18,7 +18,7 @@ import EmailForm from '../../Forms/EmailForm';
 
 const NewsletterTitleTheme = {
   default: css`
-    font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb} 700;
+    font: 700 (${fontSize.xl}/${lineHeight.sm} )${font.pnb};
     margin-bottom: ${spacing.sm};
 
     ${breakpoint('lg')`
@@ -62,7 +62,7 @@ const NewsletterSubtitle = styled.div.attrs({
 const NewsletterSuccessTheme = {
   default: css`
     color: ${color.eclipse};
-    font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb} 700;
+    font: 700 (${fontSize.xl}/${lineHeight.sm} )${font.pnb};
     margin: 0 0 ${spacing.sm} ${spacing.xsm};
 
     svg {

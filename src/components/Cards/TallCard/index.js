@@ -93,7 +93,7 @@ const TallCardLogo = styled.div`
 `;
 
 const Dek = styled.div`
-  font: ${fontSize.md}/${lineHeight.sm} ${font.pnb} 700;
+  font: 700 (${fontSize.md}/${lineHeight.sm} )${font.pnb};
   max-width: 70%;
   text-align: center;
 `;

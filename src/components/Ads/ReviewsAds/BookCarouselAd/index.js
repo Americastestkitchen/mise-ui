@@ -19,7 +19,7 @@ const AdCtaLink = styled.a`
   background-color: ${color.pictonBlue};
   color: ${color.white};
   display: flex;
-  font: ${fontSize.lg}/1.2rem ${font.pnb} 700;
+  font: 700 ${fontSize.lg}/1.2rem ${font.pnb};
   letter-spacing: 1.8px;
   justify-content: center;
   margin-bottom: ${spacing.xsm};

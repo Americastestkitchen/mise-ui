@@ -47,7 +47,7 @@ const Title = styled.p`
 `;
 
 const SubTitle = styled.p`
-  font: 2.6rem/1.27 ${font.pnb} 700;
+  font: 700 (2.6rem/1.27 )${font.pnb};
   margin: 1rem auto;
   max-width: 49rem;
 `;
@@ -106,7 +106,7 @@ const ErrorMessage = styled.p`
 `;
 
 const SuccessMessage = styled.p`
-  font: 2.6rem/1.27 ${font.pnb} 700;
+  font: 700 (2.6rem/1.27 )${font.pnb};
   max-width: 434px;
   margin: 1rem auto;
 `;

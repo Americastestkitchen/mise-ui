@@ -198,7 +198,7 @@ const EditorNoteIcon = styled.span`
 const EditorNoteTitleTheme = {
   default: css`
     color: ${color.cuttySark};
-    font: ${fontSize.lg}/${lineHeight.lg} ${font.pnb} 700;
+    font: 700 (${fontSize.lg}/${lineHeight.lg} )${font.pnb};
     margin-right: ${spacing.sm};
 
     .note-alert & {

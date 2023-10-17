@@ -74,7 +74,7 @@ const RefinementListLegendTheme = {
   `,
   dark: css`
     color: ${color.white};
-    font: ${fontSize.md}/1 ${font.pnb} 700;
+    font: 700 (${fontSize.md}/1 )${font.pnb};
     letter-spacing: ${letterSpacing.md};
     padding: 0 0 ${spacing.sm};
   `,

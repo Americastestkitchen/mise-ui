@@ -53,7 +53,7 @@ const BackToTopButton = styled.button`
   background-color: ${color.transparent};
   border: none;
   cursor: pointer;
-  font: ${fontSize.lg}/1 ${font.pnb} 700;
+  font: 700 (${fontSize.lg}/1 )${font.pnb};
   color: ${color.eclipse};
 
   &:hover {

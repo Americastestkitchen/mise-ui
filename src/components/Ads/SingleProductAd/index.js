@@ -99,7 +99,7 @@ const SingleProductContentInner = styled.div``;
 
 const SingleProductTitleTheme = {
   default: css`
-    font: 2.6rem/${lineHeight.sm} ${font.pnb} 700;
+    font: 700 (2.6rem/${lineHeight.sm} )${font.pnb};
     margin-bottom: ${spacing.sm};
     text-align: center;
 
@@ -118,7 +118,7 @@ const SingleProductCtaTheme = {
     background-color: ${color.coldPool};
     color: ${color.white};
     display: block;
-    font: ${fontSize.lg}/4rem ${font.pnb} 700;
+    font: 700 (${fontSize.lg}/4rem )${font.pnb};
     letter-spacing: ${letterSpacing.cta};
     height: 4rem;
     text-align: center;

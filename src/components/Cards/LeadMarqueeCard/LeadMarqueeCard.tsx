@@ -156,7 +156,7 @@ export const StyledSticker = styled(Sticker)`
 const TitleTheme = {
   default: css`
     color: ${color.white};
-    font: ${fontSize.xxl}/${lineHeight.sm} ${font.pnb} 700;
+    font: 700 (${fontSize.xxl}/${lineHeight.sm} )${font.pnb};
     margin-bottom: ${spacing.xsm};
 
     width: 34rem;

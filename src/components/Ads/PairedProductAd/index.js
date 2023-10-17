@@ -57,7 +57,7 @@ const PairedProductInnerWrapper = styled.div.attrs({
  */
 const PairedProductMainTitleTheme = {
   default: css`
-    font: ${fontSize.xxl}/${lineHeight.sm} ${font.pnb} 700;
+    font: 700 ${fontSize.xxl}/${lineHeight.sm} ${font.pnb};
     margin-bottom: ${spacing.xsm};
     text-align: center;
 
@@ -163,10 +163,10 @@ const PairedProductInfo = styled.div.attrs({
  */
 const PairedProductTitleTheme = {
   default: css`
-    font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb} 700;
+    font: 700 ${fontSize.xl}/${lineHeight.sm} ${font.pnb};
 
     ${breakpoint('lg')`
-      font: 2.6rem/${lineHeight.sm} ${font.pnb} 700;
+      font: 700 2.6rem/${lineHeight.sm} ${font.pnb};
 
       span {
         white-space: nowrap;
@@ -207,7 +207,7 @@ const PairedProductCtaTheme = {
     background-color: ${color.frog};
     display: block;
     flex: 1 0 100%;
-    font: ${fontSize.lg}/4rem ${font.pnb} 700;
+    font: 700 ${fontSize.lg}/4rem ${font.pnb};
     letter-spacing: ${letterSpacing.cta};
     height: 4rem;
     margin-top: ${spacing.xsm};

@@ -3,7 +3,7 @@ import { color, font } from '../../../styles';
 import { cssThemedLink } from '../../../styles/mixins';
 
 export const Font1 = styled.div`
-  font-family: "proximaNovaBold";
+  font-family: proxima-nova;
   font-size: 23px;
   line-height: 26px;
   color: ${color.eclipse};

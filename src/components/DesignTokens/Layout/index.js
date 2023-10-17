@@ -11,7 +11,7 @@ const TokenGroup = styled.div`
 
   h2 {
     color: ${color.eclipse};
-    font: ${fontSize.lg}/${lineHeight.md} ${font.pnb} 700;
+    font: 700 (${fontSize.lg}/${lineHeight.md} )${font.pnb};
   }
 
   p {

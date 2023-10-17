@@ -86,7 +86,7 @@ const RelatedDocumentImageWrapper = styled.div.attrs({
 const RelatedDocumentCardAttributionTheme = {
   default: css`
     display: none;
-    font: 1.2rem/${lineHeight.md} ${font.pnb} 700;
+    font: 700 (1.2rem/${lineHeight.md} )${font.pnb};
     margin-bottom: ${spacing.xsm};
     letter-spacing: ${letterSpacing.lg};
     text-transform: uppercase;
@@ -103,11 +103,11 @@ const RelatedDocumentCardAttribution = styled.span.attrs({
 /** TITLE */
 const RelatedDocumentCardTitleTheme = {
   default: css`
-    font: ${fontSize.md}/${lineHeight.md} ${font.pnb} 700;
+    font: 700 (${fontSize.md}/${lineHeight.md} )${font.pnb};
     margin-bottom: ${spacing.xsm};
 
     ${breakpoint('md')`
-      font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb} 700;
+      font: 700 (${fontSize.xl}/${lineHeight.sm} )${font.pnb};
     `}
   `,
   atk: css`

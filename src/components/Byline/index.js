@@ -30,7 +30,7 @@ const AuthorTheme = {
 
     span {
       color: ${color.eclipse};
-      font: ${fontSize.md}/${lineHeight.sm} ${font.pnb} 700;
+      font: 700 (${fontSize.md}/${lineHeight.sm} )${font.pnb};
     }
 
     .person-head-shot {

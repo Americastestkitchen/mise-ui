@@ -7,7 +7,7 @@ const CtaLinkTheme = {
   default: css`
     color: ${color.tomato};
     transition: color 0.1s ease-in-out;
-    font: ${fontSize.md}/18px ${font.pnb} 700;
+    font: 700 (${fontSize.md}/18px )${font.pnb};
 
     &:focus, &:active {
       ${mixins.focusIndicator()};
@@ -18,7 +18,7 @@ const CtaLinkTheme = {
     }
   `,
   dark: css`
-    font: ${fontSize.md} /${lineHeight.sm} ${font.pnb} 700;
+    font: 700 (${fontSize.md} /${lineHeight.sm} )${font.pnb};
     ${mixins.styledLink(color.tomato, color.rust, color.white)};
     &:hover {
       color: ${color.white};

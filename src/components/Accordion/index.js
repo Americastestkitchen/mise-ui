@@ -38,8 +38,7 @@ const AccordionButtonTheme = {
     align-items: center;
     border: none;
     display: flex;
-    font: ${fontSize.md}/1 ${font.pnb} 700;
-    font-weight: 700;
+    font: 700 ${fontSize.md}/1 ${font.pnb};
     justify-content: space-between;
     letter-spacing: ${letterSpacing.md};
     padding: 0.2rem ${spacing.xxsm} 0.2rem 0;

@@ -10,7 +10,7 @@ import {
 
 const plyrStyles = css`
   .plyr {
-    font: ${fontSize.lg}/${lineHeight.lg} ${font.pnb} 700;
+    font: 700 (${fontSize.lg}/${lineHeight.lg} )${font.pnb};
   }
 
   .plyr--audio {

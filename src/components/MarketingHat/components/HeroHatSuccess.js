@@ -28,7 +28,7 @@ const HeroHatSuccess = styled.div.attrs({
   }
 
   span {
-    font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb} 700;
+    font: 700 (${fontSize.xl}/${lineHeight.sm} )${font.pnb};
   }
 `;
 

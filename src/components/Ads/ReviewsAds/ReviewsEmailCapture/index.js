@@ -76,7 +76,7 @@ const AdSuccess = styled.div`
     `)}
   }
   span {
-    font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb} 700;
+    font: 700 (${fontSize.xl}/${lineHeight.sm} )${font.pnb};
   }
   .success-svg-wrapper{
     max-width: 10%;
@@ -84,7 +84,7 @@ const AdSuccess = styled.div`
 `;
 
 const AdTitle = styled.h2`
-  font: ${fontSize.xl}/2.6rem ${font.pnb} 700;
+  font: 700 (${fontSize.xl}/2.6rem )${font.pnb};
   letter-spacing: normal;
   margin-bottom: 1rem;
   ${cssThemedColor}

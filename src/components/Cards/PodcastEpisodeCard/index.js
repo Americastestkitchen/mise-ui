@@ -170,7 +170,7 @@ const TextWrapper = styled.div`
     align-items: center;
     color: ${color.silver};
     display: flex;
-    font: 1.2rem/${lineHeight.sm} ${font.pnb} 700;
+    font: 700 (1.2rem/${lineHeight.sm} )${font.pnb};
     letter-spacing: ${letterSpacing.lg};
     text-transform: uppercase;
   }
@@ -190,7 +190,7 @@ const TextWrapper = styled.div`
 
   h3 {
     color: ${color.white};
-    font: ${fontSize.md} ${font.pnb} 700;
+    font: 700 (${fontSize.md} )${font.pnb};
     margin-top: ${spacing.xsm};
     margin-bottom: ${spacing.sm};
     line-height: ${lineHeight.md};
@@ -206,7 +206,7 @@ const TextWrapper = styled.div`
 
   a {
     color: ${color.whiteSmoke};
-    font: ${fontSize.sm} ${font.pnb} 700;
+    font: 700 (${fontSize.sm} )${font.pnb};
     ${mixins.styledLink(color.turquoise, color.darkerMint)};
   }
 

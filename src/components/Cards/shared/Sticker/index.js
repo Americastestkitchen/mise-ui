@@ -17,7 +17,7 @@ const StyledSticker = styled.span`
   border-radius: 0.6rem;
   background-color: ${({ type }) => (type === 'priority' ? color.tomato : color.transparentBlack)};
   color: ${color.white};
-  font: ${fontSize.xsm}/${stickerHeight} ${font.pnb} 700;
+  font: 700 (${fontSize.xsm}/${stickerHeight} )${font.pnb};
   letter-spacing: ${letterSpacing.md};
   text-transform: uppercase;
   vertical-align: top;

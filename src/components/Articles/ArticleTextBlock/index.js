@@ -91,7 +91,7 @@ const ArticleTextBlockCopy = styled.div`
 
 const ArticleTextBlockHeadingTheme = {
   default: css`
-    font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb} 700;
+    font: 700 (${fontSize.xl}/${lineHeight.sm} )${font.pnb};
     margin-bottom: 0.8rem;
   `,
   atk: css`

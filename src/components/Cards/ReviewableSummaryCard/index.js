@@ -27,7 +27,7 @@ const ReviewableSummaryItemTheme = {
 
     h3 {
       cursor: pointer;
-      font: ${fontSize.lg}/${lineHeight.md} ${font.pnb} 700;
+      font: 700 (${fontSize.lg}/${lineHeight.md} )${font.pnb};
     }
 
     .reviewable-img {
@@ -116,7 +116,7 @@ const TitleImageWrapper = styled.div.attrs({
   width: 100%;
 
   h3 {
-    font: ${fontSize.xl} / ${lineHeight.sm} ${font.pnb} 700;
+    font: 700 (${fontSize.xl} / ${lineHeight.sm} )${font.pnb};
     margin-bottom: 1.4rem;
   }
 

@@ -10,7 +10,7 @@ const HeroHatHeading = styled.h2.attrs({
   height: 4.1rem;
 
   &.is-tall {
-    font: 1.6rem/1 ${font.pnb} 700;
+    font: 700 (1.6rem/1 )${font.pnb};
     text-transform: uppercase;
     letter-spacing: 1.41px;
     margin-bottom: 0.6rem;

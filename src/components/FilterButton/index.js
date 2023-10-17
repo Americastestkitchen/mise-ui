@@ -7,7 +7,7 @@ import Filter from '../DesignTokens/Icon/svgs/Filter';
 
 const StyledFilterButtonTheme = {
   default: css`
-    font: ${fontSize.md}/${lineHeight.sm} ${font.pnb} 700;
+    font: 700 (${fontSize.md}/${lineHeight.sm} )${font.pnb};
     padding: ${spacing.xsm};
     &:focus {
       ${mixins.focusIndicator()}

@@ -107,7 +107,7 @@ const SchoolInfoInner = styled.div`
  */
 const SchoolTitleTheme = {
   default: css`
-    font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb} 700;
+    font: 700 (${fontSize.xl}/${lineHeight.sm} )${font.pnb};
     margin-bottom: ${spacing.sm};
   `,
   dark: css`
@@ -144,7 +144,7 @@ const SchoolCtaTheme = {
     background-color: ${color.coldPool};
     display: block;
     flex: 1 0 100%;
-    font: ${fontSize.lg}/4rem ${font.pnb} 700;
+    font: 700 (${fontSize.lg}/4rem )${font.pnb};
     letter-spacing: ${letterSpacing.cta};
     height: 4rem;
     margin-top: ${spacing.xsm};

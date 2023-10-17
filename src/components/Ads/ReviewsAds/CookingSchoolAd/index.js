@@ -183,7 +183,7 @@ const CtaLinkTheme = {
     align-items: center;
     color: ${color.white};
     display: flex;
-    font: ${fontSize.lg}/1.2rem ${font.pnb} 700;
+    font: 700 ${fontSize.lg}/1.2rem ${font.pnb};
     justify-content: center;
     letter-spacing: ${letterSpacing.cta};
     min-height: ${spacing.xlg};
@@ -233,15 +233,15 @@ const CtaLink = styled.div`
 
 const DescriptionTheme = {
   default: css`
-    font: ${fontSize.lg}/2.1rem ${font.pnb} 700;
+    font: 700 (${fontSize.lg}/2.1rem )${font.pnb};
     letter-spacing: normal;
 
     ${breakpoint('md')`
-      font: 2.1rem/2.4rem ${font.pnb} 700;
+      font: 700 (2.1rem/2.4rem )${font.pnb};
     `}
 
     ${breakpoint('xlg')`
-      font: 2.1rem/2.6rem ${font.pnb} 700;
+      font: 700 (2.1rem/2.6rem )${font.pnb};
     `}
   `,
   atk: css`

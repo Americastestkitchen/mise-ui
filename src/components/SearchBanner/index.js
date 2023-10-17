@@ -26,7 +26,7 @@ const SearchBannerAnchor = styled.a`
   align-items: center;
   color: ${color.white};
   display: flex;
-  font: ${fontSize.md}/1 ${font.pnb} 700;
+  font: 700 (${fontSize.md}/1 )${font.pnb};
   height: 100%;
   justify-content: center;
   width: 100%;

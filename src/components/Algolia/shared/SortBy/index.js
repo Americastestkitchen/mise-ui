@@ -90,7 +90,7 @@ const SearchSortByNew = styled.span`
   border-radius: 0.6rem;
   background-color: ${color.tomato};
   color: ${color.white};
-  font: ${fontSize.xsm} / 1.8rem ${font.pnb} 700;
+  font: 700 (${fontSize.xsm} / 1.8rem )${font.pnb};
   letter-spacing: 1.6px;
   text-transform: uppercase;
 `;

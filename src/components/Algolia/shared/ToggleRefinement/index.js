@@ -14,7 +14,7 @@ const ToggleRefinementWrapper = styled.div`
     label {
       ${cssThemedColor}
       ${cssThemedLink}
-      font: ${fontSize.md}/1.05 ${font.pnb} 700;
+      font: 700 (${fontSize.md}/1.05 )${font.pnb};
     }
 
     &:hover {

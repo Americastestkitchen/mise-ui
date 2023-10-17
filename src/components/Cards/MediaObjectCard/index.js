@@ -34,13 +34,13 @@ const MediaObjectCardPersonInfo = styled.div`
 
 const MediaObjectCardName = styled.h2`
   color: ${color.eclipse};
-  font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb} 700;
+  font: 700 (${fontSize.xl}/${lineHeight.sm} )${font.pnb};
   margin-bottom: ${spacing.xsm};
 `;
 
 const MediaObjectCardTitle = styled.h3`
   color ${color.nobel};
-  font: ${fontSize.md}/${lineHeight.sm} ${font.pnb} 700;
+  font: 700 (${fontSize.md}/${lineHeight.sm} )${font.pnb};
 `;
 
 const MediaObjectCardDescription = styled.div`
@@ -49,7 +49,7 @@ const MediaObjectCardDescription = styled.div`
 `;
 
 const MediaObjectCardCta = styled.a`
-  font: ${fontSize.md}/${lineHeight.lg} ${font.pnb} 700;
+  font: 700 (${fontSize.md}/${lineHeight.lg} )${font.pnb};
   ${mixins.styledLink(color.turquoise, color.seaSalt)}
 `;
 

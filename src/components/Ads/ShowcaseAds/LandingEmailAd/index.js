@@ -187,7 +187,7 @@ const ContentHeadline = styled.span.attrs({
 const ContentTitleTheme = {
   default: css`
     color: ${color.eclipse};
-    font: 2.6rem ${font.pnb} 700;
+    font: 700 (2.6rem )${font.pnb};
     line-height: 3rem;
     width: 30rem;
 
@@ -208,7 +208,7 @@ const ContentTitleTheme = {
 const NewsletterSuccessTheme = {
   default: css`
     color: ${color.eclipse};
-    font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb} 700;
+    font: 700 (${fontSize.xl}/${lineHeight.sm} )${font.pnb};
     margin: 0 0 ${spacing.sm} 0;
     svg {
       display: inline-block;

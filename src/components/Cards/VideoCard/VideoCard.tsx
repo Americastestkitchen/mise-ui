@@ -66,7 +66,7 @@ const EpisodeDetails = styled.div`
 `;
 
 const Headline = styled.span`
-  font: ${fontSize.sm}/1.6rem ${font.pnb} 700;
+  font: 700 (${fontSize.sm}/1.6rem )${font.pnb};
   letter-spacing: 2.24px;
   margin-bottom: 1.2rem;
   margin-top: 0.2rem;

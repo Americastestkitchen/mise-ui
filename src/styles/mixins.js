@@ -58,7 +58,7 @@ export default {
             left: 0;
             content: counter(li)".";
             color: ${numberColor};
-            font: ${fontSize.sm}/1.5 ${font.pnb} 700;
+            font: 700 (${fontSize.sm}/1.5 )${font.pnb};
             display: inline-block;
             margin-top: 0.2rem;
             min-width: 1.8rem;
@@ -404,7 +404,7 @@ export const cssArticleBoxStyles = css`
         left: 0;
         content: counter(li)".";
         ${cssThemedColor}
-        font: ${fontSize.sm}/1.5 ${font.pnb};
+        font: ${fontSize.sm}/1.5 ${font.pnb} 700s;
         display: inline-block;
         margin-top: 0.2rem;
         min-width: 1.8rem;

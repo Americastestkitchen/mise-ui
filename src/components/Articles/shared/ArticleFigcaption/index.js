@@ -9,7 +9,7 @@ import { cssThemedLink } from '../../../../styles/mixins';
 const ArticleFigcaptionTheme = {
   default: css`
     color: ${color.mediumGray};
-    font: ${fontSize.md}/1.5 ${font.pnb} 700;
+    font: 700 (${fontSize.md}/1.5 )${font.pnb};
     position: relative;
 
     ${breakpoint('xs', 'xlg')`

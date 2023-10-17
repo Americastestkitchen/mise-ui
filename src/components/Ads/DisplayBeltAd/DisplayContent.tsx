@@ -54,7 +54,7 @@ const Cta = styled.a`
     align-items: center;
     color: ${color.white};
     display: flex;
-    font: ${fontSize.lg}/2rem ${font.pnb} 700;
+    font: 700 ${fontSize.lg}/2rem ${font.pnb};
     height: 4rem;
     justify-content: center;
     letter-spacing: ${letterSpacing.cta};
@@ -91,7 +91,7 @@ const Headline = styled.p`
 `;
 
 const SaleCopy = styled.h2`
-  font: 2.8rem/2.2rem ${font.pnb} 700;
+  font: 700 2.8rem/2.2rem ${font.pnb};
 
   ${breakpoint('md')`
     font-size: 3.2rem;
