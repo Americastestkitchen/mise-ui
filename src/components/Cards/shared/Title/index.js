@@ -5,7 +5,7 @@ import { color, fontSize, lineHeight, withThemes } from '../../../../styles';
 
 const TitleTheme = {
   default: css`
-    font: ${fontSize.xl}/${lineHeight.sm} proxima-nova, sans-serif 700;
+    font: 700 ${fontSize.xl}/${lineHeight.sm} proxima-nova, sans-serif;
     transition: color 0.2s ease;
 
     @media(hover: hover) {
