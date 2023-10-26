@@ -94,14 +94,14 @@ Add the `minor` label to the PR. This tells Auto to update the minor version of 
 
 Labels are located in the right hand column of the PR.
 
-Next, merge your PR, and navigate to your package on npm and hang tight for a few minutes while the package is updated.
-
 #### IMPORTANT
 Travis has been removed from Github which ran the build to provide the version number to add to associated Repos, such as `espresso`. This version will need to be generated manually. Before merging to master add 2 labels (patch and release). In the code editor, enter:
 ```
 yarn build && yarn tsc && npx auto shipit
 ```
 Wait for the build to complete, and the version number will be available to copy into your `package.json`.
+
+Next, merge your PR with the two labels and navigate to your package on [npm](https://www.npmjs.com/package/@atk/mise-ui). Hang tight for a few minutes while the package is updated.
 
 ## Previewing in `jarvis`, or other ATK repos with yalc
 
