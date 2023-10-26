@@ -5,7 +5,7 @@ import { color, font, fontSize, lineHeight, withThemes } from '../../../../style
 
 const TitleTheme = {
   default: css`
-    font: ${fontSize.xl}/${lineHeight.sm} ${font.pnb};
+    font: 700 ${fontSize.xl}/${lineHeight.sm} ${font.pnb};
     transition: color 0.2s ease;
 
     @media(hover: hover) {

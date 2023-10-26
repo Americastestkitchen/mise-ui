@@ -114,7 +114,7 @@ Install `yalc` globally
 ```
 yarn global add yalc
 ```
-Now run publish, it will copy all the files that should be published in remote NPM registry
+Now run publish, it will copy all the files that should be published in remote NPM registry. Don't forget to update the version number!
 ```
 yalc publish
 ```
