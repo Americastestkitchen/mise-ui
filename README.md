@@ -81,27 +81,17 @@ The online Storybook is a universal reference point for the team. Share the link
 * Snapshots?
 * Unit tests?
 
-#### Distribute
+#### Release
 
-When tests pass, stakeholders have reviewed and approved and other devs have given thumbs up it's time for the release.
+Once all your code is merged into the `master` branch, you are ready to begin the release process.
 
-To make sure the release is versioned properly on NPM, you will leverage labels on GitHub. Auto provides a list of labels that will affect
-whether a new NPM release is a patch, minor or major release. Unsurprisingly, these labels are `patch`, `minor`, `major`. The full list of
-labels can be found [here](https://github.com/Americastestkitchen/mise-ui/labels).
+To make sure the Mise is versioned properly for release, please run `yarn publish --tag latest` from the `master` branch. It will tell you the current version of Mise and then prompt you to enter the new vesrion. You can update the major, minor, or patch.
 
-For example:
-Add the `minor` label to the PR. This tells Auto to update the minor version of the package on merge.
+Verify that the latest verison has been published on [NPM](https://www.npmjs.com/package/@atk/mise-ui).
 
-Labels are located in the right hand column of the PR.
+Next, [draft a new release](https://github.com/Americastestkitchen/mise-ui/releases) and add a new tag in github. 
 
-#### IMPORTANT
-Travis has been removed from Github which ran the build to provide the version number to add to associated Repos, such as `espresso`. This version will need to be generated manually. Before merging to master add 2 labels (patch and release). In the code editor, enter:
-```
-yarn build && yarn tsc && npx auto shipit
-```
-Wait for the build to complete, and the version number will be available to copy into your `package.json`.
-
-Next, merge your PR with the two labels and navigate to your package on [npm](https://www.npmjs.com/package/@atk/mise-ui). Hang tight for a few minutes while the package is updated.
+You're now ready to use this new Mise version in other projects!
 
 ## Previewing in `jarvis`, or other ATK repos with yalc
 
