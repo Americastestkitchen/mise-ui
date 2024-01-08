@@ -70,7 +70,7 @@ const BookCarouselAd = ({
   cloudinaryId,
   hrefUrl,
 }) => (
-  <AdWrapper href={hrefUrl}>
+  <AdWrapper target="_blank" href={hrefUrl}>
     <Image
       className="book-carousel-ad__image"
       imageAlt="The Complete America’s Test Kitchen TV Show Cookbook: Every Recipe From All 24 Seasons"
