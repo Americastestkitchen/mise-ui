@@ -46,7 +46,7 @@ const AdTitle = styled.p`
   text-align: center;
 `;
 
-const AdWrapper = styled.div`
+const AdWrapper = styled.a`
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -68,35 +68,25 @@ const AdWrapper = styled.div`
 
 const BookCarouselAd = ({
   cloudinaryId,
-  ctaLinkText,
   hrefUrl,
-  sourceKey,
-  title,
 }) => (
-  <AdWrapper>
-    <AdTitle>{title}</AdTitle>
+  <AdWrapper target="_blank" href={hrefUrl}>
     <Image
       className="book-carousel-ad__image"
-      imageAlt="The Complete America's Test Kitchen TV Show Cookbook"
+      imageAlt="The Complete America’s Test Kitchen TV Show Cookbook: Every Recipe From All 24 Seasons"
       imageUrl={getImageUrl(cloudinaryId, { aspectRatio: '816:1200', width: 272, height: 400 })}
     />
-    <AdCtaLink href={`${hrefUrl}?sourcekey=${sourceKey}`} target="_blank">{ctaLinkText}</AdCtaLink>
   </AdWrapper>
 );
 
 BookCarouselAd.propTypes = {
   cloudinaryId: PropTypes.string,
-  ctaLinkText: PropTypes.string,
   hrefUrl: PropTypes.string,
-  sourceKey: PropTypes.string.isRequired,
-  title: PropTypes.string,
 };
 
 BookCarouselAd.defaultProps = {
-  cloudinaryId: 'ATKTV22Book_Mise_ReviewsBookCarouselAd_816x1200.jpg',
-  ctaLinkText: 'Save 56% Now',
-  hrefUrl: 'https://shop.americastestkitchen.com/complete-atk-22.html',
-  title: 'Get 1,727 recipes from all 22 seasons!',
+  cloudinaryId: 'ATK%20TV%20Play%20Images/book-ads/S24/SPS_Complete-ATKTV24_darkbackground',
+  hrefUrl: 'https://shop.americastestkitchen.com/complete-atk-24.html?sourcekey=CAD1ZTVC0',
 };
 
 export default BookCarouselAd;
