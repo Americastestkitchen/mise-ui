@@ -163,11 +163,6 @@ export const StyledBadge = styled(Badge)`
     top: 0;
     left: 0;
   }
-
-  ${breakpoint('xs', 'md')`
-    width: 1.6rem;
-    height: 1.6rem;
-  `}
 `;
 
 function StandardCard({
